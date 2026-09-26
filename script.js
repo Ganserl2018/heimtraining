@@ -1,6 +1,8 @@
 const tabs = document.querySelectorAll('.tab');
 const content = document.getElementById('content');
 const KEY = 'heimtraining.overrides';
+const PKEY = 'heimtraining.progress'; // {date:'YYYY-MM-DD', done:{day:{übungsname:[bool,...]}}}
+const SETS = 3;                       // Annahme: 3 Sätze pro Übung (keine Info in den Daten)
 
 let base = {};       // exercises.json (Standard)
 let pool = [];       // pool.json (alle 514 Übungen)
@@ -9,6 +11,17 @@ let day = 'push';
 let picker = null;   // null = Tagesansicht, sonst {index} (index null = hinzufügen)
 
 try { overrides = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { overrides = {}; }
+
+// Abhak-State: an das lokale Datum gebunden – an einem neuen Tag startet alles leer.
+const today = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+let progress = null;
+function prog() {
+  if (!progress) { try { progress = JSON.parse(localStorage.getItem(PKEY)); } catch (e) { progress = null; } }
+  if (!progress || progress.date !== today() || typeof progress.done !== 'object' || !progress.done) progress = { date: today(), done: {} };
+  return progress;
+}
+function saveProg() { try { localStorage.setItem(PKEY, JSON.stringify(progress)); } catch (e) {} }
+const setsOf = name => { const d = prog().done[day]; return (d && Array.isArray(d[name])) ? d[name] : []; };
 
 Promise.all([
   fetch('exercises.json').then(r => r.json()),
@@ -34,6 +47,8 @@ function render() {
       <div class="exercise-info">
         <div class="exercise-name">${esc(ex.name)}</div>
         <div class="exercise-muscle">${esc(ex.muscle)}</div>
+        <div class="sets">${Array.from({ length: SETS }, (_, k) =>
+          `<button class="set${setsOf(ex.name)[k] ? ' done' : ''}" data-act="set" data-i="${i}" data-k="${k}">Satz ${k + 1}${setsOf(ex.name)[k] ? ' ✓' : ''}</button>`).join('')}</div>
       </div>
       <div class="exercise-actions">
         <button data-act="swap" data-i="${i}">Tauschen</button>
@@ -42,6 +57,7 @@ function render() {
     </div>`).join('') +
     `<div class="edit-bar">
       <button data-act="add">+ Übung hinzufügen</button>
+      ${prog().done[day] ? '<button data-act="unset">Haken zurücksetzen (Training beenden)</button>' : ''}
       ${overrides[day] ? '<button data-act="reset">Tag auf Standard zurücksetzen</button>' : ''}
     </div>`;
 }
@@ -84,6 +100,19 @@ content.addEventListener('click', e => {
     case 'del':
       if (!confirm(`„${arr[i].name}“ entfernen?`)) return;
       arr.splice(i, 1); save(arr); break;
+    case 'set': {
+      const p = prog(), name = arr[i].name, k = Number(btn.dataset.k);
+      const names = new Set(arr.map(x => x.name));
+      const d = p.done[day] = p.done[day] || {};
+      Object.keys(d).forEach(n => { if (!names.has(n)) delete d[n]; }); // verwaiste Einträge (getauscht/entfernt) aufräumen
+      const sets = Array.isArray(d[name]) ? d[name] : [];
+      sets[k] = !sets[k];
+      if (sets.some(Boolean)) d[name] = sets; else delete d[name];
+      if (!Object.keys(d).length) delete p.done[day];
+      saveProg(); break;
+    }
+    case 'unset':
+      delete prog().done[day]; saveProg(); break;
     case 'swap': picker = { index: i }; break;
     case 'add': picker = { index: null }; break;
     case 'cancel': picker = null; break;
