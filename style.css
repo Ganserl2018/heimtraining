@@ -38,3 +38,10 @@ body{
   color:var(--text-dim); font-size:.85rem; font-weight:600;
 }
 .tab.active{color:var(--accent);}
+.exercise-info{flex:1; min-width:0;}
+.exercise-actions{display:flex; flex-direction:column; gap:.3rem;}
+.exercise-actions button,.edit-bar button,.picker-head button{padding:.4rem .6rem; font-size:.8rem;}
+.edit-bar{display:flex; flex-direction:column; gap:.5rem; padding:1rem 0;}
+.picker-head{display:flex; gap:.5rem;}
+.picker-head input{flex:1; font-size:16px; padding:.5rem;}
+.result{display:block; width:100%; text-align:left; padding:.7rem .3rem; background:none; border:none; border-bottom:1px solid var(--border); color:var(--text); font-size:.9rem;}
