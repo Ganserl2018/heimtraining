@@ -91,6 +91,21 @@ function renderResults(query) {
     </button>`).join('') + (hits.length > 100 ? `<p class="placeholder">${hits.length - 100} weitere – Suche verfeinern.</p>` : '');
 }
 
+// Health-Sync: absolvierte Einheit fire-and-forget an die API-Brücke (→ iOS-Kurzbefehl → Apple Health).
+// Alle Übungen des Tages werden gesendet, auch unangerührte (setsDone: 0) – so ist der Plan komplett sichtbar.
+const API = 'https://heimtraining-api.alexanderulbrich.workers.dev/session';
+const TOKEN = 'ZWdwoYaX8GNC3f5yD9wBs0oY5_wYhS7p';
+function syncSession(arr) {
+  const d = prog().done[day];
+  if (!d || !Object.keys(d).length) return;
+  const exercises = arr.map(x => ({ name: x.name, muscle: x.muscle, setsDone: (d[x.name] || []).filter(Boolean).length, setsTotal: SETS }));
+  const body = { date: prog().date, day, exercises,
+    totalSetsDone: exercises.reduce((s, x) => s + x.setsDone, 0), totalSetsPlanned: exercises.length * SETS,
+    finishedAt: new Date().toISOString() };
+  fetch(API, { method: 'POST', headers: { Authorization: 'Bearer ' + TOKEN, 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+    .catch(err => console.error('Health-Sync fehlgeschlagen:', err));
+}
+
 content.addEventListener('click', e => {
   const btn = e.target.closest('button[data-act]');
   if (!btn) return;
@@ -112,7 +127,7 @@ content.addEventListener('click', e => {
       saveProg(); break;
     }
     case 'unset':
-      delete prog().done[day]; saveProg(); break;
+      syncSession(arr); delete prog().done[day]; saveProg(); break;
     case 'swap': picker = { index: i }; break;
     case 'add': picker = { index: null }; break;
     case 'cancel': picker = null; break;
