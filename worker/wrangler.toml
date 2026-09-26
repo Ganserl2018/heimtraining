@@ -1,0 +1,8 @@
+name = "heimtraining-api"
+main = "index.js"
+compatibility_date = "2024-01-01"
+account_id = "b0f9cd52ee2d9cbeefd382bdafa92535"
+
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "fc0527b3a8af4f078959b2b237b86540"
