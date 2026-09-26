@@ -1,0 +1,105 @@
+{
+  "push": [
+    {
+      "name": "Barbell Bench Press",
+      "muscle": "chest",
+      "gif": "gifs/barbell_bench_press_-_medium_grip.gif"
+    },
+    {
+      "name": "Arnold Dumbbell Press",
+      "muscle": "shoulders",
+      "gif": "gifs/arnold_dumbbell_press.gif"
+    },
+    {
+      "name": "Barbell Incline Bench Press",
+      "muscle": "chest",
+      "gif": "gifs/barbell_incline_bench_press_-_medium_grip.gif"
+    },
+    {
+      "name": "Cable Rope Overhead Triceps Extension",
+      "muscle": "triceps",
+      "gif": "gifs/cable_rope_overhead_triceps_extension.gif"
+    },
+    {
+      "name": "Dips",
+      "muscle": "triceps",
+      "gif": "gifs/dips_-_triceps_version.gif"
+    }
+  ],
+  "pull": [
+    {
+      "name": "Bent Over Barbell Row",
+      "muscle": "middle back",
+      "gif": "gifs/bent_over_barbell_row.gif"
+    },
+    {
+      "name": "Pullups",
+      "muscle": "lats",
+      "gif": "gifs/pullups.gif"
+    },
+    {
+      "name": "Close-Grip Lat Pulldown",
+      "muscle": "lats",
+      "gif": "gifs/close-grip_front_lat_pulldown.gif"
+    },
+    {
+      "name": "Barbell Curl",
+      "muscle": "biceps",
+      "gif": "gifs/barbell_curl.gif"
+    },
+    {
+      "name": "Alternate Hammer Curl",
+      "muscle": "biceps",
+      "gif": "gifs/alternate_hammer_curl.gif"
+    }
+  ],
+  "legs": [
+    {
+      "name": "Barbell Squat To A Bench",
+      "muscle": "quadriceps",
+      "gif": "gifs/barbell_squat_to_a_bench.gif"
+    },
+    {
+      "name": "Barbell Step Ups",
+      "muscle": "quadriceps",
+      "gif": "gifs/barbell_step_ups.gif"
+    },
+    {
+      "name": "Barbell Hip Thrust",
+      "muscle": "glutes",
+      "gif": "gifs/barbell_hip_thrust.gif"
+    },
+    {
+      "name": "Good Morning",
+      "muscle": "hamstrings",
+      "gif": "gifs/good_morning.gif"
+    },
+    {
+      "name": "Barbell Seated Calf Raise",
+      "muscle": "calves",
+      "gif": "gifs/barbell_seated_calf_raise.gif"
+    }
+  ],
+  "core": [
+    {
+      "name": "Hyperextensions",
+      "muscle": "lower back",
+      "gif": "gifs/hyperextensions_with_no_hyperextension_bench.gif"
+    },
+    {
+      "name": "Cable Crunch",
+      "muscle": "abdominals",
+      "gif": "gifs/cable_crunch.gif"
+    },
+    {
+      "name": "Air Bike",
+      "muscle": "abdominals",
+      "gif": "gifs/air_bike.gif"
+    },
+    {
+      "name": "Cable Russian Twists",
+      "muscle": "abdominals",
+      "gif": "gifs/cable_russian_twists.gif"
+    }
+  ]
+}
