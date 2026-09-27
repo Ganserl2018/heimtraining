@@ -54,6 +54,14 @@ body{
   .tab-sep{margin-top:auto;}
   #content{grid-row:2; grid-column:2; padding-bottom:1.5rem;}
   .side-group{display:flex; flex-direction:column;}
+  .side-head{display:flex; align-items:center;}
+  .side-head .tab{flex:1;}
+  .side-toggle{
+    flex:none; background:none; border:none; color:var(--text-faint,var(--text-dim));
+    font-size:.7rem; padding:.85rem .9rem; transition:transform .15s ease;
+  }
+  .side-group.collapsed .side-toggle{transform:rotate(-90deg);}
+  .side-group.collapsed .side-sublist{display:none;}
   .side-sublist{display:flex; flex-direction:column; padding-bottom:.4rem;}
   .side-sublist button{
     text-align:left; background:none; border:none; color:var(--text-faint,var(--text-dim));

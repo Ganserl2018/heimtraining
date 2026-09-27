@@ -87,12 +87,16 @@ function syncTabActive() {
 }
 
 // V2-08: Sidebar zeigt pro Trainingstag die Übungsliste – Klick öffnet direkt "Tauschen".
+// Start eingeklappt (Alex-Wunsch), pro Tag per Chevron auf-/zuklappbar.
+let subExpanded = {}; // {push:true} = aufgeklappt; standardmäßig alles eingeklappt
 function renderSidebarLists() {
   DAYS.forEach(d => {
     const el = document.querySelector(`[data-sublist="${d}"]`);
     if (!el) return;
     el.innerHTML = itemsFor(d).map((ex, i) =>
       `<button data-act="sideSwap" data-day="${d}" data-i="${i}">${esc(ex.name)}</button>`).join('');
+    const group = document.querySelector(`[data-group="${d}"]`);
+    if (group) group.classList.toggle('collapsed', !subExpanded[d]);
   });
 }
 
@@ -494,6 +498,12 @@ document.getElementById('tabbar').addEventListener('click', e => {
     view = 'day';
     picker = { index: Number(swapBtn.dataset.i) };
     return render();
+  }
+  const toggleBtn = e.target.closest('button[data-act="toggleSub"]');
+  if (toggleBtn) {
+    const d = toggleBtn.dataset.day;
+    subExpanded[d] = !subExpanded[d];
+    return renderSidebarLists();
   }
   const wBtn = e.target.closest('button[data-act="wOpen"],button[data-act="wNewTraining"]');
   if (!wBtn) return;
