@@ -166,10 +166,14 @@ function renderResults(query) {
     const s = (ex.name + ' ' + ex.muscle).toLowerCase();
     if (words.every(w => s.includes(w))) hits.push(i);
   });
-  document.getElementById('results').innerHTML = hits.slice(0, 100).map(i => `
+  document.getElementById('results').innerHTML = hits.slice(0, 40).map(i => `
     <button class="result" data-act="pick" data-p="${i}">
-      ${esc(pool[i].name)} <span class="exercise-muscle">${esc(pool[i].muscle)}</span>
-    </button>`).join('') + (hits.length > 100 ? `<p class="placeholder">${hits.length - 100} weitere – Suche verfeinern.</p>` : '');
+      <img class="result-gif" src="${esc(pool[i].gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+      <span class="result-info">
+        <span class="exercise-name">${esc(pool[i].name)}</span>
+        <span class="exercise-muscle">${esc(pool[i].muscle)}</span>
+      </span>
+    </button>`).join('') + (hits.length > 40 ? `<p class="placeholder">${hits.length - 40} weitere – Suche verfeinern.</p>` : '');
 }
 
 // V2-07: Übersicht – Startseite mit Status heute, Wochenüberblick, Schnellzugriff, letzte Trainings.

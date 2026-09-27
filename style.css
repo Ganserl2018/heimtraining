@@ -69,7 +69,12 @@ body{
 .edit-bar{display:flex; flex-direction:column; gap:.5rem; padding:1rem 0;}
 .picker-head{display:flex; gap:.5rem;}
 .picker-head input{flex:1; font-size:16px; padding:.5rem;}
-.result{display:block; width:100%; text-align:left; padding:.7rem .3rem; background:none; border:none; border-bottom:1px solid var(--border); color:var(--text); font-size:.9rem;}
+.result{display:flex; align-items:center; gap:.8rem; width:100%; text-align:left; padding:.55rem .3rem; background:none; border:none; border-bottom:1px solid var(--border); color:var(--text); font-size:.9rem;}
+.result:active,.result:hover{background:var(--panel);}
+.result-gif{width:56px; height:56px; object-fit:cover; border-radius:8px; background:#000; flex:none;}
+.result-info{display:flex; flex-direction:column; gap:.1rem; min-width:0;}
+.result-info .exercise-name{font-weight:600; font-size:.9rem;}
+.result-info .exercise-muscle{font-size:.78rem;}
 .sets{display:flex; gap:.3rem; margin-top:.35rem;}
 .set{padding:.35rem .5rem; font-size:.75rem;}
 .set.done{background:var(--accent); color:#fff; border-color:var(--accent);}
