@@ -14,6 +14,8 @@ const DAYS = ['push', 'pull', 'legs', 'core'];
 const DAY_LABELS = { push: 'Push', pull: 'Pull', legs: 'Legs', core: 'Core' };
 let tvIndex = 0;      // aktuelle Übung im TV-Modus
 let picker = null;   // null = Tagesansicht, sonst {index[, wid]} (index null = hinzufügen)
+let renameId = null; // V2-09: id des Wochenplan-Trainings, das gerade inline umbenannt wird
+let addingTraining = false; // V2-09: zeigt das Inline-Eingabefeld "Neues Training" in der Weeklist
 
 // V2-09: Wochenplan – frei benennbare Trainings (parallel zu Push/Pull/Legs/Core), mit
 // editierbarer Sätze-Anzahl, Gewicht pro Satz und Notizen (pro Übung + pro Einheit).
@@ -244,8 +246,12 @@ function renderWeeklist() {
         <div class="weeklist-name">${esc(t.name)}</div>
         <div class="weeklist-meta">${t.exercises.length} Übung${t.exercises.length === 1 ? '' : 'en'}</div>
       </div>`).join('')}
-      <button data-act="wNewTraining">+ Neues Training</button>
+      ${addingTraining
+        ? `<div class="weeklist-card"><input id="new-training-name" placeholder="Name des Trainings…" autofocus>
+             <div class="edit-bar"><button data-act="wNewTrainingSave">Speichern</button><button data-act="wNewTrainingCancel">Abbrechen</button></div></div>`
+        : `<button data-act="wNewTraining">+ Neues Training</button>`}
     </div>`;
+  if (addingTraining) document.getElementById('new-training-name')?.focus();
 }
 
 // V2-09: Trainings-Detail – Übungen mit Video(GIF)/Erklärung, editierbare Sätze + Gewicht, Notizen.
@@ -254,10 +260,13 @@ function renderWTrain() {
   if (!t) { view = 'overview'; return renderOverview(); }
   const wp = wProgRaw();
   const dOf = wp.done[t.id] || {};
+  const sNote = (wp.sessionNote || {})[t.id] || '';
   content.innerHTML = `
     <div class="wtrain-head">
-      <h2>${esc(t.name)}</h2>
-      <button data-act="wRename" data-id="${t.id}">Umbenennen</button>
+      ${renameId === t.id
+        ? `<input id="rename-input" value="${esc(t.name)}">
+           <div class="edit-bar"><button data-act="wRenameSave" data-id="${t.id}">Speichern</button><button data-act="wRenameCancel">Abbrechen</button></div>`
+        : `<h2>${esc(t.name)}</h2><button data-act="wRename" data-id="${t.id}">Umbenennen</button>`}
     </div>
     ${t.exercises.length ? '' : '<p class="placeholder">Noch keine Übungen – füge welche hinzu.</p>'}
     ${t.exercises.map((ex, i) => {
@@ -289,8 +298,11 @@ function renderWTrain() {
     }).join('')}
     <div class="edit-bar">
       <button data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button>
-      ${t.exercises.length ? `<button data-act="wFinish" data-id="${t.id}">Training beenden</button>` : ''}
+      ${t.exercises.length ? `
+        <textarea class="w-note" placeholder="Notiz zum Training…" data-act="wSessionNote" data-id="${t.id}">${esc(sNote)}</textarea>
+        <button data-act="wFinish" data-id="${t.id}">Training beenden</button>` : ''}
     </div>`;
+  if (renameId === t.id) document.getElementById('rename-input')?.focus();
 }
 
 // V2-03: TV-Modus – eine Übung groß, für AirPlay-Spiegelung auf Apple TV. Nutzt den zuletzt
@@ -388,18 +400,22 @@ content.addEventListener('click', e => {
       picker = null; break;
     }
     case 'wOpen2': wId = btn.dataset.id; view = 'wtrain'; break;
-    case 'wNewTraining': {
-      const name = prompt('Name des neuen Trainings:');
+    case 'wNewTraining': addingTraining = true; view = 'weeklist'; break;
+    case 'wNewTrainingCancel': addingTraining = false; break;
+    case 'wNewTrainingSave': {
+      const name = (document.getElementById('new-training-name')?.value || '').trim();
       if (!name) return;
       const t = { id: 'w' + Date.now(), name, exercises: [] };
       weekplan.push(t); saveWeekplan();
-      wId = t.id; view = 'wtrain'; break;
+      addingTraining = false; wId = t.id; view = 'wtrain'; break;
     }
-    case 'wRename': {
-      const t = trainingById(btn.dataset.id);
-      const name = prompt('Neuer Name:', t.name);
+    case 'wRename': renameId = btn.dataset.id; break;
+    case 'wRenameCancel': renameId = null; break;
+    case 'wRenameSave': {
+      const name = (document.getElementById('rename-input')?.value || '').trim();
       if (!name) return;
-      t.name = name; saveWeekplan(); break;
+      trainingById(btn.dataset.id).name = name; saveWeekplan();
+      renameId = null; break;
     }
     case 'wRemoveEx': {
       const t = trainingById(btn.dataset.id);
@@ -430,12 +446,14 @@ content.addEventListener('click', e => {
         return { name: ex.name, muscle: ex.muscle, setsDone: sets.filter(s => s && s.done).length, setsTotal: ex.sets || 3,
           weights: sets.map(s => s && s.weight != null ? s.weight : null) };
       });
-      const note = prompt('Notiz zu diesem Training (optional):', '') || '';
+      const note = (wp.sessionNote || {})[t.id] || '';
       const rec = { date: today(), day: t.name, exercises,
         totalSetsDone: exercises.reduce((s, x) => s + x.setsDone, 0), totalSetsPlanned: exercises.reduce((s, x) => s + x.setsTotal, 0),
         finishedAt: new Date().toISOString(), note };
       syncSession(rec); pushHistory(rec);
-      delete wp.done[t.id]; saveWProg(wp);
+      delete wp.done[t.id];
+      if (wp.sessionNote) delete wp.sessionNote[t.id];
+      saveWProg(wp);
       view = 'weeklist'; break;
     }
   }
@@ -443,10 +461,15 @@ content.addEventListener('click', e => {
 });
 
 content.addEventListener('input', e => {
-  const el = e.target.closest('[data-act="wWeight"],[data-act="wExNote"]');
+  const el = e.target.closest('[data-act="wWeight"],[data-act="wExNote"],[data-act="wSessionNote"]');
   if (!el) return;
   const t = trainingById(el.dataset.id);
-  if (el.dataset.act === 'wExNote') {
+  if (el.dataset.act === 'wSessionNote') {
+    const wp = wProgRaw();
+    wp.sessionNote = wp.sessionNote || {};
+    wp.sessionNote[t.id] = el.value;
+    saveWProg(wp);
+  } else if (el.dataset.act === 'wExNote') {
     t.exercises[Number(el.dataset.i)].note = el.value;
     saveWeekplan();
   } else {
@@ -472,13 +495,7 @@ document.getElementById('tabbar').addEventListener('click', e => {
   if (!wBtn) return;
   picker = null;
   if (wBtn.dataset.act === 'wOpen') { wId = wBtn.dataset.id; view = 'wtrain'; }
-  else {
-    const name = prompt('Name des neuen Trainings:');
-    if (!name) return;
-    const t = { id: 'w' + Date.now(), name, exercises: [] };
-    weekplan.push(t); saveWeekplan();
-    wId = t.id; view = 'wtrain';
-  }
+  else { addingTraining = true; view = 'weeklist'; }
   render();
 });
 
