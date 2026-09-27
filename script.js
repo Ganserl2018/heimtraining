@@ -101,12 +101,23 @@ function renderSidebarLists() {
 }
 
 // V2-09: Sidebar-Kurzliste aller Wochenplan-Trainings (nur Desktop/Sidebar-Breite).
+// V2-09e: befüllte Trainings ebenfalls eingeklappt, per Chevron aufklappbar (wie Push/Pull/Legs/Core).
+let wSubExpanded = {}; // {trainingId:true} = aufgeklappt; standardmäßig alles eingeklappt
 function renderWeekplanBlock() {
   const el = document.getElementById('weekplan-block');
   if (!el) return;
-  el.innerHTML = weekplan.map(t =>
-    `<button class="tab${(view === 'wtrain' && wId === t.id) ? ' active' : ''}" data-act="wOpen" data-id="${t.id}">${esc(t.name)}</button>`
-  ).join('') + `<button class="tab" data-act="wNewTraining">+ Neues Training</button>`;
+  el.innerHTML = weekplan.map(t => {
+    const has = t.exercises && t.exercises.length;
+    const sub = has ? `<div class="side-sublist">${t.exercises.map(ex =>
+      `<button data-act="wOpen" data-id="${t.id}">${esc(ex.name)}</button>`).join('')}</div>` : '';
+    return `<div class="side-group${has && !wSubExpanded[t.id] ? ' collapsed' : ''}">
+      <div class="side-head">
+        <button class="tab${(view === 'wtrain' && wId === t.id) ? ' active' : ''}" data-act="wOpen" data-id="${t.id}">${esc(t.name)}</button>
+        ${has ? `<button class="side-toggle" data-act="toggleWSub" data-id="${t.id}">▾</button>` : ''}
+      </div>
+      ${sub}
+    </div>`;
+  }).join('') + `<button class="tab" data-act="wNewTraining">+ Neues Training</button>`;
 }
 
 function currentList() {
@@ -504,6 +515,12 @@ document.getElementById('tabbar').addEventListener('click', e => {
     const d = toggleBtn.dataset.day;
     subExpanded[d] = !subExpanded[d];
     return renderSidebarLists();
+  }
+  const toggleWBtn = e.target.closest('button[data-act="toggleWSub"]');
+  if (toggleWBtn) {
+    const id = toggleWBtn.dataset.id;
+    wSubExpanded[id] = !wSubExpanded[id];
+    return renderWeekplanBlock();
   }
   const wBtn = e.target.closest('button[data-act="wOpen"],button[data-act="wNewTraining"]');
   if (!wBtn) return;
