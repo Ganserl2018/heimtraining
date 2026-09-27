@@ -14,6 +14,8 @@ const DAYS = ['push', 'pull', 'legs', 'core'];
 const DAY_LABELS = { push: 'Push', pull: 'Pull', legs: 'Legs', core: 'Core' };
 let tvIndex = 0;      // aktuelle Übung im TV-Modus
 let picker = null;   // null = Tagesansicht, sonst {index[, wid]} (index null = hinzufügen)
+let filterMuscle = null; // V2-10: Bildergalerie-Picker – aktiver Muskelgruppen-Chip
+let filterEquip = null;  // V2-10: aktiver Ausrüstungs-Chip
 let renameId = null; // V2-09: id des Wochenplan-Trainings, das gerade inline umbenannt wird
 let addingTraining = false; // V2-09: zeigt das Inline-Eingabefeld "Neues Training" in der Weeklist
 
@@ -158,6 +160,32 @@ function render() {
     </div>`;
 }
 
+// V2-10: Muskelgruppen zu groben deutschen Kategorien zusammengefasst (Daten liefern nur
+// einzelne Muskeln, keine Übergruppen) + einfache Ausrüstungs-Erkennung per Namens-Keyword
+// (die Datenbank hat kein eigenes Ausrüstungs-Feld – "Aufwärmen" gibt es in den Daten nicht,
+// daher keine Chip dafür, um nichts vorzutäuschen).
+const MUSCLE_GROUPS = {
+  chest: 'Brust', shoulders: 'Schultern', traps: 'Rücken', lats: 'Rücken', 'middle back': 'Rücken', 'lower back': 'Rücken',
+  biceps: 'Arme', triceps: 'Arme', forearms: 'Arme',
+  abdominals: 'Bauch',
+  quadriceps: 'Beine', hamstrings: 'Beine', calves: 'Beine', glutes: 'Beine', abductors: 'Beine', adductors: 'Beine',
+  neck: 'Sonstiges'
+};
+const MUSCLE_GROUP_LIST = ['Brust', 'Rücken', 'Schultern', 'Arme', 'Bauch', 'Beine'];
+const EQUIP_LIST = [['dumbbell', 'Kurzhantel'], ['barbell', 'Langhantel'], ['cable', 'Kabelzug/Seilzug'], ['band', 'Band'], ['none', 'Ohne Geräte']];
+function matchesEquip(name, key) {
+  const n = name.toLowerCase();
+  if (key === 'none') return !['dumbbell', 'barbell', 'cable', 'band', 'smith', 'ez barbell'].some(k => n.includes(k));
+  return n.includes(key);
+}
+function renderFilterChips() {
+  const m = MUSCLE_GROUP_LIST.map(g =>
+    `<button class="chip${filterMuscle === g ? ' active' : ''}" data-act="fMuscle" data-v="${g}">${g}</button>`).join('');
+  const eq = EQUIP_LIST.map(([k, label]) =>
+    `<button class="chip${filterEquip === k ? ' active' : ''}" data-act="fEquip" data-v="${k}">${label}</button>`).join('');
+  return `<div class="filter-chips">${m}</div><div class="filter-chips">${eq}</div>`;
+}
+
 function renderPicker() {
   content.innerHTML = `
     <div class="picker">
@@ -165,8 +193,9 @@ function renderPicker() {
         <input id="q" type="search" placeholder="Übung suchen…" autocomplete="off">
         <button data-act="cancel">Abbrechen</button>
       </div>
+      ${renderFilterChips()}
       <p class="placeholder">${picker.index === null ? 'Hinzufügen' : 'Ersetzen: ' + esc(currentList()[picker.index].name)}</p>
-      <div id="results"></div>
+      <div id="results" class="results"></div>
     </div>`;
   const q = document.getElementById('q');
   q.addEventListener('input', () => renderResults(q.value));
@@ -179,16 +208,20 @@ function renderResults(query) {
   const hits = [];
   pool.forEach((ex, i) => {
     const s = (ex.name + ' ' + ex.muscle).toLowerCase();
-    if (words.every(w => s.includes(w))) hits.push(i);
+    if (!words.every(w => s.includes(w))) return;
+    if (filterMuscle && MUSCLE_GROUPS[ex.muscle] !== filterMuscle) return;
+    if (filterEquip && !matchesEquip(ex.name, filterEquip)) return;
+    hits.push(i);
   });
-  document.getElementById('results').innerHTML = hits.slice(0, 40).map(i => `
+  document.getElementById('results').innerHTML = hits.slice(0, 60).map(i => `
     <button class="result" data-act="pick" data-p="${i}">
       <img class="result-gif" src="${esc(pool[i].gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
       <span class="result-info">
         <span class="exercise-name">${esc(pool[i].name)}</span>
         <span class="exercise-muscle">${esc(pool[i].muscle)}</span>
       </span>
-    </button>`).join('') + (hits.length > 40 ? `<p class="placeholder">${hits.length - 40} weitere – Suche verfeinern.</p>` : '');
+    </button>`).join('') + (hits.length === 0 ? '<p class="placeholder">Keine Treffer – Filter/Suche anpassen.</p>' : '') +
+    (hits.length > 60 ? `<p class="placeholder">${hits.length - 60} weitere – Suche verfeinern.</p>` : '');
 }
 
 // V2-07: Übersicht – Startseite mit Status heute, Wochenüberblick, Schnellzugriff, letzte Trainings.
@@ -369,6 +402,18 @@ content.addEventListener('click', e => {
   if (!btn) return;
   const i = Number(btn.dataset.i);
   const arr = list().slice();
+  if (btn.dataset.act === 'fMuscle') {
+    filterMuscle = (filterMuscle === btn.dataset.v) ? null : btn.dataset.v;
+    document.querySelectorAll('[data-act="fMuscle"]').forEach(b => b.classList.toggle('active', b.dataset.v === filterMuscle));
+    renderResults(document.getElementById('q').value);
+    return;
+  }
+  if (btn.dataset.act === 'fEquip') {
+    filterEquip = (filterEquip === btn.dataset.v) ? null : btn.dataset.v;
+    document.querySelectorAll('[data-act="fEquip"]').forEach(b => b.classList.toggle('active', b.dataset.v === filterEquip));
+    renderResults(document.getElementById('q').value);
+    return;
+  }
   switch (btn.dataset.act) {
     case 'del':
       if (!confirm(`„${arr[i].name}“ entfernen?`)) return;
@@ -396,8 +441,8 @@ content.addEventListener('click', e => {
       else if (btn.dataset.view) { view = btn.dataset.view; }
       picker = null;
       break;
-    case 'swap': picker = { index: i }; break;
-    case 'add': picker = { index: null }; break;
+    case 'swap': picker = { index: i }; filterMuscle = null; filterEquip = null; break;
+    case 'add': picker = { index: null }; filterMuscle = null; filterEquip = null; break;
     case 'cancel': picker = null; break;
     case 'reset':
       if (!confirm('Tag auf Standard zurücksetzen?')) return;
@@ -456,7 +501,7 @@ content.addEventListener('click', e => {
       sets[k].done = !sets[k].done;
       saveWProg(wp); break;
     }
-    case 'wAddEx': picker = { index: null, wid: btn.dataset.id }; break;
+    case 'wAddEx': picker = { index: null, wid: btn.dataset.id }; filterMuscle = null; filterEquip = null; break;
     case 'wFinish': {
       const t = trainingById(btn.dataset.id);
       const wp = wProgRaw(), dOf = wp.done[t.id] || {};
@@ -508,6 +553,7 @@ document.getElementById('tabbar').addEventListener('click', e => {
     day = swapBtn.dataset.day;
     view = 'day';
     picker = { index: Number(swapBtn.dataset.i) };
+    filterMuscle = null; filterEquip = null;
     return render();
   }
   const toggleBtn = e.target.closest('button[data-act="toggleSub"]');
