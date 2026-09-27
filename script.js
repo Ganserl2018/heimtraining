@@ -56,8 +56,19 @@ function syncTabActive() {
   });
 }
 
+// V2-08: Sidebar zeigt pro Trainingstag die Übungsliste – Klick öffnet direkt "Tauschen".
+function renderSidebarLists() {
+  DAYS.forEach(d => {
+    const el = document.querySelector(`[data-sublist="${d}"]`);
+    if (!el) return;
+    el.innerHTML = itemsFor(d).map((ex, i) =>
+      `<button data-act="sideSwap" data-day="${d}" data-i="${i}">${esc(ex.name)}</button>`).join('');
+  });
+}
+
 function render() {
   syncTabActive();
+  renderSidebarLists();
   if (view === 'overview') return renderOverview();
   if (view === 'history') return renderHistory();
   if (view === 'tv') return renderTV();
@@ -266,6 +277,15 @@ content.addEventListener('click', e => {
       save(arr); picker = null; break;
     }
   }
+  render();
+});
+
+document.getElementById('tabbar').addEventListener('click', e => {
+  const btn = e.target.closest('button[data-act="sideSwap"]');
+  if (!btn) return;
+  day = btn.dataset.day;
+  view = 'day';
+  picker = { index: Number(btn.dataset.i) };
   render();
 });
 

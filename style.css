@@ -38,6 +38,7 @@ body{
   color:var(--text-dim); font-size:.85rem; font-weight:600;
 }
 .tab.active{color:var(--accent);}
+.side-sublist{display:none;}
 
 /* V2-05: ab Tablet-Breite Sidebar statt Bottom-Tabbar (iPhone bleibt unverändert) */
 @media (min-width:820px){
@@ -51,6 +52,13 @@ body{
   .tab{flex:none; text-align:left; padding:.85rem 1.3rem; font-size:.9rem;}
   .tab-sep{margin-top:auto;}
   #content{grid-row:2; grid-column:2; padding-bottom:1.5rem;}
+  .side-group{display:flex; flex-direction:column;}
+  .side-sublist{display:flex; flex-direction:column; padding-bottom:.4rem;}
+  .side-sublist button{
+    text-align:left; background:none; border:none; color:var(--text-faint,var(--text-dim));
+    font-size:.78rem; padding:.35rem 1.3rem .35rem 2.1rem; font-weight:400;
+  }
+  .side-sublist button:hover{color:var(--text);}
 }
 .exercise-info{flex:1; min-width:0;}
 .exercise-actions{display:flex; flex-direction:column; gap:.3rem;}
