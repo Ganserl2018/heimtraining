@@ -63,6 +63,19 @@ body{
 .set{padding:.35rem .5rem; font-size:.75rem;}
 .set.done{background:var(--accent); color:#fff; border-color:var(--accent);}
 
+/* V2-07: Übersicht */
+.overview{display:flex; flex-direction:column; gap:.9rem;}
+.ov-card{background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:.9rem 1rem;}
+.ov-card-title{font-size:.8rem; text-transform:uppercase; letter-spacing:.04em; color:var(--text-dim); margin-bottom:.5rem;}
+.ov-card button{margin-top:.5rem; padding:.5rem .9rem; font-size:.85rem;}
+.ov-week{display:flex; gap:.5rem;}
+.ov-week-day{flex:1; text-align:center; padding:.6rem 0; border-radius:8px; background:var(--bg); border:1px solid var(--border); color:var(--text-dim); font-size:.82rem; font-weight:600;}
+.ov-week-day.done{background:var(--accent); color:#fff; border-color:var(--accent);}
+.ov-quick{display:flex; gap:.5rem; flex-wrap:wrap;}
+.ov-quick button{flex:1; min-width:80px;}
+.ov-card .history-item{padding:.5rem 0;}
+.ov-card .history-item:first-of-type{padding-top:0;}
+
 /* V2-01: Verlauf */
 .history-item{padding:.8rem 0; border-bottom:1px solid var(--border);}
 .history-date{font-weight:600; font-size:.92rem;}

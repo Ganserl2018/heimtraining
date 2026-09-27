@@ -9,7 +9,9 @@ let base = {};       // exercises.json (Standard)
 let pool = [];       // pool.json (alle 514 Übungen)
 let overrides = {};  // {day: [übungen]} – nur editierte Tage
 let day = 'push';
-let view = 'day';     // 'day' | 'history' | 'tv' – V2-05/V2-01/V2-03
+let view = 'overview'; // 'overview' | 'day' | 'history' | 'tv'
+const DAYS = ['push', 'pull', 'legs', 'core'];
+const DAY_LABELS = { push: 'Push', pull: 'Pull', legs: 'Legs', core: 'Core' };
 let tvIndex = 0;      // aktuelle Übung im TV-Modus
 let picker = null;   // null = Tagesansicht, sonst {index} (index null = hinzufügen)
 
@@ -47,7 +49,16 @@ function pushHistory(rec) {
   try { localStorage.setItem(HKEY, JSON.stringify(h.slice(0, 200))); } catch (e) {}
 }
 
+function syncTabActive() {
+  tabs.forEach(t => {
+    const match = t.dataset.view ? t.dataset.view === view : (view === 'day' && t.dataset.day === day);
+    t.classList.toggle('active', match);
+  });
+}
+
 function render() {
+  syncTabActive();
+  if (view === 'overview') return renderOverview();
   if (view === 'history') return renderHistory();
   if (view === 'tv') return renderTV();
   if (picker) return renderPicker();
@@ -101,6 +112,57 @@ function renderResults(query) {
     <button class="result" data-act="pick" data-p="${i}">
       ${esc(pool[i].name)} <span class="exercise-muscle">${esc(pool[i].muscle)}</span>
     </button>`).join('') + (hits.length > 100 ? `<p class="placeholder">${hits.length - 100} weitere – Suche verfeinern.</p>` : '');
+}
+
+// V2-07: Übersicht – Startseite mit Status heute, Wochenüberblick, Schnellzugriff, letzte Trainings.
+const itemsFor = d => overrides[d] || base[d] || [];
+const mondayOf = dateStr => { const d = new Date(dateStr + 'T00:00:00'); const wd = (d.getDay() + 6) % 7; d.setDate(d.getDate() - wd); return d.toISOString().slice(0, 10); };
+
+function renderOverview() {
+  const t = today();
+  const h = loadHistory();
+  const todayEntries = h.filter(r => r.date === t);
+  const p = prog();
+  const activeDay = Object.keys(p.done || {}).find(d => Object.keys(p.done[d] || {}).length > 0);
+
+  let todayBlock;
+  if (activeDay) {
+    const setsDone = Object.values(p.done[activeDay]).reduce((s, arr) => s + arr.filter(Boolean).length, 0);
+    const setsPlanned = itemsFor(activeDay).length * SETS;
+    todayBlock = `<div>${DAY_LABELS[activeDay]}: ${setsDone}/${setsPlanned} Sätze</div>
+      <button data-act="goto" data-day="${activeDay}">Weiter im Training</button>`;
+  } else if (todayEntries.length) {
+    todayBlock = todayEntries.map(r => `<div>${DAY_LABELS[r.day] || esc(r.day)} abgeschlossen: ${r.totalSetsDone}/${r.totalSetsPlanned} Sätze</div>`).join('');
+  } else {
+    todayBlock = `<p class="placeholder">Noch kein Training heute.</p>`;
+  }
+
+  const thisWeek = mondayOf(t);
+  const doneThisWeek = new Set(h.filter(r => mondayOf(r.date) === thisWeek).map(r => r.day));
+
+  content.innerHTML = `
+    <div class="overview">
+      <div class="ov-card">
+        <div class="ov-card-title">Heute</div>
+        ${todayBlock}
+      </div>
+      <div class="ov-card">
+        <div class="ov-card-title">Diese Woche</div>
+        <div class="ov-week">${DAYS.map(d => `<div class="ov-week-day${doneThisWeek.has(d) ? ' done' : ''}">${DAY_LABELS[d]}</div>`).join('')}</div>
+      </div>
+      <div class="ov-card">
+        <div class="ov-card-title">Schnellzugriff</div>
+        <div class="ov-quick">${DAYS.map(d => `<button data-act="goto" data-day="${d}">${DAY_LABELS[d]}</button>`).join('')}</div>
+      </div>
+      <div class="ov-card">
+        <div class="ov-card-title">Letzte Trainings</div>
+        ${h.length ? h.slice(0, 3).map(r => `<div class="history-item">
+            <div class="history-date">${esc(r.date)} · ${DAY_LABELS[r.day] || esc(r.day)}</div>
+            <div class="history-meta">${r.totalSetsDone}/${r.totalSetsPlanned} Sätze</div>
+          </div>`).join('') : `<p class="placeholder">Noch keine Historie.</p>`}
+        <button data-act="goto" data-view="history">Ganzer Verlauf</button>
+      </div>
+    </div>`;
 }
 
 // V2-01: Verlauf – zeigt vergangene Trainingseinheiten (aus HKEY, befüllt bei "Training beenden").
@@ -184,6 +246,11 @@ content.addEventListener('click', e => {
     }
     case 'tvPrev': tvIndex--; break;
     case 'tvNext': tvIndex++; break;
+    case 'goto':
+      if (btn.dataset.day) { day = btn.dataset.day; view = 'day'; }
+      else if (btn.dataset.view) { view = btn.dataset.view; }
+      picker = null;
+      break;
     case 'swap': picker = { index: i }; break;
     case 'add': picker = { index: null }; break;
     case 'cancel': picker = null; break;
@@ -204,8 +271,6 @@ content.addEventListener('click', e => {
 
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    tabs.forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
     picker = null;
     if (tab.dataset.view) {
       view = tab.dataset.view;
