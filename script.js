@@ -13,7 +13,35 @@ let view = 'overview'; // 'overview' | 'day' | 'history' | 'tv'
 const DAYS = ['push', 'pull', 'legs', 'core'];
 const DAY_LABELS = { push: 'Push', pull: 'Pull', legs: 'Legs', core: 'Core' };
 let tvIndex = 0;      // aktuelle Übung im TV-Modus
-let picker = null;   // null = Tagesansicht, sonst {index} (index null = hinzufügen)
+let picker = null;   // null = Tagesansicht, sonst {index[, wid]} (index null = hinzufügen)
+
+// V2-09: Wochenplan – frei benennbare Trainings (parallel zu Push/Pull/Legs/Core), mit
+// editierbarer Sätze-Anzahl, Gewicht pro Satz und Notizen (pro Übung + pro Einheit).
+const WKEY = 'heimtraining.weekplan';
+const WPKEY = 'heimtraining.weekplan.progress';
+const WEEKDAY_SEED = [
+  ['mon', 'Montagstraining'], ['tue', 'Dienstagstraining'], ['wed', 'Mittwochstraining'],
+  ['thu', 'Donnerstagstraining'], ['fri', 'Freitagstraining'], ['sat', 'Samstagstraining'], ['sun', 'Sonntagstraining']
+];
+let weekplan = [];
+let wId = null; // aktuell offenes Training im 'wtrain'-View
+function loadWeekplan() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(WKEY));
+    if (Array.isArray(raw) && raw.length) return raw;
+  } catch (e) {}
+  return WEEKDAY_SEED.map(([id, name]) => ({ id, name, exercises: [] }));
+}
+function saveWeekplan() { try { localStorage.setItem(WKEY, JSON.stringify(weekplan)); } catch (e) {} }
+weekplan = loadWeekplan();
+const trainingById = id => weekplan.find(t => t.id === id);
+function wProgRaw() {
+  let wp = null;
+  try { wp = JSON.parse(localStorage.getItem(WPKEY)); } catch (e) {}
+  if (!wp || wp.date !== today() || typeof wp.done !== 'object' || !wp.done) wp = { date: today(), done: {} };
+  return wp;
+}
+function saveWProg(wp) { try { localStorage.setItem(WPKEY, JSON.stringify(wp)); } catch (e) {} }
 
 try { overrides = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { overrides = {}; }
 
@@ -66,13 +94,30 @@ function renderSidebarLists() {
   });
 }
 
+// V2-09: Sidebar-Kurzliste aller Wochenplan-Trainings (nur Desktop/Sidebar-Breite).
+function renderWeekplanBlock() {
+  const el = document.getElementById('weekplan-block');
+  if (!el) return;
+  el.innerHTML = weekplan.map(t =>
+    `<button class="tab${(view === 'wtrain' && wId === t.id) ? ' active' : ''}" data-act="wOpen" data-id="${t.id}">${esc(t.name)}</button>`
+  ).join('') + `<button class="tab" data-act="wNewTraining">+ Neues Training</button>`;
+}
+
+function currentList() {
+  if (picker && picker.wid) { const t = trainingById(picker.wid); return t ? t.exercises : []; }
+  return list();
+}
+
 function render() {
   syncTabActive();
   renderSidebarLists();
+  renderWeekplanBlock();
   if (view === 'overview') return renderOverview();
   if (view === 'history') return renderHistory();
   if (view === 'tv') return renderTV();
+  if (view === 'weeklist') return renderWeeklist();
   if (picker) return renderPicker();
+  if (view === 'wtrain') return renderWTrain();
   const items = list();
   content.innerHTML = (items.length ? '' : `<p class="placeholder">Keine Übungen.</p>`) +
     items.map((ex, i) => `
@@ -103,7 +148,7 @@ function renderPicker() {
         <input id="q" type="search" placeholder="Übung suchen…" autocomplete="off">
         <button data-act="cancel">Abbrechen</button>
       </div>
-      <p class="placeholder">${picker.index === null ? 'Hinzufügen' : 'Ersetzen: ' + esc(list()[picker.index].name)}</p>
+      <p class="placeholder">${picker.index === null ? 'Hinzufügen' : 'Ersetzen: ' + esc(currentList()[picker.index].name)}</p>
       <div id="results"></div>
     </div>`;
   const q = document.getElementById('q');
@@ -186,8 +231,66 @@ function renderHistory() {
         <div class="history-date">${esc(r.date)} · ${esc(r.day)}</div>
         <div class="history-meta">${r.totalSetsDone}/${r.totalSetsPlanned} Sätze</div>
         <div class="history-bar"><div class="history-fill" style="width:${pct}%"></div></div>
+        ${r.note ? `<div class="history-note">${esc(r.note)}</div>` : ''}
       </div>`;
     }).join('');
+}
+
+// V2-09: Wochenplan-Liste (Content-Ansicht, funktioniert auf jeder Breite inkl. iPhone).
+function renderWeeklist() {
+  content.innerHTML = `
+    <div class="weeklist">
+      ${weekplan.map(t => `<div class="weeklist-card" data-act="wOpen2" data-id="${t.id}">
+        <div class="weeklist-name">${esc(t.name)}</div>
+        <div class="weeklist-meta">${t.exercises.length} Übung${t.exercises.length === 1 ? '' : 'en'}</div>
+      </div>`).join('')}
+      <button data-act="wNewTraining">+ Neues Training</button>
+    </div>`;
+}
+
+// V2-09: Trainings-Detail – Übungen mit Video(GIF)/Erklärung, editierbare Sätze + Gewicht, Notizen.
+function renderWTrain() {
+  const t = trainingById(wId);
+  if (!t) { view = 'overview'; return renderOverview(); }
+  const wp = wProgRaw();
+  const dOf = wp.done[t.id] || {};
+  content.innerHTML = `
+    <div class="wtrain-head">
+      <h2>${esc(t.name)}</h2>
+      <button data-act="wRename" data-id="${t.id}">Umbenennen</button>
+    </div>
+    ${t.exercises.length ? '' : '<p class="placeholder">Noch keine Übungen – füge welche hinzu.</p>'}
+    ${t.exercises.map((ex, i) => {
+      const sets = dOf[ex.name] || [];
+      const setsCount = ex.sets || 3;
+      return `<div class="w-exercise">
+        <div class="w-ex-top">
+          <img class="exercise-gif" src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+          <div class="exercise-info">
+            <div class="exercise-name">${esc(ex.name)}</div>
+            <div class="exercise-muscle">${esc(ex.muscle)}</div>
+          </div>
+          <div class="w-ex-actions"><button data-act="wRemoveEx" data-id="${t.id}" data-i="${i}">– Entfernen</button></div>
+        </div>
+        <div class="w-sets-head">
+          <span>Sätze: ${setsCount}</span>
+          <button data-act="wSetsAdj" data-id="${t.id}" data-i="${i}" data-d="-1">–</button>
+          <button data-act="wSetsAdj" data-id="${t.id}" data-i="${i}" data-d="1">+</button>
+        </div>
+        <div class="w-sets">${Array.from({ length: setsCount }, (_, k) => {
+          const s = sets[k] || {};
+          return `<div class="w-set">
+            <button class="${s.done ? 'done' : ''}" data-act="wSetDone" data-id="${t.id}" data-i="${i}" data-k="${k}">${k + 1}${s.done ? ' ✓' : ''}</button>
+            <input type="number" inputmode="decimal" placeholder="kg" value="${s.weight ?? ''}" data-act="wWeight" data-id="${t.id}" data-i="${i}" data-k="${k}">
+          </div>`;
+        }).join('')}</div>
+        <textarea class="w-note" placeholder="Notiz zur Übung…" data-act="wExNote" data-id="${t.id}" data-i="${i}">${esc(ex.note || '')}</textarea>
+      </div>`;
+    }).join('')}
+    <div class="edit-bar">
+      <button data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button>
+      ${t.exercises.length ? `<button data-act="wFinish" data-id="${t.id}">Training beenden</button>` : ''}
+    </div>`;
 }
 
 // V2-03: TV-Modus – eine Übung groß, für AirPlay-Spiegelung auf Apple TV. Nutzt den zuletzt
@@ -272,20 +375,110 @@ content.addEventListener('click', e => {
       break;
     case 'pick': {
       const p = pool[Number(btn.dataset.p)];
-      const ex = { name: p.name, muscle: p.muscle, gif: p.gif };
-      if (picker.index === null) arr.push(ex); else arr[picker.index] = ex;
-      save(arr); picker = null; break;
+      if (picker.wid) {
+        const t = trainingById(picker.wid);
+        const ex = { name: p.name, muscle: p.muscle, gif: p.gif, sets: 3, note: '' };
+        if (picker.index === null) t.exercises.push(ex); else t.exercises[picker.index] = ex;
+        saveWeekplan();
+      } else {
+        const ex = { name: p.name, muscle: p.muscle, gif: p.gif };
+        if (picker.index === null) arr.push(ex); else arr[picker.index] = ex;
+        save(arr);
+      }
+      picker = null; break;
+    }
+    case 'wOpen2': wId = btn.dataset.id; view = 'wtrain'; break;
+    case 'wNewTraining': {
+      const name = prompt('Name des neuen Trainings:');
+      if (!name) return;
+      const t = { id: 'w' + Date.now(), name, exercises: [] };
+      weekplan.push(t); saveWeekplan();
+      wId = t.id; view = 'wtrain'; break;
+    }
+    case 'wRename': {
+      const t = trainingById(btn.dataset.id);
+      const name = prompt('Neuer Name:', t.name);
+      if (!name) return;
+      t.name = name; saveWeekplan(); break;
+    }
+    case 'wRemoveEx': {
+      const t = trainingById(btn.dataset.id);
+      if (!confirm(`„${t.exercises[Number(btn.dataset.i)].name}“ entfernen?`)) return;
+      t.exercises.splice(Number(btn.dataset.i), 1); saveWeekplan(); break;
+    }
+    case 'wSetsAdj': {
+      const t = trainingById(btn.dataset.id), ex = t.exercises[Number(btn.dataset.i)];
+      const next = (ex.sets || 3) + Number(btn.dataset.d);
+      if (next < 1 || next > 10) return;
+      ex.sets = next; saveWeekplan(); break;
+    }
+    case 'wSetDone': {
+      const t = trainingById(btn.dataset.id), ex = t.exercises[Number(btn.dataset.i)], k = Number(btn.dataset.k);
+      const wp = wProgRaw();
+      const d = wp.done[t.id] = wp.done[t.id] || {};
+      const sets = d[ex.name] = d[ex.name] || [];
+      sets[k] = sets[k] || {};
+      sets[k].done = !sets[k].done;
+      saveWProg(wp); break;
+    }
+    case 'wAddEx': picker = { index: null, wid: btn.dataset.id }; break;
+    case 'wFinish': {
+      const t = trainingById(btn.dataset.id);
+      const wp = wProgRaw(), dOf = wp.done[t.id] || {};
+      const exercises = t.exercises.map(ex => {
+        const sets = dOf[ex.name] || [];
+        return { name: ex.name, muscle: ex.muscle, setsDone: sets.filter(s => s && s.done).length, setsTotal: ex.sets || 3,
+          weights: sets.map(s => s && s.weight != null ? s.weight : null) };
+      });
+      const note = prompt('Notiz zu diesem Training (optional):', '') || '';
+      const rec = { date: today(), day: t.name, exercises,
+        totalSetsDone: exercises.reduce((s, x) => s + x.setsDone, 0), totalSetsPlanned: exercises.reduce((s, x) => s + x.setsTotal, 0),
+        finishedAt: new Date().toISOString(), note };
+      syncSession(rec); pushHistory(rec);
+      delete wp.done[t.id]; saveWProg(wp);
+      view = 'weeklist'; break;
     }
   }
   render();
 });
 
+content.addEventListener('input', e => {
+  const el = e.target.closest('[data-act="wWeight"],[data-act="wExNote"]');
+  if (!el) return;
+  const t = trainingById(el.dataset.id);
+  if (el.dataset.act === 'wExNote') {
+    t.exercises[Number(el.dataset.i)].note = el.value;
+    saveWeekplan();
+  } else {
+    const ex = t.exercises[Number(el.dataset.i)], k = Number(el.dataset.k);
+    const wp = wProgRaw();
+    const d = wp.done[t.id] = wp.done[t.id] || {};
+    const sets = d[ex.name] = d[ex.name] || [];
+    sets[k] = sets[k] || {};
+    sets[k].weight = el.value === '' ? null : Number(el.value);
+    saveWProg(wp);
+  }
+});
+
 document.getElementById('tabbar').addEventListener('click', e => {
-  const btn = e.target.closest('button[data-act="sideSwap"]');
-  if (!btn) return;
-  day = btn.dataset.day;
-  view = 'day';
-  picker = { index: Number(btn.dataset.i) };
+  const swapBtn = e.target.closest('button[data-act="sideSwap"]');
+  if (swapBtn) {
+    day = swapBtn.dataset.day;
+    view = 'day';
+    picker = { index: Number(swapBtn.dataset.i) };
+    return render();
+  }
+  const wBtn = e.target.closest('button[data-act="wOpen"],button[data-act="wNewTraining"]');
+  if (!wBtn) return;
+  picker = null;
+  if (wBtn.dataset.act === 'wOpen') { wId = wBtn.dataset.id; view = 'wtrain'; }
+  else {
+    const name = prompt('Name des neuen Trainings:');
+    if (!name) return;
+    const t = { id: 'w' + Date.now(), name, exercises: [] };
+    weekplan.push(t); saveWeekplan();
+    wId = t.id; view = 'wtrain';
+  }
   render();
 });
 

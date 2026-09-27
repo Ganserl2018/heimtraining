@@ -39,6 +39,7 @@ body{
 }
 .tab.active{color:var(--accent);}
 .side-sublist{display:none;}
+#weekplan-block{display:none;}
 
 /* V2-05: ab Tablet-Breite Sidebar statt Bottom-Tabbar (iPhone bleibt unverändert) */
 @media (min-width:820px){
@@ -59,6 +60,8 @@ body{
     font-size:.78rem; padding:.35rem 1.3rem .35rem 2.1rem; font-weight:400;
   }
   .side-sublist button:hover{color:var(--text);}
+  #weekplan-block{display:flex; flex-direction:column;}
+  #weekplan-block .tab{padding:.6rem 1.3rem; font-size:.82rem;}
 }
 .exercise-info{flex:1; min-width:0;}
 .exercise-actions{display:flex; flex-direction:column; gap:.3rem;}
@@ -101,3 +104,23 @@ body{
 .tv-nav{display:flex; gap:1rem; margin-top:.5rem;}
 .tv-nav button{font-size:1rem; padding:.7rem 1.4rem;}
 .tv-count{color:var(--text-dim); font-size:.85rem;}
+
+/* V2-09: Wochenplan */
+.weeklist{display:flex; flex-direction:column; gap:.6rem;}
+.weeklist-card{background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:.9rem 1rem; text-align:left; color:var(--text); cursor:pointer;}
+.weeklist-name{font-weight:600; font-size:1rem;}
+.weeklist-meta{color:var(--text-dim); font-size:.8rem; margin-top:.2rem;}
+.wtrain-head{display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:.5rem;}
+.wtrain-head h2{margin:0; font-size:1.15rem;}
+.w-exercise{border-bottom:1px solid var(--border); padding:.9rem 0;}
+.w-ex-top{display:flex; gap:.8rem; align-items:center;}
+.w-ex-actions{margin-left:auto;}
+.w-sets-head{display:flex; align-items:center; gap:.6rem; margin:.5rem 0 .4rem; font-size:.8rem; color:var(--text-dim);}
+.w-sets-head button{padding:.2rem .55rem; font-size:.85rem;}
+.w-sets{display:flex; gap:.5rem; flex-wrap:wrap;}
+.w-set{display:flex; align-items:center; gap:.3rem;}
+.w-set button{padding:.35rem .55rem; font-size:.78rem; border-radius:6px; border:1px solid var(--border); background:var(--panel); color:var(--text);}
+.w-set button.done{background:var(--accent); color:#fff; border-color:var(--accent);}
+.w-set input{width:56px; font-size:.8rem; padding:.35rem .3rem; border-radius:6px; border:1px solid var(--border); background:var(--bg); color:var(--text);}
+.w-note{width:100%; margin-top:.5rem; background:var(--bg); border:1px solid var(--border); border-radius:8px; color:var(--text); font-size:.82rem; padding:.5rem; resize:vertical; min-height:2.2rem; font-family:inherit;}
+.history-note{color:var(--text-dim); font-size:.82rem; margin-top:.3rem; font-style:italic;}
