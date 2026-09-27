@@ -16,6 +16,7 @@ let tvIndex = 0;      // aktuelle Übung im TV-Modus
 let picker = null;   // null = Tagesansicht, sonst {index[, wid]} (index null = hinzufügen)
 let filterMuscle = null; // V2-10: Bildergalerie-Picker – aktiver Muskelgruppen-Chip
 let filterEquip = null;  // V2-10: aktiver Ausrüstungs-Chip
+let filterCat = null;    // V2-10b: aktiver Kategorie-Chip (z.B. "warmup")
 let renameId = null; // V2-09: id des Wochenplan-Trainings, das gerade inline umbenannt wird
 let addingTraining = false; // V2-09: zeigt das Inline-Eingabefeld "Neues Training" in der Weeklist
 
@@ -178,12 +179,15 @@ function matchesEquip(name, key) {
   if (key === 'none') return !['dumbbell', 'barbell', 'cable', 'band', 'smith', 'ez barbell'].some(k => n.includes(k));
   return n.includes(key);
 }
+const CAT_LIST = [['warmup', '🔥 Aufwärmen']];
 function renderFilterChips() {
   const m = MUSCLE_GROUP_LIST.map(g =>
     `<button class="chip${filterMuscle === g ? ' active' : ''}" data-act="fMuscle" data-v="${g}">${g}</button>`).join('');
   const eq = EQUIP_LIST.map(([k, label]) =>
     `<button class="chip${filterEquip === k ? ' active' : ''}" data-act="fEquip" data-v="${k}">${label}</button>`).join('');
-  return `<div class="filter-chips">${m}</div><div class="filter-chips">${eq}</div>`;
+  const cat = CAT_LIST.map(([k, label]) =>
+    `<button class="chip${filterCat === k ? ' active' : ''}" data-act="fCat" data-v="${k}">${label}</button>`).join('');
+  return `<div class="filter-chips">${cat}${m}</div><div class="filter-chips">${eq}</div>`;
 }
 
 function renderPicker() {
@@ -211,6 +215,7 @@ function renderResults(query) {
     if (!words.every(w => s.includes(w))) return;
     if (filterMuscle && MUSCLE_GROUPS[ex.muscle] !== filterMuscle) return;
     if (filterEquip && !matchesEquip(ex.name, filterEquip)) return;
+    if (filterCat && ex.category !== filterCat) return;
     hits.push(i);
   });
   document.getElementById('results').innerHTML = hits.slice(0, 60).map(i => `
@@ -414,6 +419,12 @@ content.addEventListener('click', e => {
     renderResults(document.getElementById('q').value);
     return;
   }
+  if (btn.dataset.act === 'fCat') {
+    filterCat = (filterCat === btn.dataset.v) ? null : btn.dataset.v;
+    document.querySelectorAll('[data-act="fCat"]').forEach(b => b.classList.toggle('active', b.dataset.v === filterCat));
+    renderResults(document.getElementById('q').value);
+    return;
+  }
   switch (btn.dataset.act) {
     case 'del':
       if (!confirm(`„${arr[i].name}“ entfernen?`)) return;
@@ -441,8 +452,8 @@ content.addEventListener('click', e => {
       else if (btn.dataset.view) { view = btn.dataset.view; }
       picker = null;
       break;
-    case 'swap': picker = { index: i }; filterMuscle = null; filterEquip = null; break;
-    case 'add': picker = { index: null }; filterMuscle = null; filterEquip = null; break;
+    case 'swap': picker = { index: i }; filterMuscle = null; filterEquip = null; filterCat = null; break;
+    case 'add': picker = { index: null }; filterMuscle = null; filterEquip = null; filterCat = null; break;
     case 'cancel': picker = null; break;
     case 'reset':
       if (!confirm('Tag auf Standard zurücksetzen?')) return;
@@ -501,7 +512,7 @@ content.addEventListener('click', e => {
       sets[k].done = !sets[k].done;
       saveWProg(wp); break;
     }
-    case 'wAddEx': picker = { index: null, wid: btn.dataset.id }; filterMuscle = null; filterEquip = null; break;
+    case 'wAddEx': picker = { index: null, wid: btn.dataset.id }; filterMuscle = null; filterEquip = null; filterCat = null; break;
     case 'wFinish': {
       const t = trainingById(btn.dataset.id);
       const wp = wProgRaw(), dOf = wp.done[t.id] || {};
@@ -553,7 +564,7 @@ document.getElementById('tabbar').addEventListener('click', e => {
     day = swapBtn.dataset.day;
     view = 'day';
     picker = { index: Number(swapBtn.dataset.i) };
-    filterMuscle = null; filterEquip = null;
+    filterMuscle = null; filterEquip = null; filterCat = null;
     return render();
   }
   const toggleBtn = e.target.closest('button[data-act="toggleSub"]');
