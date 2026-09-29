@@ -1,0 +1,273 @@
+[
+  {
+    "name": "Bosu Ball Cable Crunch With Side Bends",
+    "muscle": "abdominals",
+    "gif": "gifs/bosu_ball_cable_crunch_with_side_bends.gif"
+  },
+  {
+    "name": "Landmine 180's",
+    "muscle": "abdominals",
+    "gif": "gifs/landmine_180_s.gif"
+  },
+  {
+    "name": "Clean",
+    "muscle": "hamstrings",
+    "gif": "gifs/clean.gif"
+  },
+  {
+    "name": "Clean Deadlift",
+    "muscle": "hamstrings",
+    "gif": "gifs/clean_deadlift.gif"
+  },
+  {
+    "name": "Dumbbell Clean",
+    "muscle": "hamstrings",
+    "gif": "gifs/dumbbell_clean.gif"
+  },
+  {
+    "name": "Hang Snatch",
+    "muscle": "hamstrings",
+    "gif": "gifs/hang_snatch.gif"
+  },
+  {
+    "name": "Hang Snatch - Below Knees",
+    "muscle": "hamstrings",
+    "gif": "gifs/hang_snatch_-_below_knees.gif"
+  },
+  {
+    "name": "Muscle Snatch",
+    "muscle": "hamstrings",
+    "gif": "gifs/muscle_snatch.gif"
+  },
+  {
+    "name": "Natural Glute Ham Raise",
+    "muscle": "hamstrings",
+    "gif": "gifs/natural_glute_ham_raise.gif"
+  },
+  {
+    "name": "Power Clean",
+    "muscle": "hamstrings",
+    "gif": "gifs/power_clean.gif"
+  },
+  {
+    "name": "Power Clean from Blocks",
+    "muscle": "hamstrings",
+    "gif": "gifs/power_clean_from_blocks.gif"
+  },
+  {
+    "name": "Power Snatch",
+    "muscle": "hamstrings",
+    "gif": "gifs/power_snatch.gif"
+  },
+  {
+    "name": "Snatch Deadlift",
+    "muscle": "hamstrings",
+    "gif": "gifs/snatch_deadlift.gif"
+  },
+  {
+    "name": "Snatch Pull",
+    "muscle": "hamstrings",
+    "gif": "gifs/snatch_pull.gif"
+  },
+  {
+    "name": "Split Snatch",
+    "muscle": "hamstrings",
+    "gif": "gifs/split_snatch.gif"
+  },
+  {
+    "name": "Sumo Deadlift with Chains",
+    "muscle": "hamstrings",
+    "gif": "gifs/sumo_deadlift_with_chains.gif"
+  },
+  {
+    "name": "Deadlift with Chains",
+    "muscle": "lower back",
+    "gif": "gifs/deadlift_with_chains.gif"
+  },
+  {
+    "name": "Rack Pulls",
+    "muscle": "lower back",
+    "gif": "gifs/rack_pulls.gif"
+  },
+  {
+    "name": "Bent Over One-Arm Long Bar Row",
+    "muscle": "middle back",
+    "gif": "gifs/bent_over_one-arm_long_bar_row.gif"
+  },
+  {
+    "name": "Bent Over Two-Arm Long Bar Row",
+    "muscle": "middle back",
+    "gif": "gifs/bent_over_two-arm_long_bar_row.gif"
+  },
+  {
+    "name": "One-Arm Long Bar Row",
+    "muscle": "middle back",
+    "gif": "gifs/one-arm_long_bar_row.gif"
+  },
+  {
+    "name": "T-Bar Row with Handle",
+    "muscle": "middle back",
+    "gif": "gifs/t-bar_row_with_handle.gif"
+  },
+  {
+    "name": "Isometric Neck Exercise - Front And Back",
+    "muscle": "neck",
+    "gif": "gifs/isometric_neck_exercise_-_front_and_back.gif"
+  },
+  {
+    "name": "Isometric Neck Exercise - Sides",
+    "muscle": "neck",
+    "gif": "gifs/isometric_neck_exercise_-_sides.gif"
+  },
+  {
+    "name": "All Fours Quad Stretch",
+    "muscle": "quadriceps",
+    "gif": "gifs/all_fours_quad_stretch.gif",
+    "category": "warmup"
+  },
+  {
+    "name": "Box Squat with Chains",
+    "muscle": "quadriceps",
+    "gif": "gifs/box_squat_with_chains.gif"
+  },
+  {
+    "name": "Clean Pull",
+    "muscle": "quadriceps",
+    "gif": "gifs/clean_pull.gif"
+  },
+  {
+    "name": "Clean from Blocks",
+    "muscle": "quadriceps",
+    "gif": "gifs/clean_from_blocks.gif"
+  },
+  {
+    "name": "Front Squat (Clean Grip)",
+    "muscle": "quadriceps",
+    "gif": "gifs/front_squat__clean_grip_.gif"
+  },
+  {
+    "name": "Hang Clean",
+    "muscle": "quadriceps",
+    "gif": "gifs/hang_clean.gif"
+  },
+  {
+    "name": "Hang Clean - Below the Knees",
+    "muscle": "quadriceps",
+    "gif": "gifs/hang_clean_-_below_the_knees.gif"
+  },
+  {
+    "name": "Heaving Snatch Balance",
+    "muscle": "quadriceps",
+    "gif": "gifs/heaving_snatch_balance.gif"
+  },
+  {
+    "name": "Jerk Dip Squat",
+    "muscle": "quadriceps",
+    "gif": "gifs/jerk_dip_squat.gif"
+  },
+  {
+    "name": "Olympic Squat",
+    "muscle": "quadriceps",
+    "gif": "gifs/olympic_squat.gif"
+  },
+  {
+    "name": "Power Jerk",
+    "muscle": "quadriceps",
+    "gif": "gifs/power_jerk.gif"
+  },
+  {
+    "name": "Power Snatch from Blocks",
+    "muscle": "quadriceps",
+    "gif": "gifs/power_snatch_from_blocks.gif"
+  },
+  {
+    "name": "Snatch",
+    "muscle": "quadriceps",
+    "gif": "gifs/snatch.gif"
+  },
+  {
+    "name": "Snatch Balance",
+    "muscle": "quadriceps",
+    "gif": "gifs/snatch_balance.gif"
+  },
+  {
+    "name": "Snatch from Blocks",
+    "muscle": "quadriceps",
+    "gif": "gifs/snatch_from_blocks.gif"
+  },
+  {
+    "name": "Split Clean",
+    "muscle": "quadriceps",
+    "gif": "gifs/split_clean.gif"
+  },
+  {
+    "name": "Split Jerk",
+    "muscle": "quadriceps",
+    "gif": "gifs/split_jerk.gif"
+  },
+  {
+    "name": "Squat Jerk",
+    "muscle": "quadriceps",
+    "gif": "gifs/squat_jerk.gif"
+  },
+  {
+    "name": "Squat with Chains",
+    "muscle": "quadriceps",
+    "gif": "gifs/squat_with_chains.gif"
+  },
+  {
+    "name": "Clean and Jerk",
+    "muscle": "shoulders",
+    "gif": "gifs/clean_and_jerk.gif"
+  },
+  {
+    "name": "Clean and Press",
+    "muscle": "shoulders",
+    "gif": "gifs/clean_and_press.gif"
+  },
+  {
+    "name": "Jerk Balance",
+    "muscle": "shoulders",
+    "gif": "gifs/jerk_balance.gif"
+  },
+  {
+    "name": "Landmine Linear Jammer",
+    "muscle": "shoulders",
+    "gif": "gifs/landmine_linear_jammer.gif"
+  },
+  {
+    "name": "Rack Delivery",
+    "muscle": "shoulders",
+    "gif": "gifs/rack_delivery.gif"
+  },
+  {
+    "name": "Single-Arm Linear Jammer",
+    "muscle": "shoulders",
+    "gif": "gifs/single-arm_linear_jammer.gif"
+  },
+  {
+    "name": "Smith Incline Shoulder Raise",
+    "muscle": "shoulders",
+    "gif": "gifs/smith_incline_shoulder_raise.gif"
+  },
+  {
+    "name": "Clean Shrug",
+    "muscle": "traps",
+    "gif": "gifs/clean_shrug.gif"
+  },
+  {
+    "name": "Snatch Shrug",
+    "muscle": "traps",
+    "gif": "gifs/snatch_shrug.gif"
+  },
+  {
+    "name": "Bench Press with Chains",
+    "muscle": "triceps",
+    "gif": "gifs/bench_press_with_chains.gif"
+  },
+  {
+    "name": "Floor Press with Chains",
+    "muscle": "triceps",
+    "gif": "gifs/floor_press_with_chains.gif"
+  }
+]
