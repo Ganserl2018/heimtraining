@@ -1,0 +1,1412 @@
+[
+  {
+    "name": "3/4 Sit-Up",
+    "muscle": "abdominals",
+    "gif": "gifs/3_4_sit-up.gif"
+  },
+  {
+    "name": "Air Bike",
+    "muscle": "abdominals",
+    "gif": "gifs/air_bike.gif"
+  },
+  {
+    "name": "Barbell Ab Rollout",
+    "muscle": "abdominals",
+    "gif": "gifs/barbell_ab_rollout.gif"
+  },
+  {
+    "name": "Barbell Ab Rollout - On Knees",
+    "muscle": "abdominals",
+    "gif": "gifs/barbell_ab_rollout_-_on_knees.gif"
+  },
+  {
+    "name": "Barbell Rollout from Bench",
+    "muscle": "abdominals",
+    "gif": "gifs/barbell_rollout_from_bench.gif"
+  },
+  {
+    "name": "Barbell Side Bend",
+    "muscle": "abdominals",
+    "gif": "gifs/barbell_side_bend.gif"
+  },
+  {
+    "name": "Bosu Ball Cable Crunch With Side Bends",
+    "muscle": "abdominals",
+    "gif": "gifs/bosu_ball_cable_crunch_with_side_bends.gif"
+  },
+  {
+    "name": "Cable Crunch",
+    "muscle": "abdominals",
+    "gif": "gifs/cable_crunch.gif"
+  },
+  {
+    "name": "Cable Judo Flip",
+    "muscle": "abdominals",
+    "gif": "gifs/cable_judo_flip.gif"
+  },
+  {
+    "name": "Cable Reverse Crunch",
+    "muscle": "abdominals",
+    "gif": "gifs/cable_reverse_crunch.gif"
+  },
+  {
+    "name": "Cable Russian Twists",
+    "muscle": "abdominals",
+    "gif": "gifs/cable_russian_twists.gif"
+  },
+  {
+    "name": "Cable Seated Crunch",
+    "muscle": "abdominals",
+    "gif": "gifs/cable_seated_crunch.gif"
+  },
+  {
+    "name": "Cross-Body Crunch",
+    "muscle": "abdominals",
+    "gif": "gifs/cross-body_crunch.gif"
+  },
+  {
+    "name": "Crunch - Hands Overhead",
+    "muscle": "abdominals",
+    "gif": "gifs/crunch_-_hands_overhead.gif"
+  },
+  {
+    "name": "Crunch - Legs On Exercise Ball",
+    "muscle": "abdominals",
+    "gif": "gifs/crunch_-_legs_on_exercise_ball.gif"
+  },
+  {
+    "name": "Crunches",
+    "muscle": "abdominals",
+    "gif": "gifs/crunches.gif"
+  },
+  {
+    "name": "Decline Crunch",
+    "muscle": "abdominals",
+    "gif": "gifs/decline_crunch.gif"
+  },
+  {
+    "name": "Decline Oblique Crunch",
+    "muscle": "abdominals",
+    "gif": "gifs/decline_oblique_crunch.gif"
+  },
+  {
+    "name": "Decline Reverse Crunch",
+    "muscle": "abdominals",
+    "gif": "gifs/decline_reverse_crunch.gif"
+  },
+  {
+    "name": "Dumbbell Side Bend",
+    "muscle": "abdominals",
+    "gif": "gifs/dumbbell_side_bend.gif"
+  },
+  {
+    "name": "Frog Sit-Ups",
+    "muscle": "abdominals",
+    "gif": "gifs/frog_sit-ups.gif"
+  },
+  {
+    "name": "Gorilla Chin/Crunch",
+    "muscle": "abdominals",
+    "gif": "gifs/gorilla_chin_crunch.gif"
+  },
+  {
+    "name": "Jackknife Sit-Up",
+    "muscle": "abdominals",
+    "gif": "gifs/jackknife_sit-up.gif"
+  },
+  {
+    "name": "Janda Sit-Up",
+    "muscle": "abdominals",
+    "gif": "gifs/janda_sit-up.gif"
+  },
+  {
+    "name": "Kneeling Cable Crunch With Alternating Oblique Twists",
+    "muscle": "abdominals",
+    "gif": "gifs/kneeling_cable_crunch_with_alternating_oblique_twists.gif"
+  },
+  {
+    "name": "Oblique Crunches",
+    "muscle": "abdominals",
+    "gif": "gifs/oblique_crunches.gif"
+  },
+  {
+    "name": "Oblique Crunches - On The Floor",
+    "muscle": "abdominals",
+    "gif": "gifs/oblique_crunches_-_on_the_floor.gif"
+  },
+  {
+    "name": "One-Arm High-Pulley Cable Side Bends",
+    "muscle": "abdominals",
+    "gif": "gifs/one-arm_high-pulley_cable_side_bends.gif"
+  },
+  {
+    "name": "Plank",
+    "muscle": "abdominals",
+    "gif": "gifs/plank.gif"
+  },
+  {
+    "name": "Press Sit-Up",
+    "muscle": "abdominals",
+    "gif": "gifs/press_sit-up.gif"
+  },
+  {
+    "name": "Reverse Crunch",
+    "muscle": "abdominals",
+    "gif": "gifs/reverse_crunch.gif"
+  },
+  {
+    "name": "Rope Crunch",
+    "muscle": "abdominals",
+    "gif": "gifs/rope_crunch.gif"
+  },
+  {
+    "name": "Russian Twist",
+    "muscle": "abdominals",
+    "gif": "gifs/russian_twist.gif"
+  },
+  {
+    "name": "Seated Barbell Twist",
+    "muscle": "abdominals",
+    "gif": "gifs/seated_barbell_twist.gif"
+  },
+  {
+    "name": "Sit-Up",
+    "muscle": "abdominals",
+    "gif": "gifs/sit-up.gif"
+  },
+  {
+    "name": "Standing Cable Lift",
+    "muscle": "abdominals",
+    "gif": "gifs/standing_cable_lift.gif"
+  },
+  {
+    "name": "Standing Cable Wood Chop",
+    "muscle": "abdominals",
+    "gif": "gifs/standing_cable_wood_chop.gif"
+  },
+  {
+    "name": "Standing Rope Crunch",
+    "muscle": "abdominals",
+    "gif": "gifs/standing_rope_crunch.gif"
+  },
+  {
+    "name": "Tuck Crunch",
+    "muscle": "abdominals",
+    "gif": "gifs/tuck_crunch.gif"
+  },
+  {
+    "name": "Band Hip Adductions",
+    "muscle": "adductors",
+    "gif": "gifs/band_hip_adductions.gif"
+  },
+  {
+    "name": "Alternate Incline Dumbbell Curl",
+    "muscle": "biceps",
+    "gif": "gifs/alternate_incline_dumbbell_curl.gif"
+  },
+  {
+    "name": "Barbell Curl",
+    "muscle": "biceps",
+    "gif": "gifs/barbell_curl.gif"
+  },
+  {
+    "name": "Barbell Curls Lying Against An Incline",
+    "muscle": "biceps",
+    "gif": "gifs/barbell_curls_lying_against_an_incline.gif"
+  },
+  {
+    "name": "Cable Hammer Curls - Rope Attachment",
+    "muscle": "biceps",
+    "gif": "gifs/cable_hammer_curls_-_rope_attachment.gif"
+  },
+  {
+    "name": "Cable Preacher Curl",
+    "muscle": "biceps",
+    "gif": "gifs/cable_preacher_curl.gif"
+  },
+  {
+    "name": "Close-Grip EZ-Bar Curl with Band",
+    "muscle": "biceps",
+    "gif": "gifs/close-grip_ez-bar_curl_with_band.gif"
+  },
+  {
+    "name": "Close-Grip Standing Barbell Curl",
+    "muscle": "biceps",
+    "gif": "gifs/close-grip_standing_barbell_curl.gif"
+  },
+  {
+    "name": "Dumbbell Alternate Bicep Curl",
+    "muscle": "biceps",
+    "gif": "gifs/dumbbell_alternate_bicep_curl.gif"
+  },
+  {
+    "name": "Dumbbell Bicep Curl",
+    "muscle": "biceps",
+    "gif": "gifs/dumbbell_bicep_curl.gif"
+  },
+  {
+    "name": "Dumbbell Prone Incline Curl",
+    "muscle": "biceps",
+    "gif": "gifs/dumbbell_prone_incline_curl.gif"
+  },
+  {
+    "name": "Flexor Incline Dumbbell Curls",
+    "muscle": "biceps",
+    "gif": "gifs/flexor_incline_dumbbell_curls.gif"
+  },
+  {
+    "name": "High Cable Curls",
+    "muscle": "biceps",
+    "gif": "gifs/high_cable_curls.gif"
+  },
+  {
+    "name": "Incline Dumbbell Curl",
+    "muscle": "biceps",
+    "gif": "gifs/incline_dumbbell_curl.gif"
+  },
+  {
+    "name": "Lying Cable Curl",
+    "muscle": "biceps",
+    "gif": "gifs/lying_cable_curl.gif"
+  },
+  {
+    "name": "Lying High Bench Barbell Curl",
+    "muscle": "biceps",
+    "gif": "gifs/lying_high_bench_barbell_curl.gif"
+  },
+  {
+    "name": "Lying Supine Dumbbell Curl",
+    "muscle": "biceps",
+    "gif": "gifs/lying_supine_dumbbell_curl.gif"
+  },
+  {
+    "name": "One Arm Dumbbell Preacher Curl",
+    "muscle": "biceps",
+    "gif": "gifs/one_arm_dumbbell_preacher_curl.gif"
+  },
+  {
+    "name": "Overhead Cable Curl",
+    "muscle": "biceps",
+    "gif": "gifs/overhead_cable_curl.gif"
+  },
+  {
+    "name": "Preacher Hammer Dumbbell Curl",
+    "muscle": "biceps",
+    "gif": "gifs/preacher_hammer_dumbbell_curl.gif"
+  },
+  {
+    "name": "Reverse Barbell Curl",
+    "muscle": "biceps",
+    "gif": "gifs/reverse_barbell_curl.gif"
+  },
+  {
+    "name": "Reverse Barbell Preacher Curls",
+    "muscle": "biceps",
+    "gif": "gifs/reverse_barbell_preacher_curls.gif"
+  },
+  {
+    "name": "Reverse Cable Curl",
+    "muscle": "biceps",
+    "gif": "gifs/reverse_cable_curl.gif"
+  },
+  {
+    "name": "Seated Close-Grip Concentration Barbell Curl",
+    "muscle": "biceps",
+    "gif": "gifs/seated_close-grip_concentration_barbell_curl.gif"
+  },
+  {
+    "name": "Seated Dumbbell Curl",
+    "muscle": "biceps",
+    "gif": "gifs/seated_dumbbell_curl.gif"
+  },
+  {
+    "name": "Seated Dumbbell Inner Biceps Curl",
+    "muscle": "biceps",
+    "gif": "gifs/seated_dumbbell_inner_biceps_curl.gif"
+  },
+  {
+    "name": "Standing Biceps Cable Curl",
+    "muscle": "biceps",
+    "gif": "gifs/standing_biceps_cable_curl.gif"
+  },
+  {
+    "name": "Standing Dumbbell Reverse Curl",
+    "muscle": "biceps",
+    "gif": "gifs/standing_dumbbell_reverse_curl.gif"
+  },
+  {
+    "name": "Standing One-Arm Cable Curl",
+    "muscle": "biceps",
+    "gif": "gifs/standing_one-arm_cable_curl.gif"
+  },
+  {
+    "name": "Standing One-Arm Dumbbell Curl Over Incline Bench",
+    "muscle": "biceps",
+    "gif": "gifs/standing_one-arm_dumbbell_curl_over_incline_bench.gif"
+  },
+  {
+    "name": "Two-Arm Dumbbell Preacher Curl",
+    "muscle": "biceps",
+    "gif": "gifs/two-arm_dumbbell_preacher_curl.gif"
+  },
+  {
+    "name": "Wide-Grip Standing Barbell Curl",
+    "muscle": "biceps",
+    "gif": "gifs/wide-grip_standing_barbell_curl.gif"
+  },
+  {
+    "name": "Barbell Seated Calf Raise",
+    "muscle": "calves",
+    "gif": "gifs/barbell_seated_calf_raise.gif"
+  },
+  {
+    "name": "Calf Raise On A Dumbbell",
+    "muscle": "calves",
+    "gif": "gifs/calf_raise_on_a_dumbbell.gif"
+  },
+  {
+    "name": "Calf Raises - With Bands",
+    "muscle": "calves",
+    "gif": "gifs/calf_raises_-_with_bands.gif"
+  },
+  {
+    "name": "Dumbbell Seated One-Leg Calf Raise",
+    "muscle": "calves",
+    "gif": "gifs/dumbbell_seated_one-leg_calf_raise.gif"
+  },
+  {
+    "name": "Standing Barbell Calf Raise",
+    "muscle": "calves",
+    "gif": "gifs/standing_barbell_calf_raise.gif"
+  },
+  {
+    "name": "Standing Dumbbell Calf Raise",
+    "muscle": "calves",
+    "gif": "gifs/standing_dumbbell_calf_raise.gif"
+  },
+  {
+    "name": "Barbell Bench Press - Medium Grip",
+    "muscle": "chest",
+    "gif": "gifs/barbell_bench_press_-_medium_grip.gif"
+  },
+  {
+    "name": "Barbell Guillotine Bench Press",
+    "muscle": "chest",
+    "gif": "gifs/barbell_guillotine_bench_press.gif"
+  },
+  {
+    "name": "Barbell Incline Bench Press - Medium Grip",
+    "muscle": "chest",
+    "gif": "gifs/barbell_incline_bench_press_-_medium_grip.gif"
+  },
+  {
+    "name": "Bench Press - With Bands",
+    "muscle": "chest",
+    "gif": "gifs/bench_press_-_with_bands.gif"
+  },
+  {
+    "name": "Bent-Arm Dumbbell Pullover",
+    "muscle": "chest",
+    "gif": "gifs/bent-arm_dumbbell_pullover.gif"
+  },
+  {
+    "name": "Bodyweight Flyes",
+    "muscle": "chest",
+    "gif": "gifs/bodyweight_flyes.gif"
+  },
+  {
+    "name": "Cable Chest Press",
+    "muscle": "chest",
+    "gif": "gifs/cable_chest_press.gif"
+  },
+  {
+    "name": "Cable Crossover",
+    "muscle": "chest",
+    "gif": "gifs/cable_crossover.gif"
+  },
+  {
+    "name": "Cable Iron Cross",
+    "muscle": "chest",
+    "gif": "gifs/cable_iron_cross.gif"
+  },
+  {
+    "name": "Clock Push-Up",
+    "muscle": "chest",
+    "gif": "gifs/clock_push-up.gif"
+  },
+  {
+    "name": "Cross Over - With Bands",
+    "muscle": "chest",
+    "gif": "gifs/cross_over_-_with_bands.gif"
+  },
+  {
+    "name": "Decline Barbell Bench Press",
+    "muscle": "chest",
+    "gif": "gifs/decline_barbell_bench_press.gif"
+  },
+  {
+    "name": "Decline Dumbbell Bench Press",
+    "muscle": "chest",
+    "gif": "gifs/decline_dumbbell_bench_press.gif"
+  },
+  {
+    "name": "Decline Dumbbell Flyes",
+    "muscle": "chest",
+    "gif": "gifs/decline_dumbbell_flyes.gif"
+  },
+  {
+    "name": "Dumbbell Bench Press",
+    "muscle": "chest",
+    "gif": "gifs/dumbbell_bench_press.gif"
+  },
+  {
+    "name": "Dumbbell Bench Press with Neutral Grip",
+    "muscle": "chest",
+    "gif": "gifs/dumbbell_bench_press_with_neutral_grip.gif"
+  },
+  {
+    "name": "Dumbbell Flyes",
+    "muscle": "chest",
+    "gif": "gifs/dumbbell_flyes.gif"
+  },
+  {
+    "name": "Flat Bench Cable Flyes",
+    "muscle": "chest",
+    "gif": "gifs/flat_bench_cable_flyes.gif"
+  },
+  {
+    "name": "Incline Cable Chest Press",
+    "muscle": "chest",
+    "gif": "gifs/incline_cable_chest_press.gif"
+  },
+  {
+    "name": "Incline Cable Flye",
+    "muscle": "chest",
+    "gif": "gifs/incline_cable_flye.gif"
+  },
+  {
+    "name": "Incline Dumbbell Bench With Palms Facing In",
+    "muscle": "chest",
+    "gif": "gifs/incline_dumbbell_bench_with_palms_facing_in.gif"
+  },
+  {
+    "name": "Incline Dumbbell Flyes",
+    "muscle": "chest",
+    "gif": "gifs/incline_dumbbell_flyes.gif"
+  },
+  {
+    "name": "Incline Dumbbell Flyes - With A Twist",
+    "muscle": "chest",
+    "gif": "gifs/incline_dumbbell_flyes_-_with_a_twist.gif"
+  },
+  {
+    "name": "Incline Dumbbell Press",
+    "muscle": "chest",
+    "gif": "gifs/incline_dumbbell_press.gif"
+  },
+  {
+    "name": "Incline Push-Up",
+    "muscle": "chest",
+    "gif": "gifs/incline_push-up.gif"
+  },
+  {
+    "name": "Incline Push-Up Medium",
+    "muscle": "chest",
+    "gif": "gifs/incline_push-up_medium.gif"
+  },
+  {
+    "name": "Incline Push-Up Reverse Grip",
+    "muscle": "chest",
+    "gif": "gifs/incline_push-up_reverse_grip.gif"
+  },
+  {
+    "name": "Incline Push-Up Wide",
+    "muscle": "chest",
+    "gif": "gifs/incline_push-up_wide.gif"
+  },
+  {
+    "name": "Low Cable Crossover",
+    "muscle": "chest",
+    "gif": "gifs/low_cable_crossover.gif"
+  },
+  {
+    "name": "One Arm Dumbbell Bench Press",
+    "muscle": "chest",
+    "gif": "gifs/one_arm_dumbbell_bench_press.gif"
+  },
+  {
+    "name": "One-Arm Flat Bench Dumbbell Flye",
+    "muscle": "chest",
+    "gif": "gifs/one-arm_flat_bench_dumbbell_flye.gif"
+  },
+  {
+    "name": "Plyo Push-up",
+    "muscle": "chest",
+    "gif": "gifs/plyo_push-up.gif"
+  },
+  {
+    "name": "Push Up to Side Plank",
+    "muscle": "chest",
+    "gif": "gifs/push_up_to_side_plank.gif"
+  },
+  {
+    "name": "Push-Up Wide",
+    "muscle": "chest",
+    "gif": "gifs/push-up_wide.gif"
+  },
+  {
+    "name": "Push-Ups With Feet Elevated",
+    "muscle": "chest",
+    "gif": "gifs/push-ups_with_feet_elevated.gif"
+  },
+  {
+    "name": "Pushups",
+    "muscle": "chest",
+    "gif": "gifs/pushups.gif"
+  },
+  {
+    "name": "Pushups (Close and Wide Hand Positions)",
+    "muscle": "chest",
+    "gif": "gifs/pushups__close_and_wide_hand_positions_.gif"
+  },
+  {
+    "name": "Single-Arm Cable Crossover",
+    "muscle": "chest",
+    "gif": "gifs/single-arm_cable_crossover.gif"
+  },
+  {
+    "name": "Single-Arm Push-Up",
+    "muscle": "chest",
+    "gif": "gifs/single-arm_push-up.gif"
+  },
+  {
+    "name": "Standing Cable Chest Press",
+    "muscle": "chest",
+    "gif": "gifs/standing_cable_chest_press.gif"
+  },
+  {
+    "name": "Straight-Arm Dumbbell Pullover",
+    "muscle": "chest",
+    "gif": "gifs/straight-arm_dumbbell_pullover.gif"
+  },
+  {
+    "name": "Wide-Grip Barbell Bench Press",
+    "muscle": "chest",
+    "gif": "gifs/wide-grip_barbell_bench_press.gif"
+  },
+  {
+    "name": "Wide-Grip Decline Barbell Bench Press",
+    "muscle": "chest",
+    "gif": "gifs/wide-grip_decline_barbell_bench_press.gif"
+  },
+  {
+    "name": "Wide-Grip Decline Barbell Pullover",
+    "muscle": "chest",
+    "gif": "gifs/wide-grip_decline_barbell_pullover.gif"
+  },
+  {
+    "name": "Cable Wrist Curl",
+    "muscle": "forearms",
+    "gif": "gifs/cable_wrist_curl.gif"
+  },
+  {
+    "name": "Dumbbell Lying Pronation",
+    "muscle": "forearms",
+    "gif": "gifs/dumbbell_lying_pronation.gif"
+  },
+  {
+    "name": "Dumbbell Lying Supination",
+    "muscle": "forearms",
+    "gif": "gifs/dumbbell_lying_supination.gif"
+  },
+  {
+    "name": "Palms-Down Dumbbell Wrist Curl Over A Bench",
+    "muscle": "forearms",
+    "gif": "gifs/palms-down_dumbbell_wrist_curl_over_a_bench.gif"
+  },
+  {
+    "name": "Palms-Up Barbell Wrist Curl Over A Bench",
+    "muscle": "forearms",
+    "gif": "gifs/palms-up_barbell_wrist_curl_over_a_bench.gif"
+  },
+  {
+    "name": "Palms-Up Dumbbell Wrist Curl Over A Bench",
+    "muscle": "forearms",
+    "gif": "gifs/palms-up_dumbbell_wrist_curl_over_a_bench.gif"
+  },
+  {
+    "name": "Seated Dumbbell Palms-Down Wrist Curl",
+    "muscle": "forearms",
+    "gif": "gifs/seated_dumbbell_palms-down_wrist_curl.gif"
+  },
+  {
+    "name": "Seated Dumbbell Palms-Up Wrist Curl",
+    "muscle": "forearms",
+    "gif": "gifs/seated_dumbbell_palms-up_wrist_curl.gif"
+  },
+  {
+    "name": "Seated One-Arm Dumbbell Palms-Down Wrist Curl",
+    "muscle": "forearms",
+    "gif": "gifs/seated_one-arm_dumbbell_palms-down_wrist_curl.gif"
+  },
+  {
+    "name": "Seated One-Arm Dumbbell Palms-Up Wrist Curl",
+    "muscle": "forearms",
+    "gif": "gifs/seated_one-arm_dumbbell_palms-up_wrist_curl.gif"
+  },
+  {
+    "name": "Seated Palm-Up Barbell Wrist Curl",
+    "muscle": "forearms",
+    "gif": "gifs/seated_palm-up_barbell_wrist_curl.gif"
+  },
+  {
+    "name": "Seated Palms-Down Barbell Wrist Curl",
+    "muscle": "forearms",
+    "gif": "gifs/seated_palms-down_barbell_wrist_curl.gif"
+  },
+  {
+    "name": "Standing Palms-Up Barbell Behind The Back Wrist Curl",
+    "muscle": "forearms",
+    "gif": "gifs/standing_palms-up_barbell_behind_the_back_wrist_curl.gif"
+  },
+  {
+    "name": "Barbell Glute Bridge",
+    "muscle": "glutes",
+    "gif": "gifs/barbell_glute_bridge.gif"
+  },
+  {
+    "name": "Barbell Hip Thrust",
+    "muscle": "glutes",
+    "gif": "gifs/barbell_hip_thrust.gif"
+  },
+  {
+    "name": "Hip Extension with Bands",
+    "muscle": "glutes",
+    "gif": "gifs/hip_extension_with_bands.gif"
+  },
+  {
+    "name": "Hip Lift with Band",
+    "muscle": "glutes",
+    "gif": "gifs/hip_lift_with_band.gif"
+  },
+  {
+    "name": "One-Legged Cable Kickback",
+    "muscle": "glutes",
+    "gif": "gifs/one-legged_cable_kickback.gif"
+  },
+  {
+    "name": "Band Good Morning",
+    "muscle": "hamstrings",
+    "gif": "gifs/band_good_morning.gif"
+  },
+  {
+    "name": "Band Good Morning (Pull Through)",
+    "muscle": "hamstrings",
+    "gif": "gifs/band_good_morning__pull_through_.gif"
+  },
+  {
+    "name": "Dumbbell Clean",
+    "muscle": "hamstrings",
+    "gif": "gifs/dumbbell_clean.gif"
+  },
+  {
+    "name": "Reverse Band Sumo Deadlift",
+    "muscle": "hamstrings",
+    "gif": "gifs/reverse_band_sumo_deadlift.gif"
+  },
+  {
+    "name": "Stiff-Legged Barbell Deadlift",
+    "muscle": "hamstrings",
+    "gif": "gifs/stiff-legged_barbell_deadlift.gif"
+  },
+  {
+    "name": "Stiff-Legged Dumbbell Deadlift",
+    "muscle": "hamstrings",
+    "gif": "gifs/stiff-legged_dumbbell_deadlift.gif"
+  },
+  {
+    "name": "Sumo Deadlift with Bands",
+    "muscle": "hamstrings",
+    "gif": "gifs/sumo_deadlift_with_bands.gif"
+  },
+  {
+    "name": "Bent-Arm Barbell Pullover",
+    "muscle": "lats",
+    "gif": "gifs/bent-arm_barbell_pullover.gif"
+  },
+  {
+    "name": "Cable Incline Pushdown",
+    "muscle": "lats",
+    "gif": "gifs/cable_incline_pushdown.gif"
+  },
+  {
+    "name": "Elevated Cable Rows",
+    "muscle": "lats",
+    "gif": "gifs/elevated_cable_rows.gif"
+  },
+  {
+    "name": "Pullups",
+    "muscle": "lats",
+    "gif": "gifs/pullups.gif"
+  },
+  {
+    "name": "Underhand Cable Pulldowns",
+    "muscle": "lats",
+    "gif": "gifs/underhand_cable_pulldowns.gif"
+  },
+  {
+    "name": "V-Bar Pullup",
+    "muscle": "lats",
+    "gif": "gifs/v-bar_pullup.gif"
+  },
+  {
+    "name": "Wide-Grip Rear Pull-Up",
+    "muscle": "lats",
+    "gif": "gifs/wide-grip_rear_pull-up.gif"
+  },
+  {
+    "name": "Barbell Deadlift",
+    "muscle": "lower back",
+    "gif": "gifs/barbell_deadlift.gif"
+  },
+  {
+    "name": "Deadlift with Bands",
+    "muscle": "lower back",
+    "gif": "gifs/deadlift_with_bands.gif"
+  },
+  {
+    "name": "Hyperextensions With No Hyperextension Bench",
+    "muscle": "lower back",
+    "gif": "gifs/hyperextensions_with_no_hyperextension_bench.gif"
+  },
+  {
+    "name": "Rack Pull with Bands",
+    "muscle": "lower back",
+    "gif": "gifs/rack_pull_with_bands.gif"
+  },
+  {
+    "name": "Reverse Band Deadlift",
+    "muscle": "lower back",
+    "gif": "gifs/reverse_band_deadlift.gif"
+  },
+  {
+    "name": "Stiff Leg Barbell Good Morning",
+    "muscle": "lower back",
+    "gif": "gifs/stiff_leg_barbell_good_morning.gif"
+  },
+  {
+    "name": "Bent Over Barbell Row",
+    "muscle": "middle back",
+    "gif": "gifs/bent_over_barbell_row.gif"
+  },
+  {
+    "name": "Bent Over Two-Dumbbell Row",
+    "muscle": "middle back",
+    "gif": "gifs/bent_over_two-dumbbell_row.gif"
+  },
+  {
+    "name": "Bent Over Two-Dumbbell Row With Palms In",
+    "muscle": "middle back",
+    "gif": "gifs/bent_over_two-dumbbell_row_with_palms_in.gif"
+  },
+  {
+    "name": "Dumbbell Incline Row",
+    "muscle": "middle back",
+    "gif": "gifs/dumbbell_incline_row.gif"
+  },
+  {
+    "name": "Lying Cambered Barbell Row",
+    "muscle": "middle back",
+    "gif": "gifs/lying_cambered_barbell_row.gif"
+  },
+  {
+    "name": "One-Arm Dumbbell Row",
+    "muscle": "middle back",
+    "gif": "gifs/one-arm_dumbbell_row.gif"
+  },
+  {
+    "name": "Seated Cable Rows",
+    "muscle": "middle back",
+    "gif": "gifs/seated_cable_rows.gif"
+  },
+  {
+    "name": "Seated One-arm Cable Pulley Rows",
+    "muscle": "middle back",
+    "gif": "gifs/seated_one-arm_cable_pulley_rows.gif"
+  },
+  {
+    "name": "Barbell Full Squat",
+    "muscle": "quadriceps",
+    "gif": "gifs/barbell_full_squat.gif"
+  },
+  {
+    "name": "Barbell Hack Squat",
+    "muscle": "quadriceps",
+    "gif": "gifs/barbell_hack_squat.gif"
+  },
+  {
+    "name": "Barbell Lunge",
+    "muscle": "quadriceps",
+    "gif": "gifs/barbell_lunge.gif"
+  },
+  {
+    "name": "Barbell Side Split Squat",
+    "muscle": "quadriceps",
+    "gif": "gifs/barbell_side_split_squat.gif"
+  },
+  {
+    "name": "Barbell Squat",
+    "muscle": "quadriceps",
+    "gif": "gifs/barbell_squat.gif"
+  },
+  {
+    "name": "Barbell Squat To A Bench",
+    "muscle": "quadriceps",
+    "gif": "gifs/barbell_squat_to_a_bench.gif"
+  },
+  {
+    "name": "Barbell Step Ups",
+    "muscle": "quadriceps",
+    "gif": "gifs/barbell_step_ups.gif"
+  },
+  {
+    "name": "Barbell Walking Lunge",
+    "muscle": "quadriceps",
+    "gif": "gifs/barbell_walking_lunge.gif"
+  },
+  {
+    "name": "Bodyweight Squat",
+    "muscle": "quadriceps",
+    "gif": "gifs/bodyweight_squat.gif"
+  },
+  {
+    "name": "Box Squat with Bands",
+    "muscle": "quadriceps",
+    "gif": "gifs/box_squat_with_bands.gif"
+  },
+  {
+    "name": "Cable Deadlifts",
+    "muscle": "quadriceps",
+    "gif": "gifs/cable_deadlifts.gif"
+  },
+  {
+    "name": "Cable Hip Adduction",
+    "muscle": "quadriceps",
+    "gif": "gifs/cable_hip_adduction.gif"
+  },
+  {
+    "name": "Dumbbell Lunges",
+    "muscle": "quadriceps",
+    "gif": "gifs/dumbbell_lunges.gif"
+  },
+  {
+    "name": "Dumbbell Rear Lunge",
+    "muscle": "quadriceps",
+    "gif": "gifs/dumbbell_rear_lunge.gif"
+  },
+  {
+    "name": "Dumbbell Seated Box Jump",
+    "muscle": "quadriceps",
+    "gif": "gifs/dumbbell_seated_box_jump.gif"
+  },
+  {
+    "name": "Dumbbell Squat",
+    "muscle": "quadriceps",
+    "gif": "gifs/dumbbell_squat.gif"
+  },
+  {
+    "name": "Dumbbell Squat To A Bench",
+    "muscle": "quadriceps",
+    "gif": "gifs/dumbbell_squat_to_a_bench.gif"
+  },
+  {
+    "name": "Dumbbell Step Ups",
+    "muscle": "quadriceps",
+    "gif": "gifs/dumbbell_step_ups.gif"
+  },
+  {
+    "name": "Elevated Back Lunge",
+    "muscle": "quadriceps",
+    "gif": "gifs/elevated_back_lunge.gif"
+  },
+  {
+    "name": "Front Barbell Squat",
+    "muscle": "quadriceps",
+    "gif": "gifs/front_barbell_squat.gif"
+  },
+  {
+    "name": "Front Barbell Squat To A Bench",
+    "muscle": "quadriceps",
+    "gif": "gifs/front_barbell_squat_to_a_bench.gif"
+  },
+  {
+    "name": "Hip Flexion with Band",
+    "muscle": "quadriceps",
+    "gif": "gifs/hip_flexion_with_band.gif"
+  },
+  {
+    "name": "Jerk Dip Squat",
+    "muscle": "quadriceps",
+    "gif": "gifs/jerk_dip_squat.gif"
+  },
+  {
+    "name": "One Leg Barbell Squat",
+    "muscle": "quadriceps",
+    "gif": "gifs/one_leg_barbell_squat.gif"
+  },
+  {
+    "name": "Plie Dumbbell Squat",
+    "muscle": "quadriceps",
+    "gif": "gifs/plie_dumbbell_squat.gif"
+  },
+  {
+    "name": "Reverse Band Box Squat",
+    "muscle": "quadriceps",
+    "gif": "gifs/reverse_band_box_squat.gif"
+  },
+  {
+    "name": "Reverse Band Power Squat",
+    "muscle": "quadriceps",
+    "gif": "gifs/reverse_band_power_squat.gif"
+  },
+  {
+    "name": "Split Squat with Dumbbells",
+    "muscle": "quadriceps",
+    "gif": "gifs/split_squat_with_dumbbells.gif"
+  },
+  {
+    "name": "Squat with Bands",
+    "muscle": "quadriceps",
+    "gif": "gifs/squat_with_bands.gif"
+  },
+  {
+    "name": "Squats - With Bands",
+    "muscle": "quadriceps",
+    "gif": "gifs/squats_-_with_bands.gif"
+  },
+  {
+    "name": "Wide Stance Barbell Squat",
+    "muscle": "quadriceps",
+    "gif": "gifs/wide_stance_barbell_squat.gif"
+  },
+  {
+    "name": "Alternating Cable Shoulder Press",
+    "muscle": "shoulders",
+    "gif": "gifs/alternating_cable_shoulder_press.gif"
+  },
+  {
+    "name": "Arnold Dumbbell Press",
+    "muscle": "shoulders",
+    "gif": "gifs/arnold_dumbbell_press.gif"
+  },
+  {
+    "name": "Back Flyes - With Bands",
+    "muscle": "shoulders",
+    "gif": "gifs/back_flyes_-_with_bands.gif"
+  },
+  {
+    "name": "Band Pull Apart",
+    "muscle": "shoulders",
+    "gif": "gifs/band_pull_apart.gif"
+  },
+  {
+    "name": "Barbell Incline Shoulder Raise",
+    "muscle": "shoulders",
+    "gif": "gifs/barbell_incline_shoulder_raise.gif"
+  },
+  {
+    "name": "Barbell Rear Delt Row",
+    "muscle": "shoulders",
+    "gif": "gifs/barbell_rear_delt_row.gif"
+  },
+  {
+    "name": "Barbell Shoulder Press",
+    "muscle": "shoulders",
+    "gif": "gifs/barbell_shoulder_press.gif"
+  },
+  {
+    "name": "Bent Over Dumbbell Rear Delt Raise With Head On Bench",
+    "muscle": "shoulders",
+    "gif": "gifs/bent_over_dumbbell_rear_delt_raise_with_head_on_bench.gif"
+  },
+  {
+    "name": "Cable Internal Rotation",
+    "muscle": "shoulders",
+    "gif": "gifs/cable_internal_rotation.gif"
+  },
+  {
+    "name": "Cable Rear Delt Fly",
+    "muscle": "shoulders",
+    "gif": "gifs/cable_rear_delt_fly.gif"
+  },
+  {
+    "name": "Cable Rope Rear-Delt Rows",
+    "muscle": "shoulders",
+    "gif": "gifs/cable_rope_rear-delt_rows.gif"
+  },
+  {
+    "name": "Cable Seated Lateral Raise",
+    "muscle": "shoulders",
+    "gif": "gifs/cable_seated_lateral_raise.gif"
+  },
+  {
+    "name": "Cable Shoulder Press",
+    "muscle": "shoulders",
+    "gif": "gifs/cable_shoulder_press.gif"
+  },
+  {
+    "name": "Dumbbell Incline Shoulder Raise",
+    "muscle": "shoulders",
+    "gif": "gifs/dumbbell_incline_shoulder_raise.gif"
+  },
+  {
+    "name": "Dumbbell Lying One-Arm Rear Lateral Raise",
+    "muscle": "shoulders",
+    "gif": "gifs/dumbbell_lying_one-arm_rear_lateral_raise.gif"
+  },
+  {
+    "name": "Dumbbell Lying Rear Lateral Raise",
+    "muscle": "shoulders",
+    "gif": "gifs/dumbbell_lying_rear_lateral_raise.gif"
+  },
+  {
+    "name": "Dumbbell One-Arm Shoulder Press",
+    "muscle": "shoulders",
+    "gif": "gifs/dumbbell_one-arm_shoulder_press.gif"
+  },
+  {
+    "name": "Dumbbell One-Arm Upright Row",
+    "muscle": "shoulders",
+    "gif": "gifs/dumbbell_one-arm_upright_row.gif"
+  },
+  {
+    "name": "Dumbbell Raise",
+    "muscle": "shoulders",
+    "gif": "gifs/dumbbell_raise.gif"
+  },
+  {
+    "name": "Dumbbell Scaption",
+    "muscle": "shoulders",
+    "gif": "gifs/dumbbell_scaption.gif"
+  },
+  {
+    "name": "Dumbbell Shoulder Press",
+    "muscle": "shoulders",
+    "gif": "gifs/dumbbell_shoulder_press.gif"
+  },
+  {
+    "name": "External Rotation with Band",
+    "muscle": "shoulders",
+    "gif": "gifs/external_rotation_with_band.gif"
+  },
+  {
+    "name": "External Rotation with Cable",
+    "muscle": "shoulders",
+    "gif": "gifs/external_rotation_with_cable.gif"
+  },
+  {
+    "name": "Front Cable Raise",
+    "muscle": "shoulders",
+    "gif": "gifs/front_cable_raise.gif"
+  },
+  {
+    "name": "Front Dumbbell Raise",
+    "muscle": "shoulders",
+    "gif": "gifs/front_dumbbell_raise.gif"
+  },
+  {
+    "name": "Front Incline Dumbbell Raise",
+    "muscle": "shoulders",
+    "gif": "gifs/front_incline_dumbbell_raise.gif"
+  },
+  {
+    "name": "Front Two-Dumbbell Raise",
+    "muscle": "shoulders",
+    "gif": "gifs/front_two-dumbbell_raise.gif"
+  },
+  {
+    "name": "Handstand Push-Ups",
+    "muscle": "shoulders",
+    "gif": "gifs/handstand_push-ups.gif"
+  },
+  {
+    "name": "Internal Rotation with Band",
+    "muscle": "shoulders",
+    "gif": "gifs/internal_rotation_with_band.gif"
+  },
+  {
+    "name": "Lateral Raise - With Bands",
+    "muscle": "shoulders",
+    "gif": "gifs/lateral_raise_-_with_bands.gif"
+  },
+  {
+    "name": "Seated Barbell Military Press",
+    "muscle": "shoulders",
+    "gif": "gifs/seated_barbell_military_press.gif"
+  },
+  {
+    "name": "Seated Cable Shoulder Press",
+    "muscle": "shoulders",
+    "gif": "gifs/seated_cable_shoulder_press.gif"
+  },
+  {
+    "name": "Seated Dumbbell Press",
+    "muscle": "shoulders",
+    "gif": "gifs/seated_dumbbell_press.gif"
+  },
+  {
+    "name": "Shoulder Press - With Bands",
+    "muscle": "shoulders",
+    "gif": "gifs/shoulder_press_-_with_bands.gif"
+  },
+  {
+    "name": "Single Dumbbell Raise",
+    "muscle": "shoulders",
+    "gif": "gifs/single_dumbbell_raise.gif"
+  },
+  {
+    "name": "Standing Alternating Dumbbell Press",
+    "muscle": "shoulders",
+    "gif": "gifs/standing_alternating_dumbbell_press.gif"
+  },
+  {
+    "name": "Standing Barbell Press Behind Neck",
+    "muscle": "shoulders",
+    "gif": "gifs/standing_barbell_press_behind_neck.gif"
+  },
+  {
+    "name": "Standing Dumbbell Press",
+    "muscle": "shoulders",
+    "gif": "gifs/standing_dumbbell_press.gif"
+  },
+  {
+    "name": "Standing Dumbbell Straight-Arm Front Delt Raise Above Head",
+    "muscle": "shoulders",
+    "gif": "gifs/standing_dumbbell_straight-arm_front_delt_raise_above_head.gif"
+  },
+  {
+    "name": "Standing Front Barbell Raise Over Head",
+    "muscle": "shoulders",
+    "gif": "gifs/standing_front_barbell_raise_over_head.gif"
+  },
+  {
+    "name": "Standing Palm-In One-Arm Dumbbell Press",
+    "muscle": "shoulders",
+    "gif": "gifs/standing_palm-in_one-arm_dumbbell_press.gif"
+  },
+  {
+    "name": "Standing Palms-In Dumbbell Press",
+    "muscle": "shoulders",
+    "gif": "gifs/standing_palms-in_dumbbell_press.gif"
+  },
+  {
+    "name": "Upright Barbell Row",
+    "muscle": "shoulders",
+    "gif": "gifs/upright_barbell_row.gif"
+  },
+  {
+    "name": "Barbell Shrug",
+    "muscle": "traps",
+    "gif": "gifs/barbell_shrug.gif"
+  },
+  {
+    "name": "Barbell Shrug Behind The Back",
+    "muscle": "traps",
+    "gif": "gifs/barbell_shrug_behind_the_back.gif"
+  },
+  {
+    "name": "Cable Shrugs",
+    "muscle": "traps",
+    "gif": "gifs/cable_shrugs.gif"
+  },
+  {
+    "name": "Dumbbell Shrug",
+    "muscle": "traps",
+    "gif": "gifs/dumbbell_shrug.gif"
+  },
+  {
+    "name": "Standing Dumbbell Upright Row",
+    "muscle": "traps",
+    "gif": "gifs/standing_dumbbell_upright_row.gif"
+  },
+  {
+    "name": "Upright Cable Row",
+    "muscle": "traps",
+    "gif": "gifs/upright_cable_row.gif"
+  },
+  {
+    "name": "Upright Row - With Bands",
+    "muscle": "traps",
+    "gif": "gifs/upright_row_-_with_bands.gif"
+  },
+  {
+    "name": "Band Skull Crusher",
+    "muscle": "triceps",
+    "gif": "gifs/band_skull_crusher.gif"
+  },
+  {
+    "name": "Bench Dips",
+    "muscle": "triceps",
+    "gif": "gifs/bench_dips.gif"
+  },
+  {
+    "name": "Cable Incline Triceps Extension",
+    "muscle": "triceps",
+    "gif": "gifs/cable_incline_triceps_extension.gif"
+  },
+  {
+    "name": "Cable Lying Triceps Extension",
+    "muscle": "triceps",
+    "gif": "gifs/cable_lying_triceps_extension.gif"
+  },
+  {
+    "name": "Cable One Arm Tricep Extension",
+    "muscle": "triceps",
+    "gif": "gifs/cable_one_arm_tricep_extension.gif"
+  },
+  {
+    "name": "Cable Rope Overhead Triceps Extension",
+    "muscle": "triceps",
+    "gif": "gifs/cable_rope_overhead_triceps_extension.gif"
+  },
+  {
+    "name": "Close-Grip Barbell Bench Press",
+    "muscle": "triceps",
+    "gif": "gifs/close-grip_barbell_bench_press.gif"
+  },
+  {
+    "name": "Close-Grip Dumbbell Press",
+    "muscle": "triceps",
+    "gif": "gifs/close-grip_dumbbell_press.gif"
+  },
+  {
+    "name": "Close-Grip Push-Up off of a Dumbbell",
+    "muscle": "triceps",
+    "gif": "gifs/close-grip_push-up_off_of_a_dumbbell.gif"
+  },
+  {
+    "name": "Decline Dumbbell Triceps Extension",
+    "muscle": "triceps",
+    "gif": "gifs/decline_dumbbell_triceps_extension.gif"
+  },
+  {
+    "name": "Dips - Triceps Version",
+    "muscle": "triceps",
+    "gif": "gifs/dips_-_triceps_version.gif"
+  },
+  {
+    "name": "Dumbbell Floor Press",
+    "muscle": "triceps",
+    "gif": "gifs/dumbbell_floor_press.gif"
+  },
+  {
+    "name": "Dumbbell One-Arm Triceps Extension",
+    "muscle": "triceps",
+    "gif": "gifs/dumbbell_one-arm_triceps_extension.gif"
+  },
+  {
+    "name": "Dumbbell Tricep Extension -Pronated Grip",
+    "muscle": "triceps",
+    "gif": "gifs/dumbbell_tricep_extension_-pronated_grip.gif"
+  },
+  {
+    "name": "Incline Barbell Triceps Extension",
+    "muscle": "triceps",
+    "gif": "gifs/incline_barbell_triceps_extension.gif"
+  },
+  {
+    "name": "Incline Push-Up Close-Grip",
+    "muscle": "triceps",
+    "gif": "gifs/incline_push-up_close-grip.gif"
+  },
+  {
+    "name": "Kneeling Cable Triceps Extension",
+    "muscle": "triceps",
+    "gif": "gifs/kneeling_cable_triceps_extension.gif"
+  },
+  {
+    "name": "Low Cable Triceps Extension",
+    "muscle": "triceps",
+    "gif": "gifs/low_cable_triceps_extension.gif"
+  },
+  {
+    "name": "Lying Close-Grip Barbell Triceps Extension Behind The Head",
+    "muscle": "triceps",
+    "gif": "gifs/lying_close-grip_barbell_triceps_extension_behind_the_head.gif"
+  },
+  {
+    "name": "Lying Close-Grip Barbell Triceps Press To Chin",
+    "muscle": "triceps",
+    "gif": "gifs/lying_close-grip_barbell_triceps_press_to_chin.gif"
+  },
+  {
+    "name": "Lying Dumbbell Tricep Extension",
+    "muscle": "triceps",
+    "gif": "gifs/lying_dumbbell_tricep_extension.gif"
+  },
+  {
+    "name": "One Arm Pronated Dumbbell Triceps Extension",
+    "muscle": "triceps",
+    "gif": "gifs/one_arm_pronated_dumbbell_triceps_extension.gif"
+  },
+  {
+    "name": "One Arm Supinated Dumbbell Triceps Extension",
+    "muscle": "triceps",
+    "gif": "gifs/one_arm_supinated_dumbbell_triceps_extension.gif"
+  },
+  {
+    "name": "Push-Ups - Close Triceps Position",
+    "muscle": "triceps",
+    "gif": "gifs/push-ups_-_close_triceps_position.gif"
+  },
+  {
+    "name": "Reverse Band Bench Press",
+    "muscle": "triceps",
+    "gif": "gifs/reverse_band_bench_press.gif"
+  },
+  {
+    "name": "Seated Bent-Over One-Arm Dumbbell Triceps Extension",
+    "muscle": "triceps",
+    "gif": "gifs/seated_bent-over_one-arm_dumbbell_triceps_extension.gif"
+  },
+  {
+    "name": "Seated Bent-Over Two-Arm Dumbbell Triceps Extension",
+    "muscle": "triceps",
+    "gif": "gifs/seated_bent-over_two-arm_dumbbell_triceps_extension.gif"
+  },
+  {
+    "name": "Speed Band Overhead Triceps",
+    "muscle": "triceps",
+    "gif": "gifs/speed_band_overhead_triceps.gif"
+  },
+  {
+    "name": "Standing Bent-Over One-Arm Dumbbell Triceps Extension",
+    "muscle": "triceps",
+    "gif": "gifs/standing_bent-over_one-arm_dumbbell_triceps_extension.gif"
+  },
+  {
+    "name": "Standing Bent-Over Two-Arm Dumbbell Triceps Extension",
+    "muscle": "triceps",
+    "gif": "gifs/standing_bent-over_two-arm_dumbbell_triceps_extension.gif"
+  },
+  {
+    "name": "Standing Dumbbell Triceps Extension",
+    "muscle": "triceps",
+    "gif": "gifs/standing_dumbbell_triceps_extension.gif"
+  },
+  {
+    "name": "Standing One-Arm Dumbbell Triceps Extension",
+    "muscle": "triceps",
+    "gif": "gifs/standing_one-arm_dumbbell_triceps_extension.gif"
+  },
+  {
+    "name": "Standing Overhead Barbell Triceps Extension",
+    "muscle": "triceps",
+    "gif": "gifs/standing_overhead_barbell_triceps_extension.gif"
+  },
+  {
+    "name": "Tricep Dumbbell Kickback",
+    "muscle": "triceps",
+    "gif": "gifs/tricep_dumbbell_kickback.gif"
+  }
+]
