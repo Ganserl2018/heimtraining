@@ -108,30 +108,43 @@ body{
 .set{padding:.35rem .5rem; font-size:.75rem;}
 .set.done{background:var(--accent); color:#20231e; border-color:var(--accent);}
 
+/* Basis-Kartenlook für Profil/Alle-Übungen (kein Nike-Style — nur die Startseite via
+   .overview-home bekommt den, siehe Block danach). */
+.overview .ov-card{background:var(--panel); border:1px solid var(--border-soft); border-radius:16px; padding:1.05rem 1.15rem;}
+.overview .ov-card-title{font-size:.72rem; letter-spacing:.02em; color:var(--text-faint); margin-bottom:.55rem; font-weight:500;}
+.overview .ov-card button{margin-top:.5rem; padding:.5rem .9rem; font-size:.85rem;}
+.ov-quick{display:grid; grid-template-columns:1fr 1fr; gap:.55rem;}
+.ov-quick button{min-height:56px; border-radius:12px; border:1px solid var(--border); background:var(--bg-raise); color:var(--text); text-align:left; padding:.5rem .9rem; display:flex; flex-direction:column; justify-content:center; gap:.15rem; margin-top:0;}
+.ov-quick button:active{border-color:var(--accent);}
+.ov-quick-name{font-size:.88rem; font-weight:600;}
+.ov-quick-meta{font-size:.72rem; color:var(--text-faint); font-weight:400;}
+
 /* V9-01: Übersicht — Nike-Style-Redesign (Alex-Wunsch 01.10., nur diese Seite betroffen).
-   Eigene Farbwelt via Scope auf .overview, Rest der App bleibt unverändert. */
-.overview{
+   Eigener Wrapper .overview-home (statt geteiltem .overview), muss NACH dem Basis-Block
+   oben stehen: gleiche Spezifität, es gewinnt die spätere Regel im Quelltext. */
+.overview-home{
   display:flex; flex-direction:column; gap:.85rem;
   background:#0a0a0a; margin:-1rem -1.1rem -5.5rem; padding:1rem 1.1rem 5.5rem;
   --nike-volt:#ccff00; --nike-text:#f5f5f0; --nike-dim:#8a8d86;
 }
-.overview .ov-card{background:#161616; border:1px solid #262626; border-radius:16px; padding:1.05rem 1.15rem;}
-.overview .ov-card-title{font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--nike-dim); margin-bottom:.6rem; font-weight:700;}
-.overview .ov-card button{margin-top:.5rem; padding:.5rem .9rem; font-size:.85rem;}
-.ov-quick-section{display:flex; flex-direction:column; gap:.5rem;}
-.ov-quick-section .ov-card-title{padding:0 .1rem;}
-.ov-quick-tiles{display:flex; flex-direction:column; gap:.6rem;}
-.ov-tile{
+.overview-home .ov-card{background:#161616; border:1px solid #262626; border-radius:16px; padding:1.05rem 1.15rem;}
+.overview-home .ov-card-title{font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--nike-dim); margin-bottom:.6rem; font-weight:700;}
+.overview-home .ov-card button{margin-top:.5rem; padding:.5rem .9rem; font-size:.85rem;}
+.overview-home .ov-quick-section{display:flex; flex-direction:column; gap:.5rem;}
+.overview-home .ov-quick-section .ov-card-title{padding:0 .1rem;}
+.overview-home .ov-quick-tiles{display:flex; flex-direction:column; gap:.6rem;}
+.overview-home .ov-tile{
   min-height:84px; border-radius:16px; border:none; text-align:left; padding:1rem 1.15rem;
   display:flex; flex-direction:column; justify-content:center; gap:.2rem; margin-top:0; position:relative; overflow:hidden;
 }
-.ov-tile-name{font-size:1.3rem; font-weight:800; text-transform:uppercase; letter-spacing:-.01em; color:#0a0a0a; position:relative;}
-.ov-tile-meta{font-size:.78rem; font-weight:600; color:#0a0a0a; opacity:.75; position:relative;}
-.ov-tile-0{background:var(--nike-volt);}
-.ov-tile-1{background:#ff5a36;}
-.ov-tile-2{background:#5ad1ff;}
-.ov-tile-3{background:#f5f5f0;}
-.ov-tile:active{filter:brightness(.92);}
+.overview-home .ov-tile-name{font-size:1.3rem; font-weight:800; text-transform:uppercase; letter-spacing:-.01em; color:#0a0a0a; position:relative;}
+.overview-home .ov-tile-meta{font-size:.78rem; font-weight:600; color:#0a0a0a; opacity:.75; position:relative;}
+.overview-home .ov-tile-0{background:var(--nike-volt);}
+.overview-home .ov-tile-1{background:#ff5a36;}
+.overview-home .ov-tile-2{background:#5ad1ff;}
+.overview-home .ov-tile-3{background:#f5f5f0;}
+.overview-home .ov-tile:active{filter:brightness(.92);}
+
 .ov-card .history-item{padding:.7rem 0; border-bottom:1px solid var(--border-soft); display:flex; align-items:center; justify-content:space-between; gap:.8rem;}
 .ov-card .history-item:last-of-type{border-bottom:none; padding-bottom:.3rem;}
 .ov-card .history-item:first-of-type{padding-top:0;}
@@ -203,24 +216,24 @@ body{
 .profile-form input,.profile-form select{font-size:16px; padding:.5rem; border-radius:6px; border:1px solid var(--border); background:var(--bg); color:var(--text);}
 
 /* V9-01: Quick-Start-Card im Nike-Look */
-.ov-quickstart{background:#161616; border:1px solid #262626; position:relative; overflow:hidden;}
-.ov-quickstart::after{content:""; position:absolute; right:-30px; top:-30px; width:140px; height:140px; border-radius:50%; border:22px solid rgba(204,255,0,.08);}
-.ov-quickstart-name{font-size:1.5rem; font-weight:800; text-transform:uppercase; margin:.15rem 0 .15rem; letter-spacing:-.01em; position:relative; color:var(--nike-text);}
-.ov-quickstart-sub{color:var(--nike-dim); font-size:.85rem; position:relative;}
-.ov-quickstart .ov-btn{margin-top:.9rem; background:var(--nike-volt); color:#0a0a0a;}
+.overview-home .ov-quickstart{background:#161616; border:1px solid #262626; position:relative; overflow:hidden;}
+.overview-home .ov-quickstart::after{content:""; position:absolute; right:-30px; top:-30px; width:140px; height:140px; border-radius:50%; border:22px solid rgba(204,255,0,.08);}
+.overview-home .ov-quickstart-name{font-size:1.5rem; font-weight:800; text-transform:uppercase; margin:.15rem 0 .15rem; letter-spacing:-.01em; position:relative; color:var(--nike-text);}
+.overview-home .ov-quickstart-sub{color:var(--nike-dim); font-size:.85rem; position:relative;}
+.overview-home .ov-quickstart .ov-btn{margin-top:.9rem; background:var(--nike-volt); color:#0a0a0a;}
 
 /* V9-01: Fortschritt als 2 Leisten (Trainings diese Woche + Streak), statt Ring/Einzelbalken */
-.ov-progress{display:flex; flex-direction:column; gap:.9rem;}
-.ov-bar-row{display:flex; flex-direction:column; gap:.35rem;}
-.ov-bar-label{display:flex; align-items:center; justify-content:space-between; font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.03em; color:var(--nike-text);}
-.ov-bar-value{font-size:1.5rem; font-weight:800; letter-spacing:-.02em; font-variant-numeric:tabular-nums; color:var(--nike-text);}
-.ov-bar-value small{font-size:.8rem; font-weight:600; color:var(--nike-dim); letter-spacing:0;}
-.ov-bar-track{height:10px; border-radius:99px; background:#262626; overflow:hidden;}
-.ov-bar-fill{height:100%; background:var(--nike-volt); border-radius:99px;}
-.ov-bar-fill-streak{background:#ff5a36;}
+.overview-home .ov-progress{display:flex; flex-direction:column; gap:.9rem;}
+.overview-home .ov-bar-row{display:flex; flex-direction:column; gap:.35rem;}
+.overview-home .ov-bar-label{display:flex; align-items:center; justify-content:space-between; font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.03em; color:var(--nike-text);}
+.overview-home .ov-bar-value{font-size:1.5rem; font-weight:800; letter-spacing:-.02em; font-variant-numeric:tabular-nums; color:var(--nike-text);}
+.overview-home .ov-bar-value small{font-size:.8rem; font-weight:600; color:var(--nike-dim); letter-spacing:0;}
+.overview-home .ov-bar-track{height:10px; border-radius:99px; background:#262626; overflow:hidden;}
+.overview-home .ov-bar-fill{height:100%; background:var(--nike-volt); border-radius:99px;}
+.overview-home .ov-bar-fill-streak{background:#ff5a36;}
 .goal-edit-link{background:none; border:none; color:var(--nike-dim); font-size:.72rem; padding:.3rem 0; text-decoration:underline; text-underline-offset:2px; min-height:44px; text-transform:none; font-weight:500;}
 .goal-edit{display:flex; flex-direction:column; gap:.6rem; margin-top:.2rem;}
-.overview .goal-edit input{background:#0a0a0a; border-color:#262626; color:var(--nike-text);}
+.overview-home .goal-edit input{background:#0a0a0a; border-color:#262626; color:var(--nike-text);}
 .goal-edit label{display:flex; align-items:center; gap:.5rem; font-size:.85rem; color:var(--text-dim);}
 .goal-edit input{width:56px; font-size:.95rem; padding:.4rem; text-align:center; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text);}
 

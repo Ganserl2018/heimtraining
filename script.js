@@ -426,7 +426,7 @@ function renderOverview() {
   </div>` : '';
 
   content.innerHTML = `
-    <div class="overview">
+    <div class="overview overview-home">
       ${quickBlock}
       ${goalBlock}
       ${calBlock}
