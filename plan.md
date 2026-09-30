@@ -25,6 +25,13 @@ Stand: 2026-09-30
 | V6-04 | Ziel-Leiste v2 – nach Live-Test | ⚪ wait | V6-03 |
 | V6-05 | Status-Erkennung & -Anzeige (verpasst/unvollständig/erledigt) | ⚪ open | V6-01 |
 | V6-06 | Kalenderstreifen + Verlauf-Vorschau prominenter | ⚪ wait | V6-05 |
+| V6-07 | Design-Entwurf (Phase 3, eigener Design-Agent) | ⚪ wait | V6-01…06 |
+
+V6-07 Auftrag (30.09. geklärt): eigener Design-Agent bekommt die Referenz-Screenshots
+(Dashboard mit KPI-Kacheln/Kalorien-Balken/Plan-Card, Onboarding-Screen mit Bild-Karussell)
+als Stil-Vorgabe — übernimmt Kachel-Form, Seitenaufbau und einzelne Features (z.B. das
+Bild-Karussell vom Onboarding-Screen), baut daraus aber ein eigenständiges Design, keine
+1:1-Kopie der Vorlage. Läuft erst NACH V6-01 bis V6-06 (Struktur/Logik zuerst, 4-Phasen-Schema).
 
 V6-01 Detail: Uhrzeit ist informativ (Erinnerung), kein harter Cutoff — es zählt nur
 der Kalendertag.
