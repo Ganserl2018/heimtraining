@@ -26,6 +26,19 @@ Stand: 2026-09-30
 | V6-05 | Verpasst-Erkennung & -Anzeige (Mechanik iterativ) | ⚪ open | V6-01 |
 | V6-06 | Kalenderstreifen + Verlauf-Vorschau prominenter | ⚪ wait | V6-05 |
 
+## V7 – Profil-Seite
+| ID | Titel | Status | Deps |
+|---|---|---|---|
+| V7-01 | Profil-Formular (Gewicht, Alter, Größe, Geschlecht) | ⚪ open | — |
+
+## V8 – Kalorien & Verlauf-Detailseite
+| ID | Titel | Status | Deps |
+|---|---|---|---|
+| V8-01 | MET-Tabelle pro Übung (aus Free-Exercise-DB-Attributen) | ⚪ open | — |
+| V8-02 | "Training starten"-Button + Start-Zeitpunkt | ⚪ open | — |
+| V8-03 | Kalorien-Berechnung pro Training | ⚪ wait | V7-01, V8-01, V8-02 |
+| V8-04 | Verlauf-Detailseite | ⚪ wait | V8-03 |
+
 ## V5 – Ideenspeicher / Warteliste
 | ID | Titel | Status | Deps |
 |---|---|---|---|
