@@ -327,6 +327,18 @@ function lastTrainedText(d, h) {
 // Lokal rechnen wie today()/addDays().
 const mondayOf = dateStr => { const d = new Date(dateStr + 'T00:00:00'); const wd = (d.getDay() + 6) % 7; d.setDate(d.getDate() - wd); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
 
+// V9-01: Streak – Anzahl aufeinanderfolgender Tage (bis heute/gestern zurück) mit
+// mind. 1 abgeschlossenem Training. Bricht ab, sobald ein Tag fehlt.
+function computeStreak(h) {
+  const trainedDates = new Set(h.map(r => r.date));
+  let streak = 0;
+  let cursor = today();
+  // Heute noch nicht trainiert zählt nicht als Bruch – Streak darf bei gestern weiterlaufen.
+  if (!trainedDates.has(cursor)) cursor = addDays(cursor, -1);
+  while (trainedDates.has(cursor)) { streak++; cursor = addDays(cursor, -1); }
+  return streak;
+}
+
 function renderOverview() {
   const t = today();
   const h = loadHistory();
@@ -361,25 +373,32 @@ function renderOverview() {
       </div>`
     : (scheduled.length ? '' : '');
 
-  // V6-03: Ziel-Leiste v1 – frei definierbares Ziel (Zahl + Zeitraum).
+  // V9-01: Wochenziel als 2 Leisten (Trainings diese Woche + Streak) statt Ring/Einzelbalken
+  // (Alex-Wunsch 01.10.: Nike-Style-Vorschlag hatte Ring, stattdessen 2 Balken).
   const goal = loadGoal();
   const since = addDays(t, -(goal.periodDays - 1));
   const goalCount = h.filter(r => r.date >= since && r.date <= t).length;
   const goalPct = Math.min(100, Math.round(goalCount / goal.target * 100));
-  const goalBlock = `<div class="ov-card">
-    <div class="ov-card-title">Wochenziel</div>
+  const streak = computeStreak(h);
+  const streakPct = Math.min(100, Math.round(streak / Math.max(goal.target, 1) * 100));
+  const goalBlock = `<div class="ov-card ov-progress">
+    <div class="ov-card-title">Fortschritt</div>
     ${goalEditing
       ? `<div class="goal-edit">
           <label>Ziel <input id="goal-target" type="number" min="1" value="${goal.target}"> Trainings</label>
           <label>in <input id="goal-period" type="number" min="1" value="${goal.periodDays}"> Tagen</label>
           <div class="edit-bar"><button class="ov-btn" data-act="goalSave">Speichern</button><button class="ov-btn ov-btn-ghost" data-act="goalCancel">Abbrechen</button></div>
         </div>`
-      : `<div class="goal-row">
-          <p class="goal-text">${goalCount} <small>/ ${goal.target} Trainings</small></p>
-          <button class="goal-edit-link" data-act="goalEdit">Anpassen</button>
+      : `<div class="ov-bar-row">
+          <div class="ov-bar-label"><span>Trainings diese Woche</span><button class="goal-edit-link" data-act="goalEdit">Anpassen</button></div>
+          <div class="ov-bar-value">${goalCount}<small> / ${goal.target}</small></div>
+          <div class="ov-bar-track"><div class="ov-bar-fill" style="width:${goalPct}%"></div></div>
         </div>
-        <div class="goal-sub">in den letzten ${goal.periodDays} Tagen</div>
-        <div class="goal-bar"><div class="goal-fill" style="width:${goalPct}%"></div></div>`}
+        <div class="ov-bar-row">
+          <div class="ov-bar-label"><span>Streak</span></div>
+          <div class="ov-bar-value">${streak}<small> Tag${streak === 1 ? '' : 'e'} 🔥</small></div>
+          <div class="ov-bar-track"><div class="ov-bar-fill ov-bar-fill-streak" style="width:${streakPct}%"></div></div>
+        </div>`}
   </div>`;
 
   // V6-05/06: Wochenplan-Statuskalender – Mo–So, je Training mit Wochentag-Zuordnung.
@@ -415,11 +434,11 @@ function renderOverview() {
         <div class="ov-card-title">Heute</div>
         ${todayBlock}
       </div>
-      <div class="ov-card">
+      <div class="ov-quick-section">
         <div class="ov-card-title">Schnellzugriff</div>
-        <div class="ov-quick">${DAYS.map(d => `<button data-act="goto" data-day="${d}">
-            <span class="ov-quick-name">${DAY_LABELS[d]}</span>
-            <span class="ov-quick-meta">~${estimateMin(d)} Min · ${lastTrainedText(d, h)}</span>
+        <div class="ov-quick-tiles">${DAYS.map((d, i) => `<button class="ov-tile ov-tile-${i % 4}" data-act="goto" data-day="${d}">
+            <span class="ov-tile-name">${DAY_LABELS[d]}</span>
+            <span class="ov-tile-meta">~${estimateMin(d)} Min · ${lastTrainedText(d, h)}</span>
           </button>`).join('')}</div>
       </div>
       <div class="ov-card">
