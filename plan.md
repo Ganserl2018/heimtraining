@@ -16,11 +16,21 @@ Stand: 2026-09-30
 | V4-02 | TV-Icon oben rechts (global) | 🟢 done | V4-01 |
 | V4-03 | TV-View an neuen Einstieg anpassen | 🟢 done | V4-02 |
 
+## V6 – Übersichtsseite 2.0 (geplant 30.09., noch nicht gebaut)
+| ID | Titel | Status | Deps |
+|---|---|---|---|
+| V6-01 | Feste Wochentage pro Wochenplan-Training | ⚪ open | — |
+| V6-02 | Quick-Start-Button (kombiniert: offen > heute fällig) | ⚪ open | V6-01 |
+| V6-03 | Ziel-Leiste v1 – Zahl + Zeitraum | ⚪ open | — |
+| V6-04 | Ziel-Leiste v2 – nach Live-Test | ⚪ wait | V6-03 |
+| V6-05 | Verpasst-Erkennung & -Anzeige (Mechanik iterativ) | ⚪ open | V6-01 |
+| V6-06 | Kalenderstreifen + Verlauf-Vorschau prominenter | ⚪ wait | V6-05 |
+
 ## V5 – Ideenspeicher / Warteliste
 | ID | Titel | Status | Deps |
 |---|---|---|---|
 | V5-01 | Ernährungs-Tab | ⚪ open | — |
-| V5-02 | Fortschritt/Ziele-Tab | ⚪ open | — |
+| V5-02 | Fortschritt/Ziele-Tab (V6-Ziel-Leiste kann später hierauf aufbauen) | ⚪ open | — |
 
 Live verifiziert (Playwright, Desktop-Breite 1100px): Sidebar "Alle Übungen" klappt
 Push/Pull/Legs/Core auf, Klick auf Übung öffnet "Tauschen"-Picker, TV-Icon öffnet
