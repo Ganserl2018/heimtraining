@@ -57,8 +57,8 @@ Gewicht + Ziel-Wiederholungen (z.B. "8-12") festgelegt; während/nach jedem Satz
 Ist-Reps + Ist-Gewicht ein und hakt ab. Bei Bedarf mitten im Training in den
 Trainingseinstellungen nachjustierbar (z.B. Gewicht runter, wenn's zu viel war). Löst die
 heutige feste Annahme "3 Sätze pro Übung" ab. Ziel-Reps legt Alex pro Übung selbst fest,
-kein Standardwert. Ob das nur den Wochenplan betrifft oder auch Push/Pull/Legs/Core ist
-noch nicht final geklärt (Alex' Antwort deutet auf "überall" hin) — vor dem Bauen bestätigen.
+kein Standardwert. Scope bestätigt (30.09.): gilt überall, nicht nur Wochenplan — auch
+Push/Pull/Legs/Core, jede einzelne Übung bekommt ihr eigenes Gewicht/Ziel-Reps.
 
 Live verifiziert (Playwright, Desktop-Breite 1100px): Sidebar "Alle Übungen" klappt
 Push/Pull/Legs/Core auf, Klick auf Übung öffnet "Tauschen"-Picker, TV-Icon öffnet
