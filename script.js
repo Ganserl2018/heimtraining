@@ -9,10 +9,11 @@ let base = {};       // exercises.json (Standard)
 let pool = [];       // pool.json (alle 514 Übungen)
 let overrides = {};  // {day: [übungen]} – nur editierte Tage
 let day = 'push';
-let view = 'overview'; // 'overview' | 'day' | 'history' | 'tv'
+let view = 'overview'; // 'overview' | 'day' | 'history' | 'tv' | 'allex'
 const DAYS = ['push', 'pull', 'legs', 'core'];
 const DAY_LABELS = { push: 'Push', pull: 'Pull', legs: 'Legs', core: 'Core' };
 let tvIndex = 0;      // aktuelle Übung im TV-Modus
+let tvReturn = null;  // V4: {view, day} – wohin "Zurück" aus der TV-Ansicht führt
 let picker = null;   // null = Tagesansicht, sonst {index[, wid]} (index null = hinzufügen)
 let filterMuscle = null; // V2-10: Bildergalerie-Picker – aktiver Muskelgruppen-Chip
 let filterEquip = null;  // V2-10: aktiver Ausrüstungs-Chip
@@ -89,18 +90,25 @@ function syncTabActive() {
   });
 }
 
-// V2-08: Sidebar zeigt pro Trainingstag die Übungsliste – Klick öffnet direkt "Tauschen".
-// Start eingeklappt (Alex-Wunsch), pro Tag per Chevron auf-/zuklappbar.
-let subExpanded = {}; // {push:true} = aufgeklappt; standardmäßig alles eingeklappt
-function renderSidebarLists() {
-  DAYS.forEach(d => {
-    const el = document.querySelector(`[data-sublist="${d}"]`);
-    if (!el) return;
-    el.innerHTML = itemsFor(d).map((ex, i) =>
-      `<button data-act="sideSwap" data-day="${d}" data-i="${i}">${esc(ex.name)}</button>`).join('');
-    const group = document.querySelector(`[data-group="${d}"]`);
-    if (group) group.classList.toggle('collapsed', !subExpanded[d]);
-  });
+// V2-08/V3-01: Push/Pull/Legs/Core stecken jetzt geschachtelt unter dem Reiter "Alle Übungen"
+// (Sidebar) statt als eigene Top-Level-Einträge. Start eingeklappt (Alex-Wunsch), pro Tag
+// per Chevron auf-/zuklappbar – wie zuvor. Direktzugriff auf eine Übung öffnet weiter "Tauschen".
+let subExpanded = {}; // {push:true} = Tag-Unterliste aufgeklappt; standardmäßig alles eingeklappt
+function renderAllExBlock() {
+  const el = document.getElementById('allex-block');
+  if (!el) return;
+  el.innerHTML = DAYS.map(d => {
+    const items = itemsFor(d);
+    const sub = `<div class="side-sublist">${items.map((ex, i) =>
+      `<button data-act="sideSwap" data-day="${d}" data-i="${i}">${esc(ex.name)}</button>`).join('')}</div>`;
+    return `<div class="side-group${!subExpanded[d] ? ' collapsed' : ''}">
+      <div class="side-head">
+        <button class="tab${(view === 'day' && day === d) ? ' active' : ''}" data-act="goDay" data-day="${d}">${DAY_LABELS[d]}</button>
+        <button class="side-toggle" data-act="toggleSub" data-day="${d}">▾</button>
+      </div>
+      ${sub}
+    </div>`;
+  }).join('');
 }
 
 // V2-09: Sidebar-Kurzliste aller Wochenplan-Trainings (nur Desktop/Sidebar-Breite).
@@ -130,12 +138,13 @@ function currentList() {
 
 function render() {
   syncTabActive();
-  renderSidebarLists();
+  renderAllExBlock();
   renderWeekplanBlock();
   if (view === 'overview') return renderOverview();
   if (view === 'history') return renderHistory();
   if (view === 'tv') return renderTV();
   if (view === 'weeklist') return renderWeeklist();
+  if (view === 'allex') return renderAllEx();
   if (picker) return renderPicker();
   if (view === 'wtrain') return renderWTrain();
   const items = list();
@@ -362,11 +371,25 @@ function renderWTrain() {
   if (renameId === t.id) document.getElementById('rename-input')?.focus();
 }
 
-// V2-03: TV-Modus – eine Übung groß, für AirPlay-Spiegelung auf Apple TV. Nutzt den zuletzt
-// aktiven Trainingstag (day bleibt beim Wechsel in die TV-Ansicht unverändert).
+// V3: Mobile/Content-Seite für "Alle Übungen" – Push/Pull/Legs/Core zum Antippen
+// (auf Desktop-Breite steht die Sidebar-Version daneben, hier der Direktzugriff für iPhone).
+function renderAllEx() {
+  content.innerHTML = `
+    <div class="overview">
+      <div class="ov-card">
+        <div class="ov-card-title">Alle Übungen</div>
+        <div class="ov-quick">${DAYS.map(d => `<button data-act="goto" data-day="${d}">${DAY_LABELS[d]}</button>`).join('')}</div>
+      </div>
+    </div>`;
+}
+
+// V2-03/V4: TV-Modus – eine Übung groß, für Screen-Mirroring/AirPlay auf Apple TV. Nutzt den
+// zuletzt aktiven Trainingstag. V4: Einstieg jetzt über das TV-Icon oben rechts (von überall
+// im Training aus erreichbar), "Zurück" führt sauber zur vorherigen Ansicht zurück.
 function renderTV() {
+  const backBtn = `<button data-act="tvBack">← Zurück</button>`;
   const items = list();
-  if (!items.length) { content.innerHTML = `<p class="placeholder">Keine Übungen für „${esc(day)}“.</p>`; return; }
+  if (!items.length) { content.innerHTML = `<p class="placeholder">Keine Übungen für „${esc(day)}“.</p>${backBtn}`; return; }
   if (tvIndex >= items.length) tvIndex = 0;
   if (tvIndex < 0) tvIndex = items.length - 1;
   const ex = items[tvIndex];
@@ -381,6 +404,7 @@ function renderTV() {
       <div class="tv-nav">
         <button data-act="tvPrev">← Vorherige</button>
         <button data-act="tvNext">Nächste →</button>
+        ${backBtn}
       </div>
     </div>`;
 }
@@ -447,6 +471,7 @@ content.addEventListener('click', e => {
     }
     case 'tvPrev': tvIndex--; break;
     case 'tvNext': tvIndex++; break;
+    case 'tvBack': view = tvReturn ? tvReturn.view : 'overview'; if (tvReturn && tvReturn.day) day = tvReturn.day; tvReturn = null; break;
     case 'goto':
       if (btn.dataset.day) { day = btn.dataset.day; view = 'day'; }
       else if (btn.dataset.view) { view = btn.dataset.view; }
@@ -571,7 +596,12 @@ document.getElementById('tabbar').addEventListener('click', e => {
   if (toggleBtn) {
     const d = toggleBtn.dataset.day;
     subExpanded[d] = !subExpanded[d];
-    return renderSidebarLists();
+    return renderAllExBlock();
+  }
+  const goDayBtn = e.target.closest('button[data-act="goDay"]');
+  if (goDayBtn) {
+    day = goDayBtn.dataset.day; view = 'day'; picker = null;
+    return render();
   }
   const toggleWBtn = e.target.closest('button[data-act="toggleWSub"]');
   if (toggleWBtn) {
@@ -587,16 +617,18 @@ document.getElementById('tabbar').addEventListener('click', e => {
   render();
 });
 
+// V4-02: TV-Icon oben rechts – von überall im Training erreichbar, merkt sich die
+// vorherige Ansicht für den "Zurück"-Button in der TV-Ansicht.
+document.getElementById('tvIconBtn').addEventListener('click', () => {
+  tvReturn = { view, day };
+  picker = null; view = 'tv'; tvIndex = 0;
+  render();
+});
+
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
     picker = null;
-    if (tab.dataset.view) {
-      view = tab.dataset.view;
-      if (view === 'tv') tvIndex = 0;
-    } else {
-      day = tab.dataset.day;
-      view = 'day';
-    }
+    view = tab.dataset.view;
     render();
   });
 });
