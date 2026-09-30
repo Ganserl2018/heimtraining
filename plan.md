@@ -19,12 +19,23 @@ Stand: 2026-09-30
 ## V6 – Übersichtsseite 2.0 (geplant 30.09., noch nicht gebaut)
 | ID | Titel | Status | Deps |
 |---|---|---|---|
-| V6-01 | Feste Wochentage pro Wochenplan-Training | ⚪ open | — |
+| V6-01 | Feste Wochentage + Uhrzeit pro Wochenplan-Training | ⚪ open | — |
 | V6-02 | Quick-Start-Button (kombiniert: offen > heute fällig) | ⚪ open | V6-01 |
 | V6-03 | Ziel-Leiste v1 – Zahl + Zeitraum | ⚪ open | — |
 | V6-04 | Ziel-Leiste v2 – nach Live-Test | ⚪ wait | V6-03 |
-| V6-05 | Verpasst-Erkennung & -Anzeige (Mechanik iterativ) | ⚪ open | V6-01 |
+| V6-05 | Status-Erkennung & -Anzeige (verpasst/unvollständig/erledigt) | ⚪ open | V6-01 |
 | V6-06 | Kalenderstreifen + Verlauf-Vorschau prominenter | ⚪ wait | V6-05 |
+
+V6-01 Detail: Uhrzeit ist informativ (Erinnerung), kein harter Cutoff — es zählt nur
+der Kalendertag.
+
+V6-05 Detail (30.09. geklärt): drei Status statt einer binären Wertung, bewusst neutral
+formuliert (keine "negativ"-Sprache):
+- **Verpasst**: zugeordneter Wochentag ist vorbei, kein "Training starten" gedrückt.
+- **Unvollständig**: Training gestartet, aber nicht abgeschlossen.
+- **Erledigt**: Training abgeschlossen (Eintrag in `heimtraining.history` vorhanden).
+Datenbasis: rein aus App-eigenen Daten (Verlauf), kein Wearable/Health-Zugriff nötig.
+Exakte Anzeige-Mechanik (Kalenderstreifen-Färbung etc.) bleibt iterativ/live.
 
 ## V7 – Profil-Seite
 | ID | Titel | Status | Deps |
