@@ -52,13 +52,16 @@ Eigener Vollbild-Modus statt/ergänzend zur heutigen Listenansicht während des 
 
 | V5-04 | Soll/Ist-System: Reps + Gewicht pro Satz | ⚪ open | — |
 
-V5-04 Referenz (Screenshot 30.09., System nicht Design): vor dem Training wird pro Übung
-Gewicht + Ziel-Wiederholungen (z.B. "8-12") festgelegt; während/nach jedem Satz trägt man
-Ist-Reps + Ist-Gewicht ein und hakt ab. Bei Bedarf mitten im Training in den
-Trainingseinstellungen nachjustierbar (z.B. Gewicht runter, wenn's zu viel war). Löst die
-heutige feste Annahme "3 Sätze pro Übung" ab. Ziel-Reps legt Alex pro Übung selbst fest,
-kein Standardwert. Scope bestätigt (30.09.): gilt überall, nicht nur Wochenplan — auch
-Push/Pull/Legs/Core, jede einzelne Übung bekommt ihr eigenes Gewicht/Ziel-Reps.
+V5-04 Referenz (Screenshot 30.09., System nicht Design): beim Anlegen eines
+Wochenplan-Trainings wird pro Übung Gewicht + Ziel-Reps festgelegt, Satz-Anzahl frei
+wählbar (löst die feste "3 Sätze"-Annahme ab). Während des Trainings pro Satz nur EIN
+Haken (Variante A/minimal): Klick = Soll-Reps/-Gewicht als Ist übernommen; bei Abweichung
+tippt Alex die Zahl an und ändert sie manuell. Bei Bedarf mitten im Training über
+Trainingseinstellungen nachjustierbar (z.B. Gewicht runter). Ziel-Reps legt Alex pro Übung
+selbst fest, kein Standardwert.
+Scope final geklärt (30.09.): Push/Pull/Legs/Core sind reine Filter/Tags (wie
+"Seilzug"/"Langhantel"), keine eigene Trainingsart mit Ablauf — daher betrifft das
+Soll/Ist-System NUR Wochenplan-Trainings. Filter bleiben unverändert ohne Gewicht/Reps-Logik.
 
 Live verifiziert (Playwright, Desktop-Breite 1100px): Sidebar "Alle Übungen" klappt
 Push/Pull/Legs/Core auf, Klick auf Übung öffnet "Tauschen"-Picker, TV-Icon öffnet
