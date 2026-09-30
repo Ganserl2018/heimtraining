@@ -116,6 +116,12 @@ body{
 
 /* V2-01: Verlauf */
 .history-item{padding:.8rem 0; border-bottom:1px solid var(--border);}
+.history-item.clickable{cursor:pointer;}
+.history-item.clickable:active,.history-item.clickable:hover{background:var(--panel);}
+.hist-detail-stats{display:flex; gap:1.2rem; margin-top:.3rem;}
+.hist-detail-stats div{display:flex; flex-direction:column; align-items:center;}
+.hist-detail-stats b{font-size:1.3rem;}
+.hist-detail-stats span{font-size:.72rem; color:var(--text-dim);}
 .history-date{font-weight:600; font-size:.92rem;}
 .history-meta{color:var(--text-dim); font-size:.8rem; margin-top:.15rem;}
 .history-bar{height:6px; border-radius:99px; background:var(--panel); overflow:hidden; margin-top:.4rem;}

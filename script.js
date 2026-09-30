@@ -109,11 +109,32 @@ function prog() {
 function saveProg() { try { localStorage.setItem(PKEY, JSON.stringify(progress)); } catch (e) {} }
 const setsOf = name => { const d = prog().done[day]; return (d && Array.isArray(d[name])) ? d[name] : []; };
 
+let metByName = {}; // V8-01/03: name -> MET-Wert
 Promise.all([
   fetch('exercises.json').then(r => r.json()),
-  fetch('pool.json').then(r => r.json())
-]).then(([b, p]) => { base = b; pool = p; render(); })
-  .catch(err => { content.innerHTML = `<p class="error">Fehler beim Laden: ${err}</p>`; });
+  fetch('pool.json').then(r => r.json()),
+  fetch('met.json').then(r => r.json()).catch(() => [])
+]).then(([b, p, met]) => {
+  base = b; pool = p;
+  met.forEach(m => { metByName[m.name] = m.met; });
+  render();
+}).catch(err => { content.innerHTML = `<p class="error">Fehler beim Laden: ${err}</p>`; });
+
+// V8-03: Kalorien = gewichteter MET-Schnitt (nach erledigten Sätzen) × Körpergewicht × Dauer.
+// Ohne Profil-Gewicht oder ohne Dauer keine Schätzung möglich -> null statt Rateergebnis.
+function computeCalories(exercises, durationMin) {
+  const profile = loadProfile();
+  if (!profile.weight || !durationMin) return null;
+  let metSum = 0, setsSum = 0;
+  exercises.forEach(ex => {
+    if (!ex.setsDone) return;
+    const met = metByName[ex.name] || 5.0; // konservativer Fallback, falls Übung nicht in met.json
+    metSum += met * ex.setsDone; setsSum += ex.setsDone;
+  });
+  if (!setsSum) return null;
+  const avgMet = metSum / setsSum;
+  return Math.round(avgMet * profile.weight * (durationMin / 60));
+}
 
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const list = () => overrides[day] || base[day] || [];
@@ -193,6 +214,7 @@ function render() {
   if (view === 'weeklist') return renderWeeklist();
   if (view === 'allex') return renderAllEx();
   if (view === 'profile') return renderProfile();
+  if (view === 'histdetail') return renderHistDetail();
   if (picker) return renderPicker();
   if (view === 'wtrain') return renderWTrain();
   const items = list();
@@ -393,18 +415,46 @@ function renderOverview() {
 }
 
 // V2-01: Verlauf – zeigt vergangene Trainingseinheiten (aus HKEY, befüllt bei "Training beenden").
+// V8-04: Wochenplan-Einträge (haben trainingId) sind anklickbar -> Detailseite mit Dauer/Kalorien.
 function renderHistory() {
   const h = loadHistory();
   content.innerHTML = (h.length ? '' : `<p class="placeholder">Noch kein Training abgeschlossen.</p>`) +
-    h.map(r => {
+    h.map((r, i) => {
       const pct = r.totalSetsPlanned ? Math.round(r.totalSetsDone / r.totalSetsPlanned * 100) : 0;
-      return `<div class="history-item">
+      const clickable = r.trainingId != null;
+      return `<div class="history-item${clickable ? ' clickable' : ''}"${clickable ? ` data-act="histOpen" data-idx="${i}"` : ''}>
         <div class="history-date">${esc(r.date)} · ${esc(r.day)}</div>
-        <div class="history-meta">${r.totalSetsDone}/${r.totalSetsPlanned} Sätze</div>
+        <div class="history-meta">${r.totalSetsDone}/${r.totalSetsPlanned} Sätze${r.durationMin ? ' · ' + r.durationMin + ' Min' : ''}${r.calories ? ' · ~' + r.calories + ' kcal' : ''}</div>
         <div class="history-bar"><div class="history-fill" style="width:${pct}%"></div></div>
         ${r.note ? `<div class="history-note">${esc(r.note)}</div>` : ''}
       </div>`;
     }).join('');
+}
+
+let histDetailIdx = null;
+function renderHistDetail() {
+  const r = loadHistory()[histDetailIdx];
+  if (!r) { view = 'history'; return renderHistory(); }
+  const profile = loadProfile();
+  content.innerHTML = `
+    <div class="wtrain-head"><h2>${esc(r.day)}</h2><button data-act="histBack">← Zurück</button></div>
+    <div class="ov-card">
+      <div class="ov-card-title">${esc(r.date)}</div>
+      <div class="hist-detail-stats">
+        <div><b>${r.totalSetsDone}/${r.totalSetsPlanned}</b><span>Sätze</span></div>
+        <div><b>${r.durationMin ?? '–'}</b><span>Minuten</span></div>
+        <div><b>${r.calories ?? '–'}</b><span>kcal (geschätzt)</span></div>
+      </div>
+      ${r.calories == null ? `<p class="placeholder">${profile.weight ? 'Keine Dauer erfasst (Training ohne "Training starten"?).' : 'Kalorien-Schätzung braucht dein Gewicht im Profil.'}</p>` : ''}
+    </div>
+    <div class="ov-card">
+      <div class="ov-card-title">Übungen</div>
+      ${r.exercises.map(ex => `<div class="history-item">
+        <div class="history-date">${esc(ex.name)}</div>
+        <div class="history-meta">${ex.setsDone}/${ex.setsTotal} Sätze${ex.weights && ex.weights.some(w => w != null) ? ' · ' + ex.weights.filter(w => w != null).map(w => w + 'kg').join(', ') : ''}</div>
+      </div>`).join('')}
+    </div>
+    ${r.note ? `<div class="ov-card"><div class="ov-card-title">Notiz</div><div class="history-note">${esc(r.note)}</div></div>` : ''}`;
 }
 
 // V2-09: Wochenplan-Liste (Content-Ansicht, funktioniert auf jeder Breite inkl. iPhone).
@@ -566,7 +616,7 @@ function syncSession(body) {
 }
 
 content.addEventListener('click', e => {
-  const btn = e.target.closest('button[data-act], .weeklist-card[data-act]');
+  const btn = e.target.closest('button[data-act], .weeklist-card[data-act], .history-item[data-act]');
   if (!btn) return;
   const i = Number(btn.dataset.i);
   const arr = list().slice();
@@ -688,9 +738,10 @@ content.addEventListener('click', e => {
       const note = (wp.sessionNote || {})[t.id] || '';
       const startRec = startOf(t.id, today());
       const durationMin = startRec ? Math.max(1, Math.round((Date.now() - new Date(startRec.startedAt)) / 60000)) : null;
+      const calories = computeCalories(exercises, durationMin);
       const rec = { date: today(), day: t.name, trainingId: t.id, exercises,
         totalSetsDone: exercises.reduce((s, x) => s + x.setsDone, 0), totalSetsPlanned: exercises.reduce((s, x) => s + x.setsTotal, 0),
-        finishedAt: new Date().toISOString(), durationMin, note };
+        finishedAt: new Date().toISOString(), durationMin, calories, note };
       syncSession(rec); pushHistory(rec);
       delete wp.done[t.id];
       if (wp.sessionNote) delete wp.sessionNote[t.id];
@@ -713,6 +764,8 @@ content.addEventListener('click', e => {
     case 'goalCancel': goalEditing = false; break;
     case 'quickStart':
       wId = btn.dataset.id; view = 'wtrain'; picker = null; break;
+    case 'histOpen': histDetailIdx = Number(btn.dataset.idx); view = 'histdetail'; break;
+    case 'histBack': view = 'history'; break;
   }
   render();
 });
