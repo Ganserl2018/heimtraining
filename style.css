@@ -132,17 +132,18 @@ body{
 .overview-home .ov-card button{margin-top:.5rem; padding:.5rem .9rem; font-size:.85rem;}
 .overview-home .ov-quick-section{display:flex; flex-direction:column; gap:.5rem;}
 .overview-home .ov-quick-section .ov-card-title{padding:0 .1rem;}
-.overview-home .ov-quick-tiles{display:flex; flex-direction:column; gap:.6rem;}
+.overview-home .ov-quick-tiles{display:flex; gap:.6rem; overflow-x:auto; padding-bottom:.2rem; scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch;}
 .overview-home .ov-tile{
-  min-height:84px; border-radius:16px; border:none; text-align:left; padding:1rem 1.15rem;
-  display:flex; flex-direction:column; justify-content:center; gap:.2rem; margin-top:0; position:relative; overflow:hidden;
+  flex:0 0 42%; aspect-ratio:1/1.05; border-radius:16px; border:none; text-align:left; padding:.9rem;
+  display:flex; flex-direction:column; justify-content:flex-end; gap:.15rem; margin-top:0; position:relative; overflow:hidden; scroll-snap-align:start;
 }
-.overview-home .ov-tile-name{font-size:1.3rem; font-weight:800; text-transform:uppercase; letter-spacing:-.01em; color:#0a0a0a; position:relative;}
-.overview-home .ov-tile-meta{font-size:.78rem; font-weight:600; color:#0a0a0a; opacity:.75; position:relative;}
-.overview-home .ov-tile-0{background:var(--nike-volt);}
-.overview-home .ov-tile-1{background:#ff5a36;}
-.overview-home .ov-tile-2{background:#5ad1ff;}
-.overview-home .ov-tile-3{background:#f5f5f0;}
+.overview-home .ov-tile::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.55) 100%);}
+.overview-home .ov-tile-name{font-size:1.15rem; font-weight:800; text-transform:uppercase; letter-spacing:-.01em; color:#fff; position:relative; text-shadow:0 1px 4px rgba(0,0,0,.4);}
+.overview-home .ov-tile-meta{font-size:.72rem; font-weight:600; color:#fff; opacity:.9; position:relative;}
+.overview-home .ov-tile-0{background:linear-gradient(155deg,#2a3300,var(--nike-volt) 130%);}
+.overview-home .ov-tile-1{background:linear-gradient(155deg,#3a0f04,#ff5a36 130%);}
+.overview-home .ov-tile-2{background:linear-gradient(155deg,#04222e,#5ad1ff 130%);}
+.overview-home .ov-tile-3{background:linear-gradient(155deg,#2a2a26,#c9c9c0 130%);}
 .overview-home .ov-tile:active{filter:brightness(.92);}
 
 .ov-card .history-item{padding:.7rem 0; border-bottom:1px solid var(--border-soft); display:flex; align-items:center; justify-content:space-between; gap:.8rem;}
