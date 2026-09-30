@@ -114,15 +114,11 @@ body{
 .ov-card{background:var(--panel); border:1px solid var(--border-soft); border-radius:16px; padding:1.05rem 1.15rem;}
 .ov-card-title{font-size:.72rem; letter-spacing:.02em; color:var(--text-faint); margin-bottom:.55rem; font-weight:500;}
 .ov-card button{margin-top:.5rem; padding:.5rem .9rem; font-size:.85rem;}
-.ov-week{display:flex; gap:.5rem;}
-.ov-week-day{flex:1; text-align:center; padding:.75rem .3rem .65rem; border-radius:12px; background:var(--bg-raise); border:1px solid var(--border-soft); color:var(--text-dim); font-size:.78rem; font-weight:600;}
-.ov-week-day .wd-name{display:block; margin-bottom:.4rem;}
-.ov-week-day .wd-mark{display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; font-size:.7rem; border:1px solid var(--border);}
-.ov-week-day.done{background:rgba(127,174,106,.13); border-color:rgba(127,174,106,.35); color:#cfe3c4;}
-.ov-week-day.done .wd-mark{background:var(--ok); border-color:var(--ok); color:#12180f; font-weight:700;}
 .ov-quick{display:grid; grid-template-columns:1fr 1fr; gap:.55rem;}
-.ov-quick button{min-height:52px; border-radius:12px; border:1px solid var(--border); background:var(--bg-raise); color:var(--text); font-size:.88rem; font-weight:600; text-align:left; padding:0 .9rem; display:flex; align-items:center; margin-top:0;}
+.ov-quick button{min-height:56px; border-radius:12px; border:1px solid var(--border); background:var(--bg-raise); color:var(--text); text-align:left; padding:.5rem .9rem; display:flex; flex-direction:column; justify-content:center; gap:.15rem; margin-top:0;}
 .ov-quick button:active{border-color:var(--accent);}
+.ov-quick-name{font-size:.88rem; font-weight:600;}
+.ov-quick-meta{font-size:.72rem; color:var(--text-faint); font-weight:400;}
 .ov-card .history-item{padding:.7rem 0; border-bottom:1px solid var(--border-soft); display:flex; align-items:center; justify-content:space-between; gap:.8rem;}
 .ov-card .history-item:last-of-type{border-bottom:none; padding-bottom:.3rem;}
 .ov-card .history-item:first-of-type{padding-top:0;}

@@ -310,6 +310,18 @@ function renderResults(query) {
 
 // V2-07: Übersicht – Startseite mit Status heute, Wochenüberblick, Schnellzugriff, letzte Trainings.
 const itemsFor = d => overrides[d] || base[d] || [];
+
+// V8-05: Dauer-Schätzung + "zuletzt trainiert" pro Push/Pull/Legs/Core-Kategorie für die
+// Übersicht (Alex-Wunsch: vor dem Start abschätzen können, ob's zeitlich noch passt).
+const estimateMin = d => Math.round(itemsFor(d).length * SETS * 1.5);
+function lastTrainedText(d, h) {
+  const last = h.find(r => r.day === d); // h ist neueste-zuerst sortiert
+  if (!last) return 'noch nie';
+  const days = Math.round((new Date(today()) - new Date(last.date)) / 86400000);
+  if (days <= 0) return 'heute';
+  if (days === 1) return 'gestern';
+  return `vor ${days} Tagen`;
+}
 // Fix (30.09., Checker-Review): .toISOString() rechnet in UTC und verschiebt in
 // Zeitzonen mit positivem Offset (z.B. Europe/Berlin) das Datum um einen Tag zurück.
 // Lokal rechnen wie today()/addDays().
@@ -333,9 +345,6 @@ function renderOverview() {
   } else {
     todayBlock = `<p class="today-placeholder">Noch kein Training heute.</p>`;
   }
-
-  const thisWeek = mondayOf(t);
-  const doneThisWeek = new Set(h.filter(r => mondayOf(r.date) === thisWeek).map(r => r.day));
 
   // V6-02: Quick-Start – offenes/unterbrochenes Wochenplan-Training hat Vorrang, sonst heute fälliges.
   const scheduled = weekplan.filter(w => w.weekdays && w.weekdays.length);
@@ -407,12 +416,11 @@ function renderOverview() {
         ${todayBlock}
       </div>
       <div class="ov-card">
-        <div class="ov-card-title">Trainingstage</div>
-        <div class="ov-week">${DAYS.map(d => `<div class="ov-week-day${doneThisWeek.has(d) ? ' done' : ''}"><span class="wd-name">${DAY_LABELS[d]}</span><span class="wd-mark">${doneThisWeek.has(d) ? '✓' : '–'}</span></div>`).join('')}</div>
-      </div>
-      <div class="ov-card">
         <div class="ov-card-title">Schnellzugriff</div>
-        <div class="ov-quick">${DAYS.map(d => `<button data-act="goto" data-day="${d}">${DAY_LABELS[d]}</button>`).join('')}</div>
+        <div class="ov-quick">${DAYS.map(d => `<button data-act="goto" data-day="${d}">
+            <span class="ov-quick-name">${DAY_LABELS[d]}</span>
+            <span class="ov-quick-meta">~${estimateMin(d)} Min · ${lastTrainedText(d, h)}</span>
+          </button>`).join('')}</div>
       </div>
       <div class="ov-card">
         <div class="ov-card-title">Letzte Trainings</div>
