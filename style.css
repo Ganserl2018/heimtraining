@@ -154,3 +154,32 @@ body{
 .weeklist-card input,#rename-input{width:100%; font-size:16px; padding:.5rem; margin-bottom:.5rem; border-radius:6px; border:1px solid var(--border); background:var(--bg); color:var(--text);}
 .wtrain-head{flex-wrap:wrap;}
 .wtrain-head input{flex:1; font-size:1.1rem; padding:.4rem .5rem; border-radius:6px; border:1px solid var(--border); background:var(--bg); color:var(--text);}
+
+/* V6-01: Wochentag + Uhrzeit je Wochenplan-Training */
+.w-schedule{display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; margin-bottom:.8rem; padding-bottom:.8rem; border-bottom:1px solid var(--border);}
+.w-schedule-days{display:flex; gap:.3rem; flex-wrap:wrap;}
+.w-schedule-time{background:var(--bg); border:1px solid var(--border); border-radius:6px; color:var(--text); padding:.3rem .5rem; font-size:.85rem;}
+
+/* V7-01: Profil */
+.profile-form{display:flex; flex-direction:column; gap:.7rem; max-width:320px;}
+.profile-form label{display:flex; flex-direction:column; gap:.3rem; font-size:.82rem; color:var(--text-dim);}
+.profile-form input,.profile-form select{font-size:16px; padding:.5rem; border-radius:6px; border:1px solid var(--border); background:var(--bg); color:var(--text);}
+
+/* V6-02: Quick-Start-Card */
+.ov-quickstart-name{font-size:1.1rem; font-weight:700; margin:.3rem 0 .6rem;}
+
+/* V6-03: Ziel-Leiste */
+.goal-text{font-size:.95rem; margin-bottom:.4rem;}
+.goal-edit{display:flex; flex-direction:column; gap:.5rem;}
+.goal-edit label{display:flex; align-items:center; gap:.4rem; font-size:.85rem; color:var(--text-dim);}
+.goal-edit input{width:60px; font-size:.9rem; padding:.3rem; border-radius:6px; border:1px solid var(--border); background:var(--bg); color:var(--text);}
+
+/* V6-05/06: Wochenplan-Statuskalender */
+.cal-strip{display:flex; gap:.4rem;}
+.cal-day{flex:1; display:flex; flex-direction:column; align-items:center; gap:.3rem; padding:.4rem 0; border-radius:8px; background:var(--bg); border:1px solid var(--border);}
+.cal-wd{font-size:.72rem; color:var(--text-dim); font-weight:600;}
+.cal-dot{width:8px; height:8px; border-radius:50%; background:var(--border);}
+.cal-day.cal-erledigt .cal-dot{background:#3ecf7a;}
+.cal-day.cal-offen .cal-dot{background:var(--accent);}
+.cal-day.cal-unvollständig .cal-dot{background:#e8a53a;}
+.cal-day.cal-verpasst .cal-dot{background:#e8543a;}

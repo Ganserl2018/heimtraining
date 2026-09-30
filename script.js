@@ -9,7 +9,7 @@ let base = {};       // exercises.json (Standard)
 let pool = [];       // pool.json (alle 514 Übungen)
 let overrides = {};  // {day: [übungen]} – nur editierte Tage
 let day = 'push';
-let view = 'overview'; // 'overview' | 'day' | 'history' | 'tv' | 'allex'
+let view = 'overview'; // 'overview' | 'day' | 'history' | 'tv' | 'allex' | 'weeklist' | 'wtrain' | 'profile'
 const DAYS = ['push', 'pull', 'legs', 'core'];
 const DAY_LABELS = { push: 'Push', pull: 'Pull', legs: 'Legs', core: 'Core' };
 let tvIndex = 0;      // aktuelle Übung im TV-Modus
@@ -40,7 +40,54 @@ function loadWeekplan() {
 }
 function saveWeekplan() { try { localStorage.setItem(WKEY, JSON.stringify(weekplan)); } catch (e) {} }
 weekplan = loadWeekplan();
+// V6-01: fehlende Felder bei alten/bestehenden Trainings nachrüsten (weekdays/time optional, leer = kein Zeitplan)
+weekplan.forEach(t => { if (!Array.isArray(t.weekdays)) t.weekdays = []; if (typeof t.time !== 'string') t.time = ''; });
 const trainingById = id => weekplan.find(t => t.id === id);
+
+// V6-01: Wochentag-Zuordnung + Uhrzeit (informativ, kein Cutoff) pro Wochenplan-Training.
+const WD_KEYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const WD_LABELS = { mon: 'Mo', tue: 'Di', wed: 'Mi', thu: 'Do', fri: 'Fr', sat: 'Sa', sun: 'So' };
+const JS_DAY_TO_WD = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']; // Date.getDay(): 0=So
+const wdKeyOf = dateStr => JS_DAY_TO_WD[new Date(dateStr + 'T00:00:00').getDay()];
+const addDays = (dateStr, n) => { const d = new Date(dateStr + 'T00:00:00'); d.setDate(d.getDate() + n); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+
+// V8-02: persistenter Start-Log (im Gegensatz zu WPKEY NICHT täglich zurückgesetzt) – Basis
+// für V6-05 Status "unvollständig" (auch rückwirkend) und für die Trainingsdauer (V8-03).
+const SLKEY = 'heimtraining.trainingStarts';
+function loadStarts() { try { return JSON.parse(localStorage.getItem(SLKEY)) || []; } catch (e) { return []; } }
+function saveStarts(s) { try { localStorage.setItem(SLKEY, JSON.stringify(s.slice(-500))); } catch (e) {} }
+function startOf(trainingId, dateStr) { return loadStarts().find(s => s.trainingId === trainingId && s.date === dateStr); }
+function pushStart(trainingId) {
+  const s = loadStarts();
+  if (startOf(trainingId, today())) return; // schon gestartet heute
+  s.push({ trainingId, date: today(), startedAt: new Date().toISOString() });
+  saveStarts(s);
+}
+
+// V6-05: Status pro Training+Datum – 3 neutrale Stufen, rein aus App-eigenen Daten.
+// 'geplant' = Tag noch nicht dran/in der Zukunft, 'offen' = heute dran, noch nicht erledigt.
+function trainingStatusForDate(t, dateStr) {
+  if (!t.weekdays || !t.weekdays.length || !t.weekdays.includes(wdKeyOf(dateStr))) return null;
+  const done = loadHistory().some(r => r.trainingId === t.id && r.date === dateStr);
+  if (done) return 'erledigt';
+  const started = !!startOf(t.id, dateStr);
+  const t0 = today();
+  if (dateStr > t0) return 'geplant';
+  if (dateStr === t0) return started ? 'unvollständig' : 'offen';
+  return started ? 'unvollständig' : 'verpasst';
+}
+const STATUS_LABEL = { erledigt: 'Erledigt', unvollständig: 'Unvollständig', verpasst: 'Verpasst', offen: 'Heute', geplant: 'Geplant' };
+
+// V7-01: Profil (Basis für Kalorienberechnung, V8-03).
+const PROKEY = 'heimtraining.profile';
+function loadProfile() { try { return JSON.parse(localStorage.getItem(PROKEY)) || {}; } catch (e) { return {}; } }
+function saveProfile(p) { try { localStorage.setItem(PROKEY, JSON.stringify(p)); } catch (e) {} }
+
+// V6-03: Ziel-Leiste v1 – frei definierbares Ziel (Zahl Trainings + Zeitraum in Tagen).
+const GOALKEY = 'heimtraining.goal';
+function loadGoal() { try { return JSON.parse(localStorage.getItem(GOALKEY)) || { target: 3, periodDays: 7 }; } catch (e) { return { target: 3, periodDays: 7 }; } }
+function saveGoal(g) { try { localStorage.setItem(GOALKEY, JSON.stringify(g)); } catch (e) {} }
+let goalEditing = false;
 function wProgRaw() {
   let wp = null;
   try { wp = JSON.parse(localStorage.getItem(WPKEY)); } catch (e) {}
@@ -145,6 +192,7 @@ function render() {
   if (view === 'tv') return renderTV();
   if (view === 'weeklist') return renderWeeklist();
   if (view === 'allex') return renderAllEx();
+  if (view === 'profile') return renderProfile();
   if (picker) return renderPicker();
   if (view === 'wtrain') return renderWTrain();
   const items = list();
@@ -264,8 +312,60 @@ function renderOverview() {
   const thisWeek = mondayOf(t);
   const doneThisWeek = new Set(h.filter(r => mondayOf(r.date) === thisWeek).map(r => r.day));
 
+  // V6-02: Quick-Start – offenes/unterbrochenes Wochenplan-Training hat Vorrang, sonst heute fälliges.
+  const scheduled = weekplan.filter(w => w.weekdays && w.weekdays.length);
+  const openTraining = weekplan.find(w => startOf(w.id, t) && !loadHistory().some(r => r.trainingId === w.id && r.date === t));
+  const dueTraining = !openTraining ? scheduled.find(w => trainingStatusForDate(w, t) === 'offen') : null;
+  const quick = openTraining || dueTraining;
+  const quickBlock = quick
+    ? `<div class="ov-card ov-quickstart">
+        <div class="ov-card-title">${openTraining ? 'Weiter im Training' : 'Heute geplant'}</div>
+        <div class="ov-quickstart-name">${esc(quick.name)}</div>
+        <button data-act="quickStart" data-id="${quick.id}">${openTraining ? 'Weiter' : 'Jetzt starten'}</button>
+      </div>`
+    : (scheduled.length ? '' : '');
+
+  // V6-03: Ziel-Leiste v1 – frei definierbares Ziel (Zahl + Zeitraum).
+  const goal = loadGoal();
+  const since = addDays(t, -(goal.periodDays - 1));
+  const goalCount = h.filter(r => r.date >= since && r.date <= t).length;
+  const goalPct = Math.min(100, Math.round(goalCount / goal.target * 100));
+  const goalBlock = `<div class="ov-card">
+    <div class="ov-card-title">Ziel</div>
+    ${goalEditing
+      ? `<div class="goal-edit">
+          <label>Ziel <input id="goal-target" type="number" min="1" value="${goal.target}"> Trainings</label>
+          <label>in <input id="goal-period" type="number" min="1" value="${goal.periodDays}"> Tagen</label>
+          <div class="edit-bar"><button data-act="goalSave">Speichern</button><button data-act="goalCancel">Abbrechen</button></div>
+        </div>`
+      : `<div class="goal-text">${goalCount} / ${goal.target} Trainings in ${goal.periodDays} Tagen</div>
+        <div class="history-bar"><div class="history-fill" style="width:${goalPct}%"></div></div>
+        <button data-act="goalEdit">Ziel anpassen</button>`}
+  </div>`;
+
+  // V6-05/06: Wochenplan-Statuskalender – Mo–So, je Training mit Wochentag-Zuordnung.
+  const weekStart = mondayOf(t);
+  const weekDates = Array.from({ length: 7 }, (_, i) => addDays(weekStart, i));
+  const calBlock = scheduled.length ? `<div class="ov-card">
+    <div class="ov-card-title">Wochenplan diese Woche</div>
+    <div class="cal-strip">${weekDates.map(ds => {
+      const items = scheduled.map(w => ({ w, status: trainingStatusForDate(w, ds) })).filter(x => x.status);
+      const worst = items.some(x => x.status === 'verpasst') ? 'verpasst'
+        : items.some(x => x.status === 'unvollständig') ? 'unvollständig'
+        : items.some(x => x.status === 'offen') ? 'offen'
+        : items.length ? 'erledigt' : null;
+      return `<div class="cal-day${worst ? ' cal-' + worst : ''}" title="${items.map(x => esc(x.w.name) + ': ' + STATUS_LABEL[x.status]).join(', ')}">
+        <div class="cal-wd">${WD_LABELS[wdKeyOf(ds)]}</div>
+        <div class="cal-dot"></div>
+      </div>`;
+    }).join('')}</div>
+  </div>` : '';
+
   content.innerHTML = `
     <div class="overview">
+      ${quickBlock}
+      ${goalBlock}
+      ${calBlock}
       <div class="ov-card">
         <div class="ov-card-title">Heute</div>
         ${todayBlock}
@@ -327,6 +427,7 @@ function renderWTrain() {
   const wp = wProgRaw();
   const dOf = wp.done[t.id] || {};
   const sNote = (wp.sessionNote || {})[t.id] || '';
+  const started = startOf(t.id, today());
   content.innerHTML = `
     <div class="wtrain-head">
       ${renameId === t.id
@@ -334,6 +435,16 @@ function renderWTrain() {
            <div class="edit-bar"><button data-act="wRenameSave" data-id="${t.id}">Speichern</button><button data-act="wRenameCancel">Abbrechen</button></div>`
         : `<h2>${esc(t.name)}</h2><button data-act="wRename" data-id="${t.id}">Umbenennen</button>`}
     </div>
+    <div class="w-schedule">
+      <div class="w-schedule-days">${WD_KEYS.map(k =>
+        `<button class="chip${t.weekdays.includes(k) ? ' active' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>
+      <input type="time" class="w-schedule-time" data-act="wTime" data-id="${t.id}" value="${esc(t.time || '')}" title="Uhrzeit (informativ, kein Cutoff)">
+    </div>
+    ${t.exercises.length
+      ? `<div class="edit-bar">${started
+          ? `<span class="placeholder">Gestartet um ${esc(started.startedAt.slice(11, 16))} Uhr</span>`
+          : `<button data-act="wStart" data-id="${t.id}">▶ Training starten</button>`}</div>`
+      : ''}
     ${t.exercises.length ? '' : '<p class="placeholder">Noch keine Übungen – füge welche hinzu.</p>'}
     ${t.exercises.map((ex, i) => {
       const sets = dOf[ex.name] || [];
@@ -369,6 +480,31 @@ function renderWTrain() {
         <button data-act="wFinish" data-id="${t.id}">Training beenden</button>` : ''}
     </div>`;
   if (renameId === t.id) document.getElementById('rename-input')?.focus();
+}
+
+// V7-01: Profil-Seite – Basis für Kalorienberechnung (V8-03), keine Herzfrequenz nötig.
+function renderProfile() {
+  const p = loadProfile();
+  content.innerHTML = `
+    <div class="overview">
+      <div class="ov-card">
+        <div class="ov-card-title">Profil</div>
+        <div class="profile-form">
+          <label>Gewicht (kg)<input type="number" inputmode="decimal" data-act="profileField" data-field="weight" value="${p.weight ?? ''}"></label>
+          <label>Alter (Jahre)<input type="number" inputmode="numeric" data-act="profileField" data-field="age" value="${p.age ?? ''}"></label>
+          <label>Größe (cm)<input type="number" inputmode="numeric" data-act="profileField" data-field="height" value="${p.height ?? ''}"></label>
+          <label>Geschlecht
+            <select data-act="profileField" data-field="gender">
+              <option value="">–</option>
+              <option value="m" ${p.gender === 'm' ? 'selected' : ''}>Männlich</option>
+              <option value="w" ${p.gender === 'w' ? 'selected' : ''}>Weiblich</option>
+              <option value="d" ${p.gender === 'd' ? 'selected' : ''}>Divers</option>
+            </select>
+          </label>
+        </div>
+        <p class="placeholder">Wird für die Kalorien-Schätzung pro Training genutzt (ohne Herzfrequenz/Wearable).</p>
+      </div>
+    </div>`;
 }
 
 // V3: Mobile/Content-Seite für "Alle Übungen" – Push/Pull/Legs/Core zum Antippen
@@ -427,7 +563,7 @@ function syncSession(body) {
 }
 
 content.addEventListener('click', e => {
-  const btn = e.target.closest('button[data-act]');
+  const btn = e.target.closest('button[data-act], .weeklist-card[data-act]');
   if (!btn) return;
   const i = Number(btn.dataset.i);
   const arr = list().slice();
@@ -547,20 +683,51 @@ content.addEventListener('click', e => {
           weights: sets.map(s => s && s.weight != null ? s.weight : null) };
       });
       const note = (wp.sessionNote || {})[t.id] || '';
-      const rec = { date: today(), day: t.name, exercises,
+      const startRec = startOf(t.id, today());
+      const durationMin = startRec ? Math.max(1, Math.round((Date.now() - new Date(startRec.startedAt)) / 60000)) : null;
+      const rec = { date: today(), day: t.name, trainingId: t.id, exercises,
         totalSetsDone: exercises.reduce((s, x) => s + x.setsDone, 0), totalSetsPlanned: exercises.reduce((s, x) => s + x.setsTotal, 0),
-        finishedAt: new Date().toISOString(), note };
+        finishedAt: new Date().toISOString(), durationMin, note };
       syncSession(rec); pushHistory(rec);
       delete wp.done[t.id];
       if (wp.sessionNote) delete wp.sessionNote[t.id];
       saveWProg(wp);
       view = 'weeklist'; break;
     }
+    case 'wDayToggle': {
+      const t = trainingById(btn.dataset.id), wd = btn.dataset.wd;
+      const idx = t.weekdays.indexOf(wd);
+      if (idx === -1) t.weekdays.push(wd); else t.weekdays.splice(idx, 1);
+      saveWeekplan(); break;
+    }
+    case 'wStart': pushStart(btn.dataset.id); break;
+    case 'goalEdit': goalEditing = true; break;
+    case 'goalSave': {
+      const target = Math.max(1, Number(document.getElementById('goal-target')?.value) || 1);
+      const periodDays = Math.max(1, Number(document.getElementById('goal-period')?.value) || 7);
+      saveGoal({ target, periodDays }); goalEditing = false; break;
+    }
+    case 'goalCancel': goalEditing = false; break;
+    case 'quickStart':
+      wId = btn.dataset.id; view = 'wtrain'; picker = null; break;
   }
   render();
 });
 
 content.addEventListener('input', e => {
+  const profileEl = e.target.closest('[data-act="profileField"]');
+  if (profileEl) {
+    const p = loadProfile();
+    p[profileEl.dataset.field] = profileEl.dataset.field === 'gender' ? profileEl.value : (profileEl.value === '' ? null : Number(profileEl.value));
+    saveProfile(p);
+    return;
+  }
+  const timeEl = e.target.closest('[data-act="wTime"]');
+  if (timeEl) {
+    trainingById(timeEl.dataset.id).time = timeEl.value;
+    saveWeekplan();
+    return;
+  }
   const el = e.target.closest('[data-act="wWeight"],[data-act="wExNote"],[data-act="wSessionNote"]');
   if (!el) return;
   const t = trainingById(el.dataset.id);

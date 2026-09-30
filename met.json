@@ -1,0 +1,2597 @@
+[
+ {
+  "name": "3/4 Sit-Up",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Air Bike",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Alternate Heel Touchers",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Barbell Ab Rollout",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 barbell"
+ },
+ {
+  "name": "Barbell Ab Rollout - On Knees",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 barbell"
+ },
+ {
+  "name": "Barbell Rollout from Bench",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Barbell Side Bend",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Bent-Knee Hip Raise",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Bosu Ball Cable Crunch With Side Bends",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Bottoms Up",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Butt-Ups",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Cable Crunch",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Cable Judo Flip",
+  "met": 4.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Cable Reverse Crunch",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Cable Russian Twists",
+  "met": 4.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Cable Seated Crunch",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Cocoons",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Cross-Body Crunch",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Crunch - Hands Overhead",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Crunch - Legs On Exercise Ball",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Crunches",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Dead Bug",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Decline Crunch",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Decline Oblique Crunch",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Decline Reverse Crunch",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Dumbbell Side Bend",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Elbow to Knee",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Flat Bench Leg Pull-In",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Flat Bench Lying Leg Raise",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Frog Sit-Ups",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Gorilla Chin/Crunch",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Hanging Leg Raise",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Hanging Pike",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Jackknife Sit-Up",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Janda Sit-Up",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Kneeling Cable Crunch With Alternating Oblique Twists",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Landmine 180's",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Leg Pull-In",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Lower Back Curl",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Oblique Crunches",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Oblique Crunches - On The Floor",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "One-Arm High-Pulley Cable Side Bends",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Pallof Press",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 ≥3 Sekundärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Pallof Press With Rotation",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 ≥3 Sekundärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Plank",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Press Sit-Up",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Reverse Crunch",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Rope Crunch",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Russian Twist",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Scissor Kick",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Seated Barbell Twist",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Seated Flat Bench Leg Pull-In",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Seated Leg Tucks",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Side Bridge",
+  "met": 3.5,
+  "begründung_kurz": "strength, mechanic unbekannt: Basis 3.5"
+ },
+ {
+  "name": "Side Jackknife",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Sit-Up",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Spell Caster",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Spider Crawl",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Standing Cable Lift",
+  "met": 4.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Standing Cable Wood Chop",
+  "met": 4.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Standing Rope Crunch",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Stomach Vacuum",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Toe Touchers",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Tuck Crunch",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Wind Sprints",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Hip Circles (prone)",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Lying Crossover",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Monster Walk",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Standing Hip Circles",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Band Hip Adductions",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Groiners",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Lateral Bound",
+  "met": 8.0,
+  "begründung_kurz": "Plyometrie/explosiv: Anker 8.0"
+ },
+ {
+  "name": "Side Leg Raises",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Alternate Hammer Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Alternate Incline Dumbbell Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Barbell Curl",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Barbell Curls Lying Against An Incline",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Cable Hammer Curls - Rope Attachment",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Cable Preacher Curl",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Close-Grip EZ Bar Curl",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Close-Grip EZ-Bar Curl with Band",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Close-Grip Standing Barbell Curl",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Concentration Curls",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Cross Body Hammer Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Drag Curl",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 barbell"
+ },
+ {
+  "name": "Dumbbell Alternate Bicep Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Dumbbell Bicep Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Dumbbell Prone Incline Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "EZ-Bar Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Flexor Incline Dumbbell Curls",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Hammer Curls",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "High Cable Curls",
+  "met": 4.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Incline Dumbbell Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Incline Hammer Curls",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Incline Inner Biceps Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Lying Cable Curl",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Lying Close-Grip Bar Curl On High Pulley",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Lying High Bench Barbell Curl",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Lying Supine Dumbbell Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "One Arm Dumbbell Preacher Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Overhead Cable Curl",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Preacher Curl",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Preacher Hammer Dumbbell Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Reverse Barbell Curl",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Reverse Barbell Preacher Curls",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Reverse Cable Curl",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Seated Biceps",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Seated Close-Grip Concentration Barbell Curl",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Seated Dumbbell Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Seated Dumbbell Inner Biceps Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Spider Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Standing Biceps Cable Curl",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Standing Concentration Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Standing Dumbbell Reverse Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Standing Inner-Biceps Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Standing One-Arm Cable Curl",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Standing One-Arm Dumbbell Curl Over Incline Bench",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Two-Arm Dumbbell Preacher Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Wide-Grip Standing Barbell Curl",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Zottman Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Zottman Preacher Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Barbell Seated Calf Raise",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Calf Raise On A Dumbbell",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Calf Raises - With Bands",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Dumbbell Seated One-Leg Calf Raise",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Knee Circles",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Rocking Standing Calf Raise",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Standing Barbell Calf Raise",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Standing Dumbbell Calf Raise",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Around The Worlds",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Barbell Bench Press - Medium Grip",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Barbell Guillotine Bench Press",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Barbell Incline Bench Press - Medium Grip",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Bench Press - With Bands",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Bent-Arm Dumbbell Pullover",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Bodyweight Flyes",
+  "met": 4.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Cable Chest Press",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Cable Crossover",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Cable Iron Cross",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Clock Push-Up",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Cross Over - With Bands",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Decline Barbell Bench Press",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Decline Dumbbell Bench Press",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Decline Dumbbell Flyes",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Dumbbell Bench Press",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Dumbbell Bench Press with Neutral Grip",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Dumbbell Flyes",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Flat Bench Cable Flyes",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Front Raise And Pullover",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Hammer Grip Incline DB Bench Press",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Incline Cable Chest Press",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Incline Cable Flye",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Incline Dumbbell Bench With Palms Facing In",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Incline Dumbbell Flyes",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Incline Dumbbell Flyes - With A Twist",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Incline Dumbbell Press",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Incline Push-Up",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Incline Push-Up Medium",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Incline Push-Up Reverse Grip",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Incline Push-Up Wide",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Isometric Chest Squeezes",
+  "met": 8.0,
+  "begründung_kurz": "Plyometrie/explosiv: Anker 8.0"
+ },
+ {
+  "name": "Isometric Wipers",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Low Cable Crossover",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Neck Press",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "One Arm Dumbbell Bench Press",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "One-Arm Flat Bench Dumbbell Flye",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Plyo Push-up",
+  "met": 8.0,
+  "begründung_kurz": "Plyometrie/explosiv: Anker 8.0"
+ },
+ {
+  "name": "Push Up to Side Plank",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Push-Up Wide",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Push-Ups With Feet Elevated",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Pushups",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Pushups (Close and Wide Hand Positions)",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Single-Arm Cable Crossover",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Single-Arm Push-Up",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Standing Cable Chest Press",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Straight-Arm Dumbbell Pullover",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Wide-Grip Barbell Bench Press",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Wide-Grip Decline Barbell Bench Press",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Wide-Grip Decline Barbell Pullover",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Cable Wrist Curl",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Dumbbell Lying Pronation",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Dumbbell Lying Supination",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Finger Curls",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Palms-Down Dumbbell Wrist Curl Over A Bench",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Palms-Down Wrist Curl Over A Bench",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Palms-Up Barbell Wrist Curl Over A Bench",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Palms-Up Dumbbell Wrist Curl Over A Bench",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Seated Dumbbell Palms-Down Wrist Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Seated Dumbbell Palms-Up Wrist Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Seated One-Arm Dumbbell Palms-Down Wrist Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Seated One-Arm Dumbbell Palms-Up Wrist Curl",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Seated Palm-Up Barbell Wrist Curl",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Seated Palms-Down Barbell Wrist Curl",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Seated Two-Arm Palms-Up Low-Pulley Wrist Curl",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Standing Palms-Up Barbell Behind The Back Wrist Curl",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Wrist Circles",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Wrist Rotations with Straight Bar",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Barbell Glute Bridge",
+  "met": 6.5,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Barbell Hip Thrust",
+  "met": 6.5,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Butt Lift (Bridge)",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Flutter Kicks",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Glute Kickback",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Hip Extension with Bands",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Hip Lift with Band",
+  "met": 6.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 Powerlifting"
+ },
+ {
+  "name": "Kneeling Jump Squat",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Kneeling Squat",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Leg Lift",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Lying Glute",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "One-Legged Cable Kickback",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Pull Through",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Seated Glute",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Single Leg Glute Bridge",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Step-up with Knee Raise",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "90/90 Hamstring",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Band Good Morning",
+  "met": 6.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 Powerlifting"
+ },
+ {
+  "name": "Band Good Morning (Pull Through)",
+  "met": 6.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 Powerlifting"
+ },
+ {
+  "name": "Clean",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Clean Deadlift",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Dumbbell Clean",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Front Leg Raises",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Good Morning",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Good Morning off Pins",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Hang Snatch",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Hang Snatch - Below Knees",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Hanging Bar Good Morning",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Inchworm",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Knee Tuck Jump",
+  "met": 8.0,
+  "begründung_kurz": "Plyometrie/explosiv: Anker 8.0"
+ },
+ {
+  "name": "Muscle Snatch",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Natural Glute Ham Raise",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Power Clean",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Power Clean from Blocks",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Power Snatch",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Reverse Band Sumo Deadlift",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Romanian Deadlift",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Romanian Deadlift from Deficit",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Snatch Deadlift",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Snatch Pull",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Split Snatch",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Stiff-Legged Barbell Deadlift",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Stiff-Legged Dumbbell Deadlift",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Sumo Deadlift",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Sumo Deadlift with Bands",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Sumo Deadlift with Chains",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Vertical Swing",
+  "met": 8.0,
+  "begründung_kurz": "Plyometrie/explosiv: Anker 8.0"
+ },
+ {
+  "name": "Wide Stance Stiff Legs",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Bent-Arm Barbell Pullover",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Cable Incline Pushdown",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Chin-Up",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Close-Grip Front Lat Pulldown",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Elevated Cable Rows",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Full Range-Of-Motion Lat Pulldown",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Kneeling High Pulley Row",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Kneeling Single-Arm High Pulley Row",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "One Arm Lat Pulldown",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Pullups",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Rope Straight-Arm Pulldown",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Shotgun Row",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Straight-Arm Pulldown",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Underhand Cable Pulldowns",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "V-Bar Pulldown",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "V-Bar Pullup",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Wide-Grip Lat Pulldown",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Wide-Grip Pulldown Behind The Neck",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Wide-Grip Rear Pull-Up",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Barbell Deadlift",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Deadlift with Bands",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Deadlift with Chains",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Deficit Deadlift",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Hyperextensions With No Hyperextension Bench",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Rack Pull with Bands",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Rack Pulls",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Reverse Band Deadlift",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Seated Good Mornings",
+  "met": 6.5,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Stiff Leg Barbell Good Morning",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Superman",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Bent Over Barbell Row",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Bent Over One-Arm Long Bar Row",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Bent Over Two-Arm Long Bar Row",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Bent Over Two-Dumbbell Row",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Bent Over Two-Dumbbell Row With Palms In",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Dumbbell Incline Row",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Incline Bench Pull",
+  "met": 4.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Lying Cambered Barbell Row",
+  "met": 5.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Middle Back Shrug",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "One-Arm Dumbbell Row",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "One-Arm Long Bar Row",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Reverse Grip Bent-Over Rows",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Seated Cable Rows",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Seated One-arm Cable Pulley Rows",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Straight Bar Bench Mid Rows",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "T-Bar Row with Handle",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Isometric Neck Exercise - Front And Back",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Isometric Neck Exercise - Sides",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "All Fours Quad Stretch",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Barbell Full Squat",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Barbell Hack Squat",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Barbell Lunge",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Barbell Side Split Squat",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Barbell Squat",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Barbell Squat To A Bench",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Barbell Step Ups",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Barbell Walking Lunge",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Bench Jump",
+  "met": 8.0,
+  "begründung_kurz": "Plyometrie/explosiv: Anker 8.0"
+ },
+ {
+  "name": "Bodyweight Squat",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Box Squat",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Box Squat with Bands",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Box Squat with Chains",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Cable Deadlifts",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Cable Hip Adduction",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 große Primärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Clean Pull",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Clean from Blocks",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Double Leg Butt Kick",
+  "met": 8.0,
+  "begründung_kurz": "Plyometrie/explosiv: Anker 8.0"
+ },
+ {
+  "name": "Dumbbell Lunges",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Dumbbell Rear Lunge",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Dumbbell Seated Box Jump",
+  "met": 8.0,
+  "begründung_kurz": "Plyometrie/explosiv: Anker 8.0"
+ },
+ {
+  "name": "Dumbbell Squat",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Dumbbell Squat To A Bench",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Dumbbell Step Ups",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Elevated Back Lunge",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Fast Skipping",
+  "met": 8.0,
+  "begründung_kurz": "Plyometrie/explosiv: Anker 8.0"
+ },
+ {
+  "name": "Frankenstein Squat",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Freehand Jump Squat",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Front Barbell Squat",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Front Barbell Squat To A Bench",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Front Squat (Clean Grip)",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Hang Clean",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Hang Clean - Below the Knees",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Heaving Snatch Balance",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Hip Flexion with Band",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Jefferson Squats",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Jerk Dip Squat",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Lying Prone Quadriceps",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Narrow Stance Squats",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Olympic Squat",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "One Leg Barbell Squat",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "One-Arm Side Deadlift",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Overhead Squat",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Plie Dumbbell Squat",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Power Jerk",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Power Snatch from Blocks",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Rear Leg Raises",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Reverse Band Box Squat",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Reverse Band Power Squat",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Rocket Jump",
+  "met": 8.0,
+  "begründung_kurz": "Plyometrie/explosiv: Anker 8.0"
+ },
+ {
+  "name": "Scissors Jump",
+  "met": 8.0,
+  "begründung_kurz": "Plyometrie/explosiv: Anker 8.0"
+ },
+ {
+  "name": "Single Leg Butt Kick",
+  "met": 8.0,
+  "begründung_kurz": "Plyometrie/explosiv: Anker 8.0"
+ },
+ {
+  "name": "Snatch",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Snatch Balance",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Snatch from Blocks",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Speed Box Squat",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Speed Squats",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Split Clean",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Split Jerk",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Split Jump",
+  "met": 8.0,
+  "begründung_kurz": "Plyometrie/explosiv: Anker 8.0"
+ },
+ {
+  "name": "Split Squat with Dumbbells",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Squat Jerk",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Squat with Bands",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Squat with Chains",
+  "met": 7.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Squat with Plate Movers",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Squats - With Bands",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Standing Long Jump",
+  "met": 8.0,
+  "begründung_kurz": "Plyometrie/explosiv: Anker 8.0"
+ },
+ {
+  "name": "Star Jump",
+  "met": 8.0,
+  "begründung_kurz": "Plyometrie/explosiv: Anker 8.0"
+ },
+ {
+  "name": "Weighted Jump Squat",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Weighted Sissy Squat",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Wide Stance Barbell Squat",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Zercher Squats",
+  "met": 6.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Alternating Cable Shoulder Press",
+  "met": 4.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Alternating Deltoid Raise",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Anti-Gravity Press",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Arnold Dumbbell Press",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Back Flyes - With Bands",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Band Pull Apart",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Barbell Incline Shoulder Raise",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 barbell"
+ },
+ {
+  "name": "Barbell Rear Delt Row",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Barbell Shoulder Press",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 barbell"
+ },
+ {
+  "name": "Bent Over Dumbbell Rear Delt Raise With Head On Bench",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Bent Over Low-Pulley Side Lateral",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 ≥3 Sekundärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Bradford/Rocky Presses",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 barbell"
+ },
+ {
+  "name": "Cable Internal Rotation",
+  "met": 4.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Cable Rear Delt Fly",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Cable Rope Rear-Delt Rows",
+  "met": 4.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Cable Seated Lateral Raise",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Cable Shoulder Press",
+  "met": 4.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Car Drivers",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Clean and Jerk",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Clean and Press",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Cuban Press",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Dumbbell Incline Shoulder Raise",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Dumbbell Lying One-Arm Rear Lateral Raise",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Dumbbell Lying Rear Lateral Raise",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Dumbbell One-Arm Shoulder Press",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Dumbbell One-Arm Upright Row",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Dumbbell Raise",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Dumbbell Scaption",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Dumbbell Shoulder Press",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "External Rotation",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "External Rotation with Band",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "External Rotation with Cable",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Face Pull",
+  "met": 4.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Front Cable Raise",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Front Dumbbell Raise",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Front Incline Dumbbell Raise",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Front Two-Dumbbell Raise",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Handstand Push-Ups",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Internal Rotation with Band",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Iron Cross",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Jerk Balance",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Landmine Linear Jammer",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Lateral Raise - With Bands",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Low Pulley Row To Neck",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 ≥3 Sekundärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Lying One-Arm Lateral Raise",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Lying Rear Delt Raise",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "One-Arm Incline Lateral Raise",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "One-Arm Side Laterals",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Power Partials",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Push Press",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Push Press - Behind the Neck",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Rack Delivery",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Reverse Flyes",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Reverse Flyes With External Rotation",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Seated Barbell Military Press",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 barbell"
+ },
+ {
+  "name": "Seated Bent-Over Rear Delt Raise",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Seated Cable Shoulder Press",
+  "met": 4.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Seated Dumbbell Press",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Seated Front Deltoid",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Seated Side Lateral Raise",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "See-Saw Press (Alternating Side Press)",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Shoulder Press - With Bands",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Side Lateral Raise",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Side Laterals to Front Raise",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Single Dumbbell Raise",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Single-Arm Linear Jammer",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 barbell"
+ },
+ {
+  "name": "Smith Incline Shoulder Raise",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Standing Alternating Dumbbell Press",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Standing Barbell Press Behind Neck",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 barbell"
+ },
+ {
+  "name": "Standing Bradford Press",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 barbell"
+ },
+ {
+  "name": "Standing Dumbbell Press",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Standing Dumbbell Straight-Arm Front Delt Raise Above Head",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Standing Front Barbell Raise Over Head",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Standing Low-Pulley Deltoid Raise",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Standing Military Press",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 barbell"
+ },
+ {
+  "name": "Standing Palm-In One-Arm Dumbbell Press",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Standing Palms-In Dumbbell Press",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Straight Raises on Incline Bench",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Upright Barbell Row",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 barbell"
+ },
+ {
+  "name": "Barbell Shrug",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Barbell Shrug Behind The Back",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Cable Shrugs",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Clean Shrug",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Dumbbell Shrug",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Snatch Shrug",
+  "met": 6.0,
+  "begründung_kurz": "Olymp. Heben: Anker 6.0"
+ },
+ {
+  "name": "Standing Dumbbell Upright Row",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Upright Cable Row",
+  "met": 4.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Upright Row - With Bands",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Band Skull Crusher",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Bench Dips",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Bench Press - Powerlifting",
+  "met": 6.5,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Bench Press with Chains",
+  "met": 6.5,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Board Press",
+  "met": 6.5,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Body Tricep Press",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Body-Up",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Cable Incline Triceps Extension",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Cable Lying Triceps Extension",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Cable One Arm Tricep Extension",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Cable Rope Overhead Triceps Extension",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Close-Grip Barbell Bench Press",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 barbell"
+ },
+ {
+  "name": "Close-Grip Dumbbell Press",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Close-Grip EZ-Bar Press",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Close-Grip Push-Up off of a Dumbbell",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 ≥3 Sekundärmuskeln"
+ },
+ {
+  "name": "Decline Close-Grip Bench To Skull Crusher",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 barbell"
+ },
+ {
+  "name": "Decline Dumbbell Triceps Extension",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Decline EZ Bar Triceps Extension",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Dips - Triceps Version",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Dumbbell Floor Press",
+  "met": 5.5,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 Powerlifting"
+ },
+ {
+  "name": "Dumbbell One-Arm Triceps Extension",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Dumbbell Tricep Extension -Pronated Grip",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "EZ-Bar Skullcrusher",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Floor Press",
+  "met": 6.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Floor Press with Chains",
+  "met": 6.0,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Incline Barbell Triceps Extension",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Incline Push-Up Close-Grip",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "JM Press",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 barbell"
+ },
+ {
+  "name": "Kneeling Cable Triceps Extension",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Low Cable Triceps Extension",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Lying Close-Grip Barbell Triceps Extension Behind The Head",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Lying Close-Grip Barbell Triceps Press To Chin",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Lying Dumbbell Tricep Extension",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Lying Triceps Press",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "One Arm Floor Press",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 barbell"
+ },
+ {
+  "name": "One Arm Pronated Dumbbell Triceps Extension",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "One Arm Supinated Dumbbell Triceps Extension",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Overhead Triceps",
+  "met": 2.5,
+  "begründung_kurz": "Dehnung: Anker 2.5"
+ },
+ {
+  "name": "Pin Presses",
+  "met": 6.5,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Push-Ups - Close Triceps Position",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Reverse Band Bench Press",
+  "met": 6.5,
+  "begründung_kurz": "powerlifting, compound: Basis 5.0; +0.5 ≥3 Sekundärmuskeln; +0.5 barbell; +0.5 Powerlifting"
+ },
+ {
+  "name": "Reverse Grip Triceps Pushdown",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Reverse Triceps Bench Press",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 barbell"
+ },
+ {
+  "name": "Seated Bent-Over One-Arm Dumbbell Triceps Extension",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Seated Bent-Over Two-Arm Dumbbell Triceps Extension",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Seated Triceps Press",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Speed Band Overhead Triceps",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Standing Bent-Over One-Arm Dumbbell Triceps Extension",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Standing Bent-Over Two-Arm Dumbbell Triceps Extension",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Standing Dumbbell Triceps Extension",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Standing Low-Pulley One-Arm Triceps Extension",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Standing One-Arm Dumbbell Triceps Extension",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Standing Overhead Barbell Triceps Extension",
+  "met": 4.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; +0.5 barbell"
+ },
+ {
+  "name": "Standing Towel Triceps Extension",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Tate Press",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Tricep Dumbbell Kickback",
+  "met": 3.5,
+  "begründung_kurz": "strength, isolation: Basis 3.5"
+ },
+ {
+  "name": "Triceps Overhead Extension with Rope",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Triceps Pushdown",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Triceps Pushdown - Rope Attachment",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Triceps Pushdown - V-Bar Attachment",
+  "met": 3.0,
+  "begründung_kurz": "strength, isolation: Basis 3.5; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Barbell Bench Press",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Barbell Incline Bench Press",
+  "met": 6.0,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 barbell"
+ },
+ {
+  "name": "Dips",
+  "met": 5.0,
+  "begründung_kurz": "strength, compound: Basis 5.0"
+ },
+ {
+  "name": "Close-Grip Lat Pulldown",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln; +0.5 ≥3 Sekundärmuskeln; -0.5 cable (geführt)"
+ },
+ {
+  "name": "Hyperextensions",
+  "met": 5.5,
+  "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ }
+]
