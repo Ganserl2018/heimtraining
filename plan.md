@@ -44,6 +44,11 @@ Stand: 2026-09-30
 |---|---|---|---|
 | V5-01 | Ernährungs-Tab | ⚪ open | — |
 | V5-02 | Fortschritt/Ziele-Tab (V6-Ziel-Leiste kann später hierauf aufbauen) | ⚪ open | — |
+| V5-03 | Vollbild-Trainingsmodus je Übung | ⚪ open | — |
+
+V5-03 Referenz (Screenshot 30.09.): großes Übungsbild/-video im Hintergrund, Timer/Countdown
+mittig, Play/Pause, Zeit + Equipment/Muskeln als Chips unten, "Swipe up" für Anleitung.
+Eigener Vollbild-Modus statt/ergänzend zur heutigen Listenansicht während des Trainings.
 
 Live verifiziert (Playwright, Desktop-Breite 1100px): Sidebar "Alle Übungen" klappt
 Push/Pull/Legs/Core auf, Klick auf Übung öffnet "Tauschen"-Picker, TV-Icon öffnet
