@@ -1,6 +1,13 @@
+/* V6-07 Redesign (30.09.): "Gummiboden/Kraftraum-Werkstatt" — dunkles, grünstichiges
+   Anthrazit statt reinem Schwarz, EIN warmer Kreide-Akzent statt Neon/Standard-Blau.
+   --accent bleibt aus Kompatibilitätsgründen bestehen (viele ältere Regeln nutzen ihn),
+   zeigt jetzt aber auf den Kreide-Ton. Details/Begründung: design-v6-07-spec.md. */
 :root{
-  --bg:#0f1115; --panel:#1a1d24; --border:#2a2e37;
-  --text:#f2f3f5; --text-dim:#a7aebb; --accent:#5b8def;
+  --bg:#14171a; --bg-raise:#1c2023; --panel:#1d2124; --panel-2:#242829;
+  --border:#33383a; --border-soft:#2a2e30;
+  --text:#eeece5; --text-dim:#9a9d97; --text-faint:#6d716c;
+  --chalk:#d9c98f; --chalk-deep:#b9a865; --accent:#d9c98f;
+  --ok:#7fae6a; --warn:#c98a4b; --bad:#b85c4f;
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
@@ -88,7 +95,7 @@ body{
 /* V2-10: Bildergalerie statt Liste + Filter-Chips */
 .filter-chips{display:flex; flex-wrap:wrap; gap:.4rem; margin:.6rem 0;}
 .chip{padding:.4rem .8rem; border-radius:999px; border:1px solid var(--border); background:var(--panel); color:var(--text-dim); font-size:.78rem; font-weight:600;}
-.chip.active{background:var(--accent); color:#fff; border-color:var(--accent);}
+.chip.active{background:var(--accent); color:#20231e; border-color:var(--accent);}
 .results{display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:.7rem; margin-top:.6rem;}
 .result{display:flex; flex-direction:column; align-items:center; gap:.4rem; text-align:center; padding:.6rem .4rem; background:var(--panel); border:1px solid var(--border); border-radius:10px; color:var(--text); font-size:.9rem;}
 .result:active,.result:hover{border-color:var(--accent);}
@@ -99,20 +106,35 @@ body{
 .results > .placeholder{grid-column:1 / -1;}
 .sets{display:flex; gap:.3rem; margin-top:.35rem;}
 .set{padding:.35rem .5rem; font-size:.75rem;}
-.set.done{background:var(--accent); color:#fff; border-color:var(--accent);}
+.set.done{background:var(--accent); color:#20231e; border-color:var(--accent);}
 
-/* V2-07: Übersicht */
-.overview{display:flex; flex-direction:column; gap:.9rem;}
-.ov-card{background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:.9rem 1rem;}
-.ov-card-title{font-size:.8rem; text-transform:uppercase; letter-spacing:.04em; color:var(--text-dim); margin-bottom:.5rem;}
+/* V2-07/V6-07: Übersicht — Redesign "Gummiboden/Werkstatt", siehe design-v6-07-spec.md.
+   Flache Karten, ein Radius/eine Bordertechnik überall, kein Schatten-Mix. */
+.overview{display:flex; flex-direction:column; gap:.85rem;}
+.ov-card{background:var(--panel); border:1px solid var(--border-soft); border-radius:16px; padding:1.05rem 1.15rem;}
+.ov-card-title{font-size:.72rem; letter-spacing:.02em; color:var(--text-faint); margin-bottom:.55rem; font-weight:500;}
 .ov-card button{margin-top:.5rem; padding:.5rem .9rem; font-size:.85rem;}
 .ov-week{display:flex; gap:.5rem;}
-.ov-week-day{flex:1; text-align:center; padding:.6rem 0; border-radius:8px; background:var(--bg); border:1px solid var(--border); color:var(--text-dim); font-size:.82rem; font-weight:600;}
-.ov-week-day.done{background:var(--accent); color:#fff; border-color:var(--accent);}
-.ov-quick{display:flex; gap:.5rem; flex-wrap:wrap;}
-.ov-quick button{flex:1; min-width:80px;}
-.ov-card .history-item{padding:.5rem 0;}
+.ov-week-day{flex:1; text-align:center; padding:.75rem .3rem .65rem; border-radius:12px; background:var(--bg-raise); border:1px solid var(--border-soft); color:var(--text-dim); font-size:.78rem; font-weight:600;}
+.ov-week-day .wd-name{display:block; margin-bottom:.4rem;}
+.ov-week-day .wd-mark{display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; font-size:.7rem; border:1px solid var(--border);}
+.ov-week-day.done{background:rgba(127,174,106,.13); border-color:rgba(127,174,106,.35); color:#cfe3c4;}
+.ov-week-day.done .wd-mark{background:var(--ok); border-color:var(--ok); color:#12180f; font-weight:700;}
+.ov-quick{display:grid; grid-template-columns:1fr 1fr; gap:.55rem;}
+.ov-quick button{min-height:52px; border-radius:12px; border:1px solid var(--border); background:var(--bg-raise); color:var(--text); font-size:.88rem; font-weight:600; text-align:left; padding:0 .9rem; display:flex; align-items:center; margin-top:0;}
+.ov-quick button:active{border-color:var(--accent);}
+.ov-card .history-item{padding:.7rem 0; border-bottom:1px solid var(--border-soft); display:flex; align-items:center; justify-content:space-between; gap:.8rem;}
+.ov-card .history-item:last-of-type{border-bottom:none; padding-bottom:.3rem;}
 .ov-card .history-item:first-of-type{padding-top:0;}
+.history-main{min-width:0;}
+.history-ring{flex:none; width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.68rem; font-weight:700; color:var(--text-dim); background:conic-gradient(var(--accent) calc(var(--pct,0) * 1%), var(--border-soft) 0); position:relative;}
+.history-ring::before{content:""; position:absolute; inset:3px; border-radius:50%; background:var(--panel);}
+.history-ring span{position:relative;}
+.history-footer-btn{width:100%; margin-top:.5rem;}
+.ov-btn{display:inline-flex; align-items:center; justify-content:center; background:var(--accent); color:#20231e; border:none; border-radius:999px; padding:.6rem 1.15rem; font-size:.86rem; font-weight:700; letter-spacing:-.01em; min-height:44px;}
+.ov-btn:active{background:var(--chalk-deep);}
+.ov-btn-ghost{background:none; border:1px solid var(--border); color:var(--text-dim); font-weight:600;}
+.ov-btn-ghost:active{border-color:var(--text-dim); color:var(--text);}
 
 /* V2-01: Verlauf */
 .history-item{padding:.8rem 0; border-bottom:1px solid var(--border);}
@@ -153,7 +175,7 @@ body{
 .w-sets{display:flex; gap:.5rem; flex-wrap:wrap;}
 .w-set{display:flex; align-items:center; gap:.3rem;}
 .w-set button{padding:.35rem .55rem; font-size:.78rem; border-radius:6px; border:1px solid var(--border); background:var(--panel); color:var(--text);}
-.w-set button.done{background:var(--accent); color:#fff; border-color:var(--accent);}
+.w-set button.done{background:var(--accent); color:#20231e; border-color:var(--accent);}
 .w-set input{width:56px; font-size:.8rem; padding:.35rem .3rem; border-radius:6px; border:1px solid var(--border); background:var(--bg); color:var(--text);}
 .w-note{width:100%; margin-top:.5rem; background:var(--bg); border:1px solid var(--border); border-radius:8px; color:var(--text); font-size:.82rem; padding:.5rem; resize:vertical; min-height:2.2rem; font-family:inherit;}
 .history-note{color:var(--text-dim); font-size:.82rem; margin-top:.3rem; font-style:italic;}
@@ -171,21 +193,38 @@ body{
 .profile-form label{display:flex; flex-direction:column; gap:.3rem; font-size:.82rem; color:var(--text-dim);}
 .profile-form input,.profile-form select{font-size:16px; padding:.5rem; border-radius:6px; border:1px solid var(--border); background:var(--bg); color:var(--text);}
 
-/* V6-02: Quick-Start-Card */
-.ov-quickstart-name{font-size:1.1rem; font-weight:700; margin:.3rem 0 .6rem;}
+/* V6-02/V6-07: Quick-Start-Card */
+.ov-quickstart{background:linear-gradient(155deg,#232821 0%, var(--panel) 55%); border-color:var(--border); position:relative; overflow:hidden;}
+.ov-quickstart::after{content:""; position:absolute; right:-30px; top:-30px; width:140px; height:140px; border-radius:50%; border:22px solid rgba(217,201,143,.06);}
+.ov-quickstart-name{font-size:1.4rem; font-weight:700; margin:.15rem 0 .15rem; letter-spacing:-.015em; position:relative;}
+.ov-quickstart-sub{color:var(--text-dim); font-size:.85rem; position:relative;}
+.ov-quickstart .ov-btn{margin-top:.9rem;}
 
-/* V6-03: Ziel-Leiste */
-.goal-text{font-size:.95rem; margin-bottom:.4rem;}
-.goal-edit{display:flex; flex-direction:column; gap:.5rem;}
-.goal-edit label{display:flex; align-items:center; gap:.4rem; font-size:.85rem; color:var(--text-dim);}
-.goal-edit input{width:60px; font-size:.9rem; padding:.3rem; border-radius:6px; border:1px solid var(--border); background:var(--bg); color:var(--text);}
+/* V6-03/V6-07: Ziel-Leiste */
+.goal-row{display:flex; align-items:flex-end; justify-content:space-between; gap:.8rem;}
+.goal-text{font-size:1.6rem; font-weight:700; letter-spacing:-.02em; margin:0; font-variant-numeric:tabular-nums;}
+.goal-text small{font-size:.85rem; font-weight:500; color:var(--text-dim); letter-spacing:0;}
+.goal-sub{font-size:.78rem; color:var(--text-faint); margin-top:.15rem;}
+.goal-bar{height:8px; border-radius:99px; background:var(--bg-raise); overflow:hidden; margin-top:.75rem; border:1px solid var(--border-soft);}
+.goal-fill{height:100%; background:var(--accent); border-radius:99px;}
+.goal-edit-link{background:none; border:none; color:var(--text-faint); font-size:.78rem; padding:.3rem 0; text-decoration:underline; text-underline-offset:2px; min-height:44px;}
+.goal-edit{display:flex; flex-direction:column; gap:.6rem; margin-top:.7rem;}
+.goal-edit label{display:flex; align-items:center; gap:.5rem; font-size:.85rem; color:var(--text-dim);}
+.goal-edit input{width:56px; font-size:.95rem; padding:.4rem; text-align:center; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text);}
 
-/* V6-05/06: Wochenplan-Statuskalender */
-.cal-strip{display:flex; gap:.4rem;}
-.cal-day{flex:1; display:flex; flex-direction:column; align-items:center; gap:.3rem; padding:.4rem 0; border-radius:8px; background:var(--bg); border:1px solid var(--border);}
-.cal-wd{font-size:.72rem; color:var(--text-dim); font-weight:600;}
-.cal-dot{width:8px; height:8px; border-radius:50%; background:var(--border);}
-.cal-day.cal-erledigt .cal-dot{background:#3ecf7a;}
+/* V6-05/06/07: Wochenplan-Statuskalender */
+.cal-strip{display:flex; gap:.45rem;}
+.cal-day{flex:1; display:flex; flex-direction:column; align-items:center; gap:.4rem; padding:.55rem 0 .5rem; border-radius:12px; background:var(--bg-raise); border:1px solid var(--border-soft); min-height:44px; justify-content:center;}
+.cal-day.cal-heute{border-color:var(--text-faint);}
+.cal-wd{font-size:.68rem; color:var(--text-faint); font-weight:600;}
+.cal-dot{width:7px; height:7px; border-radius:50%; background:var(--border);}
+.cal-day.cal-erledigt{background:rgba(127,174,106,.13);}
+.cal-day.cal-erledigt .cal-dot{background:var(--ok);}
+.cal-day.cal-erledigt .cal-wd{color:#b9d1ac;}
 .cal-day.cal-offen .cal-dot{background:var(--accent);}
-.cal-day.cal-unvollständig .cal-dot{background:#e8a53a;}
-.cal-day.cal-verpasst .cal-dot{background:#e8543a;}
+.cal-day.cal-offen .cal-wd{color:var(--accent);}
+.cal-day.cal-unvollständig .cal-dot{background:var(--warn);}
+.cal-day.cal-verpasst .cal-dot{background:var(--bad);}
+.cal-legend{display:flex; flex-wrap:wrap; gap:.5rem 1rem; margin-top:.7rem; font-size:.68rem; color:var(--text-faint);}
+.cal-legend span{display:inline-flex; align-items:center; gap:.35rem;}
+.cal-legend i{width:6px; height:6px; border-radius:50%; display:inline-block;}

@@ -326,12 +326,12 @@ function renderOverview() {
   if (activeDay) {
     const setsDone = Object.values(p.done[activeDay]).reduce((s, arr) => s + arr.filter(Boolean).length, 0);
     const setsPlanned = itemsFor(activeDay).length * SETS;
-    todayBlock = `<div>${DAY_LABELS[activeDay]}: ${setsDone}/${setsPlanned} Sätze</div>
-      <button data-act="goto" data-day="${activeDay}">Weiter im Training</button>`;
+    todayBlock = `<div class="today-status"><div class="today-status-text">${DAY_LABELS[activeDay]}: <b>${setsDone}/${setsPlanned}</b> Sätze</div></div>
+      <button class="ov-btn" data-act="goto" data-day="${activeDay}">Weiter im Training</button>`;
   } else if (todayEntries.length) {
-    todayBlock = todayEntries.map(r => `<div>${DAY_LABELS[r.day] || esc(r.day)} abgeschlossen: ${r.totalSetsDone}/${r.totalSetsPlanned} Sätze</div>`).join('');
+    todayBlock = todayEntries.map(r => `<div class="today-status"><div class="today-status-text">${DAY_LABELS[r.day] || esc(r.day)} abgeschlossen: <b>${r.totalSetsDone}/${r.totalSetsPlanned}</b> Sätze</div></div>`).join('');
   } else {
-    todayBlock = `<p class="placeholder">Noch kein Training heute.</p>`;
+    todayBlock = `<p class="today-placeholder">Noch kein Training heute.</p>`;
   }
 
   const thisWeek = mondayOf(t);
@@ -342,11 +342,13 @@ function renderOverview() {
   const openTraining = weekplan.find(w => startOf(w.id, t) && !loadHistory().some(r => r.trainingId === w.id && r.date === t));
   const dueTraining = !openTraining ? scheduled.find(w => trainingStatusForDate(w, t) === 'offen') : null;
   const quick = openTraining || dueTraining;
+  const quickSub = quick ? `${quick.exercises.length} Übung${quick.exercises.length === 1 ? '' : 'en'} geplant` : '';
   const quickBlock = quick
     ? `<div class="ov-card ov-quickstart">
         <div class="ov-card-title">${openTraining ? 'Weiter im Training' : 'Heute geplant'}</div>
         <div class="ov-quickstart-name">${esc(quick.name)}</div>
-        <button data-act="quickStart" data-id="${quick.id}">${openTraining ? 'Weiter' : 'Jetzt starten'}</button>
+        <div class="ov-quickstart-sub">${esc(quickSub)}</div>
+        <button class="ov-btn" data-act="quickStart" data-id="${quick.id}">${openTraining ? 'Weiter' : 'Jetzt starten'}</button>
       </div>`
     : (scheduled.length ? '' : '');
 
@@ -356,16 +358,19 @@ function renderOverview() {
   const goalCount = h.filter(r => r.date >= since && r.date <= t).length;
   const goalPct = Math.min(100, Math.round(goalCount / goal.target * 100));
   const goalBlock = `<div class="ov-card">
-    <div class="ov-card-title">Ziel</div>
+    <div class="ov-card-title">Wochenziel</div>
     ${goalEditing
       ? `<div class="goal-edit">
           <label>Ziel <input id="goal-target" type="number" min="1" value="${goal.target}"> Trainings</label>
           <label>in <input id="goal-period" type="number" min="1" value="${goal.periodDays}"> Tagen</label>
-          <div class="edit-bar"><button data-act="goalSave">Speichern</button><button data-act="goalCancel">Abbrechen</button></div>
+          <div class="edit-bar"><button class="ov-btn" data-act="goalSave">Speichern</button><button class="ov-btn ov-btn-ghost" data-act="goalCancel">Abbrechen</button></div>
         </div>`
-      : `<div class="goal-text">${goalCount} / ${goal.target} Trainings in ${goal.periodDays} Tagen</div>
-        <div class="history-bar"><div class="history-fill" style="width:${goalPct}%"></div></div>
-        <button data-act="goalEdit">Ziel anpassen</button>`}
+      : `<div class="goal-row">
+          <p class="goal-text">${goalCount} <small>/ ${goal.target} Trainings</small></p>
+          <button class="goal-edit-link" data-act="goalEdit">Anpassen</button>
+        </div>
+        <div class="goal-sub">in den letzten ${goal.periodDays} Tagen</div>
+        <div class="goal-bar"><div class="goal-fill" style="width:${goalPct}%"></div></div>`}
   </div>`;
 
   // V6-05/06: Wochenplan-Statuskalender – Mo–So, je Training mit Wochentag-Zuordnung.
@@ -379,11 +384,17 @@ function renderOverview() {
         : items.some(x => x.status === 'unvollständig') ? 'unvollständig'
         : items.some(x => x.status === 'offen') ? 'offen'
         : items.length ? 'erledigt' : null;
-      return `<div class="cal-day${worst ? ' cal-' + worst : ''}" title="${items.map(x => esc(x.w.name) + ': ' + STATUS_LABEL[x.status]).join(', ')}">
+      return `<div class="cal-day${worst ? ' cal-' + worst : ''}${ds === t ? ' cal-heute' : ''}" title="${items.map(x => esc(x.w.name) + ': ' + STATUS_LABEL[x.status]).join(', ')}">
         <div class="cal-wd">${WD_LABELS[wdKeyOf(ds)]}</div>
         <div class="cal-dot"></div>
       </div>`;
     }).join('')}</div>
+    <div class="cal-legend">
+      <span><i style="background:var(--ok)"></i>erledigt</span>
+      <span><i style="background:var(--accent)"></i>heute offen</span>
+      <span><i style="background:var(--warn)"></i>unvollständig</span>
+      <span><i style="background:var(--bad)"></i>verpasst</span>
+    </div>
   </div>` : '';
 
   content.innerHTML = `
@@ -396,8 +407,8 @@ function renderOverview() {
         ${todayBlock}
       </div>
       <div class="ov-card">
-        <div class="ov-card-title">Diese Woche</div>
-        <div class="ov-week">${DAYS.map(d => `<div class="ov-week-day${doneThisWeek.has(d) ? ' done' : ''}">${DAY_LABELS[d]}</div>`).join('')}</div>
+        <div class="ov-card-title">Trainingstage</div>
+        <div class="ov-week">${DAYS.map(d => `<div class="ov-week-day${doneThisWeek.has(d) ? ' done' : ''}"><span class="wd-name">${DAY_LABELS[d]}</span><span class="wd-mark">${doneThisWeek.has(d) ? '✓' : '–'}</span></div>`).join('')}</div>
       </div>
       <div class="ov-card">
         <div class="ov-card-title">Schnellzugriff</div>
@@ -405,11 +416,14 @@ function renderOverview() {
       </div>
       <div class="ov-card">
         <div class="ov-card-title">Letzte Trainings</div>
-        ${h.length ? h.slice(0, 3).map(r => `<div class="history-item">
-            <div class="history-date">${esc(r.date)} · ${DAY_LABELS[r.day] || esc(r.day)}</div>
-            <div class="history-meta">${r.totalSetsDone}/${r.totalSetsPlanned} Sätze</div>
-          </div>`).join('') : `<p class="placeholder">Noch keine Historie.</p>`}
-        <button data-act="goto" data-view="history">Ganzer Verlauf</button>
+        ${h.length ? h.slice(0, 3).map(r => { const pct = r.totalSetsPlanned ? Math.round(r.totalSetsDone / r.totalSetsPlanned * 100) : 0; return `<div class="history-item">
+            <div class="history-main">
+              <div class="history-date">${esc(r.date)} · ${DAY_LABELS[r.day] || esc(r.day)}</div>
+              <div class="history-meta">${r.totalSetsDone}/${r.totalSetsPlanned} Sätze</div>
+            </div>
+            <div class="history-ring" style="--pct:${pct}"><span>${pct}%</span></div>
+          </div>`; }).join('') : `<p class="placeholder">Noch keine Historie.</p>`}
+        <button class="ov-btn ov-btn-ghost history-footer-btn" data-act="goto" data-view="history">Ganzer Verlauf</button>
       </div>
     </div>`;
 }

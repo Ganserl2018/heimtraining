@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>V6-07 Übersicht Redesign — Mockup</title>
+<style>
+  /* ============================================================
+     PALETTE — "Werkstatt/Rubberflooring": dunkles Anthrazit-Grün
+     (wie gegossener Gummiboden im Kraftraum) + ein einziger warmer
+     Kalk/Chalk-Akzent (wie Magnesia-Kreide), keine Neon-Sportfarbe,
+     kein Standard-Blau/Lila. Siehe design-v6-07-spec.md.
+     ============================================================ */
+  :root{
+    --bg:#14171a;          /* Gummiboden-Anthrazit, leicht grün getönt */
+    --bg-raise:#1c2023;
+    --panel:#1d2124;
+    --panel-2:#242829;
+    --border:#33383a;
+    --border-soft:#2a2e30;
+    --text:#eeece5;        /* warmes Off-White, kein reines Weiß */
+    --text-dim:#9a9d97;
+    --text-faint:#6d716c;
+    --chalk:#d9c98f;       /* Magnesia-Kreide: der EINE Akzent */
+    --chalk-deep:#b9a865;
+    --ok:#7fae6a;          /* gedämpftes Trainings-Grün, kein Signal-Neon */
+    --warn:#c98a4b;
+    --bad:#b85c4f;
+    --radius-l:16px;
+    --radius-m:12px;
+    --radius-s:8px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  .phone-frame{
+    max-width:430px; margin:0 auto; min-height:100vh;
+    background:var(--bg);
+    padding:0 0 6rem;
+    border-left:1px solid var(--border-soft); border-right:1px solid var(--border-soft);
+  }
+  .demo-note{
+    max-width:430px; margin:0 auto; padding:.6rem 1.1rem;
+    font-size:.72rem; color:var(--text-faint); text-align:center;
+  }
+  .topbar{
+    padding:1.1rem 1.1rem .9rem;
+    display:flex; align-items:baseline; justify-content:space-between;
+  }
+  .topbar h1{
+    margin:0; font-size:1.05rem; font-weight:600; letter-spacing:-.01em;
+    color:var(--text-dim);
+  }
+  .topbar .topbar-date{ font-size:.78rem; color:var(--text-faint); font-variant-numeric:tabular-nums; }
+
+  #content{ padding:0 1.1rem; }
+  .overview{ display:flex; flex-direction:column; gap:.85rem; }
+
+  /* Base card — flat, one hairline border, no drop shadows, no
+     nested-card look. Radius stays consistent across ALL cards
+     (16px) so nothing looks like a random SaaS-kit mashup. */
+  .ov-card{
+    background:var(--panel); border:1px solid var(--border-soft);
+    border-radius:var(--radius-l); padding:1.05rem 1.15rem;
+  }
+  .ov-card-title{
+    font-size:.72rem; letter-spacing:.02em; color:var(--text-faint);
+    margin-bottom:.55rem; font-weight:500;
+  }
+
+  /* ---------- 1. Quick-Start ---------- */
+  .ov-quickstart{
+    background:linear-gradient(155deg,#232821 0%, var(--panel) 55%);
+    border-color:var(--border);
+    position:relative; overflow:hidden;
+  }
+  .ov-quickstart::after{
+    /* subtiles Textur-Element statt Icon-Tile: eine angedeutete
+       Hantelscheiben-Kontur, sehr leise, kein Gradient-Blob */
+    content:""; position:absolute; right:-30px; top:-30px;
+    width:140px; height:140px; border-radius:50%;
+    border:22px solid rgba(217,201,143,.06);
+  }
+  .ov-quickstart-name{
+    font-size:1.4rem; font-weight:700; margin:.15rem 0 .15rem;
+    letter-spacing:-.015em; position:relative;
+  }
+  .ov-quickstart-sub{ color:var(--text-dim); font-size:.85rem; position:relative; }
+  .ov-quickstart .ov-btn{ margin-top:.9rem; }
+
+  /* ---------- shared button ---------- */
+  .ov-btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    background:var(--chalk); color:#20231e; border:none;
+    border-radius:999px; padding:.6rem 1.15rem; font-size:.86rem;
+    font-weight:700; letter-spacing:-.01em; min-height:44px;
+  }
+  .ov-btn:active{ background:var(--chalk-deep); }
+  .ov-btn-ghost{
+    background:none; border:1px solid var(--border); color:var(--text-dim);
+    font-weight:600;
+  }
+  .ov-btn-ghost:active{ border-color:var(--text-dim); color:var(--text); }
+
+  /* ---------- 2. Ziel-Karte ---------- */
+  .goal-row{ display:flex; align-items:flex-end; justify-content:space-between; gap:.8rem; }
+  .goal-text{
+    font-size:1.6rem; font-weight:700; letter-spacing:-.02em; margin:0;
+    font-variant-numeric:tabular-nums;
+  }
+  .goal-text small{
+    font-size:.85rem; font-weight:500; color:var(--text-dim); letter-spacing:0;
+  }
+  .goal-sub{ font-size:.78rem; color:var(--text-faint); margin-top:.15rem; }
+  .goal-bar{
+    height:8px; border-radius:99px; background:var(--bg-raise);
+    overflow:hidden; margin-top:.75rem;
+    border:1px solid var(--border-soft);
+  }
+  .goal-fill{ height:100%; background:var(--chalk); border-radius:99px; }
+  .goal-edit-link{
+    background:none; border:none; color:var(--text-faint); font-size:.78rem;
+    padding:.3rem 0; text-decoration:underline; text-underline-offset:2px;
+  }
+  .goal-edit{ display:flex; flex-direction:column; gap:.6rem; margin-top:.7rem; }
+  .goal-edit label{ display:flex; align-items:center; gap:.5rem; font-size:.85rem; color:var(--text-dim); }
+  .goal-edit input{
+    width:56px; font-size:.95rem; padding:.4rem; text-align:center;
+    border-radius:var(--radius-s); border:1px solid var(--border); background:var(--bg); color:var(--text);
+  }
+
+  /* ---------- 3. Wochenplan-Statuskalender ---------- */
+  .cal-strip{ display:flex; gap:.45rem; }
+  .cal-day{
+    flex:1; display:flex; flex-direction:column; align-items:center; gap:.4rem;
+    padding:.55rem 0 .5rem; border-radius:var(--radius-m);
+    background:var(--bg-raise); border:1px solid var(--border-soft);
+    min-height:44px; justify-content:center;
+  }
+  .cal-day.cal-heute{ border-color:var(--text-faint); }
+  .cal-wd{ font-size:.68rem; color:var(--text-faint); font-weight:600; }
+  .cal-dot{ width:7px; height:7px; border-radius:50%; background:var(--border); }
+  .cal-day.cal-erledigt{ background:rgba(127,174,106,.13); }
+  .cal-day.cal-erledigt .cal-dot{ background:var(--ok); }
+  .cal-day.cal-erledigt .cal-wd{ color:#b9d1ac; }
+  .cal-day.cal-offen .cal-dot{ background:var(--chalk); }
+  .cal-day.cal-offen .cal-wd{ color:var(--chalk); }
+  .cal-day.cal-unvollständig .cal-dot{ background:var(--warn); }
+  .cal-day.cal-verpasst .cal-dot{ background:var(--bad); }
+  .cal-legend{
+    display:flex; flex-wrap:wrap; gap:.5rem 1rem; margin-top:.7rem;
+    font-size:.68rem; color:var(--text-faint);
+  }
+  .cal-legend span{ display:inline-flex; align-items:center; gap:.35rem; }
+  .cal-legend i{ width:6px; height:6px; border-radius:50%; display:inline-block; }
+
+  /* ---------- 4. Heute-Karte ---------- */
+  .today-status{ display:flex; align-items:center; gap:.7rem; }
+  .today-status-text{ font-size:.95rem; }
+  .today-status-text b{ font-variant-numeric:tabular-nums; }
+  .today-placeholder{ color:var(--text-faint); font-size:.88rem; }
+
+  /* ---------- 5. Diese-Woche-Karte ---------- */
+  .ov-week{ display:flex; gap:.5rem; }
+  .ov-week-day{
+    flex:1; text-align:center; padding:.75rem .3rem .65rem; border-radius:var(--radius-m);
+    background:var(--bg-raise); border:1px solid var(--border-soft);
+    color:var(--text-dim); font-size:.78rem; font-weight:600;
+  }
+  .ov-week-day .wd-name{ display:block; margin-bottom:.4rem; }
+  .ov-week-day .wd-mark{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:20px; height:20px; border-radius:50%; font-size:.7rem;
+    border:1px solid var(--border);
+  }
+  .ov-week-day.done{ background:rgba(127,174,106,.13); border-color:rgba(127,174,106,.35); color:#cfe3c4; }
+  .ov-week-day.done .wd-mark{ background:var(--ok); border-color:var(--ok); color:#12180f; font-weight:700; }
+
+  /* ---------- 6. Schnellzugriff ---------- */
+  .ov-quick{ display:grid; grid-template-columns:1fr 1fr; gap:.55rem; }
+  .ov-quick button{
+    min-height:52px; border-radius:var(--radius-m); border:1px solid var(--border);
+    background:var(--bg-raise); color:var(--text); font-size:.88rem; font-weight:600;
+    text-align:left; padding:0 .9rem;
+    display:flex; align-items:center;
+  }
+  .ov-quick button:active{ border-color:var(--chalk); }
+
+  /* ---------- 7. Letzte Trainings ---------- */
+  .ov-card .history-item{
+    padding:.7rem 0; border-bottom:1px solid var(--border-soft);
+    display:flex; align-items:center; justify-content:space-between; gap:.8rem;
+  }
+  .ov-card .history-item:last-of-type{ border-bottom:none; padding-bottom:.3rem; }
+  .ov-card .history-item:first-of-type{ padding-top:0; }
+  .history-main{ min-width:0; }
+  .history-date{ font-weight:600; font-size:.9rem; }
+  .history-meta{ color:var(--text-faint); font-size:.76rem; margin-top:.1rem; }
+  .history-ring{
+    flex:none; width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:.68rem; font-weight:700; color:var(--text-dim);
+    background:
+      conic-gradient(var(--chalk) calc(var(--pct,0) * 1%), var(--border-soft) 0);
+    position:relative;
+  }
+  .history-ring::before{
+    content:""; position:absolute; inset:3px; border-radius:50%; background:var(--panel);
+  }
+  .history-ring span{ position:relative; }
+  .history-footer-btn{ width:100%; margin-top:.5rem; }
+
+  /* Section headers: no eyebrow-caps everywhere — titles are sentence
+     case, quiet, and only appear where they add information. */
+</style>
+</head>
+<body>
+
+<div class="phone-frame">
+  <div class="topbar">
+    <h1>Übersicht</h1>
+    <span class="topbar-date">Mi, 30. Sep</span>
+  </div>
+
+  <div id="content">
+    <div class="overview">
+
+      <!-- 1. Quick-Start -->
+      <div class="ov-card ov-quickstart">
+        <div class="ov-card-title">Weiter im Training</div>
+        <div class="ov-quickstart-name">Push-Training</div>
+        <div class="ov-quickstart-sub">3 von 5 Übungen offen · 12 Sätze übrig</div>
+        <button class="ov-btn">Weiter</button>
+      </div>
+
+      <!-- 2. Ziel-Karte -->
+      <div class="ov-card">
+        <div class="ov-card-title">Wochenziel</div>
+        <div class="goal-row">
+          <p class="goal-text">3 <small>/ 5 Trainings</small></p>
+          <button class="goal-edit-link" data-act="editGoal">Anpassen</button>
+        </div>
+        <div class="goal-sub">in den letzten 7 Tagen</div>
+        <div class="goal-bar"><div class="goal-fill" style="width:60%"></div></div>
+
+        <!-- Edit-Modus Beispiel (auskommentiert im echten Einsatz per JS toggeln) -->
+        <!--
+        <div class="goal-edit">
+          <label>Ziel: <input type="number" value="5"> Trainings in <input type="number" value="7"> Tagen</label>
+          <button class="ov-btn ov-btn-ghost">Speichern</button>
+        </div>
+        -->
+      </div>
+
+      <!-- 3. Wochenplan-Statuskalender -->
+      <div class="ov-card">
+        <div class="ov-card-title">Diese Woche</div>
+        <div class="cal-strip">
+          <div class="cal-day cal-erledigt"><span class="cal-wd">Mo</span><span class="cal-dot"></span></div>
+          <div class="cal-day cal-erledigt"><span class="cal-wd">Di</span><span class="cal-dot"></span></div>
+          <div class="cal-day cal-unvollständig"><span class="cal-wd">Mi</span><span class="cal-dot"></span></div>
+          <div class="cal-day cal-offen cal-heute"><span class="cal-wd">Do</span><span class="cal-dot"></span></div>
+          <div class="cal-day"><span class="cal-wd">Fr</span><span class="cal-dot"></span></div>
+          <div class="cal-day cal-verpasst"><span class="cal-wd">Sa</span><span class="cal-dot"></span></div>
+          <div class="cal-day"><span class="cal-wd">So</span><span class="cal-dot"></span></div>
+        </div>
+        <div class="cal-legend">
+          <span><i style="background:var(--ok)"></i>erledigt</span>
+          <span><i style="background:var(--chalk)"></i>heute offen</span>
+          <span><i style="background:var(--warn)"></i>unvollständig</span>
+          <span><i style="background:var(--bad)"></i>verpasst</span>
+        </div>
+      </div>
+
+      <!-- 4. Heute-Karte -->
+      <div class="ov-card">
+        <div class="ov-card-title">Heute</div>
+        <div class="today-status">
+          <div class="today-status-text">Push-Training: <b>8/20</b> Sätze</div>
+        </div>
+      </div>
+
+      <!-- 5. Diese Woche (Push/Pull/Legs/Core) -->
+      <div class="ov-card">
+        <div class="ov-card-title">Trainingstage</div>
+        <div class="ov-week">
+          <div class="ov-week-day done"><span class="wd-name">Push</span><span class="wd-mark">✓</span></div>
+          <div class="ov-week-day done"><span class="wd-name">Pull</span><span class="wd-mark">✓</span></div>
+          <div class="ov-week-day"><span class="wd-name">Legs</span><span class="wd-mark">–</span></div>
+          <div class="ov-week-day"><span class="wd-name">Core</span><span class="wd-mark">–</span></div>
+        </div>
+      </div>
+
+      <!-- 6. Schnellzugriff -->
+      <div class="ov-card">
+        <div class="ov-card-title">Schnellzugriff</div>
+        <div class="ov-quick">
+          <button data-act="goto" data-day="push">Push</button>
+          <button data-act="goto" data-day="pull">Pull</button>
+          <button data-act="goto" data-day="legs">Legs</button>
+          <button data-act="goto" data-day="core">Core</button>
+        </div>
+      </div>
+
+      <!-- 7. Letzte Trainings -->
+      <div class="ov-card">
+        <div class="ov-card-title">Letzte Trainings</div>
+
+        <div class="history-item">
+          <div class="history-main">
+            <div class="history-date">Pull · Di, 29.09.</div>
+            <div class="history-meta">18/20 Sätze · 52 Min</div>
+          </div>
+          <div class="history-ring" style="--pct:90"><span>90%</span></div>
+        </div>
+        <div class="history-item">
+          <div class="history-main">
+            <div class="history-date">Push · Mo, 28.09.</div>
+            <div class="history-meta">20/20 Sätze · 48 Min</div>
+          </div>
+          <div class="history-ring" style="--pct:100"><span>100%</span></div>
+        </div>
+        <div class="history-item">
+          <div class="history-main">
+            <div class="history-date">Legs · Fr, 25.09.</div>
+            <div class="history-meta">14/20 Sätze · 55 Min</div>
+          </div>
+          <div class="history-ring" style="--pct:70"><span>70%</span></div>
+        </div>
+
+        <button class="ov-btn ov-btn-ghost history-footer-btn" data-act="tab" data-tab="history">Ganzer Verlauf</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<p class="demo-note">Mockup V6-07 — Klassennamen (ov-card, goal-text, cal-strip, cal-day, history-item, history-fill/-bar …) bewusst kompatibel zu style.css/script.js gehalten. Neue Klassen (ov-quickstart-sub, goal-bar/-fill, cal-legend, ov-week-day .wd-mark, history-ring, ov-btn/-ghost) sind Ergänzungen, siehe design-v6-07-spec.md.</p>
+
+</body>
+</html>
