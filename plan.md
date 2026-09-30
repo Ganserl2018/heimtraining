@@ -22,16 +22,24 @@ Stand: 2026-09-30
 | V6-01 | Feste Wochentage + Uhrzeit pro Wochenplan-Training | 🟢 done | — |
 | V6-02 | Quick-Start-Button (kombiniert: offen > heute fällig) | 🟢 done | V6-01 |
 | V6-03 | Ziel-Leiste v1 – Zahl + Zeitraum | 🟢 done | — |
-| V6-04 | Ziel-Leiste v2 – nach Live-Test | ⚪ wait | V6-03 |
+| V6-04 | Ziel-Leiste v2 – nach Design + Live-Test | ⚪ wait | V6-03, V6-07 |
 | V6-05 | Status-Erkennung & -Anzeige (verpasst/unvollständig/erledigt) | 🟢 done | V6-01 |
 | V6-06 | Kalenderstreifen + Verlauf-Vorschau prominenter | 🟢 done | V6-05 |
-| V6-07 | Design-Entwurf (Phase 3, eigener Design-Agent) | ⚪ wait | V6-01…06 |
+| V6-07 | Design-Entwurf Übersichtsseite (Phase 3, eigener Design-Agent) | ⚪ open | V6-01…06 |
+| V6-08 | Design-Entwurf restliche App (Wochenplan/Verlauf/Profil/TV) | ⚪ wait | V6-07 (erst wenn Übersicht passt) |
 
-V6-07 Auftrag (30.09. geklärt): eigener Design-Agent bekommt die Referenz-Screenshots
-(Dashboard mit KPI-Kacheln/Kalorien-Balken/Plan-Card, Onboarding-Screen mit Bild-Karussell)
-als Stil-Vorgabe — übernimmt Kachel-Form, Seitenaufbau und einzelne Features (z.B. das
-Bild-Karussell vom Onboarding-Screen), baut daraus aber ein eigenständiges Design, keine
-1:1-Kopie der Vorlage. Läuft erst NACH V6-01 bis V6-06 (Struktur/Logik zuerst, 4-Phasen-Schema).
+V6-07/08 Ablauf (30.09. final geklärt):
+1. Design-Agent bekommt Referenz-Screenshots (Dashboard mit KPI-Kacheln/Kalorien-Balken/
+   Plan-Card, Onboarding mit Bild-Karussell) als Stil-Vorgabe — Kachel-Form, Seitenaufbau,
+   Features wie das Karussell, DARF auch die Farbpalette anfassen. Baut ein eigenständiges
+   Design, keine 1:1-Kopie.
+2. Claude selbst (nicht der Design-Agent) baut die vom Design-Agent verlangten Features
+   tatsächlich in HTML/CSS/JS um (Rollentrennung: Design-Agent = Vision/Spec, Claude = Bau).
+3. Direkt deployen (kein Zwischenschritt über Screenshot) — Alex schaut live auf dem
+   iPhone, das ist schneller als ein Screenshot-Umweg.
+4. Erst Übersichtsseite (V6-07) fertig+freigegeben, DANACH der Rest der App (V6-08) im
+   selben Stil. V6-04 (Ziel-Leiste v2) wartet auf V6-07, weil Platz/Form der Ziel-Leiste
+   vom fertigen Design abhängt.
 
 V6-01 Detail: Uhrzeit ist informativ (Erinnerung), kein harter Cutoff — es zählt nur
 der Kalendertag.
