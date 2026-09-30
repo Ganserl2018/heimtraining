@@ -50,6 +50,16 @@ V5-03 Referenz (Screenshot 30.09.): großes Übungsbild/-video im Hintergrund, T
 mittig, Play/Pause, Zeit + Equipment/Muskeln als Chips unten, "Swipe up" für Anleitung.
 Eigener Vollbild-Modus statt/ergänzend zur heutigen Listenansicht während des Trainings.
 
+| V5-04 | Soll/Ist-System: Reps + Gewicht pro Satz | ⚪ open | — |
+
+V5-04 Referenz (Screenshot 30.09., System nicht Design): vor dem Training wird pro Übung
+Gewicht + Ziel-Wiederholungen (z.B. "8-12") festgelegt; während/nach jedem Satz trägt man
+Ist-Reps + Ist-Gewicht ein und hakt ab. Bei Bedarf mitten im Training in den
+Trainingseinstellungen nachjustierbar (z.B. Gewicht runter, wenn's zu viel war). Löst die
+heutige feste Annahme "3 Sätze pro Übung" ab. Ziel-Reps legt Alex pro Übung selbst fest,
+kein Standardwert. Ob das nur den Wochenplan betrifft oder auch Push/Pull/Legs/Core ist
+noch nicht final geklärt (Alex' Antwort deutet auf "überall" hin) — vor dem Bauen bestätigen.
+
 Live verifiziert (Playwright, Desktop-Breite 1100px): Sidebar "Alle Übungen" klappt
 Push/Pull/Legs/Core auf, Klick auf Übung öffnet "Tauschen"-Picker, TV-Icon öffnet
 TV-Ansicht, "Zurück" führt zur vorherigen Ansicht zurück. Kein Console-Error außer
