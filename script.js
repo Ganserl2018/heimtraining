@@ -288,7 +288,10 @@ function renderResults(query) {
 
 // V2-07: Übersicht – Startseite mit Status heute, Wochenüberblick, Schnellzugriff, letzte Trainings.
 const itemsFor = d => overrides[d] || base[d] || [];
-const mondayOf = dateStr => { const d = new Date(dateStr + 'T00:00:00'); const wd = (d.getDay() + 6) % 7; d.setDate(d.getDate() - wd); return d.toISOString().slice(0, 10); };
+// Fix (30.09., Checker-Review): .toISOString() rechnet in UTC und verschiebt in
+// Zeitzonen mit positivem Offset (z.B. Europe/Berlin) das Datum um einen Tag zurück.
+// Lokal rechnen wie today()/addDays().
+const mondayOf = dateStr => { const d = new Date(dateStr + 'T00:00:00'); const wd = (d.getDay() + 6) % 7; d.setDate(d.getDate() - wd); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
 
 function renderOverview() {
   const t = today();

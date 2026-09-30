@@ -801,8 +801,8 @@
  },
  {
   "name": "Isometric Chest Squeezes",
-  "met": 8.0,
-  "begründung_kurz": "Plyometrie/explosiv: Anker 8.0"
+  "met": 3.0,
+  "begründung_kurz": "manuell korrigiert (Checker-Review 30.09.): Quell-DB-Kategorie fälschlich als Plyometrie/explosiv geführt, tatsächlich isometrisch (keine Bewegung) -> isolation-Basis 3.5, -0.5 mangels externer Last/Maschine"
  },
  {
   "name": "Isometric Wipers",
