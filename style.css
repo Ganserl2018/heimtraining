@@ -886,3 +886,5 @@ body.mood-bad .xr-pill.active, body.mood-bad .xr-filter.on{background:#d12a19; b
 .gn-ex img{width:52px; height:52px; border-radius:10px; object-fit:cover; background:#10171a} .gn-ex b{display:block; font-size:.9rem} .gn-ex em{font-style:normal; font-size:.76rem; opacity:.7}
 #content:has(.gn){overflow-y:auto !important}
 .lv-up{display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; color:var(--accent)}
+.gn-sur{display:flex; flex-direction:column; gap:.2rem; align-items:center}
+.gn-sur small{font-size:.72rem; font-weight:500; opacity:.7; white-space:normal; text-align:center}
