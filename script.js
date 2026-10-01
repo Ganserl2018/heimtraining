@@ -321,6 +321,19 @@ function renderResults(query) {
     if (filterMus && ex.muscle !== filterMus) return;
     hits.push(i);
   });
+  if (view === 'allex') {
+    const pages = Math.max(1, Math.ceil(hits.length / browsePer));
+    browsePage = Math.min(Math.max(browsePage, 0), pages - 1);
+    const slice = hits.slice(browsePage * browsePer, (browsePage + 1) * browsePer);
+    document.getElementById('results').innerHTML = slice.map(i => `
+      <button class="result" data-act="browsePick" data-p="${i}">
+        <img class="result-gif" src="${esc(pool[i].gif)}" alt="" onerror="this.style.visibility='hidden'">
+        <span class="result-info"><span class="exercise-name">${esc(pool[i].name)}</span><span class="exercise-muscle">${esc(MUSCLE_DE[pool[i].muscle] || pool[i].muscle)}</span></span>
+      </button>`).join('') + (hits.length === 0 ? '<p class="placeholder">Keine Treffer – Filter/Suche anpassen.</p>' : '');
+    const info = document.getElementById('pager-info');
+    if (info) info.textContent = hits.length ? `Seite ${browsePage + 1} / ${pages} · ${hits.length} Übungen` : '0 Übungen';
+    return;
+  }
   document.getElementById('results').innerHTML = hits.slice(0, view === 'allex' ? 90 : 60).map(i => `
     <button class="result" data-act="${view === 'allex' ? 'browsePick' : 'pick'}" data-p="${i}">
       <img class="result-gif" src="${esc(pool[i].gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
@@ -616,6 +629,8 @@ function renderProfile() {
 
 // V3: Mobile/Content-Seite für "Alle Übungen" – Push/Pull/Legs/Core zum Antippen
 // (auf Desktop-Breite steht die Sidebar-Version daneben, hier der Direktzugriff für iPhone).
+let browsePage = 0, browsePer = 9;
+const BTILE = 150; // feste Kachelhöhe in der Galerie (px)
 let browseQ = '', browseSel = null, filterOpen = false; // "Alle Übungen": Suchtext, gewählte Übung (Detail-Sheet), Filter-Sheet offen
 function renderAllEx() {
   const ex = browseSel != null ? pool[browseSel] : null;
@@ -649,10 +664,19 @@ function renderAllEx() {
         <button class="allex-filter${nF ? ' on' : ''}" data-act="fOpen">Filter${nF ? ' · ' + nF : ''}</button></div>
       ${nF ? `<div class="filter-chips">${active.map(([a, v, l]) => `<button class="chip active" data-act="${a}" data-v="${v}">${l} ✕</button>`).join('')}</div>` : ''}
       <div id="results" class="results"></div>
+      <div class="allex-pager"><button data-act="bPrev" aria-label="Zurück">‹</button><span id="pager-info">…</span><button data-act="bNext" aria-label="Weiter">›</button></div>
     </div>${filterSheet}${sheet}`;
   const q = document.getElementById('q');
-  q.addEventListener('input', () => { browseQ = q.value; renderResults(q.value); });
+  q.addEventListener('input', () => { browseQ = q.value; browsePage = 0; renderResults(q.value); });
+  const res = document.getElementById('results');
+  const rows = Math.max(1, Math.floor((res.clientHeight + 8) / (BTILE + 8)));
+  browsePer = rows * 3;
+  res.style.gridAutoRows = ((res.clientHeight - (rows - 1) * 8) / rows) + 'px'; // Kacheln füllen die Fläche exakt aus
   renderResults(browseQ);
+  let x0 = null;
+  res.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+  res.addEventListener('touchend', e => { if (x0 == null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 60) { browsePage += dx < 0 ? 1 : -1; render(); } });
 }
 
 // V2-03/V4: TV-Modus – eine Übung groß, für Screen-Mirroring/AirPlay auf Apple TV. Nutzt den
@@ -721,26 +745,26 @@ content.addEventListener('click', e => {
   if (btn.dataset.act === 'fMuscle') {
     filterMuscle = (filterMuscle === btn.dataset.v) ? null : btn.dataset.v;
     document.querySelectorAll('[data-act="fMuscle"]').forEach(b => b.classList.toggle('active', b.dataset.v === filterMuscle));
-    if (view === 'allex') render(); else renderResults(document.getElementById('q').value);
+    if (view === 'allex') { browsePage = 0; render(); } else renderResults(document.getElementById('q').value);
     return;
   }
   if (btn.dataset.act === 'fEquip') {
     filterEquip = (filterEquip === btn.dataset.v) ? null : btn.dataset.v;
     document.querySelectorAll('[data-act="fEquip"]').forEach(b => b.classList.toggle('active', b.dataset.v === filterEquip));
-    if (view === 'allex') render(); else renderResults(document.getElementById('q').value);
+    if (view === 'allex') { browsePage = 0; render(); } else renderResults(document.getElementById('q').value);
     return;
   }
   if (btn.dataset.act === 'fMus') {
     filterMus = (filterMus === btn.dataset.v) ? null : btn.dataset.v;
-    render(); return;
+    browsePage = 0; render(); return;
   }
-  if (btn.dataset.act === 'fReset') { filterMuscle = filterEquip = filterCat = filterMus = null; render(); return; }
+  if (btn.dataset.act === 'fReset') { filterMuscle = filterEquip = filterCat = filterMus = null; browsePage = 0; render(); return; }
   if (btn.dataset.act === 'fOpen') { filterOpen = true; render(); return; }
   if (btn.dataset.act === 'fClose') { filterOpen = false; render(); return; }
   if (btn.dataset.act === 'fCat') {
     filterCat = (filterCat === btn.dataset.v) ? null : btn.dataset.v;
     document.querySelectorAll('[data-act="fCat"]').forEach(b => b.classList.toggle('active', b.dataset.v === filterCat));
-    if (view === 'allex') render(); else renderResults(document.getElementById('q').value);
+    if (view === 'allex') { browsePage = 0; render(); } else renderResults(document.getElementById('q').value);
     return;
   }
   switch (btn.dataset.act) {
@@ -884,6 +908,8 @@ content.addEventListener('click', e => {
       saveWeekplan(); break;
     }
     case 'wUnsched': { const t = trainingById(btn.dataset.id); t.weekdays = t.weekdays.filter(x => x !== btn.dataset.wd); saveWeekplan(); break; }
+    case 'bPrev': browsePage--; break;
+    case 'bNext': browsePage++; break;
     case 'browsePick': browseSel = Number(btn.dataset.p); break;
     case 'browseClose': browseSel = null; break;
     case 'browseAdd': {
