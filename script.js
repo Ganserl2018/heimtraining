@@ -224,6 +224,7 @@ function applyMood() {
 }
 
 function render() {
+  document.body.classList.toggle('playing', view === 'play');
   if (weekplan.some(x => x.draft && !(view === 'wtrain' && wId === x.id) && view !== 'picker' && !picker)) weekplan = weekplan.filter(x => !x.draft || (view === 'wtrain' && wId === x.id));
   applyMood();
   const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', start: 'Training wählen', play: 'Workout', preview: 'Training', summary: 'Geschafft', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
@@ -672,9 +673,8 @@ function renderPlay() {
         ${unit === 'none' ? '' : `<label class="pl-now-in"><input id="pf-in" type="number" inputmode="decimal" data-act="wWeight" data-id="${t.id}" data-i="${playIdx}" data-k="${cur}" value="${curS.weight ?? ''}" placeholder="${curPh ?? (curP.r != null && unit !== 'kg' ? curP.r : '–')}"><span>${UNITS[unit][1] || ''}</span></label>`}
         ${curS.done ? `<button class="pf-sh-btn ghost" data-act="playSet" data-k="${cur}">✓ Erledigt – zurücknehmen</button>` : ''}
         <div class="pf-sh-row"><button class="pf-sh-btn ghost" data-act="playPrev"${playIdx === 0 ? ' disabled' : ''}>‹ Zurück</button><button class="pf-sh-btn ghost" data-act="playNext"${isLast ? ' disabled' : ''}>Weiter ›</button></div>
-        <button class="pf-sh-btn ghost" data-act="playEdit">⚙ Sätze ändern</button>
         <button class="pf-sh-btn" data-act="playFinish">${totalDone >= totalAll ? 'Training beenden' : 'Beenden (unvollständig)'}</button>
-        <button class="pf-sh-del" data-act="playDelete">Training löschen</button>
+        <div class="pf-sh-row"><button class="pf-sh-btn ghost sm" data-act="playEdit">⚙ Sätze ändern</button><button class="pf-sh-btn ghost sm del" data-act="playDelete">🗑 Löschen</button></div>
       </div>
     </div>
   </div>`;

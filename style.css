@@ -757,3 +757,16 @@ body.mood-bad{--text-faint:#b08a85;}
   .sv-wide{grid-column:auto;}
   .sv-vl:hover{border-color:var(--accent);}
 }
+
+/* Player: eigene Vollbild-Ebene, unabhängig von App-Layout (Tabbar/Topbar weg) */
+body.playing .tabbar, body.playing .topbar{display:none !important;}
+body.playing #content{position:fixed !important; inset:0 !important; z-index:1000; padding:0 !important; margin:0 !important; overflow:hidden !important; background:#000; transform:none !important;}
+body.playing .pf{position:absolute;}
+.pf-shade{background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 18%,rgba(0,0,0,0) 48%,rgba(0,0,0,.4) 66%,rgba(0,0,0,.82) 100%);}
+.pf-time{font-size:clamp(3.6rem,17vw,5.2rem); text-shadow:0 2px 14px rgba(0,0,0,.6);}
+.pf-ex,.pf-lab{text-shadow:0 1px 8px rgba(0,0,0,.7);}
+.pf-sheet{background:rgba(22,25,27,.94); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); max-height:72%;}
+.pf-sh-btn.sm{min-height:40px; font-size:.8rem; font-weight:700; border-radius:12px;}
+.pf-sh-btn.del{color:#ff8a86;}
+.pf-sh-t{font-size:1rem;}
+@media (min-width:820px){ body.playing .pf{inset:24px 0; margin:auto; width:430px; height:auto; max-height:900px;} }
