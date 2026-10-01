@@ -652,7 +652,7 @@ function renderPlay() {
         ${unit === 'none' ? '<span class="pl-free">Satz</span>' : `<input type="number" inputmode="decimal" data-act="wWeight" data-id="${t.id}" data-i="${playIdx}" data-k="${k}" value="${s.weight ?? ''}" placeholder="${ph ?? UNITS[unit][0]}"><span class="pl-u">${UNITS[unit][1] || ''}</span>`}
         <button class="pl-ok" data-act="playSet" data-k="${k}" aria-label="Satz ${k + 1} fertig">${s.done ? '✓' : ''}</button>
       </div>`; }).join('')}
-      <button class="pl-addset" data-act="playAddSet">+ Satz</button>
+      <button class="pl-addset" data-act="playEdit">⚙ Sätze ändern</button>
     </div>
     <div class="pl-rest${restEnd > Date.now() ? '' : ' off'}" id="rest"><span>PAUSE</span><b id="rest-t">0:00</b><button data-act="restAdd">+15 s</button><button data-act="restSkip">Skip</button></div>
     <div class="pl-nav">
@@ -1077,6 +1077,7 @@ content.addEventListener('click', e => {
     case 'playGo': playIdx = Number(btn.dataset.i); break;
     case 'playNext': playIdx++; break;
     case 'playPrev': playIdx--; break;
+    case 'playEdit': wId = playTid; view = 'wtrain'; break;
     case 'playAddSet': { const ex = trainingById(playTid).exercises[playIdx]; ex.sets = Math.min(10, (ex.sets || 3) + 1); saveWeekplan(); break; }
     case 'playSet': {
       const t = trainingById(playTid), ex = t.exercises[playIdx], k = Number(btn.dataset.k);
