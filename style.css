@@ -568,3 +568,8 @@ body.mood-bad{--text-faint:#b08a85;}
 .pv-ex img{flex:none; width:64px; height:64px; object-fit:cover; border-radius:10px; background:#000;}
 .pv-ex b{display:block; font-size:.92rem;} .pv-ex em{font-style:normal; font-size:.74rem; color:var(--text-dim);}
 .pv .pl-nav{margin-top:auto;}
+.hh{margin:.5rem 0; padding:.7rem .85rem; border-radius:14px; background:color-mix(in srgb,var(--accent) 10%,var(--panel)); border:1px solid color-mix(in srgb,var(--accent) 45%,transparent); border-left:4px solid var(--accent);}
+.hh-top{display:flex; align-items:center; justify-content:space-between; gap:.6rem;}
+.hh-top b{font-size:.66rem; letter-spacing:.09em; color:var(--accent);}
+.hh-top button{min-height:44px; padding:0 .8rem; background:none; border:1px solid var(--border); border-radius:10px; color:var(--text); font-weight:700; font-size:.8rem; cursor:pointer;}
+.hh p{margin:.1rem 0 .1rem; font-size:.9rem; line-height:1.4; color:var(--text);}

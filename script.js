@@ -576,6 +576,7 @@ function renderStart() {
   content.innerHTML = `<div class="st">
     <div class="wp-sec">MEINE TRAININGSPAKETE</div>
     <div class="st-packs">${own.map(pack).join('') || '<p class="placeholder">Noch keins – starte unten eine Vorlage oder erstelle ein eigenes.</p>'}</div>
+    ${own.length ? '' : '<div class="hh"><div class="hh-top"><b>TIPP</b></div><p>Neu hier? Tippe auf „Eigenes Training erstellen“ – der Trainingshelper führt dich Schritt für Schritt.</p></div>'}
     <button class="st-newbtn" data-act="wNewTraining">+ Eigenes Training erstellen</button>
     <div class="wp-sec">VORLAGEN</div>
     ${[['split', 'Split'], ['musc', 'Einzelne Muskeln'], ['core', 'Core & Bauch']].map(([g, l]) => {
@@ -700,6 +701,17 @@ function renderPreview() {
   </div>`;
 }
 
+// Trainingshelper: Hinweise über den Funktionen, in Reihenfolge, einzeln wegklickbar
+const HELPKEY = 'heimtraining.helper';
+function helperDone() { try { return JSON.parse(localStorage.getItem(HELPKEY)) || []; } catch (e) { return []; } }
+function helperHide(id) { const d = helperDone(); if (!d.includes(id)) d.push(id); try { localStorage.setItem(HELPKEY, JSON.stringify(d)); } catch (e) {} }
+function hint(id, step, text) {
+  if (helperDone().includes(id)) return '';
+  return `<div class="hh"><div class="hh-top"><b>TRAININGSHELPER · SCHRITT ${step} VON 4</b><button data-act="hintOk" data-id="${id}">Verstanden</button></div><p>${text}</p></div>`;
+}
+// aktueller Schritt eines Trainings: 1 Name (immer erledigt, sonst gäbe es es nicht), 2 Übungen, 3 Tage, 4 Starten
+function helperStep(t) { return !t.exercises.length ? 2 : (!t.weekdays || !t.weekdays.length) ? 3 : 4; }
+
 function renderWeeklist() {
   const FULLN = { mon: 'Montag', tue: 'Dienstag', wed: 'Mittwoch', thu: 'Donnerstag', fri: 'Freitag', sat: 'Samstag', sun: 'Sonntag' };
   const DB = '<svg class="lab-db" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>';
@@ -731,6 +743,7 @@ function renderWeeklist() {
       <div class="wp-days">${dayTiles}</div>
       <div class="wp-sec">TRAININGS</div>
       ${customCards || '<p class="placeholder">Noch keine eigenen Trainings – z. B. „Ganzkörper“ oder „Mobility“.</p>'}
+      ${addingTraining ? hint('name', 1, 'Gib deinem Training einen Namen, zum Beispiel „Oberkörper“ oder „Montag“. Danach geht es mit den Übungen weiter.') : ''}
       ${addingTraining
         ? `<div class="wp-card wp-new"><input id="new-training-name" placeholder="Name des Trainings…" autofocus>
              <div class="edit-bar"><button data-act="wNewTrainingSave">Speichern</button><button data-act="wNewTrainingCancel">Abbrechen</button></div></div>`
@@ -754,6 +767,7 @@ function renderWTrain() {
            <div class="edit-bar"><button data-act="wRenameSave" data-id="${t.id}">Speichern</button><button data-act="wRenameCancel">Abbrechen</button></div>`
         : `<h2>${esc(t.name)}</h2><button data-act="wRename" data-id="${t.id}">Umbenennen</button>`}
     </div>
+    ${helperStep(t) === 3 ? hint('days', 3, 'Hier legst du fest, an welchen Tagen du dieses Training machst. Tippe einfach die Wochentage an.') : ''}
     <div class="w-schedule">
       <div class="w-schedule-days">${WD_KEYS.map(k =>
         `<button class="chip${t.weekdays.includes(k) ? ' active' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>
@@ -766,7 +780,7 @@ function renderWTrain() {
           ? `<span class="placeholder">Gestartet um ${esc(new Date(started.startedAt).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }))} Uhr</span>`
           : `<button data-act="wStart" data-id="${t.id}">▶ Training starten</button>`}</div>`
       : ''}
-    ${t.exercises.length ? '' : '<p class="placeholder">Noch keine Übungen – füge welche hinzu.</p>'}
+    ${t.exercises.length ? '' : hint('ex', 2, 'Hier fügst du Übungen hinzu: unten auf „+ Übung hinzufügen“ tippen, suchen und antippen. Du kannst auch mehrere nacheinander wählen.') + '<p class="placeholder">Noch keine Übungen – füge welche hinzu.</p>'}
     ${t.exercises.map((ex, i) => {
       const sets = dOf[ex.name] || [];
       const setsCount = ex.sets || 3;
@@ -795,6 +809,7 @@ function renderWTrain() {
         <textarea class="w-note" placeholder="Notiz zur Übung…" data-act="wExNote" data-id="${t.id}" data-i="${i}">${esc(ex.note || '')}</textarea>
       </div>`;
     }).join('')}
+    ${helperStep(t) === 4 ? hint('go', 4, 'Fertig eingerichtet! Wenn du loslegen willst, tippe oben auf „Training starten“. Die Tage kannst du jederzeit ändern.') : ''}
     <div class="edit-bar">
       <button data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button>
       ${t.exercises.length ? `
@@ -838,6 +853,10 @@ function renderProfile() {
       <div class="ov-card">
         <div class="ov-card-title">Ziel</div>
         <div class="pf-row">${goal.target} Trainings in ${goal.periodDays === 7 ? '1 Woche' : goal.periodDays + ' Tagen'}<button class="ov-btn ov-btn-ghost" data-act="goalEditFromProfile">Anpassen</button></div>
+      </div>
+      <div class="ov-card">
+        <div class="ov-card-title">Trainingshelper</div>
+        <div class="pf-row">Hinweise wieder anzeigen<button class="ov-btn ov-btn-ghost" data-act="helperReset">Zurücksetzen</button></div>
       </div>
       <div class="ov-card">
         <div class="ov-card-title">Backup</div>
