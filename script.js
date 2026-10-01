@@ -342,21 +342,8 @@ function computeStreak(h) {
 function renderOverview() {
   const t = today();
   const h = loadHistory();
-  const todayEntries = h.filter(r => r.date === t);
   const p = prog();
   const activeDay = Object.keys(p.done || {}).find(d => Object.keys(p.done[d] || {}).length > 0);
-
-  let todayBlock;
-  if (activeDay) {
-    const setsDone = Object.values(p.done[activeDay]).reduce((s, arr) => s + arr.filter(Boolean).length, 0);
-    const setsPlanned = itemsFor(activeDay).length * SETS;
-    todayBlock = `<div class="today-status"><div class="today-status-text">${DAY_LABELS[activeDay]}: <b>${setsDone}/${setsPlanned}</b> Sätze</div></div>
-      <button class="ov-btn" data-act="goto" data-day="${activeDay}">Weiter im Training</button>`;
-  } else if (todayEntries.length) {
-    todayBlock = todayEntries.map(r => `<div class="today-status"><div class="today-status-text">${DAY_LABELS[r.day] || esc(r.day)} abgeschlossen: <b>${r.totalSetsDone}/${r.totalSetsPlanned}</b> Sätze</div></div>`).join('');
-  } else {
-    todayBlock = `<p class="today-placeholder">Noch kein Training heute.</p>`;
-  }
 
   // V6-02: Quick-Start – offenes/unterbrochenes Wochenplan-Training hat Vorrang, sonst heute fälliges.
   const scheduled = weekplan.filter(w => w.weekdays && w.weekdays.length);
@@ -443,29 +430,8 @@ function renderOverview() {
       <button class="lab-start${hasMissedThisWeek ? ' lab-start-broken' : ''}" ${startAttr}>
         <span>START WORKOUT<small>${btnSub}</small></span>
       </button>
-      <div class="lab-section">EQUIPMENT-RADAR</div>
-      <div class="lab-tiles">${DAYS.map((d, i) => `<button class="lab-tile" data-act="goto" data-day="${d}">
-          <span class="lab-tile-num">${i + 1}.</span>
-          <span class="lab-tile-name">${DAY_LABELS[d]}</span>
-          <span class="lab-tile-meta">~${estimateMin(d)} Min</span>
-        </button>`).join('')}</div>
       <div class="lab-section">WOCHENPLAN-STREIFEN</div>
       <div class="lab-week">${wdOrder}</div>
-      <div class="ov-card">
-        <div class="ov-card-title">Heute</div>
-        ${todayBlock}
-      </div>
-      <div class="ov-card">
-        <div class="ov-card-title">Letzte Trainings</div>
-        ${h.length ? h.slice(0, 3).map(r => { const pct = r.totalSetsPlanned ? Math.round(r.totalSetsDone / r.totalSetsPlanned * 100) : 0; return `<div class="history-item">
-            <div class="history-main">
-              <div class="history-date">${esc(r.date)} · ${DAY_LABELS[r.day] || esc(r.day)}</div>
-              <div class="history-meta">${r.totalSetsDone}/${r.totalSetsPlanned} Sätze</div>
-            </div>
-            <div class="history-ring" style="--pct:${pct}"><span>${pct}%</span></div>
-          </div>`; }).join('') : `<p class="placeholder">Noch keine Historie.</p>`}
-        <button class="ov-btn ov-btn-ghost history-footer-btn" data-act="goto" data-view="history">Ganzer Verlauf</button>
-      </div>
     </div>`;
 }
 

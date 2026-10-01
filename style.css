@@ -221,7 +221,7 @@ body{
 .lab-start{width:100%; min-height:64px; border-radius:14px; border:1px solid #8a948f; background:linear-gradient(180deg,#76807c,#4a524f 55%,#5d6663); color:#101312; font-weight:800; font-size:1.15rem; letter-spacing:.02em; box-shadow:0 0 18px var(--lab-glow), inset 0 1px 0 rgba(255,255,255,.35); padding:.55rem 1rem; text-align:center;}
 .lab-start small{display:block; font-size:.78rem; font-weight:700; margin-top:.1rem;}
 .lab-start-broken{background:linear-gradient(180deg,#8a6a5a,#5c4538 55%,#6e5242); border-color:#9a7a68; color:#1a0d0a; clip-path:polygon(0 0,92% 0,100% 22%,100% 100%,8% 100%,0 78%); box-shadow:none;}
-.lab-goal-link{align-self:center; background:none; border:0; color:var(--lab-dim); font-size:.68rem; text-decoration:underline; margin-top:-1.6rem; padding:.2rem; z-index:1;}
+.lab-goal-link{align-self:center; background:none; border:0; color:var(--lab-dim); font-size:.68rem; text-decoration:underline; margin-top:-1.4rem; padding:.7rem 1rem; z-index:1;}
 .lab-streak{margin-top:-.4rem !important;}
 .lab-section{font-size:.78rem; font-weight:800; letter-spacing:.04em; color:#e6ece8; text-align:center; margin-top:.2rem;}
 .lab-section:last-of-type{text-align:left;}
@@ -253,3 +253,10 @@ body{
 .overview-lab .goal-edit-link{color:var(--lab-acc);}
 .overview-lab .ov-bar-fill-streak{background:var(--lab-acc);}
 @media (min-width:820px){ .lab-ring{width:230px;} .lab-tile{flex-basis:150px;} .overview-lab{max-width:520px; margin:0 auto; padding:1rem 1.1rem 2rem;} }
+
+/* V9-04: Übersicht statisch (kein Scroll), Wochenstreifen schließt unten ab */
+#content:has(.overview-lab){overflow:hidden; padding-bottom:0;}
+.overview-lab{height:100%; min-height:0; margin:-1rem -1.1rem 0; padding:1rem 1.1rem calc(4.2rem + env(safe-area-inset-bottom,0px)); justify-content:space-between; gap:.5rem;}
+.overview-lab .lab-ring{width:min(66vw, 36dvh); flex:none;}
+.overview-lab .lab-section{margin-top:auto;}
+.overview-lab .lab-week{margin-top:0;}
