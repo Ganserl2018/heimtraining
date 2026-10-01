@@ -613,7 +613,7 @@ function finishTraining(t) {
 }
 
 // ---- Workout-Player: eine Übung pro Bildschirm, Sätze vorausgefüllt, Pausen-Timer ----
-let playTid = null, playIdx = 0, restEnd = 0, summaryRec = null;
+let playSelK = null, playTid = null, playIdx = 0, restEnd = 0, summaryRec = null;
 const REST_SEC = 90;
 function lastWeights(name) {
   const r = loadHistory().find(h => (h.exercises || []).some(e => e.name === name && (e.weights || []).some(w => w != null)));
@@ -633,6 +633,9 @@ function renderPlay() {
   const ex = t.exercises[playIdx], dOf = wProgRaw().done[t.id] || {}, sets = dOf[ex.name] || [];
   const n = ex.sets || 3, unit = ex.unit || 'kg', last = lastWeights(ex.name);
   const doneN = e => ((dOf[e.name] || []).filter(x => x && x.done).length);
+  const firstOpen = Array.from({ length: n }, (_, k) => k).find(k => !(sets[k] || {}).done);
+  const cur = Math.min(n - 1, playSelK != null ? playSelK : (firstOpen == null ? n - 1 : firstOpen));
+  const curS = sets[cur] || {}, curP = (ex.plan || [])[cur] || {}, curPh = curP.w ?? last[cur] ?? last[last.length - 1];
   const isLast = playIdx === t.exercises.length - 1;
   const totalDone = t.exercises.reduce((a, e) => a + doneN(e), 0), totalAll = t.exercises.reduce((a, e) => a + (e.sets || 3), 0);
   content.innerHTML = `<div class="pl">
@@ -645,13 +648,13 @@ function renderPlay() {
     <div class="pl-media"><img src="${esc(ex.gif)}" alt="" onerror="this.style.visibility='hidden'"></div>
     <div class="pl-name">${esc(ex.name)}</div>
     <div class="pl-muscle">${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}${last.length ? ` · letztes Mal ${last.join(' / ')} ${UNITS[unit][1]}` : ''}</div>
-    <div class="pl-sets">${Array.from({ length: n }, (_, k) => {
-      const s = sets[k] || {}, pl = (ex.plan || [])[k] || {}, ph = pl.w ?? last[k] ?? last[last.length - 1];
-      return `<div class="pl-set${s.done ? ' done' : ''}">
-        <span class="pl-k">${k + 1}${pl.r != null ? `<small>${pl.r} ${unit === 'sek' ? 's' : '×'}</small>` : ''}</span>
-        ${unit === 'none' ? '<span class="pl-free">Satz</span>' : `<input type="number" inputmode="decimal" data-act="wWeight" data-id="${t.id}" data-i="${playIdx}" data-k="${k}" value="${s.weight ?? ''}" placeholder="${ph ?? UNITS[unit][0]}"><span class="pl-u">${UNITS[unit][1] || ''}</span>`}
-        <button class="pl-ok" data-act="playSet" data-k="${k}" aria-label="Satz ${k + 1} fertig">${s.done ? '✓' : ''}</button>
-      </div>`; }).join('')}
+    <div class="pl-sets">
+      <div class="pl-chips">${Array.from({ length: n }, (_, k) => `<button class="pl-chip${(sets[k] || {}).done ? ' done' : ''}${k === cur ? ' cur' : ''}" data-act="playSel" data-k="${k}" aria-label="Satz ${k + 1}">${(sets[k] || {}).done ? '✓' : k + 1}</button>`).join('')}</div>
+      <div class="pl-now${curS.done ? ' done' : ''}">
+        <div class="pl-now-h"><b>SATZ ${cur + 1} VON ${n}</b>${curP.r != null ? `<span>Ziel ${curP.r} ${unit === 'sek' ? 's' : '×'}${unit === 'kg' && curP.w != null ? ' · ' + curP.w + ' kg' : ''}</span>` : ''}</div>
+        ${unit === 'none' ? '' : `<label class="pl-now-in"><input type="number" inputmode="decimal" data-act="wWeight" data-id="${t.id}" data-i="${playIdx}" data-k="${cur}" value="${curS.weight ?? ''}" placeholder="${curPh ?? UNITS[unit][0]}"><span>${UNITS[unit][1] || ''}</span></label>`}
+        <button class="pl-ok2" data-act="playSet" data-k="${cur}">${curS.done ? '✓ Erledigt – tippen zum Zurücknehmen' : 'Satz fertig ✓'}</button>
+      </div>
       <button class="pl-addset" data-act="playEdit">⚙ Sätze ändern</button>
     </div>
     <div class="pl-rest${restEnd > Date.now() ? '' : ' off'}" id="rest"><span>PAUSE</span><b id="rest-t">0:00</b><button data-act="restAdd">+15 s</button><button data-act="restSkip">Skip</button></div>
@@ -1074,9 +1077,10 @@ content.addEventListener('click', e => {
       view = 'start'; break;
     }
     case 'playExit': view = 'overview'; break;
-    case 'playGo': playIdx = Number(btn.dataset.i); break;
-    case 'playNext': playIdx++; break;
-    case 'playPrev': playIdx--; break;
+    case 'playGo': playIdx = Number(btn.dataset.i); playSelK = null; break;
+    case 'playNext': playIdx++; playSelK = null; break;
+    case 'playPrev': playIdx--; playSelK = null; break;
+    case 'playSel': playSelK = Number(btn.dataset.k); break;
     case 'playEdit': wId = playTid; view = 'wtrain'; break;
     case 'playAddSet': { const ex = trainingById(playTid).exercises[playIdx]; ex.sets = Math.min(10, (ex.sets || 3) + 1); saveWeekplan(); break; }
     case 'playSet': {
@@ -1088,7 +1092,7 @@ content.addEventListener('click', e => {
         if (sets[k].weight == null && (ex.unit || 'kg') !== 'none') { const l = lastWeights(ex.name), pl = (ex.plan || [])[k] || {}; const pre = pl.w ?? l[k] ?? l[l.length - 1]; if (pre != null) sets[k].weight = pre; }
         restEnd = Date.now() + REST_SEC * 1000; pushStart(t.id);
       } else restEnd = 0;
-      saveWProg(wp); break;
+      playSelK = null; saveWProg(wp); break;
     }
     case 'restAdd': restEnd = Math.max(restEnd, Date.now()) + 15000; break;
     case 'restSkip': restEnd = 0; break;
