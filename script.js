@@ -162,7 +162,7 @@ function pushHistory(rec) {
 
 function syncTabActive() {
   tabs.forEach(t => {
-    const match = t.dataset.view ? (t.dataset.view === view || (t.dataset.view === 'overview' && view === 'start') || (t.dataset.view === 'history' && view === 'histdetail') || (t.dataset.view === 'weeklist' && view === 'wtrain')) : (view === 'day' && t.dataset.day === day);
+    const match = t.dataset.view ? (t.dataset.view === view || (t.dataset.view === 'overview' && view === 'start' && !matchMedia('(min-width:820px)').matches) || (t.dataset.view === 'history' && view === 'histdetail') || (t.dataset.view === 'weeklist' && view === 'wtrain')) : (view === 'day' && t.dataset.day === day);
     t.classList.toggle('active', match);
   });
 }
@@ -228,6 +228,10 @@ function render() {
   const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', start: 'Training wählen', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
   document.querySelector('.topbar h1').textContent = view === 'wtrain' ? ((trainingById(wId) || {}).name || 'Training') : (titles[view] || 'Home Force');
   syncTabActive();
+  { const pn = (loadProfile().name || '').trim(), bad = document.body.classList.contains('mood-bad');
+    const a = document.getElementById('side-av'), n = document.getElementById('side-nm'), m = document.getElementById('side-mood');
+    if (a) a.textContent = pn.charAt(0).toUpperCase() || '◉'; if (n) n.textContent = pn || 'Profil';
+    if (m) m.textContent = bad ? 'SYSTEM-LOCKDOWN' : 'KRITISCHE MASSE'; }
   renderAllExBlock();
   renderWeekplanBlock();
   if (view === 'overview') return renderOverview();
