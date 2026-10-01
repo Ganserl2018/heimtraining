@@ -787,7 +787,7 @@ function renderWTrain() {
   content.innerHTML = `<div class="tsx">
     ${sec(1, 'Name', !t.draft, renameId === t.id
       ? `${t.draft ? hint('name', 1, 'Gib deinem Training einen Namen, zum Beispiel „Oberkörper“ oder „Montag“. Danach geht es mit den Übungen weiter.') : ''}<input id="rename-input" placeholder="Name des Trainings…" value="${esc(t.name)}"><div class="edit-bar"><button data-act="wRenameSave" data-id="${t.id}">Speichern</button><button data-act="wRenameCancel" data-id="${t.id}">Abbrechen</button></div>`
-      : `<div class="ts-name"><h2>${esc(t.name)}</h2><button data-act="wRename" data-id="${t.id}">Umbenennen</button></div>`)}
+      : `<div class="ts-name"><h2>${esc(t.name)}</h2><div class="ts-name-btns"><button data-act="wRename" data-id="${t.id}">Umbenennen</button><button class="ts-name-del" data-act="wDelete" data-id="${t.id}">Löschen</button></div></div>`)}
     ${sec(2, 'Übungen', hasEx, `${step === 2 ? hint('ex', 2, 'Hier fügst du Übungen hinzu: auf „+ Übung hinzufügen“ tippen, suchen und antippen. Du kannst mehrere nacheinander wählen.') : ''}
       ${t.exercises.map((ex, i) => `<div class="ts-ex"><img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><div><b>${esc(ex.name)}</b><em>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</em></div><button data-act="wRemoveEx" data-id="${t.id}" data-i="${i}" aria-label="Übung entfernen">✕</button></div>`).join('')}
       <button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button>`)}

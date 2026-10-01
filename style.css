@@ -643,3 +643,5 @@ body.mood-bad{--text-faint:#b08a85;}
 .xc-link{align-self:flex-start; min-height:44px; background:none; border:0; padding:0 .2rem; color:var(--accent); font-weight:700; text-decoration:underline; cursor:pointer;}
 .xc .w-note{margin-top:0;}
 @media (min-width:700px){ .xc-pills{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));} .xc-f{max-width:140px;} .xc-row{justify-content:flex-start;} }
+.ts-name-btns{display:flex; gap:.4rem; flex:none;}
+.ts-name-del{border-color:#c0504d !important; color:#ff7b78 !important;}
