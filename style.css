@@ -271,3 +271,20 @@ body:has(.overview-lab) .overview-lab{margin-top:-1rem; padding-top:1.4rem;}
 .overview-lab .lab-ring-text small{font-size:clamp(.4rem,5cqw,.58rem);}
 .overview-lab .lab-ring-text b{font-size:clamp(1.2rem,22cqw,2.5rem);}
 .overview-lab .lab-ring-text span{font-size:clamp(.6rem,8cqw,.95rem);}
+
+/* V9-07: Menüleiste mit Icons + Glow in Stimmungsfarbe */
+body{--tab-acc:var(--accent);}
+body:has(.mood-good){--tab-acc:#a8f03a;}
+body:has(.mood-bad){--tab-acc:#e8301f;}
+.tabbar{background:linear-gradient(180deg,rgba(26,32,30,.96),rgba(14,18,17,.98)); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-top:1px solid rgba(255,255,255,.08);}
+.tab{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.2rem; padding:.55rem 0 .5rem; font-size:.62rem; letter-spacing:0; position:relative; transition:color .15s;}
+.tab-ic{width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; transition:transform .15s, filter .15s;}
+.tab-lb{line-height:1.1;}
+.tab.active{color:var(--tab-acc);}
+.tab.active .tab-ic{transform:translateY(-1px) scale(1.08); filter:drop-shadow(0 0 6px var(--tab-acc));}
+.tab.active::before{content:""; position:absolute; top:0; left:28%; right:28%; height:2px; border-radius:0 0 3px 3px; background:var(--tab-acc); box-shadow:0 0 10px var(--tab-acc);}
+.tab:active .tab-ic{transform:scale(.9);}
+@media (min-width:820px){
+  .tab{flex-direction:row; justify-content:flex-start; gap:.7rem; padding:.85rem 1.3rem; font-size:.9rem;}
+  .tab.active::before{top:20%; bottom:20%; left:0; right:auto; width:3px; height:auto; border-radius:0 3px 3px 0;}
+}
