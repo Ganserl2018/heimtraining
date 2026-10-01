@@ -484,7 +484,7 @@ function renderOverview() {
       <button class="lab-goal-link" data-act="goalEdit">Ziel anpassen</button>
       <div class="lab-streak">STREAK: ${streak} TAG${streak === 1 ? '' : 'E'}${hasMissedThisWeek ? ' (KRITISCH)' : ''} 🔥</div>
       <button class="lab-start${hasMissedThisWeek ? ' lab-start-broken' : ''}" ${startAttr}>
-        <span>${startLabel}<small>${quick ? btnSub : ''}</small></span>
+        <svg class="lab-start-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span>${startLabel}<small>${quick ? btnSub : ''}</small></span>
       </button>
       <div class="lab-section">WOCHENPLAN-STREIFEN</div>
       <div class="lab-week">${wdOrder}</div>

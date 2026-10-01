@@ -492,3 +492,16 @@ body.mood-bad{--text-faint:#b08a85;}
 .st-mini-th img{width:100%; height:100%; object-fit:cover;}
 .st-mini-th .lab-db{width:24px; height:24px; color:var(--accent);}
 .st-mini-t b{display:block; font-size:.85rem;} .st-mini-t em{font-style:normal; font-size:.7rem; color:var(--text-dim);}
+
+/* Start-Button: Akzentfarbe, Play-Icon, Glow */
+.lab-start{display:flex; align-items:center; justify-content:center; gap:.7rem; position:relative; overflow:hidden; border:0 !important; color:var(--on-accent,#0b1000) !important; text-transform:uppercase; letter-spacing:.08em !important; font-size:1.1rem !important;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 100%,#fff 18%),var(--accent) 55%,color-mix(in srgb,var(--accent) 80%,#000)) !important;
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 60%,#000), 0 6px 28px color-mix(in srgb,var(--accent) 45%,transparent), inset 0 1px 0 rgba(255,255,255,.5) !important; animation:startpulse 2.8s ease-in-out infinite;}
+.lab-start::after{content:""; position:absolute; top:0; bottom:0; left:-60%; width:40%; background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent); transform:skewX(-20deg); animation:startshine 4.5s ease-in-out infinite;}
+.lab-start-ic{width:26px; height:26px; flex:none; fill:currentColor;}
+.lab-start span{text-align:left;}
+.lab-start:active{transform:scale(.98);}
+.lab-start-broken{clip-path:polygon(0 0,92% 0,100% 22%,100% 100%,8% 100%,0 78%) !important; animation:none; box-shadow:none !important;}
+@keyframes startpulse{0%,100%{filter:brightness(1);}50%{filter:brightness(1.12);}}
+@keyframes startshine{0%,55%{left:-60%;}100%{left:130%;}}
+@media (prefers-reduced-motion:reduce){.lab-start,.lab-start::after{animation:none;}}
