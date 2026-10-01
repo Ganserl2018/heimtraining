@@ -118,3 +118,36 @@ Review-Durchläufe, dabei 2 echte Bugs gefunden und behoben: mondayOf()-UTC-Bug,
 falsch kategorisierter MET-Ausreißer). Offen bleiben nur: V6-04 (Ziel-Leiste v2,
 braucht Live-Test mit Alex), V6-07 (Design, Phase 3 laut 4-Phasen-Schema erst nach
 Struktur/Logik – kommt als eigener Design-Agent-Auftrag).
+
+
+## V9 – Home Force Übersicht (01.10.)
+V9-01…V9-18 done (Lab-Design nach Vorlagen, Mood grün/rot, statisches Layout, Icon-Tabbar, antippbare Tage, since-Logik, Ziel Tage–Jahre, Einheit je Übung). Letzter Commit d491389.
+
+## V10 – QA-Nacharbeit (Original: Obsidian Projects/Privat/Heimtraining/QA-Bericht-2026-10-01.md)
+| ID | Titel | Status |
+|---|---|---|
+| V10-01 | BLOCKER: Neues Training stürzt ab | ⚪ open |
+| V10-02 | BLOCKER: Leere Trainings/Ruhetag-Tap färben App rot | ⚪ open |
+| V10-03 | BLOCKER: Health-Sync-Token öffentlich (script.js ~651) | ⚪ open |
+| V10-04 | Startzeit in UTC | ⚪ open |
+| V10-05 | Verlauf-Detail ungestylt | ⚪ open |
+| V10-06 | Picker-Suchfeld weiß | ⚪ open |
+| V10-07 | Ziel-Formular von Tabbar verdeckt | ⚪ open |
+| V10-08 | Tap-Targets <44px | ⚪ open |
+| V10-09 | TV-Ansicht ignoriert Wochenplan | ⚪ open |
+| V10-10 | START WORKOUT fällt auf Legacy-Push | ⚪ open |
+| V10-11 | Beenden ohne Satz zählt als Workout | ⚪ open |
+| V10-12 | Kein Löschen | ⚪ open |
+| V10-13 | Backup/Export, PWA, Offline | ⚪ open |
+| V10-14 | Refresh über Mitternacht | ⚪ open |
+| V10-15 | Verpasst nicht heilbar | ⚪ open |
+| V10-16 | Ring vs. Wochenstreifen Fenster | ⚪ open |
+| V10-17 | Dauer/Kalorien nur nach manuellem Start | ⚪ open |
+| V10-18 | Wochenplan-Liste/Seitentitel | ⚪ open |
+| V10-19 | Lange Übungsnamen bei 360px | ⚪ open |
+| V10-20 | Legacy-Day-View gequetscht | ⚪ open |
+| V10-21 | Verlauf-Datum roh, "push" lowercase | ⚪ open |
+| V10-22 | Kontrast Rot-Modus + kleine Schrift | ⚪ open |
+| V10-23 | Desktop-Übersicht nicht zentriert | ⚪ open |
+| V10-24 | Profilfelder ungenutzt, Kalorien überhöht | ⚪ open |
+| V10-25 | Toter Code/CSS + öffentliche interne Dateien | ⚪ open |
