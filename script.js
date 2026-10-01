@@ -412,10 +412,11 @@ function renderOverview() {
       : items.some(x => x.status === 'vorher') ? 'vorher'
       : items.length ? 'erledigt' : null;
     const DB = '<svg class="lab-db" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>';
+    const hasEx = items.some(x => x.w.exercises.length);
     const sub = !worst ? '(Ruhe)' : worst === 'verpasst' ? '⚠' : worst === 'unvollständig' ? '!' : DB;
     const target = (items.find(x => x.status !== 'erledigt') || items[0] || {}).w;
     const act = target ? `data-act="wOpen2" data-id="${target.id}"` : `data-act="wDayNew" data-wd="${wdKeyOf(ds)}" data-date="${ds}"`;
-    return `<button class="lab-day${worst ? ' lab-' + worst : ''}${ds === t ? ' lab-heute' : ''}" ${act}><b>${WD_LABELS[wdKeyOf(ds)]}</b><span>${sub}</span></button>`;
+    return `<button class="lab-day${worst ? ' lab-' + worst : ''}${worst && worst !== 'verpasst' ? (hasEx ? ' lab-ex' : ' lab-leer') : ''}${ds === t ? ' lab-heute' : ''}" ${act}><b>${WD_LABELS[wdKeyOf(ds)]}</b><span>${sub}</span></button>`;
   }).join('');
 
   content.innerHTML = `
@@ -498,7 +499,7 @@ function renderWeeklist() {
     const n = items.reduce((sum, x) => sum + x.w.exercises.length, 0);
     const target = (items.find(x => x.status !== 'erledigt') || items[0] || {}).w;
     const act = target ? `data-act="wOpen2" data-id="${target.id}"` : `data-act="wDayNew" data-wd="${k}" data-date="${ds}"`;
-    return `<div class="wp-cell"><button class="wp-day${worst ? ' wp-' + worst : ' wp-aus'}${worst && !n ? ' wp-leer' : ''}${ds === t0 ? ' wp-heute' : ''}" ${act}><b>${WD_LABELS[k]}</b>${worst ? DB : '<em>+</em>'}<span>${worst ? (n ? n + ' Üb.' : 'leer') : 'Ruhe'}</span></button>${target ? `<button class="wp-x" data-act="wUnsched" data-id="${target.id}" data-wd="${k}" aria-label="Aus Plan entfernen">×</button>` : ''}</div>`;
+    return `<div class="wp-cell"><button class="wp-day${worst ? ' wp-' + worst : ' wp-aus'}${worst && worst !== 'verpasst' ? (n ? ' wp-ex' : ' wp-leer') : ''}${ds === t0 ? ' wp-heute' : ''}" ${act}><b>${WD_LABELS[k]}</b>${worst ? DB : '<em>+</em>'}<span>${worst ? (n ? n + ' Üb.' : 'leer') : 'Ruhe'}</span></button>${target ? `<button class="wp-x" data-act="wUnsched" data-id="${target.id}" data-wd="${k}" aria-label="Aus Plan entfernen">×</button>` : ''}</div>`;
   }).join('');
   const customCards = custom.map(t => {
     const th = t.exercises.slice(0, 3).map(ex => `<img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`).join('');

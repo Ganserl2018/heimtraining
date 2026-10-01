@@ -369,3 +369,10 @@ body.mood-bad{--text-faint:#b08a85;}
 .wp-x::after{content:""; position:absolute; inset:-9px;}
 .wp-vorher{opacity:.75;}
 .wp-unvollständig{border-color:#c98a4b !important;}
+
+/* Hantel grün sobald Übung drin, gedimmt wenn leer */
+.lab-ex .lab-db,.wp-ex .lab-db{color:#a8f03a; filter:drop-shadow(0 0 4px rgba(168,240,58,.5)); opacity:1;}
+.lab-ex span,.wp-ex span{color:#a8f03a;}
+.lab-leer .lab-db{color:#8f9a96; opacity:.6;}
+.wp-leer{opacity:.65;}
+.lab-vorher.lab-ex{opacity:1;}
