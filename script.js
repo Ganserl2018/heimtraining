@@ -44,6 +44,7 @@ weekplan = loadWeekplan();
 weekplan.forEach(t => { if (!Array.isArray(t.weekdays)) t.weekdays = []; if (typeof t.time !== 'string') t.time = ''; });
 const trainingById = id => weekplan.find(t => t.id === id);
 
+const UNITS = { kg: ['kg', 'kg'], sek: ['Sek', 's'], wdh: ['Wdh', 'Wdh'], none: ['ohne', ''] };
 // V6-01: Wochentag-Zuordnung + Uhrzeit (informativ, kein Cutoff) pro Wochenplan-Training.
 const WD_KEYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 const WD_LABELS = { mon: 'Mo', tue: 'Di', wed: 'Mi', thu: 'Do', fri: 'Fr', sat: 'Sa', sun: 'So' };
@@ -377,6 +378,7 @@ function renderOverview() {
   const goal = loadGoal();
   const since = addDays(t, -(goal.periodDays - 1));
   const goalCount = h.filter(r => r.date >= since && r.date <= t).length;
+  const pdParts = goal.periodDays % 365 === 0 ? [goal.periodDays / 365, 'jahre'] : goal.periodDays % 30 === 0 ? [goal.periodDays / 30, 'monate'] : goal.periodDays % 7 === 0 ? [goal.periodDays / 7, 'wochen'] : [goal.periodDays, 'tage'];
   const goalPct = Math.min(100, Math.round(goalCount / goal.target * 100));
   const streak = computeStreak(h);
   const streakPct = Math.min(100, Math.round(streak / Math.max(goal.target, 1) * 100));
@@ -385,7 +387,8 @@ function renderOverview() {
     ${goalEditing
       ? `<div class="goal-edit">
           <label>Ziel <input id="goal-target" type="number" min="1" value="${goal.target}"> Trainings</label>
-          <label>in <input id="goal-period" type="number" min="1" value="${goal.periodDays}"> Tagen</label>
+          <label>in <input id="goal-period" type="number" min="1" value="${pdParts[0]}">
+            <select id="goal-unit">${[['tage', 'Tagen'], ['wochen', 'Wochen'], ['monate', 'Monaten'], ['jahre', 'Jahren']].map(([v, l]) => `<option value="${v}"${pdParts[1] === v ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
           <div class="edit-bar"><button class="ov-btn" data-act="goalSave">Speichern</button><button class="ov-btn ov-btn-ghost" data-act="goalCancel">Abbrechen</button></div>
         </div>`
       : `<div class="ov-bar-row">
@@ -494,7 +497,7 @@ function renderHistDetail() {
       <div class="ov-card-title">Übungen</div>
       ${r.exercises.map(ex => `<div class="history-item">
         <div class="history-date">${esc(ex.name)}</div>
-        <div class="history-meta">${ex.setsDone}/${ex.setsTotal} Sätze${ex.weights && ex.weights.some(w => w != null) ? ' · ' + ex.weights.filter(w => w != null).map(w => w + 'kg').join(', ') : ''}</div>
+        <div class="history-meta">${ex.setsDone}/${ex.setsTotal} Sätze${ex.weights && ex.weights.some(w => w != null) ? ' · ' + ex.weights.filter(w => w != null).map(w => w + ((UNITS[ex.unit || 'kg'] || UNITS.kg)[1] ? ' ' + (UNITS[ex.unit || 'kg'] || UNITS.kg)[1] : '')).join(', ') : ''}</div>
       </div>`).join('')}
     </div>
     ${r.note ? `<div class="ov-card"><div class="ov-card-title">Notiz</div><div class="history-note">${esc(r.note)}</div></div>` : ''}`;
@@ -556,6 +559,7 @@ function renderWTrain() {
         </div>
         <div class="w-sets-head">
           <span>Sätze: ${setsCount}</span>
+          <select class="w-unit" data-act="wUnit" data-id="${t.id}" data-i="${i}" title="Einheit pro Satz">${Object.entries(UNITS).map(([v, [l]]) => `<option value="${v}"${(ex.unit || 'kg') === v ? ' selected' : ''}>${l}</option>`).join('')}</select>
           <button data-act="wSetsAdj" data-id="${t.id}" data-i="${i}" data-d="-1">–</button>
           <button data-act="wSetsAdj" data-id="${t.id}" data-i="${i}" data-d="1">+</button>
         </div>
@@ -563,7 +567,7 @@ function renderWTrain() {
           const s = sets[k] || {};
           return `<div class="w-set">
             <button class="${s.done ? 'done' : ''}" data-act="wSetDone" data-id="${t.id}" data-i="${i}" data-k="${k}">${k + 1}${s.done ? ' ✓' : ''}</button>
-            <input type="number" inputmode="decimal" placeholder="kg" value="${s.weight ?? ''}" data-act="wWeight" data-id="${t.id}" data-i="${i}" data-k="${k}">
+            ${(ex.unit || 'kg') === 'none' ? '' : `<input type="number" inputmode="decimal" placeholder="${UNITS[ex.unit || 'kg'][0]}" value="${s.weight ?? ''}" data-act="wWeight" data-id="${t.id}" data-i="${i}" data-k="${k}">`}
           </div>`;
         }).join('')}</div>
         <textarea class="w-note" placeholder="Notiz zur Übung…" data-act="wExNote" data-id="${t.id}" data-i="${i}">${esc(ex.note || '')}</textarea>
@@ -790,7 +794,7 @@ content.addEventListener('click', e => {
       const exercises = t.exercises.map(ex => {
         const sets = dOf[ex.name] || [];
         return { name: ex.name, muscle: ex.muscle, setsDone: sets.filter(s => s && s.done).length, setsTotal: ex.sets || 3,
-          weights: sets.map(s => s && s.weight != null ? s.weight : null) };
+          unit: ex.unit || 'kg', weights: (ex.unit || 'kg') === 'none' ? [] : sets.map(s => s && s.weight != null ? s.weight : null) };
       });
       const note = (wp.sessionNote || {})[t.id] || '';
       const startRec = startOf(t.id, today());
@@ -815,7 +819,8 @@ content.addEventListener('click', e => {
     case 'goalEdit': goalEditing = true; break;
     case 'goalSave': {
       const target = Math.max(1, Number(document.getElementById('goal-target')?.value) || 1);
-      const periodDays = Math.max(1, Number(document.getElementById('goal-period')?.value) || 7);
+      const mult = { tage: 1, wochen: 7, monate: 30, jahre: 365 }[document.getElementById('goal-unit')?.value] || 1;
+      const periodDays = Math.max(1, Math.round((Number(document.getElementById('goal-period')?.value) || 1) * mult));
       saveGoal({ target, periodDays }); goalEditing = false; break;
     }
     case 'goalCancel': goalEditing = false; break;
@@ -825,6 +830,13 @@ content.addEventListener('click', e => {
     case 'histBack': view = 'history'; break;
   }
   render();
+});
+
+content.addEventListener('change', e => {
+  const u = e.target.closest('[data-act="wUnit"]');
+  if (!u) return;
+  trainingById(u.dataset.id).exercises[Number(u.dataset.i)].unit = u.value;
+  saveWeekplan(); render();
 });
 
 content.addEventListener('input', e => {

@@ -328,3 +328,8 @@ body:not(:has(.overview-lab)) .topbar{background:transparent; border-bottom:1px 
 :where(#content) input,:where(#content) textarea,:where(#content) select{font:inherit; font-size:16px;}
 
 .lab-vorher span{color:#8f9a96; opacity:.7;}
+
+.w-sets-head{align-items:center;}
+:where(#content) select{background:var(--panel-2); color:var(--text); border:1px solid var(--border); border-radius:10px; padding:.45rem .6rem; min-height:36px;}
+.w-unit{margin-left:auto;}
+.goal-edit select{margin-left:.3rem;}
