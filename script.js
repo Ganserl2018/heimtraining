@@ -673,7 +673,7 @@ function renderPlay() {
       <div class="pf-sheet-in">
         <div class="pf-sh-t">${esc(ex.name)}</div>
         <div class="pf-chips">${Array.from({ length: n }, (_, k) => `<button class="pl-chip${(sets[k] || {}).done ? ' done' : ''}${k === cur ? ' cur' : ''}" data-act="playSel" data-k="${k}" aria-label="Satz ${k + 1}">${(sets[k] || {}).done ? '✓' : k + 1}</button>`).join('')}</div>
-        ${unit === 'none' ? '' : `<label class="pl-now-in"><input id="pf-in" type="number" inputmode="decimal" data-act="wWeight" data-id="${t.id}" data-i="${playIdx}" data-k="${cur}" value="${curS.weight ?? ''}" placeholder="${curPh ?? UNITS[unit][0]}"><span>${UNITS[unit][1] || ''}</span></label>`}
+        ${unit === 'none' ? '' : `<label class="pl-now-in"><input id="pf-in" type="number" inputmode="decimal" data-act="wWeight" data-id="${t.id}" data-i="${playIdx}" data-k="${cur}" value="${curS.weight ?? ''}" placeholder="${curPh ?? (curP.r != null && unit !== 'kg' ? curP.r : '–')}"><span>${UNITS[unit][1] || ''}</span></label>`}
         ${curS.done ? `<button class="pf-sh-btn ghost" data-act="playSet" data-k="${cur}">✓ Erledigt – zurücknehmen</button>` : ''}
         <div class="pf-sh-row"><button class="pf-sh-btn ghost" data-act="playPrev"${playIdx === 0 ? ' disabled' : ''}>‹ Zurück</button><button class="pf-sh-btn ghost" data-act="playNext"${isLast ? ' disabled' : ''}>Weiter ›</button></div>
         <button class="pf-sh-btn ghost" data-act="playEdit">⚙ Sätze ändern</button>
