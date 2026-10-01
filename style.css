@@ -797,3 +797,12 @@ body.playing .pf{position:absolute;}
 
 .xc .xc-f span{display:none;} .xc .xc-f input{padding:0 .3rem;}
 .xc-step button{width:40px; height:40px;} .xc-step b{min-width:1.7rem;}
+
+/* Schnellwahl-Chips */
+.qc{display:none; gap:.35rem; overflow-x:auto; padding:.15rem 0; scrollbar-width:none; -webkit-overflow-scrolling:touch;}
+.qc::-webkit-scrollbar{display:none;}
+.qc button{flex:none; min-width:48px; min-height:40px; padding:0 .7rem; border-radius:20px; border:1px solid var(--border); background:var(--panel); color:var(--text); font-weight:700; font-size:.82rem; cursor:pointer;}
+.qc button.add{border-color:var(--accent); color:var(--accent); background:none;}
+.qc button:active{background:var(--accent); color:var(--on-accent,#0b1000);}
+.xc:has(input[data-f="w"]:focus) .qc[data-f="w"], .xc:has(input[data-f="r"]:focus) .qc[data-f="r"]{display:flex;}
+.pf-sheet .qc{display:flex;}

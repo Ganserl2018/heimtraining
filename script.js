@@ -32,10 +32,12 @@ const WEEKDAY_SEED = [
 ];
 let weekplan = [];
 let wId = null; // aktuell offenes Training im 'wtrain'-View
+const WEIGHT_WORDS = ['barbell', 'dumbbell', 'cable', 'smith', 'ez ', 'machine', 'kettlebell', 'lever', 'weighted', 'plate', 'sled', 'press', 'curl', 'row', 'pulldown', 'deadlift', 'squat', 'lunge', 'raise', 'fly', 'shrug', 'extension'];
+function defaultUnit(name) { const n = (name || '').toLowerCase(); if (/plank|hold|stretch|hang/.test(n)) return 'sek'; return WEIGHT_WORDS.some(w => n.includes(w)) && !/bodyweight|body weight|push-up|pushup|pull-up|pullup|chin-up|crunch|sit-up|bike|jump/.test(n) ? 'kg' : 'wdh'; }
 function loadWeekplan() {
   try {
     const raw = JSON.parse(localStorage.getItem(WKEY));
-    if (Array.isArray(raw) && raw.length) { raw.forEach(t => (t.exercises || []).forEach(e => { if (e.unit === 'none') e.unit = 'wdh'; })); return raw; }
+    if (Array.isArray(raw) && raw.length) { raw.forEach(t => (t.exercises || []).forEach(e => { if (e.unit === 'none') e.unit = 'wdh'; else if (!e.unit) e.unit = defaultUnit(e.name); })); return raw; }
   } catch (e) {}
   return WEEKDAY_SEED.map(([id, name]) => ({ id, name, exercises: [] }));
 }
@@ -556,7 +558,7 @@ const PRESETS = [
 ];
 function presetExercises(p) {
   return p.ex.map(n => pool.find(e => e.name === n)).filter(Boolean)
-    .map(e => ({ name: e.name, muscle: e.muscle, gif: e.gif, sets: 3, note: '', unit: 'kg' }));
+    .map(e => ({ name: e.name, muscle: e.muscle, gif: e.gif, sets: 3, note: '', unit: defaultUnit(e.name) }));
 }
 
 function renderStart() {
@@ -670,7 +672,7 @@ function renderPlay() {
       <div class="pf-sheet-in">
         <div class="pf-sh-t">${esc(ex.name)}</div>
         <div class="pf-chips">${Array.from({ length: n }, (_, k) => `<button class="pl-chip${(sets[k] || {}).done ? ' done' : ''}${k === cur ? ' cur' : ''}" data-act="playSel" data-k="${k}" aria-label="Satz ${k + 1}">${(sets[k] || {}).done ? '✓' : k + 1}</button>`).join('')}</div>
-        ${unit === 'none' ? '' : `<label class="pl-now-in"><input id="pf-in" type="number" inputmode="decimal" data-act="wWeight" data-id="${t.id}" data-i="${playIdx}" data-k="${cur}" value="${curS.weight ?? ''}" placeholder="${curPh ?? (curP.r != null && unit !== 'kg' ? curP.r : '–')}"><span>${UNITS[unit][1] || ''}</span></label>`}
+        ${unit === 'none' ? '' : `<label class="pl-now-in"><input id="pf-in" type="number" inputmode="decimal" data-act="wWeight" data-id="${t.id}" data-i="${playIdx}" data-k="${cur}" value="${curS.weight ?? ''}" placeholder="${curPh ?? (curP.r != null && unit !== 'kg' ? curP.r : '–')}"><span>${UNITS[unit][1] || ''}</span></label>${qchips(unit === 'kg' ? 'w' : 'r', '#pf-in')}`}
         ${curS.done ? `<button class="pf-sh-btn ghost" data-act="playSet" data-k="${cur}">✓ Erledigt – zurücknehmen</button>` : ''}
         <div class="pf-sh-row"><button class="pf-sh-btn ghost" data-act="playPrev"${playIdx === 0 ? ' disabled' : ''}>‹ Zurück</button><button class="pf-sh-btn ghost" data-act="playNext"${isLast ? ' disabled' : ''}>Weiter ›</button></div>
         <button class="pf-sh-btn" data-act="playFinish">${totalDone >= totalAll ? 'Training beenden' : 'Beenden (unvollständig)'}</button>
@@ -779,6 +781,11 @@ function newDraft() {
   weekplan.push(t); wId = t.id; renameId = t.id; view = 'wtrain'; picker = null;
 }
 const wOpen = new Set(); // UI-Zustand: 'tid:i' = Einstellungen offen, 'tid:i:s' = Sätze einzeln
+const QC = { w: [[5, 10, 15, 20, 25, 30, 40, 50], []], r: [[5, 8, 10, 12, 15, 20, 30, 50], [10, 50, 100]] };
+function qchips(f, target) {
+  const unitL = f === 'w' ? ' kg' : '';
+  return `<div class="qc" data-f="${f}" data-target='${target}'>${QC[f][0].map(v => `<button type="button" data-qv="${v}" data-mode="set">${v}${unitL}</button>`).join('')}${QC[f][1].map(v => `<button type="button" class="add" data-qv="${v}" data-mode="add">+${v}</button>`).join('')}</div>`;
+}
 function exCard(t, ex, i) {
   const u = ex.unit || 'kg', n = ex.sets || 3, plan = ex.plan || [];
   const at = (k, f) => (plan[k] || {})[f] ?? null;
@@ -792,7 +799,8 @@ function exCard(t, ex, i) {
   if (split) rowB += `<button class="xc-same" data-act="wSame" ${da}>Sätze angleichen</button>`;
   else rowB += `${u === 'kg' ? fld('wPlanAll', 'w', null, at(0, 'w')) : ''}${fld('wPlanAll', 'r', null, at(0, 'r'))}`;
   const pills = split ? `<div class="xc-pills">${Array.from({ length: n }, (_, k) => `<div class="xc-pill"><b>${k + 1}</b>${u === 'kg' ? fld('wPlan', 'w', k, at(k, 'w')) : ''}${fld('wPlan', 'r', k, at(k, 'r'))}</div>`).join('')}</div>` : '';
-  return `<div class="ts-set xc"><div class="xc-top"><span class="xc-n">${esc(ex.name)}</span>${sel}</div><div class="xc-row">${rowB}</div>${pills}</div>`;
+  const chips = split ? '' : `${u === 'kg' ? qchips('w', `[data-act=wPlanAll][data-f=w]`) : ''}${qchips('r', `[data-act=wPlanAll][data-f=r]`)}`;
+  return `<div class="ts-set xc"><div class="xc-top"><span class="xc-n">${esc(ex.name)}</span>${sel}</div><div class="xc-row">${rowB}</div>${chips}${pills}</div>`;
 }
 function renderWTrain() {
   const t = trainingById(wId);
@@ -1057,7 +1065,7 @@ content.addEventListener('click', e => {
       const p = pool[Number(btn.dataset.p)];
       if (picker.wid) {
         const t = trainingById(picker.wid);
-        const ex = { name: p.name, muscle: p.muscle, gif: p.gif, sets: 3, note: '' };
+        const ex = { name: p.name, muscle: p.muscle, gif: p.gif, sets: 3, note: '', unit: defaultUnit(p.name) };
         if (picker.index === null) t.exercises.push(ex); else t.exercises[picker.index] = ex;
         saveWeekplan();
       } else {
@@ -1194,7 +1202,7 @@ content.addEventListener('click', e => {
     case 'browseClose': browseSel = null; break;
     case 'browseAdd': {
       const t = trainingById(btn.dataset.id), ex = pool[browseSel];
-      if (t && ex && !t.exercises.some(e => e.name === ex.name)) { t.exercises.push({ name: ex.name, muscle: ex.muscle, gif: ex.gif, sets: 3, note: '' }); saveWeekplan(); }
+      if (t && ex && !t.exercises.some(e => e.name === ex.name)) { t.exercises.push({ name: ex.name, muscle: ex.muscle, gif: ex.gif, sets: 3, note: '', unit: defaultUnit(ex.name) }); saveWeekplan(); }
       break;
     }
     case 'wSavePack': saveWeekplan(); view = 'start'; break;
@@ -1377,3 +1385,14 @@ content.addEventListener('touchend', e => {
   if (Math.abs(dy) > 60 && Math.abs(dy) > Math.abs(dx)) { if (dy < 0 && !playDrawer) go('playOpen'); else if (dy > 0 && playDrawer && !e.target.closest('input')) go('playClose'); }
   else if (!playDrawer && Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.5) { if (dx < 0) go('playNext'); else go('playPrev'); }
 }, { passive: true });
+
+// Schnellwahl-Chips: setzen/addieren, Fokus im Feld behalten (Tastatur bleibt)
+content.addEventListener('pointerdown', e => { if (e.target.closest('.qc button')) e.preventDefault(); });
+content.addEventListener('click', e => {
+  const b = e.target.closest('.qc button[data-qv]'); if (!b) return;
+  const box = b.closest('.qc'), scope = b.closest('.xc, .pf-sheet') || content;
+  const inp = scope.querySelector(box.dataset.target); if (!inp) return;
+  const v = Number(b.dataset.qv), cur = Number(inp.value) || 0;
+  inp.value = b.dataset.mode === 'add' ? cur + v : v;
+  inp.dispatchEvent(new Event('input', { bubbles: true }));
+});
