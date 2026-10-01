@@ -489,17 +489,16 @@ function renderWeeklist() {
   const DB = '<svg class="lab-db" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>';
   const t0 = today(), ws = mondayOf(t0);
   const dayNames = WD_KEYS.map(k => FULLN[k] + 'straining');
-  const dayTr = k => weekplan.find(w => w.name === FULLN[k] + 'straining');
-  const custom = weekplan.filter(w => !dayNames.includes(w.name));
+  const custom = weekplan.filter(w => !dayNames.includes(w.name) || w.exercises.length);
   const meta = t => `${t.exercises.length} Übung${t.exercises.length === 1 ? '' : 'en'} · ${t.weekdays.length ? WD_KEYS.filter(k => t.weekdays.includes(k)).map(k => WD_LABELS[k]).join(' ') + (t.time ? ' · ' + esc(t.time) : '') : 'nicht eingeplant'}`;
   const dayTiles = WD_KEYS.map((k, i) => {
-    const t = dayTr(k);
-    if (!t) return `<div class="wp-cell"><div class="wp-day wp-empty"><b>${WD_LABELS[k]}</b><span>–</span></div></div>`;
     const ds = addDays(ws, i);
-    const sched = t.weekdays.includes(k);
-    const st = trainingStatusForDate(t, ds);
-    const n = t.exercises.length;
-    return `<div class="wp-cell"><button class="wp-day${sched ? (st ? ' wp-' + st : '') : ' wp-aus'}${n ? '' : ' wp-leer'}${ds === t0 ? ' wp-heute' : ''}" data-act="wOpen2" data-id="${t.id}"><b>${WD_LABELS[k]}</b>${sched ? DB : '<em>+</em>'}<span>${n ? n + ' Üb.' : 'leer'}</span></button>${sched ? `<button class="wp-x" data-act="wUnsched" data-id="${t.id}" data-wd="${k}" aria-label="Aus Plan entfernen">×</button>` : ''}</div>`;
+    const items = weekplan.map(w => ({ w, status: trainingStatusForDate(w, ds) })).filter(x => x.status);
+    const worst = ['verpasst', 'unvollständig', 'offen', 'geplant', 'vorher', 'erledigt'].find(st => items.some(x => x.status === st)) || null;
+    const n = items.reduce((sum, x) => sum + x.w.exercises.length, 0);
+    const target = (items.find(x => x.status !== 'erledigt') || items[0] || {}).w;
+    const act = target ? `data-act="wOpen2" data-id="${target.id}"` : `data-act="wDayNew" data-wd="${k}" data-date="${ds}"`;
+    return `<div class="wp-cell"><button class="wp-day${worst ? ' wp-' + worst : ' wp-aus'}${worst && !n ? ' wp-leer' : ''}${ds === t0 ? ' wp-heute' : ''}" ${act}><b>${WD_LABELS[k]}</b>${worst ? DB : '<em>+</em>'}<span>${worst ? (n ? n + ' Üb.' : 'leer') : 'Ruhe'}</span></button>${target ? `<button class="wp-x" data-act="wUnsched" data-id="${target.id}" data-wd="${k}" aria-label="Aus Plan entfernen">×</button>` : ''}</div>`;
   }).join('');
   const customCards = custom.map(t => {
     const th = t.exercises.slice(0, 3).map(ex => `<img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`).join('');
@@ -512,9 +511,9 @@ function renderWeeklist() {
   }).join('');
   content.innerHTML = `
     <div class="wp">
-      <div class="wp-sec">TAGESTRAININGS · DIESE WOCHE</div>
+      <div class="wp-sec">DIESE WOCHE</div>
       <div class="wp-days">${dayTiles}</div>
-      <div class="wp-sec">EIGENE TRAININGS</div>
+      <div class="wp-sec">TRAININGS</div>
       ${customCards || '<p class="placeholder">Noch keine eigenen Trainings – z. B. „Ganzkörper“ oder „Mobility“.</p>'}
       ${addingTraining
         ? `<div class="wp-card wp-new"><input id="new-training-name" placeholder="Name des Trainings…" autofocus>
