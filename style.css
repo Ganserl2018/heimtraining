@@ -645,3 +645,9 @@ body.mood-bad{--text-faint:#b08a85;}
 @media (min-width:700px){ .xc-pills{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));} .xc-f{max-width:140px;} .xc-row{justify-content:flex-start;} }
 .ts-name-btns{display:flex; gap:.4rem; flex:none;}
 .ts-name-del{border-color:#c0504d !important; color:#ff7b78 !important;}
+/* Paket-Karte darf nie breiter als der Screen werden */
+.st, .st-packs, .st-wrap{min-width:0; max-width:100%;}
+.st-packs{grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));}
+.st-pack{width:100%; min-width:0; box-sizing:border-box; overflow:hidden;}
+.st-pack-body, .st-pack-meta{min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.st-pack-list{overflow:hidden;}
