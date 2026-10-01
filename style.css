@@ -548,3 +548,11 @@ body.mood-bad{--text-faint:#b08a85;}
 .sm-done{min-height:56px; font-size:1.1rem;}
 @media (min-width:820px){ .pl{max-width:560px; margin:0 auto;} .pl-rest{bottom:76px;} }
 @media (min-width:820px){ .side-brand img{width:40px; height:40px; flex:none; border-radius:10px; box-shadow:0 0 14px var(--lab-glow, rgba(163,230,53,.35));} }
+.st-pack-top{justify-content:flex-start;}
+.st-pack-name{flex:0 1 auto;}
+.st-pack-go{margin-left:auto;}
+.st-tag{flex:none; font-size:.58rem; font-weight:800; letter-spacing:.08em; padding:.15rem .4rem; border-radius:6px; background:color-mix(in srgb,var(--accent) 22%,transparent); color:var(--accent);}
+.st-tag.pre{background:var(--panel-2); color:var(--text-dim);}
+.st-own{border:2px solid var(--accent); background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 14%,var(--panel)),var(--panel) 70%); box-shadow:0 0 22px color-mix(in srgb,var(--accent) 28%,transparent);}
+.st-grp{font-size:.74rem; font-weight:700; color:var(--text-dim); margin:.7rem 0 .35rem; padding-left:.1rem;}
+.st-pack-name{flex:1 1 auto; min-width:0;} .st-pack-meta .st-tag{margin-right:.3rem;}
