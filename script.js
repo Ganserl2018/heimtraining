@@ -33,7 +33,7 @@ const WEEKDAY_SEED = [
 let weekplan = [];
 let wId = null; // aktuell offenes Training im 'wtrain'-View
 const WEIGHT_WORDS = ['barbell', 'dumbbell', 'cable', 'smith', 'ez bar', 'ez-bar', 'kettlebell', 'machine', 'lever', 'weighted', 'plate', 'sled', 'pulldown', 'pec deck', 'leg press', 'leg extension', 'leg curl', 'hack squat', 'calf press', 'seated calf', 'preacher', 'trap bar', 'landmine', ' db ', 'db ', 'long bar', 't-bar', 'bench press', 'bench pull', 'shrug', 'bar row'];
-function defaultUnit(name) { const n = (name || '').toLowerCase(); if (/plank|hold|stretch|hang|isometric/.test(n)) return 'sek'; return WEIGHT_WORDS.some(w => n.includes(w)) ? 'kg' : 'wdh'; }
+function defaultUnit(name) { const n = (name || '').toLowerCase(); if (/plank|hold|stretch|hang|isometric/.test(n)) return 'sek'; if (/\bband/.test(n) || /with bands/.test(n)) return 'wdh'; return WEIGHT_WORDS.some(w => n.includes(w)) ? 'kg' : 'wdh'; }
 function loadWeekplan() {
   try {
     const raw = JSON.parse(localStorage.getItem(WKEY));
@@ -553,25 +553,26 @@ function presetExercises(p) {
 
 // ---- V13 W-02: Auto-Trainingsgenerator (Regeln: Coach-Bericht) ----
 const GENKEY = 'heimtraining.genlast';
+let genJust = false;
 let genCfg = { lv: null, goal: 'aufbau', dur: 45, groups: [] }, genRes = null;
 const GRANK = { Beine: 3, Rücken: 3, Brust: 3, Schultern: 2, Arme: 1, Bauch: 0 };
 const MORDER = ['quadriceps', 'hamstrings', 'glutes', 'chest', 'lats', 'middle back', 'lower back', 'shoulders', 'traps', 'biceps', 'triceps', 'forearms', 'calves', 'abdominals'];
 const GCOUNT = { 30: [3, 4, 5], 45: [4, 5, 6], 60: [5, 7, 8], 90: [7, 9, 11] }, GISO = { 30: 1, 45: 2, 60: 3, 90: 4 };
 function genLevel() { return genCfg.lv != null ? genCfg.lv : (loadProfile().level != null ? loadProfile().level : 0); }
 function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
-function isCompound(n) { return /press|squat|deadlift|row|pull-?up|pulldown|lunge|dip|chin|push-?up/.test(n.toLowerCase()); }
+function isCompound(n) { n = n.toLowerCase(); return !/pullover|pushdown|fly|flye|raise|curl|extension|kickback|shrug/.test(n) && /press|squat|deadlift|row|pull-?up|pulldown|lunge|dip|chin|push-?up/.test(n); }
 function generate() {
   const lv = genLevel(), g = genCfg.groups.length ? genCfg.groups : ['Brust'];
   let last = []; try { last = JSON.parse(localStorage.getItem(GENKEY)) || []; } catch (e) {}
-  const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas/i;
-  const hard = /deadlift|rack pull|clean|snatch|jerk|weighted|good morning|behind the neck|muscle.up|atlas/i;
+  const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine/i;
+  const hard = /deadlift|rack pull|clean|snatch|jerk|weighted|good morning|behind (the )?neck|guillotine|zercher|jefferson|overhead squat|olympic|sissy|muscle.up|atlas|pistol|single-arm push/i;
   const base = pool.filter(e => !bad.test(e.name) && MUSCLE_GROUPS[e.muscle] && (lv > 0 || !hard.test(e.name)));
   const n = GCOUNT[genCfg.dur][lv], isoMax = GISO[genCfg.dur];
   const gs = g.slice().sort((a, b) => GRANK[b] - GRANK[a]);
   const per = gs.map((_, i) => Math.floor(n / gs.length) + (i < n % gs.length ? 1 : 0));
   const picked = []; let isoUsed = 0;
   gs.forEach((grp, gi) => {
-    const core = e => MUSCLE_GROUPS[e.muscle] === grp && (grp !== 'Rücken' || e.muscle === 'lats' || e.muscle === 'middle back');
+    const core = e => MUSCLE_GROUPS[e.muscle] === grp && (grp !== 'Rücken' || ((e.muscle === 'lats' || e.muscle === 'middle back') && !/pushdown/i.test(e.name)));
     let cand = shuffle(base.filter(e => core(e) && !last.includes(e.name)));
     if (cand.length < per[gi]) cand = shuffle(base.filter(e => core(e)));
     if (grp === 'Arme') { // Bizeps/Trizeps abwechselnd
@@ -591,7 +592,7 @@ function generate() {
   const exs = picked.map(e => ({ name: e.name, muscle: e.muscle, gif: e.gif, sets: 3, note: '', unit: defaultUnit(e.name) }));
   exs.forEach(ex => { const r = suggestEx(ex, lv, genCfg.goal); ex.sets = r.sets; ex.plan = Array.from({ length: r.sets }, () => ({ w: r.w, r: r.reps })); });
   try { localStorage.setItem(GENKEY, JSON.stringify(picked.map(e => e.name).concat(last).slice(0, 24))); } catch (e) {}
-  genRes = exs;
+  genRes = exs; genJust = true;
 }
 function genSave(start) {
   if (!genRes || !genRes.length) return;
@@ -607,6 +608,7 @@ function renderGen() {
       <div><b>${esc(e.name)}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)} · ${e.sets} × ${e.plan[0].r} ${e.unit === 'sek' ? 'Sek' : 'Wdh'}${e.plan[0].w != null && e.unit === 'kg' ? ' · ca. ' + e.plan[0].w + ' kg' : ''}</em></div></div>`).join('')}
       <div class="lv-note">Vorschlag mit ca.-Werten. Technik vor Gewicht, bei Schmerzen abbrechen.${!p.weight && genRes.some(e => e.unit === 'kg') ? ' Gewicht im Profil eintragen, dann kommen auch kg-Vorschläge.' : ''}</div>
       <div class="gn-btns"><button class="ts-save" data-act="genSave">✓ SPEICHERN</button><button class="pl-next ts-go" data-act="genGo">▶ SPEICHERN &amp; STARTEN</button><button class="ts-add" data-act="genDo">⟳ Neu mischen</button></div></div>` : '';
+  const scrollRes = genJust; genJust = false;
   content.innerHTML = `<div class="gn">
     <div class="pl-top"><button class="pl-x" data-act="genBack" aria-label="Zurück">‹</button><div class="pl-title"><b>Auto-Training</b><span>Wir stellen dir ein Training zusammen</span></div></div>
     <div class="lv"><div class="lv-h">Level</div><div class="lv-pills">${LEVELS.map(([k, l], x) => pill('genLv', x, l, lv === x)).join('')}</div></div>
@@ -616,6 +618,7 @@ function renderGen() {
     <div class="gn-btns"><button class="pl-next ts-go" data-act="genDo"${genCfg.groups.length ? '' : ' disabled'}>${genRes ? '⟳ NEU ZUSAMMENSTELLEN' : '✨ ZUSAMMENSTELLEN'}</button><button class="ts-add" data-act="genSurprise">🎲 Überrasch mich</button></div>
     ${res}
   </div>`;
+  if (scrollRes) setTimeout(() => { const r = document.querySelector('.gn-res'); if (r) r.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
 }
 function renderStart() {
   const DB = '<svg class="lab-db" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>';
@@ -853,9 +856,10 @@ const SW = { bankLH: [.25, .60, .90], pressKH: [.10, .25, .38], rudernLH: [.25, 
 const PLATES_TOTAL = 45; // Alex: Scheiben insgesamt 45 kg (5 / 2,5 / 1,25)
 function swType(ex) {
   const n = ex.name.toLowerCase(), m = ex.muscle;
-  const lh = /barbell|ez.bar|ez bar/.test(n), kh = /dumbbell/.test(n), cab = /cable|pulldown|pulley|pushdown|face pull/.test(n);
+  const lh = /barbell|ez.bar|ez bar|long bar|t-bar/.test(n), kh = /dumbbell|\bdb\b|kettlebell/.test(n), cab = /cable|pulldown|pulley|pushdown|face pull/.test(n);
+  if (/band/.test(n) || (!lh && !kh && !cab)) return null; // Bänder/Körpergewicht: kein kg-Vorschlag
   const big = ['chest', 'lats', 'middle back', 'quadriceps', 'hamstrings', 'glutes', 'lower back'].includes(m);
-  if (/deadlift|rack pull/.test(n)) return lh ? 'kreuzLH' : 'kreuzLH';
+  if (/deadlift|rack pull/.test(n)) return 'kreuzLH';
   if (/squat/.test(n)) return lh ? 'kniebeugeLH' : 'kniebeugeKH';
   if (/lunge|step.?up|split squat/.test(n)) return 'beinKH';
   if (/bench press|chest press/.test(n)) return lh ? 'bankLH' : (kh ? 'pressKH' : 'seilGross');
@@ -883,7 +887,9 @@ function suggestEx(ex, lv, goal) { // lv 0/1/2 → {sets, reps, w|null}
   if (goal === 'kraft') reps = comp ? (lv === 0 ? 8 : 5) : 10; else if (goal === 'def') reps = comp ? 14 : 17; else if (u === 'wdh') reps = lv === 0 ? 10 : 12;
   if (u !== 'kg') return { sets, reps, w: null };
   const prof = loadProfile(), bw = prof.weight;
-  const t = swType(ex), isLH = /LH$/.test(t), isKH = /KH$/.test(t), bar = prof.bar || 10;
+  const t = swType(ex);
+  if (!t) return { sets, reps, w: null };
+  const isLH = /LH$/.test(t), isKH = /KH$/.test(t), bar = prof.bar || 10;
   const step = isKH ? 2 : 2.5;
   let w = null;
   if (bw) {
