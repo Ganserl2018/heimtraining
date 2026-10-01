@@ -661,7 +661,7 @@ function renderProfile() {
 // V3: Mobile/Content-Seite für "Alle Übungen" – Push/Pull/Legs/Core zum Antippen
 // (auf Desktop-Breite steht die Sidebar-Version daneben, hier der Direktzugriff für iPhone).
 let browsePage = 0, browsePer = 9;
-const BTILE = 150; // feste Kachelhöhe in der Galerie (px)
+const BTILE = 128; // feste Kachelhöhe in der Galerie (px)
 let browseQ = '', browseSel = null, filterOpen = false; // "Alle Übungen": Suchtext, gewählte Übung (Detail-Sheet), Filter-Sheet offen
 function renderAllEx() {
   const ex = browseSel != null ? pool[browseSel] : null;
