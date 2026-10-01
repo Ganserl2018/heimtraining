@@ -556,3 +556,8 @@ body.mood-bad{--text-faint:#b08a85;}
 .st-own{border:2px solid var(--accent); background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 14%,var(--panel)),var(--panel) 70%); box-shadow:0 0 22px color-mix(in srgb,var(--accent) 28%,transparent);}
 .st-grp{font-size:.74rem; font-weight:700; color:var(--text-dim); margin:.7rem 0 .35rem; padding-left:.1rem;}
 .st-pack-name{flex:1 1 auto; min-width:0;} .st-pack-meta .st-tag{margin-right:.3rem;}
+.st-wrap{position:relative;}
+.st-del{position:absolute; right:.5rem; bottom:.5rem; z-index:2; width:44px; height:44px; border-radius:12px; border:1px solid var(--border-soft); background:var(--panel-2); font-size:1.1rem; cursor:pointer;}
+.pl-del{margin-left:auto;}
+.pl-media,.pl-media img{max-height:22dvh;}
+.pl-nav{background:var(--bg); margin:0 -1.1rem; padding:.6rem 1.1rem .4rem;}

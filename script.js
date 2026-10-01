@@ -560,13 +560,13 @@ function renderStart() {
   const DB = '<svg class="lab-db" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>';
   const img = ex => `<img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`;
   const muscles = exs => [...new Set(exs.map(e => MUSCLE_DE[e.muscle] || e.muscle))].slice(0, 3).join(' · ');
-  const pack = t => `<button class="st-pack${t.presetKey ? '' : ' st-own'}" data-act="stStart" data-id="${t.id}">
+  const pack = t => `<div class="st-wrap"><button class="st-del" data-act="stDelete" data-id="${t.id}" aria-label="Training löschen">🗑</button><button class="st-pack${t.presetKey ? '' : ' st-own'}" data-act="stStart" data-id="${t.id}">
       <div class="st-pack-th">${t.exercises.slice(0, 4).map(img).join('')}</div>
       <div class="st-pack-body">
         <div class="st-pack-top"><span class="st-pack-name">${esc(t.name)}</span><span class="st-pack-go">▶ START</span></div>
         <div class="st-pack-meta"><span class="st-tag${t.presetKey ? ' pre' : ''}">${t.presetKey ? 'VORLAGE' : '★ EIGEN'}</span> ${t.exercises.length} Übung${t.exercises.length === 1 ? '' : 'en'} · ${esc(muscles(t.exercises))}</div>
         <ol class="st-pack-list">${t.exercises.slice(0, 4).map(e => `<li>${esc(e.name)}</li>`).join('')}${t.exercises.length > 4 ? `<li class="more">+ ${t.exercises.length - 4} weitere</li>` : ''}</ol>
-      </div></button>`;
+      </div></button></div>`;
   const mini = p => { const exs = presetExercises(p); return `<button class="st-mini" data-act="stPreset" data-key="${p.key}">
       <span class="st-mini-th">${exs[0] ? img(exs[0]) : DB}</span>
       <span class="st-mini-t"><b>${esc(p.name)}</b><em>${exs.length} Üb.</em></span></button>`; };
@@ -636,6 +636,7 @@ function renderPlay() {
     <div class="pl-top">
       <button class="pl-x" data-act="playExit" aria-label="Zurück">✕</button>
       <div class="pl-title"><b>${esc(t.name)}</b><span>Übung ${playIdx + 1} / ${t.exercises.length} · ${totalDone}/${totalAll} Sätze</span></div>
+      <button class="pl-x pl-del" data-act="playDelete" aria-label="Training löschen">🗑</button>
     </div>
     <div class="pl-dots">${t.exercises.map((e, i) => `<button class="${i === playIdx ? 'cur' : ''}${doneN(e) >= (e.sets || 3) ? ' ok' : doneN(e) ? ' part' : ''}" data-act="playGo" data-i="${i}" aria-label="Übung ${i + 1}"></button>`).join('')}</div>
     <div class="pl-media"><img src="${esc(ex.gif)}" alt="" onerror="this.style.visibility='hidden'"></div>
@@ -1031,6 +1032,13 @@ content.addEventListener('click', e => {
       let t = weekplan.find(w => w.presetKey === p.key);
       if (!t) { t = { id: 'w' + Date.now(), name: p.name, presetKey: p.key, exercises: presetExercises(p), weekdays: [], since: {}, time: '' }; weekplan.push(t); saveWeekplan(); }
       playStart(t.id); break;
+    }
+    case 'stDelete': case 'playDelete': {
+      const id = btn.dataset.act === 'playDelete' ? playTid : btn.dataset.id, t = trainingById(id);
+      if (!t || !confirm('Training „' + t.name + '“ löschen?')) return;
+      weekplan = weekplan.filter(w => w.id !== id); saveWeekplan();
+      const wp = wProgRaw(); delete wp.done[id]; saveWProg(wp);
+      view = 'start'; break;
     }
     case 'playExit': view = 'overview'; break;
     case 'playGo': playIdx = Number(btn.dataset.i); break;
