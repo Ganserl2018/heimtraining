@@ -410,3 +410,7 @@ body.mood-bad{--text-faint:#b08a85;}
 .allex-pager{flex:none; display:flex; align-items:center; justify-content:space-between; gap:.5rem; padding-top:.5rem;}
 .allex-pager span{font-size:.74rem; color:var(--text-dim); text-align:center;}
 :where(#content) .allex-pager button{min-width:56px; min-height:44px; font-size:1.3rem; padding:0;}
+/* Sheets enden oberhalb der Menüleiste, Buttons bleiben sichtbar */
+.goal-sheet{padding-bottom:calc(4.8rem + env(safe-area-inset-bottom,0px));}
+.goal-sheet .goal-edit,.browse-sheet{max-height:calc(100dvh - 7.5rem - env(safe-area-inset-bottom,0px)); overflow-y:auto;}
+.browse-sheet .edit-bar{position:sticky; bottom:-1.1rem; background:var(--panel); padding:.6rem 0 .2rem; margin-top:.2rem;}
