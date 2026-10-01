@@ -7,7 +7,7 @@
   --border:#33383a; --border-soft:#2a2e30;
   --text:#eeece5; --text-dim:#9a9d97; --text-faint:#6d716c;
   --chalk:#d9c98f; --chalk-deep:#b9a865; --accent:#d9c98f;
-  --ok:#7fae6a; --warn:#c98a4b; --bad:#b85c4f;
+  --ok:#7fae6a; --warn:#c98a4b; --bad:#b85c4f; --on-accent:#20231e;
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
@@ -95,7 +95,7 @@ body{
 /* V2-10: Bildergalerie statt Liste + Filter-Chips */
 .filter-chips{display:flex; flex-wrap:wrap; gap:.4rem; margin:.6rem 0;}
 .chip{padding:.4rem .8rem; border-radius:999px; border:1px solid var(--border); background:var(--panel); color:var(--text-dim); font-size:.78rem; font-weight:600;}
-.chip.active{background:var(--accent); color:#20231e; border-color:var(--accent);}
+.chip.active{background:var(--accent); color:var(--on-accent); border-color:var(--accent);}
 .results{display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:.7rem; margin-top:.6rem;}
 .result{display:flex; flex-direction:column; align-items:center; gap:.4rem; text-align:center; padding:.6rem .4rem; background:var(--panel); border:1px solid var(--border); border-radius:10px; color:var(--text); font-size:.9rem;}
 .result:active,.result:hover{border-color:var(--accent);}
@@ -106,7 +106,7 @@ body{
 .results > .placeholder{grid-column:1 / -1;}
 .sets{display:flex; gap:.3rem; margin-top:.35rem;}
 .set{padding:.35rem .5rem; font-size:.75rem;}
-.set.done{background:var(--accent); color:#20231e; border-color:var(--accent);}
+.set.done{background:var(--accent); color:var(--on-accent); border-color:var(--accent);}
 
 /* Basis-Kartenlook für Profil/Alle-Übungen */
 .overview .ov-card-title{font-size:.72rem; letter-spacing:.02em; color:var(--text-faint); margin-bottom:.55rem; font-weight:500;}
@@ -155,7 +155,7 @@ body{
 .w-sets{display:flex; gap:.5rem; flex-wrap:wrap;}
 .w-set{display:flex; align-items:center; gap:.3rem;}
 .w-set button{padding:.35rem .55rem; font-size:.78rem; border-radius:6px; border:1px solid var(--border); background:var(--panel); color:var(--text);}
-.w-set button.done{background:var(--accent); color:#20231e; border-color:var(--accent);}
+.w-set button.done{background:var(--accent); color:var(--on-accent); border-color:var(--accent);}
 .w-set input{width:56px; font-size:.8rem; padding:.35rem .3rem; border-radius:6px; border:1px solid var(--border); background:var(--bg); color:var(--text);}
 .w-note{width:100%; margin-top:.5rem; background:var(--bg); border:1px solid var(--border); border-radius:8px; color:var(--text); font-size:.82rem; padding:.5rem; resize:vertical; min-height:2.2rem; font-family:inherit;}
 .history-note{color:var(--text-dim); font-size:.82rem; margin-top:.3rem; font-style:italic;}
@@ -192,7 +192,7 @@ body{
 .history-ring::before{content:""; position:absolute; inset:3px; border-radius:50%; background:var(--panel);}
 .history-ring span{position:relative;}
 .history-footer-btn{width:100%; margin-top:.5rem;}
-.ov-btn{display:inline-flex; align-items:center; justify-content:center; background:var(--accent); color:#20231e; border:none; border-radius:999px; padding:.6rem 1.15rem; font-size:.86rem; font-weight:700; letter-spacing:-.01em; min-height:44px;}
+.ov-btn{display:inline-flex; align-items:center; justify-content:center; background:var(--accent); color:var(--on-accent); border:none; border-radius:999px; padding:.6rem 1.15rem; font-size:.86rem; font-weight:700; letter-spacing:-.01em; min-height:44px;}
 .ov-btn:active{background:var(--chalk-deep);}
 .ov-btn-ghost{background:none; border:1px solid var(--border); color:var(--text-dim); font-weight:600;}
 .ov-btn-ghost:active{border-color:var(--text-dim); color:var(--text);}
@@ -310,3 +310,19 @@ body:has(.overview-lab) .lab-head-title{font-size:.92rem;}
 
 .lab-day{border:0; font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent;}
 .lab-day:active{transform:scale(.95);}
+
+/* V9-14: Lab-Look für ALLE Seiten über die Farb-Variablen (Stimmung grün/rot am body) */
+body.mood-good{--bg:#121818; --bg-raise:#1b2323; --panel:#1b2222; --panel-2:#222b29; --border:#2d3835; --border-soft:#232d2a;
+  --text:#e6ece8; --text-dim:#a3b0ab; --text-faint:#7d8a86; --accent:#a8f03a; --chalk:#a8f03a; --chalk-deep:#8fd02c; --ok:#a8f03a; --on-accent:#0c0f0e; --lab-glow:rgba(168,240,58,.4);}
+body.mood-bad{--bg:#150b0b; --bg-raise:#241313; --panel:#241212; --panel-2:#2e1a18; --border:#3d2321; --border-soft:#2e1a18;
+  --text:#f0e6e4; --text-dim:#b9a09c; --text-faint:#8a6a66; --accent:#e8301f; --chalk:#e8301f; --chalk-deep:#c42618; --ok:#e8301f; --bad:#e8301f; --on-accent:#fff; --lab-glow:rgba(232,48,31,.45);}
+body.mood-good,body.mood-bad{background:radial-gradient(120% 50% at 50% 20%, color-mix(in srgb, var(--accent) 7%, var(--bg)), var(--bg) 70%) no-repeat, var(--bg);}
+body.mood-bad{background:radial-gradient(120% 50% at 50% 20%, #2a1210, var(--bg) 70%) no-repeat, var(--bg);}
+body:not(:has(.overview-lab)) .topbar h1{color:var(--accent); text-transform:uppercase; letter-spacing:.04em; font-size:1.05rem; font-weight:800; text-shadow:0 0 10px var(--lab-glow);}
+body:not(:has(.overview-lab)) .topbar{background:transparent; border-bottom:1px solid var(--border);}
+.tabbar{background:linear-gradient(180deg,var(--panel),var(--bg));}
+/* V9-14: Basis-Look für alle bisher ungestylten Buttons (Spezifität 0,0,1 — jede Klassenregel gewinnt) */
+:where(#content) button{font:inherit; font-size:.85rem; font-weight:600; background:var(--panel-2); color:var(--text); border:1px solid var(--border); border-radius:10px; padding:.6rem .9rem; min-height:40px;}
+:where(#content) button:active{border-color:var(--accent); color:var(--accent);}
+:where(#content) .edit-bar button{background:transparent; border-color:var(--accent); color:var(--accent);}
+:where(#content) input,:where(#content) textarea,:where(#content) select{font:inherit; font-size:16px;}

@@ -204,7 +204,18 @@ function currentList() {
   return list();
 }
 
+// V9-14: Gesamtstimmung (grün/rot) gilt für die ganze App, nicht nur die Übersicht
+function applyMood() {
+  const t = today();
+  const ws = mondayOf(t);
+  const bad = weekplan.some(w => w.weekdays && w.weekdays.length && Array.from({ length: 7 }, (_, i) => addDays(ws, i))
+    .some(ds => trainingStatusForDate(w, ds) === 'verpasst'));
+  document.body.classList.toggle('mood-bad', bad);
+  document.body.classList.toggle('mood-good', !bad);
+}
+
 function render() {
+  applyMood();
   syncTabActive();
   renderAllExBlock();
   renderWeekplanBlock();
@@ -492,7 +503,7 @@ function renderWeeklist() {
       ${addingTraining
         ? `<div class="weeklist-card"><input id="new-training-name" placeholder="Name des Trainings…" autofocus>
              <div class="edit-bar"><button data-act="wNewTrainingSave">Speichern</button><button data-act="wNewTrainingCancel">Abbrechen</button></div></div>`
-        : `<button data-act="wNewTraining">+ Neues Training</button>`}
+        : `<button class="ov-btn ov-btn-ghost" data-act="wNewTraining">+ Neues Training</button>`}
     </div>`;
   if (addingTraining) document.getElementById('new-training-name')?.focus();
 }
