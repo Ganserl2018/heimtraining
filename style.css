@@ -307,3 +307,6 @@ html{-webkit-text-size-adjust:100%; background:#0e1211;}
 .tabbar{background:linear-gradient(180deg,#1a201e,#0e1211);}
 body:has(.overview-lab) .lab-badge{width:46px; height:46px; margin-right:2.7rem; font-size:1.2rem;}
 body:has(.overview-lab) .lab-head-title{font-size:.92rem;}
+
+.lab-day{border:0; font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent;}
+.lab-day:active{transform:scale(.95);}

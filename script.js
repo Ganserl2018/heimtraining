@@ -412,7 +412,9 @@ function renderOverview() {
       : items.length ? 'erledigt' : null;
     const DB = '<svg class="lab-db" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>';
     const sub = !worst ? '(Ruhe)' : worst === 'verpasst' ? '⚠' : worst === 'unvollständig' ? '!' : DB;
-    return `<div class="lab-day${worst ? ' lab-' + worst : ''}${ds === t ? ' lab-heute' : ''}"><b>${WD_LABELS[wdKeyOf(ds)]}</b><span>${sub}</span></div>`;
+    const target = (items.find(x => x.status !== 'erledigt') || items[0] || {}).w;
+    const act = target ? `data-act="wOpen2" data-id="${target.id}"` : 'data-act="goto" data-view="weeklist"';
+    return `<button class="lab-day${worst ? ' lab-' + worst : ''}${ds === t ? ' lab-heute' : ''}" ${act}><b>${WD_LABELS[wdKeyOf(ds)]}</b><span>${sub}</span></button>`;
   }).join('');
 
   content.innerHTML = `
