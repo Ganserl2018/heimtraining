@@ -260,3 +260,9 @@ body{
 .overview-lab .lab-ring{width:min(66vw, 36dvh); flex:none;}
 .overview-lab .lab-section{margin-top:auto;}
 .overview-lab .lab-week{margin-top:0;}
+
+/* V9-05: Übersicht ohne Titelleiste (steht schon im Lab-Header); nur TV-Knopf bleibt, schwebend */
+body:has(.overview-lab) .topbar{position:absolute; top:calc(env(safe-area-inset-top,0px) + .5rem); right:.6rem; z-index:5; padding:0; border:0; background:none;}
+body:has(.overview-lab) .topbar h1{display:none;}
+body:has(.overview-lab) .lab-badge{margin-right:3.2rem;}
+body:has(.overview-lab) .overview-lab{margin-top:-1rem; padding-top:1.4rem;}
