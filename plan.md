@@ -167,3 +167,9 @@ Weitere erledigt heute: Wochenplan-Redesign, Hantel-Logik, Alle-Übungen-Galerie
 ## Warteliste (neu 01.10. abends)
 - W-01 Level-Vorlagen beim Satz-Einstellen (Anfänger / Fortgeschritten / Profi → Sätze, Wdh, Gewichts-Vorschlag je Übung)
 - W-02 Auto-Trainingsgenerator nach Level (Zufalls-Zusammenstellung: Ziel, Dauer, Muskelgruppen → fertiges Training)
+
+## Entscheidungen W-01/W-02 (02.10.)
+- Level (Anfänger/Fortgeschritten/Profi) abhängig von Körpergröße + Gewicht (Profil); Start-kg realistisch (kein 50 kg Bankdrücken bei 50 kg Körpergewicht).
+- System lernt mit Fortschritt (aus Verlauf).
+- Generator: Eingaben Level, Dauer, Muskelgruppen + Überrasch-mich-Knopf; Ergebnis = normales speicherbares Training; Einstieg bei "Training wählen".
+- Taskforce eingerichtet (TASKFORCE.md, .claude/agents/).
