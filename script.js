@@ -775,6 +775,53 @@ function qchips(f, target) {
   const unitL = f === 'w' ? ' kg' : '';
   return `<div class="qc" data-f="${f}" data-target='${target}'>${QC[f][0].map(v => `<button type="button" data-qv="${v}" data-mode="set">${v}${unitL}</button>`).join('')}${QC[f][1].map(v => `<button type="button" class="add" data-qv="${v}" data-mode="add">+${v}</button>`).join('')}</div>`;
 }
+// ---- V13 W-01: Level-Vorlagen (Richtwerte aus Coach-Bericht, Vault Coach-Regeln-V13) ----
+const LEVELS = [['anf', 'Anfänger'], ['fort', 'Fortgeschritten'], ['pro', 'Profi']];
+// Anteil am Körpergewicht je Typ: [Anfänger, Fortgeschritten, Profi]; Kurzhantel pro Hand, Langhantel gesamt
+const SW = { bankLH: [.25, .60, .90], pressKH: [.10, .25, .38], rudernLH: [.25, .50, .75], rudernKH: [.10, .22, .33],
+  kniebeugeLH: [.35, .75, 1.2], kniebeugeKH: [.15, .30, .45], kreuzLH: [.45, 1.0, 1.5], schulterLH: [.18, .40, .60], schulterKH: [.07, .17, .26],
+  curlLH: [.15, .30, .45], curlKH: [.06, .13, .20], trizKH: [.06, .13, .20], seilGross: [.35, .60, .85], seilIso: [.12, .25, .38],
+  isoKH: [.02, .05, .08], beinKH: [.10, .20, .30] };
+const PLATES_TOTAL = 45; // Alex: Scheiben insgesamt 45 kg (5 / 2,5 / 1,25)
+function swType(ex) {
+  const n = ex.name.toLowerCase(), m = ex.muscle;
+  const lh = /barbell|ez.bar|ez bar/.test(n), kh = /dumbbell/.test(n), cab = /cable|pulldown|pulley|pushdown|face pull/.test(n);
+  const big = ['chest', 'lats', 'middle back', 'quadriceps', 'hamstrings', 'glutes', 'lower back'].includes(m);
+  if (/deadlift|rack pull/.test(n)) return lh ? 'kreuzLH' : 'kreuzLH';
+  if (/squat/.test(n)) return lh ? 'kniebeugeLH' : 'kniebeugeKH';
+  if (/lunge|step.?up|split squat/.test(n)) return 'beinKH';
+  if (/bench press|chest press/.test(n)) return lh ? 'bankLH' : (kh ? 'pressKH' : 'seilGross');
+  if (/shoulder press|overhead|military|arnold|push press/.test(n)) return lh ? 'schulterLH' : 'schulterKH';
+  if (/curl/.test(n)) return lh ? 'curlLH' : (cab ? 'seilIso' : 'curlKH');
+  if (/triceps|pushdown|skull|extension/.test(n)) return cab ? 'seilIso' : (lh ? 'curlLH' : 'trizKH');
+  if (/row|pull-?up|pulldown|chin/.test(n)) return cab ? 'seilGross' : (lh ? 'rudernLH' : 'rudernKH');
+  if (/lateral|raise|fly|flye|kickback|shrug|upright/.test(n)) return cab ? 'seilIso' : 'isoKH';
+  if (/press/.test(n)) return lh ? 'bankLH' : (cab ? 'seilGross' : 'pressKH');
+  if (cab) return big ? 'seilGross' : 'seilIso';
+  return lh ? (big ? 'rudernLH' : 'curlLH') : (big ? 'pressKH' : 'isoKH');
+}
+function suggestEx(ex, lv) { // lv 0/1/2 → {sets, reps, w|null}
+  const n = ex.name.toLowerCase(), u = ex.unit || 'kg';
+  const comp = /press|squat|deadlift|row|pull-?up|pulldown|lunge|dip|chin/.test(n);
+  let sets = comp ? (lv === 2 ? 4 : 3) : (lv === 0 ? 2 : 3);
+  if (u === 'sek') return { sets: 3, reps: lv === 0 ? 20 : 30, w: null };
+  const reps = u === 'wdh' ? (lv === 0 ? 10 : 12) : (comp ? 10 : 12);
+  if (u !== 'kg') return { sets, reps, w: null };
+  const bw = loadProfile().weight; if (!bw) return { sets, reps, w: null, noBw: true };
+  const t = swType(ex), isLH = /LH$/.test(t), isKH = /KH$/.test(t), bar = loadProfile().bar || 10;
+  let w = bw * SW[t][lv];
+  if (lv === 0) { if (t === 'bankLH') w = Math.min(w, .5 * bw); if (t === 'kreuzLH') w = Math.min(w, .8 * bw); if (t === 'kniebeugeLH') w = Math.min(w, .6 * bw); }
+  if (isLH) w = Math.min(Math.max(bar, Math.round(w / 2.5) * 2.5), bar + PLATES_TOTAL);
+  else if (isKH) w = Math.max(2, Math.round(w / 2) * 2);
+  else w = Math.max(5, Math.round(w / 2.5) * 2.5);
+  return { sets, reps, w };
+}
+function applyLevel(t, lv) {
+  let miss = false;
+  t.exercises.forEach(ex => { const r = suggestEx(ex, lv); if (r.noBw) miss = true;
+    ex.sets = r.sets; ex.plan = Array.from({ length: r.sets }, () => ({ w: r.w, r: r.reps })); });
+  t.level = lv; saveWeekplan(); return miss;
+}
 function exCard(t, ex, i) {
   const u = ex.unit || 'kg', n = ex.sets || 3, plan = ex.plan || [];
   const at = (k, f) => (plan[k] || {})[f] ?? null;
@@ -791,6 +838,7 @@ function exCard(t, ex, i) {
   const chips = split ? '' : `${u === 'kg' ? qchips('w', `[data-act=wPlanAll][data-f=w]`) : ''}${qchips('r', `[data-act=wPlanAll][data-f=r]`)}`;
   return `<div class="ts-set xc"><div class="xc-top"><span class="xc-n">${esc(ex.name)}</span>${sel}</div><div class="xc-row">${rowB}</div>${chips}${pills}</div>`;
 }
+let lvMsg = '';
 function renderWTrain() {
   const t = trainingById(wId);
   if (!t) { view = 'overview'; return renderOverview(); }
@@ -807,6 +855,7 @@ function renderWTrain() {
       ${t.exercises.map((ex, i) => `<div class="ts-ex"><img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><div><b>${esc(ex.name)}</b><em>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</em></div><button data-act="wRemoveEx" data-id="${t.id}" data-i="${i}" aria-label="Übung entfernen">✕</button></div>`).join('')}
       <button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button>`)}
     ${hasEx ? sec(3, 'Sätze &amp; Eintragen', step > 3, `${step === 3 ? hint('sets', 3, 'Pro Übung: Sätze, kg und Wiederholungen eintragen (gilt für alle Sätze). Über ⋯ stellst du Einheit, einzelne Sätze und Notiz ein. Felder dürfen leer bleiben.') : ''}
+      <div class="lv"><div class="lv-h">Vorlage nach Level <em>(Vorschlag, ca.-Werte)</em></div><div class="lv-pills">${LEVELS.map(([k, l], x) => `<button class="lv-p${t.level === x ? ' on' : ''}" data-act="wLevel" data-id="${t.id}" data-lv="${x}">${l}</button>`).join('')}</div>${lvMsg ? `<div class="lv-msg">${lvMsg}</div>` : ''}<div class="lv-note">Passt Sätze, Wdh und kg für alle Übungen an. Technik vor Gewicht, bei Schmerzen abbrechen.</div></div>
       ${t.exercises.map((ex, i) => exCard(t, ex, i)).join('')}`) : ''}
     ${hasEx ? sec(4, 'Tage &amp; Uhrzeit', hasDays, `${step === 4 ? hint('days', 4, 'Hier legst du fest, an welchen Tagen du dieses Training machst. Tippe einfach die Wochentage an.') : ''}
       <div class="w-schedule"><div class="w-schedule-days">${WD_KEYS.map(k => `<button class="chip${t.weekdays.includes(k) ? ' active' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>
@@ -848,7 +897,9 @@ function renderProfile() {
       <div class="ov-card">
         <div class="ov-card-title">Körper</div>
         <label class="pf-row">Gewicht<span><input type="number" inputmode="decimal" data-act="profileField" data-field="weight" value="${p.weight ?? ''}" placeholder="–"> kg</span></label>
-        <p class="placeholder">Grundlage für die Kalorien-Schätzung pro Training.</p>
+        <label class="pf-row">Größe<span><input type="number" inputmode="numeric" data-act="profileField" data-field="height" value="${p.height ?? ''}" placeholder="–"> cm</span></label>
+        <label class="pf-row">Gewicht der Langhantel-Stange<span><input type="number" inputmode="decimal" data-act="profileField" data-field="bar" value="${p.bar ?? ''}" placeholder="10"> kg</span></label>
+        <p class="placeholder">Gewicht: Grundlage für Kalorien und Start-Gewichte der Level-Vorlagen. Stange: ohne Eintrag rechne ich mit 10 kg.</p>
       </div>
       <div class="ov-card">
         <div class="ov-card-title">Ziel</div>
@@ -1232,6 +1283,7 @@ content.addEventListener('click', e => {
       if (!confirm(`„${t.exercises[Number(btn.dataset.i)].name}“ entfernen?`)) return;
       t.exercises.splice(Number(btn.dataset.i), 1); saveWeekplan(); break;
     }
+    case 'wLevel': { const t = trainingById(btn.dataset.id); const miss = applyLevel(t, Number(btn.dataset.lv)); lvMsg = miss ? 'Trage dein Gewicht im Profil ein, dann fülle ich auch die kg vor.' : ''; break; }
     case 'wSetsAdj': {
       const t = trainingById(btn.dataset.id), ex = t.exercises[Number(btn.dataset.i)];
       const next = (ex.sets || 3) + Number(btn.dataset.d);
