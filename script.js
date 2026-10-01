@@ -409,6 +409,9 @@ function renderOverview() {
   const moodSub = hasMissedThisWeek ? 'Phase Shift: tiefes Karmesin' : 'Phase Shift: Energie';
   const btnSub = hasMissedThisWeek ? '(WARNUNG: LEBENSGEFAHR!)' : '(AUTO-LOAD MAX!)';
   const startAttr = quick ? `data-act="quickStart" data-id="${quick.id}"` : `data-act="goto" data-day="${activeDay || DAYS[0]}"`;
+  // Ring-Beschriftung folgt dem Zeitraum des Ziels (7 Tage = Woche, 30 = Monat, 180 = Halbjahr, 365 = Jahr)
+  const pd = goal.periodDays;
+  const periodLabel = pd <= 10 ? 'WOCHENTRAINING' : pd <= 45 ? 'MONATSTRAINING' : pd <= 135 ? 'QUARTALSTRAINING' : pd <= 270 ? 'HALBJAHRESTRAINING' : 'JAHRESTRAINING';
   const R = 70, C = 2 * Math.PI * R, ARC = C * 0.75;
   const ringFill = ARC * Math.min(1, goalCount / Math.max(goal.target, 1));
   const ringBlock = `<div class="lab-ring">
@@ -416,7 +419,7 @@ function renderOverview() {
         <circle class="lab-ring-bg" cx="90" cy="90" r="${R}" stroke-dasharray="${ARC} ${C}" transform="rotate(135 90 90)"/>
         ${ringFill > 0 ? `<circle class="lab-ring-fg" cx="90" cy="90" r="${R}" stroke-dasharray="${ringFill} ${C}" transform="rotate(135 90 90)"/>` : ''}
       </svg>
-      <div class="lab-ring-text"><small>WOCHEN-FORTSCHRITT</small><b>${goalCount}/${goal.target}</b><span>WORKOUTS</span></div>
+      <div class="lab-ring-text"><small>${periodLabel}</small><b>${goalCount}/${goal.target}</b><span>WORKOUTS</span></div>
     </div>`;
   const wdOrder = weekDates.map(ds => {
     const items = scheduled.map(w => ({ w, status: trainingStatusForDate(w, ds) })).filter(x => x.status);
