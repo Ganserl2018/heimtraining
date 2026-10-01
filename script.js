@@ -410,7 +410,8 @@ function renderOverview() {
       : items.some(x => x.status === 'offen') ? 'offen'
       : items.some(x => x.status === 'geplant') ? 'geplant'
       : items.length ? 'erledigt' : null;
-    const sub = !worst ? '(Rest)' : worst === 'erledigt' ? '✓' : worst === 'verpasst' ? '⚠' : worst === 'unvollständig' ? '!' : '(Train)';
+    const DB = '<svg class="lab-db" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>';
+    const sub = !worst ? '(Ruhe)' : worst === 'verpasst' ? '⚠' : worst === 'unvollständig' ? '!' : DB;
     return `<div class="lab-day${worst ? ' lab-' + worst : ''}${ds === t ? ' lab-heute' : ''}"><b>${WD_LABELS[wdKeyOf(ds)]}</b><span>${sub}</span></div>`;
   }).join('');
 

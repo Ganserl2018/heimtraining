@@ -288,3 +288,9 @@ body:has(.mood-bad){--tab-acc:#e8301f;}
   .tab{flex-direction:row; justify-content:flex-start; gap:.7rem; padding:.85rem 1.3rem; font-size:.9rem;}
   .tab.active::before{top:20%; bottom:20%; left:0; right:auto; width:3px; height:auto; border-radius:0 3px 3px 0;}
 }
+
+.lab-db{width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; display:block; margin:0 auto;}
+.lab-day span{display:flex; align-items:center; justify-content:center; min-height:20px;}
+.lab-erledigt span,.lab-heute span{color:var(--lab-acc); filter:drop-shadow(0 0 4px var(--lab-glow));}
+.lab-geplant span,.lab-offen span{color:#c9d2ce;}
+.lab-verpasst span{font-size:1rem;}
