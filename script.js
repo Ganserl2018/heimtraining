@@ -1300,3 +1300,11 @@ document.addEventListener('visibilitychange', () => {
   flushQ();
   if (today() !== lastDay && !picker && !document.activeElement?.matches('input,textarea,select')) { lastDay = today(); render(); }
 });
+
+// Enter speichert Name (neues Training / Umbenennen)
+content.addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return;
+  const id = e.target && e.target.id;
+  const btn = id === 'new-training-name' ? content.querySelector('[data-act="wNewTrainingSave"]') : id === 'rename-input' ? content.querySelector('[data-act="wRenameSave"]') : null;
+  if (btn) { e.preventDefault(); btn.click(); }
+});
