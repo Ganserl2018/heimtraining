@@ -878,3 +878,11 @@ body.mood-bad .xr-pill.active, body.mood-bad .xr-filter.on{background:#d12a19; b
 .lv-p.on{background:var(--accent); color:#0b140a; border-color:var(--accent)}
 .lv-msg{margin-top:.5rem; font-size:.8rem; color:#ffb454}
 .lv-note{margin-top:.45rem; font-size:.72rem; opacity:.6}
+.sv-auto{display:flex; align-items:center; gap:.8rem; width:100%; margin:.2rem 0 .9rem; padding:.9rem 1rem; border-radius:16px; border:1px solid var(--accent); background:linear-gradient(135deg,rgba(166,242,58,.16),rgba(166,242,58,.04)); color:inherit; text-align:left}
+.sv-auto-ic{font-size:1.6rem} .sv-auto-t{flex:1; display:flex; flex-direction:column; gap:.1rem} .sv-auto-t b{letter-spacing:.06em; color:var(--accent)} .sv-auto-t i{font-style:normal; font-size:.78rem; opacity:.75}
+.gn{padding:0 .2rem 5.5rem} .gn-btns{display:flex; flex-direction:column; gap:.5rem; margin:.8rem 0}
+.gn-btns button[disabled]{opacity:.4}
+.gn-ex{display:flex; align-items:center; gap:.7rem; padding:.45rem .2rem; border-bottom:1px solid rgba(255,255,255,.06)}
+.gn-ex img{width:52px; height:52px; border-radius:10px; object-fit:cover; background:#10171a} .gn-ex b{display:block; font-size:.9rem} .gn-ex em{font-style:normal; font-size:.76rem; opacity:.7}
+#content:has(.gn){overflow-y:auto !important}
+.lv-up{display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; color:var(--accent)}

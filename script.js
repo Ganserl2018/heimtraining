@@ -32,7 +32,7 @@ const WEEKDAY_SEED = [
 ];
 let weekplan = [];
 let wId = null; // aktuell offenes Training im 'wtrain'-View
-const WEIGHT_WORDS = ['barbell', 'dumbbell', 'cable', 'smith', 'ez bar', 'ez-bar', 'kettlebell', 'machine', 'lever', 'weighted', 'plate', 'sled', 'pulldown', 'pec deck', 'leg press', 'leg extension', 'leg curl', 'hack squat', 'calf press', 'seated calf', 'preacher', 'trap bar', 'landmine'];
+const WEIGHT_WORDS = ['barbell', 'dumbbell', 'cable', 'smith', 'ez bar', 'ez-bar', 'kettlebell', 'machine', 'lever', 'weighted', 'plate', 'sled', 'pulldown', 'pec deck', 'leg press', 'leg extension', 'leg curl', 'hack squat', 'calf press', 'seated calf', 'preacher', 'trap bar', 'landmine', ' db ', 'db ', 'long bar', 't-bar', 'bench press', 'bench pull', 'shrug', 'bar row'];
 function defaultUnit(name) { const n = (name || '').toLowerCase(); if (/plank|hold|stretch|hang|isometric/.test(n)) return 'sek'; return WEIGHT_WORDS.some(w => n.includes(w)) ? 'kg' : 'wdh'; }
 function loadWeekplan() {
   try {
@@ -229,7 +229,7 @@ function render() {
   document.body.classList.toggle('playing', view === 'play');
   if (weekplan.some(x => x.draft && !(view === 'wtrain' && wId === x.id) && view !== 'picker' && !picker)) weekplan = weekplan.filter(x => !x.draft || (view === 'wtrain' && wId === x.id));
   applyMood();
-  const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', start: 'Training wählen', play: 'Workout', preview: 'Training', summary: 'Geschafft', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
+  const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', start: 'Training wählen', gen: 'Auto-Training', play: 'Workout', preview: 'Training', summary: 'Geschafft', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
   document.querySelector('.topbar h1').textContent = view === 'wtrain' ? ((trainingById(wId) || {}).name || 'Training') : (titles[view] || 'Home Force');
   syncTabActive();
   { const pn = (loadProfile().name || '').trim(), bad = document.body.classList.contains('mood-bad');
@@ -244,6 +244,7 @@ function render() {
   if (view === 'weeklist') return renderWeeklist();
   if (view === 'start') return renderStart();
   if (view === 'preview') return renderPreview();
+  if (view === 'gen') return renderGen();
   if (view === 'play') return renderPlay();
   if (view === 'summary') return renderSummary();
   if (view === 'allex') return renderAllEx();
@@ -550,6 +551,72 @@ function presetExercises(p) {
     .map(e => ({ name: e.name, muscle: e.muscle, gif: e.gif, sets: 3, note: '', unit: defaultUnit(e.name) }));
 }
 
+// ---- V13 W-02: Auto-Trainingsgenerator (Regeln: Coach-Bericht) ----
+const GENKEY = 'heimtraining.genlast';
+let genCfg = { lv: null, goal: 'aufbau', dur: 45, groups: [] }, genRes = null;
+const GRANK = { Beine: 3, Rücken: 3, Brust: 3, Schultern: 2, Arme: 1, Bauch: 0 };
+const MORDER = ['quadriceps', 'hamstrings', 'glutes', 'chest', 'lats', 'middle back', 'lower back', 'shoulders', 'traps', 'biceps', 'triceps', 'forearms', 'calves', 'abdominals'];
+const GCOUNT = { 30: [3, 4, 5], 45: [4, 5, 6], 60: [5, 7, 8], 90: [7, 9, 11] }, GISO = { 30: 1, 45: 2, 60: 3, 90: 4 };
+function genLevel() { return genCfg.lv != null ? genCfg.lv : (loadProfile().level != null ? loadProfile().level : 0); }
+function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function isCompound(n) { return /press|squat|deadlift|row|pull-?up|pulldown|lunge|dip|chin|push-?up/.test(n.toLowerCase()); }
+function generate() {
+  const lv = genLevel(), g = genCfg.groups.length ? genCfg.groups : ['Brust'];
+  let last = []; try { last = JSON.parse(localStorage.getItem(GENKEY)) || []; } catch (e) {}
+  const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas/i;
+  const hard = /deadlift|rack pull|clean|snatch|jerk|weighted|good morning|behind the neck|muscle.up|atlas/i;
+  const base = pool.filter(e => !bad.test(e.name) && MUSCLE_GROUPS[e.muscle] && (lv > 0 || !hard.test(e.name)));
+  const n = GCOUNT[genCfg.dur][lv], isoMax = GISO[genCfg.dur];
+  const gs = g.slice().sort((a, b) => GRANK[b] - GRANK[a]);
+  const per = gs.map((_, i) => Math.floor(n / gs.length) + (i < n % gs.length ? 1 : 0));
+  const picked = []; let isoUsed = 0;
+  gs.forEach((grp, gi) => {
+    const core = e => MUSCLE_GROUPS[e.muscle] === grp && (grp !== 'Rücken' || e.muscle === 'lats' || e.muscle === 'middle back');
+    let cand = shuffle(base.filter(e => core(e) && !last.includes(e.name)));
+    if (cand.length < per[gi]) cand = shuffle(base.filter(e => core(e)));
+    if (grp === 'Arme') { // Bizeps/Trizeps abwechselnd
+      const bi = cand.filter(e => e.muscle === 'biceps'), tri = cand.filter(e => e.muscle === 'triceps'), rest = cand.filter(e => e.muscle === 'forearms');
+      const mix = []; for (let k = 0; k < Math.max(bi.length, tri.length); k++) { if (bi[k]) mix.push(bi[k]); if (tri[k]) mix.push(tri[k]); } cand = mix.concat(rest);
+    }
+    const comps = cand.filter(e => isCompound(e.name)), isos = cand.filter(e => !isCompound(e.name));
+    let take = [];
+    const wantComp = grp === 'Arme' || grp === 'Bauch' ? 0 : Math.max(1, per[gi] - Math.max(1, Math.round(isoMax / gs.length)));
+    take = take.concat(comps.slice(0, Math.min(wantComp, per[gi])));
+    for (const e of isos) { if (take.length >= per[gi]) break; if (isoUsed < isoMax || grp === 'Arme' || grp === 'Bauch') { take.push(e); isoUsed++; } }
+    for (const e of comps.slice(take.length)) { if (take.length >= per[gi]) break; if (!take.includes(e)) take.push(e); }
+    for (const e of cand) { if (take.length >= per[gi]) break; if (!take.includes(e)) take.push(e); }
+    picked.push(...take);
+  });
+  picked.sort((a, b) => (isCompound(b.name) - isCompound(a.name)) || ((GRANK[MUSCLE_GROUPS[b.muscle]] || 0) - (GRANK[MUSCLE_GROUPS[a.muscle]] || 0)) || (MORDER.indexOf(a.muscle) - MORDER.indexOf(b.muscle)));
+  const exs = picked.map(e => ({ name: e.name, muscle: e.muscle, gif: e.gif, sets: 3, note: '', unit: defaultUnit(e.name) }));
+  exs.forEach(ex => { const r = suggestEx(ex, lv, genCfg.goal); ex.sets = r.sets; ex.plan = Array.from({ length: r.sets }, () => ({ w: r.w, r: r.reps })); });
+  try { localStorage.setItem(GENKEY, JSON.stringify(picked.map(e => e.name).concat(last).slice(0, 24))); } catch (e) {}
+  genRes = exs;
+}
+function genSave(start) {
+  if (!genRes || !genRes.length) return;
+  const g = genCfg.groups.length ? genCfg.groups : ['Brust'], lv = genLevel();
+  const t = { id: 'w' + Date.now(), name: 'Auto · ' + g.join('/'), exercises: genRes, weekdays: [], since: {}, time: '', level: lv, goal: genCfg.goal, auto: true };
+  weekplan.push(t); saveWeekplan(); genRes = null;
+  if (start) playStart(t.id); else view = 'start';
+}
+function renderGen() {
+  const lv = genLevel(), p = loadProfile();
+  const pill = (act, v, l, on) => `<button class="lv-p${on ? ' on' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
+  const res = genRes ? `<div class="gn-res">${genRes.map((e, i) => `<div class="gn-ex"><span class="pv-n">${i + 1}</span><img src="${esc(e.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+      <div><b>${esc(e.name)}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)} · ${e.sets} × ${e.plan[0].r} ${e.unit === 'sek' ? 'Sek' : 'Wdh'}${e.plan[0].w != null && e.unit === 'kg' ? ' · ca. ' + e.plan[0].w + ' kg' : ''}</em></div></div>`).join('')}
+      <div class="lv-note">Vorschlag mit ca.-Werten. Technik vor Gewicht, bei Schmerzen abbrechen.${!p.weight && genRes.some(e => e.unit === 'kg') ? ' Gewicht im Profil eintragen, dann kommen auch kg-Vorschläge.' : ''}</div>
+      <div class="gn-btns"><button class="ts-save" data-act="genSave">✓ SPEICHERN</button><button class="pl-next ts-go" data-act="genGo">▶ SPEICHERN &amp; STARTEN</button><button class="ts-add" data-act="genDo">⟳ Neu mischen</button></div></div>` : '';
+  content.innerHTML = `<div class="gn">
+    <div class="pl-top"><button class="pl-x" data-act="genBack" aria-label="Zurück">‹</button><div class="pl-title"><b>Auto-Training</b><span>Wir stellen dir ein Training zusammen</span></div></div>
+    <div class="lv"><div class="lv-h">Level</div><div class="lv-pills">${LEVELS.map(([k, l], x) => pill('genLv', x, l, lv === x)).join('')}</div></div>
+    <div class="lv"><div class="lv-h">Ziel</div><div class="lv-pills">${GOALS.map(([k, l]) => pill('genGoal', k, l, genCfg.goal === k)).join('')}</div></div>
+    <div class="lv"><div class="lv-h">Dauer</div><div class="lv-pills">${[30, 45, 60, 90].map(d => pill('genDur', d, d + ' Min', genCfg.dur === d)).join('')}</div></div>
+    <div class="lv"><div class="lv-h">Muskelgruppen</div><div class="lv-pills">${MUSCLE_GROUP_LIST.map(m => pill('genGrp', m, m, genCfg.groups.includes(m))).join('')}</div></div>
+    <div class="gn-btns"><button class="pl-next ts-go" data-act="genDo"${genCfg.groups.length ? '' : ' disabled'}>${genRes ? '⟳ NEU ZUSAMMENSTELLEN' : '✨ ZUSAMMENSTELLEN'}</button><button class="ts-add" data-act="genSurprise">🎲 Überrasch mich</button></div>
+    ${res}
+  </div>`;
+}
 function renderStart() {
   const DB = '<svg class="lab-db" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>';
   const muscles = exs => [...new Set(exs.map(e => MUSCLE_DE[e.muscle] || e.muscle))].slice(0, 2).join(' · ');
@@ -567,6 +634,7 @@ function renderStart() {
   content.innerHTML = `<div class="sv">
     <div class="sv-lab">MEINE PAKETE</div>
     <div class="sv-packs">${own.map(pack).join('')}<button class="sv-add" data-act="wNewTraining"><span class="sv-add-plus">+</span><span>${own.length ? 'Eigenes Training' : 'Erstes Training erstellen'}</span></button></div>
+    <button class="sv-auto" data-act="genOpen"><span class="sv-auto-ic">✨</span><span class="sv-auto-t"><b>AUTO-TRAINING</b><i>Level, Ziel, Dauer und Muskeln wählen, den Rest macht die App</i></span><span class="sv-pk-go" aria-hidden="true">›</span></button>
     <div class="sv-lab">VORLAGEN</div>
     <div class="sv-vls">${[['split', 'Split'], ['musc', 'Einzelne Muskeln'], ['core', 'Core & Bauch']].map(([g, l]) => {
       const ps = PRESETS.filter(p => p.grp === g && !ownIds.has(p.key));
@@ -800,25 +868,47 @@ function swType(ex) {
   if (cab) return big ? 'seilGross' : 'seilIso';
   return lh ? (big ? 'rudernLH' : 'curlLH') : (big ? 'pressKH' : 'isoKH');
 }
-function suggestEx(ex, lv) { // lv 0/1/2 → {sets, reps, w|null}
+const GOALS = [['aufbau', 'Aufbau'], ['kraft', 'Kraft'], ['def', 'Definition']];
+// letzte Einheiten einer Übung aus dem Verlauf (neueste zuletzt)
+function histOf(name) { return loadHistory().slice().sort((a, b) => (a.finishedAt || a.date) < (b.finishedAt || b.date) ? -1 : 1)
+  .map(r => (r.exercises || []).find(e => e.name === name)).filter(e => e && e.weights && e.weights.some(w => w != null)); }
+function suggestEx(ex, lv, goal) { // lv 0/1/2 → {sets, reps, w|null}
+  goal = goal || 'aufbau';
   const n = ex.name.toLowerCase(), u = ex.unit || 'kg';
   const comp = /press|squat|deadlift|row|pull-?up|pulldown|lunge|dip|chin/.test(n);
   let sets = comp ? (lv === 2 ? 4 : 3) : (lv === 0 ? 2 : 3);
+  if (goal === 'kraft') sets = comp ? (lv === 0 ? 3 : 4) : 2; else if (goal === 'def') sets = 3;
   if (u === 'sek') return { sets: 3, reps: lv === 0 ? 20 : 30, w: null };
-  const reps = u === 'wdh' ? (lv === 0 ? 10 : 12) : (comp ? 10 : 12);
+  let reps = comp ? 10 : 12;
+  if (goal === 'kraft') reps = comp ? (lv === 0 ? 8 : 5) : 10; else if (goal === 'def') reps = comp ? 14 : 17; else if (u === 'wdh') reps = lv === 0 ? 10 : 12;
   if (u !== 'kg') return { sets, reps, w: null };
-  const bw = loadProfile().weight; if (!bw) return { sets, reps, w: null, noBw: true };
-  const t = swType(ex), isLH = /LH$/.test(t), isKH = /KH$/.test(t), bar = loadProfile().bar || 10;
-  let w = bw * SW[t][lv];
-  if (lv === 0) { if (t === 'bankLH') w = Math.min(w, .5 * bw); if (t === 'kreuzLH') w = Math.min(w, .8 * bw); if (t === 'kniebeugeLH') w = Math.min(w, .6 * bw); }
-  if (isLH) w = Math.min(Math.max(bar, Math.round(w / 2.5) * 2.5), bar + PLATES_TOTAL);
-  else if (isKH) w = Math.max(2, Math.round(w / 2) * 2);
-  else w = Math.max(5, Math.round(w / 2.5) * 2.5);
+  const prof = loadProfile(), bw = prof.weight;
+  const t = swType(ex), isLH = /LH$/.test(t), isKH = /KH$/.test(t), bar = prof.bar || 10;
+  const step = isKH ? 2 : 2.5;
+  let w = null;
+  if (bw) {
+    w = bw * SW[t][lv];
+    if (lv === 0) { if (t === 'bankLH') w = Math.min(w, .5 * bw); if (t === 'kreuzLH') w = Math.min(w, .8 * bw); if (t === 'kniebeugeLH') w = Math.min(w, .6 * bw); }
+    if (isLH) w = Math.min(Math.max(bar, Math.round(w / 2.5) * 2.5), bar + PLATES_TOTAL);
+    else if (isKH) w = Math.max(2, Math.round(w / 2) * 2);
+    else w = Math.max(5, Math.round(w / 2.5) * 2.5);
+  }
+  const hw = histWeight(ex.name, step); // Verlauf schlägt Formel
+  if (hw != null) { w = hw; if (isLH) w = Math.min(w, bar + PLATES_TOTAL); }
+  if (w == null) return { sets, reps, w: null, noBw: true };
   return { sets, reps, w };
+}
+function histWeight(name, step) {
+  const h = histOf(name); if (!h.length) return null;
+  const mx = e => Math.max(...e.weights.filter(x => x != null));
+  const last = h[h.length - 1], prev = h[h.length - 2], w = mx(last), full = e => e.setsDone >= e.setsTotal;
+  if (!full(last)) return w;
+  if (prev && full(prev) && mx(prev) === w) return w + step;
+  return w;
 }
 function applyLevel(t, lv) {
   let miss = false;
-  t.exercises.forEach(ex => { const r = suggestEx(ex, lv); if (r.noBw) miss = true;
+  t.exercises.forEach(ex => { const r = suggestEx(ex, lv, t.goal); if (r.noBw) miss = true;
     ex.sets = r.sets; ex.plan = Array.from({ length: r.sets }, () => ({ w: r.w, r: r.reps })); });
   t.level = lv; saveWeekplan(); return miss;
 }
@@ -870,6 +960,20 @@ function renderWTrain() {
 }
 
 // V7-01: Profil-Seite – Basis für Kalorienberechnung (V8-03), keine Herzfrequenz nötig.
+// Level-Vorschlag aus dem Verlauf (Coach-Regeln, vereinfacht): nie automatisch, nur Vorschlag
+function levelSuggestion() {
+  const p = loadProfile(), cur = p.level != null ? p.level : 0, h = loadHistory(), now = Date.now(), day = 864e5;
+  const within = d => h.filter(r => now - new Date(r.date + 'T12:00:00') <= d * day);
+  const rate = a => a.length ? a.reduce((x, r) => x + (r.totalSetsPlanned ? r.totalSetsDone / r.totalSetsPlanned : 0), 0) / a.length : 0;
+  if (cur === 0) {
+    const a = within(84); if (a.length < 24 || rate(a) < .6) return null;
+    const first = {}, max = {};
+    h.slice().sort((x, y) => x.date < y.date ? -1 : 1).forEach(r => (r.exercises || []).forEach(e => { const m = Math.max(0, ...(e.weights || []).filter(w => w != null)); if (m > 0) { if (first[e.name] == null) first[e.name] = m; max[e.name] = Math.max(max[e.name] || 0, m); } }));
+    return Object.keys(first).filter(k => max[k] >= first[k] * 1.3).length >= 3 ? 1 : null;
+  }
+  if (cur === 1) { const a = within(182); return a.length >= 60 && rate(a) >= .5 ? 2 : null; }
+  return null;
+}
 function renderProfile() {
   const p = loadProfile();
   const h = loadHistory();
@@ -899,6 +1003,8 @@ function renderProfile() {
         <label class="pf-row">Gewicht<span><input type="number" inputmode="decimal" data-act="profileField" data-field="weight" value="${p.weight ?? ''}" placeholder="–"> kg</span></label>
         <label class="pf-row">Größe<span><input type="number" inputmode="numeric" data-act="profileField" data-field="height" value="${p.height ?? ''}" placeholder="–"> cm</span></label>
         <label class="pf-row">Gewicht der Langhantel-Stange<span><input type="number" inputmode="decimal" data-act="profileField" data-field="bar" value="${p.bar ?? ''}" placeholder="10"> kg</span></label>
+        <label class="pf-row">Level<span><select data-act="profileField" data-field="level"><option value=""${p.level == null ? ' selected' : ''}>Anfänger (Start)</option>${LEVELS.map(([k, l], x) => `<option value="${x}"${p.level === x ? ' selected' : ''}>${l}</option>`).join('')}</select></span></label>
+        ${(() => { const ls = levelSuggestion(); return ls != null ? `<div class="lv-msg lv-up">Dein Verlauf zeigt: Zeit für <b>${LEVELS[ls][1]}</b>. <button class="ov-btn ov-btn-ghost" data-act="lvlUp" data-lv="${ls}">Übernehmen</button></div>` : ''; })()}
         <p class="placeholder">Gewicht: Grundlage für Kalorien und Start-Gewichte der Level-Vorlagen. Stange: ohne Eintrag rechne ich mit 10 kg.</p>
       </div>
       <div class="ov-card">
@@ -1284,6 +1390,17 @@ content.addEventListener('click', e => {
       t.exercises.splice(Number(btn.dataset.i), 1); saveWeekplan(); break;
     }
     case 'wLevel': { const t = trainingById(btn.dataset.id); const miss = applyLevel(t, Number(btn.dataset.lv)); lvMsg = miss ? 'Trage dein Gewicht im Profil ein, dann fülle ich auch die kg vor.' : ''; break; }
+    case 'lvlUp': { const p = loadProfile(); p.level = Number(btn.dataset.lv); saveProfile(p); break; }
+    case 'genOpen': genRes = null; genCfg = { lv: null, goal: 'aufbau', dur: 45, groups: [] }; view = 'gen'; break;
+    case 'genBack': view = 'start'; break;
+    case 'genLv': genCfg.lv = Number(btn.dataset.v); genRes = null; break;
+    case 'genGoal': genCfg.goal = btn.dataset.v; genRes = null; break;
+    case 'genDur': genCfg.dur = Number(btn.dataset.v); genRes = null; break;
+    case 'genGrp': { const m = btn.dataset.v, i = genCfg.groups.indexOf(m); if (i >= 0) genCfg.groups.splice(i, 1); else genCfg.groups.push(m); genRes = null; break; }
+    case 'genDo': generate(); break;
+    case 'genSurprise': { const gl = shuffle(MUSCLE_GROUP_LIST).slice(0, 2 + Math.floor(Math.random() * 2)); genCfg.groups = gl; generate(); break; }
+    case 'genSave': genSave(false); break;
+    case 'genGo': genSave(true); break;
     case 'wSetsAdj': {
       const t = trainingById(btn.dataset.id), ex = t.exercises[Number(btn.dataset.i)];
       const next = (ex.sets || 3) + Number(btn.dataset.d);

@@ -189,3 +189,4 @@ Weitere erledigt heute: Wochenplan-Redesign, Hantel-Logik, Alle-Übungen-Galerie
 Unverkürzt im Vault: `Projects/Privat/Heimtraining/Coach-Regeln-V13-Bericht-2026-10-02.md`. Bau-Reihenfolge: Start-Gewichte + Schemata (W-01) → Generator (W-02) → Lernlogik/Banner. Offene Frage an Alex: welche Hantelscheiben (45 kg nur? 45 lb?).
 
 - W-01 Level-Vorlagen: ✅ live 02.10. (Sätze-Seite: Anfänger/Fortgeschritten/Profi füllt Sätze, Wdh, kg aus Profil-Gewicht; Profil: Größe + Stangengewicht, Scheiben gesamt 45 kg). Offen: Level aus Verlauf vorschlagen, Progression, Generator (W-02).
+- W-02 Auto-Trainingsgenerator ✅ live 02.10. (Training wählen → AUTO-TRAINING: Level, Ziel Aufbau/Kraft/Definition, Dauer 30-90, Muskelgruppen, Überrasch mich, Neu mischen, speichern/starten; Verbund vor Isolation, keine Wiederholung der letzten Auswahl). V13 Progression: Start-kg aus Verlauf (2 komplette Einheiten gleiches Gewicht → +2/2,5 kg), Level-Vorschlag im Profil (Banner, Übernehmen).
