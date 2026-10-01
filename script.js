@@ -162,7 +162,7 @@ function pushHistory(rec) {
 
 function syncTabActive() {
   tabs.forEach(t => {
-    const match = t.dataset.view ? (t.dataset.view === view || (t.dataset.view === 'history' && view === 'histdetail') || (t.dataset.view === 'weeklist' && view === 'wtrain')) : (view === 'day' && t.dataset.day === day);
+    const match = t.dataset.view ? (t.dataset.view === view || (t.dataset.view === 'overview' && view === 'start') || (t.dataset.view === 'history' && view === 'histdetail') || (t.dataset.view === 'weeklist' && view === 'wtrain')) : (view === 'day' && t.dataset.day === day);
     t.classList.toggle('active', match);
   });
 }
@@ -225,7 +225,7 @@ function applyMood() {
 
 function render() {
   applyMood();
-  const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
+  const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', start: 'Training wählen', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
   document.querySelector('.topbar h1').textContent = view === 'wtrain' ? ((trainingById(wId) || {}).name || 'Training') : (titles[view] || 'Home Force');
   syncTabActive();
   renderAllExBlock();
@@ -234,6 +234,7 @@ function render() {
   if (view === 'history') return renderHistory();
   if (view === 'tv') return renderTV();
   if (view === 'weeklist') return renderWeeklist();
+  if (view === 'start') return renderStart();
   if (view === 'allex') return renderAllEx();
   if (view === 'profile') return renderProfile();
   if (view === 'histdetail') return renderHistDetail();
@@ -436,8 +437,8 @@ function renderOverview() {
   const moodSub = hasMissedThisWeek ? 'Phase Shift: tiefes Karmesin' : 'Phase Shift: Energie';
   const btnSub = hasMissedThisWeek ? '(WARNUNG: LEBENSGEFAHR!)' : '(AUTO-LOAD MAX!)';
   const doneToday = !quick && scheduled.some(w => trainingStatusForDate(w, t) === 'erledigt');
-  const startAttr = quick ? `data-act="quickStart" data-id="${quick.id}"` : `data-act="goto" data-view="weeklist"`;
-  const startLabel = quick ? 'START WORKOUT' : doneToday ? 'HEUTE ERLEDIGT ✓' : 'WOCHENPLAN ÖFFNEN';
+  const startAttr = openTraining ? `data-act="quickStart" data-id="${openTraining.id}"` : `data-act="goto" data-view="start"`;
+  const startLabel = openTraining ? 'WORKOUT FORTSETZEN' : 'START WORKOUT';
   // Ring-Beschriftung folgt dem Zeitraum des Ziels (7 Tage = Woche, 30 = Monat, 180 = Halbjahr, 365 = Jahr)
   const pd = goal.periodDays;
   const periodLabel = pd <= 10 ? 'WOCHENTRAINING' : pd <= 45 ? 'MONATSTRAINING' : pd <= 135 ? 'QUARTALSTRAINING' : pd <= 270 ? 'HALBJAHRESTRAINING' : 'JAHRESTRAINING';
@@ -532,6 +533,39 @@ function renderHistDetail() {
 }
 
 // V2-09: Wochenplan-Liste (Content-Ansicht, funktioniert auf jeder Breite inkl. iPhone).
+// Vorlagen für die Trainingsauswahl (Namen aus pool.json; fehlende werden übersprungen)
+const PRESETS = [
+  { key: 'push', name: 'Push', ex: ['Barbell Bench Press - Medium Grip', 'Incline Dumbbell Press', 'Dumbbell Flyes', 'Side Lateral Raise', 'Triceps Pushdown', 'Dips - Triceps Version'] },
+  { key: 'pull', name: 'Pull', ex: ['Bent Over Barbell Row', 'Wide-Grip Lat Pulldown', 'Pullups', 'Face Pull', 'Barbell Curl', 'Alternate Hammer Curl'] },
+  { key: 'legs', name: 'Beine', ex: ['Barbell Squat', 'Romanian Deadlift', 'Dumbbell Lunges', 'Barbell Hip Thrust', 'Standing Barbell Calf Raise'] },
+  { key: 'back', name: 'Nur Rücken', ex: ['Bent Over Barbell Row', 'Wide-Grip Lat Pulldown', 'Pullups', 'Straight-Arm Pulldown', 'Barbell Shrug'] },
+  { key: 'chest', name: 'Nur Brust', ex: ['Barbell Bench Press - Medium Grip', 'Incline Dumbbell Press', 'Dumbbell Flyes', 'Decline Barbell Bench Press', 'Push-Up Wide'] },
+  { key: 'shoulders', name: 'Schultern', ex: ['Side Lateral Raise', 'Face Pull', 'Dumbbell Shrug', 'Arnold Dumbbell Press', 'Dumbbell Lying Rear Lateral Raise'] },
+  { key: 'triceps', name: 'Nur Trizeps', ex: ['Triceps Pushdown', 'EZ-Bar Skullcrusher', 'Triceps Pushdown - Rope Attachment', 'Bench Dips', 'Close-Grip Barbell Bench Press'] },
+  { key: 'biceps', name: 'Nur Bizeps', ex: ['Barbell Curl', 'Alternate Hammer Curl', 'Cable Preacher Curl', 'Alternate Incline Dumbbell Curl'] },
+  { key: 'core', name: 'Core', ex: ['Cable Crunch', 'Hanging Leg Raise', 'Plank', 'Crunches'] },
+];
+function presetExercises(p) {
+  return p.ex.map(n => pool.find(e => e.name === n)).filter(Boolean)
+    .map(e => ({ name: e.name, muscle: e.muscle, gif: e.gif, sets: 3, note: '', unit: 'kg' }));
+}
+
+function renderStart() {
+  const DB = '<svg class="lab-db" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>';
+  const card = (attr, name, exs, meta) => `<button class="st-card" ${attr}>
+      <div class="st-thumbs">${exs.slice(0, exs.length >= 4 ? 4 : exs.length >= 2 ? 2 : 1).map(ex => `<img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`).join('') || DB}</div>
+      <div class="st-name">${esc(name)}</div><div class="st-meta">${meta}</div></button>`;
+  const own = weekplan.filter(w => w.exercises.length);
+  const ownIds = new Set(own.map(w => w.presetKey).filter(Boolean));
+  content.innerHTML = `<div class="st">
+    <div class="wp-sec">MEINE TRAININGS</div>
+    <div class="st-grid">${own.map(t => card(`data-act="stStart" data-id="${t.id}"`, t.name, t.exercises, `${t.exercises.length} Üb.`)).join('')}
+      <button class="st-card st-new" data-act="wNewTraining"><div class="st-plus">+</div><div class="st-name">Neu erstellen</div></button></div>
+    <div class="wp-sec">VORLAGEN</div>
+    <div class="st-grid">${PRESETS.filter(p => !ownIds.has(p.key)).map(p => { const exs = presetExercises(p); return card(`data-act="stPreset" data-key="${p.key}"`, p.name, exs, `${exs.length} Üb.`); }).join('')}</div>
+  </div>`;
+}
+
 function renderWeeklist() {
   const FULLN = { mon: 'Montag', tue: 'Dienstag', wed: 'Mittwoch', thu: 'Donnerstag', fri: 'Freitag', sat: 'Samstag', sun: 'Sonntag' };
   const DB = '<svg class="lab-db" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>';
@@ -854,6 +888,13 @@ content.addEventListener('click', e => {
         save(arr);
       }
       picker = null; break;
+    }
+    case 'stStart': wId = btn.dataset.id; pushStart(wId); view = 'wtrain'; break;
+    case 'stPreset': {
+      const p = PRESETS.find(x => x.key === btn.dataset.key);
+      let t = weekplan.find(w => w.presetKey === p.key);
+      if (!t) { t = { id: 'w' + Date.now(), name: p.name, presetKey: p.key, exercises: presetExercises(p), weekdays: [], since: {}, time: '' }; weekplan.push(t); saveWeekplan(); }
+      wId = t.id; pushStart(t.id); view = 'wtrain'; break;
     }
     case 'wOpen2': wId = btn.dataset.id; view = 'wtrain'; break;
     case 'wDayNew': {
