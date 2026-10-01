@@ -126,10 +126,10 @@ V9-01…V9-18 done (Lab-Design nach Vorlagen, Mood grün/rot, statisches Layout,
 ## V10 – QA-Nacharbeit (Original: Obsidian Projects/Privat/Heimtraining/QA-Bericht-2026-10-01.md)
 | ID | Titel | Status |
 |---|---|---|
-| V10-01 | BLOCKER: Neues Training stürzt ab | ⚪ open |
-| V10-02 | BLOCKER: Leere Trainings/Ruhetag-Tap färben App rot | ⚪ open |
-| V10-03 | BLOCKER: Health-Sync-Token öffentlich (script.js ~651) | ⚪ open |
-| V10-04 | Startzeit in UTC | ⚪ open |
+| V10-01 | BLOCKER: Neues Training stürzt ab | 🟢 done |
+| V10-02 | BLOCKER: Leere Trainings/Ruhetag-Tap färben App rot | 🟢 done |
+| V10-03 | BLOCKER: Health-Sync-Token öffentlich (script.js ~651) | ⏸ wartet (Alex) |
+| V10-04 | Startzeit in UTC | 🟢 done |
 | V10-05 | Verlauf-Detail ungestylt | ⚪ open |
 | V10-06 | Picker-Suchfeld weiß | ⚪ open |
 | V10-07 | Ziel-Formular von Tabbar verdeckt | ⚪ open |

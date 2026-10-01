@@ -41,7 +41,7 @@ function loadWeekplan() {
 function saveWeekplan() { try { localStorage.setItem(WKEY, JSON.stringify(weekplan)); } catch (e) {} }
 weekplan = loadWeekplan();
 // V6-01: fehlende Felder bei alten/bestehenden Trainings nachrüsten (weekdays/time optional, leer = kein Zeitplan)
-weekplan.forEach(t => { if (!Array.isArray(t.weekdays)) t.weekdays = []; if (typeof t.time !== 'string') t.time = ''; });
+weekplan.forEach(t => { if (!Array.isArray(t.exercises)) t.exercises = []; if (!Array.isArray(t.weekdays)) t.weekdays = []; if (typeof t.time !== 'string') t.time = ''; if (!t.since || typeof t.since !== 'object') t.since = {}; });
 const trainingById = id => weekplan.find(t => t.id === id);
 
 const UNITS = { kg: ['kg', 'kg'], sek: ['Sek', 's'], wdh: ['Wdh', 'Wdh'], none: ['ohne', ''] };
@@ -68,6 +68,7 @@ function pushStart(trainingId) {
 // V6-05: Status pro Training+Datum – 3 neutrale Stufen, rein aus App-eigenen Daten.
 // 'geplant' = Tag noch nicht dran/in der Zukunft, 'offen' = heute dran, noch nicht erledigt.
 function trainingStatusForDate(t, dateStr) {
+  if (!t.exercises || !t.exercises.length) return null; // leere Trainings zählen nie (weder verpasst noch offen)
   if (!t.weekdays || !t.weekdays.length || !t.weekdays.includes(wdKeyOf(dateStr))) return null;
   const done = loadHistory().some(r => r.trainingId === t.id && r.date === dateStr);
   if (done) return 'erledigt';
@@ -541,7 +542,7 @@ function renderWTrain() {
     </div>
     ${t.exercises.length
       ? `<div class="edit-bar">${started
-          ? `<span class="placeholder">Gestartet um ${esc(started.startedAt.slice(11, 16))} Uhr</span>`
+          ? `<span class="placeholder">Gestartet um ${esc(new Date(started.startedAt).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }))} Uhr</span>`
           : `<button data-act="wStart" data-id="${t.id}">▶ Training starten</button>`}</div>`
       : ''}
     ${t.exercises.length ? '' : '<p class="placeholder">Noch keine Übungen – füge welche hinzu.</p>'}
@@ -755,7 +756,7 @@ content.addEventListener('click', e => {
     case 'wNewTrainingSave': {
       const name = (document.getElementById('new-training-name')?.value || '').trim();
       if (!name) return;
-      const t = { id: 'w' + Date.now(), name, exercises: [] };
+      const t = { id: 'w' + Date.now(), name, exercises: [], weekdays: [], since: {}, time: '' };
       weekplan.push(t); saveWeekplan();
       addingTraining = false; wId = t.id; view = 'wtrain'; break;
     }
