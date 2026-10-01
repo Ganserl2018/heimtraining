@@ -159,6 +159,14 @@ body{
 .ov-btn-ghost{background:none; border:1px solid var(--border); color:var(--text-dim); font-weight:600;}
 .ov-btn-ghost:active{border-color:var(--text-dim); color:var(--text);}
 
+/* V9-02: Start-Button "angebrochen" bei verpasstem Training diese Woche (Alex-Wunsch 01.10.) */
+.ov-btn-broken{
+  background:var(--bad); color:#fff;
+  clip-path:polygon(0 0, 92% 0, 100% 20%, 100% 100%, 8% 100%, 0 80%);
+  border-left:3px dashed rgba(255,255,255,.6);
+}
+.ov-btn-broken:active{background:#a04e42;}
+
 /* V2-01: Verlauf */
 .history-item{padding:.8rem 0; border-bottom:1px solid var(--border);}
 .history-item.clickable{cursor:pointer;}
@@ -222,6 +230,7 @@ body{
 .overview-home .ov-quickstart-name{font-size:1.5rem; font-weight:800; text-transform:uppercase; margin:.15rem 0 .15rem; letter-spacing:-.01em; position:relative; color:var(--nike-text);}
 .overview-home .ov-quickstart-sub{color:var(--nike-dim); font-size:.85rem; position:relative;}
 .overview-home .ov-quickstart .ov-btn{margin-top:.9rem; background:var(--nike-volt); color:#0a0a0a;}
+.overview-home .ov-quickstart .ov-btn-broken{background:var(--bad); color:#fff;}
 
 /* V9-01: Fortschritt als 2 Leisten (Trainings diese Woche + Streak), statt Ring/Einzelbalken */
 .overview-home .ov-progress{display:flex; flex-direction:column; gap:.9rem;}

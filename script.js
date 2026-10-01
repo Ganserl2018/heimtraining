@@ -364,12 +364,18 @@ function renderOverview() {
   const dueTraining = !openTraining ? scheduled.find(w => trainingStatusForDate(w, t) === 'offen') : null;
   const quick = openTraining || dueTraining;
   const quickSub = quick ? `${quick.exercises.length} Übung${quick.exercises.length === 1 ? '' : 'en'} geplant` : '';
+
+  // V9-02: Start-Button "angebrochen" (Alex-Wunsch 01.10.) sobald diese Woche ein Training
+  // verpasst wurde — Extra-Motivation ("muss weh tun"), aus V6-Planung schon vorgesehen.
+  const weekStartForBtn = mondayOf(t);
+  const hasMissedThisWeek = scheduled.some(w => Array.from({ length: 7 }, (_, i) => addDays(weekStartForBtn, i))
+    .some(ds => trainingStatusForDate(w, ds) === 'verpasst'));
   const quickBlock = quick
     ? `<div class="ov-card ov-quickstart">
         <div class="ov-card-title">${openTraining ? 'Weiter im Training' : 'Heute geplant'}</div>
         <div class="ov-quickstart-name">${esc(quick.name)}</div>
         <div class="ov-quickstart-sub">${esc(quickSub)}</div>
-        <button class="ov-btn" data-act="quickStart" data-id="${quick.id}">${openTraining ? 'Weiter' : 'Jetzt starten'}</button>
+        <button class="ov-btn${hasMissedThisWeek ? ' ov-btn-broken' : ''}" data-act="quickStart" data-id="${quick.id}">${openTraining ? 'Weiter' : 'Jetzt starten'}</button>
       </div>`
     : (scheduled.length ? '' : '');
 
