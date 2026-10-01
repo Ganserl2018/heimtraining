@@ -702,7 +702,7 @@ function renderPreview() {
 }
 
 // Trainingshelper: Hinweise über den Funktionen, in Reihenfolge, einzeln wegklickbar
-const HELPKEY = 'heimtraining.helper';
+const HELPKEY = 'heimtraining.helper2';
 function helperDone() { try { return JSON.parse(localStorage.getItem(HELPKEY)) || []; } catch (e) { return []; } }
 function helperHide(id) { const d = helperDone(); if (!d.includes(id)) d.push(id); try { localStorage.setItem(HELPKEY, JSON.stringify(d)); } catch (e) {} }
 function hint(id, step, text) {
