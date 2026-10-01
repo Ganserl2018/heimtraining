@@ -395,3 +395,4 @@ body.mood-bad{--text-faint:#b08a85;}
 :where(#content) .allex-filter.on{border-color:var(--accent); color:var(--accent);}
 .browse-sheet .filter-chips{margin:.2rem 0 .6rem;}
 .browse-sheet .chip{min-height:40px;}
+.allex .picker-head{position:sticky; top:-1rem; margin:-1rem -1.1rem 0; padding:1rem 1.1rem .5rem; z-index:3; background:var(--bg); box-shadow:0 6px 10px -6px rgba(0,0,0,.6);}
