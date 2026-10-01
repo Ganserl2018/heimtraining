@@ -386,8 +386,12 @@ body.mood-bad{--text-faint:#b08a85;}
 .browse-gif{width:100%; max-height:42dvh; object-fit:contain; border-radius:12px; background:#000;}
 .browse-trainings{display:flex; flex-direction:column; gap:.4rem;}
 :where(#content) .browse-trainings .browse-has{border-color:var(--accent); color:var(--accent);}
-.filter-scroll{flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;}
-.filter-scroll::-webkit-scrollbar{display:none;}
-.filter-scroll .chip{flex:none;}
 .allex .chip{min-height:36px; padding:.25rem .8rem;}
 .allex .filter-chips{margin:.3rem 0;}
+
+.allex .picker-head{display:flex; gap:.5rem;}
+.allex .picker-head input{flex:1; width:auto; min-width:0;}
+:where(#content) .allex-filter{flex:none; min-height:44px; padding:0 1rem; border-radius:10px;}
+:where(#content) .allex-filter.on{border-color:var(--accent); color:var(--accent);}
+.browse-sheet .filter-chips{margin:.2rem 0 .6rem;}
+.browse-sheet .chip{min-height:40px;}
