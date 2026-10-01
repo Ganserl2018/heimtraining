@@ -884,6 +884,7 @@ function equipBadge(name) {
 function muscleLabel(e) {
   const m = MUSCLE_DE[e.muscle] || e.muscle, n = e.name.toLowerCase();
   if (/^(Brust|Schultern)/.test(m) && /press|push-up|push up|dip|flyes? ?\+|close.grip/.test(n) && !/fly|flye|crossover|raise|pullover|shrug/.test(n)) return m + ' · Trizeps';
+  if ((e.muscle === 'lats' || e.muscle === 'middle back') && !/pullover|straight-arm|rack pull/.test(n)) return m + ' · Bizeps';
   return m;
 }
 function xrTile(i, act) {
