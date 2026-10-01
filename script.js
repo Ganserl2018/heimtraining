@@ -624,8 +624,10 @@ function playStart(id) {
   const t = trainingById(id); if (!t) return;
   const dOf = wProgRaw().done[t.id] || {};
   const firstOpen = t.exercises.findIndex(ex => ((dOf[ex.name] || []).filter(x => x && x.done).length) < (ex.sets || 3));
-  playTid = id; playIdx = firstOpen < 0 ? 0 : firstOpen; restEnd = 0; pushStart(id); view = 'play';
+  playTid = id; playIdx = firstOpen < 0 ? 0 : firstOpen; restEnd = 0; playT0 = Date.now(); playDrawer = false; playSelK = null; pushStart(id); view = 'play';
 }
+let playT0 = Date.now(), playDrawer = false;
+function fmtT(sec) { sec = Math.max(0, sec); const h = Math.floor(sec / 3600), m = Math.floor(sec % 3600 / 60), x = sec % 60; return (h ? h + ':' + String(m).padStart(2, '0') : String(m).padStart(2, '0')) + ':' + String(x).padStart(2, '0'); }
 function renderPlay() {
   const t = trainingById(playTid);
   if (!t || !t.exercises.length) { view = 'start'; return renderStart(); }
@@ -635,42 +637,60 @@ function renderPlay() {
   const doneN = e => ((dOf[e.name] || []).filter(x => x && x.done).length);
   const firstOpen = Array.from({ length: n }, (_, k) => k).find(k => !(sets[k] || {}).done);
   const cur = Math.min(n - 1, playSelK != null ? playSelK : (firstOpen == null ? n - 1 : firstOpen));
-  const curS = sets[cur] || {}, curP = (ex.plan || [])[cur] || {}, curPh = curP.w ?? last[cur] ?? last[last.length - 1];
-  const isLast = playIdx === t.exercises.length - 1;
+  const curS = sets[cur] || {}, curP = (ex.plan || [])[cur] || {}, curPh = curP.w ?? (cur > 0 ? (sets[cur - 1] || {}).weight : null) ?? last[cur] ?? last[last.length - 1];
+  const isLast = playIdx === t.exercises.length - 1, exDone = doneN(ex) >= n;
   const totalDone = t.exercises.reduce((a, e) => a + doneN(e), 0), totalAll = t.exercises.reduce((a, e) => a + (e.sets || 3), 0);
-  content.innerHTML = `<div class="pl">
-    <div class="pl-top">
-      <button class="pl-x" data-act="playExit" aria-label="Zurück">✕</button>
-      <div class="pl-title"><b>${esc(t.name)}</b><span>Übung ${playIdx + 1} / ${t.exercises.length} · ${totalDone}/${totalAll} Sätze</span></div>
-      <button class="pl-x pl-del" data-act="playDelete" aria-label="Training löschen">🗑</button>
+  const val = curS.weight ?? curPh, vLab = { kg: 'GEWICHT', wdh: 'WDH', sek: 'SEKUNDEN', none: 'SATZ' }[unit] || 'WERT';
+  const goal = curP.r != null ? ` · ZIEL ${curP.r} ${unit === 'sek' ? 'S' : '×'}` : '';
+  const mainAct = !exDone ? 'playSet' : isLast ? 'playFinish' : 'playNext';
+  const mainIc = !exDone ? '✓' : isLast ? '⚑' : '›';
+  const mainLab = !exDone ? 'Satz fertig' : isLast ? 'Training beenden' : 'Nächste Übung';
+  content.innerHTML = `<div class="pf">
+    <div class="pf-bg"><img class="pf-blur" src="${esc(ex.gif)}" alt=""><img class="pf-fg" src="${esc(ex.gif)}" alt="" onerror="this.style.visibility='hidden'"></div>
+    <div class="pf-shade"></div>
+    <div class="pf-top">
+      <button class="pf-back" data-act="playExit" aria-label="Zurück">‹</button>
+      <div class="pf-title">${esc(t.name)}</div>
+      <span class="pf-prog">${totalDone}/${totalAll}</span>
     </div>
-    <div class="pl-dots">${t.exercises.map((e, i) => `<button class="${i === playIdx ? 'cur' : ''}${doneN(e) >= (e.sets || 3) ? ' ok' : doneN(e) ? ' part' : ''}" data-act="playGo" data-i="${i}" aria-label="Übung ${i + 1}"></button>`).join('')}</div>
-    <div class="pl-media"><img src="${esc(ex.gif)}" alt="" onerror="this.style.visibility='hidden'"></div>
-    <div class="pl-name">${esc(ex.name)}</div>
-    <div class="pl-muscle">${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}${last.length ? ` · letztes Mal ${last.join(' / ')} ${UNITS[unit][1]}` : ''}</div>
-    <div class="pl-sets">
-      <div class="pl-chips">${Array.from({ length: n }, (_, k) => `<button class="pl-chip${(sets[k] || {}).done ? ' done' : ''}${k === cur ? ' cur' : ''}" data-act="playSel" data-k="${k}" aria-label="Satz ${k + 1}">${(sets[k] || {}).done ? '✓' : k + 1}</button>`).join('')}</div>
-      <div class="pl-now${curS.done ? ' done' : ''}">
-        <div class="pl-now-h"><b>SATZ ${cur + 1} VON ${n}</b>${curP.r != null ? `<span>Ziel ${curP.r} ${unit === 'sek' ? 's' : '×'}${unit === 'kg' && curP.w != null ? ' · ' + curP.w + ' kg' : ''}</span>` : ''}</div>
-        ${unit === 'none' ? '' : `<label class="pl-now-in"><input type="number" inputmode="decimal" data-act="wWeight" data-id="${t.id}" data-i="${playIdx}" data-k="${cur}" value="${curS.weight ?? ''}" placeholder="${curPh ?? UNITS[unit][0]}"><span>${UNITS[unit][1] || ''}</span></label>`}
-        <button class="pl-ok2" data-act="playSet" data-k="${cur}">${curS.done ? '✓ Erledigt – tippen zum Zurücknehmen' : 'Satz fertig ✓'}</button>
+    <div class="pf-dots">${t.exercises.map((e, i) => `<button class="${i === playIdx ? 'cur' : ''}${doneN(e) >= (e.sets || 3) ? ' ok' : doneN(e) ? ' part' : ''}" data-act="playGo" data-i="${i}" aria-label="Übung ${i + 1}"></button>`).join('')}</div>
+    <div class="pf-bottom">
+      <div class="pf-ex">${esc(ex.name)}<small>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}${goal}</small></div>
+      <div class="pf-lab" id="pf-lab">${restEnd > Date.now() ? 'PAUSE' : 'WORKOUT'}</div>
+      <div class="pf-time" id="pf-time">0:00</div>
+      <div class="pf-restbtns${restEnd > Date.now() ? '' : ' off'}" id="rest"><button data-act="restAdd">+15 s</button><button data-act="restSkip">Skip</button></div>
+      <div class="pf-pills">
+        <button class="pf-pill" data-act="playOpen" data-focus="1"><small>${vLab}</small><b>${val != null ? val + (UNITS[unit][1] ? ' ' + UNITS[unit][1] : '') : '–'}</b></button>
+        <button class="pf-main${exDone ? ' next' : ''}" data-act="${mainAct}" data-k="${cur}" aria-label="${mainLab}"><span>${mainIc}</span></button>
+        <button class="pf-pill" data-act="playOpen"><small>SATZ</small><b>${cur + 1} / ${n}</b></button>
       </div>
-      <button class="pl-addset" data-act="playEdit">⚙ Sätze ändern</button>
+      <div class="pf-mainlab">${mainLab}</div>
+      <button class="pf-up" data-act="playOpen"><span>⌃</span>NACH OBEN WISCHEN FÜR DETAILS</button>
     </div>
-    <div class="pl-rest${restEnd > Date.now() ? '' : ' off'}" id="rest"><span>PAUSE</span><b id="rest-t">0:00</b><button data-act="restAdd">+15 s</button><button data-act="restSkip">Skip</button></div>
-    <div class="pl-nav">
-      <button class="pl-prev" data-act="playPrev"${playIdx === 0 ? ' disabled' : ''}>‹</button>
-      ${isLast ? `<button class="pl-next pl-fin" data-act="playFinish">${totalDone >= totalAll ? 'Training beenden' : 'Beenden (unvollständig)'}</button>` : `<button class="pl-next" data-act="playNext">Weiter ›</button>`}
+    <div class="pf-sheet${playDrawer ? ' open' : ''}" id="pf-sheet">
+      <button class="pf-sheet-grip" data-act="playClose" aria-label="Schließen"><i></i></button>
+      <div class="pf-sheet-in">
+        <div class="pf-sh-t">${esc(ex.name)}</div>
+        <div class="pf-chips">${Array.from({ length: n }, (_, k) => `<button class="pl-chip${(sets[k] || {}).done ? ' done' : ''}${k === cur ? ' cur' : ''}" data-act="playSel" data-k="${k}" aria-label="Satz ${k + 1}">${(sets[k] || {}).done ? '✓' : k + 1}</button>`).join('')}</div>
+        ${unit === 'none' ? '' : `<label class="pl-now-in"><input id="pf-in" type="number" inputmode="decimal" data-act="wWeight" data-id="${t.id}" data-i="${playIdx}" data-k="${cur}" value="${curS.weight ?? ''}" placeholder="${curPh ?? UNITS[unit][0]}"><span>${UNITS[unit][1] || ''}</span></label>`}
+        ${curS.done ? `<button class="pf-sh-btn ghost" data-act="playSet" data-k="${cur}">✓ Erledigt – zurücknehmen</button>` : ''}
+        <div class="pf-sh-row"><button class="pf-sh-btn ghost" data-act="playPrev"${playIdx === 0 ? ' disabled' : ''}>‹ Zurück</button><button class="pf-sh-btn ghost" data-act="playNext"${isLast ? ' disabled' : ''}>Weiter ›</button></div>
+        <button class="pf-sh-btn ghost" data-act="playEdit">⚙ Sätze ändern</button>
+        <button class="pf-sh-btn" data-act="playFinish">${totalDone >= totalAll ? 'Training beenden' : 'Beenden (unvollständig)'}</button>
+        <button class="pf-sh-del" data-act="playDelete">Training löschen</button>
+      </div>
     </div>
   </div>`;
+  if (playDrawer && document.activeElement === document.body) { /* Fokus nur auf Wunsch */ }
   tickRest();
 }
 function tickRest() {
   const box = document.getElementById('rest'); if (!box) return;
   const left = Math.ceil((restEnd - Date.now()) / 1000);
-  if (restEnd && left <= 0) { restEnd = 0; try { navigator.vibrate && navigator.vibrate([200, 100, 200]); } catch (e) {} }
+  if (restEnd && left <= 0) { restEnd = 0; try { navigator.vibrate && navigator.vibrate([200, 100, 200]); } catch (e) {} const l = document.getElementById('pf-lab'); if (l) l.textContent = 'WORKOUT'; }
   box.classList.toggle('off', !restEnd);
-  const el = document.getElementById('rest-t'); if (el && left > 0) el.textContent = Math.floor(left / 60) + ':' + String(left % 60).padStart(2, '0');
+  const lab = document.getElementById('pf-lab'); if (lab) lab.textContent = restEnd ? 'PAUSE' : 'WORKOUT';
+  const el = document.getElementById('pf-time'); if (el) el.textContent = restEnd ? fmtT(left) : fmtT(Math.floor((Date.now() - playT0) / 1000));
 }
 setInterval(tickRest, 500);
 function renderSummary() {
@@ -1076,12 +1096,14 @@ content.addEventListener('click', e => {
       const wp = wProgRaw(); delete wp.done[id]; saveWProg(wp);
       view = 'start'; break;
     }
-    case 'playExit': view = 'overview'; break;
+    case 'playExit': view = 'overview'; playDrawer = false; break;
     case 'playGo': playIdx = Number(btn.dataset.i); playSelK = null; break;
     case 'playNext': playIdx++; playSelK = null; break;
     case 'playPrev': playIdx--; playSelK = null; break;
     case 'playSel': playSelK = Number(btn.dataset.k); break;
-    case 'playEdit': wId = playTid; view = 'wtrain'; break;
+    case 'playOpen': playDrawer = true; break;
+    case 'playClose': playDrawer = false; break;
+    case 'playEdit': wId = playTid; view = 'wtrain'; playDrawer = false; break;
     case 'playAddSet': { const ex = trainingById(playTid).exercises[playIdx]; ex.sets = Math.min(10, (ex.sets || 3) + 1); saveWeekplan(); break; }
     case 'playSet': {
       const t = trainingById(playTid), ex = t.exercises[playIdx], k = Number(btn.dataset.k);
@@ -1089,7 +1111,7 @@ content.addEventListener('click', e => {
       sets[k] = sets[k] || {};
       sets[k].done = !sets[k].done;
       if (sets[k].done) {
-        if (sets[k].weight == null && (ex.unit || 'kg') !== 'none') { const l = lastWeights(ex.name), pl = (ex.plan || [])[k] || {}; const pre = pl.w ?? l[k] ?? l[l.length - 1]; if (pre != null) sets[k].weight = pre; }
+        if (sets[k].weight == null && (ex.unit || 'kg') !== 'none') { const l = lastWeights(ex.name), pl = (ex.plan || [])[k] || {}; const pre = pl.w ?? (k > 0 && sets[k - 1] ? sets[k - 1].weight : null) ?? l[k] ?? l[l.length - 1]; if (pre != null) sets[k].weight = pre; }
         restEnd = Date.now() + REST_SEC * 1000; pushStart(t.id);
       } else restEnd = 0;
       playSelK = null; saveWProg(wp); break;
@@ -1163,7 +1185,7 @@ content.addEventListener('click', e => {
     }
     case 'wAddEx': picker = { index: null, wid: btn.dataset.id }; filterMuscle = null; filterEquip = null; filterCat = null; break;
     case 'wFinish': { const rec = finishTraining(trainingById(btn.dataset.id)); if (!rec) return; view = 'weeklist'; break; }
-    case 'playFinish': { const rec = finishTraining(trainingById(playTid)); if (!rec) return; summaryRec = rec; restEnd = 0; view = 'summary'; break; }
+    case 'playFinish': { const rec = finishTraining(trainingById(playTid)); if (!rec) return; summaryRec = rec; restEnd = 0; playDrawer = false; view = 'summary'; break; }
     case 'wDayToggle': {
       const t = trainingById(btn.dataset.id), wd = btn.dataset.wd;
       const idx = t.weekdays.indexOf(wd);
@@ -1349,3 +1371,14 @@ content.addEventListener('keydown', e => {
   const btn = id === 'new-training-name' ? content.querySelector('[data-act="wNewTrainingSave"]') : id === 'rename-input' ? content.querySelector('[data-act="wRenameSave"]') : null;
   if (btn) { e.preventDefault(); btn.click(); }
 });
+
+// Player-Gesten: nach oben wischen = Details, nach unten = zu, seitlich = Übung wechseln
+let _tx = 0, _ty = 0;
+content.addEventListener('touchstart', e => { _tx = e.touches[0].clientX; _ty = e.touches[0].clientY; }, { passive: true });
+content.addEventListener('touchend', e => {
+  if (view !== 'play' || !e.changedTouches[0]) return;
+  const dx = e.changedTouches[0].clientX - _tx, dy = e.changedTouches[0].clientY - _ty;
+  const go = a => { const b = document.createElement('button'); b.dataset.act = a; content.appendChild(b); b.click(); b.remove(); };
+  if (Math.abs(dy) > 60 && Math.abs(dy) > Math.abs(dx)) { if (dy < 0 && !playDrawer) go('playOpen'); else if (dy > 0 && playDrawer && !e.target.closest('input')) go('playClose'); }
+  else if (!playDrawer && Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.5) { if (dx < 0) go('playNext'); else go('playPrev'); }
+}, { passive: true });
