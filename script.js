@@ -485,16 +485,43 @@ function renderHistDetail() {
 
 // V2-09: Wochenplan-Liste (Content-Ansicht, funktioniert auf jeder Breite inkl. iPhone).
 function renderWeeklist() {
+  const FULLN = { mon: 'Montag', tue: 'Dienstag', wed: 'Mittwoch', thu: 'Donnerstag', fri: 'Freitag', sat: 'Samstag', sun: 'Sonntag' };
+  const DB = '<svg class="lab-db" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>';
+  const t0 = today(), ws = mondayOf(t0);
+  const dayNames = WD_KEYS.map(k => FULLN[k] + 'straining');
+  const dayTr = k => weekplan.find(w => w.name === FULLN[k] + 'straining');
+  const custom = weekplan.filter(w => !dayNames.includes(w.name));
+  const meta = t => `${t.exercises.length} Übung${t.exercises.length === 1 ? '' : 'en'} · ${t.weekdays.length ? WD_KEYS.filter(k => t.weekdays.includes(k)).map(k => WD_LABELS[k]).join(' ') + (t.time ? ' · ' + esc(t.time) : '') : 'nicht eingeplant'}`;
+  const dayTiles = WD_KEYS.map((k, i) => {
+    const t = dayTr(k);
+    if (!t) return `<div class="wp-day wp-empty"><b>${WD_LABELS[k]}</b><span>–</span></div>`;
+    const ds = addDays(ws, i);
+    const st = trainingStatusForDate(t, ds);
+    const n = t.exercises.length;
+    return `<button class="wp-day${st ? ' wp-' + st : ''}${n ? '' : ' wp-leer'}${ds === t0 ? ' wp-heute' : ''}" data-act="wOpen2" data-id="${t.id}"><b>${WD_LABELS[k]}</b>${DB}<span>${n ? n + ' Üb.' : 'leer'}</span></button>`;
+  }).join('');
+  const customCards = custom.map(t => {
+    const th = t.exercises.slice(0, 3).map(ex => `<img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`).join('');
+    const st = trainingStatusForDate(t, t0);
+    return `<div class="wp-card" data-act="wOpen2" data-id="${t.id}">
+      <div class="wp-thumbs">${th || DB}</div>
+      <div class="wp-card-body"><div class="wp-card-name">${esc(t.name)}</div><div class="wp-card-meta">${meta(t)}${st ? ' · ' + STATUS_LABEL[st] : ''}</div></div>
+      <span class="wp-chev">›</span>
+    </div>`;
+  }).join('');
+  const cats = DAYS.map(d => `<button class="wp-cat" data-act="goto" data-day="${d}"><b>${DAY_LABELS[d]}</b><span>${itemsFor(d).length} Üb.</span></button>`).join('');
   content.innerHTML = `
-    <div class="weeklist">
-      ${weekplan.map(t => `<div class="weeklist-card" data-act="wOpen2" data-id="${t.id}">
-        <div class="weeklist-name">${esc(t.name)}</div>
-        <div class="weeklist-meta">${t.exercises.length} Übung${t.exercises.length === 1 ? '' : 'en'} · ${t.weekdays.length ? WD_KEYS.filter(k => t.weekdays.includes(k)).map(k => WD_LABELS[k]).join(' ') + (t.time ? ' · ' + esc(t.time) : '') : 'nicht eingeplant'}${(() => { const st = trainingStatusForDate(t, today()); return st ? ' · ' + STATUS_LABEL[st] : ''; })()}</div>
-      </div>`).join('')}
+    <div class="wp">
+      <div class="wp-sec">TAGESTRAININGS · DIESE WOCHE</div>
+      <div class="wp-days">${dayTiles}</div>
+      <div class="wp-sec">EIGENE TRAININGS</div>
+      ${customCards || '<p class="placeholder">Noch keine eigenen Trainings – z. B. „Ganzkörper“ oder „Mobility“.</p>'}
       ${addingTraining
-        ? `<div class="weeklist-card"><input id="new-training-name" placeholder="Name des Trainings…" autofocus>
+        ? `<div class="wp-card wp-new"><input id="new-training-name" placeholder="Name des Trainings…" autofocus>
              <div class="edit-bar"><button data-act="wNewTrainingSave">Speichern</button><button data-act="wNewTrainingCancel">Abbrechen</button></div></div>`
-        : `<button class="ov-btn ov-btn-ghost" data-act="wNewTraining">+ Neues Training</button>`}
+        : `<button class="wp-add" data-act="wNewTraining">+ Neues Training</button>`}
+      <div class="wp-sec">KATEGORIEN</div>
+      <div class="wp-cats">${cats}</div>
     </div>`;
   if (addingTraining) document.getElementById('new-training-name')?.focus();
 }
@@ -657,7 +684,7 @@ function flushQ() {
 flushQ();
 
 content.addEventListener('click', e => {
-  const btn = e.target.closest('button[data-act], .weeklist-card[data-act], .history-item[data-act]');
+  const btn = e.target.closest('button[data-act], .weeklist-card[data-act], .wp-card[data-act], .history-item[data-act]');
   if (!btn) return;
   const i = Number(btn.dataset.i);
   const arr = list().slice();

@@ -330,3 +330,37 @@ body.mood-bad{--text-faint:#b08a85;}
 .goal-sheet .edit-bar{flex-direction:row; gap:.6rem; padding:.5rem 0 0;}
 .goal-sheet .edit-bar button{flex:1;}
 :where(#content) .edit-bar .ov-btn:not(.ov-btn-ghost){background:var(--accent); color:var(--on-accent); border-color:var(--accent);}
+
+/* Wochenplan-Seite: Tagestrainings als Wochenraster, eigene Trainings als Karten, Kategorien als Kacheln */
+.wp{display:flex; flex-direction:column; gap:.7rem;}
+.wp-sec{font-size:.72rem; font-weight:800; letter-spacing:.06em; color:var(--text-dim); margin-top:.5rem;}
+.wp-sec:first-child{margin-top:0;}
+.wp-days{display:flex; gap:.35rem; background:var(--panel); border:1px solid var(--border-soft); border-radius:14px; padding:.5rem;}
+:where(#content) .wp-day{flex:1; min-width:0; display:flex; flex-direction:column; align-items:center; gap:.2rem; padding:.55rem 0 .45rem; min-height:76px; border-radius:10px; background:var(--panel-2); border:1px solid transparent; color:var(--text-dim);}
+.wp-day b{font-size:.8rem; text-transform:uppercase; color:var(--text);}
+.wp-day span{font-size:.69rem;}
+.wp-day .lab-db{width:20px; height:20px;}
+.wp-empty{opacity:.4; text-align:center;}
+.wp-leer{opacity:.6;}
+.wp-geplant,.wp-offen{border-color:var(--accent) !important; box-shadow:0 0 8px var(--lab-glow);}
+.wp-geplant .lab-db,.wp-offen .lab-db,.wp-erledigt .lab-db{color:var(--accent);}
+.wp-erledigt{background:color-mix(in srgb,var(--accent) 22%,var(--panel-2)) !important; border-color:var(--accent) !important;}
+.wp-verpasst{background:#9a1716 !important; border-color:#e8301f !important;}
+.wp-verpasst b,.wp-verpasst span,.wp-verpasst .lab-db{color:#fff;}
+.wp-heute b{color:var(--accent);}
+.wp-card{display:flex; align-items:center; gap:.8rem; background:var(--panel); border:1px solid var(--border-soft); border-radius:14px; padding:.7rem .8rem; cursor:pointer;}
+.wp-card:active{border-color:var(--accent);}
+.wp-thumbs{display:flex; flex:none; min-width:56px;}
+.wp-thumbs img{width:56px; height:56px; object-fit:cover; border-radius:10px; background:#000; border:2px solid var(--panel); margin-left:-18px;}
+.wp-thumbs img:first-child{margin-left:0;}
+.wp-thumbs .lab-db{width:56px; height:56px; padding:14px; color:var(--accent); background:var(--panel-2); border-radius:10px;}
+.wp-card-body{flex:1; min-width:0;}
+.wp-card-name{font-weight:700; font-size:1rem; overflow-wrap:anywhere;}
+.wp-card-meta{font-size:.76rem; color:var(--text-dim); margin-top:.15rem;}
+.wp-chev{font-size:1.6rem; color:var(--text-faint);}
+.wp-new{flex-direction:column; align-items:stretch; cursor:default;}
+:where(#content) .wp-add{border:1.5px dashed var(--border); background:transparent; color:var(--accent); min-height:52px; border-radius:14px;}
+.wp-cats{display:grid; grid-template-columns:repeat(4,1fr); gap:.4rem;}
+:where(#content) .wp-cat{display:flex; flex-direction:column; align-items:center; gap:.1rem; padding:.7rem 0; border-radius:12px; background:var(--panel); border:1px solid var(--border-soft);}
+.wp-cat b{font-size:.85rem; color:var(--text);}
+.wp-cat span{font-size:.69rem; color:var(--text-dim); font-weight:500;}
