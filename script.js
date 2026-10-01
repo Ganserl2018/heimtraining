@@ -40,7 +40,7 @@ function loadWeekplan() {
   return WEEKDAY_SEED.map(([id, name]) => ({ id, name, exercises: [] }));
 }
 function saveWeekplan() { try { localStorage.setItem(WKEY, JSON.stringify(weekplan)); } catch (e) {} }
-weekplan = loadWeekplan();
+weekplan = loadWeekplan().filter(x => !x.draft);
 // V6-01: fehlende Felder bei alten/bestehenden Trainings nachrüsten (weekdays/time optional, leer = kein Zeitplan)
 weekplan.forEach(t => { if (!Array.isArray(t.exercises)) t.exercises = []; if (!Array.isArray(t.weekdays)) t.weekdays = []; if (typeof t.time !== 'string') t.time = ''; if (!t.since || typeof t.since !== 'object') t.since = {}; });
 const trainingById = id => weekplan.find(t => t.id === id);
@@ -224,6 +224,7 @@ function applyMood() {
 }
 
 function render() {
+  if (weekplan.some(x => x.draft && !(view === 'wtrain' && wId === x.id) && view !== 'picker' && !picker)) weekplan = weekplan.filter(x => !x.draft || (view === 'wtrain' && wId === x.id));
   applyMood();
   const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', start: 'Training wählen', play: 'Workout', preview: 'Training', summary: 'Geschafft', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
   document.querySelector('.topbar h1').textContent = view === 'wtrain' ? ((trainingById(wId) || {}).name || 'Training') : (titles[view] || 'Home Force');
@@ -710,7 +711,7 @@ function hint(id, step, text) {
   return `<div class="hh"><div class="hh-top"><b>TRAININGSHELPER · SCHRITT ${step} VON 5</b><button data-act="hintOk" data-id="${id}">Verstanden</button></div><p>${text}</p></div>`;
 }
 // aktueller Schritt eines Trainings: 1 Name (immer erledigt, sonst gäbe es es nicht), 2 Übungen, 3 Tage, 4 Starten
-function helperStep(t) { return !t.exercises.length ? 2 : !helperDone().includes('sets') ? 3 : (!t.weekdays || !t.weekdays.length) ? 4 : 5; }
+function helperStep(t) { return t.draft ? 1 : !t.exercises.length ? 2 : !helperDone().includes('sets') ? 3 : (!t.weekdays || !t.weekdays.length) ? 4 : 5; }
 
 function renderWeeklist() {
   const FULLN = { mon: 'Montag', tue: 'Dienstag', wed: 'Mittwoch', thu: 'Donnerstag', fri: 'Freitag', sat: 'Samstag', sun: 'Sonntag' };
@@ -753,6 +754,10 @@ function renderWeeklist() {
 }
 
 // V2-09: Trainings-Detail – Übungen mit Video(GIF)/Erklärung, editierbare Sätze + Gewicht, Notizen.
+function newDraft() {
+  const t = { id: 'w' + Date.now(), name: '', draft: true, exercises: [], weekdays: [], since: {}, time: '' };
+  weekplan.push(t); wId = t.id; renameId = t.id; view = 'wtrain'; picker = null;
+}
 function renderWTrain() {
   const t = trainingById(wId);
   if (!t) { view = 'overview'; return renderOverview(); }
@@ -762,8 +767,8 @@ function renderWTrain() {
   const sec = (n, title, ok, body) => `<section class="ts${step === n ? ' now' : ''}${ok ? ' ok' : ''}"><div class="ts-h"><span class="ts-n">${ok ? '✓' : n}</span><b>${title}</b></div>${body}</section>`;
   const ws = mondayOf(today()), miss = Array.from({ length: 7 }, (_, i) => addDays(ws, i)).filter(ds => trainingStatusForDate(t, ds) === 'verpasst');
   content.innerHTML = `<div class="tsx">
-    ${sec(1, 'Name', true, renameId === t.id
-      ? `<input id="rename-input" value="${esc(t.name)}"><div class="edit-bar"><button data-act="wRenameSave" data-id="${t.id}">Speichern</button><button data-act="wRenameCancel">Abbrechen</button></div>`
+    ${sec(1, 'Name', !t.draft, renameId === t.id
+      ? `${t.draft ? hint('name', 1, 'Gib deinem Training einen Namen, zum Beispiel „Oberkörper“ oder „Montag“. Danach geht es mit den Übungen weiter.') : ''}<input id="rename-input" placeholder="Name des Trainings…" value="${esc(t.name)}"><div class="edit-bar"><button data-act="wRenameSave" data-id="${t.id}">Speichern</button><button data-act="wRenameCancel" data-id="${t.id}">Abbrechen</button></div>`
       : `<div class="ts-name"><h2>${esc(t.name)}</h2><button data-act="wRename" data-id="${t.id}">Umbenennen</button></div>`)}
     ${sec(2, 'Übungen', hasEx, `${step === 2 ? hint('ex', 2, 'Hier fügst du Übungen hinzu: auf „+ Übung hinzufügen“ tippen, suchen und antippen. Du kannst mehrere nacheinander wählen.') : ''}
       ${t.exercises.map((ex, i) => `<div class="ts-ex"><img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><div><b>${esc(ex.name)}</b><em>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</em></div><button data-act="wRemoveEx" data-id="${t.id}" data-i="${i}" aria-label="Übung entfernen">✕</button></div>`).join('')}
@@ -1091,7 +1096,7 @@ content.addEventListener('click', e => {
       weekplan.push(t); saveWeekplan();
       wId = t.id; view = 'wtrain'; picker = null; break;
     }
-    case 'wNewTraining': addingTraining = true; view = 'weeklist'; break;
+    case 'wNewTraining': newDraft(); break;
     case 'wNewTrainingCancel': addingTraining = false; break;
     case 'wNewTrainingSave': {
       const name = (document.getElementById('new-training-name')?.value || '').trim();
@@ -1101,11 +1106,11 @@ content.addEventListener('click', e => {
       addingTraining = false; wId = t.id; view = 'wtrain'; break;
     }
     case 'wRename': renameId = btn.dataset.id; break;
-    case 'wRenameCancel': renameId = null; break;
+    case 'wRenameCancel': { const d = trainingById(btn.dataset.id); if (d && d.draft) { weekplan = weekplan.filter(x => x !== d); view = 'weeklist'; } renameId = null; break; }
     case 'wRenameSave': {
       const name = (document.getElementById('rename-input')?.value || '').trim();
       if (!name) return;
-      trainingById(btn.dataset.id).name = name; saveWeekplan();
+      { const tt = trainingById(btn.dataset.id); tt.name = name; delete tt.draft; } saveWeekplan();
       renameId = null; break;
     }
     case 'wRemoveEx': {
@@ -1273,7 +1278,7 @@ document.getElementById('tabbar').addEventListener('click', e => {
   if (!wBtn) return;
   picker = null;
   if (wBtn.dataset.act === 'wOpen') { wId = wBtn.dataset.id; view = 'wtrain'; }
-  else { addingTraining = true; view = 'weeklist'; }
+  else newDraft();
   render();
 });
 
