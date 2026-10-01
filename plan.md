@@ -163,3 +163,7 @@ V10-13/15/25 Hinweise: Umgesetzt: Backup erzeugen/wiederherstellen im Profil, Ma
 | V11-04 | Design Workout-Ansicht | ⏳ |
 | V11-05 | Schutz (Offline, Limits) | ⏳ |
 Weitere erledigt heute: Wochenplan-Redesign, Hantel-Logik, Alle-Übungen-Galerie (BTILE 128), deutsche Suche. Details: Vault `Projects/Privat/Heimtraining/session-uebergabe-2026-10-01.md`.
+
+## Warteliste (neu 01.10. abends)
+- W-01 Level-Vorlagen beim Satz-Einstellen (Anfänger / Fortgeschritten / Profi → Sätze, Wdh, Gewichts-Vorschlag je Übung)
+- W-02 Auto-Trainingsgenerator nach Level (Zufalls-Zusammenstellung: Ziel, Dauer, Muskelgruppen → fertiges Training)
