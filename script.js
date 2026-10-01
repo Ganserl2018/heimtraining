@@ -474,7 +474,7 @@ function renderOverview() {
           <div class="lab-head-title">HOME FORCE – ZUSTAND:<br>${moodTitle}</div>
           <div class="lab-head-sub"><i></i>${moodSub}</div>
         </div>
-        <button class="lab-badge" data-act="goto" data-view="profile" aria-label="Profil">◉</button>
+        <button class="lab-badge" data-act="goto" data-view="profile" aria-label="Profil">${(loadProfile().name || '').trim().charAt(0).toUpperCase() || '◉'}</button>
       </div>
       ${ringBlock}
       <button class="lab-goal-link" data-act="goalEdit">Ziel anpassen</button>
@@ -674,18 +674,40 @@ function renderWTrain() {
 // V7-01: Profil-Seite – Basis für Kalorienberechnung (V8-03), keine Herzfrequenz nötig.
 function renderProfile() {
   const p = loadProfile();
+  const h = loadHistory();
+  const goal = loadGoal();
+  const streak = computeStreak(h);
+  const sets = h.reduce((n, r) => n + (r.totalSetsDone || 0), 0);
+  const first = h.length ? h.reduce((m, r) => r.date < m ? r.date : m, h[0].date) : null;
+  const since = first ? new Date(first + 'T12:00:00').toLocaleDateString('de-DE', { month: 'long', year: 'numeric' }) : null;
+  const ini = (p.name || '').trim().charAt(0).toUpperCase();
+  const bad = document.body.classList.contains('mood-bad');
   content.innerHTML = `
-    <div class="overview">
-      <div class="ov-card">
-        <div class="ov-card-title">Profil</div>
-        <div class="profile-form">
-          <label>Gewicht (kg)<input type="number" inputmode="decimal" data-act="profileField" data-field="weight" value="${p.weight ?? ''}"></label>
+    <div class="overview pf">
+      <div class="pf-hero">
+        <div class="pf-avatar">${ini ? esc(ini) : '◉'}</div>
+        <div class="pf-who">
+          <input class="pf-name" placeholder="Dein Name" maxlength="24" data-act="profileField" data-field="name" value="${esc(p.name || '')}">
+          <div class="pf-sub">${since ? 'Dabei seit ' + since : 'Noch kein Training – los geht’s'}</div>
         </div>
-        <p class="placeholder">Wird für die Kalorien-Schätzung pro Training genutzt (ohne Herzfrequenz/Wearable).</p>
+      </div>
+      <div class="pf-stats">
+        <div><b>${h.length}</b><span>Trainings</span></div>
+        <div><b>${streak}</b><span>Streak</span></div>
+        <div><b>${sets}</b><span>Sätze</span></div>
+      </div>
+      <div class="ov-card">
+        <div class="ov-card-title">Körper</div>
+        <label class="pf-row">Gewicht<span><input type="number" inputmode="decimal" data-act="profileField" data-field="weight" value="${p.weight ?? ''}" placeholder="–"> kg</span></label>
+        <p class="placeholder">Grundlage für die Kalorien-Schätzung pro Training.</p>
+      </div>
+      <div class="ov-card">
+        <div class="ov-card-title">Ziel</div>
+        <div class="pf-row">${goal.target} Trainings in ${goal.periodDays === 7 ? '1 Woche' : goal.periodDays + ' Tagen'}<button class="ov-btn ov-btn-ghost" data-act="goalEditFromProfile">Anpassen</button></div>
       </div>
       <div class="ov-card">
         <div class="ov-card-title">Backup</div>
-        <p class="placeholder">Alle Daten (Pläne, Verlauf, Ziel) als Text sichern oder wiederherstellen.</p>
+        <p class="placeholder">Pläne, Verlauf und Ziel als Text sichern oder wiederherstellen.</p>
         <textarea id="backup-text" class="w-note" placeholder="Hier steht dein Backup oder füge eins ein…"></textarea>
         <div class="edit-bar"><button class="ov-btn" data-act="backupExport">Backup erzeugen &amp; kopieren</button><button class="ov-btn ov-btn-ghost" data-act="backupImport">Aus Text wiederherstellen</button></div>
       </div>
@@ -1020,6 +1042,7 @@ content.addEventListener('click', e => {
       return;
     }
     case 'goalEdit': goalEditing = true; break;
+    case 'goalEditFromProfile': goalEditing = true; view = 'overview'; break;
     case 'goalSave': {
       const target = Math.max(1, Number(document.getElementById('goal-target')?.value) || 1);
       const mult = { tage: 1, wochen: 7, monate: 30, jahre: 365 }[document.getElementById('goal-unit')?.value] || 1;
@@ -1046,7 +1069,7 @@ content.addEventListener('input', e => {
   const profileEl = e.target.closest('[data-act="profileField"]');
   if (profileEl) {
     const p = loadProfile();
-    p[profileEl.dataset.field] = profileEl.dataset.field === 'gender' ? profileEl.value : (profileEl.value === '' ? null : Number(profileEl.value));
+    p[profileEl.dataset.field] = ['gender', 'name'].includes(profileEl.dataset.field) ? profileEl.value : (profileEl.value === '' ? null : Number(profileEl.value));
     saveProfile(p);
     return;
   }

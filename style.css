@@ -428,3 +428,17 @@ body.mood-bad{--text-faint:#b08a85;}
 .st-new{align-items:center; justify-content:center; border-style:dashed; color:var(--accent);}
 .st-plus{font-size:2.2rem; line-height:1;}
 .st-thumbs:has(img:only-child){grid-template-columns:1fr;} .st-thumbs:has(img:nth-child(2):last-child){aspect-ratio:2/1;}
+
+/* Profil */
+.pf-hero{display:flex; align-items:center; gap:1rem; padding:.4rem 0 1rem;}
+.pf-avatar{flex:none; width:68px; height:68px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.9rem; font-weight:800; color:var(--accent); background:var(--panel); border:2px solid var(--accent); box-shadow:0 0 18px var(--lab-glow, rgba(163,230,53,.3));}
+.pf-who{flex:1; min-width:0;}
+.pf-name{width:100%; box-sizing:border-box; font-size:1.5rem; font-weight:800; background:none; border:0; border-bottom:1px dashed var(--border); color:var(--text); padding:.2rem 0; min-height:44px; border-radius:0;}
+.pf-name:focus{outline:none; border-bottom-color:var(--accent);}
+.pf-sub{font-size:.78rem; color:var(--text-dim); margin-top:.2rem;}
+.pf-stats{display:grid; grid-template-columns:repeat(3,1fr); gap:.6rem; margin-bottom:.8rem;}
+.pf-stats div{background:var(--panel); border:1px solid var(--border-soft); border-radius:14px; padding:.7rem .4rem; text-align:center;}
+.pf-stats b{display:block; font-size:1.6rem; color:var(--accent);}
+.pf-stats span{font-size:.7rem; color:var(--text-dim); letter-spacing:.05em; text-transform:uppercase;}
+.pf-row{display:flex; align-items:center; justify-content:space-between; gap:.8rem; font-size:1rem; margin:.3rem 0;}
+.pf-row input{width:90px; font-size:16px; text-align:right; padding:.4rem .5rem; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text); min-height:44px; box-sizing:border-box;}
