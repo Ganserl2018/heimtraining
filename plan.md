@@ -158,9 +158,9 @@ V10-13/15/25 Hinweise: Umgesetzt: Backup erzeugen/wiederherstellen im Profil, Ma
 | ID | Aufgabe | Status |
 |---|---|---|
 | V11-01 | START → Trainingsauswahl (Meine Trainings, Vorlagen, Neu) | ✅ live |
-| V11-02 | Workout-Player (Übung pro Screen, Sätze vorausgefüllt, Pausen-Timer per Tipp/Kurzbefehl) | ⏳ wartet auf Alex-Antworten |
+| V11-02 | Workout-Player (Vollbild nach Alex-Referenz, Foto-BG, Riesen-Timer, Swipe-Sheet, Pause 90 s per Tipp) | ✅ live (Siri/Kurzbefehl offen) |
 | V11-03 | Beenden auch unvollständig → Verlauf "fertig, unvollständig" + Zusammenfassung + Health-Sync | ⏳ |
-| V11-04 | Design Workout-Ansicht | ⏳ |
+| V11-04 | Design Workout-Ansicht | ✅ live (iPhone-Swipes/Anton-Font unbestätigt) |
 | V11-05 | Schutz (Offline, Limits) | ⏳ |
 Weitere erledigt heute: Wochenplan-Redesign, Hantel-Logik, Alle-Übungen-Galerie (BTILE 128), deutsche Suche. Details: Vault `Projects/Privat/Heimtraining/session-uebergabe-2026-10-01.md`.
 
@@ -173,3 +173,14 @@ Weitere erledigt heute: Wochenplan-Redesign, Hantel-Logik, Alle-Übungen-Galerie
 - System lernt mit Fortschritt (aus Verlauf).
 - Generator: Eingaben Level, Dauer, Muskelgruppen + Überrasch-mich-Knopf; Ergebnis = normales speicherbares Training; Einstieg bei "Training wählen".
 - Taskforce eingerichtet (TASKFORCE.md, .claude/agents/).
+
+## V12 – Training bauen & Übungen (01.-02.10. abends, alles live)
+- V12-1 Neues-Training nummeriert (Name = Schritt 1), Speichern & zur Schnellauswahl, Löschen neben Umbenennen.
+- V12-2 Kompakte Übungskarte, Einheit-Dropdown (kg·Wdh / Wdh / Sek), Haken entfernt.
+- V12-3 Auto-Einheit (Gerätewörter → kg) + Schnellwahl-Chips kg/Wdh.
+- V12-4 Training-wählen-Redesign (Foto-Kacheln), Paket-Karte-Overflow behoben.
+- V12-5 Alle Übungen Galerie-Redesign (Design-Agent), auch Picker.
+- V12-6 Seilzug statt Kabel; Zweitmuskel-Badge per Namens-Heuristik (`secondaries(e)`).
+- V12-7 Gewichtsklassen Leicht/Moderat/Schwer im Detail-Sheet (`WCLASS`, `wclassHtml`).
+- V12-8 Taskforce (scout, strategist, designer, coach, checker).
+## V13 – Level-Vorlagen + Generator (nächste Phase, nach V11-03): V13-1 Coach-Regeln, V13-2 Level-Vorlagen, V13-3 Auto-Generator.
