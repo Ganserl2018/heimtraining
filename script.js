@@ -570,7 +570,7 @@ function renderStart() {
         <ol class="st-pack-list">${t.exercises.slice(0, 4).map(e => `<li>${esc(e.name)}</li>`).join('')}${t.exercises.length > 4 ? `<li class="more">+ ${t.exercises.length - 4} weitere</li>` : ''}</ol>
       </div></button></div>`;
   const mini = p => { const exs = presetExercises(p); return `<button class="st-mini" data-act="stPreset" data-key="${p.key}">
-      <span class="st-mini-th">${exs[0] ? img(exs[0]) : DB}</span>
+      <span class="st-mini-th">${DB}</span>
       <span class="st-mini-t"><b>${esc(p.name)}</b><em>${exs.length} Üb.</em></span></button>`; };
   const own = weekplan.filter(w => w.exercises.length).sort((a, b) => (a.presetKey ? 1 : 0) - (b.presetKey ? 1 : 0));
   const ownIds = new Set(own.map(w => w.presetKey).filter(Boolean));
