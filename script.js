@@ -225,7 +225,7 @@ function applyMood() {
 
 function render() {
   applyMood();
-  const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', start: 'Training wählen', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
+  const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', start: 'Training wählen', play: 'Workout', summary: 'Geschafft', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
   document.querySelector('.topbar h1').textContent = view === 'wtrain' ? ((trainingById(wId) || {}).name || 'Training') : (titles[view] || 'Home Force');
   syncTabActive();
   { const pn = (loadProfile().name || '').trim(), bad = document.body.classList.contains('mood-bad');
@@ -239,6 +239,8 @@ function render() {
   if (view === 'tv') return renderTV();
   if (view === 'weeklist') return renderWeeklist();
   if (view === 'start') return renderStart();
+  if (view === 'play') return renderPlay();
+  if (view === 'summary') return renderSummary();
   if (view === 'allex') return renderAllEx();
   if (view === 'profile') return renderProfile();
   if (view === 'histdetail') return renderHistDetail();
@@ -576,6 +578,102 @@ function renderStart() {
     <button class="st-newbtn" data-act="wNewTraining">+ Eigenes Training erstellen</button>
     <div class="wp-sec">VORLAGEN</div>
     <div class="st-minis">${PRESETS.filter(p => !ownIds.has(p.key)).map(mini).join('')}</div>
+  </div>`;
+}
+
+// Training beenden (Wochenplan-Ansicht und Player): Verlaufseintrag, Sync, Fortschritt zurücksetzen. Auch unvollständig erlaubt.
+function finishTraining(t) {
+  const wp = wProgRaw(), dOf = wp.done[t.id] || {};
+  const exercises = t.exercises.map(ex => {
+    const sets = dOf[ex.name] || [];
+    return { name: ex.name, muscle: ex.muscle, setsDone: sets.filter(s => s && s.done).length, setsTotal: ex.sets || 3,
+      unit: ex.unit || 'kg', weights: (ex.unit || 'kg') === 'none' ? [] : sets.map(s => s && s.weight != null ? s.weight : null) };
+  });
+  const doneTotal = exercises.reduce((s2, x) => s2 + x.setsDone, 0);
+  if (!doneTotal && !confirm('Kein Satz abgehakt – trotzdem als Training zählen?')) return null;
+  const note = (wp.sessionNote || {})[t.id] || '';
+  const startRec = startOf(t.id, today());
+  const rawMin = startRec ? Math.max(1, Math.round((Date.now() - new Date(startRec.startedAt)) / 60000)) : null;
+  const durationMin = rawMin == null ? null : Math.min(rawMin, doneTotal * 4 + 10); // vergessenes Beenden nicht ewig mitzählen
+  const calories = computeCalories(exercises, durationMin);
+  const rec = { date: today(), day: t.name, trainingId: t.id, exercises,
+    totalSetsDone: doneTotal, totalSetsPlanned: exercises.reduce((s, x) => s + x.setsTotal, 0),
+    finishedAt: new Date().toISOString(), durationMin, calories, note };
+  syncSession(rec); pushHistory(rec);
+  delete wp.done[t.id];
+  if (wp.sessionNote) delete wp.sessionNote[t.id];
+  saveWProg(wp);
+  return rec;
+}
+
+// ---- Workout-Player: eine Übung pro Bildschirm, Sätze vorausgefüllt, Pausen-Timer ----
+let playTid = null, playIdx = 0, restEnd = 0, summaryRec = null;
+const REST_SEC = 90;
+function lastWeights(name) {
+  const r = loadHistory().find(h => (h.exercises || []).some(e => e.name === name && (e.weights || []).some(w => w != null)));
+  const e = r && r.exercises.find(x => x.name === name);
+  return e ? e.weights.filter(w => w != null) : [];
+}
+function playStart(id) {
+  const t = trainingById(id); if (!t) return;
+  const dOf = wProgRaw().done[t.id] || {};
+  const firstOpen = t.exercises.findIndex(ex => ((dOf[ex.name] || []).filter(x => x && x.done).length) < (ex.sets || 3));
+  playTid = id; playIdx = firstOpen < 0 ? 0 : firstOpen; restEnd = 0; pushStart(id); view = 'play';
+}
+function renderPlay() {
+  const t = trainingById(playTid);
+  if (!t || !t.exercises.length) { view = 'start'; return renderStart(); }
+  playIdx = Math.max(0, Math.min(playIdx, t.exercises.length - 1));
+  const ex = t.exercises[playIdx], dOf = wProgRaw().done[t.id] || {}, sets = dOf[ex.name] || [];
+  const n = ex.sets || 3, unit = ex.unit || 'kg', last = lastWeights(ex.name);
+  const doneN = e => ((dOf[e.name] || []).filter(x => x && x.done).length);
+  const isLast = playIdx === t.exercises.length - 1;
+  const totalDone = t.exercises.reduce((a, e) => a + doneN(e), 0), totalAll = t.exercises.reduce((a, e) => a + (e.sets || 3), 0);
+  content.innerHTML = `<div class="pl">
+    <div class="pl-top">
+      <button class="pl-x" data-act="playExit" aria-label="Zurück">✕</button>
+      <div class="pl-title"><b>${esc(t.name)}</b><span>Übung ${playIdx + 1} / ${t.exercises.length} · ${totalDone}/${totalAll} Sätze</span></div>
+    </div>
+    <div class="pl-dots">${t.exercises.map((e, i) => `<button class="${i === playIdx ? 'cur' : ''}${doneN(e) >= (e.sets || 3) ? ' ok' : doneN(e) ? ' part' : ''}" data-act="playGo" data-i="${i}" aria-label="Übung ${i + 1}"></button>`).join('')}</div>
+    <div class="pl-media"><img src="${esc(ex.gif)}" alt="" onerror="this.style.visibility='hidden'"></div>
+    <div class="pl-name">${esc(ex.name)}</div>
+    <div class="pl-muscle">${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}${last.length ? ` · letztes Mal ${last.join(' / ')} ${UNITS[unit][1]}` : ''}</div>
+    <div class="pl-sets">${Array.from({ length: n }, (_, k) => {
+      const s = sets[k] || {}, ph = last[k] ?? last[last.length - 1];
+      return `<div class="pl-set${s.done ? ' done' : ''}">
+        <span class="pl-k">${k + 1}</span>
+        ${unit === 'none' ? '<span class="pl-free">Satz</span>' : `<input type="number" inputmode="decimal" data-act="wWeight" data-id="${t.id}" data-i="${playIdx}" data-k="${k}" value="${s.weight ?? ''}" placeholder="${ph ?? UNITS[unit][0]}"><span class="pl-u">${UNITS[unit][1] || ''}</span>`}
+        <button class="pl-ok" data-act="playSet" data-k="${k}" aria-label="Satz ${k + 1} fertig">${s.done ? '✓' : ''}</button>
+      </div>`; }).join('')}
+      <button class="pl-addset" data-act="playAddSet">+ Satz</button>
+    </div>
+    <div class="pl-rest${restEnd > Date.now() ? '' : ' off'}" id="rest"><span>PAUSE</span><b id="rest-t">0:00</b><button data-act="restAdd">+15 s</button><button data-act="restSkip">Skip</button></div>
+    <div class="pl-nav">
+      <button class="pl-prev" data-act="playPrev"${playIdx === 0 ? ' disabled' : ''}>‹</button>
+      ${isLast ? `<button class="pl-next pl-fin" data-act="playFinish">${totalDone >= totalAll ? 'Training beenden' : 'Beenden (unvollständig)'}</button>` : `<button class="pl-next" data-act="playNext">Weiter ›</button>`}
+    </div>
+  </div>`;
+  tickRest();
+}
+function tickRest() {
+  const box = document.getElementById('rest'); if (!box) return;
+  const left = Math.ceil((restEnd - Date.now()) / 1000);
+  if (restEnd && left <= 0) { restEnd = 0; try { navigator.vibrate && navigator.vibrate([200, 100, 200]); } catch (e) {} }
+  box.classList.toggle('off', !restEnd);
+  const el = document.getElementById('rest-t'); if (el && left > 0) el.textContent = Math.floor(left / 60) + ':' + String(left % 60).padStart(2, '0');
+}
+setInterval(tickRest, 500);
+function renderSummary() {
+  const r = summaryRec;
+  if (!r) { view = 'overview'; return renderOverview(); }
+  const full = r.totalSetsDone >= r.totalSetsPlanned;
+  content.innerHTML = `<div class="pl sm">
+    <div class="sm-badge${full ? '' : ' part'}">${full ? '✓' : '◐'}</div>
+    <div class="sm-title">${full ? 'Training geschafft' : 'Fertig – unvollständig'}</div>
+    <div class="sm-sub">${esc(r.day)}</div>
+    <div class="pf-stats"><div><b>${r.durationMin ?? '–'}</b><span>Minuten</span></div><div><b>${r.totalSetsDone}/${r.totalSetsPlanned}</b><span>Sätze</span></div><div><b>${r.calories ?? '–'}</b><span>kcal</span></div></div>
+    <div class="ov-card">${r.exercises.map(e => `<div class="pf-row"><span>${esc(e.name)}</span><b>${e.setsDone}/${e.setsTotal}</b></div>`).join('')}</div>
+    <button class="ov-btn sm-done" data-act="summaryDone">Fertig</button>
   </div>`;
 }
 
@@ -924,13 +1022,32 @@ content.addEventListener('click', e => {
       }
       picker = null; break;
     }
-    case 'stStart': wId = btn.dataset.id; pushStart(wId); view = 'wtrain'; break;
+    case 'stStart': playStart(btn.dataset.id); break;
     case 'stPreset': {
       const p = PRESETS.find(x => x.key === btn.dataset.key);
       let t = weekplan.find(w => w.presetKey === p.key);
       if (!t) { t = { id: 'w' + Date.now(), name: p.name, presetKey: p.key, exercises: presetExercises(p), weekdays: [], since: {}, time: '' }; weekplan.push(t); saveWeekplan(); }
-      wId = t.id; pushStart(t.id); view = 'wtrain'; break;
+      playStart(t.id); break;
     }
+    case 'playExit': view = 'overview'; break;
+    case 'playGo': playIdx = Number(btn.dataset.i); break;
+    case 'playNext': playIdx++; break;
+    case 'playPrev': playIdx--; break;
+    case 'playAddSet': { const ex = trainingById(playTid).exercises[playIdx]; ex.sets = Math.min(10, (ex.sets || 3) + 1); saveWeekplan(); break; }
+    case 'playSet': {
+      const t = trainingById(playTid), ex = t.exercises[playIdx], k = Number(btn.dataset.k);
+      const wp = wProgRaw(), d = wp.done[t.id] = wp.done[t.id] || {}, sets = d[ex.name] = d[ex.name] || [];
+      sets[k] = sets[k] || {};
+      sets[k].done = !sets[k].done;
+      if (sets[k].done) {
+        if (sets[k].weight == null && (ex.unit || 'kg') !== 'none') { const l = lastWeights(ex.name); const pre = l[k] ?? l[l.length - 1]; if (pre != null) sets[k].weight = pre; }
+        restEnd = Date.now() + REST_SEC * 1000; pushStart(t.id);
+      } else restEnd = 0;
+      saveWProg(wp); break;
+    }
+    case 'restAdd': restEnd = Math.max(restEnd, Date.now()) + 15000; break;
+    case 'restSkip': restEnd = 0; break;
+    case 'summaryDone': summaryRec = null; view = 'overview'; break;
     case 'wOpen2': wId = btn.dataset.id; view = 'wtrain'; break;
     case 'wDayNew': {
       // Ruhetag angetippt → neues Tagestraining für diesen Wochentag anlegen und direkt öffnen
@@ -984,30 +1101,8 @@ content.addEventListener('click', e => {
       saveWProg(wp); if (sets[k].done) pushStart(t.id); break;
     }
     case 'wAddEx': picker = { index: null, wid: btn.dataset.id }; filterMuscle = null; filterEquip = null; filterCat = null; break;
-    case 'wFinish': {
-      const t = trainingById(btn.dataset.id);
-      const wp = wProgRaw(), dOf = wp.done[t.id] || {};
-      const exercises = t.exercises.map(ex => {
-        const sets = dOf[ex.name] || [];
-        return { name: ex.name, muscle: ex.muscle, setsDone: sets.filter(s => s && s.done).length, setsTotal: ex.sets || 3,
-          unit: ex.unit || 'kg', weights: (ex.unit || 'kg') === 'none' ? [] : sets.map(s => s && s.weight != null ? s.weight : null) };
-      });
-      const doneTotal = exercises.reduce((s2, x) => s2 + x.setsDone, 0);
-      if (!doneTotal && !confirm('Kein Satz abgehakt – trotzdem als Training zählen?')) return;
-      const note = (wp.sessionNote || {})[t.id] || '';
-      const startRec = startOf(t.id, today());
-      const rawMin = startRec ? Math.max(1, Math.round((Date.now() - new Date(startRec.startedAt)) / 60000)) : null;
-      const durationMin = rawMin == null ? null : Math.min(rawMin, doneTotal * 4 + 10); // vergessenes Beenden nicht ewig mitzählen
-      const calories = computeCalories(exercises, durationMin);
-      const rec = { date: today(), day: t.name, trainingId: t.id, exercises,
-        totalSetsDone: exercises.reduce((s, x) => s + x.setsDone, 0), totalSetsPlanned: exercises.reduce((s, x) => s + x.setsTotal, 0),
-        finishedAt: new Date().toISOString(), durationMin, calories, note };
-      syncSession(rec); pushHistory(rec);
-      delete wp.done[t.id];
-      if (wp.sessionNote) delete wp.sessionNote[t.id];
-      saveWProg(wp);
-      view = 'weeklist'; break;
-    }
+    case 'wFinish': { const rec = finishTraining(trainingById(btn.dataset.id)); if (!rec) return; view = 'weeklist'; break; }
+    case 'playFinish': { const rec = finishTraining(trainingById(playTid)); if (!rec) return; summaryRec = rec; restEnd = 0; view = 'summary'; break; }
     case 'wDayToggle': {
       const t = trainingById(btn.dataset.id), wd = btn.dataset.wd;
       const idx = t.weekdays.indexOf(wd);
@@ -1024,7 +1119,7 @@ content.addEventListener('click', e => {
       if (t && ex && !t.exercises.some(e => e.name === ex.name)) { t.exercises.push({ name: ex.name, muscle: ex.muscle, gif: ex.gif, sets: 3, note: '' }); saveWeekplan(); }
       break;
     }
-    case 'wStart': pushStart(btn.dataset.id); break;
+    case 'wStart': playStart(btn.dataset.id); break;
     case 'wSkip': { const t = trainingById(btn.dataset.id); (t.skipped = t.skipped || []).push(btn.dataset.date); saveWeekplan(); break; }
     case 'wDelete': {
       const t = trainingById(btn.dataset.id);
@@ -1063,8 +1158,7 @@ content.addEventListener('click', e => {
       saveGoal({ target, periodDays }); goalEditing = false; break;
     }
     case 'goalCancel': goalEditing = false; break;
-    case 'quickStart':
-      wId = btn.dataset.id; view = 'wtrain'; picker = null; break;
+    case 'quickStart': playStart(btn.dataset.id); picker = null; break;
     case 'histOpen': histDetailIdx = Number(btn.dataset.idx); view = 'histdetail'; break;
     case 'histBack': view = 'history'; break;
   }
