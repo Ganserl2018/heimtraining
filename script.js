@@ -225,7 +225,7 @@ function applyMood() {
 
 function render() {
   applyMood();
-  const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', start: 'Training wählen', play: 'Workout', summary: 'Geschafft', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
+  const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', start: 'Training wählen', play: 'Workout', preview: 'Training', summary: 'Geschafft', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
   document.querySelector('.topbar h1').textContent = view === 'wtrain' ? ((trainingById(wId) || {}).name || 'Training') : (titles[view] || 'Home Force');
   syncTabActive();
   { const pn = (loadProfile().name || '').trim(), bad = document.body.classList.contains('mood-bad');
@@ -239,6 +239,7 @@ function render() {
   if (view === 'tv') return renderTV();
   if (view === 'weeklist') return renderWeeklist();
   if (view === 'start') return renderStart();
+  if (view === 'preview') return renderPreview();
   if (view === 'play') return renderPlay();
   if (view === 'summary') return renderSummary();
   if (view === 'allex') return renderAllEx();
@@ -563,7 +564,7 @@ function renderStart() {
   const pack = t => `<div class="st-wrap"><button class="st-del" data-act="stDelete" data-id="${t.id}" aria-label="Training löschen">🗑</button><button class="st-pack${t.presetKey ? '' : ' st-own'}" data-act="stStart" data-id="${t.id}">
       <div class="st-pack-th">${t.exercises.slice(0, 4).map(img).join('')}</div>
       <div class="st-pack-body">
-        <div class="st-pack-top"><span class="st-pack-name">${esc(t.name)}</span><span class="st-pack-go">▶ START</span></div>
+        <div class="st-pack-top"><span class="st-pack-name">${esc(t.name)}</span><span class="st-pack-go">ÖFFNEN ›</span></div>
         <div class="st-pack-meta"><span class="st-tag${t.presetKey ? ' pre' : ''}">${t.presetKey ? 'VORLAGE' : '★ EIGEN'}</span> ${t.exercises.length} Übung${t.exercises.length === 1 ? '' : 'en'} · ${esc(muscles(t.exercises))}</div>
         <ol class="st-pack-list">${t.exercises.slice(0, 4).map(e => `<li>${esc(e.name)}</li>`).join('')}${t.exercises.length > 4 ? `<li class="more">+ ${t.exercises.length - 4} weitere</li>` : ''}</ol>
       </div></button></div>`;
@@ -678,6 +679,24 @@ function renderSummary() {
     <div class="pf-stats"><div><b>${r.durationMin ?? '–'}</b><span>Minuten</span></div><div><b>${r.totalSetsDone}/${r.totalSetsPlanned}</b><span>Sätze</span></div><div><b>${r.calories ?? '–'}</b><span>kcal</span></div></div>
     <div class="ov-card">${r.exercises.map(e => `<div class="pf-row"><span>${esc(e.name)}</span><b>${e.setsDone}/${e.setsTotal}</b></div>`).join('')}</div>
     <button class="ov-btn sm-done" data-act="summaryDone">Fertig</button>
+  </div>`;
+}
+
+// Vorschau: Training ausgewählt, noch nicht gestartet
+let prevId = null, prevKey = null;
+function renderPreview() {
+  const p = prevKey ? PRESETS.find(x => x.key === prevKey) : null;
+  const t = p ? { name: p.name, exercises: presetExercises(p) } : trainingById(prevId);
+  if (!t) { view = 'start'; return renderStart(); }
+  const sets = t.exercises.reduce((a, e) => a + (e.sets || 3), 0);
+  content.innerHTML = `<div class="pv">
+    <div class="pl-top"><button class="pl-x" data-act="prevBack" aria-label="Zurück">‹</button>
+      <div class="pl-title"><b>${esc(t.name)}</b><span>${t.exercises.length} Übungen · ${sets} Sätze</span></div>
+      ${p ? '' : `<button class="pl-x pl-del" data-act="prevDelete" aria-label="Training löschen">🗑</button>`}</div>
+    <div class="pv-list">${t.exercises.map((e, i) => `<div class="pv-ex"><span class="pv-n">${i + 1}</span>
+      <img src="${esc(e.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+      <div><b>${esc(e.name)}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)} · ${e.sets || 3} Sätze</em></div></div>`).join('')}</div>
+    <div class="pl-nav"><button class="pl-next" data-act="prevGo">▶ TRAINING STARTEN</button></div>
   </div>`;
 }
 
@@ -1026,39 +1045,23 @@ content.addEventListener('click', e => {
       }
       picker = null; break;
     }
-    case 'stStart': playStart(btn.dataset.id); break;
-    case 'stPreset': {
-      const p = PRESETS.find(x => x.key === btn.dataset.key);
-      let t = weekplan.find(w => w.presetKey === p.key);
-      if (!t) { t = { id: 'w' + Date.now(), name: p.name, presetKey: p.key, exercises: presetExercises(p), weekdays: [], since: {}, time: '' }; weekplan.push(t); saveWeekplan(); }
-      playStart(t.id); break;
+    case 'stStart': prevId = btn.dataset.id; prevKey = null; view = 'preview'; break;
+    case 'stPreset': prevKey = btn.dataset.key; prevId = null; view = 'preview'; break;
+    case 'prevBack': view = 'start'; break;
+    case 'prevGo': {
+      if (prevKey) {
+        const p = PRESETS.find(x => x.key === prevKey);
+        let t = weekplan.find(w => w.presetKey === p.key);
+        if (!t) { t = { id: 'w' + Date.now(), name: p.name, presetKey: p.key, exercises: presetExercises(p), weekdays: [], since: {}, time: '' }; weekplan.push(t); saveWeekplan(); }
+        playStart(t.id);
+      } else playStart(prevId);
+      break;
     }
-    case 'stDelete': case 'playDelete': {
-      const id = btn.dataset.act === 'playDelete' ? playTid : btn.dataset.id, t = trainingById(id);
+    case 'prevDelete': {
+      const t = trainingById(prevId);
       if (!t || !confirm('Training „' + t.name + '“ löschen?')) return;
-      weekplan = weekplan.filter(w => w.id !== id); saveWeekplan();
-      const wp = wProgRaw(); delete wp.done[id]; saveWProg(wp);
-      view = 'start'; break;
+      weekplan = weekplan.filter(w => w.id !== prevId); saveWeekplan(); view = 'start'; break;
     }
-    case 'playExit': view = 'overview'; break;
-    case 'playGo': playIdx = Number(btn.dataset.i); break;
-    case 'playNext': playIdx++; break;
-    case 'playPrev': playIdx--; break;
-    case 'playAddSet': { const ex = trainingById(playTid).exercises[playIdx]; ex.sets = Math.min(10, (ex.sets || 3) + 1); saveWeekplan(); break; }
-    case 'playSet': {
-      const t = trainingById(playTid), ex = t.exercises[playIdx], k = Number(btn.dataset.k);
-      const wp = wProgRaw(), d = wp.done[t.id] = wp.done[t.id] || {}, sets = d[ex.name] = d[ex.name] || [];
-      sets[k] = sets[k] || {};
-      sets[k].done = !sets[k].done;
-      if (sets[k].done) {
-        if (sets[k].weight == null && (ex.unit || 'kg') !== 'none') { const l = lastWeights(ex.name); const pre = l[k] ?? l[l.length - 1]; if (pre != null) sets[k].weight = pre; }
-        restEnd = Date.now() + REST_SEC * 1000; pushStart(t.id);
-      } else restEnd = 0;
-      saveWProg(wp); break;
-    }
-    case 'restAdd': restEnd = Math.max(restEnd, Date.now()) + 15000; break;
-    case 'restSkip': restEnd = 0; break;
-    case 'summaryDone': summaryRec = null; view = 'overview'; break;
     case 'wOpen2': wId = btn.dataset.id; view = 'wtrain'; break;
     case 'wDayNew': {
       // Ruhetag angetippt → neues Tagestraining für diesen Wochentag anlegen und direkt öffnen

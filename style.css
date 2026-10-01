@@ -561,3 +561,10 @@ body.mood-bad{--text-faint:#b08a85;}
 .pl-del{margin-left:auto;}
 .pl-media,.pl-media img{max-height:22dvh;}
 .pl-nav{background:var(--bg); margin:0 -1.1rem; padding:.6rem 1.1rem .4rem;}
+.pv{display:flex; flex-direction:column; gap:.7rem; min-height:100%;}
+.pv-list{display:flex; flex-direction:column; gap:.5rem;}
+.pv-ex{display:flex; align-items:center; gap:.7rem; background:var(--panel); border:1px solid var(--border-soft); border-radius:14px; padding:.5rem .7rem .5rem .6rem;}
+.pv-n{flex:none; width:22px; font-weight:800; color:var(--accent);}
+.pv-ex img{flex:none; width:64px; height:64px; object-fit:cover; border-radius:10px; background:#000;}
+.pv-ex b{display:block; font-size:.92rem;} .pv-ex em{font-style:normal; font-size:.74rem; color:var(--text-dim);}
+.pv .pl-nav{margin-top:auto;}
