@@ -645,9 +645,9 @@ function renderPlay() {
     <div class="pl-name">${esc(ex.name)}</div>
     <div class="pl-muscle">${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}${last.length ? ` · letztes Mal ${last.join(' / ')} ${UNITS[unit][1]}` : ''}</div>
     <div class="pl-sets">${Array.from({ length: n }, (_, k) => {
-      const s = sets[k] || {}, ph = last[k] ?? last[last.length - 1];
+      const s = sets[k] || {}, pl = (ex.plan || [])[k] || {}, ph = pl.w ?? last[k] ?? last[last.length - 1];
       return `<div class="pl-set${s.done ? ' done' : ''}">
-        <span class="pl-k">${k + 1}</span>
+        <span class="pl-k">${k + 1}${pl.r != null ? `<small>${pl.r} ${unit === 'sek' ? 's' : '×'}</small>` : ''}</span>
         ${unit === 'none' ? '<span class="pl-free">Satz</span>' : `<input type="number" inputmode="decimal" data-act="wWeight" data-id="${t.id}" data-i="${playIdx}" data-k="${k}" value="${s.weight ?? ''}" placeholder="${ph ?? UNITS[unit][0]}"><span class="pl-u">${UNITS[unit][1] || ''}</span>`}
         <button class="pl-ok" data-act="playSet" data-k="${k}" aria-label="Satz ${k + 1} fertig">${s.done ? '✓' : ''}</button>
       </div>`; }).join('')}
@@ -768,13 +768,13 @@ function renderWTrain() {
     ${sec(2, 'Übungen', hasEx, `${step === 2 ? hint('ex', 2, 'Hier fügst du Übungen hinzu: auf „+ Übung hinzufügen“ tippen, suchen und antippen. Du kannst mehrere nacheinander wählen.') : ''}
       ${t.exercises.map((ex, i) => `<div class="ts-ex"><img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><div><b>${esc(ex.name)}</b><em>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</em></div><button data-act="wRemoveEx" data-id="${t.id}" data-i="${i}" aria-label="Übung entfernen">✕</button></div>`).join('')}
       <button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button>`)}
-    ${hasEx ? sec(3, 'Sätze &amp; Eintragen', step > 3, `${step === 3 ? hint('sets', 3, 'Hier stellst du pro Übung ein, wie viele Sätze du machst und was du einträgst: Gewicht, Wiederholungen, Sekunden oder nur abhaken. Passe es an oder lass es so.') : ''}
+    ${hasEx ? sec(3, 'Sätze &amp; Eintragen', step > 3, `${step === 3 ? hint('sets', 3, 'Hier stellst du pro Übung ein, wie viele Sätze du machst, was du einträgst und trägst für jeden Satz dein Ziel ein (kg und Wiederholungen). Du kannst die Felder auch leer lassen.') : ''}
       ${t.exercises.map((ex, i) => { const setsCount = ex.sets || 3; return `<div class="ts-set"><div class="ts-set-n">${esc(ex.name)}</div><div class="xs">
           <div class="xs-row"><span class="xs-l">Sätze</span>
             <div class="xs-step"><button data-act="wSetsAdj" data-id="${t.id}" data-i="${i}" data-d="-1" aria-label="Ein Satz weniger">–</button><b>${setsCount}</b><button data-act="wSetsAdj" data-id="${t.id}" data-i="${i}" data-d="1" aria-label="Ein Satz mehr">+</button></div></div>
           <div class="xs-row"><span class="xs-l">Eintragen</span>
             <div class="xs-seg">${Object.entries({ kg: 'Gewicht', wdh: 'Wdh', sek: 'Sek', none: 'Haken' }).map(([v, l]) => `<button class="${(ex.unit || 'kg') === v ? 'on' : ''}" data-act="wUnitSet" data-id="${t.id}" data-i="${i}" data-u="${v}">${l}</button>`).join('')}</div></div>
-        </div><textarea class="w-note" placeholder="Notiz zur Übung…" data-act="wExNote" data-id="${t.id}" data-i="${i}">${esc(ex.note || '')}</textarea></div>`; }).join('')}`) : ''}
+        </div>${(ex.unit || 'kg') === 'none' ? '' : `<div class="pp"><div class="pp-h"><span>Satz</span>${(ex.unit || 'kg') === 'kg' ? '<span>kg</span>' : ''}<span>${(ex.unit || 'kg') === 'sek' ? 'Sek' : 'Wdh'}</span></div>${Array.from({ length: setsCount }, (_, k) => { const pl = (ex.plan || [])[k] || {}; return `<div class="pp-r"><b>${k + 1}</b>${(ex.unit || 'kg') === 'kg' ? `<input type="number" inputmode="decimal" placeholder="kg" value="${pl.w ?? ''}" data-act="wPlan" data-id="${t.id}" data-i="${i}" data-k="${k}" data-f="w">` : ''}<input type="number" inputmode="numeric" placeholder="${(ex.unit || 'kg') === 'sek' ? 'Sek' : 'Wdh'}" value="${pl.r ?? ''}" data-act="wPlan" data-id="${t.id}" data-i="${i}" data-k="${k}" data-f="r"></div>`; }).join('')}</div>`}<textarea class="w-note" placeholder="Notiz zur Übung…" data-act="wExNote" data-id="${t.id}" data-i="${i}">${esc(ex.note || '')}</textarea></div>`; }).join('')}`) : ''}
     ${hasEx ? sec(4, 'Tage &amp; Uhrzeit', hasDays, `${step === 4 ? hint('days', 4, 'Hier legst du fest, an welchen Tagen du dieses Training machst. Tippe einfach die Wochentage an.') : ''}
       <div class="w-schedule"><div class="w-schedule-days">${WD_KEYS.map(k => `<button class="chip${t.weekdays.includes(k) ? ' active' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>
         <input type="time" class="w-schedule-time" data-act="wTime" data-id="${t.id}" value="${esc(t.time || '')}" title="Uhrzeit (informativ, kein Cutoff)"></div>
@@ -1065,7 +1065,7 @@ content.addEventListener('click', e => {
       sets[k] = sets[k] || {};
       sets[k].done = !sets[k].done;
       if (sets[k].done) {
-        if (sets[k].weight == null && (ex.unit || 'kg') !== 'none') { const l = lastWeights(ex.name); const pre = l[k] ?? l[l.length - 1]; if (pre != null) sets[k].weight = pre; }
+        if (sets[k].weight == null && (ex.unit || 'kg') !== 'none') { const l = lastWeights(ex.name), pl = (ex.plan || [])[k] || {}; const pre = pl.w ?? l[k] ?? l[l.length - 1]; if (pre != null) sets[k].weight = pre; }
         restEnd = Date.now() + REST_SEC * 1000; pushStart(t.id);
       } else restEnd = 0;
       saveWProg(wp); break;
@@ -1207,6 +1207,13 @@ content.addEventListener('input', e => {
     p[profileEl.dataset.field] = ['gender', 'name'].includes(profileEl.dataset.field) ? profileEl.value : (profileEl.value === '' ? null : Number(profileEl.value));
     saveProfile(p);
     return;
+  }
+  const planEl = e.target.closest('[data-act="wPlan"]');
+  if (planEl) {
+    const ex = trainingById(planEl.dataset.id).exercises[Number(planEl.dataset.i)], k = Number(planEl.dataset.k);
+    ex.plan = ex.plan || []; ex.plan[k] = ex.plan[k] || {};
+    ex.plan[k][planEl.dataset.f] = planEl.value === '' ? null : Number(planEl.value);
+    saveWeekplan(); return;
   }
   const timeEl = e.target.closest('[data-act="wTime"]');
   if (timeEl) {

@@ -605,3 +605,10 @@ body.mood-bad{--text-faint:#b08a85;}
 .ts-go{width:100%;}
 .ts-del{align-self:center; min-height:44px; background:none; border:0; color:var(--text-dim); text-decoration:underline; cursor:pointer;}
 .tsx .hh{margin:.2rem 0 .6rem;}
+.pp{margin:.5rem 0; display:flex; flex-direction:column; gap:.35rem;}
+.pp-h,.pp-r{display:flex; align-items:center; gap:.5rem;}
+.pp-h span{flex:1; text-align:center; font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; color:var(--text-dim);}
+.pp-h span:first-child,.pp-r b{flex:none; width:40px; text-align:center;}
+.pp-r b{color:var(--accent);}
+.pp-r input{flex:1; min-width:0; min-height:44px; font-size:1.05rem; text-align:center; background:var(--bg); color:var(--text); border:1px solid var(--border); border-radius:10px; box-sizing:border-box;}
+.pl-k{display:flex; flex-direction:column; align-items:center; width:34px;} .pl-k small{font-size:.62rem; color:var(--accent); font-weight:700; white-space:nowrap;}
