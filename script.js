@@ -309,12 +309,43 @@ function renderPicker() {
   q.focus();
 }
 
+// Deutsche Suche: deutsche Begriffe (Stamm, ohne Umlaute) -> englische Namensbestandteile der Übungsdatenbank.
+const DE_SYN = {
+  bankdruecken: ['bench press'], schraegbank: ['incline'], schraegbankdruecken: ['incline bench', 'incline press'], negativbank: ['decline'], negativ: ['decline'],
+  brustdruecken: ['chest press', 'bench press', 'push up', 'pushup'], fliegende: ['flye', 'fly', 'crossover'], butterfly: ['flye', 'fly', 'crossover'], kabelzug: ['cable', 'pulley'], seilzug: ['cable', 'pulley'], crossover: ['crossover'],
+  kreuzheben: ['deadlift'], rumaenisch: ['romanian'], steifbeinig: ['stiff'], kniebeug: ['squat'], ausfallschritt: ['lunge', 'split squat'], beinpresse: ['leg press', 'sled', 'hack squat'], beinstreck: ['leg extension'],
+  beinbeug: ['leg curl', 'hamstring'], beincurl: ['leg curl'], wadenheben: ['calf'], wade: ['calf'], huefte: ['hip'], hueftstoss: ['hip thrust', 'bridge', 'glute'], gesaess: ['glute', 'butt'], beinheben: ['leg raise', 'knee raise', 'hanging'], beine: ['leg', 'squat', 'lunge', 'calf'],
+  liegestuetz: ['push up', 'pushup'], klimmzug: ['pull up', 'pullup', 'chin up'], klimmzuege: ['pull up', 'chin up'], latzug: ['pulldown', 'pull down'], latziehen: ['pulldown', 'pull down'], rudern: ['row'], vorgebeugt: ['bent'], aufrecht: ['upright'],
+  schulterdruecken: ['shoulder press', 'overhead press', 'military press', 'arnold'], seitheben: ['lateral raise', 'side lateral'], frontheben: ['front raise'], hinterschulter: ['rear delt', 'rear lateral', 'reverse fly'], schulter: ['shoulder', 'delt'], nackendruecken: ['behind neck', 'behind the neck'],
+  shrug: ['shrug'], schulterzucken: ['shrug'], trapez: ['shrug', 'trap'],
+  bizeps: ['biceps', 'bicep'], curl: ['curl'], hammercurl: ['hammer'], hammer: ['hammer'], scott: ['preacher'], konzentrationscurl: ['concentration'], zottman: ['zottman'],
+  trizeps: ['triceps', 'tricep'], trizepsdruecken: ['pushdown', 'tricep extension'], stirndruecken: ['skull crusher', 'lying triceps'], french: ['skull crusher', 'lying triceps'], kickback: ['kickback'], dips: ['dip'], ueberzug: ['pullover'], ueberzuege: ['pullover'], bankdips: ['dip'],
+  bauch: ['crunch', 'sit up', 'ab ', 'oblique', 'plank', 'leg raise'], bauchpresse: ['crunch', 'sit up'], crunch: ['crunch'], situp: ['sit up'], unterarmstuetz: ['plank'], plank: ['plank'], russisch: ['russian'], rollout: ['rollout'], bauchroller: ['rollout'], seitstuetz: ['side plank', 'plank'], drehung: ['twist', 'rotation'], rotation: ['rotation'], woodchop: ['chop'],
+  ruecken: ['back', 'row', 'pulldown', 'pull up', 'lat', 'deadlift'], rueckenstrecker: ['back extension', 'hyperextension', 'good morning'], hyperextension: ['hyperextension', 'back extension'], goodmorning: ['good morning'], nacken: ['neck'], unterarm: ['wrist', 'forearm'], handgelenk: ['wrist'], handgelenke: ['wrist'],
+  brust: ['chest'], arme: ['curl', 'tricep', 'bicep'], oberschenkel: ['squat', 'leg', 'lunge'],
+  kurzhantel: ['dumbbell'], langhantel: ['barbell'], hantel: ['dumbbell', 'barbell'], band: ['band'], widerstandsband: ['band'], theraband: ['band'], seil: ['rope'], stange: ['bar'], ezstange: ['ez'], kettlebell: ['kettlebell'], ball: ['ball'], koerpergewicht: ['bodyweight'], smith: ['smith'],
+  sprung: ['jump'], spruenge: ['jump'], reissen: ['snatch'], umsetzen: ['clean'], stossen: ['jerk'], ziehen: ['pull', 'row'], druecken: ['press'], heben: ['raise', 'lift'], strecken: ['extension'], beugen: ['curl'],
+  sitzend: ['seated'], stehend: ['standing'], liegend: ['lying'], einarmig: ['one arm', 'single arm'], beidarmig: ['two arm'], einbeinig: ['single leg', 'one leg'], enger: ['close'], breit: ['wide'], weit: ['wide'], umgekehrt: ['reverse'], schraeg: ['incline'], flach: ['flat'], seitlich: ['side', 'lateral'], haengend: ['hanging'], gestreckt: ['straight', 'stiff'], kniend: ['kneeling'], mittel: ['medium'], griff: ['grip'], untergriff: ['underhand', 'supinated'], obergriff: ['overhand', 'pronated'], vorne: ['front'], hinten: ['rear', 'behind'], hoch: ['high', 'up'], tief: ['low'], schwer: ['power'], explosiv: ['power', 'jump'], dehnen: ['stretch'],
+};
+const deNorm = t => String(t).toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss').replace(/-/g, ' ');
+function wordMatches(w, ex) {
+  const n = deNorm(w);
+  const hay = deNorm(ex.name + ' ' + ex.muscle + ' ' + (MUSCLE_DE[ex.muscle] || '') + ' ' + (MUSCLE_GROUPS[ex.muscle] || '')) + ' ';
+  if (hay.includes(n)) return true;
+  if (/^aufwaerm|^warm/.test(n) && ex.category === 'warmup') return true;
+  if (n.length < 3) return false;
+  for (const k in DE_SYN) {
+    if ((k.startsWith(n) || /^(e|en|n|s)$/.test(n.slice(k.length)) && n.startsWith(k)) && DE_SYN[k].some(t => hay.includes(t))) return true;
+  }
+  return false;
+}
+
 function renderResults(query) {
   const words = query.toLowerCase().split(/\s+/).filter(Boolean);
   const hits = [];
   pool.forEach((ex, i) => {
     const s = (ex.name + ' ' + ex.muscle).toLowerCase();
-    if (!words.every(w => s.includes(w))) return;
+    if (!words.every(w => wordMatches(w, ex))) return;
     if (filterMuscle && MUSCLE_GROUPS[ex.muscle] !== filterMuscle) return;
     if (filterEquip && !matchesEquip(ex.name, filterEquip)) return;
     if (filterCat && ex.category !== filterCat) return;
