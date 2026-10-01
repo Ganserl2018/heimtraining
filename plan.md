@@ -184,3 +184,6 @@ Weitere erledigt heute: Wochenplan-Redesign, Hantel-Logik, Alle-Übungen-Galerie
 - V12-7 Gewichtsklassen Leicht/Moderat/Schwer im Detail-Sheet (`WCLASS`, `wclassHtml`).
 - V12-8 Taskforce (scout, strategist, designer, coach, checker).
 ## V13 – Level-Vorlagen + Generator (nächste Phase, nach V11-03): V13-1 Coach-Regeln, V13-2 Level-Vorlagen, V13-3 Auto-Generator.
+
+## V13-1 Coach-Bericht (02.10.) gesichert
+Unverkürzt im Vault: `Projects/Privat/Heimtraining/Coach-Regeln-V13-Bericht-2026-10-02.md`. Bau-Reihenfolge: Start-Gewichte + Schemata (W-01) → Generator (W-02) → Lernlogik/Banner. Offene Frage an Alex: welche Hantelscheiben (45 kg nur? 45 lb?).
