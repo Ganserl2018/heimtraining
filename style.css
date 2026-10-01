@@ -702,3 +702,8 @@ body.mood-bad{--text-faint:#b08a85;}
 .pf-sh-btn{min-height:52px; border-radius:14px; border:0; background:var(--accent); color:var(--on-accent,#0b1000); font-weight:800; cursor:pointer;}
 .pf-sh-btn.ghost{background:rgba(255,255,255,.08); color:#fff;} .pf-sh-btn:disabled{opacity:.35;}
 .pf-sh-del{align-self:center; min-height:44px; background:none; border:0; color:rgba(255,255,255,.5); text-decoration:underline; cursor:pointer;}
+
+.pf-bg{background:#0b0d0e url(player-bg.jpg) center top/cover no-repeat;}
+.pf-shade{background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,0) 40%,rgba(0,0,0,.78) 64%,#000 100%);}
+.pf-gif{position:absolute; right:calc(max(0px,(100% - 560px)/2) + 16px); top:calc(env(safe-area-inset-top) + 96px); width:104px; height:104px; border-radius:16px; overflow:hidden; background:#000; border:1px solid rgba(255,255,255,.25); box-shadow:0 6px 20px rgba(0,0,0,.5);}
+.pf-gif img{width:100%; height:100%; object-fit:cover; display:block;}

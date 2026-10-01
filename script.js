@@ -646,7 +646,8 @@ function renderPlay() {
   const mainIc = !exDone ? '✓' : isLast ? '⚑' : '›';
   const mainLab = !exDone ? 'Satz fertig' : isLast ? 'Training beenden' : 'Nächste Übung';
   content.innerHTML = `<div class="pf">
-    <div class="pf-bg"><img class="pf-blur" src="${esc(ex.gif)}" alt=""><img class="pf-fg" src="${esc(ex.gif)}" alt="" onerror="this.style.visibility='hidden'"></div>
+    <div class="pf-bg"></div>
+    <div class="pf-gif"><img src="${esc(ex.gif)}" alt="" onerror="this.style.visibility='hidden'"></div>
     <div class="pf-shade"></div>
     <div class="pf-top">
       <button class="pf-back" data-act="playExit" aria-label="Zurück">‹</button>
