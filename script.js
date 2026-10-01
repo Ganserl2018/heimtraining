@@ -68,8 +68,8 @@ function pushStart(trainingId) {
 // V6-05: Status pro Training+Datum – 3 neutrale Stufen, rein aus App-eigenen Daten.
 // 'geplant' = Tag noch nicht dran/in der Zukunft, 'offen' = heute dran, noch nicht erledigt.
 function trainingStatusForDate(t, dateStr) {
-  if (!t.exercises || !t.exercises.length) return null; // leere Trainings zählen nie (weder verpasst noch offen)
   if (!t.weekdays || !t.weekdays.length || !t.weekdays.includes(wdKeyOf(dateStr))) return null;
+  if (!t.exercises || !t.exercises.length) return 'vorher'; // leeres Training: Hantel gedimmt, zählt nie als verpasst/offen
   const done = loadHistory().some(r => r.trainingId === t.id && r.date === dateStr);
   if (done) return 'erledigt';
   if ((t.skipped || []).includes(dateStr)) return 'vorher'; // als Ruhetag gewertet
@@ -494,11 +494,12 @@ function renderWeeklist() {
   const meta = t => `${t.exercises.length} Übung${t.exercises.length === 1 ? '' : 'en'} · ${t.weekdays.length ? WD_KEYS.filter(k => t.weekdays.includes(k)).map(k => WD_LABELS[k]).join(' ') + (t.time ? ' · ' + esc(t.time) : '') : 'nicht eingeplant'}`;
   const dayTiles = WD_KEYS.map((k, i) => {
     const t = dayTr(k);
-    if (!t) return `<div class="wp-day wp-empty"><b>${WD_LABELS[k]}</b><span>–</span></div>`;
+    if (!t) return `<div class="wp-cell"><div class="wp-day wp-empty"><b>${WD_LABELS[k]}</b><span>–</span></div></div>`;
     const ds = addDays(ws, i);
+    const sched = t.weekdays.includes(k);
     const st = trainingStatusForDate(t, ds);
     const n = t.exercises.length;
-    return `<button class="wp-day${st ? ' wp-' + st : ''}${n ? '' : ' wp-leer'}${ds === t0 ? ' wp-heute' : ''}" data-act="wOpen2" data-id="${t.id}"><b>${WD_LABELS[k]}</b>${DB}<span>${n ? n + ' Üb.' : 'leer'}</span></button>`;
+    return `<div class="wp-cell"><button class="wp-day${sched ? (st ? ' wp-' + st : '') : ' wp-aus'}${n ? '' : ' wp-leer'}${ds === t0 ? ' wp-heute' : ''}" data-act="wOpen2" data-id="${t.id}"><b>${WD_LABELS[k]}</b>${sched ? DB : '<em>+</em>'}<span>${n ? n + ' Üb.' : 'leer'}</span></button>${sched ? `<button class="wp-x" data-act="wUnsched" data-id="${t.id}" data-wd="${k}" aria-label="Aus Plan entfernen">×</button>` : ''}</div>`;
   }).join('');
   const customCards = custom.map(t => {
     const th = t.exercises.slice(0, 3).map(ex => `<img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`).join('');
@@ -843,6 +844,7 @@ content.addEventListener('click', e => {
       if (idx === -1) { t.weekdays.push(wd); (t.since = t.since || {})[wd] = today(); } else t.weekdays.splice(idx, 1);
       saveWeekplan(); break;
     }
+    case 'wUnsched': { const t = trainingById(btn.dataset.id); t.weekdays = t.weekdays.filter(x => x !== btn.dataset.wd); saveWeekplan(); break; }
     case 'wStart': pushStart(btn.dataset.id); break;
     case 'wSkip': { const t = trainingById(btn.dataset.id); (t.skipped = t.skipped || []).push(btn.dataset.date); saveWeekplan(); break; }
     case 'wDelete': {
