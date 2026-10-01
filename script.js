@@ -880,12 +880,52 @@ function equipBadge(name) {
   for (const [k, l] of [['dumbbell', 'KH'], ['barbell', 'LH'], ['cable', 'Seilzug'], ['band', 'Band']]) if (n.includes(k)) return l;
   return 'Körper';
 }
-// Zweitmuskel (Heuristik aus Name – DB hat nur den Hauptmuskel)
+// Zweitmuskeln (Heuristik aus Name – DB hat nur den Hauptmuskel)
+function secondaries(e) {
+  const n = e.name.toLowerCase(), m = e.muscle, r = [];
+  const press = /press|push-up|push up|pushup|dip|close.grip/.test(n) && !/fly|flye|crossover|raise|pullover|shrug/.test(n);
+  if ((m === 'chest' || m === 'shoulders') && press) r.push('Trizeps');
+  if (m === 'chest' && press) r.push('Schultern');
+  if (m === 'triceps' && /press|dip|push/.test(n)) r.push('Brust', 'Schultern');
+  if ((m === 'lats' || m === 'middle back') && !/pullover|straight-arm|rack pull/.test(n)) r.push('Bizeps', 'Schultern');
+  if (m === 'shoulders' && /row|face pull|pull apart|rear/.test(n)) r.push('Mittl. Rücken');
+  if (m === 'shoulders' && /row/.test(n) && !/rear/.test(n)) r.push('Bizeps');
+  if (m === 'biceps' && /curl/.test(n)) r.push('Unterarme');
+  if (m === 'quadriceps' && /squat|press|lunge|step/.test(n)) r.push('Gesäß');
+  if (m === 'hamstrings' || m === 'lower back') r.push('Gesäß');
+  if (m === 'glutes') r.push('Beinbeuger');
+  return [...new Set(r)];
+}
 function muscleLabel(e) {
-  const m = MUSCLE_DE[e.muscle] || e.muscle, n = e.name.toLowerCase();
-  if (/^(Brust|Schultern)/.test(m) && /press|push-up|push up|dip|flyes? ?\+|close.grip/.test(n) && !/fly|flye|crossover|raise|pullover|shrug/.test(n)) return m + ' · Trizeps';
-  if ((e.muscle === 'lats' || e.muscle === 'middle back') && !/pullover|straight-arm|rack pull/.test(n)) return m + ' · Bizeps';
-  return m;
+  const m = MUSCLE_DE[e.muscle] || e.muscle, s = secondaries(e);
+  return s.length ? m + ' · ' + s[0] : m;
+}
+// Gewichtsklassen: Aufwand + sichtbarer Nutzen, je Hauptmuskel (Bereich / Aufbau / Maximum)
+const WCLASS = {
+  chest: ['im Brustbereich', 'eine breitere Brust', 'maximale Brustbreite'],
+  shoulders: ['im Schulterbereich', 'runde, breitere Schultern', 'massive, breite Schultern'],
+  biceps: ['an den Oberarmen', 'kräftigere, vollere Arme', 'maximalen Armumfang'],
+  triceps: ['an der Armrückseite', 'kräftigere, dickere Arme', 'maximale Armmasse'],
+  lats: ['am Rücken', 'einen breiteren Rücken (V-Form)', 'maximale Rückenbreite'],
+  'middle back': ['am oberen Rücken', 'einen dickeren, kräftigeren Rücken', 'maximale Rückendicke'],
+  'lower back': ['im unteren Rücken', 'einen stabileren Rumpf', 'maximale Rumpfkraft'],
+  traps: ['im Nacken-/Schulterbereich', 'einen kräftigeren Nacken-Schulter-Übergang', 'maximale Trapezmasse'],
+  quadriceps: ['an den Oberschenkeln', 'kräftigere Oberschenkel', 'maximale Beinmasse'],
+  hamstrings: ['an der Beinrückseite', 'kräftigere Beinrückseite', 'maximale Beinrückseite'],
+  glutes: ['am Gesäß', 'ein kräftigeres, rundes Gesäß', 'maximales Gesäßvolumen'],
+  calves: ['an den Waden', 'kräftigere Waden', 'maximale Wadenmasse'],
+  abdominals: ['im Bauchbereich', 'einen definierteren Bauch', 'maximale Bauchdefinition'],
+  forearms: ['an den Unterarmen', 'kräftigere Unterarme', 'maximale Griffkraft und Unterarmmasse']
+};
+function wclassHtml(e) {
+  const w = WCLASS[e.muscle] || ['im Zielmuskel', 'Muskelaufbau', 'maximale Kraft'];
+  const sec = secondaries(e);
+  const row = (t, a, b) => `<div class="xr-wc"><b>${t}</b><span>${a} ${b}</span></div>`;
+  return `${sec.length ? `<div class="xr-sec">Zusätzlich beansprucht: ${sec.join(', ')}</div>` : ''}
+    <div class="ov-card-title">Gewichtsklassen</div>
+    ${row('Leicht', 'Geringer Aufwand bei minimalem Verletzungsrisiko.', `Optisch: Straffung, Definition und bessere Haltung ${w[0]}.`)}
+    ${row('Moderat', 'Mittlerer, kontrollierter Aufwand.', `Optisch: effektiver Muskelaufbau (Hypertrophie) für ${w[1]}.`)}
+    ${row('Schwer', 'Hoher Aufwand, Fokus auf strikte Technik.', `Optisch: ${w[2]}, massives Volumen und sichtbarer Kraftzuwachs.`)}`;
 }
 function xrTile(i, act) {
   const e = pool[i];
@@ -925,6 +965,7 @@ function renderAllEx() {
       <img class="browse-gif" src="${esc(ex.gif)}" alt="" onerror="this.style.visibility='hidden'">
       <div class="exercise-name">${esc(ex.name)}</div>
       <div class="exercise-muscle">${esc(ex.muscle)}${MUSCLE_GROUPS[ex.muscle] ? ' · ' + MUSCLE_GROUPS[ex.muscle] : ''}</div>
+      ${wclassHtml(ex)}
       <div class="ov-card-title">Zu Training hinzufügen</div>
       <div class="browse-trainings">${weekplan.map(t => { const has = t.exercises.some(e => e.name === ex.name);
         return `<button class="ov-btn ov-btn-ghost${has ? ' browse-has' : ''}" data-act="browseAdd" data-id="${t.id}">${esc(t.name)}${has ? ' ✓' : ''}</button>`; }).join('')}</div>

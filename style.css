@@ -865,3 +865,7 @@ body.mood-bad .xr-pill.active, body.mood-bad .xr-filter.on{background:#d12a19; b
 /* alter Fix-Layout-Zwang für Alle Übungen aufheben */
 #content:has(.xr){overflow-y:auto !important; padding-bottom:5.5rem;}
 @media (min-width:820px){ #content:has(.xr){padding-bottom:1.5rem;} }
+.xr-sec{font-size:.8rem; color:var(--accent); margin:.35rem 0 .2rem; font-weight:700}
+.xr-wc{display:flex; flex-direction:column; gap:.1rem; padding:.5rem .7rem; margin:.3rem 0; border-radius:12px; background:rgba(255,255,255,.05); font-size:.82rem; line-height:1.35; text-align:left}
+.xr-wc b{color:var(--accent); font-size:.78rem; letter-spacing:.04em; text-transform:uppercase}
+.xr-wc span{color:rgba(255,255,255,.85)}
