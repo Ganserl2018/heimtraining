@@ -70,7 +70,7 @@ function trainingStatusForDate(t, dateStr) {
   if (!t.weekdays || !t.weekdays.length || !t.weekdays.includes(wdKeyOf(dateStr))) return null;
   const done = loadHistory().some(r => r.trainingId === t.id && r.date === dateStr);
   if (done) return 'erledigt';
-  if (t.since && t.since[wdKeyOf(dateStr)] && dateStr < t.since[wdKeyOf(dateStr)]) return null;
+  if (t.since && t.since[wdKeyOf(dateStr)] && dateStr < t.since[wdKeyOf(dateStr)]) return 'vorher'; // eingeplant, aber vor Planstart: zählt nicht als verpasst
   const started = !!startOf(t.id, dateStr);
   const t0 = today();
   if (dateStr > t0) return 'geplant';
@@ -424,6 +424,7 @@ function renderOverview() {
       : items.some(x => x.status === 'unvollständig') ? 'unvollständig'
       : items.some(x => x.status === 'offen') ? 'offen'
       : items.some(x => x.status === 'geplant') ? 'geplant'
+      : items.some(x => x.status === 'vorher') ? 'vorher'
       : items.length ? 'erledigt' : null;
     const DB = '<svg class="lab-db" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>';
     const sub = !worst ? '(Ruhe)' : worst === 'verpasst' ? '⚠' : worst === 'unvollständig' ? '!' : DB;

@@ -326,3 +326,5 @@ body:not(:has(.overview-lab)) .topbar{background:transparent; border-bottom:1px 
 :where(#content) button:active{border-color:var(--accent); color:var(--accent);}
 :where(#content) .edit-bar button{background:transparent; border-color:var(--accent); color:var(--accent);}
 :where(#content) input,:where(#content) textarea,:where(#content) select{font:inherit; font-size:16px;}
+
+.lab-vorher span{color:#8f9a96; opacity:.7;}
