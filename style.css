@@ -612,3 +612,4 @@ body.mood-bad{--text-faint:#b08a85;}
 .pp-r b{color:var(--accent);}
 .pp-r input{flex:1; min-width:0; min-height:44px; font-size:1.05rem; text-align:center; background:var(--bg); color:var(--text); border:1px solid var(--border); border-radius:10px; box-sizing:border-box;}
 .pl-k{display:flex; flex-direction:column; align-items:center; width:34px;} .pl-k small{font-size:.62rem; color:var(--accent); font-weight:700; white-space:nowrap;}
+.ts-save{width:100%; min-height:52px; margin-bottom:.6rem; background:none; border:1.5px solid var(--accent); border-radius:14px; color:var(--accent); font-weight:800; letter-spacing:.04em; cursor:pointer;}

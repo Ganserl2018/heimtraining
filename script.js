@@ -785,6 +785,7 @@ function renderWTrain() {
         <input type="time" class="w-schedule-time" data-act="wTime" data-id="${t.id}" value="${esc(t.time || '')}" title="Uhrzeit (informativ, kein Cutoff)"></div>
       ${miss.length ? `<div class="w-missed">${miss.map(ds => `<span>${WD_LABELS[wdKeyOf(ds)]} verpasst</span><button data-act="wSkip" data-id="${t.id}" data-date="${ds}">Als Ruhetag werten</button>`).join('')}</div>` : ''}`) : ''}
     ${hasEx ? sec(5, 'Los geht’s', false, `${step === 5 ? hint('go', 5, 'Fertig eingerichtet! Tippe auf „Training starten“, wenn du loslegen willst. Alles lässt sich jederzeit ändern.') : ''}
+      <button class="ts-save" data-act="wSavePack">✓ SPEICHERN &amp; ZUR SCHNELLAUSWAHL</button>
       <button class="pl-next ts-go" data-act="${started ? 'quickStart' : 'wStart'}" data-id="${t.id}">${started ? '▶ WORKOUT FORTSETZEN' : '▶ TRAINING STARTEN'}</button>`) : ''}
     <button class="ts-del" data-act="wDelete" data-id="${t.id}">Training löschen</button>
   </div>`;
@@ -1152,6 +1153,7 @@ content.addEventListener('click', e => {
       if (t && ex && !t.exercises.some(e => e.name === ex.name)) { t.exercises.push({ name: ex.name, muscle: ex.muscle, gif: ex.gif, sets: 3, note: '' }); saveWeekplan(); }
       break;
     }
+    case 'wSavePack': saveWeekplan(); view = 'start'; break;
     case 'wStart': playStart(btn.dataset.id); break;
     case 'wSkip': { const t = trainingById(btn.dataset.id); (t.skipped = t.skipped || []).push(btn.dataset.date); saveWeekplan(); break; }
     case 'wDelete': {
