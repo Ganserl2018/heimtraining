@@ -376,3 +376,18 @@ body.mood-bad{--text-faint:#b08a85;}
 .lab-leer .lab-db{color:#8f9a96; opacity:.6;}
 .wp-leer{opacity:.65;}
 .lab-vorher.lab-ex{opacity:1;}
+
+/* Alle Übungen: Galerie-Browser */
+.allex .picker-head{position:sticky; top:0; z-index:3; background:var(--bg); padding-bottom:.4rem;}
+.allex .picker-head input{width:100%; min-height:44px; padding:.5rem .8rem;}
+.allex .results{grid-template-columns:repeat(3,1fr);}
+.allex .result-gif{width:100%; aspect-ratio:1; object-fit:cover;}
+.browse-sheet{align-items:stretch; max-height:90dvh; overflow-y:auto;}
+.browse-gif{width:100%; max-height:42dvh; object-fit:contain; border-radius:12px; background:#000;}
+.browse-trainings{display:flex; flex-direction:column; gap:.4rem;}
+:where(#content) .browse-trainings .browse-has{border-color:var(--accent); color:var(--accent);}
+.filter-scroll{flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;}
+.filter-scroll::-webkit-scrollbar{display:none;}
+.filter-scroll .chip{flex:none;}
+.allex .chip{min-height:36px; padding:.25rem .8rem;}
+.allex .filter-chips{margin:.3rem 0;}

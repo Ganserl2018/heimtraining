@@ -17,6 +17,7 @@ let tvReturn = null;  // V4: {view, day} – wohin "Zurück" aus der TV-Ansicht 
 let picker = null;   // null = Tagesansicht, sonst {index[, wid]} (index null = hinzufügen)
 let filterMuscle = null; // V2-10: Bildergalerie-Picker – aktiver Muskelgruppen-Chip
 let filterEquip = null;  // V2-10: aktiver Ausrüstungs-Chip
+let filterMus = null;    // Einzelmuskel-Filter (nur Alle Übungen)
 let filterCat = null;    // V2-10b: aktiver Kategorie-Chip (z.B. "warmup")
 let renameId = null; // V2-09: id des Wochenplan-Trainings, das gerade inline umbenannt wird
 let addingTraining = false; // V2-09: zeigt das Inline-Eingabefeld "Neues Training" in der Weeklist
@@ -280,6 +281,7 @@ function matchesEquip(name, key) {
   return n.includes(key);
 }
 const CAT_LIST = [['warmup', '🔥 Aufwärmen']];
+const MUSCLE_DE = { chest: 'Brust', shoulders: 'Schultern', triceps: 'Trizeps', biceps: 'Bizeps', quadriceps: 'Quadrizeps', hamstrings: 'Beinbeuger', glutes: 'Gesäß', calves: 'Waden', abdominals: 'Bauch', lats: 'Latissimus', 'middle back': 'Mittl. Rücken', 'lower back': 'Unt. Rücken', traps: 'Trapez', forearms: 'Unterarme', abductors: 'Abduktoren', adductors: 'Adduktoren', neck: 'Nacken' };
 function renderFilterChips() {
   const m = MUSCLE_GROUP_LIST.map(g =>
     `<button class="chip${filterMuscle === g ? ' active' : ''}" data-act="fMuscle" data-v="${g}">${g}</button>`).join('');
@@ -287,6 +289,11 @@ function renderFilterChips() {
     `<button class="chip${filterEquip === k ? ' active' : ''}" data-act="fEquip" data-v="${k}">${label}</button>`).join('');
   const cat = CAT_LIST.map(([k, label]) =>
     `<button class="chip${filterCat === k ? ' active' : ''}" data-act="fCat" data-v="${k}">${label}</button>`).join('');
+  if (view === 'allex') {
+    const fine = Object.entries(MUSCLE_DE).map(([k, l]) => `<button class="chip${filterMus === k ? ' active' : ''}" data-act="fMus" data-v="${k}">${l}</button>`).join('');
+    const reset = (filterMuscle || filterEquip || filterCat || filterMus) ? `<button class="chip" data-act="fReset">✕ Zurücksetzen</button>` : '';
+    return `<div class="filter-chips filter-scroll">${reset}${cat}${fine}</div><div class="filter-chips filter-scroll">${eq}</div>`;
+  }
   return `<div class="filter-chips">${cat}${m}</div><div class="filter-chips">${eq}</div>`;
 }
 
@@ -316,17 +323,18 @@ function renderResults(query) {
     if (filterMuscle && MUSCLE_GROUPS[ex.muscle] !== filterMuscle) return;
     if (filterEquip && !matchesEquip(ex.name, filterEquip)) return;
     if (filterCat && ex.category !== filterCat) return;
+    if (filterMus && ex.muscle !== filterMus) return;
     hits.push(i);
   });
-  document.getElementById('results').innerHTML = hits.slice(0, 60).map(i => `
-    <button class="result" data-act="pick" data-p="${i}">
+  document.getElementById('results').innerHTML = hits.slice(0, view === 'allex' ? 90 : 60).map(i => `
+    <button class="result" data-act="${view === 'allex' ? 'browsePick' : 'pick'}" data-p="${i}">
       <img class="result-gif" src="${esc(pool[i].gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
       <span class="result-info">
         <span class="exercise-name">${esc(pool[i].name)}</span>
         <span class="exercise-muscle">${esc(pool[i].muscle)}</span>
       </span>
     </button>`).join('') + (hits.length === 0 ? '<p class="placeholder">Keine Treffer – Filter/Suche anpassen.</p>' : '') +
-    (hits.length > 60 ? `<p class="placeholder">${hits.length - 60} weitere – Suche verfeinern.</p>` : '');
+    (hits.length > (view === 'allex' ? 90 : 60) ? `<p class="placeholder">${hits.length - (view === 'allex' ? 90 : 60)} weitere – Suche verfeinern.</p>` : '');
 }
 
 // V2-07: Übersicht – Startseite mit Status heute, Wochenüberblick, Schnellzugriff, letzte Trainings.
@@ -613,14 +621,26 @@ function renderProfile() {
 
 // V3: Mobile/Content-Seite für "Alle Übungen" – Push/Pull/Legs/Core zum Antippen
 // (auf Desktop-Breite steht die Sidebar-Version daneben, hier der Direktzugriff für iPhone).
+let browseQ = '', browseSel = null; // "Alle Übungen": Suchtext + gewählte Übung (Detail-Sheet)
 function renderAllEx() {
-  content.innerHTML = `
-    <div class="overview">
-      <div class="ov-card">
-        <div class="ov-card-title">Alle Übungen</div>
-        <div class="ov-quick">${DAYS.map(d => `<button data-act="goto" data-day="${d}">${DAY_LABELS[d]}</button>`).join('')}</div>
-      </div>
-    </div>`;
+  const ex = browseSel != null ? pool[browseSel] : null;
+  const sheet = ex ? `<div class="goal-sheet"><div class="goal-edit browse-sheet">
+      <img class="browse-gif" src="${esc(ex.gif)}" alt="" onerror="this.style.visibility='hidden'">
+      <div class="exercise-name">${esc(ex.name)}</div>
+      <div class="exercise-muscle">${esc(ex.muscle)}${MUSCLE_GROUPS[ex.muscle] ? ' · ' + MUSCLE_GROUPS[ex.muscle] : ''}</div>
+      <div class="ov-card-title">Zu Training hinzufügen</div>
+      <div class="browse-trainings">${weekplan.map(t => { const has = t.exercises.some(e => e.name === ex.name);
+        return `<button class="ov-btn ov-btn-ghost${has ? ' browse-has' : ''}" data-act="browseAdd" data-id="${t.id}">${esc(t.name)}${has ? ' ✓' : ''}</button>`; }).join('')}</div>
+      <button class="ov-btn" data-act="browseClose">Schließen</button>
+    </div></div>` : '';
+  content.innerHTML = `<div class="picker allex">
+      <div class="picker-head"><input id="q" type="search" placeholder="${pool.length} Übungen durchsuchen…" value="${esc(browseQ)}" autocomplete="off"></div>
+      ${renderFilterChips()}
+      <div id="results" class="results"></div>
+    </div>${sheet}`;
+  const q = document.getElementById('q');
+  q.addEventListener('input', () => { browseQ = q.value; renderResults(q.value); });
+  renderResults(browseQ);
 }
 
 // V2-03/V4: TV-Modus – eine Übung groß, für Screen-Mirroring/AirPlay auf Apple TV. Nutzt den
@@ -689,19 +709,24 @@ content.addEventListener('click', e => {
   if (btn.dataset.act === 'fMuscle') {
     filterMuscle = (filterMuscle === btn.dataset.v) ? null : btn.dataset.v;
     document.querySelectorAll('[data-act="fMuscle"]').forEach(b => b.classList.toggle('active', b.dataset.v === filterMuscle));
-    renderResults(document.getElementById('q').value);
+    if (view === 'allex') render(); else renderResults(document.getElementById('q').value);
     return;
   }
   if (btn.dataset.act === 'fEquip') {
     filterEquip = (filterEquip === btn.dataset.v) ? null : btn.dataset.v;
     document.querySelectorAll('[data-act="fEquip"]').forEach(b => b.classList.toggle('active', b.dataset.v === filterEquip));
-    renderResults(document.getElementById('q').value);
+    if (view === 'allex') render(); else renderResults(document.getElementById('q').value);
     return;
   }
+  if (btn.dataset.act === 'fMus') {
+    filterMus = (filterMus === btn.dataset.v) ? null : btn.dataset.v;
+    render(); return;
+  }
+  if (btn.dataset.act === 'fReset') { filterMuscle = filterEquip = filterCat = filterMus = null; render(); return; }
   if (btn.dataset.act === 'fCat') {
     filterCat = (filterCat === btn.dataset.v) ? null : btn.dataset.v;
     document.querySelectorAll('[data-act="fCat"]').forEach(b => b.classList.toggle('active', b.dataset.v === filterCat));
-    renderResults(document.getElementById('q').value);
+    if (view === 'allex') render(); else renderResults(document.getElementById('q').value);
     return;
   }
   switch (btn.dataset.act) {
@@ -845,6 +870,13 @@ content.addEventListener('click', e => {
       saveWeekplan(); break;
     }
     case 'wUnsched': { const t = trainingById(btn.dataset.id); t.weekdays = t.weekdays.filter(x => x !== btn.dataset.wd); saveWeekplan(); break; }
+    case 'browsePick': browseSel = Number(btn.dataset.p); break;
+    case 'browseClose': browseSel = null; break;
+    case 'browseAdd': {
+      const t = trainingById(btn.dataset.id), ex = pool[browseSel];
+      if (t && ex && !t.exercises.some(e => e.name === ex.name)) { t.exercises.push({ name: ex.name, muscle: ex.muscle, gif: ex.gif, sets: 3, note: '' }); saveWeekplan(); }
+      break;
+    }
     case 'wStart': pushStart(btn.dataset.id); break;
     case 'wSkip': { const t = trainingById(btn.dataset.id); (t.skipped = t.skipped || []).push(btn.dataset.date); saveWeekplan(); break; }
     case 'wDelete': {
