@@ -778,3 +778,10 @@ body.playing .pf{position:absolute;}
 .pf-restbtns{height:40px; margin:0 0 .35rem;} .pf-restbtns button{min-height:40px;}
 .pf-mainlab{font-size:.66rem; margin:.35rem 0 .1rem;}
 @media (min-width:820px){ .pf-time{font-size:4.2rem;} }
+/* Player: Textblock = ca. 95 % der ursprünglichen Größe */
+.pf-ex{font-size:1.09rem;}
+.pf-ex small{font-size:.68rem;}
+.pf-lab{font-size:.68rem; margin-top:.5rem;}
+.pf-time{font-size:clamp(3.4rem,16vw,4.95rem);}
+.pf-restbtns{height:42px;}
+@media (min-width:820px){ .pf-time{font-size:4.95rem;} }
