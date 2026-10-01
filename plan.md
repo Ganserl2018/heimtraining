@@ -153,3 +153,13 @@ V9-01…V9-18 done (Lab-Design nach Vorlagen, Mood grün/rot, statisches Layout,
 | V10-25 | Toter Code/CSS + öffentliche interne Dateien | 🟢 done |
 
 V10-13/15/25 Hinweise: Umgesetzt: Backup erzeugen/wiederherstellen im Profil, Manifest, apple-touch-icon, Apple-Metas, Service Worker (Netzwerk zuerst), Sync-Warteschlange mit Retry. | Umgesetzt: "Als Ruhetag werten" je verpasstem Tag. Nachholen mit Datumswahl bewusst nicht gebaut. | Toter Code/CSS entfernt, .overview-lab-Overrides konsolidiert. NICHT erledigt: interne Dateien (plan.md, design-v6-07-*, met-heuristik.md, exercise-gif-experiments/) liegen weiter öffentlich auf pages.dev (Pages hat kein Ausschluss-Feature, bräuchte Verschieben in anderes Repo).
+
+## V11 – Workout-Flow (Start 01.10. nachmittags)
+| ID | Aufgabe | Status |
+|---|---|---|
+| V11-01 | START → Trainingsauswahl (Meine Trainings, Vorlagen, Neu) | ✅ live |
+| V11-02 | Workout-Player (Übung pro Screen, Sätze vorausgefüllt, Pausen-Timer per Tipp/Kurzbefehl) | ⏳ wartet auf Alex-Antworten |
+| V11-03 | Beenden auch unvollständig → Verlauf "fertig, unvollständig" + Zusammenfassung + Health-Sync | ⏳ |
+| V11-04 | Design Workout-Ansicht | ⏳ |
+| V11-05 | Schutz (Offline, Limits) | ⏳ |
+Weitere erledigt heute: Wochenplan-Redesign, Hantel-Logik, Alle-Übungen-Galerie (BTILE 128), deutsche Suche. Details: Vault `Projects/Privat/Heimtraining/session-uebergabe-2026-10-01.md`.
