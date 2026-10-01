@@ -758,6 +758,24 @@ function newDraft() {
   const t = { id: 'w' + Date.now(), name: '', draft: true, exercises: [], weekdays: [], since: {}, time: '' };
   weekplan.push(t); wId = t.id; renameId = t.id; view = 'wtrain'; picker = null;
 }
+const wOpen = new Set(); // UI-Zustand: 'tid:i' = Einstellungen offen, 'tid:i:s' = Sätze einzeln
+function exCard(t, ex, i) {
+  const key = t.id + ':' + i, u = ex.unit || 'kg', n = ex.sets || 3, plan = ex.plan || [];
+  const at = (k, f) => (plan[k] || {})[f] ?? null;
+  const uniform = Array.from({ length: n }, (_, k) => k).every(k => at(k, 'w') === at(0, 'w') && at(k, 'r') === at(0, 'r'));
+  const split = u !== 'none' && (wOpen.has(key + ':s') || !uniform);
+  const open = wOpen.has(key);
+  const rl = u === 'sek' ? 'Sek' : 'Wdh';
+  const da = `data-id="${t.id}" data-i="${i}"`;
+  const fld = (act, f, k, val) => `<label class="xc-f"><input type="number" inputmode="${f === 'w' ? 'decimal' : 'numeric'}" value="${val ?? ''}" placeholder="–" data-act="${act}" ${da}${k === null ? '' : ` data-k="${k}"`} data-f="${f}" aria-label="${f === 'w' ? 'kg' : rl}"><span>${f === 'w' ? 'kg' : rl}</span></label>`;
+  let rowB = `<div class="xc-step"><button data-act="wSetsAdj" ${da} data-d="-1" aria-label="Ein Satz weniger">–</button><b>${n}</b><button data-act="wSetsAdj" ${da} data-d="1" aria-label="Ein Satz mehr">+</button></div>`;
+  if (u === 'none') rowB += `<span class="xc-hint">nur abhaken</span>`;
+  else if (split) rowB += `<button class="xc-same" data-act="wSame" ${da}>Alle gleich</button>`;
+  else rowB += `<span class="xc-x">×</span>${u === 'kg' ? fld('wPlanAll', 'w', null, at(0, 'w')) : ''}${fld('wPlanAll', 'r', null, at(0, 'r'))}`;
+  const pills = split ? `<div class="xc-pills">${Array.from({ length: n }, (_, k) => `<div class="xc-pill"><b>${k + 1}</b>${u === 'kg' ? fld('wPlan', 'w', k, at(k, 'w')) : ''}${fld('wPlan', 'r', k, at(k, 'r'))}</div>`).join('')}</div>` : '';
+  const more = open ? `<div class="xc-more"><div class="xc-seg">${Object.entries({ kg: 'Gewicht', wdh: 'Wdh', sek: 'Sek', none: 'Haken' }).map(([v, l]) => `<button class="${u === v ? 'on' : ''}" data-act="wUnitSet" ${da} data-u="${v}">${l}</button>`).join('')}</div>${u !== 'none' && !split ? `<button class="xc-link" data-act="wSplit" ${da}>Sätze einzeln eintragen</button>` : ''}<textarea class="w-note" placeholder="Notiz zur Übung…" data-act="wExNote" ${da}>${esc(ex.note || '')}</textarea></div>` : '';
+  return `<div class="ts-set xc"><div class="xc-top"><span class="xc-n">${esc(ex.name)}</span><button class="xc-gear${open ? ' on' : ''}${ex.note ? ' has' : ''}" data-act="wMore" ${da} aria-label="Einstellungen" aria-expanded="${open}">⋯</button></div><div class="xc-row">${rowB}</div>${pills}${more}</div>`;
+}
 function renderWTrain() {
   const t = trainingById(wId);
   if (!t) { view = 'overview'; return renderOverview(); }
@@ -773,13 +791,8 @@ function renderWTrain() {
     ${sec(2, 'Übungen', hasEx, `${step === 2 ? hint('ex', 2, 'Hier fügst du Übungen hinzu: auf „+ Übung hinzufügen“ tippen, suchen und antippen. Du kannst mehrere nacheinander wählen.') : ''}
       ${t.exercises.map((ex, i) => `<div class="ts-ex"><img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><div><b>${esc(ex.name)}</b><em>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</em></div><button data-act="wRemoveEx" data-id="${t.id}" data-i="${i}" aria-label="Übung entfernen">✕</button></div>`).join('')}
       <button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button>`)}
-    ${hasEx ? sec(3, 'Sätze &amp; Eintragen', step > 3, `${step === 3 ? hint('sets', 3, 'Hier stellst du pro Übung ein, wie viele Sätze du machst, was du einträgst und trägst für jeden Satz dein Ziel ein (kg und Wiederholungen). Du kannst die Felder auch leer lassen.') : ''}
-      ${t.exercises.map((ex, i) => { const setsCount = ex.sets || 3; return `<div class="ts-set"><div class="ts-set-n">${esc(ex.name)}</div><div class="xs">
-          <div class="xs-row"><span class="xs-l">Sätze</span>
-            <div class="xs-step"><button data-act="wSetsAdj" data-id="${t.id}" data-i="${i}" data-d="-1" aria-label="Ein Satz weniger">–</button><b>${setsCount}</b><button data-act="wSetsAdj" data-id="${t.id}" data-i="${i}" data-d="1" aria-label="Ein Satz mehr">+</button></div></div>
-          <div class="xs-row"><span class="xs-l">Eintragen</span>
-            <div class="xs-seg">${Object.entries({ kg: 'Gewicht', wdh: 'Wdh', sek: 'Sek', none: 'Haken' }).map(([v, l]) => `<button class="${(ex.unit || 'kg') === v ? 'on' : ''}" data-act="wUnitSet" data-id="${t.id}" data-i="${i}" data-u="${v}">${l}</button>`).join('')}</div></div>
-        </div>${(ex.unit || 'kg') === 'none' ? '' : `<div class="pp"><div class="pp-h"><span>Satz</span>${(ex.unit || 'kg') === 'kg' ? '<span>kg</span>' : ''}<span>${(ex.unit || 'kg') === 'sek' ? 'Sek' : 'Wdh'}</span></div>${Array.from({ length: setsCount }, (_, k) => { const pl = (ex.plan || [])[k] || {}; return `<div class="pp-r"><b>${k + 1}</b>${(ex.unit || 'kg') === 'kg' ? `<input type="number" inputmode="decimal" placeholder="kg" value="${pl.w ?? ''}" data-act="wPlan" data-id="${t.id}" data-i="${i}" data-k="${k}" data-f="w">` : ''}<input type="number" inputmode="numeric" placeholder="${(ex.unit || 'kg') === 'sek' ? 'Sek' : 'Wdh'}" value="${pl.r ?? ''}" data-act="wPlan" data-id="${t.id}" data-i="${i}" data-k="${k}" data-f="r"></div>`; }).join('')}</div>`}<textarea class="w-note" placeholder="Notiz zur Übung…" data-act="wExNote" data-id="${t.id}" data-i="${i}">${esc(ex.note || '')}</textarea></div>`; }).join('')}`) : ''}
+    ${hasEx ? sec(3, 'Sätze &amp; Eintragen', step > 3, `${step === 3 ? hint('sets', 3, 'Pro Übung: Sätze, kg und Wiederholungen eintragen (gilt für alle Sätze). Über ⋯ stellst du Einheit, einzelne Sätze und Notiz ein. Felder dürfen leer bleiben.') : ''}
+      ${t.exercises.map((ex, i) => exCard(t, ex, i)).join('')}`) : ''}
     ${hasEx ? sec(4, 'Tage &amp; Uhrzeit', hasDays, `${step === 4 ? hint('days', 4, 'Hier legst du fest, an welchen Tagen du dieses Training machst. Tippe einfach die Wochentage an.') : ''}
       <div class="w-schedule"><div class="w-schedule-days">${WD_KEYS.map(k => `<button class="chip${t.weekdays.includes(k) ? ' active' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>
         <input type="time" class="w-schedule-time" data-act="wTime" data-id="${t.id}" value="${esc(t.time || '')}" title="Uhrzeit (informativ, kein Cutoff)"></div>
@@ -1079,6 +1092,13 @@ content.addEventListener('click', e => {
     case 'restAdd': restEnd = Math.max(restEnd, Date.now()) + 15000; break;
     case 'restSkip': restEnd = 0; break;
     case 'summaryDone': summaryRec = null; view = 'overview'; break;
+    case 'wMore': { const k = btn.dataset.id + ':' + btn.dataset.i; wOpen.has(k) ? wOpen.delete(k) : wOpen.add(k); break; }
+    case 'wSplit': wOpen.add(btn.dataset.id + ':' + btn.dataset.i + ':s'); break;
+    case 'wSame': {
+      const ex = trainingById(btn.dataset.id).exercises[Number(btn.dataset.i)], n = ex.sets || 3, p0 = (ex.plan || [])[0] || {};
+      ex.plan = Array.from({ length: n }, () => ({ w: p0.w ?? null, r: p0.r ?? null }));
+      wOpen.delete(btn.dataset.id + ':' + btn.dataset.i + ':s'); saveWeekplan(); break;
+    }
     case 'wUnitSet': trainingById(btn.dataset.id).exercises[Number(btn.dataset.i)].unit = btn.dataset.u; saveWeekplan(); break;
     case 'hintOk': helperHide(btn.dataset.id); break;
     case 'helperReset': try { localStorage.removeItem(HELPKEY); } catch (e) {} break;
@@ -1123,7 +1143,9 @@ content.addEventListener('click', e => {
       const t = trainingById(btn.dataset.id), ex = t.exercises[Number(btn.dataset.i)];
       const next = (ex.sets || 3) + Number(btn.dataset.d);
       if (next < 1 || next > 10) return;
-      ex.sets = next; saveWeekplan(); break;
+      ex.sets = next;
+      if (Number(btn.dataset.d) > 0) { ex.plan = ex.plan || []; ex.plan[next - 1] = { ...(ex.plan[next - 2] || {}) }; }
+      saveWeekplan(); break;
     }
     case 'wSetDone': {
       const t = trainingById(btn.dataset.id), ex = t.exercises[Number(btn.dataset.i)], k = Number(btn.dataset.k);
@@ -1214,6 +1236,13 @@ content.addEventListener('input', e => {
     p[profileEl.dataset.field] = ['gender', 'name'].includes(profileEl.dataset.field) ? profileEl.value : (profileEl.value === '' ? null : Number(profileEl.value));
     saveProfile(p);
     return;
+  }
+  const allEl = e.target.closest('[data-act="wPlanAll"]');
+  if (allEl) {
+    const ex = trainingById(allEl.dataset.id).exercises[Number(allEl.dataset.i)], v = allEl.value === '' ? null : Number(allEl.value);
+    ex.plan = ex.plan || [];
+    for (let k = 0; k < (ex.sets || 3); k++) { ex.plan[k] = ex.plan[k] || {}; ex.plan[k][allEl.dataset.f] = v; }
+    saveWeekplan(); return;
   }
   const planEl = e.target.closest('[data-act="wPlan"]');
   if (planEl) {
