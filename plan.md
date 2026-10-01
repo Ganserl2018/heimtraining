@@ -159,7 +159,7 @@ V10-13/15/25 Hinweise: Umgesetzt: Backup erzeugen/wiederherstellen im Profil, Ma
 |---|---|---|
 | V11-01 | START → Trainingsauswahl (Meine Trainings, Vorlagen, Neu) | ✅ live |
 | V11-02 | Workout-Player (Vollbild nach Alex-Referenz, Foto-BG, Riesen-Timer, Swipe-Sheet, Pause 90 s per Tipp) | ✅ live (Siri/Kurzbefehl offen) |
-| V11-03 | Beenden auch unvollständig → Verlauf "fertig, unvollständig" + Zusammenfassung + Health-Sync | ⏳ |
+| V11-03 | Beenden auch unvollständig → Verlauf "fertig, unvollständig" + Zusammenfassung + Health-Sync | ✅ live, getestet 02.10. (Playwright: Satz → Beenden → Zusammenfassung → Verlauf-Badge) |
 | V11-04 | Design Workout-Ansicht | ✅ live (iPhone-Swipes/Anton-Font unbestätigt) |
 | V11-05 | Schutz (Offline, Limits) | ⏳ |
 Weitere erledigt heute: Wochenplan-Redesign, Hantel-Logik, Alle-Übungen-Galerie (BTILE 128), deutsche Suche. Details: Vault `Projects/Privat/Heimtraining/session-uebergabe-2026-10-01.md`.

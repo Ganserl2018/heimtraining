@@ -496,7 +496,7 @@ function renderHistory() {
       const pct = r.totalSetsPlanned ? Math.round(r.totalSetsDone / r.totalSetsPlanned * 100) : 0;
       const clickable = r.trainingId != null;
       return `<div class="history-item${clickable ? ' clickable' : ''}"${clickable ? ` data-act="histOpen" data-idx="${i}"` : ''}>
-        <div class="history-date">${esc(fmtDate(r.date))} · ${esc(DAY_LABELS[r.day] || r.day)}</div>
+        <div class="history-date">${esc(fmtDate(r.date))} · ${esc(DAY_LABELS[r.day] || r.day)}${r.totalSetsDone < r.totalSetsPlanned ? ' <span class="hist-part">unvollständig</span>' : ''}</div>
         <div class="history-meta">${r.totalSetsDone}/${r.totalSetsPlanned} Sätze${r.durationMin ? ' · ' + r.durationMin + ' Min' : ''}${r.calories ? ' · ~' + r.calories + ' kcal' : ''}</div>
         <div class="history-bar"><div class="history-fill" style="width:${pct}%"></div></div>
         ${r.note ? `<div class="history-note">${esc(r.note)}</div>` : ''}
@@ -512,7 +512,7 @@ function renderHistDetail() {
   content.innerHTML = `<div class="overview">
     <div class="wtrain-head"><h2>${esc(DAY_LABELS[r.day] || r.day)}</h2><button data-act="histBack">← Zurück</button></div>
     <div class="ov-card">
-      <div class="ov-card-title">${esc(fmtDate(r.date))}</div>
+      <div class="ov-card-title">${esc(fmtDate(r.date))}${r.totalSetsDone < r.totalSetsPlanned ? ' · <span class="hist-part">unvollständig</span>' : ' · <span class="hist-full">komplett</span>'}</div>
       <div class="hist-detail-stats">
         <div><b>${r.totalSetsDone}/${r.totalSetsPlanned}</b><span>Sätze</span></div>
         <div><b>${r.durationMin ?? '–'}</b><span>Minuten</span></div>
