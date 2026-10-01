@@ -413,7 +413,7 @@ function renderOverview() {
     const DB = '<svg class="lab-db" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>';
     const sub = !worst ? '(Ruhe)' : worst === 'verpasst' ? '⚠' : worst === 'unvollständig' ? '!' : DB;
     const target = (items.find(x => x.status !== 'erledigt') || items[0] || {}).w;
-    const act = target ? `data-act="wOpen2" data-id="${target.id}"` : 'data-act="goto" data-view="weeklist"';
+    const act = target ? `data-act="wOpen2" data-id="${target.id}"` : `data-act="wDayNew" data-wd="${wdKeyOf(ds)}" data-date="${ds}"`;
     return `<button class="lab-day${worst ? ' lab-' + worst : ''}${ds === t ? ' lab-heute' : ''}" ${act}><b>${WD_LABELS[wdKeyOf(ds)]}</b><span>${sub}</span></button>`;
   }).join('');
 
@@ -713,6 +713,20 @@ content.addEventListener('click', e => {
       picker = null; break;
     }
     case 'wOpen2': wId = btn.dataset.id; view = 'wtrain'; break;
+    case 'wDayNew': {
+      // Ruhetag angetippt → neues Tagestraining für diesen Wochentag anlegen und direkt öffnen
+      const wd = btn.dataset.wd;
+      const FULL = { mon: 'Montag', tue: 'Dienstag', wed: 'Mittwoch', thu: 'Donnerstag', fri: 'Freitag', sat: 'Samstag', sun: 'Sonntag' };
+      const nm = FULL[wd] + 'straining'; // vorhandene Standard-Trainings Montagstraining … Sonntagstraining
+      const existing = weekplan.find(w => w.name === nm);
+      if (existing) {
+        if (!existing.weekdays.length && btn.dataset.date >= today()) { existing.weekdays = [wd]; saveWeekplan(); }
+        wId = existing.id; view = 'wtrain'; picker = null; break;
+      }
+      const t = { id: 'w' + Date.now(), name: nm, exercises: [], weekdays: btn.dataset.date >= today() ? [wd] : [], time: '' }; // vergangene Tage nicht einplanen (sonst sofort "verpasst")
+      weekplan.push(t); saveWeekplan();
+      wId = t.id; view = 'wtrain'; picker = null; break;
+    }
     case 'wNewTraining': addingTraining = true; view = 'weeklist'; break;
     case 'wNewTrainingCancel': addingTraining = false; break;
     case 'wNewTrainingSave': {
