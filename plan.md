@@ -130,24 +130,26 @@ V9-01…V9-18 done (Lab-Design nach Vorlagen, Mood grün/rot, statisches Layout,
 | V10-02 | BLOCKER: Leere Trainings/Ruhetag-Tap färben App rot | 🟢 done |
 | V10-03 | BLOCKER: Health-Sync-Token öffentlich (script.js ~651) | ⏸ wartet (Alex) |
 | V10-04 | Startzeit in UTC | 🟢 done |
-| V10-05 | Verlauf-Detail ungestylt | ⚪ open |
-| V10-06 | Picker-Suchfeld weiß | ⚪ open |
-| V10-07 | Ziel-Formular von Tabbar verdeckt | ⚪ open |
-| V10-08 | Tap-Targets <44px | ⚪ open |
-| V10-09 | TV-Ansicht ignoriert Wochenplan | ⚪ open |
-| V10-10 | START WORKOUT fällt auf Legacy-Push | ⚪ open |
-| V10-11 | Beenden ohne Satz zählt als Workout | ⚪ open |
-| V10-12 | Kein Löschen | ⚪ open |
-| V10-13 | Backup/Export, PWA, Offline | ⚪ open |
-| V10-14 | Refresh über Mitternacht | ⚪ open |
-| V10-15 | Verpasst nicht heilbar | ⚪ open |
-| V10-16 | Ring vs. Wochenstreifen Fenster | ⚪ open |
-| V10-17 | Dauer/Kalorien nur nach manuellem Start | ⚪ open |
-| V10-18 | Wochenplan-Liste/Seitentitel | ⚪ open |
-| V10-19 | Lange Übungsnamen bei 360px | ⚪ open |
-| V10-20 | Legacy-Day-View gequetscht | ⚪ open |
-| V10-21 | Verlauf-Datum roh, "push" lowercase | ⚪ open |
-| V10-22 | Kontrast Rot-Modus + kleine Schrift | ⚪ open |
-| V10-23 | Desktop-Übersicht nicht zentriert | ⚪ open |
-| V10-24 | Profilfelder ungenutzt, Kalorien überhöht | ⚪ open |
-| V10-25 | Toter Code/CSS + öffentliche interne Dateien | ⚪ open |
+| V10-05 | Verlauf-Detail ungestylt | 🟢 done |
+| V10-06 | Picker-Suchfeld weiß | 🟢 done |
+| V10-07 | Ziel-Formular von Tabbar verdeckt | 🟢 done |
+| V10-08 | Tap-Targets <44px | 🟢 done |
+| V10-09 | TV-Ansicht ignoriert Wochenplan | 🟢 done |
+| V10-10 | START WORKOUT fällt auf Legacy-Push | 🟢 done |
+| V10-11 | Beenden ohne Satz zählt als Workout | 🟢 done |
+| V10-12 | Kein Löschen | 🟢 done |
+| V10-13 | Backup/Export, PWA, Offline | 🟢 done |
+| V10-14 | Refresh über Mitternacht | 🟢 done |
+| V10-15 | Verpasst nicht heilbar | 🟢 done |
+| V10-16 | Ring vs. Wochenstreifen Fenster | 🟢 done |
+| V10-17 | Dauer/Kalorien nur nach manuellem Start | 🟢 done |
+| V10-18 | Wochenplan-Liste/Seitentitel | 🟢 done |
+| V10-19 | Lange Übungsnamen bei 360px | 🟢 done |
+| V10-20 | Legacy-Day-View gequetscht | 🟢 done |
+| V10-21 | Verlauf-Datum roh, "push" lowercase | 🟢 done |
+| V10-22 | Kontrast Rot-Modus + kleine Schrift | 🟢 done |
+| V10-23 | Desktop-Übersicht nicht zentriert | 🟢 done |
+| V10-24 | Profilfelder ungenutzt, Kalorien überhöht | 🟢 done |
+| V10-25 | Toter Code/CSS + öffentliche interne Dateien | 🟢 done |
+
+V10-13/15/25 Hinweise: Umgesetzt: Backup erzeugen/wiederherstellen im Profil, Manifest, apple-touch-icon, Apple-Metas, Service Worker (Netzwerk zuerst), Sync-Warteschlange mit Retry. | Umgesetzt: "Als Ruhetag werten" je verpasstem Tag. Nachholen mit Datumswahl bewusst nicht gebaut. | Toter Code/CSS entfernt, .overview-lab-Overrides konsolidiert. NICHT erledigt: interne Dateien (plan.md, design-v6-07-*, met-heuristik.md, exercise-gif-experiments/) liegen weiter öffentlich auf pages.dev (Pages hat kein Ausschluss-Feature, bräuchte Verschieben in anderes Repo).

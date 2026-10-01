@@ -72,6 +72,7 @@ function trainingStatusForDate(t, dateStr) {
   if (!t.weekdays || !t.weekdays.length || !t.weekdays.includes(wdKeyOf(dateStr))) return null;
   const done = loadHistory().some(r => r.trainingId === t.id && r.date === dateStr);
   if (done) return 'erledigt';
+  if ((t.skipped || []).includes(dateStr)) return 'vorher'; // als Ruhetag gewertet
   if (t.since && t.since[wdKeyOf(dateStr)] && dateStr < t.since[wdKeyOf(dateStr)]) return 'vorher'; // eingeplant, aber vor Planstart: zählt nicht als verpasst
   const started = !!startOf(t.id, dateStr);
   const t0 = today();
@@ -142,6 +143,7 @@ function computeCalories(exercises, durationMin) {
   return Math.round(avgMet * profile.weight * (durationMin / 60));
 }
 
+const fmtDate = ds => { try { return new Date(ds + 'T00:00:00').toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric' }); } catch (e) { return ds; } };
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const list = () => overrides[day] || base[day] || [];
 
@@ -154,12 +156,12 @@ function loadHistory() { try { return JSON.parse(localStorage.getItem(HKEY)) || 
 function pushHistory(rec) {
   const h = loadHistory();
   h.unshift(rec);
-  try { localStorage.setItem(HKEY, JSON.stringify(h.slice(0, 200))); } catch (e) {}
+  try { localStorage.setItem(HKEY, JSON.stringify(h.slice(0, 1000))); } catch (e) {}
 }
 
 function syncTabActive() {
   tabs.forEach(t => {
-    const match = t.dataset.view ? t.dataset.view === view : (view === 'day' && t.dataset.day === day);
+    const match = t.dataset.view ? (t.dataset.view === view || (t.dataset.view === 'history' && view === 'histdetail') || (t.dataset.view === 'weeklist' && view === 'wtrain')) : (view === 'day' && t.dataset.day === day);
     t.classList.toggle('active', match);
   });
 }
@@ -222,6 +224,8 @@ function applyMood() {
 
 function render() {
   applyMood();
+  const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
+  document.querySelector('.topbar h1').textContent = view === 'wtrain' ? ((trainingById(wId) || {}).name || 'Training') : (titles[view] || 'Home Force');
   syncTabActive();
   renderAllExBlock();
   renderWeekplanBlock();
@@ -328,17 +332,6 @@ function renderResults(query) {
 // V2-07: Übersicht – Startseite mit Status heute, Wochenüberblick, Schnellzugriff, letzte Trainings.
 const itemsFor = d => overrides[d] || base[d] || [];
 
-// V8-05: Dauer-Schätzung + "zuletzt trainiert" pro Push/Pull/Legs/Core-Kategorie für die
-// Übersicht (Alex-Wunsch: vor dem Start abschätzen können, ob's zeitlich noch passt).
-const estimateMin = d => Math.round(itemsFor(d).length * SETS * 1.5);
-function lastTrainedText(d, h) {
-  const last = h.find(r => r.day === d); // h ist neueste-zuerst sortiert
-  if (!last) return 'noch nie';
-  const days = Math.round((new Date(today()) - new Date(last.date)) / 86400000);
-  if (days <= 0) return 'heute';
-  if (days === 1) return 'gestern';
-  return `vor ${days} Tagen`;
-}
 // Fix (30.09., Checker-Review): .toISOString() rechnet in UTC und verschiebt in
 // Zeitzonen mit positivem Offset (z.B. Europe/Berlin) das Datum um einen Tag zurück.
 // Lokal rechnen wie today()/addDays().
@@ -360,14 +353,12 @@ function renderOverview() {
   const t = today();
   const h = loadHistory();
   const p = prog();
-  const activeDay = Object.keys(p.done || {}).find(d => Object.keys(p.done[d] || {}).length > 0);
 
   // V6-02: Quick-Start – offenes/unterbrochenes Wochenplan-Training hat Vorrang, sonst heute fälliges.
   const scheduled = weekplan.filter(w => w.weekdays && w.weekdays.length);
   const openTraining = weekplan.find(w => startOf(w.id, t) && !loadHistory().some(r => r.trainingId === w.id && r.date === t));
   const dueTraining = !openTraining ? scheduled.find(w => trainingStatusForDate(w, t) === 'offen') : null;
   const quick = openTraining || dueTraining;
-  const quickSub = quick ? `${quick.exercises.length} Übung${quick.exercises.length === 1 ? '' : 'en'} geplant` : '';
 
   // V9-02: Start-Button "angebrochen" (Alex-Wunsch 01.10.) sobald diese Woche ein Training
   // verpasst wurde — Extra-Motivation ("muss weh tun"), aus V6-Planung schon vorgesehen.
@@ -377,32 +368,17 @@ function renderOverview() {
   // V9-01: Wochenziel als 2 Leisten (Trainings diese Woche + Streak) statt Ring/Einzelbalken
   // (Alex-Wunsch 01.10.: Nike-Style-Vorschlag hatte Ring, stattdessen 2 Balken).
   const goal = loadGoal();
-  const since = addDays(t, -(goal.periodDays - 1));
+  const since = goal.periodDays === 7 ? mondayOf(t) : addDays(t, -(goal.periodDays - 1)); // 7 Tage = Kalenderwoche wie der Streifen
   const goalCount = h.filter(r => r.date >= since && r.date <= t).length;
   const pdParts = goal.periodDays % 365 === 0 ? [goal.periodDays / 365, 'jahre'] : goal.periodDays % 30 === 0 ? [goal.periodDays / 30, 'monate'] : goal.periodDays % 7 === 0 ? [goal.periodDays / 7, 'wochen'] : [goal.periodDays, 'tage'];
-  const goalPct = Math.min(100, Math.round(goalCount / goal.target * 100));
   const streak = computeStreak(h);
-  const streakPct = Math.min(100, Math.round(streak / Math.max(goal.target, 1) * 100));
-  const goalBlock = `<div class="ov-card ov-progress">
-    <div class="ov-card-title">Fortschritt</div>
-    ${goalEditing
-      ? `<div class="goal-edit">
-          <label>Ziel <input id="goal-target" type="number" min="1" value="${goal.target}"> Trainings</label>
-          <label>in <input id="goal-period" type="number" min="1" value="${pdParts[0]}">
-            <select id="goal-unit">${[['tage', 'Tagen'], ['wochen', 'Wochen'], ['monate', 'Monaten'], ['jahre', 'Jahren']].map(([v, l]) => `<option value="${v}"${pdParts[1] === v ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
-          <div class="edit-bar"><button class="ov-btn" data-act="goalSave">Speichern</button><button class="ov-btn ov-btn-ghost" data-act="goalCancel">Abbrechen</button></div>
-        </div>`
-      : `<div class="ov-bar-row">
-          <div class="ov-bar-label"><span>Trainings diese Woche</span><button class="goal-edit-link" data-act="goalEdit">Anpassen</button></div>
-          <div class="ov-bar-value">${goalCount}<small> / ${goal.target}</small></div>
-          <div class="ov-bar-track"><div class="ov-bar-fill" style="width:${goalPct}%"></div></div>
-        </div>
-        <div class="ov-bar-row">
-          <div class="ov-bar-label"><span>Streak</span></div>
-          <div class="ov-bar-value">${streak}<small> Tag${streak === 1 ? '' : 'e'} 🔥</small></div>
-          <div class="ov-bar-track"><div class="ov-bar-fill ov-bar-fill-streak" style="width:${streakPct}%"></div></div>
-        </div>`}
-  </div>`;
+  const goalBlock = `<div class="goal-sheet"><div class="goal-edit">
+      <div class="ov-card-title">Ziel anpassen</div>
+      <label>Ziel <input id="goal-target" type="number" min="1" inputmode="numeric" value="${goal.target}"> Trainings</label>
+      <label>in <input id="goal-period" type="number" min="1" inputmode="numeric" value="${pdParts[0]}">
+        <select id="goal-unit">${[['tage', 'Tagen'], ['wochen', 'Wochen'], ['monate', 'Monaten'], ['jahre', 'Jahren']].map(([v, l]) => `<option value="${v}"${pdParts[1] === v ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
+      <div class="edit-bar"><button class="ov-btn" data-act="goalSave">Speichern</button><button class="ov-btn ov-btn-ghost" data-act="goalCancel">Abbrechen</button></div>
+    </div></div>`;
 
   const weekStart = mondayOf(t);
   const weekDates = Array.from({ length: 7 }, (_, i) => addDays(weekStart, i));
@@ -412,7 +388,9 @@ function renderOverview() {
   const moodTitle = hasMissedThisWeek ? 'SYSTEM-LOCKDOWN' : 'KRITISCHE MASSE';
   const moodSub = hasMissedThisWeek ? 'Phase Shift: tiefes Karmesin' : 'Phase Shift: Energie';
   const btnSub = hasMissedThisWeek ? '(WARNUNG: LEBENSGEFAHR!)' : '(AUTO-LOAD MAX!)';
-  const startAttr = quick ? `data-act="quickStart" data-id="${quick.id}"` : `data-act="goto" data-day="${activeDay || DAYS[0]}"`;
+  const doneToday = !quick && scheduled.some(w => trainingStatusForDate(w, t) === 'erledigt');
+  const startAttr = quick ? `data-act="quickStart" data-id="${quick.id}"` : `data-act="goto" data-view="weeklist"`;
+  const startLabel = quick ? 'START WORKOUT' : doneToday ? 'HEUTE ERLEDIGT ✓' : 'WOCHENPLAN ÖFFNEN';
   // Ring-Beschriftung folgt dem Zeitraum des Ziels (7 Tage = Woche, 30 = Monat, 180 = Halbjahr, 365 = Jahr)
   const pd = goal.periodDays;
   const periodLabel = pd <= 10 ? 'WOCHENTRAINING' : pd <= 45 ? 'MONATSTRAINING' : pd <= 135 ? 'QUARTALSTRAINING' : pd <= 270 ? 'HALBJAHRESTRAINING' : 'JAHRESTRAINING';
@@ -449,16 +427,15 @@ function renderOverview() {
         </div>
         <button class="lab-badge" data-act="goto" data-view="profile" aria-label="Profil">◉</button>
       </div>
-      ${goalEditing ? goalBlock : ''}
       ${ringBlock}
       <button class="lab-goal-link" data-act="goalEdit">Ziel anpassen</button>
       <div class="lab-streak">STREAK: ${streak} TAG${streak === 1 ? '' : 'E'}${hasMissedThisWeek ? ' (KRITISCH)' : ''} 🔥</div>
       <button class="lab-start${hasMissedThisWeek ? ' lab-start-broken' : ''}" ${startAttr}>
-        <span>START WORKOUT<small>${btnSub}</small></span>
+        <span>${startLabel}<small>${quick ? btnSub : ''}</small></span>
       </button>
       <div class="lab-section">WOCHENPLAN-STREIFEN</div>
       <div class="lab-week">${wdOrder}</div>
-    </div>`;
+    </div>${goalEditing ? goalBlock : ''}`;
 }
 
 // V2-01: Verlauf – zeigt vergangene Trainingseinheiten (aus HKEY, befüllt bei "Training beenden").
@@ -470,7 +447,7 @@ function renderHistory() {
       const pct = r.totalSetsPlanned ? Math.round(r.totalSetsDone / r.totalSetsPlanned * 100) : 0;
       const clickable = r.trainingId != null;
       return `<div class="history-item${clickable ? ' clickable' : ''}"${clickable ? ` data-act="histOpen" data-idx="${i}"` : ''}>
-        <div class="history-date">${esc(r.date)} · ${esc(r.day)}</div>
+        <div class="history-date">${esc(fmtDate(r.date))} · ${esc(DAY_LABELS[r.day] || r.day)}</div>
         <div class="history-meta">${r.totalSetsDone}/${r.totalSetsPlanned} Sätze${r.durationMin ? ' · ' + r.durationMin + ' Min' : ''}${r.calories ? ' · ~' + r.calories + ' kcal' : ''}</div>
         <div class="history-bar"><div class="history-fill" style="width:${pct}%"></div></div>
         ${r.note ? `<div class="history-note">${esc(r.note)}</div>` : ''}
@@ -483,10 +460,10 @@ function renderHistDetail() {
   const r = loadHistory()[histDetailIdx];
   if (!r) { view = 'history'; return renderHistory(); }
   const profile = loadProfile();
-  content.innerHTML = `
-    <div class="wtrain-head"><h2>${esc(r.day)}</h2><button data-act="histBack">← Zurück</button></div>
+  content.innerHTML = `<div class="overview">
+    <div class="wtrain-head"><h2>${esc(DAY_LABELS[r.day] || r.day)}</h2><button data-act="histBack">← Zurück</button></div>
     <div class="ov-card">
-      <div class="ov-card-title">${esc(r.date)}</div>
+      <div class="ov-card-title">${esc(fmtDate(r.date))}</div>
       <div class="hist-detail-stats">
         <div><b>${r.totalSetsDone}/${r.totalSetsPlanned}</b><span>Sätze</span></div>
         <div><b>${r.durationMin ?? '–'}</b><span>Minuten</span></div>
@@ -501,7 +478,9 @@ function renderHistDetail() {
         <div class="history-meta">${ex.setsDone}/${ex.setsTotal} Sätze${ex.weights && ex.weights.some(w => w != null) ? ' · ' + ex.weights.filter(w => w != null).map(w => w + ((UNITS[ex.unit || 'kg'] || UNITS.kg)[1] ? ' ' + (UNITS[ex.unit || 'kg'] || UNITS.kg)[1] : '')).join(', ') : ''}</div>
       </div>`).join('')}
     </div>
-    ${r.note ? `<div class="ov-card"><div class="ov-card-title">Notiz</div><div class="history-note">${esc(r.note)}</div></div>` : ''}`;
+    ${r.note ? `<div class="ov-card"><div class="ov-card-title">Notiz</div><div class="history-note">${esc(r.note)}</div></div>` : ''}
+    <button class="ov-btn ov-btn-ghost" data-act="histDelete">Eintrag löschen</button>
+  </div>`;
 }
 
 // V2-09: Wochenplan-Liste (Content-Ansicht, funktioniert auf jeder Breite inkl. iPhone).
@@ -510,7 +489,7 @@ function renderWeeklist() {
     <div class="weeklist">
       ${weekplan.map(t => `<div class="weeklist-card" data-act="wOpen2" data-id="${t.id}">
         <div class="weeklist-name">${esc(t.name)}</div>
-        <div class="weeklist-meta">${t.exercises.length} Übung${t.exercises.length === 1 ? '' : 'en'}</div>
+        <div class="weeklist-meta">${t.exercises.length} Übung${t.exercises.length === 1 ? '' : 'en'} · ${t.weekdays.length ? WD_KEYS.filter(k => t.weekdays.includes(k)).map(k => WD_LABELS[k]).join(' ') + (t.time ? ' · ' + esc(t.time) : '') : 'nicht eingeplant'}${(() => { const st = trainingStatusForDate(t, today()); return st ? ' · ' + STATUS_LABEL[st] : ''; })()}</div>
       </div>`).join('')}
       ${addingTraining
         ? `<div class="weeklist-card"><input id="new-training-name" placeholder="Name des Trainings…" autofocus>
@@ -540,6 +519,8 @@ function renderWTrain() {
         `<button class="chip${t.weekdays.includes(k) ? ' active' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>
       <input type="time" class="w-schedule-time" data-act="wTime" data-id="${t.id}" value="${esc(t.time || '')}" title="Uhrzeit (informativ, kein Cutoff)">
     </div>
+    ${(() => { const ws = mondayOf(today()); const miss = Array.from({ length: 7 }, (_, i) => addDays(ws, i)).filter(ds => trainingStatusForDate(t, ds) === 'verpasst');
+      return miss.length ? `<div class="w-missed">${miss.map(ds => `<span>${WD_LABELS[wdKeyOf(ds)]} verpasst</span><button data-act="wSkip" data-id="${t.id}" data-date="${ds}">Als Ruhetag werten</button>`).join('')}</div>` : ''; })()}
     ${t.exercises.length
       ? `<div class="edit-bar">${started
           ? `<span class="placeholder">Gestartet um ${esc(new Date(started.startedAt).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }))} Uhr</span>`
@@ -579,6 +560,7 @@ function renderWTrain() {
       ${t.exercises.length ? `
         <textarea class="w-note" placeholder="Notiz zum Training…" data-act="wSessionNote" data-id="${t.id}">${esc(sNote)}</textarea>
         <button data-act="wFinish" data-id="${t.id}">Training beenden</button>` : ''}
+      <button class="w-danger" data-act="wDelete" data-id="${t.id}">Training löschen</button>
     </div>`;
   if (renameId === t.id) document.getElementById('rename-input')?.focus();
 }
@@ -592,18 +574,14 @@ function renderProfile() {
         <div class="ov-card-title">Profil</div>
         <div class="profile-form">
           <label>Gewicht (kg)<input type="number" inputmode="decimal" data-act="profileField" data-field="weight" value="${p.weight ?? ''}"></label>
-          <label>Alter (Jahre)<input type="number" inputmode="numeric" data-act="profileField" data-field="age" value="${p.age ?? ''}"></label>
-          <label>Größe (cm)<input type="number" inputmode="numeric" data-act="profileField" data-field="height" value="${p.height ?? ''}"></label>
-          <label>Geschlecht
-            <select data-act="profileField" data-field="gender">
-              <option value="">–</option>
-              <option value="m" ${p.gender === 'm' ? 'selected' : ''}>Männlich</option>
-              <option value="w" ${p.gender === 'w' ? 'selected' : ''}>Weiblich</option>
-              <option value="d" ${p.gender === 'd' ? 'selected' : ''}>Divers</option>
-            </select>
-          </label>
         </div>
         <p class="placeholder">Wird für die Kalorien-Schätzung pro Training genutzt (ohne Herzfrequenz/Wearable).</p>
+      </div>
+      <div class="ov-card">
+        <div class="ov-card-title">Backup</div>
+        <p class="placeholder">Alle Daten (Pläne, Verlauf, Ziel) als Text sichern oder wiederherstellen.</p>
+        <textarea id="backup-text" class="w-note" placeholder="Hier steht dein Backup oder füge eins ein…"></textarea>
+        <div class="edit-bar"><button class="ov-btn" data-act="backupExport">Backup erzeugen &amp; kopieren</button><button class="ov-btn ov-btn-ghost" data-act="backupImport">Aus Text wiederherstellen</button></div>
       </div>
     </div>`;
 }
@@ -625,19 +603,24 @@ function renderAllEx() {
 // im Training aus erreichbar), "Zurück" führt sauber zur vorherigen Ansicht zurück.
 function renderTV() {
   const backBtn = `<button data-act="tvBack">← Zurück</button>`;
-  const items = list();
-  if (!items.length) { content.innerHTML = `<p class="placeholder">Keine Übungen für „${esc(day)}“.</p>${backBtn}`; return; }
+  const wt = tvReturn && tvReturn.view === 'wtrain' ? trainingById(tvReturn.wId) : null;
+  const items = wt ? wt.exercises : list();
+  const title = wt ? wt.name : (DAY_LABELS[day] || day);
+  if (!items.length) { content.innerHTML = `<p class="placeholder">Keine Übungen für „${esc(title)}“.</p>${backBtn}`; return; }
   if (tvIndex >= items.length) tvIndex = 0;
   if (tvIndex < 0) tvIndex = items.length - 1;
   const ex = items[tvIndex];
+  const n = wt ? (ex.sets || 3) : SETS;
+  const wSets = wt ? (wProgRaw().done[wt.id] || {})[ex.name] || [] : null;
+  const isDone = k => wt ? !!(wSets[k] && wSets[k].done) : !!setsOf(ex.name)[k];
   content.innerHTML = `
     <div class="tv">
-      <div class="tv-count">${tvIndex + 1} / ${items.length} · ${esc(day)}</div>
+      <div class="tv-count">${tvIndex + 1} / ${items.length} · ${esc(title)}</div>
       <img class="tv-gif" src="${esc(ex.gif)}" alt="" onerror="this.style.visibility='hidden'">
       <div class="tv-name">${esc(ex.name)}</div>
       <div class="tv-muscle">${esc(ex.muscle)}</div>
-      <div class="tv-sets">${Array.from({ length: SETS }, (_, k) =>
-        `<button class="set${setsOf(ex.name)[k] ? ' done' : ''}" data-act="set" data-i="${tvIndex}" data-k="${k}">Satz ${k + 1}${setsOf(ex.name)[k] ? ' ✓' : ''}</button>`).join('')}</div>
+      <div class="tv-sets">${Array.from({ length: n }, (_, k) =>
+        `<button class="set${isDone(k) ? ' done' : ''}" data-act="${wt ? 'tvWSet' : 'set'}" data-i="${tvIndex}" data-k="${k}">Satz ${k + 1}${isDone(k) ? ' ✓' : ''}</button>`).join('')}</div>
       <div class="tv-nav">
         <button data-act="tvPrev">← Vorherige</button>
         <button data-act="tvNext">Nächste →</button>
@@ -658,10 +641,20 @@ function buildSessionRecord(arr) {
     totalSetsDone: exercises.reduce((s, x) => s + x.setsDone, 0), totalSetsPlanned: exercises.length * SETS,
     finishedAt: new Date().toISOString() };
 }
-function syncSession(body) {
-  fetch(API, { method: 'POST', headers: { Authorization: 'Bearer ' + TOKEN, 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
-    .catch(err => console.error('Health-Sync fehlgeschlagen:', err));
+// Offline-Fall: fehlgeschlagene Syncs landen in einer Warteschlange und werden beim nächsten Öffnen erneut gesendet.
+const SQKEY = 'heimtraining.syncqueue';
+function loadQ() { try { return JSON.parse(localStorage.getItem(SQKEY)) || []; } catch (e) { return []; } }
+function saveQ(q) { try { localStorage.setItem(SQKEY, JSON.stringify(q.slice(-50))); } catch (e) {} }
+function sendOne(body) {
+  return fetch(API, { method: 'POST', headers: { Authorization: 'Bearer ' + TOKEN, 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); });
 }
+function syncSession(body) { sendOne(body).catch(() => saveQ(loadQ().concat([body]))); }
+function flushQ() {
+  const q = loadQ(); if (!q.length || !navigator.onLine) return;
+  saveQ([]); q.forEach(b => sendOne(b).catch(() => saveQ(loadQ().concat([b]))));
+}
+flushQ();
 
 content.addEventListener('click', e => {
   const btn = e.target.closest('button[data-act], .weeklist-card[data-act], .history-item[data-act]');
@@ -706,9 +699,16 @@ content.addEventListener('click', e => {
       if (rec) { syncSession(rec); pushHistory(rec); }
       delete prog().done[day]; saveProg(); break;
     }
+    case 'tvWSet': {
+      const t = trainingById(tvReturn && tvReturn.wId), ex = t && t.exercises[i], k = Number(btn.dataset.k);
+      if (!ex) break;
+      const wp = wProgRaw(); const d = wp.done[t.id] = wp.done[t.id] || {};
+      const sets = d[ex.name] = d[ex.name] || []; sets[k] = sets[k] || {}; sets[k].done = !sets[k].done;
+      saveWProg(wp); pushStart(t.id); break;
+    }
     case 'tvPrev': tvIndex--; break;
     case 'tvNext': tvIndex++; break;
-    case 'tvBack': view = tvReturn ? tvReturn.view : 'overview'; if (tvReturn && tvReturn.day) day = tvReturn.day; tvReturn = null; break;
+    case 'tvBack': view = tvReturn ? tvReturn.view : 'overview'; if (tvReturn && tvReturn.day) day = tvReturn.day; if (tvReturn && tvReturn.wId) wId = tvReturn.wId; tvReturn = null; break;
     case 'goto':
       if (btn.dataset.day) { day = btn.dataset.day; view = 'day'; }
       else if (btn.dataset.view) { view = btn.dataset.view; }
@@ -786,7 +786,7 @@ content.addEventListener('click', e => {
       const sets = d[ex.name] = d[ex.name] || [];
       sets[k] = sets[k] || {};
       sets[k].done = !sets[k].done;
-      saveWProg(wp); break;
+      saveWProg(wp); if (sets[k].done) pushStart(t.id); break;
     }
     case 'wAddEx': picker = { index: null, wid: btn.dataset.id }; filterMuscle = null; filterEquip = null; filterCat = null; break;
     case 'wFinish': {
@@ -797,9 +797,12 @@ content.addEventListener('click', e => {
         return { name: ex.name, muscle: ex.muscle, setsDone: sets.filter(s => s && s.done).length, setsTotal: ex.sets || 3,
           unit: ex.unit || 'kg', weights: (ex.unit || 'kg') === 'none' ? [] : sets.map(s => s && s.weight != null ? s.weight : null) };
       });
+      const doneTotal = exercises.reduce((s2, x) => s2 + x.setsDone, 0);
+      if (!doneTotal && !confirm('Kein Satz abgehakt – trotzdem als Training zählen?')) return;
       const note = (wp.sessionNote || {})[t.id] || '';
       const startRec = startOf(t.id, today());
-      const durationMin = startRec ? Math.max(1, Math.round((Date.now() - new Date(startRec.startedAt)) / 60000)) : null;
+      const rawMin = startRec ? Math.max(1, Math.round((Date.now() - new Date(startRec.startedAt)) / 60000)) : null;
+      const durationMin = rawMin == null ? null : Math.min(rawMin, doneTotal * 4 + 10); // vergessenes Beenden nicht ewig mitzählen
       const calories = computeCalories(exercises, durationMin);
       const rec = { date: today(), day: t.name, trainingId: t.id, exercises,
         totalSetsDone: exercises.reduce((s, x) => s + x.setsDone, 0), totalSetsPlanned: exercises.reduce((s, x) => s + x.setsTotal, 0),
@@ -817,6 +820,35 @@ content.addEventListener('click', e => {
       saveWeekplan(); break;
     }
     case 'wStart': pushStart(btn.dataset.id); break;
+    case 'wSkip': { const t = trainingById(btn.dataset.id); (t.skipped = t.skipped || []).push(btn.dataset.date); saveWeekplan(); break; }
+    case 'wDelete': {
+      const t = trainingById(btn.dataset.id);
+      if (!confirm(`Training „${t.name}“ löschen? (Verlauf bleibt erhalten)`)) return;
+      weekplan = weekplan.filter(w => w.id !== t.id); saveWeekplan(); wId = null; view = 'weeklist'; break;
+    }
+    case 'histDelete': {
+      if (!confirm('Verlaufseintrag löschen?')) return;
+      const h = loadHistory(); h.splice(histDetailIdx, 1);
+      try { localStorage.setItem(HKEY, JSON.stringify(h)); } catch (e2) {}
+      view = 'history'; break;
+    }
+    case 'backupExport': {
+      const o = {}; for (let n = 0; n < localStorage.length; n++) { const k = localStorage.key(n); if (k && k.startsWith('heimtraining.')) o[k] = localStorage.getItem(k); }
+      const txt = JSON.stringify(o); const ta = document.getElementById('backup-text'); ta.value = txt; ta.select();
+      try { navigator.clipboard.writeText(txt); } catch (e2) {}
+      return;
+    }
+    case 'backupImport': {
+      try {
+        const o = JSON.parse(document.getElementById('backup-text').value);
+        const keys = Object.keys(o).filter(k => k.startsWith('heimtraining.'));
+        if (!keys.length) throw new Error('leer');
+        if (!confirm(`${keys.length} Datensätze wiederherstellen? Aktuelle Daten werden überschrieben.`)) return;
+        keys.forEach(k => localStorage.setItem(k, o[k]));
+        location.reload();
+      } catch (e2) { alert('Kein gültiges Backup.'); }
+      return;
+    }
     case 'goalEdit': goalEditing = true; break;
     case 'goalSave': {
       const target = Math.max(1, Number(document.getElementById('goal-target')?.value) || 1);
@@ -872,7 +904,7 @@ content.addEventListener('input', e => {
     const sets = d[ex.name] = d[ex.name] || [];
     sets[k] = sets[k] || {};
     sets[k].weight = el.value === '' ? null : Number(el.value);
-    saveWProg(wp);
+    saveWProg(wp); if (el.value !== '') pushStart(t.id);
   }
 });
 
@@ -913,7 +945,7 @@ document.getElementById('tabbar').addEventListener('click', e => {
 // V4-02: TV-Icon oben rechts – von überall im Training erreichbar, merkt sich die
 // vorherige Ansicht für den "Zurück"-Button in der TV-Ansicht.
 document.getElementById('tvIconBtn').addEventListener('click', () => {
-  tvReturn = { view, day };
+  tvReturn = { view, day, wId };
   picker = null; view = 'tv'; tvIndex = 0;
   render();
 });
@@ -924,4 +956,12 @@ tabs.forEach(tab => {
     view = tab.dataset.view;
     render();
   });
+});
+
+// Beim Zurückkehren in die App (z. B. nach Mitternacht) Ansicht + Stimmung neu berechnen – nicht beim Tippen/Picker.
+let lastDay = today();
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) return;
+  flushQ();
+  if (today() !== lastDay && !picker && !document.activeElement?.matches('input,textarea,select')) { lastDay = today(); render(); }
 });

@@ -173,14 +173,11 @@ body{
 .profile-form label{display:flex; flex-direction:column; gap:.3rem; font-size:.82rem; color:var(--text-dim);}
 .profile-form input,.profile-form select{font-size:16px; padding:.5rem; border-radius:6px; border:1px solid var(--border); background:var(--bg); color:var(--text);}
 
-/* V9-01: Quick-Start-Card im Nike-Look */
 
-/* V9-01: Fortschritt als 2 Leisten (Trainings diese Woche + Streak), statt Ring/Einzelbalken */
 .goal-edit{display:flex; flex-direction:column; gap:.6rem; margin-top:.2rem;}
 .goal-edit label{display:flex; align-items:center; gap:.5rem; font-size:.85rem; color:var(--text-dim);}
 .goal-edit input{width:56px; font-size:.95rem; padding:.4rem; text-align:center; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text);}
 
-/* V6-05/06/07: Wochenplan-Statuskalender */
 
 /* wiederhergestellt (Verlauf/Profil/Übersicht-Basis) */
 .overview .ov-card{background:var(--panel); border:1px solid var(--border-soft); border-radius:16px; padding:1.05rem 1.15rem;}
@@ -188,18 +185,13 @@ body{
 .ov-card .history-item:last-of-type{border-bottom:none; padding-bottom:.3rem;}
 .ov-card .history-item:first-of-type{padding-top:0;}
 .history-main{min-width:0;}
-.history-ring{flex:none; width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.68rem; font-weight:700; color:var(--text-dim); background:conic-gradient(var(--accent) calc(var(--pct,0) * 1%), var(--border-soft) 0); position:relative;}
-.history-ring::before{content:""; position:absolute; inset:3px; border-radius:50%; background:var(--panel);}
-.history-ring span{position:relative;}
-.history-footer-btn{width:100%; margin-top:.5rem;}
 .ov-btn{display:inline-flex; align-items:center; justify-content:center; background:var(--accent); color:var(--on-accent); border:none; border-radius:999px; padding:.6rem 1.15rem; font-size:.86rem; font-weight:700; letter-spacing:-.01em; min-height:44px;}
 .ov-btn:active{background:var(--chalk-deep);}
 .ov-btn-ghost{background:none; border:1px solid var(--border); color:var(--text-dim); font-weight:600;}
 .ov-btn-ghost:active{border-color:var(--text-dim); color:var(--text);}
-.goal-edit-link{background:none; border:none; color:var(--text-faint); font-size:.72rem; padding:.3rem 0; text-decoration:underline; text-underline-offset:2px; min-height:44px; text-transform:none; font-weight:500;}
 
 /* V9-03 Lab-Design (Gemini-Vorlagen grün/rot, vermessen): Gesamtstimmung per .mood-good/.mood-bad */
-.overview-lab{display:flex; flex-direction:column; align-items:stretch; gap:.7rem; margin:-1rem -1.1rem -5.5rem; padding:1rem 1.1rem 5.5rem; min-height:100%;
+.overview-lab{display:flex; flex-direction:column; align-items:stretch; justify-content:space-evenly; gap:.9rem; height:100%; min-height:0; overflow:hidden; margin:-1rem -1.1rem 0; padding:1.4rem 1.1rem calc(4.2rem + env(safe-area-inset-bottom,0px));
   --lab-bg:#121818; --lab-acc:#a8f03a; --lab-glow:rgba(168,240,58,.45); --lab-panel:#1b2222; --lab-dim:#7d8a86; background:radial-gradient(120% 60% at 50% 30%, #1a2420, var(--lab-bg) 70%); color:#e6ece8;}
 .overview-lab.mood-bad{--lab-bg:#150b0b; --lab-acc:#e8301f; --lab-glow:rgba(232,48,31,.5); --lab-panel:#241212; --lab-dim:#8a6a66; background:radial-gradient(120% 60% at 50% 30%, #2a1210, var(--lab-bg) 70%);}
 .lab-head{display:flex; justify-content:space-between; align-items:flex-start; gap:.6rem;}
@@ -216,21 +208,14 @@ body{
 .lab-ring-text small{font-size:.58rem; letter-spacing:.06em; color:#e6ece8;}
 .lab-ring-text b{font-size:2.5rem; font-weight:800; line-height:1.1; color:#fff; text-shadow:0 0 10px var(--lab-glow);}
 .lab-ring-text span{font-size:.95rem; font-weight:800; color:var(--lab-acc);}
-.lab-streak{text-align:center; font-size:.72rem; font-weight:700; letter-spacing:.04em; color:#e6ece8; margin-top:-1.4rem;}
+.lab-streak{text-align:center; font-size:.72rem; font-weight:700; letter-spacing:.04em; color:#e6ece8; margin-top:-.4rem;}
 .mood-bad .lab-streak{color:var(--lab-acc);}
 .lab-start{width:100%; min-height:64px; border-radius:14px; border:1px solid #8a948f; background:linear-gradient(180deg,#76807c,#4a524f 55%,#5d6663); color:#101312; font-weight:800; font-size:1.15rem; letter-spacing:.02em; box-shadow:0 0 18px var(--lab-glow), inset 0 1px 0 rgba(255,255,255,.35); padding:.55rem 1rem; text-align:center;}
 .lab-start small{display:block; font-size:.78rem; font-weight:700; margin-top:.1rem;}
 .lab-start-broken{background:linear-gradient(180deg,#8a6a5a,#5c4538 55%,#6e5242); border-color:#9a7a68; color:#1a0d0a; clip-path:polygon(0 0,92% 0,100% 22%,100% 100%,8% 100%,0 78%); box-shadow:none;}
 .lab-goal-link{align-self:center; background:none; border:0; color:var(--lab-dim); font-size:.68rem; text-decoration:underline; margin-top:-1.4rem; padding:.7rem 1rem; z-index:1;}
-.lab-streak{margin-top:-.4rem !important;}
-.lab-section{font-size:.78rem; font-weight:800; letter-spacing:.04em; color:#e6ece8; text-align:center; margin-top:.2rem;}
+.lab-section{font-size:.78rem; font-weight:800; letter-spacing:.04em; color:#e6ece8; text-align:center; margin-top:0;}
 .lab-section:last-of-type{text-align:left;}
-.lab-tiles{display:flex; gap:.5rem; overflow-x:auto; scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch; padding-bottom:.3rem;}
-.lab-tile{flex:0 0 27%; aspect-ratio:1/1.05; border-radius:10px; border:0; border-bottom:3px solid var(--lab-acc); background:linear-gradient(180deg,#1d2622,#0e1412 80%); color:#e6ece8; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; text-align:center; gap:.1rem; padding:.45rem .3rem; font-size:.66rem; font-weight:700; scroll-snap-align:start; box-shadow:0 2px 10px var(--lab-glow); position:relative; overflow:hidden;}
-.mood-bad .lab-tile{background:linear-gradient(180deg,#2c1614,#120909 80%);}
-.lab-tile-num{font-size:.7rem;}
-.lab-tile-name{text-transform:uppercase; line-height:1.15;}
-.lab-tile-meta{font-size:.58rem; color:var(--lab-dim); font-weight:600;}
 .lab-week{display:flex; gap:.4rem; background:var(--lab-panel); border-radius:12px; padding:.5rem;}
 .lab-day{flex:1; min-width:0; text-align:center; border-radius:8px; background:#262e2b; padding:.45rem 0 .35rem; display:flex; flex-direction:column; gap:.1rem;}
 .mood-bad .lab-day{background:#2e1a18;}
@@ -244,30 +229,18 @@ body{
 .lab-unvollständig{border:1px solid #c98a4b;}
 .overview-lab .ov-card{background:var(--lab-panel); border:1px solid rgba(255,255,255,.06); color:#e6ece8;}
 .overview-lab .ov-card-title{color:var(--lab-dim); text-transform:uppercase; letter-spacing:.06em; font-size:.66rem;}
-.overview-lab .ov-bar-label,.overview-lab .ov-bar-value{color:#e6ece8;}
-.overview-lab .ov-bar-value small{color:var(--lab-dim);}
-.overview-lab .ov-bar-track{height:8px; border-radius:99px; background:rgba(255,255,255,.08); overflow:hidden;}
-.overview-lab .ov-bar-fill{height:100%; background:var(--lab-acc); border-radius:99px;}
 .overview-lab .ov-btn{background:var(--lab-acc); color:#0c0f0e;}
 .overview-lab .ov-btn-ghost{background:none; color:var(--lab-dim); border:1px solid rgba(255,255,255,.14);}
-.overview-lab .goal-edit-link{color:var(--lab-acc);}
-.overview-lab .ov-bar-fill-streak{background:var(--lab-acc);}
-@media (min-width:820px){ .lab-ring{width:230px;} .lab-tile{flex-basis:150px;} .overview-lab{max-width:520px; margin:0 auto; padding:1rem 1.1rem 2rem;} }
 
 /* V9-04: Übersicht statisch (kein Scroll), Wochenstreifen schließt unten ab */
 #content:has(.overview-lab){overflow:hidden; padding-bottom:0;}
-.overview-lab{height:100%; min-height:0; overflow:hidden; margin:-1rem -1.1rem 0; padding:1rem 1.1rem calc(4.2rem + env(safe-area-inset-bottom,0px)); justify-content:space-between; gap:.5rem;}
-.overview-lab .lab-ring{flex:1 1 0; min-height:6rem; width:auto; max-width:66vw; max-height:66vw; aspect-ratio:1; align-self:center;}
+.overview-lab .lab-ring{flex:1 1 0; min-height:6rem; width:auto; aspect-ratio:1; align-self:center; container-type:size; max-width:min(80vw,340px); max-height:min(80vw,340px);}
 .overview-lab .lab-ring svg{position:absolute; inset:0;}
-.overview-lab .lab-section{margin-top:auto;}
-.overview-lab .lab-week{margin-top:0;}
 
 /* V9-05: Übersicht ohne Titelleiste (steht schon im Lab-Header); nur TV-Knopf bleibt, schwebend */
 body:has(.overview-lab) .topbar{position:absolute; top:calc(env(safe-area-inset-top,0px) + .5rem); right:.6rem; z-index:5; padding:0; border:0; background:none;}
 body:has(.overview-lab) .topbar h1{display:none;}
 body:has(.overview-lab) .lab-badge{margin-right:3.2rem;}
-body:has(.overview-lab) .overview-lab{margin-top:-1rem; padding-top:1.4rem;}
-.overview-lab .lab-ring{container-type:size; max-width:min(66vw,300px); max-height:min(66vw,300px);}
 .overview-lab .lab-ring-text small{font-size:clamp(.4rem,5cqw,.58rem);}
 .overview-lab .lab-ring-text b{font-size:clamp(1.2rem,22cqw,2.5rem);}
 .overview-lab .lab-ring-text span{font-size:clamp(.6rem,8cqw,.95rem);}
@@ -295,12 +268,7 @@ body:has(.mood-bad){--tab-acc:#e8301f;}
 .lab-geplant span,.lab-offen span{color:#c9d2ce;}
 .lab-verpasst span{font-size:1rem;}
 /* V9-09: iPhone 16 Pro (402x874): größerer Ring füllt den Raum, Start-Button höher */
-.overview-lab .lab-ring{max-width:min(80vw,340px); max-height:min(80vw,340px);}
 .overview-lab .lab-start{min-height:clamp(64px,9dvh,84px);}
-.overview-lab{gap:.9rem;}
-.overview-lab{justify-content:space-evenly;}
-.overview-lab .lab-section{margin-top:0;}
-.overview-lab .lab-ring{flex:1 1 0;}
 
 /* V9-10: iPhone-16-Pro-Feinschliff: Titel 2 Zeilen, kein Streifen unter der Tabbar */
 html{-webkit-text-size-adjust:100%; background:#0e1211;}
@@ -333,3 +301,32 @@ body:not(:has(.overview-lab)) .topbar{background:transparent; border-bottom:1px 
 :where(#content) select{background:var(--panel-2); color:var(--text); border:1px solid var(--border); border-radius:10px; padding:.45rem .6rem; min-height:36px;}
 .w-unit{margin-left:auto;}
 .goal-edit select{margin-left:.3rem;}
+
+/* V10: QA-Nacharbeit */
+.picker-head input{background:var(--panel-2); color:var(--text); border:1px solid var(--border); border-radius:10px;}
+.w-set button,.w-set input,.w-sets-head button,.chip,.tv-icon-btn,.w-unit,.profile-form input{min-height:44px; min-width:44px;}
+.w-set input{width:64px;}
+.lab-goal-link{min-height:44px; font-size:.78rem;}
+.goal-sheet{position:fixed; inset:0; z-index:50; background:rgba(0,0,0,.65); display:flex; align-items:center; justify-content:center; padding:1rem;}
+.goal-sheet .goal-edit{background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:1.1rem; width:100%; max-width:360px; margin:0;}
+.goal-edit input{width:64px; min-height:44px;}
+.exercise-name{overflow-wrap:anywhere;}
+@media (max-width:400px){ .w-ex-top .exercise-gif{width:96px; height:96px;} }
+.exercise-actions button,.set{white-space:nowrap;}
+.sets{flex-wrap:wrap;}
+.w-missed{display:flex; flex-wrap:wrap; align-items:center; gap:.5rem; margin:.6rem 0; font-size:.8rem; color:var(--text-dim);}
+:where(#content) .w-danger{background:transparent; border-color:var(--border); color:var(--text-faint); margin-top:.6rem;}
+.lab-start small:empty{display:none;}
+.weeklist-meta{color:var(--text-dim); font-size:.78rem;}
+/* Kontrast Rot-Modus + Mindestschrift ~11px */
+body.mood-bad{--text-faint:#b08a85;}
+.overview-lab.mood-bad{--lab-dim:#b08a85;}
+.mood-bad .chip.active,.mood-bad .ov-btn,.mood-bad .w-set button.done{background:#d12a19; border-color:#d12a19; color:#fff;}
+.lab-day span{font-size:.69rem;}
+.tab-lb{font-size:.69rem;}
+.overview-lab .lab-ring-text small{font-size:clamp(.5rem,5cqw,.69rem);}
+/* Desktop: Übersicht mittig */
+@media (min-width:820px){ .overview-lab{max-width:520px; margin:-1rem auto 0; padding-bottom:2rem; height:auto; min-height:100%;} }
+.goal-sheet .edit-bar{flex-direction:row; gap:.6rem; padding:.5rem 0 0;}
+.goal-sheet .edit-bar button{flex:1;}
+:where(#content) .edit-bar .ov-btn:not(.ov-btn-ghost){background:var(--accent); color:var(--on-accent); border-color:var(--accent);}
