@@ -707,10 +707,10 @@ function helperDone() { try { return JSON.parse(localStorage.getItem(HELPKEY)) |
 function helperHide(id) { const d = helperDone(); if (!d.includes(id)) d.push(id); try { localStorage.setItem(HELPKEY, JSON.stringify(d)); } catch (e) {} }
 function hint(id, step, text) {
   if (helperDone().includes(id)) return '';
-  return `<div class="hh"><div class="hh-top"><b>TRAININGSHELPER · SCHRITT ${step} VON 4</b><button data-act="hintOk" data-id="${id}">Verstanden</button></div><p>${text}</p></div>`;
+  return `<div class="hh"><div class="hh-top"><b>TRAININGSHELPER · SCHRITT ${step} VON 5</b><button data-act="hintOk" data-id="${id}">Verstanden</button></div><p>${text}</p></div>`;
 }
 // aktueller Schritt eines Trainings: 1 Name (immer erledigt, sonst gäbe es es nicht), 2 Übungen, 3 Tage, 4 Starten
-function helperStep(t) { return !t.exercises.length ? 2 : (!t.weekdays || !t.weekdays.length) ? 3 : 4; }
+function helperStep(t) { return !t.exercises.length ? 2 : !helperDone().includes('sets') ? 3 : (!t.weekdays || !t.weekdays.length) ? 4 : 5; }
 
 function renderWeeklist() {
   const FULLN = { mon: 'Montag', tue: 'Dienstag', wed: 'Mittwoch', thu: 'Donnerstag', fri: 'Freitag', sat: 'Samstag', sun: 'Sonntag' };
@@ -767,7 +767,7 @@ function renderWTrain() {
            <div class="edit-bar"><button data-act="wRenameSave" data-id="${t.id}">Speichern</button><button data-act="wRenameCancel">Abbrechen</button></div>`
         : `<h2>${esc(t.name)}</h2><button data-act="wRename" data-id="${t.id}">Umbenennen</button>`}
     </div>
-    ${helperStep(t) === 3 ? hint('days', 3, 'Hier legst du fest, an welchen Tagen du dieses Training machst. Tippe einfach die Wochentage an.') : ''}
+    ${helperStep(t) === 4 ? hint('days', 4, 'Hier legst du fest, an welchen Tagen du dieses Training machst. Tippe einfach die Wochentage an.') : ''}
     <div class="w-schedule">
       <div class="w-schedule-days">${WD_KEYS.map(k =>
         `<button class="chip${t.weekdays.includes(k) ? ' active' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>
@@ -781,6 +781,7 @@ function renderWTrain() {
           : `<button data-act="wStart" data-id="${t.id}">▶ Training starten</button>`}</div>`
       : ''}
     ${t.exercises.length ? '' : hint('ex', 2, 'Hier fügst du Übungen hinzu: unten auf „+ Übung hinzufügen“ tippen, suchen und antippen. Du kannst auch mehrere nacheinander wählen.') + '<p class="placeholder">Noch keine Übungen – füge welche hinzu.</p>'}
+    ${t.exercises.length && helperStep(t) === 3 ? hint('sets', 3, 'Hier stellst du pro Übung ein, wie viele Sätze du machst und was du einträgst: Gewicht (kg), Wiederholungen, Sekunden oder nur abhaken. Passe es an oder lass es so.') : ''}
     ${t.exercises.map((ex, i) => {
       const sets = dOf[ex.name] || [];
       const setsCount = ex.sets || 3;
@@ -793,11 +794,11 @@ function renderWTrain() {
           </div>
           <div class="w-ex-actions"><button data-act="wRemoveEx" data-id="${t.id}" data-i="${i}">– Entfernen</button></div>
         </div>
-        <div class="w-sets-head">
-          <span>Sätze: ${setsCount}</span>
-          <select class="w-unit" data-act="wUnit" data-id="${t.id}" data-i="${i}" title="Einheit pro Satz">${Object.entries(UNITS).map(([v, [l]]) => `<option value="${v}"${(ex.unit || 'kg') === v ? ' selected' : ''}>${l}</option>`).join('')}</select>
-          <button data-act="wSetsAdj" data-id="${t.id}" data-i="${i}" data-d="-1">–</button>
-          <button data-act="wSetsAdj" data-id="${t.id}" data-i="${i}" data-d="1">+</button>
+        <div class="xs">
+          <div class="xs-row"><span class="xs-l">Sätze</span>
+            <div class="xs-step"><button data-act="wSetsAdj" data-id="${t.id}" data-i="${i}" data-d="-1" aria-label="Ein Satz weniger">–</button><b>${setsCount}</b><button data-act="wSetsAdj" data-id="${t.id}" data-i="${i}" data-d="1" aria-label="Ein Satz mehr">+</button></div></div>
+          <div class="xs-row"><span class="xs-l">Eintragen</span>
+            <div class="xs-seg">${Object.entries({ kg: 'Gewicht', wdh: 'Wdh', sek: 'Sek', none: 'Haken' }).map(([v, l]) => `<button class="${(ex.unit || 'kg') === v ? 'on' : ''}" data-act="wUnitSet" data-id="${t.id}" data-i="${i}" data-u="${v}">${l}</button>`).join('')}</div></div>
         </div>
         <div class="w-sets">${Array.from({ length: setsCount }, (_, k) => {
           const s = sets[k] || {};
@@ -809,7 +810,7 @@ function renderWTrain() {
         <textarea class="w-note" placeholder="Notiz zur Übung…" data-act="wExNote" data-id="${t.id}" data-i="${i}">${esc(ex.note || '')}</textarea>
       </div>`;
     }).join('')}
-    ${helperStep(t) === 4 ? hint('go', 4, 'Fertig eingerichtet! Wenn du loslegen willst, tippe oben auf „Training starten“. Die Tage kannst du jederzeit ändern.') : ''}
+    ${helperStep(t) === 5 ? hint('go', 5, 'Fertig eingerichtet! Wenn du loslegen willst, tippe oben auf „Training starten“. Die Tage kannst du jederzeit ändern.') : ''}
     <div class="edit-bar">
       <button data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button>
       ${t.exercises.length ? `
@@ -1081,6 +1082,35 @@ content.addEventListener('click', e => {
       if (!t || !confirm('Training „' + t.name + '“ löschen?')) return;
       weekplan = weekplan.filter(w => w.id !== prevId); saveWeekplan(); view = 'start'; break;
     }
+    case 'stDelete': case 'playDelete': {
+      const id = btn.dataset.act === 'playDelete' ? playTid : btn.dataset.id, t = trainingById(id);
+      if (!t || !confirm('Training „' + t.name + '“ löschen?')) return;
+      weekplan = weekplan.filter(w => w.id !== id); saveWeekplan();
+      const wp = wProgRaw(); delete wp.done[id]; saveWProg(wp);
+      view = 'start'; break;
+    }
+    case 'playExit': view = 'overview'; break;
+    case 'playGo': playIdx = Number(btn.dataset.i); break;
+    case 'playNext': playIdx++; break;
+    case 'playPrev': playIdx--; break;
+    case 'playAddSet': { const ex = trainingById(playTid).exercises[playIdx]; ex.sets = Math.min(10, (ex.sets || 3) + 1); saveWeekplan(); break; }
+    case 'playSet': {
+      const t = trainingById(playTid), ex = t.exercises[playIdx], k = Number(btn.dataset.k);
+      const wp = wProgRaw(), d = wp.done[t.id] = wp.done[t.id] || {}, sets = d[ex.name] = d[ex.name] || [];
+      sets[k] = sets[k] || {};
+      sets[k].done = !sets[k].done;
+      if (sets[k].done) {
+        if (sets[k].weight == null && (ex.unit || 'kg') !== 'none') { const l = lastWeights(ex.name); const pre = l[k] ?? l[l.length - 1]; if (pre != null) sets[k].weight = pre; }
+        restEnd = Date.now() + REST_SEC * 1000; pushStart(t.id);
+      } else restEnd = 0;
+      saveWProg(wp); break;
+    }
+    case 'restAdd': restEnd = Math.max(restEnd, Date.now()) + 15000; break;
+    case 'restSkip': restEnd = 0; break;
+    case 'summaryDone': summaryRec = null; view = 'overview'; break;
+    case 'wUnitSet': trainingById(btn.dataset.id).exercises[Number(btn.dataset.i)].unit = btn.dataset.u; saveWeekplan(); break;
+    case 'hintOk': helperHide(btn.dataset.id); break;
+    case 'helperReset': try { localStorage.removeItem(HELPKEY); } catch (e) {} break;
     case 'wOpen2': wId = btn.dataset.id; view = 'wtrain'; break;
     case 'wDayNew': {
       // Ruhetag angetippt → neues Tagestraining für diesen Wochentag anlegen und direkt öffnen
