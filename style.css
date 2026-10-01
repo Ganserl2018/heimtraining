@@ -256,8 +256,9 @@ body{
 
 /* V9-04: Übersicht statisch (kein Scroll), Wochenstreifen schließt unten ab */
 #content:has(.overview-lab){overflow:hidden; padding-bottom:0;}
-.overview-lab{height:100%; min-height:0; margin:-1rem -1.1rem 0; padding:1rem 1.1rem calc(4.2rem + env(safe-area-inset-bottom,0px)); justify-content:space-between; gap:.5rem;}
-.overview-lab .lab-ring{width:min(66vw, 36dvh); flex:none;}
+.overview-lab{height:100%; min-height:0; overflow:hidden; margin:-1rem -1.1rem 0; padding:1rem 1.1rem calc(4.2rem + env(safe-area-inset-bottom,0px)); justify-content:space-between; gap:.5rem;}
+.overview-lab .lab-ring{flex:1 1 0; min-height:6rem; width:auto; max-width:66vw; max-height:66vw; aspect-ratio:1; align-self:center;}
+.overview-lab .lab-ring svg{position:absolute; inset:0;}
 .overview-lab .lab-section{margin-top:auto;}
 .overview-lab .lab-week{margin-top:0;}
 
@@ -266,3 +267,7 @@ body:has(.overview-lab) .topbar{position:absolute; top:calc(env(safe-area-inset-
 body:has(.overview-lab) .topbar h1{display:none;}
 body:has(.overview-lab) .lab-badge{margin-right:3.2rem;}
 body:has(.overview-lab) .overview-lab{margin-top:-1rem; padding-top:1.4rem;}
+.overview-lab .lab-ring{container-type:size; max-width:min(66vw,300px); max-height:min(66vw,300px);}
+.overview-lab .lab-ring-text small{font-size:clamp(.4rem,5cqw,.58rem);}
+.overview-lab .lab-ring-text b{font-size:clamp(1.2rem,22cqw,2.5rem);}
+.overview-lab .lab-ring-text span{font-size:clamp(.6rem,8cqw,.95rem);}
