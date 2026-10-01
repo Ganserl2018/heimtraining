@@ -785,3 +785,15 @@ body.playing .pf{position:absolute;}
 .pf-time{font-size:clamp(3.4rem,16vw,4.95rem);}
 .pf-restbtns{height:42px;}
 @media (min-width:820px){ .pf-time{font-size:4.95rem;} }
+
+/* Sätze-Karte: kompakt, Einheit direkt im Wdh-Feld */
+.xc{gap:.15rem; padding:.45rem .6rem .6rem;}
+.xc-top{min-height:0; margin-bottom:.15rem;} .xc-n{font-size:.9rem; -webkit-line-clamp:1;}
+.xc-f.has-sel input{padding-right:5.2rem;}
+.xc-unit{position:absolute; right:.25rem; top:50%; transform:translateY(-50%); height:34px; max-width:5rem; padding:0 1.2rem 0 .5rem; border:0; border-radius:8px; background:var(--panel-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23b7f05a' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right .4rem center; -webkit-appearance:none; appearance:none; color:var(--accent); font:inherit; font-size:.7rem; font-weight:800; letter-spacing:.03em; cursor:pointer;}
+
+.xc-top .xc-unit{position:static; transform:none; flex:none; height:38px; max-width:none; padding:0 1.5rem 0 .7rem; border:1px solid var(--border); font-size:.74rem;}
+.xc-f.has-sel input{padding-right:2.3rem;}
+
+.xc .xc-f span{display:none;} .xc .xc-f input{padding:0 .3rem;}
+.xc-step button{width:40px; height:40px;} .xc-step b{min-width:1.7rem;}

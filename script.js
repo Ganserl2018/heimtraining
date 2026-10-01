@@ -780,21 +780,20 @@ function newDraft() {
 }
 const wOpen = new Set(); // UI-Zustand: 'tid:i' = Einstellungen offen, 'tid:i:s' = Sätze einzeln
 function exCard(t, ex, i) {
-  const key = t.id + ':' + i, u = ex.unit || 'kg', n = ex.sets || 3, plan = ex.plan || [];
+  const u = ex.unit || 'kg', n = ex.sets || 3, plan = ex.plan || [];
   const at = (k, f) => (plan[k] || {})[f] ?? null;
   const uniform = Array.from({ length: n }, (_, k) => k).every(k => at(k, 'w') === at(0, 'w') && at(k, 'r') === at(0, 'r'));
-  const split = u !== 'none' && (wOpen.has(key + ':s') || !uniform);
-  const open = wOpen.has(key);
+  const split = u !== 'none' && !uniform; // nur bei bereits unterschiedlichen Werten (alte Daten)
   const rl = u === 'sek' ? 'Sek' : 'Wdh';
   const da = `data-id="${t.id}" data-i="${i}"`;
-  const fld = (act, f, k, val) => `<label class="xc-f"><input type="number" inputmode="${f === 'w' ? 'decimal' : 'numeric'}" value="${val ?? ''}" placeholder="–" data-act="${act}" ${da}${k === null ? '' : ` data-k="${k}"`} data-f="${f}" aria-label="${f === 'w' ? 'kg' : rl}"><span>${f === 'w' ? 'kg' : rl}</span></label>`;
-  let rowB = `<div class="xc-step"><button data-act="wSetsAdj" ${da} data-d="-1" aria-label="Ein Satz weniger">–</button><b>${n}</b><button data-act="wSetsAdj" ${da} data-d="1" aria-label="Ein Satz mehr">+</button></div>`;
-  if (u === 'none') rowB += `<span class="xc-hint">nur abhaken</span>`;
-  else if (split) rowB += `<button class="xc-same" data-act="wSame" ${da}>Alle gleich</button>`;
-  else rowB += `<span class="xc-x">×</span>${u === 'kg' ? fld('wPlanAll', 'w', null, at(0, 'w')) : ''}${fld('wPlanAll', 'r', null, at(0, 'r'))}`;
+  const sel = `<select class="xc-unit" data-act="wUnit" ${da} aria-label="Eintragen als">${Object.entries({ kg: 'kg · Wdh', wdh: 'Wdh', sek: 'Sek', none: 'Haken' }).map(([v, l]) => `<option value="${v}"${u === v ? ' selected' : ''}>${l}</option>`).join('')}</select>`;
+  const fld = (act, f, k, val) => `<label class="xc-f"><input type="number" inputmode="${f === 'w' ? 'decimal' : 'numeric'}" value="${val ?? ''}" placeholder="${f === 'w' ? 'kg' : rl}" data-act="${act}" ${da}${k === null ? '' : ` data-k="${k}"`} data-f="${f}" aria-label="${f === 'w' ? 'kg' : rl}"><span>${f === 'w' ? 'kg' : rl}</span></label>`;
+  let rowB = `<div class="xc-step"><button data-act="wSetsAdj" ${da} data-d="-1" aria-label="Ein Satz weniger">–</button><b>${n}</b><button data-act="wSetsAdj" ${da} data-d="1" aria-label="Ein Satz mehr">+</button></div><span class="xc-x">×</span>`;
+  if (u === 'none') rowB += `<label class="xc-f"><input disabled placeholder="nur abhaken" aria-label="nur abhaken"></label>`;
+  else if (split) rowB += `<button class="xc-same" data-act="wSame" ${da}>Sätze angleichen</button>`;
+  else rowB += `${u === 'kg' ? fld('wPlanAll', 'w', null, at(0, 'w')) : ''}${fld('wPlanAll', 'r', null, at(0, 'r'))}`;
   const pills = split ? `<div class="xc-pills">${Array.from({ length: n }, (_, k) => `<div class="xc-pill"><b>${k + 1}</b>${u === 'kg' ? fld('wPlan', 'w', k, at(k, 'w')) : ''}${fld('wPlan', 'r', k, at(k, 'r'))}</div>`).join('')}</div>` : '';
-  const more = open ? `<div class="xc-more"><div class="xc-seg">${Object.entries({ kg: 'Gewicht', wdh: 'Wdh', sek: 'Sek', none: 'Haken' }).map(([v, l]) => `<button class="${u === v ? 'on' : ''}" data-act="wUnitSet" ${da} data-u="${v}">${l}</button>`).join('')}</div>${u !== 'none' && !split ? `<button class="xc-link" data-act="wSplit" ${da}>Sätze einzeln eintragen</button>` : ''}<textarea class="w-note" placeholder="Notiz zur Übung…" data-act="wExNote" ${da}>${esc(ex.note || '')}</textarea></div>` : '';
-  return `<div class="ts-set xc"><div class="xc-top"><span class="xc-n">${esc(ex.name)}</span><button class="xc-gear${open ? ' on' : ''}${ex.note ? ' has' : ''}" data-act="wMore" ${da} aria-label="Einstellungen" aria-expanded="${open}">⋯</button></div><div class="xc-row">${rowB}</div>${pills}${more}</div>`;
+  return `<div class="ts-set xc"><div class="xc-top"><span class="xc-n">${esc(ex.name)}</span>${sel}</div><div class="xc-row">${rowB}</div>${pills}</div>`;
 }
 function renderWTrain() {
   const t = trainingById(wId);
