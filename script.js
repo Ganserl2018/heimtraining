@@ -286,7 +286,7 @@ const MUSCLE_GROUPS = {
   neck: 'Sonstiges'
 };
 const MUSCLE_GROUP_LIST = ['Brust', 'Rücken', 'Schultern', 'Arme', 'Bauch', 'Beine'];
-const EQUIP_LIST = [['dumbbell', 'Kurzhantel'], ['barbell', 'Langhantel'], ['cable', 'Kabelzug/Seilzug'], ['band', 'Band'], ['none', 'Ohne Geräte']];
+const EQUIP_LIST = [['dumbbell', 'Kurzhantel'], ['barbell', 'Langhantel'], ['cable', 'Seilzug'], ['band', 'Band'], ['none', 'Ohne Geräte']];
 function matchesEquip(name, key) {
   const n = name.toLowerCase();
   if (key === 'none') return !['dumbbell', 'barbell', 'cable', 'band', 'smith', 'ez barbell'].some(k => n.includes(k));
@@ -877,14 +877,20 @@ function equipBadge(name) {
   const n = name.toLowerCase();
   if (n.includes('smith')) return 'Smith';
   if (/kettlebell|machine|lever|sled|ball|medicine/.test(n)) return 'Gerät';
-  for (const [k, l] of [['dumbbell', 'KH'], ['barbell', 'LH'], ['cable', 'Kabel'], ['band', 'Band']]) if (n.includes(k)) return l;
+  for (const [k, l] of [['dumbbell', 'KH'], ['barbell', 'LH'], ['cable', 'Seilzug'], ['band', 'Band']]) if (n.includes(k)) return l;
   return 'Körper';
+}
+// Zweitmuskel (Heuristik aus Name – DB hat nur den Hauptmuskel)
+function muscleLabel(e) {
+  const m = MUSCLE_DE[e.muscle] || e.muscle, n = e.name.toLowerCase();
+  if (/^(Brust|Schultern)/.test(m) && /press|push-up|push up|dip|flyes? ?\+|close.grip/.test(n) && !/fly|flye|crossover|raise|pullover|shrug/.test(n)) return m + ' · Trizeps';
+  return m;
 }
 function xrTile(i, act) {
   const e = pool[i];
   return `<button class="xr-tile" data-act="${act}" data-p="${i}">
     <img class="xr-img" src="${esc(e.gif)}" alt="" loading="lazy" decoding="async" onerror="this.style.visibility='hidden'">
-    <span class="xr-musc">${esc(MUSCLE_DE[e.muscle] || e.muscle)}</span>
+    <span class="xr-musc">${esc(muscleLabel(e))}</span>
     <span class="xr-eq">${equipBadge(e.name)}</span>
     <span class="xr-name">${esc(e.name)}</span>
   </button>`;
