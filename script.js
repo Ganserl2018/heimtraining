@@ -556,17 +556,26 @@ function presetExercises(p) {
 
 function renderStart() {
   const DB = '<svg class="lab-db" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>';
-  const card = (attr, name, exs, meta) => `<button class="st-card" ${attr}>
-      <div class="st-thumbs">${exs.slice(0, exs.length >= 4 ? 4 : exs.length >= 2 ? 2 : 1).map(ex => `<img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`).join('') || DB}</div>
-      <div class="st-name">${esc(name)}</div><div class="st-meta">${meta}</div></button>`;
+  const img = ex => `<img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`;
+  const muscles = exs => [...new Set(exs.map(e => MUSCLE_DE[e.muscle] || e.muscle))].slice(0, 3).join(' · ');
+  const pack = t => `<button class="st-pack" data-act="stStart" data-id="${t.id}">
+      <div class="st-pack-th">${t.exercises.slice(0, 4).map(img).join('')}</div>
+      <div class="st-pack-body">
+        <div class="st-pack-top"><span class="st-pack-name">${esc(t.name)}</span><span class="st-pack-go">▶ START</span></div>
+        <div class="st-pack-meta">${t.exercises.length} Übung${t.exercises.length === 1 ? '' : 'en'} · ${esc(muscles(t.exercises))}</div>
+        <ol class="st-pack-list">${t.exercises.slice(0, 4).map(e => `<li>${esc(e.name)}</li>`).join('')}${t.exercises.length > 4 ? `<li class="more">+ ${t.exercises.length - 4} weitere</li>` : ''}</ol>
+      </div></button>`;
+  const mini = p => { const exs = presetExercises(p); return `<button class="st-mini" data-act="stPreset" data-key="${p.key}">
+      <span class="st-mini-th">${exs[0] ? img(exs[0]) : DB}</span>
+      <span class="st-mini-t"><b>${esc(p.name)}</b><em>${exs.length} Üb.</em></span></button>`; };
   const own = weekplan.filter(w => w.exercises.length);
   const ownIds = new Set(own.map(w => w.presetKey).filter(Boolean));
   content.innerHTML = `<div class="st">
-    <div class="wp-sec">MEINE TRAININGS</div>
-    <div class="st-grid">${own.map(t => card(`data-act="stStart" data-id="${t.id}"`, t.name, t.exercises, `${t.exercises.length} Üb.`)).join('')}
-      <button class="st-card st-new" data-act="wNewTraining"><div class="st-plus">+</div><div class="st-name">Neu erstellen</div></button></div>
+    <div class="wp-sec">MEINE TRAININGSPAKETE</div>
+    <div class="st-packs">${own.map(pack).join('') || '<p class="placeholder">Noch keins – starte unten eine Vorlage oder erstelle ein eigenes.</p>'}</div>
+    <button class="st-newbtn" data-act="wNewTraining">+ Eigenes Training erstellen</button>
     <div class="wp-sec">VORLAGEN</div>
-    <div class="st-grid">${PRESETS.filter(p => !ownIds.has(p.key)).map(p => { const exs = presetExercises(p); return card(`data-act="stPreset" data-key="${p.key}"`, p.name, exs, `${exs.length} Üb.`); }).join('')}</div>
+    <div class="st-minis">${PRESETS.filter(p => !ownIds.has(p.key)).map(mini).join('')}</div>
   </div>`;
 }
 
