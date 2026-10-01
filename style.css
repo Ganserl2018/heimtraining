@@ -108,64 +108,13 @@ body{
 .set{padding:.35rem .5rem; font-size:.75rem;}
 .set.done{background:var(--accent); color:#20231e; border-color:var(--accent);}
 
-/* Basis-Kartenlook für Profil/Alle-Übungen (kein Nike-Style — nur die Startseite via
-   .overview-home bekommt den, siehe Block danach). */
-.overview .ov-card{background:var(--panel); border:1px solid var(--border-soft); border-radius:16px; padding:1.05rem 1.15rem;}
+/* Basis-Kartenlook für Profil/Alle-Übungen */
 .overview .ov-card-title{font-size:.72rem; letter-spacing:.02em; color:var(--text-faint); margin-bottom:.55rem; font-weight:500;}
 .overview .ov-card button{margin-top:.5rem; padding:.5rem .9rem; font-size:.85rem;}
 .ov-quick{display:grid; grid-template-columns:1fr 1fr; gap:.55rem;}
 .ov-quick button{min-height:56px; border-radius:12px; border:1px solid var(--border); background:var(--bg-raise); color:var(--text); text-align:left; padding:.5rem .9rem; display:flex; flex-direction:column; justify-content:center; gap:.15rem; margin-top:0;}
 .ov-quick button:active{border-color:var(--accent);}
-.ov-quick-name{font-size:.88rem; font-weight:600;}
-.ov-quick-meta{font-size:.72rem; color:var(--text-faint); font-weight:400;}
 
-/* V9-01: Übersicht — Nike-Style-Redesign (Alex-Wunsch 01.10., nur diese Seite betroffen).
-   Eigener Wrapper .overview-home (statt geteiltem .overview), muss NACH dem Basis-Block
-   oben stehen: gleiche Spezifität, es gewinnt die spätere Regel im Quelltext. */
-.overview-home{
-  display:flex; flex-direction:column; gap:.85rem;
-  background:#0a0a0a; margin:-1rem -1.1rem -5.5rem; padding:1rem 1.1rem 5.5rem;
-  --nike-volt:#ccff00; --nike-text:#f5f5f0; --nike-dim:#8a8d86;
-}
-.overview-home .ov-card{background:#161616; border:1px solid #262626; border-radius:16px; padding:1.05rem 1.15rem;}
-.overview-home .ov-card-title{font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--nike-dim); margin-bottom:.6rem; font-weight:700;}
-.overview-home .ov-card button{margin-top:.5rem; padding:.5rem .9rem; font-size:.85rem;}
-.overview-home .ov-quick-section{display:flex; flex-direction:column; gap:.5rem;}
-.overview-home .ov-quick-section .ov-card-title{padding:0 .1rem;}
-.overview-home .ov-quick-tiles{display:flex; gap:.6rem; overflow-x:auto; padding-bottom:.2rem; scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch;}
-.overview-home .ov-tile{
-  flex:0 0 42%; aspect-ratio:1/1.05; border-radius:16px; border:none; text-align:left; padding:.9rem;
-  display:flex; flex-direction:column; justify-content:flex-end; gap:.15rem; margin-top:0; position:relative; overflow:hidden; scroll-snap-align:start;
-}
-.overview-home .ov-tile::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.55) 100%);}
-.overview-home .ov-tile-name{font-size:1.15rem; font-weight:800; text-transform:uppercase; letter-spacing:-.01em; color:#fff; position:relative; text-shadow:0 1px 4px rgba(0,0,0,.4);}
-.overview-home .ov-tile-meta{font-size:.72rem; font-weight:600; color:#fff; opacity:.9; position:relative;}
-.overview-home .ov-tile-0{background:linear-gradient(155deg,#2a3300,var(--nike-volt) 130%);}
-.overview-home .ov-tile-1{background:linear-gradient(155deg,#3a0f04,#ff5a36 130%);}
-.overview-home .ov-tile-2{background:linear-gradient(155deg,#04222e,#5ad1ff 130%);}
-.overview-home .ov-tile-3{background:linear-gradient(155deg,#2a2a26,#c9c9c0 130%);}
-.overview-home .ov-tile:active{filter:brightness(.92);}
-
-.ov-card .history-item{padding:.7rem 0; border-bottom:1px solid var(--border-soft); display:flex; align-items:center; justify-content:space-between; gap:.8rem;}
-.ov-card .history-item:last-of-type{border-bottom:none; padding-bottom:.3rem;}
-.ov-card .history-item:first-of-type{padding-top:0;}
-.history-main{min-width:0;}
-.history-ring{flex:none; width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.68rem; font-weight:700; color:var(--text-dim); background:conic-gradient(var(--accent) calc(var(--pct,0) * 1%), var(--border-soft) 0); position:relative;}
-.history-ring::before{content:""; position:absolute; inset:3px; border-radius:50%; background:var(--panel);}
-.history-ring span{position:relative;}
-.history-footer-btn{width:100%; margin-top:.5rem;}
-.ov-btn{display:inline-flex; align-items:center; justify-content:center; background:var(--accent); color:#20231e; border:none; border-radius:999px; padding:.6rem 1.15rem; font-size:.86rem; font-weight:700; letter-spacing:-.01em; min-height:44px;}
-.ov-btn:active{background:var(--chalk-deep);}
-.ov-btn-ghost{background:none; border:1px solid var(--border); color:var(--text-dim); font-weight:600;}
-.ov-btn-ghost:active{border-color:var(--text-dim); color:var(--text);}
-
-/* V9-02: Start-Button "angebrochen" bei verpasstem Training diese Woche (Alex-Wunsch 01.10.) */
-.ov-btn-broken{
-  background:var(--bad); color:#fff;
-  clip-path:polygon(0 0, 92% 0, 100% 20%, 100% 100%, 8% 100%, 0 80%);
-  border-left:3px dashed rgba(255,255,255,.6);
-}
-.ov-btn-broken:active{background:#a04e42;}
 
 /* V2-01: Verlauf */
 .history-item{padding:.8rem 0; border-bottom:1px solid var(--border);}
@@ -225,41 +174,82 @@ body{
 .profile-form input,.profile-form select{font-size:16px; padding:.5rem; border-radius:6px; border:1px solid var(--border); background:var(--bg); color:var(--text);}
 
 /* V9-01: Quick-Start-Card im Nike-Look */
-.overview-home .ov-quickstart{background:#161616; border:1px solid #262626; position:relative; overflow:hidden;}
-.overview-home .ov-quickstart::after{content:""; position:absolute; right:-30px; top:-30px; width:140px; height:140px; border-radius:50%; border:22px solid rgba(204,255,0,.08);}
-.overview-home .ov-quickstart-name{font-size:1.5rem; font-weight:800; text-transform:uppercase; margin:.15rem 0 .15rem; letter-spacing:-.01em; position:relative; color:var(--nike-text);}
-.overview-home .ov-quickstart-sub{color:var(--nike-dim); font-size:.85rem; position:relative;}
-.overview-home .ov-quickstart .ov-btn{margin-top:.9rem; background:var(--nike-volt); color:#0a0a0a;}
-.overview-home .ov-quickstart .ov-btn-broken{background:var(--bad); color:#fff;}
 
 /* V9-01: Fortschritt als 2 Leisten (Trainings diese Woche + Streak), statt Ring/Einzelbalken */
-.overview-home .ov-progress{display:flex; flex-direction:column; gap:.9rem;}
-.overview-home .ov-bar-row{display:flex; flex-direction:column; gap:.35rem;}
-.overview-home .ov-bar-label{display:flex; align-items:center; justify-content:space-between; font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.03em; color:var(--nike-text);}
-.overview-home .ov-bar-value{font-size:1.5rem; font-weight:800; letter-spacing:-.02em; font-variant-numeric:tabular-nums; color:var(--nike-text);}
-.overview-home .ov-bar-value small{font-size:.8rem; font-weight:600; color:var(--nike-dim); letter-spacing:0;}
-.overview-home .ov-bar-track{height:10px; border-radius:99px; background:#262626; overflow:hidden;}
-.overview-home .ov-bar-fill{height:100%; background:var(--nike-volt); border-radius:99px;}
-.overview-home .ov-bar-fill-streak{background:#ff5a36;}
-.goal-edit-link{background:none; border:none; color:var(--nike-dim); font-size:.72rem; padding:.3rem 0; text-decoration:underline; text-underline-offset:2px; min-height:44px; text-transform:none; font-weight:500;}
 .goal-edit{display:flex; flex-direction:column; gap:.6rem; margin-top:.2rem;}
-.overview-home .goal-edit input{background:#0a0a0a; border-color:#262626; color:var(--nike-text);}
 .goal-edit label{display:flex; align-items:center; gap:.5rem; font-size:.85rem; color:var(--text-dim);}
 .goal-edit input{width:56px; font-size:.95rem; padding:.4rem; text-align:center; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text);}
 
 /* V6-05/06/07: Wochenplan-Statuskalender */
-.cal-strip{display:flex; gap:.45rem;}
-.cal-day{flex:1; display:flex; flex-direction:column; align-items:center; gap:.4rem; padding:.55rem 0 .5rem; border-radius:12px; background:var(--bg-raise); border:1px solid var(--border-soft); min-height:44px; justify-content:center;}
-.cal-day.cal-heute{border-color:var(--text-faint);}
-.cal-wd{font-size:.68rem; color:var(--text-faint); font-weight:600;}
-.cal-dot{width:7px; height:7px; border-radius:50%; background:var(--border);}
-.cal-day.cal-erledigt{background:rgba(127,174,106,.13);}
-.cal-day.cal-erledigt .cal-dot{background:var(--ok);}
-.cal-day.cal-erledigt .cal-wd{color:#b9d1ac;}
-.cal-day.cal-offen .cal-dot{background:var(--accent);}
-.cal-day.cal-offen .cal-wd{color:var(--accent);}
-.cal-day.cal-unvollständig .cal-dot{background:var(--warn);}
-.cal-day.cal-verpasst .cal-dot{background:var(--bad);}
-.cal-legend{display:flex; flex-wrap:wrap; gap:.5rem 1rem; margin-top:.7rem; font-size:.68rem; color:var(--text-faint);}
-.cal-legend span{display:inline-flex; align-items:center; gap:.35rem;}
-.cal-legend i{width:6px; height:6px; border-radius:50%; display:inline-block;}
+
+/* wiederhergestellt (Verlauf/Profil/Übersicht-Basis) */
+.overview .ov-card{background:var(--panel); border:1px solid var(--border-soft); border-radius:16px; padding:1.05rem 1.15rem;}
+.ov-card .history-item{padding:.7rem 0; border-bottom:1px solid var(--border-soft); display:flex; align-items:center; justify-content:space-between; gap:.8rem;}
+.ov-card .history-item:last-of-type{border-bottom:none; padding-bottom:.3rem;}
+.ov-card .history-item:first-of-type{padding-top:0;}
+.history-main{min-width:0;}
+.history-ring{flex:none; width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.68rem; font-weight:700; color:var(--text-dim); background:conic-gradient(var(--accent) calc(var(--pct,0) * 1%), var(--border-soft) 0); position:relative;}
+.history-ring::before{content:""; position:absolute; inset:3px; border-radius:50%; background:var(--panel);}
+.history-ring span{position:relative;}
+.history-footer-btn{width:100%; margin-top:.5rem;}
+.ov-btn{display:inline-flex; align-items:center; justify-content:center; background:var(--accent); color:#20231e; border:none; border-radius:999px; padding:.6rem 1.15rem; font-size:.86rem; font-weight:700; letter-spacing:-.01em; min-height:44px;}
+.ov-btn:active{background:var(--chalk-deep);}
+.ov-btn-ghost{background:none; border:1px solid var(--border); color:var(--text-dim); font-weight:600;}
+.ov-btn-ghost:active{border-color:var(--text-dim); color:var(--text);}
+.goal-edit-link{background:none; border:none; color:var(--text-faint); font-size:.72rem; padding:.3rem 0; text-decoration:underline; text-underline-offset:2px; min-height:44px; text-transform:none; font-weight:500;}
+
+/* V9-03 Lab-Design (Gemini-Vorlagen grün/rot, vermessen): Gesamtstimmung per .mood-good/.mood-bad */
+.overview-lab{display:flex; flex-direction:column; align-items:stretch; gap:.7rem; margin:-1rem -1.1rem -5.5rem; padding:1rem 1.1rem 5.5rem; min-height:100%;
+  --lab-bg:#121818; --lab-acc:#a8f03a; --lab-glow:rgba(168,240,58,.45); --lab-panel:#1b2222; --lab-dim:#7d8a86; background:radial-gradient(120% 60% at 50% 30%, #1a2420, var(--lab-bg) 70%); color:#e6ece8;}
+.overview-lab.mood-bad{--lab-bg:#150b0b; --lab-acc:#e8301f; --lab-glow:rgba(232,48,31,.5); --lab-panel:#241212; --lab-dim:#8a6a66; background:radial-gradient(120% 60% at 50% 30%, #2a1210, var(--lab-bg) 70%);}
+.lab-head{display:flex; justify-content:space-between; align-items:flex-start; gap:.6rem;}
+.lab-head-title{font-weight:800; font-size:1.02rem; line-height:1.2; letter-spacing:.01em; color:var(--lab-acc); text-shadow:0 0 10px var(--lab-glow);}
+.lab-head-sub{margin-top:.35rem; font-size:.68rem; color:#cfd6d2; display:flex; align-items:center; gap:.4rem;}
+.lab-head-sub i{width:7px; height:7px; border-radius:50%; background:var(--lab-acc); box-shadow:0 0 8px var(--lab-acc);}
+.lab-badge{flex:none; width:52px; height:52px; border-radius:50%; background:transparent; border:3px solid var(--lab-acc); color:var(--lab-acc); font-size:1.4rem; box-shadow:0 0 14px var(--lab-glow), inset 0 0 10px var(--lab-glow); padding:0;}
+.lab-ring{position:relative; width:min(62vw,230px); aspect-ratio:1; margin:.2rem auto 0;}
+.lab-ring svg{width:100%; height:100%; overflow:visible;}
+.lab-ring circle{fill:none; stroke-width:9; stroke-linecap:round;}
+.lab-ring-bg{stroke:rgba(255,255,255,.08);}
+.lab-ring-fg{stroke:var(--lab-acc); filter:drop-shadow(0 0 6px var(--lab-acc)) drop-shadow(0 0 14px var(--lab-glow));}
+.lab-ring-text{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;}
+.lab-ring-text small{font-size:.58rem; letter-spacing:.06em; color:#e6ece8;}
+.lab-ring-text b{font-size:2.5rem; font-weight:800; line-height:1.1; color:#fff; text-shadow:0 0 10px var(--lab-glow);}
+.lab-ring-text span{font-size:.95rem; font-weight:800; color:var(--lab-acc);}
+.lab-streak{text-align:center; font-size:.72rem; font-weight:700; letter-spacing:.04em; color:#e6ece8; margin-top:-1.4rem;}
+.mood-bad .lab-streak{color:var(--lab-acc);}
+.lab-start{width:100%; min-height:64px; border-radius:14px; border:1px solid #8a948f; background:linear-gradient(180deg,#76807c,#4a524f 55%,#5d6663); color:#101312; font-weight:800; font-size:1.15rem; letter-spacing:.02em; box-shadow:0 0 18px var(--lab-glow), inset 0 1px 0 rgba(255,255,255,.35); padding:.55rem 1rem; text-align:center;}
+.lab-start small{display:block; font-size:.78rem; font-weight:700; margin-top:.1rem;}
+.lab-start-broken{background:linear-gradient(180deg,#8a6a5a,#5c4538 55%,#6e5242); border-color:#9a7a68; color:#1a0d0a; clip-path:polygon(0 0,92% 0,100% 22%,100% 100%,8% 100%,0 78%); box-shadow:none;}
+.lab-goal-link{align-self:center; background:none; border:0; color:var(--lab-dim); font-size:.68rem; text-decoration:underline; margin-top:-1.6rem; padding:.2rem; z-index:1;}
+.lab-streak{margin-top:-.4rem !important;}
+.lab-section{font-size:.78rem; font-weight:800; letter-spacing:.04em; color:#e6ece8; text-align:center; margin-top:.2rem;}
+.lab-section:last-of-type{text-align:left;}
+.lab-tiles{display:flex; gap:.5rem; overflow-x:auto; scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch; padding-bottom:.3rem;}
+.lab-tile{flex:0 0 27%; aspect-ratio:1/1.05; border-radius:10px; border:0; border-bottom:3px solid var(--lab-acc); background:linear-gradient(180deg,#1d2622,#0e1412 80%); color:#e6ece8; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; text-align:center; gap:.1rem; padding:.45rem .3rem; font-size:.66rem; font-weight:700; scroll-snap-align:start; box-shadow:0 2px 10px var(--lab-glow); position:relative; overflow:hidden;}
+.mood-bad .lab-tile{background:linear-gradient(180deg,#2c1614,#120909 80%);}
+.lab-tile-num{font-size:.7rem;}
+.lab-tile-name{text-transform:uppercase; line-height:1.15;}
+.lab-tile-meta{font-size:.58rem; color:var(--lab-dim); font-weight:600;}
+.lab-week{display:flex; gap:.4rem; background:var(--lab-panel); border-radius:12px; padding:.5rem;}
+.lab-day{flex:1; min-width:0; text-align:center; border-radius:8px; background:#262e2b; padding:.45rem 0 .35rem; display:flex; flex-direction:column; gap:.1rem;}
+.mood-bad .lab-day{background:#2e1a18;}
+.lab-day b{font-size:.78rem; text-transform:uppercase; color:#e6ece8;}
+.lab-day span{font-size:.58rem; color:var(--lab-dim);}
+.lab-erledigt,.lab-heute.lab-offen{border:1px solid var(--lab-acc); box-shadow:0 0 8px var(--lab-glow);}
+.lab-erledigt b,.lab-heute b{color:var(--lab-acc);}
+.lab-erledigt span{color:var(--lab-acc);}
+.lab-verpasst{background:#9a1716 !important; box-shadow:0 0 8px rgba(232,48,31,.6);}
+.lab-verpasst b,.lab-verpasst span{color:#fff;}
+.lab-unvollständig{border:1px solid #c98a4b;}
+.overview-lab .ov-card{background:var(--lab-panel); border:1px solid rgba(255,255,255,.06); color:#e6ece8;}
+.overview-lab .ov-card-title{color:var(--lab-dim); text-transform:uppercase; letter-spacing:.06em; font-size:.66rem;}
+.overview-lab .ov-bar-label,.overview-lab .ov-bar-value{color:#e6ece8;}
+.overview-lab .ov-bar-value small{color:var(--lab-dim);}
+.overview-lab .ov-bar-track{height:8px; border-radius:99px; background:rgba(255,255,255,.08); overflow:hidden;}
+.overview-lab .ov-bar-fill{height:100%; background:var(--lab-acc); border-radius:99px;}
+.overview-lab .ov-btn{background:var(--lab-acc); color:#0c0f0e;}
+.overview-lab .ov-btn-ghost{background:none; color:var(--lab-dim); border:1px solid rgba(255,255,255,.14);}
+.overview-lab .goal-edit-link{color:var(--lab-acc);}
+.overview-lab .ov-bar-fill-streak{background:var(--lab-acc);}
+@media (min-width:820px){ .lab-ring{width:230px;} .lab-tile{flex-basis:150px;} .overview-lab{max-width:520px; margin:0 auto; padding:1rem 1.1rem 2rem;} }

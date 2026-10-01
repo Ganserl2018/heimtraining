@@ -370,15 +370,6 @@ function renderOverview() {
   const weekStartForBtn = mondayOf(t);
   const hasMissedThisWeek = scheduled.some(w => Array.from({ length: 7 }, (_, i) => addDays(weekStartForBtn, i))
     .some(ds => trainingStatusForDate(w, ds) === 'verpasst'));
-  const quickBlock = quick
-    ? `<div class="ov-card ov-quickstart">
-        <div class="ov-card-title">${openTraining ? 'Weiter im Training' : 'Heute geplant'}</div>
-        <div class="ov-quickstart-name">${esc(quick.name)}</div>
-        <div class="ov-quickstart-sub">${esc(quickSub)}</div>
-        <button class="ov-btn${hasMissedThisWeek ? ' ov-btn-broken' : ''}" data-act="quickStart" data-id="${quick.id}">${openTraining ? 'Weiter' : 'Jetzt starten'}</button>
-      </div>`
-    : (scheduled.length ? '' : '');
-
   // V9-01: Wochenziel als 2 Leisten (Trainings diese Woche + Streak) statt Ring/Einzelbalken
   // (Alex-Wunsch 01.10.: Nike-Style-Vorschlag hatte Ring, stattdessen 2 Balken).
   const goal = loadGoal();
@@ -407,45 +398,62 @@ function renderOverview() {
         </div>`}
   </div>`;
 
-  // V6-05/06: Wochenplan-Statuskalender – Mo–So, je Training mit Wochentag-Zuordnung.
   const weekStart = mondayOf(t);
   const weekDates = Array.from({ length: 7 }, (_, i) => addDays(weekStart, i));
-  const calBlock = scheduled.length ? `<div class="ov-card">
-    <div class="ov-card-title">Wochenplan diese Woche</div>
-    <div class="cal-strip">${weekDates.map(ds => {
-      const items = scheduled.map(w => ({ w, status: trainingStatusForDate(w, ds) })).filter(x => x.status);
-      const worst = items.some(x => x.status === 'verpasst') ? 'verpasst'
-        : items.some(x => x.status === 'unvollständig') ? 'unvollständig'
-        : items.some(x => x.status === 'offen') ? 'offen'
-        : items.length ? 'erledigt' : null;
-      return `<div class="cal-day${worst ? ' cal-' + worst : ''}${ds === t ? ' cal-heute' : ''}" title="${items.map(x => esc(x.w.name) + ': ' + STATUS_LABEL[x.status]).join(', ')}">
-        <div class="cal-wd">${WD_LABELS[wdKeyOf(ds)]}</div>
-        <div class="cal-dot"></div>
-      </div>`;
-    }).join('')}</div>
-    <div class="cal-legend">
-      <span><i style="background:var(--ok)"></i>erledigt</span>
-      <span><i style="background:var(--accent)"></i>heute offen</span>
-      <span><i style="background:var(--warn)"></i>unvollständig</span>
-      <span><i style="background:var(--bad)"></i>verpasst</span>
-    </div>
-  </div>` : '';
+
+  // V9-03: Lab-Design nach Gemini-Vorlagen (grün/rot, Gesamtstimmung folgt dem Zustand)
+  const mood = hasMissedThisWeek ? 'mood-bad' : 'mood-good';
+  const moodTitle = hasMissedThisWeek ? 'SYSTEM-LOCKDOWN' : 'KRITISCHE MASSE';
+  const moodSub = hasMissedThisWeek ? 'Phase Shift: tiefes Karmesin' : 'Phase Shift: Energie';
+  const btnSub = hasMissedThisWeek ? '(WARNUNG: LEBENSGEFAHR!)' : '(AUTO-LOAD MAX!)';
+  const startAttr = quick ? `data-act="quickStart" data-id="${quick.id}"` : `data-act="goto" data-day="${activeDay || DAYS[0]}"`;
+  const R = 70, C = 2 * Math.PI * R, ARC = C * 0.75;
+  const ringFill = ARC * Math.min(1, goalCount / Math.max(goal.target, 1));
+  const ringBlock = `<div class="lab-ring">
+      <svg viewBox="0 0 180 180" aria-hidden="true">
+        <circle class="lab-ring-bg" cx="90" cy="90" r="${R}" stroke-dasharray="${ARC} ${C}" transform="rotate(135 90 90)"/>
+        ${ringFill > 0 ? `<circle class="lab-ring-fg" cx="90" cy="90" r="${R}" stroke-dasharray="${ringFill} ${C}" transform="rotate(135 90 90)"/>` : ''}
+      </svg>
+      <div class="lab-ring-text"><small>WOCHEN-FORTSCHRITT</small><b>${goalCount}/${goal.target}</b><span>WORKOUTS</span></div>
+    </div>`;
+  const wdOrder = weekDates.map(ds => {
+    const items = scheduled.map(w => ({ w, status: trainingStatusForDate(w, ds) })).filter(x => x.status);
+    const worst = items.some(x => x.status === 'verpasst') ? 'verpasst'
+      : items.some(x => x.status === 'unvollständig') ? 'unvollständig'
+      : items.some(x => x.status === 'offen') ? 'offen'
+      : items.some(x => x.status === 'geplant') ? 'geplant'
+      : items.length ? 'erledigt' : null;
+    const sub = !worst ? '(Rest)' : worst === 'erledigt' ? '✓' : worst === 'verpasst' ? '⚠' : worst === 'unvollständig' ? '!' : '(Train)';
+    return `<div class="lab-day${worst ? ' lab-' + worst : ''}${ds === t ? ' lab-heute' : ''}"><b>${WD_LABELS[wdKeyOf(ds)]}</b><span>${sub}</span></div>`;
+  }).join('');
 
   content.innerHTML = `
-    <div class="overview overview-home">
-      ${quickBlock}
-      ${goalBlock}
-      ${calBlock}
+    <div class="overview overview-lab ${mood}">
+      <div class="lab-head">
+        <div>
+          <div class="lab-head-title">HOME LAB – ZUSTAND:<br>${moodTitle}</div>
+          <div class="lab-head-sub"><i></i>${moodSub}</div>
+        </div>
+        <button class="lab-badge" data-act="goto" data-view="profile" aria-label="Profil">◉</button>
+      </div>
+      ${goalEditing ? goalBlock : ''}
+      ${ringBlock}
+      <button class="lab-goal-link" data-act="goalEdit">Ziel anpassen</button>
+      <div class="lab-streak">STREAK: ${streak} TAG${streak === 1 ? '' : 'E'}${hasMissedThisWeek ? ' (KRITISCH)' : ''} 🔥</div>
+      <button class="lab-start${hasMissedThisWeek ? ' lab-start-broken' : ''}" ${startAttr}>
+        <span>START WORKOUT<small>${btnSub}</small></span>
+      </button>
+      <div class="lab-section">EQUIPMENT-RADAR</div>
+      <div class="lab-tiles">${DAYS.map((d, i) => `<button class="lab-tile" data-act="goto" data-day="${d}">
+          <span class="lab-tile-num">${i + 1}.</span>
+          <span class="lab-tile-name">${DAY_LABELS[d]}</span>
+          <span class="lab-tile-meta">~${estimateMin(d)} Min</span>
+        </button>`).join('')}</div>
+      <div class="lab-section">WOCHENPLAN-STREIFEN</div>
+      <div class="lab-week">${wdOrder}</div>
       <div class="ov-card">
         <div class="ov-card-title">Heute</div>
         ${todayBlock}
-      </div>
-      <div class="ov-quick-section">
-        <div class="ov-card-title">Schnellzugriff</div>
-        <div class="ov-quick-tiles">${DAYS.map((d, i) => `<button class="ov-tile ov-tile-${i % 4}" data-act="goto" data-day="${d}">
-            <span class="ov-tile-name">${DAY_LABELS[d]}</span>
-            <span class="ov-tile-meta">~${estimateMin(d)} Min · ${lastTrainedText(d, h)}</span>
-          </button>`).join('')}</div>
       </div>
       <div class="ov-card">
         <div class="ov-card-title">Letzte Trainings</div>
