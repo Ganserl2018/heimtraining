@@ -585,3 +585,23 @@ body.mood-bad{--text-faint:#b08a85;}
 .xs-row:has(.xs-seg){flex-direction:column; align-items:stretch; gap:.4rem;}
 .xs-seg{display:grid; grid-template-columns:repeat(4,1fr); flex-wrap:nowrap;}
 .xs-seg button{padding:0 .2rem;}
+/* Trainingsseite als Reihenfolge */
+.tsx{display:flex; flex-direction:column; gap:.7rem; padding-bottom:1rem;}
+.ts{background:var(--panel); border:1px solid var(--border-soft); border-radius:16px; padding:.8rem .9rem;}
+.ts.now{border-color:var(--accent); box-shadow:0 0 18px color-mix(in srgb,var(--accent) 22%,transparent);}
+.ts-h{display:flex; align-items:center; gap:.6rem; margin-bottom:.5rem;}
+.ts-h b{font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
+.ts.now .ts-h b{color:var(--accent);}
+.ts-n{flex:none; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.85rem; background:var(--panel-2); color:var(--text-dim);}
+.ts.now .ts-n{background:var(--accent); color:var(--on-accent,#0b1000);}
+.ts.ok .ts-n{background:color-mix(in srgb,var(--accent) 25%,var(--panel-2)); color:var(--accent);}
+.ts-name{display:flex; align-items:center; justify-content:space-between; gap:.6rem;} .ts-name h2{margin:0; font-size:1.3rem; overflow-wrap:anywhere;}
+.ts-ex{display:flex; align-items:center; gap:.7rem; padding:.35rem 0; border-top:1px solid var(--border-soft);}
+.ts-ex img{flex:none; width:52px; height:52px; border-radius:10px; object-fit:cover; background:#000;}
+.ts-ex div{flex:1; min-width:0;} .ts-ex b{display:block; font-size:.9rem;} .ts-ex em{font-style:normal; font-size:.74rem; color:var(--text-dim);}
+.ts-ex button{flex:none; width:44px; height:44px; border-radius:10px; border:1px solid var(--border); background:var(--panel-2); color:var(--text-dim); cursor:pointer;}
+.ts-add{width:100%; min-height:48px; margin-top:.4rem; background:none; border:1px dashed var(--accent); border-radius:12px; color:var(--accent); font-weight:700; cursor:pointer;}
+.ts-set{margin-bottom:.7rem;} .ts-set-n{font-weight:700; font-size:.95rem; margin-bottom:.2rem;}
+.ts-go{width:100%;}
+.ts-del{align-self:center; min-height:44px; background:none; border:0; color:var(--text-dim); text-decoration:underline; cursor:pointer;}
+.tsx .hh{margin:.2rem 0 .6rem;}

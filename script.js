@@ -756,68 +756,33 @@ function renderWeeklist() {
 function renderWTrain() {
   const t = trainingById(wId);
   if (!t) { view = 'overview'; return renderOverview(); }
-  const wp = wProgRaw();
-  const dOf = wp.done[t.id] || {};
-  const sNote = (wp.sessionNote || {})[t.id] || '';
+  const step = helperStep(t);
   const started = startOf(t.id, today());
-  content.innerHTML = `
-    <div class="wtrain-head">
-      ${renameId === t.id
-        ? `<input id="rename-input" value="${esc(t.name)}">
-           <div class="edit-bar"><button data-act="wRenameSave" data-id="${t.id}">Speichern</button><button data-act="wRenameCancel">Abbrechen</button></div>`
-        : `<h2>${esc(t.name)}</h2><button data-act="wRename" data-id="${t.id}">Umbenennen</button>`}
-    </div>
-    ${helperStep(t) === 4 ? hint('days', 4, 'Hier legst du fest, an welchen Tagen du dieses Training machst. Tippe einfach die Wochentage an.') : ''}
-    <div class="w-schedule">
-      <div class="w-schedule-days">${WD_KEYS.map(k =>
-        `<button class="chip${t.weekdays.includes(k) ? ' active' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>
-      <input type="time" class="w-schedule-time" data-act="wTime" data-id="${t.id}" value="${esc(t.time || '')}" title="Uhrzeit (informativ, kein Cutoff)">
-    </div>
-    ${(() => { const ws = mondayOf(today()); const miss = Array.from({ length: 7 }, (_, i) => addDays(ws, i)).filter(ds => trainingStatusForDate(t, ds) === 'verpasst');
-      return miss.length ? `<div class="w-missed">${miss.map(ds => `<span>${WD_LABELS[wdKeyOf(ds)]} verpasst</span><button data-act="wSkip" data-id="${t.id}" data-date="${ds}">Als Ruhetag werten</button>`).join('')}</div>` : ''; })()}
-    ${t.exercises.length
-      ? `<div class="edit-bar">${started
-          ? `<span class="placeholder">Gestartet um ${esc(new Date(started.startedAt).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }))} Uhr</span>`
-          : `<button data-act="wStart" data-id="${t.id}">▶ Training starten</button>`}</div>`
-      : ''}
-    ${t.exercises.length ? '' : hint('ex', 2, 'Hier fügst du Übungen hinzu: unten auf „+ Übung hinzufügen“ tippen, suchen und antippen. Du kannst auch mehrere nacheinander wählen.') + '<p class="placeholder">Noch keine Übungen – füge welche hinzu.</p>'}
-    ${t.exercises.length && helperStep(t) === 3 ? hint('sets', 3, 'Hier stellst du pro Übung ein, wie viele Sätze du machst und was du einträgst: Gewicht (kg), Wiederholungen, Sekunden oder nur abhaken. Passe es an oder lass es so.') : ''}
-    ${t.exercises.map((ex, i) => {
-      const sets = dOf[ex.name] || [];
-      const setsCount = ex.sets || 3;
-      return `<div class="w-exercise">
-        <div class="w-ex-top">
-          <img class="exercise-gif" src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
-          <div class="exercise-info">
-            <div class="exercise-name">${esc(ex.name)}</div>
-            <div class="exercise-muscle">${esc(ex.muscle)}</div>
-          </div>
-          <div class="w-ex-actions"><button data-act="wRemoveEx" data-id="${t.id}" data-i="${i}">– Entfernen</button></div>
-        </div>
-        <div class="xs">
+  const hasEx = t.exercises.length > 0, hasDays = t.weekdays && t.weekdays.length > 0;
+  const sec = (n, title, ok, body) => `<section class="ts${step === n ? ' now' : ''}${ok ? ' ok' : ''}"><div class="ts-h"><span class="ts-n">${ok ? '✓' : n}</span><b>${title}</b></div>${body}</section>`;
+  const ws = mondayOf(today()), miss = Array.from({ length: 7 }, (_, i) => addDays(ws, i)).filter(ds => trainingStatusForDate(t, ds) === 'verpasst');
+  content.innerHTML = `<div class="tsx">
+    ${sec(1, 'Name', true, renameId === t.id
+      ? `<input id="rename-input" value="${esc(t.name)}"><div class="edit-bar"><button data-act="wRenameSave" data-id="${t.id}">Speichern</button><button data-act="wRenameCancel">Abbrechen</button></div>`
+      : `<div class="ts-name"><h2>${esc(t.name)}</h2><button data-act="wRename" data-id="${t.id}">Umbenennen</button></div>`)}
+    ${sec(2, 'Übungen', hasEx, `${step === 2 ? hint('ex', 2, 'Hier fügst du Übungen hinzu: auf „+ Übung hinzufügen“ tippen, suchen und antippen. Du kannst mehrere nacheinander wählen.') : ''}
+      ${t.exercises.map((ex, i) => `<div class="ts-ex"><img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><div><b>${esc(ex.name)}</b><em>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</em></div><button data-act="wRemoveEx" data-id="${t.id}" data-i="${i}" aria-label="Übung entfernen">✕</button></div>`).join('')}
+      <button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button>`)}
+    ${hasEx ? sec(3, 'Sätze &amp; Eintragen', step > 3, `${step === 3 ? hint('sets', 3, 'Hier stellst du pro Übung ein, wie viele Sätze du machst und was du einträgst: Gewicht, Wiederholungen, Sekunden oder nur abhaken. Passe es an oder lass es so.') : ''}
+      ${t.exercises.map((ex, i) => { const setsCount = ex.sets || 3; return `<div class="ts-set"><div class="ts-set-n">${esc(ex.name)}</div><div class="xs">
           <div class="xs-row"><span class="xs-l">Sätze</span>
             <div class="xs-step"><button data-act="wSetsAdj" data-id="${t.id}" data-i="${i}" data-d="-1" aria-label="Ein Satz weniger">–</button><b>${setsCount}</b><button data-act="wSetsAdj" data-id="${t.id}" data-i="${i}" data-d="1" aria-label="Ein Satz mehr">+</button></div></div>
           <div class="xs-row"><span class="xs-l">Eintragen</span>
             <div class="xs-seg">${Object.entries({ kg: 'Gewicht', wdh: 'Wdh', sek: 'Sek', none: 'Haken' }).map(([v, l]) => `<button class="${(ex.unit || 'kg') === v ? 'on' : ''}" data-act="wUnitSet" data-id="${t.id}" data-i="${i}" data-u="${v}">${l}</button>`).join('')}</div></div>
-        </div>
-        <div class="w-sets">${Array.from({ length: setsCount }, (_, k) => {
-          const s = sets[k] || {};
-          return `<div class="w-set">
-            <button class="${s.done ? 'done' : ''}" data-act="wSetDone" data-id="${t.id}" data-i="${i}" data-k="${k}">${k + 1}${s.done ? ' ✓' : ''}</button>
-            ${(ex.unit || 'kg') === 'none' ? '' : `<input type="number" inputmode="decimal" placeholder="${UNITS[ex.unit || 'kg'][0]}" value="${s.weight ?? ''}" data-act="wWeight" data-id="${t.id}" data-i="${i}" data-k="${k}">`}
-          </div>`;
-        }).join('')}</div>
-        <textarea class="w-note" placeholder="Notiz zur Übung…" data-act="wExNote" data-id="${t.id}" data-i="${i}">${esc(ex.note || '')}</textarea>
-      </div>`;
-    }).join('')}
-    ${helperStep(t) === 5 ? hint('go', 5, 'Fertig eingerichtet! Wenn du loslegen willst, tippe oben auf „Training starten“. Die Tage kannst du jederzeit ändern.') : ''}
-    <div class="edit-bar">
-      <button data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button>
-      ${t.exercises.length ? `
-        <textarea class="w-note" placeholder="Notiz zum Training…" data-act="wSessionNote" data-id="${t.id}">${esc(sNote)}</textarea>
-        <button data-act="wFinish" data-id="${t.id}">Training beenden</button>` : ''}
-      <button class="w-danger" data-act="wDelete" data-id="${t.id}">Training löschen</button>
-    </div>`;
+        </div><textarea class="w-note" placeholder="Notiz zur Übung…" data-act="wExNote" data-id="${t.id}" data-i="${i}">${esc(ex.note || '')}</textarea></div>`; }).join('')}`) : ''}
+    ${hasEx ? sec(4, 'Tage &amp; Uhrzeit', hasDays, `${step === 4 ? hint('days', 4, 'Hier legst du fest, an welchen Tagen du dieses Training machst. Tippe einfach die Wochentage an.') : ''}
+      <div class="w-schedule"><div class="w-schedule-days">${WD_KEYS.map(k => `<button class="chip${t.weekdays.includes(k) ? ' active' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>
+        <input type="time" class="w-schedule-time" data-act="wTime" data-id="${t.id}" value="${esc(t.time || '')}" title="Uhrzeit (informativ, kein Cutoff)"></div>
+      ${miss.length ? `<div class="w-missed">${miss.map(ds => `<span>${WD_LABELS[wdKeyOf(ds)]} verpasst</span><button data-act="wSkip" data-id="${t.id}" data-date="${ds}">Als Ruhetag werten</button>`).join('')}</div>` : ''}`) : ''}
+    ${hasEx ? sec(5, 'Los geht’s', false, `${step === 5 ? hint('go', 5, 'Fertig eingerichtet! Tippe auf „Training starten“, wenn du loslegen willst. Alles lässt sich jederzeit ändern.') : ''}
+      <button class="pl-next ts-go" data-act="${started ? 'quickStart' : 'wStart'}" data-id="${t.id}">${started ? '▶ WORKOUT FORTSETZEN' : '▶ TRAINING STARTEN'}</button>`) : ''}
+    <button class="ts-del" data-act="wDelete" data-id="${t.id}">Training löschen</button>
+  </div>`;
   if (renameId === t.id) document.getElementById('rename-input')?.focus();
 }
 
