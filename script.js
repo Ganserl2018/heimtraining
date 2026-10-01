@@ -70,6 +70,7 @@ function trainingStatusForDate(t, dateStr) {
   if (!t.weekdays || !t.weekdays.length || !t.weekdays.includes(wdKeyOf(dateStr))) return null;
   const done = loadHistory().some(r => r.trainingId === t.id && r.date === dateStr);
   if (done) return 'erledigt';
+  if (t.since && t.since[wdKeyOf(dateStr)] && dateStr < t.since[wdKeyOf(dateStr)]) return null;
   const started = !!startOf(t.id, dateStr);
   const t0 = today();
   if (dateStr > t0) return 'geplant';
@@ -100,6 +101,9 @@ try { overrides = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { ove
 
 // Abhak-State: an das lokale Datum gebunden – an einem neuen Tag startet alles leer.
 const today = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+// V9-15: 'since' = ab welchem Datum ein Wochentag eingeplant ist; Tage davor zählen nie als verpasst
+// (bestehende Pläne ohne since: ab heute, damit alte Tage dieser Woche nicht plötzlich rot werden).
+weekplan.forEach(t => { if (!t.since || typeof t.since !== 'object') t.since = {}; t.weekdays.forEach(k => { if (!t.since[k]) t.since[k] = today(); }); });
 let progress = null;
 function prog() {
   if (!progress) { try { progress = JSON.parse(localStorage.getItem(PKEY)); } catch (e) { progress = null; } }
@@ -731,10 +735,10 @@ content.addEventListener('click', e => {
       const nm = FULL[wd] + 'straining'; // vorhandene Standard-Trainings Montagstraining … Sonntagstraining
       const existing = weekplan.find(w => w.name === nm);
       if (existing) {
-        if (!existing.weekdays.length && btn.dataset.date >= today()) { existing.weekdays = [wd]; saveWeekplan(); }
+        if (!existing.weekdays.length && btn.dataset.date >= today()) { existing.weekdays = [wd]; existing.since[wd] = today(); saveWeekplan(); }
         wId = existing.id; view = 'wtrain'; picker = null; break;
       }
-      const t = { id: 'w' + Date.now(), name: nm, exercises: [], weekdays: btn.dataset.date >= today() ? [wd] : [], time: '' }; // vergangene Tage nicht einplanen (sonst sofort "verpasst")
+      const t = { id: 'w' + Date.now(), name: nm, exercises: [], weekdays: btn.dataset.date >= today() ? [wd] : [], since: btn.dataset.date >= today() ? { [wd]: today() } : {}, time: '' }; // vergangene Tage nicht einplanen (sonst sofort "verpasst")
       weekplan.push(t); saveWeekplan();
       wId = t.id; view = 'wtrain'; picker = null; break;
     }
@@ -800,7 +804,7 @@ content.addEventListener('click', e => {
     case 'wDayToggle': {
       const t = trainingById(btn.dataset.id), wd = btn.dataset.wd;
       const idx = t.weekdays.indexOf(wd);
-      if (idx === -1) t.weekdays.push(wd); else t.weekdays.splice(idx, 1);
+      if (idx === -1) { t.weekdays.push(wd); (t.since = t.since || {})[wd] = today(); } else t.weekdays.splice(idx, 1);
       saveWeekplan(); break;
     }
     case 'wStart': pushStart(btn.dataset.id); break;
