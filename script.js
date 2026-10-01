@@ -431,7 +431,7 @@ function renderOverview() {
     <div class="overview overview-lab ${mood}">
       <div class="lab-head">
         <div>
-          <div class="lab-head-title">HOME LAB – ZUSTAND:<br>${moodTitle}</div>
+          <div class="lab-head-title">HOME FORCE – ZUSTAND:<br>${moodTitle}</div>
           <div class="lab-head-sub"><i></i>${moodSub}</div>
         </div>
         <button class="lab-badge" data-act="goto" data-view="profile" aria-label="Profil">◉</button>
