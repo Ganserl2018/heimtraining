@@ -32,12 +32,12 @@ const WEEKDAY_SEED = [
 ];
 let weekplan = [];
 let wId = null; // aktuell offenes Training im 'wtrain'-View
-const WEIGHT_WORDS = ['barbell', 'dumbbell', 'cable', 'smith', 'ez ', 'machine', 'kettlebell', 'lever', 'weighted', 'plate', 'sled', 'press', 'curl', 'row', 'pulldown', 'deadlift', 'squat', 'lunge', 'raise', 'fly', 'shrug', 'extension'];
-function defaultUnit(name) { const n = (name || '').toLowerCase(); if (/plank|hold|stretch|hang/.test(n)) return 'sek'; return WEIGHT_WORDS.some(w => n.includes(w)) && !/bodyweight|body weight|push-up|pushup|pull-up|pullup|chin-up|crunch|sit-up|bike|jump/.test(n) ? 'kg' : 'wdh'; }
+const WEIGHT_WORDS = ['barbell', 'dumbbell', 'cable', 'smith', 'ez bar', 'ez-bar', 'kettlebell', 'machine', 'lever', 'weighted', 'plate', 'sled', 'pulldown', 'pec deck', 'leg press', 'leg extension', 'leg curl', 'hack squat', 'calf press', 'seated calf', 'preacher', 'trap bar', 'landmine'];
+function defaultUnit(name) { const n = (name || '').toLowerCase(); if (/plank|hold|stretch|hang|isometric/.test(n)) return 'sek'; return WEIGHT_WORDS.some(w => n.includes(w)) ? 'kg' : 'wdh'; }
 function loadWeekplan() {
   try {
     const raw = JSON.parse(localStorage.getItem(WKEY));
-    if (Array.isArray(raw) && raw.length) { raw.forEach(t => (t.exercises || []).forEach(e => { if (e.unit === 'none') e.unit = 'wdh'; else if (!e.unit) e.unit = defaultUnit(e.name); })); return raw; }
+    if (Array.isArray(raw) && raw.length) { const fixed = localStorage.getItem('heimtraining.unitfix1'); raw.forEach(t => (t.exercises || []).forEach(e => { if (e.unit === 'none') e.unit = 'wdh'; else if (!e.unit) e.unit = defaultUnit(e.name); else if (!fixed && e.unit === 'kg' && defaultUnit(e.name) !== 'kg') e.unit = defaultUnit(e.name); })); try { localStorage.setItem('heimtraining.unitfix1', '1'); } catch (e) {} return raw; }
   } catch (e) {}
   return WEEKDAY_SEED.map(([id, name]) => ({ id, name, exercises: [] }));
 }
