@@ -509,7 +509,6 @@ function renderWeeklist() {
       <span class="wp-chev">›</span>
     </div>`;
   }).join('');
-  const cats = DAYS.map(d => `<button class="wp-cat" data-act="goto" data-day="${d}"><b>${DAY_LABELS[d]}</b><span>${itemsFor(d).length} Üb.</span></button>`).join('');
   content.innerHTML = `
     <div class="wp">
       <div class="wp-sec">TAGESTRAININGS · DIESE WOCHE</div>
@@ -520,8 +519,6 @@ function renderWeeklist() {
         ? `<div class="wp-card wp-new"><input id="new-training-name" placeholder="Name des Trainings…" autofocus>
              <div class="edit-bar"><button data-act="wNewTrainingSave">Speichern</button><button data-act="wNewTrainingCancel">Abbrechen</button></div></div>`
         : `<button class="wp-add" data-act="wNewTraining">+ Neues Training</button>`}
-      <div class="wp-sec">KATEGORIEN</div>
-      <div class="wp-cats">${cats}</div>
     </div>`;
   if (addingTraining) document.getElementById('new-training-name')?.focus();
 }

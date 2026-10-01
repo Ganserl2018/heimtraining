@@ -360,7 +360,3 @@ body.mood-bad{--text-faint:#b08a85;}
 .wp-chev{font-size:1.6rem; color:var(--text-faint);}
 .wp-new{flex-direction:column; align-items:stretch; cursor:default;}
 :where(#content) .wp-add{border:1.5px dashed var(--border); background:transparent; color:var(--accent); min-height:52px; border-radius:14px;}
-.wp-cats{display:grid; grid-template-columns:repeat(4,1fr); gap:.4rem;}
-:where(#content) .wp-cat{display:flex; flex-direction:column; align-items:center; gap:.1rem; padding:.7rem 0; border-radius:12px; background:var(--panel); border:1px solid var(--border-soft);}
-.wp-cat b{font-size:.85rem; color:var(--text);}
-.wp-cat span{font-size:.69rem; color:var(--text-dim); font-weight:500;}
