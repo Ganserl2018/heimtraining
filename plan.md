@@ -214,3 +214,5 @@ Fehler 2 (gefixt): 390x667 mit Level-Banner: .pp-acts 18px unter der Tabbar -> m
 Klein (gefixt): Number-Spinner verschob Zahl; "3 Trainings in 1 Woche" brach um.
 Ok: kein Scrollen bei 390x844, 390x667, 1300x900, 1300x600, 2000x1000; Persistenz aller Felder; Level-Segmente + Banner Übernehmen; Anpassen; Hinweise zurücksetzen; Backup-Textarea als Sheet; mood-bad rot; reduced-motion; keine pageerrors.
 Nicht geprüft: echtes iPhone-Safari (@property Ring ab Safari 16.4, sonst statisch), Tastatur-Verdeckung beim Tippen, Reload nach Backup-Laden.
+
+## 02.10. 17:15 – Training bauen Redesign live (Commits 70c5e51, Cache-Fix SW hf-v3 + _headers no-cache). Liste scrollt intern, Steuerung rechts (Desktop) / Sheet unten (Mobil). Alex: "passt erstmal". Nicht per Checker geprüft (nur Playwright-Screens 390x844, 1300). Offen: Trainingshelper-Kasten nimmt am Desktop Platz. V6-04 Leisten + Header-Logo + Profil Spieler-Karte live. Nächstes: Siri/Kurzbefehl Pausen-Timer.
