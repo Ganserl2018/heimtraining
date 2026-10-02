@@ -207,3 +207,10 @@ Nicht getestet: echte iOS-Safari-Wischgeste, >1000 Einträge.
 ## Stand 02.10. 13:45 – V6-08 live (Commit b5e76c1, script v=20261002r). Nächstes: Siri/Kurzbefehl Pausen-Timer. Warteliste neu: TV im iPhone-Querformat (V5-11). Welcome/Setup weiter GANZ ZUM SCHLUSS.
 
 ## 02.10. nachmittags – V6-04 Leisten (Commit folgt): unter dem Ring Wochen-Leiste (erledigt/geplant) + Langzeit-Leiste (antippen = bearbeiten). Langzeit wählbar: Trainings pro Jahr/Monat ODER Kraft-Ziel einer Übung (von→auf kg, Ist = Höchstgewicht aus Verlauf). Key heimtraining.longgoal. Playwright 390/1300 grün, kein Checker-Lauf.
+
+## 02.10. Profil-Redesign "Spieler-Karte" – Checker-Bericht (aa024296dc3736b5d, Commit f15e06a)
+Fehler 1 (gefixt): Desktop, Gewicht 123.5 rechts abgeschnitten (.pp-tile input 3.4rem bei 245px Kachel) -> clamp(2rem,3.4vw,3rem).
+Fehler 2 (gefixt): 390x667 mit Level-Banner: .pp-acts 18px unter der Tabbar -> max-height:700px weiter verdichtet.
+Klein (gefixt): Number-Spinner verschob Zahl; "3 Trainings in 1 Woche" brach um.
+Ok: kein Scrollen bei 390x844, 390x667, 1300x900, 1300x600, 2000x1000; Persistenz aller Felder; Level-Segmente + Banner Übernehmen; Anpassen; Hinweise zurücksetzen; Backup-Textarea als Sheet; mood-bad rot; reduced-motion; keine pageerrors.
+Nicht geprüft: echtes iPhone-Safari (@property Ring ab Safari 16.4, sonst statisch), Tastatur-Verdeckung beim Tippen, Reload nach Backup-Laden.

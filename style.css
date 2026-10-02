@@ -1084,3 +1084,8 @@ body:has(.overview-lab) .lab-head-title{font-family:Anton,Impact,'Arial Narrow',
   .prof-page{height:100%; max-height:none; grid-template-rows:auto auto auto; align-content:center; max-width:1100px;}
   .pp-tile{height:150px;} .pp-hero{padding:2rem 1rem;} .pp-lvbox{align-self:stretch;} .pp-goal{padding:1rem 1.2rem;} .pp-acts button{min-height:56px;}
 }
+/* Profil Checker-Fixes */
+.pp-tile input{-moz-appearance:textfield; appearance:textfield;}
+.pp-tile input::-webkit-inner-spin-button,.pp-tile input::-webkit-outer-spin-button{-webkit-appearance:none; margin:0;}
+@media (max-height:700px){ .prof-page{gap:.4rem;} .pp-tile{height:64px;} .pp-tile input{min-height:30px; font-size:1.6rem;} .pp-seg button{min-height:38px;} .pp-up{margin-bottom:.25rem; padding:.2rem .6rem;} .pp-hero{padding:0;} }
+@media (min-width:900px){ .pp-tile input{font-size:clamp(2rem,3.4vw,3rem);} .pp-goal span{font-size:1rem; white-space:nowrap;} }
