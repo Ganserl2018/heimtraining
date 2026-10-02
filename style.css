@@ -1170,3 +1170,4 @@ body:has(.overview-lab) .lab-head-title{font-family:Anton,Impact,'Arial Narrow',
  .tx-ed{gap:.3rem;} .tx-ed .xc-x{margin:0;}
 }
 .tx-sheet .pp-seg button{padding-left:.3rem; padding-right:.3rem; font-size:.78rem; min-width:0;}
+.pp-gen{margin-bottom:.5rem}

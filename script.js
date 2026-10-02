@@ -1142,6 +1142,7 @@ function renderProfile() {
       </div>
       <div class="pp-lvbox pp-t" style="--i:6">
         ${(() => { const ls = levelSuggestion(); return ls != null ? `<div class="pp-up">Zeit für <b>${LEVELS[ls][1]}</b> <button data-act="lvlUp" data-lv="${ls}">Übernehmen</button></div>` : ''; })()}
+        <div class="pp-seg pp-gen">${[['m', 'Mann'], ['w', 'Frau']].map(([k, l]) => `<button class="${(p.gender || 'm') === k ? 'on' : ''}" data-act="profGender" data-v="${k}">${l}</button>`).join('')}</div>
         <div class="pp-seg">${LEVELS.map(([k, l], x) => `<button class="${(p.level == null ? 0 : p.level) === x ? 'on' : ''}" data-act="profLevel" data-v="${x}">${l}</button>`).join('')}</div>
       </div>
       <div class="pp-goal pp-t" style="--i:7"><div><small>ZIEL</small><span><b>${goal.target}</b> Trainings in ${goal.periodDays === 7 ? '1 Woche' : goal.periodDays + ' Tagen'}</span></div><button data-act="goalEditFromProfile">Anpassen</button></div>
@@ -1525,6 +1526,7 @@ content.addEventListener('click', e => {
     }
     case 'ctlToggle': ctlOpen = !ctlOpen; break;
     case 'wLevel': { const t = trainingById(btn.dataset.id); const miss = applyLevel(t, Number(btn.dataset.lv)); lvMsg = miss ? 'Trage dein Gewicht im Profil ein, dann fülle ich auch die kg vor.' : ''; break; }
+    case 'profGender': { const p = loadProfile(); p.gender = btn.dataset.v; saveProfile(p); break; }
     case 'profLevel': { const p = loadProfile(); p.level = Number(btn.dataset.v); saveProfile(p); break; }
     case 'lvlUp': { const p = loadProfile(); p.level = Number(btn.dataset.lv); saveProfile(p); break; }
     case 'genOpen': genRes = null; genCfg = { lv: null, goal: 'aufbau', dur: 45, groups: [] }; view = 'gen'; break;
