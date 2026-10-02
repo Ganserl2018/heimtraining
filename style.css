@@ -888,3 +888,6 @@ body.mood-bad .xr-pill.active, body.mood-bad .xr-filter.on{background:#d12a19; b
 .lv-up{display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; color:var(--accent)}
 .gn-sur{display:flex; flex-direction:column; gap:.2rem; align-items:center}
 .gn-sur small{font-size:.72rem; font-weight:500; opacity:.7; white-space:normal; text-align:center}
+.ts-mv{display:flex; flex:none; gap:.25rem}
+.ts-ex .ts-mv button{width:36px; height:44px; font-size:.8rem}
+.ts-ex .ts-mv button[disabled]{opacity:.3}

@@ -673,7 +673,8 @@ function finishTraining(t) {
 
 // ---- Workout-Player: eine Übung pro Bildschirm, Sätze vorausgefüllt, Pausen-Timer ----
 let playSelK = null, playTid = null, playIdx = 0, restEnd = 0, summaryRec = null;
-const REST_SEC = 90;
+const REST_SEC = 90; // Standard; im Profil einstellbar (Feld rest)
+function restSec() { const r = loadProfile().rest; return r >= 15 && r <= 600 ? r : REST_SEC; }
 function lastWeights(name) {
   const r = loadHistory().find(h => (h.exercises || []).some(e => e.name === name && (e.weights || []).some(w => w != null)));
   const e = r && r.exercises.find(x => x.name === name);
@@ -735,7 +736,7 @@ function renderPlay() {
         ${unit === 'none' ? '' : `<label class="pl-now-in"><input id="pf-in" type="number" inputmode="decimal" data-act="wWeight" data-id="${t.id}" data-i="${playIdx}" data-k="${cur}" value="${curS.weight ?? ''}" placeholder="${curPh ?? (curP.r != null && unit !== 'kg' ? curP.r : '–')}"><span>${UNITS[unit][1] || ''}</span></label>${qchips(unit === 'kg' ? 'w' : 'r', '#pf-in')}`}
         ${curS.done ? `<button class="pf-sh-btn ghost" data-act="playSet" data-k="${cur}">✓ Erledigt – zurücknehmen</button>` : ''}
         <div class="pf-sh-row"><button class="pf-sh-btn ghost" data-act="playPrev"${playIdx === 0 ? ' disabled' : ''}>‹ Zurück</button><button class="pf-sh-btn ghost" data-act="playNext"${isLast ? ' disabled' : ''}>Weiter ›</button></div>
-        <button class="pf-sh-btn" data-act="playFinish">${totalDone >= totalAll ? 'Training beenden' : 'Beenden (unvollständig)'}</button>
+        <button class="pf-sh-btn" data-act="playFinish">${totalDone >= totalAll ? 'Training beenden' : `Beenden · ${totalAll - totalDone} von ${totalAll} Sätzen offen`}</button>
         <div class="pf-sh-row"><button class="pf-sh-btn ghost sm" data-act="playEdit">⚙ Sätze ändern</button><button class="pf-sh-btn ghost sm del" data-act="playDelete">🗑 Löschen</button></div>
       </div>
     </div>
@@ -948,7 +949,7 @@ function renderWTrain() {
       ? `${t.draft ? hint('name', 1, 'Gib deinem Training einen Namen, zum Beispiel „Oberkörper“ oder „Montag“. Danach geht es mit den Übungen weiter.') : ''}<input id="rename-input" placeholder="Name des Trainings…" value="${esc(t.name)}"><div class="edit-bar"><button data-act="wRenameSave" data-id="${t.id}">Speichern</button><button data-act="wRenameCancel" data-id="${t.id}">Abbrechen</button></div>`
       : `<div class="ts-name"><h2>${esc(t.name)}</h2><div class="ts-name-btns"><button data-act="wRename" data-id="${t.id}">Umbenennen</button><button class="ts-name-del" data-act="wDelete" data-id="${t.id}">Löschen</button></div></div>`)}
     ${sec(2, 'Übungen', hasEx, `${step === 2 ? hint('ex', 2, 'Hier fügst du Übungen hinzu: auf „+ Übung hinzufügen“ tippen, suchen und antippen. Du kannst mehrere nacheinander wählen.') : ''}
-      ${t.exercises.map((ex, i) => `<div class="ts-ex"><img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><div><b>${esc(ex.name)}</b><em>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</em></div><button data-act="wRemoveEx" data-id="${t.id}" data-i="${i}" aria-label="Übung entfernen">✕</button></div>`).join('')}
+      ${t.exercises.map((ex, i) => `<div class="ts-ex"><img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><div><b>${esc(ex.name)}</b><em>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</em></div><span class="ts-mv"><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="-1" aria-label="Nach oben"${i === 0 ? ' disabled' : ''}>▲</button><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="1" aria-label="Nach unten"${i === t.exercises.length - 1 ? ' disabled' : ''}>▼</button></span><button data-act="wRemoveEx" data-id="${t.id}" data-i="${i}" aria-label="Übung entfernen">✕</button></div>`).join('')}
       <button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button>`)}
     ${hasEx ? sec(3, 'Sätze &amp; Eintragen', step > 3, `${step === 3 ? hint('sets', 3, 'Pro Übung: Sätze, kg und Wiederholungen eintragen (gilt für alle Sätze). Über ⋯ stellst du Einheit, einzelne Sätze und Notiz ein. Felder dürfen leer bleiben.') : ''}
       <div class="lv"><div class="lv-h">Vorlage nach Level <em>(Vorschlag, ca.-Werte)</em></div><div class="lv-pills">${LEVELS.map(([k, l], x) => `<button class="lv-p${t.level === x ? ' on' : ''}" data-act="wLevel" data-id="${t.id}" data-lv="${x}">${l}</button>`).join('')}</div>${lvMsg ? `<div class="lv-msg">${lvMsg}</div>` : ''}<div class="lv-note">Passt Sätze, Wdh und kg für alle Übungen an. Technik vor Gewicht, bei Schmerzen abbrechen.</div></div>
@@ -1009,6 +1010,7 @@ function renderProfile() {
         <label class="pf-row">Gewicht<span><input type="number" inputmode="decimal" data-act="profileField" data-field="weight" value="${p.weight ?? ''}" placeholder="–"> kg</span></label>
         <label class="pf-row">Größe<span><input type="number" inputmode="numeric" data-act="profileField" data-field="height" value="${p.height ?? ''}" placeholder="–"> cm</span></label>
         <label class="pf-row">Gewicht der Langhantel-Stange<span><input type="number" inputmode="decimal" data-act="profileField" data-field="bar" value="${p.bar ?? ''}" placeholder="10"> kg</span></label>
+        <label class="pf-row">Standard-Pause<span><input type="number" inputmode="numeric" data-act="profileField" data-field="rest" value="${p.rest ?? ''}" placeholder="90"> Sek</span></label>
         <label class="pf-row">Level<span><select data-act="profileField" data-field="level"><option value=""${p.level == null ? ' selected' : ''}>Anfänger (Start)</option>${LEVELS.map(([k, l], x) => `<option value="${x}"${p.level === x ? ' selected' : ''}>${l}</option>`).join('')}</select></span></label>
         ${(() => { const ls = levelSuggestion(); return ls != null ? `<div class="lv-msg lv-up">Dein Verlauf zeigt: Zeit für <b>${LEVELS[ls][1]}</b>. <button class="ov-btn ov-btn-ghost" data-act="lvlUp" data-lv="${ls}">Übernehmen</button></div>` : ''; })()}
         <p class="placeholder">Gewicht: Grundlage für Kalorien und Start-Gewichte der Level-Vorlagen. Stange: ohne Eintrag rechne ich mit 10 kg.</p>
@@ -1341,7 +1343,7 @@ content.addEventListener('click', e => {
       sets[k].done = !sets[k].done;
       if (sets[k].done) {
         if (sets[k].weight == null && (ex.unit || 'kg') !== 'none') { const l = lastWeights(ex.name), pl = (ex.plan || [])[k] || {}; const pre = pl.w ?? (k > 0 && sets[k - 1] ? sets[k - 1].weight : null) ?? l[k] ?? l[l.length - 1]; if (pre != null) sets[k].weight = pre; }
-        restEnd = Date.now() + REST_SEC * 1000; pushStart(t.id);
+        restEnd = Date.now() + restSec() * 1000; pushStart(t.id);
       } else restEnd = 0;
       playSelK = null; saveWProg(wp); break;
     }
@@ -1390,6 +1392,8 @@ content.addEventListener('click', e => {
       { const tt = trainingById(btn.dataset.id); tt.name = name; delete tt.draft; } saveWeekplan();
       renameId = null; break;
     }
+    case 'wMoveEx': { const t = trainingById(btn.dataset.id), i = Number(btn.dataset.i), j = i + Number(btn.dataset.d);
+      if (j < 0 || j >= t.exercises.length) return; [t.exercises[i], t.exercises[j]] = [t.exercises[j], t.exercises[i]]; saveWeekplan(); break; }
     case 'wRemoveEx': {
       const t = trainingById(btn.dataset.id);
       if (!confirm(`„${t.exercises[Number(btn.dataset.i)].name}“ entfernen?`)) return;

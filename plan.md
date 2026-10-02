@@ -193,3 +193,5 @@ Unverkürzt im Vault: `Projects/Privat/Heimtraining/Coach-Regeln-V13-Bericht-202
 - Checker-Bericht 02.10. (Generator/Level/Progression): Funktion grün; 6 Funde (Anfänger-Übungen, Bänder-kg, DB-Erkennung, Stretch/Jump, Pullover/Pushdown, Scroll) alle behoben, Re-Test 800 Übungen ohne Treffer. Bericht unverkürzt im Vault.
 
 ## Stand 02.10. 02:05 – nächster Vorschlag: Welcome/Setup beim ersten Start (Gewicht, Größe, Stange, Level). Agenten-Dashboard pausiert bis Stil-Beispiel von Alex (Vault 02_Agenten).
+
+## 02.10. mittags: Beenden-Button zeigt 'X von Y Sätzen offen'; Übungen im Training per ▲▼ umsortierbar; Standard-Pause im Profil einstellbar (Feld rest). Welcome/Setup beim ersten Start bewusst GANZ ZUM SCHLUSS (Alex: sonst Fragenkatalog beim Testen). Nächstes: V6-08 Verlauf/TV-Redesign (Designer-Konzept zuerst).
