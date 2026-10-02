@@ -1101,10 +1101,7 @@ function renderProfile() {
         <div class="pp-seg">${LEVELS.map(([k, l], x) => `<button class="${(p.level == null ? 0 : p.level) === x ? 'on' : ''}" data-act="profLevel" data-v="${x}">${l}</button>`).join('')}</div>
       </div>
       <div class="pp-goal pp-t" style="--i:7"><div><small>ZIEL</small><span><b>${goal.target}</b> Trainings in ${goal.periodDays === 7 ? '1 Woche' : goal.periodDays + ' Tagen'}</span></div><button data-act="goalEditFromProfile">Anpassen</button></div>
-      <div class="pp-acts pp-t" style="--i:8">
-        <button data-act="helperReset">Hinweise zurücksetzen</button><button data-act="backupExport">Backup kopieren</button><button data-act="backupImport">Backup laden</button>
-      </div>
-      <textarea id="backup-text" class="pp-ta" placeholder="Backup steht hier. Zum Laden: Text einfügen, dann nochmal „Backup laden“."></textarea>
+      <button class="pp-reset pp-t" style="--i:8" data-act="helperReset">Trainingshinweise zurücksetzen</button>
     </div>`;
 }
 

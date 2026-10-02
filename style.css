@@ -1089,3 +1089,8 @@ body:has(.overview-lab) .lab-head-title{font-family:Anton,Impact,'Arial Narrow',
 .pp-tile input::-webkit-inner-spin-button,.pp-tile input::-webkit-outer-spin-button{-webkit-appearance:none; margin:0;}
 @media (max-height:700px){ .prof-page{gap:.4rem;} .pp-tile{height:64px;} .pp-tile input{min-height:30px; font-size:1.6rem;} .pp-seg button{min-height:38px;} .pp-up{margin-bottom:.25rem; padding:.2rem .6rem;} .pp-hero{padding:0;} }
 @media (min-width:900px){ .pp-tile input{font-size:clamp(2rem,3.4vw,3rem);} .pp-goal span{font-size:1rem; white-space:nowrap;} }
+/* Backup raus, Hinweise-Reset als schlanker Textbutton; Höhen flexibel (dvh) */
+.pp-reset{border:0; background:transparent; color:var(--text-dim); font-size:.8rem; font-weight:600; min-height:40px; text-decoration:underline; text-underline-offset:3px;}
+.pp-tile{height:clamp(66px,11dvh,96px);} .pp-tile input{font-size:clamp(1.7rem,4.4dvh,2.2rem); min-height:34px;}
+.pp-av{width:clamp(56px,8.5dvh,72px); height:clamp(56px,8.5dvh,72px);}
+@media (min-width:900px){ .pp-tile{height:150px;} .pp-av{width:140px; height:140px;} .pp-reset{grid-column:2/4; grid-row:3;} .pp-acts{display:none;} }
