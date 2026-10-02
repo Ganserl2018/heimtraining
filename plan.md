@@ -183,7 +183,7 @@ Weitere erledigt heute: Wochenplan-Redesign, Hantel-Logik, Alle-Übungen-Galerie
 - V12-6 Seilzug statt Kabel; Zweitmuskel-Badge per Namens-Heuristik (`secondaries(e)`).
 - V12-7 Gewichtsklassen Leicht/Moderat/Schwer im Detail-Sheet (`WCLASS`, `wclassHtml`).
 - V12-8 Taskforce (scout, strategist, designer, coach, checker).
-## V13 – Level-Vorlagen + Generator (nächste Phase, nach V11-03): V13-1 Coach-Regeln, V13-2 Level-Vorlagen, V13-3 Auto-Generator.
+## V13 – Level-Vorlagen + Generator ✅ komplett live (02.10.): V13-1 Coach-Regeln ✅, V13-2 Level-Vorlagen ✅, V13-3 Auto-Generator ✅, V13-4 Progression + Level-Vorschlag + Checker (6 Funde behoben) ✅.
 
 ## V13-1 Coach-Bericht (02.10.) gesichert
 Unverkürzt im Vault: `Projects/Privat/Heimtraining/Coach-Regeln-V13-Bericht-2026-10-02.md`. Bau-Reihenfolge: Start-Gewichte + Schemata (W-01) → Generator (W-02) → Lernlogik/Banner. Offene Frage an Alex: welche Hantelscheiben (45 kg nur? 45 lb?).
@@ -191,3 +191,5 @@ Unverkürzt im Vault: `Projects/Privat/Heimtraining/Coach-Regeln-V13-Bericht-202
 - W-01 Level-Vorlagen: ✅ live 02.10. (Sätze-Seite: Anfänger/Fortgeschritten/Profi füllt Sätze, Wdh, kg aus Profil-Gewicht; Profil: Größe + Stangengewicht, Scheiben gesamt 45 kg). Offen: Level aus Verlauf vorschlagen, Progression, Generator (W-02).
 - W-02 Auto-Trainingsgenerator ✅ live 02.10. (Training wählen → AUTO-TRAINING: Level, Ziel Aufbau/Kraft/Definition, Dauer 30-90, Muskelgruppen, Überrasch mich, Neu mischen, speichern/starten; Verbund vor Isolation, keine Wiederholung der letzten Auswahl). V13 Progression: Start-kg aus Verlauf (2 komplette Einheiten gleiches Gewicht → +2/2,5 kg), Level-Vorschlag im Profil (Banner, Übernehmen).
 - Checker-Bericht 02.10. (Generator/Level/Progression): Funktion grün; 6 Funde (Anfänger-Übungen, Bänder-kg, DB-Erkennung, Stretch/Jump, Pullover/Pushdown, Scroll) alle behoben, Re-Test 800 Übungen ohne Treffer. Bericht unverkürzt im Vault.
+
+## Stand 02.10. 02:05 – nächster Vorschlag: Welcome/Setup beim ersten Start (Gewicht, Größe, Stange, Level). Agenten-Dashboard pausiert bis Stil-Beispiel von Alex (Vault 02_Agenten).
