@@ -991,3 +991,13 @@ body.mood-bad .xr-pill.active, body.mood-bad .xr-filter.on{background:#d12a19; b
 .hd-title{font-size:clamp(1.3rem,6vw,2rem); overflow-wrap:anywhere; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;}
 @media (max-width:600px){ .tv .tv-gif{max-width:min(100%,30vh);} .tv .tv-sets .set{min-height:72px;} .tv .tv-nav button{min-height:60px;} }
 @media (min-width:900px){ .hd{grid-template-columns:repeat(2,minmax(0,1fr));} }
+/* V6-04 Wochen- und Langzeit-Leiste */
+.lab-bars{display:grid; gap:.7rem; width:100%; max-width:520px; margin:.6rem auto 0;}
+.lab-bar{display:block; width:100%; text-align:left; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:.6rem .8rem .7rem; color:inherit; font:inherit;}
+button.lab-bar{cursor:pointer;} button.lab-bar:hover,button.lab-bar:active{border-color:var(--accent);}
+.lab-bar-top{display:flex; justify-content:space-between; align-items:baseline; gap:.6rem; margin-bottom:.4rem;}
+.lab-bar-top span{font-size:.68rem; letter-spacing:.12em; color:var(--text-dim); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.lab-bar-top b{font-family:Anton,Impact,'Arial Narrow',sans-serif; font-weight:400; font-size:1.05rem; color:var(--accent); white-space:nowrap; font-variant-numeric:tabular-nums;}
+.lab-bar-track{height:8px; border-radius:99px; background:rgba(255,255,255,.08); overflow:hidden;}
+.lab-bar-track i{display:block; height:100%; border-radius:99px; background:var(--accent); box-shadow:0 0 10px var(--lab-glow,rgba(168,240,58,.4));}
+@media (prefers-reduced-motion:no-preference){.lab-bar-track i{animation:hv-grow .7s cubic-bezier(.2,.8,.2,1) both;}}

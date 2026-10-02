@@ -205,3 +205,5 @@ Ok: leerer Verlauf, nicht klickbare Einträge ohne trainingId, fehlende Dauer/kc
 Nicht getestet: echte iOS-Safari-Wischgeste, >1000 Einträge.
 
 ## Stand 02.10. 13:45 – V6-08 live (Commit b5e76c1, script v=20261002r). Nächstes: Siri/Kurzbefehl Pausen-Timer. Warteliste neu: TV im iPhone-Querformat (V5-11). Welcome/Setup weiter GANZ ZUM SCHLUSS.
+
+## 02.10. nachmittags – V6-04 Leisten (Commit folgt): unter dem Ring Wochen-Leiste (erledigt/geplant) + Langzeit-Leiste (antippen = bearbeiten). Langzeit wählbar: Trainings pro Jahr/Monat ODER Kraft-Ziel einer Übung (von→auf kg, Ist = Höchstgewicht aus Verlauf). Key heimtraining.longgoal. Playwright 390/1300 grün, kein Checker-Lauf.

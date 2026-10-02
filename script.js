@@ -95,6 +95,11 @@ const GOALKEY = 'heimtraining.goal';
 function loadGoal() { try { return JSON.parse(localStorage.getItem(GOALKEY)) || { target: 3, periodDays: 7 }; } catch (e) { return { target: 3, periodDays: 7 }; } }
 function saveGoal(g) { try { localStorage.setItem(GOALKEY, JSON.stringify(g)); } catch (e) {} }
 let goalEditing = false;
+// V6-04: Langzeit-Leiste (Trainings pro Jahr/Monat ODER Kraft-Ziel einer Übung)
+const LGKEY = 'heimtraining.longgoal';
+let longEditing = false, longDraftType = null;
+function loadLong() { try { return JSON.parse(localStorage.getItem(LGKEY)) || { type: 'count', target: 150, per: 'year' }; } catch (e) { return { type: 'count', target: 150, per: 'year' }; } }
+function saveLong(g) { try { localStorage.setItem(LGKEY, JSON.stringify(g)); } catch (e) {} }
 function wProgRaw() {
   let wp = null;
   try { wp = JSON.parse(localStorage.getItem(WPKEY)); } catch (e) {}
@@ -431,6 +436,33 @@ function renderOverview() {
 
   const weekStart = mondayOf(t);
   const weekDates = Array.from({ length: 7 }, (_, i) => addDays(weekStart, i));
+  // V6-04: Wochen-Leiste + Langzeit-Leiste
+  const wkItems = weekDates.flatMap(ds => scheduled.map(w => trainingStatusForDate(w, ds)).filter(x => x && x !== 'vorher'));
+  const wkPlanned = wkItems.length, wkDone = wkItems.filter(x => x === 'erledigt').length;
+  const lg = loadLong();
+  let lgTitle, lgLabel, lgPct;
+  if (lg.type === 'strength' && lg.ex) {
+    const mx = Math.max(0, ...h.flatMap(r => r.exercises.filter(e => e.name === lg.ex).flatMap(e => (e.weights || []).filter(w => w != null).map(Number))));
+    const cur = Math.max(mx, Number(lg.from) || 0), span = (Number(lg.to) || 1) - (Number(lg.from) || 0);
+    lgTitle = lg.ex.toUpperCase(); lgLabel = `${cur} / ${lg.to} kg`; lgPct = span > 0 ? (cur - (Number(lg.from) || 0)) / span : 0;
+  } else {
+    const yr = t.slice(0, 4), since2 = lg.per === 'month' ? t.slice(0, 7) + '-01' : yr + '-01-01';
+    const n = h.filter(r => r.date >= since2 && r.date <= t).length;
+    lgTitle = lg.per === 'month' ? 'TRAININGS DIESEN MONAT' : 'TRAININGS ' + yr; lgLabel = `${n} / ${lg.target}`; lgPct = n / Math.max(lg.target, 1);
+  }
+  const bar = (title, label, pct, act) => `<${act ? 'button data-act="' + act + '"' : 'div'} class="lab-bar"><div class="lab-bar-top"><span>${esc(title)}</span><b>${esc(label)}</b></div><div class="lab-bar-track"><i style="width:${Math.round(Math.max(0, Math.min(1, pct)) * 100)}%"></i></div></${act ? 'button' : 'div'}>`;
+  const barsBlock = `<div class="lab-bars">${bar('DIESE WOCHE', wkPlanned ? wkDone + ' / ' + wkPlanned : '–', wkPlanned ? wkDone / wkPlanned : 0)}${bar(lgTitle, lgLabel, lgPct, 'longEdit')}</div>`;
+  const exNames = [...new Set([...h.flatMap(r => r.exercises.map(e => e.name)), ...weekplan.flatMap(w => w.exercises.map(e => e.name))])];
+  const dt = longDraftType || lg.type;
+  const longBlock = `<div class="goal-sheet"><div class="goal-edit">
+      <div class="ov-card-title">Langzeit-Ziel</div>
+      <div class="lv-pills"><button class="lv-p${dt === 'count' ? ' on' : ''}" data-act="longType" data-v="count">Trainings</button><button class="lv-p${dt === 'strength' ? ' on' : ''}" data-act="longType" data-v="strength">Kraft-Ziel</button></div>
+      ${dt === 'strength' ? `<label>Übung <input id="lg-ex" list="lg-exl" value="${esc(lg.ex || '')}" placeholder="z. B. Barbell Squat"><datalist id="lg-exl">${exNames.map(n => `<option value="${esc(n)}">`).join('')}</datalist></label>
+      <label>von <input id="lg-from" type="number" min="0" inputmode="decimal" value="${lg.from ?? ''}"> kg auf <input id="lg-to" type="number" min="1" inputmode="decimal" value="${lg.to ?? ''}"> kg</label>`
+      : `<label>Ziel <input id="lg-target" type="number" min="1" inputmode="numeric" value="${lg.target || 150}"> Trainings pro
+        <select id="lg-per"><option value="year"${lg.per !== 'month' ? ' selected' : ''}>Jahr</option><option value="month"${lg.per === 'month' ? ' selected' : ''}>Monat</option></select></label>`}
+      <div class="edit-bar"><button class="ov-btn" data-act="longSave">Speichern</button><button class="ov-btn ov-btn-ghost" data-act="longCancel">Abbrechen</button></div>
+    </div></div>`;
 
   // V9-03: Lab-Design nach Gemini-Vorlagen (grün/rot, Gesamtstimmung folgt dem Zustand)
   const mood = hasMissedThisWeek ? 'mood-bad' : 'mood-good';
@@ -479,13 +511,14 @@ function renderOverview() {
       </div>
       ${ringBlock}
       <button class="lab-goal-link" data-act="goalEdit">Ziel anpassen</button>
+      ${barsBlock}
       <div class="lab-streak">STREAK: ${streak} TAG${streak === 1 ? '' : 'E'}${hasMissedThisWeek ? ' (KRITISCH)' : ''} 🔥</div>
       <button class="lab-start${hasMissedThisWeek ? ' lab-start-broken' : ''}" ${startAttr}>
         <svg class="lab-start-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span>${startLabel}<small>${quick ? btnSub : ''}</small></span>
       </button>
       <div class="lab-section">WOCHENPLAN-STREIFEN</div>
       <div class="lab-week">${wdOrder}</div>
-    </div>${goalEditing ? goalBlock : ''}`;
+    </div>${goalEditing ? goalBlock : ''}${longEditing ? longBlock : ''}`;
 }
 
 // V2-01: Verlauf – zeigt vergangene Trainingseinheiten (aus HKEY, befüllt bei "Training beenden").
@@ -1541,6 +1574,17 @@ content.addEventListener('click', e => {
       saveGoal({ target, periodDays }); goalEditing = false; break;
     }
     case 'goalCancel': goalEditing = false; break;
+    case 'longEdit': longEditing = true; longDraftType = null; break;
+    case 'longType': longDraftType = btn.dataset.v; break;
+    case 'longCancel': longEditing = false; longDraftType = null; break;
+    case 'longSave': {
+      const ty = longDraftType || loadLong().type, g = id => document.getElementById(id)?.value;
+      if (ty === 'strength') {
+        const ex = (g('lg-ex') || '').trim(), from = Number(g('lg-from')) || 0, to = Number(g('lg-to')) || 0;
+        if (ex && to > from) saveLong({ type: 'strength', ex, from, to });
+      } else saveLong({ type: 'count', target: Math.max(1, Number(g('lg-target')) || 150), per: g('lg-per') === 'month' ? 'month' : 'year' });
+      longEditing = false; longDraftType = null; break;
+    }
     case 'quickStart': playStart(btn.dataset.id); picker = null; break;
     case 'histOpen': histDetailIdx = Number(btn.dataset.idx); view = 'histdetail'; break;
     case 'histBack': view = 'history'; break;
