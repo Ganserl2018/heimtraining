@@ -218,3 +218,18 @@ Nicht geprüft: echtes iPhone-Safari (@property Ring ab Safari 16.4, sonst stati
 ## 02.10. 17:15 – Training bauen Redesign live (Commits 70c5e51, Cache-Fix SW hf-v3 + _headers no-cache). Liste scrollt intern, Steuerung rechts (Desktop) / Sheet unten (Mobil). Alex: "passt erstmal". Nicht per Checker geprüft (nur Playwright-Screens 390x844, 1300). Offen: Trainingshelper-Kasten nimmt am Desktop Platz. V6-04 Leisten + Header-Logo + Profil Spieler-Karte live. Nächstes: Siri/Kurzbefehl Pausen-Timer.
 
 ## ABSCHLUSS-PRÜFUNG (Alex 02.10. 17:19): iPhone-Test abgehakt. Sobald Alex "fertig" sagt, lässt Claude (ohne Rückfrage) laufen: (1) Checker/Prüf-Agent: ALLE Funktionen durchklicken – wie geht es, was passiert bei jedem Button, Randfälle, 390 + 1300 px; (2) Designer-Agent: nur Proportionen, Abstände, Ausrichtung, Konsistenz. Taskforce delegieren, Berichte unverkürzt in plan.md/Vault sichern.
+
+## 02.10. 20:50 – Scout-Bericht (a621bcf4ae6066ce3): Übungsbilder im Hochformat generieren (~460, Budget max 10 €)
+Ziel (Alex): ALLE Übungsbilder im Hochformat, zeigen welche Übung gerade ausgeübt wird.
+Preise USD pro Bild, aus Drittseiten (Original-Preisseiten gesperrt, Unsicherheit):
+- Gemini 2.5 Flash Image ("Nano Banana"): Batch 0,0195 / Standard 0,039 -> 460 Bilder ca. 9 / 18. Stärke: Referenzbild-Edit (für unseren Fall unbelegt). Risiko: Batch-Wartezeit, wenig Luft für Wiederholungen.
+- Nano Banana 2 (Gemini 3.1 Flash Image): ab 0,045 (0,5K) bis 0,151 (4K), Batch ca. halb; 1K-Preis nicht belegt.
+- Nano Banana 2 Lite: 0,0336 / Batch 0,0168 -> ca. 15,5 / 7,7. Ratios inkl. 3:4, 2:3, 9:16 belegt. "Nicht für Hero-Assets", Referenzbild-Eingabe nicht belegt.
+- gpt-image-2 (1024x1536): low 0,005 / medium 0,041 / high 0,165 + Input-Tokens für Referenzen (8 $/Mio). low -> ca. 2,3 + Referenzen; medium ca. 19. Edit mit mehreren Referenzen + input_fidelity. Preise widersprüchlich. Low vermutlich weich.
+- gpt-image-1-mini: deprecated, nicht empfohlen.
+- FLUX Kontext Dev/Pro/Max: 0,01 / 0,04 / 0,08 -> ca. 4,6 / 18 / 37. Dev: Anbieter/Lizenz ungeklärt.
+- Ideogram/Recraft: nicht recherchiert.
+- Ohne KI (Crop 3:4 + unscharfer, getönter Hintergrund): ca. 0 €; echte Fotos, Pose perfekt; Quellfotos vermutlich klein (ungeprüft).
+Free Exercise DB: MIT (laut met-heuristik.md). 2 Fotos/Übung als Eingabe lösen das Perspektivproblem am ehesten.
+Empfehlung: (1) Image-Edit mit beiden Referenzfotos, Ziel 3:4, zuerst Nano Banana (2.5/2) testen; (2) Gegenkandidat gpt-image-2 low + input_fidelity; (3) Fallback ohne KI; (4) mit Wiederholungen rechnen, nur Batch passt ins 10-€-Budget (ca. 11 $, Kurs ungeprüft) bei <1,3 Versuchen/Bild.
+Plan 3 Probebilder: Bankdrücken (Seitenansicht-Falle), Klimmzüge, Face Pull; je beide Referenzfotos, 3:4, Prompt "Kamera frontal von oberhalb des Kopfes, gleiche Pose wie Referenz, einheitlicher Studio-Look"; je Nano Banana, gpt-image-2 low, Kontext Dev = 9 Bilder < 1 $. Kriterien: Perspektive, Pose, einheitlicher Look. Gewinner -> 20 Bilder Batch -> erst dann alle 460.
