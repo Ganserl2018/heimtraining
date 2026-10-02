@@ -1077,7 +1077,7 @@ function renderProfile() {
   const ini = (p.name || '').trim().charAt(0).toUpperCase();
   const bad = document.body.classList.contains('mood-bad');
   content.innerHTML = `
-    <div class="overview pf">
+    <div class="overview prof-page">
       <div class="pf-hero">
         <div class="pf-avatar">${ini ? esc(ini) : '◉'}</div>
         <div class="pf-who">
