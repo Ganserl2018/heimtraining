@@ -1090,29 +1090,22 @@ function renderProfile() {
         <div><b>${streak}</b><span>Streak</span></div>
         <div><b>${sets}</b><span>Sätze</span></div>
       </div>
-      <div class="ov-card">
-        <div class="ov-card-title">Körper</div>
-        <label class="pf-row">Gewicht<span><input type="number" inputmode="decimal" data-act="profileField" data-field="weight" value="${p.weight ?? ''}" placeholder="–"> kg</span></label>
-        <label class="pf-row">Größe<span><input type="number" inputmode="numeric" data-act="profileField" data-field="height" value="${p.height ?? ''}" placeholder="–"> cm</span></label>
-        <label class="pf-row">Gewicht der Langhantel-Stange<span><input type="number" inputmode="decimal" data-act="profileField" data-field="bar" value="${p.bar ?? ''}" placeholder="10"> kg</span></label>
-        <label class="pf-row">Standard-Pause<span><input type="number" inputmode="numeric" data-act="profileField" data-field="rest" value="${p.rest ?? ''}" placeholder="90"> Sek</span></label>
+      <div class="ov-card pf-body">
+        <div class="pf-grid">
+          <label class="pf-fld">Gewicht<span><input type="number" inputmode="decimal" data-act="profileField" data-field="weight" value="${p.weight ?? ''}" placeholder="–"> kg</span></label>
+          <label class="pf-fld">Größe<span><input type="number" inputmode="numeric" data-act="profileField" data-field="height" value="${p.height ?? ''}" placeholder="–"> cm</span></label>
+          <label class="pf-fld">Stange<span><input type="number" inputmode="decimal" data-act="profileField" data-field="bar" value="${p.bar ?? ''}" placeholder="10"> kg</span></label>
+          <label class="pf-fld">Pause<span><input type="number" inputmode="numeric" data-act="profileField" data-field="rest" value="${p.rest ?? ''}" placeholder="90"> Sek</span></label>
+        </div>
         <label class="pf-row">Level<span><select data-act="profileField" data-field="level"><option value=""${p.level == null ? ' selected' : ''}>Anfänger (Start)</option>${LEVELS.map(([k, l], x) => `<option value="${x}"${p.level === x ? ' selected' : ''}>${l}</option>`).join('')}</select></span></label>
-        ${(() => { const ls = levelSuggestion(); return ls != null ? `<div class="lv-msg lv-up">Dein Verlauf zeigt: Zeit für <b>${LEVELS[ls][1]}</b>. <button class="ov-btn ov-btn-ghost" data-act="lvlUp" data-lv="${ls}">Übernehmen</button></div>` : ''; })()}
-        <p class="placeholder">Gewicht: Grundlage für Kalorien und Start-Gewichte der Level-Vorlagen. Stange: ohne Eintrag rechne ich mit 10 kg.</p>
+        ${(() => { const ls = levelSuggestion(); return ls != null ? `<div class="lv-msg lv-up">Zeit für <b>${LEVELS[ls][1]}</b>. <button class="ov-btn ov-btn-ghost" data-act="lvlUp" data-lv="${ls}">Übernehmen</button></div>` : ''; })()}
+        <p class="pf-hint">Gewicht und Größe bestimmen die Start-Gewichte der Level-Vorlagen. Stange ohne Eintrag = 10 kg.</p>
       </div>
-      <div class="ov-card">
-        <div class="ov-card-title">Ziel</div>
-        <div class="pf-row">${goal.target} Trainings in ${goal.periodDays === 7 ? '1 Woche' : goal.periodDays + ' Tagen'}<button class="ov-btn ov-btn-ghost" data-act="goalEditFromProfile">Anpassen</button></div>
-      </div>
-      <div class="ov-card">
-        <div class="ov-card-title">Trainingshelper</div>
-        <div class="pf-row">Hinweise wieder anzeigen<button class="ov-btn ov-btn-ghost" data-act="helperReset">Zurücksetzen</button></div>
-      </div>
-      <div class="ov-card">
-        <div class="ov-card-title">Backup</div>
-        <p class="placeholder">Pläne, Verlauf und Ziel als Text sichern oder wiederherstellen.</p>
-        <textarea id="backup-text" class="w-note" placeholder="Hier steht dein Backup oder füge eins ein…"></textarea>
-        <div class="edit-bar"><button class="ov-btn" data-act="backupExport">Backup erzeugen &amp; kopieren</button><button class="ov-btn ov-btn-ghost" data-act="backupImport">Aus Text wiederherstellen</button></div>
+      <div class="ov-card pf-body">
+        <div class="pf-row">Ziel: ${goal.target} Trainings in ${goal.periodDays === 7 ? '1 Woche' : goal.periodDays + ' Tagen'}<button class="ov-btn ov-btn-ghost" data-act="goalEditFromProfile">Anpassen</button></div>
+        <div class="pf-row">Trainingshinweise<button class="ov-btn ov-btn-ghost" data-act="helperReset">Zurücksetzen</button></div>
+        <div class="pf-row">Backup<span class="pf-btns"><button class="ov-btn ov-btn-ghost" data-act="backupExport">Kopieren</button><button class="ov-btn ov-btn-ghost" data-act="backupImport">Laden</button></span></div>
+        <textarea id="backup-text" class="w-note pf-ta" placeholder="Backup steht hier. Zum Laden: Text einfügen, dann nochmal „Laden“."></textarea>
       </div>
     </div>`;
 }
@@ -1553,13 +1546,15 @@ content.addEventListener('click', e => {
     }
     case 'backupExport': {
       const o = {}; for (let n = 0; n < localStorage.length; n++) { const k = localStorage.key(n); if (k && k.startsWith('heimtraining.')) o[k] = localStorage.getItem(k); }
-      const txt = JSON.stringify(o); const ta = document.getElementById('backup-text'); ta.value = txt; ta.select();
+      const txt = JSON.stringify(o); const ta = document.getElementById('backup-text'); ta.classList.add('show'); ta.value = txt; ta.select();
       try { navigator.clipboard.writeText(txt); } catch (e2) {}
       return;
     }
     case 'backupImport': {
+      const ta2 = document.getElementById('backup-text');
+      if (!ta2.classList.contains('show')) { ta2.classList.add('show'); ta2.value = ''; ta2.focus(); return; }
       try {
-        const o = JSON.parse(document.getElementById('backup-text').value);
+        const o = JSON.parse(ta2.value);
         const keys = Object.keys(o).filter(k => k.startsWith('heimtraining.'));
         if (!keys.length) throw new Error('leer');
         if (!confirm(`${keys.length} Datensätze wiederherstellen? Aktuelle Daten werden überschrieben.`)) return;
