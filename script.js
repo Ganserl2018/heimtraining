@@ -528,12 +528,12 @@ function renderOverview() {
 // V8-04: Wochenplan-Einträge (haben trainingId) sind anklickbar -> Detailseite mit Dauer/Kalorien.
 // V6-08: Verlauf als Foto-Kacheln mit Wochenkopf, Gruppierung nach Woche/Monat.
 let imgSet = new Set();
-fetch('img/index.json?v=1').then(r => r.json()).then(a => { imgSet = new Set(a); }).catch(() => {});
+fetch('img/index.json?v=2').then(r => r.json()).then(a => { imgSet = new Set(a); }).catch(() => {});
 function slugOf(g) { return (g || '').replace(/^gifs\//, '').replace(/\.gif$/, ''); }
 // Foto passend zum Profil (m/w); ohne Foto -> GIF
 function imgOf(ex) {
   const g = (loadProfile().gender === 'w') ? 'w' : 'm', s = slugOf(ex.gif);
-  return imgSet.has(s + '-' + g) ? 'img/' + s + '-' + g + '.jpg' : ex.gif;
+  return imgSet.has(s + '-' + g + '.gif') ? 'img/' + s + '-' + g + '.gif' : imgSet.has(s + '-' + g) ? 'img/' + s + '-' + g + '.jpg' : ex.gif;
 }
 const gifOf = name => (pool.find(e => e.name === name) || {}).gif || '';
 const hvPhoto = name => { const g = gifOf(name); return g ? `<img src="${esc(imgOf({ gif: g }))}" alt="" loading="lazy" onerror="this.remove()">` : ''; };
