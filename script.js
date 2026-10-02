@@ -615,7 +615,7 @@ function renderGen() {
     <div class="lv"><div class="lv-h">Ziel</div><div class="lv-pills">${GOALS.map(([k, l]) => pill('genGoal', k, l, genCfg.goal === k)).join('')}</div></div>
     <div class="lv"><div class="lv-h">Dauer</div><div class="lv-pills">${[30, 45, 60, 90].map(d => pill('genDur', d, d + ' Min', genCfg.dur === d)).join('')}</div></div>
     <div class="lv"><div class="lv-h">Muskelgruppen</div><div class="lv-pills">${MUSCLE_GROUP_LIST.map(m => pill('genGrp', m, m, genCfg.groups.includes(m))).join('')}</div></div>
-    ${genRes ? '' : `<div class="gn-btns"><button class="pl-next ts-go" data-act="genDo"${genCfg.groups.length ? '' : ' disabled'}>✨ ZUSAMMENSTELLEN</button><button class="ts-add gn-sur" data-act="genSurprise">🎲 Überrasch mich<small>wählt 2–3 Muskelgruppen zufällig, Level, Ziel und Dauer bleiben wie eingestellt</small></button></div>`}
+    ${genRes ? '' : `<div class="gn-btns"><button class="pl-next ts-go" data-act="genDo"${genCfg.groups.length ? '' : ' disabled'}>✨ ZUSAMMENSTELLEN</button><button class="ts-add gn-sur" data-act="genSurprise">🎲 Überrasch mich<small>Tausch der Muskelgruppen und der Übungen</small></button></div>`}
     ${res}
   </div>`;
   if (scrollRes) setTimeout(() => { const r = document.querySelector('.gn-res'); if (r) r.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
