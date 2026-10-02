@@ -1020,34 +1020,70 @@ function exCard(t, ex, i) {
   const chips = split ? '' : `${u === 'kg' ? qchips('w', `[data-act=wPlanAll][data-f=w]`) : ''}${qchips('r', `[data-act=wPlanAll][data-f=r]`)}`;
   return `<div class="ts-set xc"><div class="xc-top"><span class="xc-n">${esc(ex.name)}</span>${sel}</div><div class="xc-row">${rowB}</div>${chips}${pills}</div>`;
 }
-let lvMsg = '';
+let lvMsg = '', ctlOpen = false;
+function txRow(t, ex, i) {
+  const u = ex.unit || 'kg', n = ex.sets || 3, plan = ex.plan || [];
+  const at = (k, f) => (plan[k] || {})[f] ?? null;
+  const uniform = Array.from({ length: n }, (_, k) => k).every(k => at(k, 'w') === at(0, 'w') && at(k, 'r') === at(0, 'r'));
+  const split = u !== 'none' && !uniform;
+  const rl = u === 'sek' ? 'Sek' : 'Wdh';
+  const da = `data-id="${t.id}" data-i="${i}"`;
+  const sel = `<select class="xc-unit" data-act="wUnit" ${da} aria-label="Eintragen als">${Object.entries({ kg: 'kg · Wdh', wdh: 'Wdh', sek: 'Sek' }).map(([v, l]) => `<option value="${v}"${u === v ? ' selected' : ''}>${l}</option>`).join('')}</select>`;
+  const fld = (act, f, k, val) => `<label class="xc-f"><input type="number" inputmode="${f === 'w' ? 'decimal' : 'numeric'}" value="${val ?? ''}" placeholder="${f === 'w' ? 'kg' : rl}" data-act="${act}" ${da}${k === null ? '' : ` data-k="${k}"`} data-f="${f}" aria-label="${f === 'w' ? 'kg' : rl}"><span>${f === 'w' ? 'kg' : rl}</span></label>`;
+  const step = `<div class="xc-step"><button data-act="wSetsAdj" ${da} data-d="-1" aria-label="Ein Satz weniger">–</button><b>${n}</b><button data-act="wSetsAdj" ${da} data-d="1" aria-label="Ein Satz mehr">+</button></div><span class="xc-x">×</span>`;
+  const vals = split ? `<button class="xc-same" data-act="wSame" ${da}>Sätze angleichen</button>` : `${u === 'kg' ? fld('wPlanAll', 'w', null, at(0, 'w')) : ''}${fld('wPlanAll', 'r', null, at(0, 'r'))}`;
+  const pills = split ? `<div class="xc-pills">${Array.from({ length: n }, (_, k) => `<div class="xc-pill"><b>${k + 1}</b>${u === 'kg' ? fld('wPlan', 'w', k, at(k, 'w')) : ''}${fld('wPlan', 'r', k, at(k, 'r'))}</div>`).join('')}</div>` : '';
+  const chips = split ? '' : `${u === 'kg' ? qchips('w', `[data-act=wPlanAll][data-f=w]`) : ''}${qchips('r', `[data-act=wPlanAll][data-f=r]`)}`;
+  const last = i === t.exercises.length - 1;
+  return `<div class="tx-row ts-set xc" style="--i:${Math.min(i, 10)}">
+    <div class="tx-th"><img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+    <div class="tx-nm"><b>${esc(ex.name)}</b><em>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</em></div>
+    <span class="ts-mv"><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="-1" aria-label="Nach oben"${i === 0 ? ' disabled' : ''}>▲</button><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="1" aria-label="Nach unten"${last ? ' disabled' : ''}>▼</button></span>
+    <button class="tx-rm" data-act="wRemoveEx" data-id="${t.id}" data-i="${i}" aria-label="Übung entfernen">✕</button>
+    <div class="tx-ed">${step}${vals}${sel}</div>${chips}${pills}
+  </div>`;
+}
 function renderWTrain() {
   const t = trainingById(wId);
   if (!t) { view = 'overview'; return renderOverview(); }
+  const prevScroll = content.querySelector('.tx-rows') ? content.querySelector('.tx-rows').scrollTop : 0;
   const step = helperStep(t);
   const started = startOf(t.id, today());
   const hasEx = t.exercises.length > 0, hasDays = t.weekdays && t.weekdays.length > 0;
-  const sec = (n, title, ok, body) => `<section class="ts${step === n ? ' now' : ''}${ok ? ' ok' : ''}"><div class="ts-h"><span class="ts-n">${ok ? '✓' : n}</span><b>${title}</b></div>${body}</section>`;
   const ws = mondayOf(today()), miss = Array.from({ length: 7 }, (_, i) => addDays(ws, i)).filter(ds => trainingStatusForDate(t, ds) === 'verpasst');
-  content.innerHTML = `<div class="tsx">
-    ${sec(1, 'Name', !t.draft, renameId === t.id
-      ? `${t.draft ? hint('name', 1, 'Gib deinem Training einen Namen, zum Beispiel „Oberkörper“ oder „Montag“. Danach geht es mit den Übungen weiter.') : ''}<input id="rename-input" placeholder="Name des Trainings…" value="${esc(t.name)}"><div class="edit-bar"><button data-act="wRenameSave" data-id="${t.id}">Speichern</button><button data-act="wRenameCancel" data-id="${t.id}">Abbrechen</button></div>`
-      : `<div class="ts-name"><h2>${esc(t.name)}</h2><div class="ts-name-btns"><button data-act="wRename" data-id="${t.id}">Umbenennen</button><button class="ts-name-del" data-act="wDelete" data-id="${t.id}">Löschen</button></div></div>`)}
-    ${sec(2, 'Übungen', hasEx, `${step === 2 ? hint('ex', 2, 'Hier fügst du Übungen hinzu: auf „+ Übung hinzufügen“ tippen, suchen und antippen. Du kannst mehrere nacheinander wählen.') : ''}
-      ${t.exercises.map((ex, i) => `<div class="ts-ex"><img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><div><b>${esc(ex.name)}</b><em>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</em></div><span class="ts-mv"><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="-1" aria-label="Nach oben"${i === 0 ? ' disabled' : ''}>▲</button><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="1" aria-label="Nach unten"${i === t.exercises.length - 1 ? ' disabled' : ''}>▼</button></span><button data-act="wRemoveEx" data-id="${t.id}" data-i="${i}" aria-label="Übung entfernen">✕</button></div>`).join('')}
-      <button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button>`)}
-    ${hasEx ? sec(3, 'Sätze &amp; Eintragen', step > 3, `${step === 3 ? hint('sets', 3, 'Pro Übung: Sätze, kg und Wiederholungen eintragen (gilt für alle Sätze). Über ⋯ stellst du Einheit, einzelne Sätze und Notiz ein. Felder dürfen leer bleiben.') : ''}
-      <div class="lv"><div class="lv-h">Vorlage nach Level <em>(Vorschlag, ca.-Werte)</em></div><div class="lv-pills">${LEVELS.map(([k, l], x) => `<button class="lv-p${t.level === x ? ' on' : ''}" data-act="wLevel" data-id="${t.id}" data-lv="${x}">${l}</button>`).join('')}</div>${lvMsg ? `<div class="lv-msg">${lvMsg}</div>` : ''}<div class="lv-note">Passt Sätze, Wdh und kg für alle Übungen an. Technik vor Gewicht, bei Schmerzen abbrechen.</div></div>
-      ${t.exercises.map((ex, i) => exCard(t, ex, i)).join('')}`) : ''}
-    ${hasEx ? sec(4, 'Tage &amp; Uhrzeit', hasDays, `${step === 4 ? hint('days', 4, 'Hier legst du fest, an welchen Tagen du dieses Training machst. Tippe einfach die Wochentage an.') : ''}
-      <div class="w-schedule"><div class="w-schedule-days">${WD_KEYS.map(k => `<button class="chip${t.weekdays.includes(k) ? ' active' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>
-        <input type="time" class="w-schedule-time" data-act="wTime" data-id="${t.id}" value="${esc(t.time || '')}" title="Uhrzeit (informativ, kein Cutoff)"></div>
-      ${miss.length ? `<div class="w-missed">${miss.map(ds => `<span>${WD_LABELS[wdKeyOf(ds)]} verpasst</span><button data-act="wSkip" data-id="${t.id}" data-date="${ds}">Als Ruhetag werten</button>`).join('')}</div>` : ''}`) : ''}
-    ${hasEx ? sec(5, 'Los geht’s', false, `${step === 5 ? hint('go', 5, 'Fertig eingerichtet! Tippe auf „Training starten“, wenn du loslegen willst. Alles lässt sich jederzeit ändern.') : ''}
-      <button class="ts-save" data-act="wSavePack">✓ SPEICHERN &amp; ZUR SCHNELLAUSWAHL</button>
-      <button class="pl-next ts-go" data-act="${started ? 'quickStart' : 'wStart'}" data-id="${t.id}">${started ? '▶ WORKOUT FORTSETZEN' : '▶ TRAINING STARTEN'}</button>`) : ''}
-    <button class="ts-del" data-act="wDelete" data-id="${t.id}">Training löschen</button>
+  const totalSets = t.exercises.reduce((n, e) => n + (e.sets || 3), 0);
+  const ready = hasEx && hasDays && !t.draft;
+  const hintHtml = t.draft && renameId === t.id ? hint('name', 1, 'Gib deinem Training einen Namen, zum Beispiel „Oberkörper“ oder „Montag“. Danach geht es mit den Übungen weiter.')
+    : step === 2 ? hint('ex', 2, 'Hier fügst du Übungen hinzu: auf „+ Übung“ tippen, suchen und antippen. Du kannst mehrere nacheinander wählen.')
+    : step === 3 && hasEx ? hint('sets', 3, 'Pro Übung: Sätze, kg und Wiederholungen eintragen (gilt für alle Sätze). Felder dürfen leer bleiben.')
+    : step === 4 && hasEx ? hint('days', 4, 'Hier legst du fest, an welchen Tagen du dieses Training machst. Tippe einfach die Wochentage an.')
+    : step === 5 && hasEx ? hint('go', 5, 'Fertig eingerichtet! Tippe auf „Training starten“, wenn du loslegen willst. Alles lässt sich jederzeit ändern.') : '';
+  const head = renameId === t.id
+    ? `<div class="tx-head"><input id="rename-input" placeholder="Name des Trainings…" value="${esc(t.name)}"><div class="tx-hbtns"><button data-act="wRenameSave" data-id="${t.id}">Speichern</button><button data-act="wRenameCancel" data-id="${t.id}">Abbrechen</button></div></div>`
+    : `<div class="tx-head"><h2>${esc(t.name)}</h2><span class="lab-chip"><i></i>${t.exercises.length} ÜBUNG${t.exercises.length === 1 ? '' : 'EN'} · ${totalSets} SÄTZE</span><div class="tx-hbtns"><button data-act="wRename" data-id="${t.id}">Umbenennen</button></div></div>`;
+  const dayLbl = hasDays ? WD_KEYS.filter(k => t.weekdays.includes(k)).map(k => WD_LABELS[k]).join(' ') : 'Tage wählen';
+  const lvNow = t.level != null ? LEVELS[t.level][1] : 'Level';
+  const ctl = hasEx ? `<aside class="tx-ctl${ctlOpen ? ' open' : ''}">
+      <button class="tx-sum${hasDays ? '' : ' need'}" data-act="ctlToggle"><span>${esc(dayLbl)}${t.time ? ' · ' + esc(t.time) : ''} · ${esc(lvNow)}</span><i>${ctlOpen ? '▾' : '▴'}</i></button>
+      <div class="tx-sheet"><div class="tx-sheet-in">
+        <div class="tx-lab">Vorlage nach Level</div>
+        <div class="pp-seg">${LEVELS.map(([k, l], x) => `<button class="${t.level === x ? 'on' : ''}" data-act="wLevel" data-id="${t.id}" data-lv="${x}">${l}</button>`).join('')}</div>
+        ${lvMsg ? `<div class="lv-msg">${lvMsg}</div>` : ''}
+        <div class="tx-lab">Tage &amp; Uhrzeit</div>
+        <div class="tx-days">${WD_KEYS.map(k => `<button class="chip${t.weekdays.includes(k) ? ' active' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>
+        <input type="time" class="w-schedule-time" data-act="wTime" data-id="${t.id}" value="${esc(t.time || '')}" title="Uhrzeit (informativ, kein Cutoff)">
+        ${miss.length ? `<div class="w-missed">${miss.map(ds => `<span>${WD_LABELS[wdKeyOf(ds)]} verpasst</span><button data-act="wSkip" data-id="${t.id}" data-date="${ds}">Als Ruhetag werten</button>`).join('')}</div>` : ''}
+        <button class="ts-del" data-act="wDelete" data-id="${t.id}">Training löschen</button>
+      </div></div>
+      <div class="tx-go"><button class="ts-save" data-act="wSavePack">✓ SPEICHERN</button><button class="pl-next ts-go${ready ? ' rdy' : ''}" data-act="${started ? 'quickStart' : 'wStart'}" data-id="${t.id}">${started ? '▶ FORTSETZEN' : '▶ STARTEN'}</button></div>
+    </aside>` : `<aside class="tx-ctl"><button class="ts-del" data-act="wDelete" data-id="${t.id}">Training löschen</button></aside>`;
+  content.innerHTML = `<div class="tsx2">
+    ${head}
+    ${hintHtml ? `<div class="tx-hint">${hintHtml}</div>` : ''}
+    <section class="tx-list"><div class="tx-rows">${t.exercises.map((ex, i) => txRow(t, ex, i)).join('')}<button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button></div></section>
+    ${ctl}
   </div>`;
+  const rows = content.querySelector('.tx-rows'); if (rows) rows.scrollTop = prevScroll;
   if (renameId === t.id) document.getElementById('rename-input')?.focus();
 }
 
@@ -1479,6 +1515,7 @@ content.addEventListener('click', e => {
       if (!confirm(`„${t.exercises[Number(btn.dataset.i)].name}“ entfernen?`)) return;
       t.exercises.splice(Number(btn.dataset.i), 1); saveWeekplan(); break;
     }
+    case 'ctlToggle': ctlOpen = !ctlOpen; break;
     case 'wLevel': { const t = trainingById(btn.dataset.id); const miss = applyLevel(t, Number(btn.dataset.lv)); lvMsg = miss ? 'Trage dein Gewicht im Profil ein, dann fülle ich auch die kg vor.' : ''; break; }
     case 'profLevel': { const p = loadProfile(); p.level = Number(btn.dataset.v); saveProfile(p); break; }
     case 'lvlUp': { const p = loadProfile(); p.level = Number(btn.dataset.lv); saveProfile(p); break; }
