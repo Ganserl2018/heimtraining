@@ -216,3 +216,5 @@ Ok: kein Scrollen bei 390x844, 390x667, 1300x900, 1300x600, 2000x1000; Persisten
 Nicht geprüft: echtes iPhone-Safari (@property Ring ab Safari 16.4, sonst statisch), Tastatur-Verdeckung beim Tippen, Reload nach Backup-Laden.
 
 ## 02.10. 17:15 – Training bauen Redesign live (Commits 70c5e51, Cache-Fix SW hf-v3 + _headers no-cache). Liste scrollt intern, Steuerung rechts (Desktop) / Sheet unten (Mobil). Alex: "passt erstmal". Nicht per Checker geprüft (nur Playwright-Screens 390x844, 1300). Offen: Trainingshelper-Kasten nimmt am Desktop Platz. V6-04 Leisten + Header-Logo + Profil Spieler-Karte live. Nächstes: Siri/Kurzbefehl Pausen-Timer.
+
+## ABSCHLUSS-PRÜFUNG (Alex 02.10. 17:19): iPhone-Test abgehakt. Sobald Alex "fertig" sagt, lässt Claude (ohne Rückfrage) laufen: (1) Checker/Prüf-Agent: ALLE Funktionen durchklicken – wie geht es, was passiert bei jedem Button, Randfälle, 390 + 1300 px; (2) Designer-Agent: nur Proportionen, Abstände, Ausrichtung, Konsistenz. Taskforce delegieren, Berichte unverkürzt in plan.md/Vault sichern.
