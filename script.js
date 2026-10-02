@@ -490,19 +490,56 @@ function renderOverview() {
 
 // V2-01: Verlauf – zeigt vergangene Trainingseinheiten (aus HKEY, befüllt bei "Training beenden").
 // V8-04: Wochenplan-Einträge (haben trainingId) sind anklickbar -> Detailseite mit Dauer/Kalorien.
+// V6-08: Verlauf als Foto-Kacheln mit Wochenkopf, Gruppierung nach Woche/Monat.
+const gifOf = name => (pool.find(e => e.name === name) || {}).gif || '';
+const hvPhoto = name => { const g = gifOf(name); return g ? `<img src="${esc(g)}" alt="" loading="lazy" onerror="this.remove()">` : ''; };
+const isoDay = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+function weekStart(ds) { const d = new Date(ds + 'T00:00:00'); d.setDate(d.getDate() - ((d.getDay() + 6) % 7)); return isoDay(d); }
+function histStreak(h) {
+  const days = new Set(h.map(r => r.date)); let d = new Date();
+  if (!days.has(isoDay(d))) d.setDate(d.getDate() - 1);
+  let n = 0; while (days.has(isoDay(d))) { n++; d.setDate(d.getDate() - 1); }
+  return n;
+}
+function histGroup(ds) {
+  const ws = weekStart(ds), cur = weekStart(isoDay(new Date()));
+  if (ws === cur) return 'Diese Woche';
+  const diff = Math.round((new Date(cur) - new Date(ws)) / 604800000);
+  if (diff === 1) return 'Letzte Woche';
+  return new Date(ds + 'T00:00:00').toLocaleDateString('de-DE', { month: 'long', year: 'numeric' });
+}
 function renderHistory() {
   const h = loadHistory();
-  content.innerHTML = (h.length ? '' : `<p class="placeholder">Noch kein Training abgeschlossen.</p>`) +
-    h.map((r, i) => {
-      const pct = r.totalSetsPlanned ? Math.round(r.totalSetsDone / r.totalSetsPlanned * 100) : 0;
-      const clickable = r.trainingId != null;
-      return `<div class="history-item${clickable ? ' clickable' : ''}"${clickable ? ` data-act="histOpen" data-idx="${i}"` : ''}>
-        <div class="history-date">${esc(fmtDate(r.date))} · ${esc(DAY_LABELS[r.day] || r.day)}${r.totalSetsDone < r.totalSetsPlanned ? ' <span class="hist-part">unvollständig</span>' : ''}</div>
-        <div class="history-meta">${r.totalSetsDone}/${r.totalSetsPlanned} Sätze${r.durationMin ? ' · ' + r.durationMin + ' Min' : ''}${r.calories ? ' · ~' + r.calories + ' kcal' : ''}</div>
-        <div class="history-bar"><div class="history-fill" style="width:${pct}%"></div></div>
-        ${r.note ? `<div class="history-note">${esc(r.note)}</div>` : ''}
-      </div>`;
-    }).join('');
+  if (!h.length) { content.innerHTML = `<p class="placeholder">Noch kein Training abgeschlossen.</p>`; return; }
+  const cur = weekStart(isoDay(new Date()));
+  const wk = h.filter(r => weekStart(r.date) === cur);
+  const wkSets = wk.reduce((a, r) => a + (r.totalSetsDone || 0), 0);
+  let lastG = '', ci = 0;
+  const cards = h.map((r, i) => {
+    const g = histGroup(r.date), head = g !== lastG ? `<div class="hv-grp">${esc(g)}</div>` : ''; lastG = g;
+    const pct = r.totalSetsPlanned ? Math.round(r.totalSetsDone / r.totalSetsPlanned * 100) : 0;
+    const full = r.totalSetsDone >= r.totalSetsPlanned;
+    const click = r.trainingId != null;
+    const d = new Date(r.date + 'T00:00:00').toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit' });
+    return head + `<div class="hv-card${click ? ' clickable' : ''}${full ? ' full' : ''}"${click ? ` data-act="histOpen" data-idx="${i}"` : ''}>
+      <div class="hv-ph">${hvPhoto((r.exercises[0] || {}).name)}</div>
+      <div class="hv-body">
+        <div class="hv-top"><span class="hv-date">${esc(d)}</span><span class="${full ? 'hist-full' : 'hist-part'}">${full ? 'komplett' : 'unvollständig'}</span></div>
+        <div class="hv-name">${esc(DAY_LABELS[r.day] || r.day)}</div>
+        <div class="hv-nums"><div><b>${r.durationMin ?? '–'}</b><span>Min</span></div><div><b>${r.totalSetsDone}/${r.totalSetsPlanned}</b><span>Sätze</span></div><div><b>${r.calories ? '~' + r.calories : '–'}</b><span>kcal</span></div></div>
+      </div>
+      <div class="hv-bar"><div class="hv-fill" style="width:${pct}%;--i:${ci++ % 8}"></div></div>
+      ${r.note ? `<div class="hv-note">${esc(r.note)}</div>` : ''}
+    </div>`;
+  }).join('');
+  content.innerHTML = `<div class="hv">
+    <div class="hv-week">
+      <div><b>${wk.length}</b><span>Trainings diese Woche</span></div>
+      <div><b>${histStreak(h)}</b><span>Tage Streak</span></div>
+      <div><b>${wkSets}</b><span>Sätze diese Woche</span></div>
+    </div>
+    <div class="hv-list">${cards}</div>
+  </div>`;
 }
 
 let histDetailIdx = null;
@@ -510,24 +547,36 @@ function renderHistDetail() {
   const r = loadHistory()[histDetailIdx];
   if (!r) { view = 'history'; return renderHistory(); }
   const profile = loadProfile();
-  content.innerHTML = `<div class="overview">
-    <div class="wtrain-head"><h2>${esc(DAY_LABELS[r.day] || r.day)}</h2><button data-act="histBack">← Zurück</button></div>
-    <div class="ov-card">
-      <div class="ov-card-title">${esc(fmtDate(r.date))}${r.totalSetsDone < r.totalSetsPlanned ? ' · <span class="hist-part">unvollständig</span>' : ' · <span class="hist-full">komplett</span>'}</div>
-      <div class="hist-detail-stats">
-        <div><b>${r.totalSetsDone}/${r.totalSetsPlanned}</b><span>Sätze</span></div>
-        <div><b>${r.durationMin ?? '–'}</b><span>Minuten</span></div>
-        <div><b>${r.calories ?? '–'}</b><span>kcal (geschätzt)</span></div>
-      </div>
-      ${r.calories == null ? `<p class="placeholder">${profile.weight ? 'Keine Dauer erfasst (Training ohne "Training starten"?).' : 'Kalorien-Schätzung braucht dein Gewicht im Profil.'}</p>` : ''}
+  const pct = r.totalSetsPlanned ? Math.round(r.totalSetsDone / r.totalSetsPlanned * 100) : 0;
+  const full = r.totalSetsDone >= r.totalSetsPlanned;
+  const first = (r.exercises[0] || {}).name;
+  const unitTxt = u => (UNITS[u || 'kg'] || UNITS.kg)[1];
+  content.innerHTML = `<div class="hd">
+    <div class="hd-hero">
+      ${hvPhoto(first)}
+      <button class="hd-back" data-act="histBack">← Zurück</button>
+      <div class="hd-hero-txt"><span class="${full ? 'hist-full' : 'hist-part'}">${full ? 'komplett' : 'unvollständig'}</span>
+        <div class="hd-title">${esc(DAY_LABELS[r.day] || r.day)}</div>
+        <div class="hd-date">${esc(fmtDate(r.date))}</div></div>
     </div>
-    <div class="ov-card">
-      <div class="ov-card-title">Übungen</div>
-      ${r.exercises.map(ex => `<div class="history-item">
-        <div class="history-date">${esc(ex.name)}</div>
-        <div class="history-meta">${ex.setsDone}/${ex.setsTotal} Sätze${ex.weights && ex.weights.some(w => w != null) ? ' · ' + ex.weights.filter(w => w != null).map(w => w + ((UNITS[ex.unit || 'kg'] || UNITS.kg)[1] ? ' ' + (UNITS[ex.unit || 'kg'] || UNITS.kg)[1] : '')).join(', ') : ''}</div>
-      </div>`).join('')}
+    <div class="hd-stats">
+      <div><b>${r.totalSetsDone}/${r.totalSetsPlanned}</b><span>Sätze</span></div>
+      <div><b>${r.durationMin ?? '–'}</b><span>Minuten</span></div>
+      <div><b>${r.calories ?? '–'}</b><span>kcal (geschätzt)</span></div>
+      <div class="hv-bar"><div class="hv-fill" style="width:${pct}%;--i:0"></div></div>
     </div>
+    ${r.calories == null ? `<p class="placeholder">${profile.weight ? 'Keine Dauer erfasst (Training ohne "Training starten"?).' : 'Kalorien-Schätzung braucht dein Gewicht im Profil.'}</p>` : ''}
+    <div class="hd-exs">${r.exercises.map(ex => {
+      const ws = ex.weights || [], u = unitTxt(ex.unit);
+      const chips = Array.from({ length: ex.setsTotal || 0 }, (_, k) => {
+        const done = k < ex.setsDone, w = ws[k];
+        return `<span class="hd-w${done ? ' on' : ''}">${w != null ? esc(w) + (u ? ' ' + u : '') : (done ? '✓' : '–')}</span>`;
+      }).join('');
+      return `<div class="hd-ex"><div class="hd-th">${hvPhoto(ex.name) || `<i>${esc(ex.name.charAt(0))}</i>`}</div>
+        <div class="hd-nm"><b>${esc(ex.name)}</b><span>${esc(ex.muscle || '')}</span></div>
+        <div class="hd-cnt">${ex.setsDone}/${ex.setsTotal}</div>
+        <div class="hd-chips">${chips}</div></div>`;
+    }).join('')}</div>
     ${r.note ? `<div class="ov-card"><div class="ov-card-title">Notiz</div><div class="history-note">${esc(r.note)}</div></div>` : ''}
     <button class="ov-btn ov-btn-ghost" data-act="histDelete">Eintrag löschen</button>
   </div>`;
@@ -1160,7 +1209,7 @@ function renderAllEx() {
 // zuletzt aktiven Trainingstag. V4: Einstieg jetzt über das TV-Icon oben rechts (von überall
 // im Training aus erreichbar), "Zurück" führt sauber zur vorherigen Ansicht zurück.
 function renderTV() {
-  const backBtn = `<button data-act="tvBack">← Zurück</button>`;
+  const backBtn = `<button class="tv-back" data-act="tvBack">← Zurück</button>`;
   const wt = tvReturn && tvReturn.view === 'wtrain' ? trainingById(tvReturn.wId) : null;
   const items = wt ? wt.exercises : list();
   const title = wt ? wt.name : (DAY_LABELS[day] || day);
@@ -1171,18 +1220,25 @@ function renderTV() {
   const n = wt ? (ex.sets || 3) : SETS;
   const wSets = wt ? (wProgRaw().done[wt.id] || {})[ex.name] || [] : null;
   const isDone = k => wt ? !!(wSets[k] && wSets[k].done) : !!setsOf(ex.name)[k];
+  const doneN = Array.from({ length: n }, (_, k) => isDone(k)).filter(Boolean).length;
+  const seg = items.map((it, i) => `<i class="${i === tvIndex ? 'cur' : ''}"></i>`).join('');
   content.innerHTML = `
     <div class="tv">
-      <div class="tv-count">${tvIndex + 1} / ${items.length} · ${esc(title)}</div>
-      <img class="tv-gif" src="${esc(ex.gif)}" alt="" onerror="this.style.visibility='hidden'">
-      <div class="tv-name">${esc(ex.name)}</div>
-      <div class="tv-muscle">${esc(ex.muscle)}</div>
-      <div class="tv-sets">${Array.from({ length: n }, (_, k) =>
-        `<button class="set${isDone(k) ? ' done' : ''}" data-act="${wt ? 'tvWSet' : 'set'}" data-i="${tvIndex}" data-k="${k}">Satz ${k + 1}${isDone(k) ? ' ✓' : ''}</button>`).join('')}</div>
-      <div class="tv-nav">
-        <button data-act="tvPrev">← Vorherige</button>
-        <button data-act="tvNext">Nächste →</button>
-        ${backBtn}
+      <div class="tv-top">${backBtn}<div class="tv-cnt"><b>${tvIndex + 1}</b> / ${items.length}</div><div class="tv-tt">${esc(title)}</div></div>
+      <div class="tv-prog" style="--n:${items.length}">${seg}</div>
+      <div class="tv-main">
+        <div class="tv-gifbox"><img class="tv-gif" src="${esc(ex.gif)}" alt="" onerror="this.style.visibility='hidden'"></div>
+        <div class="tv-side">
+          <div class="tv-name">${esc(ex.name)}</div>
+          <div class="tv-muscle">${esc(ex.muscle)}</div>
+          <div class="tv-done"><b>${doneN}</b> / ${n} Sätze</div>
+          <div class="tv-sets" style="--n:${n}">${Array.from({ length: n }, (_, k) =>
+            `<button class="set${isDone(k) ? ' done' : ''}" data-act="${wt ? 'tvWSet' : 'set'}" data-i="${tvIndex}" data-k="${k}">${isDone(k) ? '✓' : k + 1}</button>`).join('')}</div>
+          <div class="tv-nav">
+            <button data-act="tvPrev">←</button>
+            <button data-act="tvNext">→</button>
+          </div>
+        </div>
       </div>
     </div>`;
 }
@@ -1215,7 +1271,7 @@ function flushQ() {
 flushQ();
 
 content.addEventListener('click', e => {
-  const btn = e.target.closest('button[data-act], .weeklist-card[data-act], .wp-card[data-act], .history-item[data-act]');
+  const btn = e.target.closest('button[data-act], .weeklist-card[data-act], .wp-card[data-act], .history-item[data-act], .hv-card[data-act]');
   if (!btn) return;
   const i = Number(btn.dataset.i);
   const arr = list().slice();
@@ -1619,9 +1675,10 @@ content.addEventListener('keydown', e => {
 let _tx = 0, _ty = 0;
 content.addEventListener('touchstart', e => { _tx = e.touches[0].clientX; _ty = e.touches[0].clientY; }, { passive: true });
 content.addEventListener('touchend', e => {
-  if (view !== 'play' || !e.changedTouches[0]) return;
+  if ((view !== 'play' && view !== 'tv') || !e.changedTouches[0]) return;
   const dx = e.changedTouches[0].clientX - _tx, dy = e.changedTouches[0].clientY - _ty;
   const go = a => { const b = document.createElement('button'); b.dataset.act = a; content.appendChild(b); b.click(); b.remove(); };
+  if (view === 'tv') { if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) go(dx < 0 ? 'tvNext' : 'tvPrev'); return; }
   if (Math.abs(dy) > 60 && Math.abs(dy) > Math.abs(dx)) { if (dy < 0 && !playDrawer) go('playOpen'); else if (dy > 0 && playDrawer && !e.target.closest('input')) go('playClose'); }
   else if (!playDrawer && Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.5) { if (dx < 0) go('playNext'); else go('playPrev'); }
 }, { passive: true });
