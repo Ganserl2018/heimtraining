@@ -261,7 +261,7 @@ function render() {
   content.innerHTML = (items.length ? '' : `<p class="placeholder">Keine Übungen.</p>`) +
     items.map((ex, i) => `
     <div class="exercise">
-      <img class="exercise-gif" src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+      <img class="exercise-gif" src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
       <div class="exercise-info">
         <div class="exercise-name">${esc(ex.name)}</div>
         <div class="exercise-muscle">${esc(ex.muscle)}</div>
@@ -527,8 +527,16 @@ function renderOverview() {
 // V2-01: Verlauf – zeigt vergangene Trainingseinheiten (aus HKEY, befüllt bei "Training beenden").
 // V8-04: Wochenplan-Einträge (haben trainingId) sind anklickbar -> Detailseite mit Dauer/Kalorien.
 // V6-08: Verlauf als Foto-Kacheln mit Wochenkopf, Gruppierung nach Woche/Monat.
+let imgSet = new Set();
+fetch('img/index.json?v=1').then(r => r.json()).then(a => { imgSet = new Set(a); }).catch(() => {});
+function slugOf(g) { return (g || '').replace(/^gifs\//, '').replace(/\.gif$/, ''); }
+// Foto passend zum Profil (m/w); ohne Foto -> GIF
+function imgOf(ex) {
+  const g = (loadProfile().gender === 'w') ? 'w' : 'm', s = slugOf(ex.gif);
+  return imgSet.has(s + '-' + g) ? 'img/' + s + '-' + g + '.jpg' : ex.gif;
+}
 const gifOf = name => (pool.find(e => e.name === name) || {}).gif || '';
-const hvPhoto = name => { const g = gifOf(name); return g ? `<img src="${esc(g)}" alt="" loading="lazy" onerror="this.remove()">` : ''; };
+const hvPhoto = name => { const g = gifOf(name); return g ? `<img src="${esc(imgOf({ gif: g }))}" alt="" loading="lazy" onerror="this.remove()">` : ''; };
 const isoDay = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
 function weekStart(ds) { const d = new Date(ds + 'T00:00:00'); d.setDate(d.getDate() - ((d.getDay() + 6) % 7)); return isoDay(d); }
 function histStreak(h) {
@@ -689,7 +697,7 @@ function genSave(start) {
 function renderGen() {
   const lv = genLevel(), p = loadProfile();
   const pill = (act, v, l, on) => `<button class="lv-p${on ? ' on' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
-  const res = genRes ? `<div class="gn-res">${genRes.map((e, i) => `<div class="gn-ex"><span class="pv-n">${i + 1}</span><img src="${esc(e.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+  const res = genRes ? `<div class="gn-res">${genRes.map((e, i) => `<div class="gn-ex"><span class="pv-n">${i + 1}</span><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
       <div><b>${esc(e.name)}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)} · ${e.sets} × ${e.plan[0].r} ${e.unit === 'sek' ? 'Sek' : 'Wdh'}${e.plan[0].w != null && e.unit === 'kg' ? ' · ca. ' + e.plan[0].w + ' kg' : ''}</em></div></div>`).join('')}
       <div class="lv-note">Vorschlag mit ca.-Werten. Technik vor Gewicht, bei Schmerzen abbrechen.${!p.weight && genRes.some(e => e.unit === 'kg') ? ' Gewicht im Profil eintragen, dann kommen auch kg-Vorschläge.' : ''}</div>
       <div class="gn-btns"><button class="ts-save" data-act="genSave">✓ SPEICHERN</button><button class="pl-next ts-go" data-act="genGo">▶ SPEICHERN &amp; STARTEN</button><button class="ts-add" data-act="genDo">⟳ Neu mischen</button></div></div>` : '';
@@ -792,7 +800,7 @@ function renderPlay() {
   const mainLab = !exDone ? 'Satz fertig' : isLast ? 'Training beenden' : 'Nächste Übung';
   content.innerHTML = `<div class="pf">
     <div class="pf-bg"></div>
-    <div class="pf-gif"><img src="${esc(ex.gif)}" alt="" onerror="this.style.visibility='hidden'"></div>
+    <div class="pf-gif"><img src="${esc(imgOf(ex))}" alt="" onerror="this.style.visibility='hidden'"></div>
     <div class="pf-shade"></div>
     <div class="pf-top">
       <button class="pf-back" data-act="playExit" aria-label="Zurück">‹</button>
@@ -864,7 +872,7 @@ function renderPreview() {
       <div class="pl-title"><b>${esc(t.name)}</b><span>${t.exercises.length} Übungen · ${sets} Sätze</span></div>
       ${p ? '' : `<button class="pl-x pl-del" data-act="prevDelete" aria-label="Training löschen">🗑</button>`}</div>
     <div class="pv-list">${t.exercises.map((e, i) => `<div class="pv-ex"><span class="pv-n">${i + 1}</span>
-      <img src="${esc(e.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+      <img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
       <div><b>${esc(e.name)}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)} · ${e.sets || 3} Sätze</em></div></div>`).join('')}</div>
     <div class="pl-nav"><button class="pl-next" data-act="prevGo">▶ TRAINING STARTEN</button></div>
   </div>`;
@@ -898,7 +906,7 @@ function renderWeeklist() {
     return `<div class="wp-cell"><button class="wp-day${worst ? ' wp-' + worst : ' wp-aus'}${worst && worst !== 'verpasst' ? (n ? ' wp-ex' : ' wp-leer') : ''}${ds === t0 ? ' wp-heute' : ''}" ${act}><b>${WD_LABELS[k]}</b>${worst ? DB : '<em>+</em>'}<span>${worst ? (n ? n + ' Üb.' : 'leer') : 'Ruhe'}</span></button>${target ? `<button class="wp-x" data-act="wUnsched" data-id="${target.id}" data-wd="${k}" aria-label="Aus Plan entfernen">×</button>` : ''}</div>`;
   }).join('');
   const customCards = custom.map(t => {
-    const th = t.exercises.slice(0, 3).map(ex => `<img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`).join('');
+    const th = t.exercises.slice(0, 3).map(ex => `<img src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`).join('');
     const st = trainingStatusForDate(t, t0);
     return `<div class="wp-card" data-act="wOpen2" data-id="${t.id}">
       <div class="wp-thumbs">${th || DB}</div>
@@ -1036,7 +1044,7 @@ function txRow(t, ex, i) {
   const chips = split ? '' : `${u === 'kg' ? qchips('w', `[data-act=wPlanAll][data-f=w]`) : ''}${qchips('r', `[data-act=wPlanAll][data-f=r]`)}`;
   const last = i === t.exercises.length - 1;
   return `<div class="tx-row ts-set xc" style="--i:${Math.min(i, 10)}">
-    <div class="tx-th"><img src="${esc(ex.gif)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+    <div class="tx-th"><img src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"></div>
     <div class="tx-nm"><b>${esc(ex.name)}</b><em>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</em></div>
     <span class="ts-mv"><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="-1" aria-label="Nach oben"${i === 0 ? ' disabled' : ''}>▲</button><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="1" aria-label="Nach unten"${last ? ' disabled' : ''}>▼</button></span>
     <button class="tx-rm" data-act="wRemoveEx" data-id="${t.id}" data-i="${i}" aria-label="Übung entfernen">✕</button>
@@ -1204,7 +1212,7 @@ function wclassHtml(e) {
 function xrTile(i, act) {
   const e = pool[i];
   return `<button class="xr-tile" data-act="${act}" data-p="${i}">
-    <img class="xr-img" src="${esc(e.gif)}" alt="" loading="lazy" decoding="async" onerror="this.style.visibility='hidden'">
+    <img class="xr-img" src="${esc(imgOf(e))}" alt="" loading="lazy" decoding="async" onerror="this.style.visibility='hidden'">
     <span class="xr-musc">${esc(muscleLabel(e))}</span>
     <span class="xr-eq">${equipBadge(e.name)}</span>
     <span class="xr-name">${esc(e.name)}</span>
@@ -1236,7 +1244,7 @@ function renderAllEx() {
       <div class="edit-bar"><button class="ov-btn ov-btn-ghost" data-act="fReset">Zurücksetzen</button><button class="ov-btn" data-act="fClose">Fertig</button></div>
     </div></div>` : '';
   const sheet = ex ? `<div class="goal-sheet"><div class="goal-edit browse-sheet">
-      <img class="browse-gif" src="${esc(ex.gif)}" alt="" onerror="this.style.visibility='hidden'">
+      <img class="browse-gif" src="${esc(imgOf(ex))}" alt="" onerror="this.style.visibility='hidden'">
       <div class="exercise-name">${esc(ex.name)}</div>
       <div class="exercise-muscle">${esc(ex.muscle)}${MUSCLE_GROUPS[ex.muscle] ? ' · ' + MUSCLE_GROUPS[ex.muscle] : ''}</div>
       ${wclassHtml(ex)}
@@ -1287,7 +1295,7 @@ function renderTV() {
       <div class="tv-top">${backBtn}<div class="tv-cnt"><b>${tvIndex + 1}</b> / ${items.length}</div><div class="tv-tt">${esc(title)}</div></div>
       <div class="tv-prog" style="--n:${items.length}">${seg}</div>
       <div class="tv-main">
-        <div class="tv-gifbox"><img class="tv-gif" src="${esc(ex.gif)}" alt="" onerror="this.style.visibility='hidden'"></div>
+        <div class="tv-gifbox"><img class="tv-gif" src="${esc(imgOf(ex))}" alt="" onerror="this.style.visibility='hidden'"></div>
         <div class="tv-side">
           <div class="tv-name">${esc(ex.name)}</div>
           <div class="tv-muscle">${esc(ex.muscle)}</div>
