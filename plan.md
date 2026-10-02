@@ -195,3 +195,11 @@ Unverkürzt im Vault: `Projects/Privat/Heimtraining/Coach-Regeln-V13-Bericht-202
 ## Stand 02.10. 02:05 – nächster Vorschlag: Welcome/Setup beim ersten Start (Gewicht, Größe, Stange, Level). Agenten-Dashboard pausiert bis Stil-Beispiel von Alex (Vault 02_Agenten).
 
 ## 02.10. mittags: Beenden-Button zeigt 'X von Y Sätzen offen'; Übungen im Training per ▲▼ umsortierbar; Standard-Pause im Profil einstellbar (Feld rest). Welcome/Setup beim ersten Start bewusst GANZ ZUM SCHLUSS (Alex: sonst Fragenkatalog beim Testen). Nächstes: V6-08 Verlauf/TV-Redesign (Designer-Konzept zuerst).
+
+## V6-08 Verlauf + TV Redesign (02.10.2026) – Checker-Bericht (a50998d07b8804d23, Commit 5890866)
+Fehler 1 (gefixt): langer Notiz-Text/langes Wort sprengt Verlauf-Detail bei 390px (.hd Grid-Spalte 1fr -> minmax(0,1fr), overflow-wrap, .hd-title clamp/line-clamp).
+Mangel 2 (gefixt): totalSetsPlanned=0 zeigte "komplett" -> full nur bei planned>0.
+Mangel 3 (gefixt): Mobile TV Pfeile unter Tabbar -> Gif 30vh, Buttons kleiner bei <=600px.
+Mangel 4 (Warteliste V5-11): TV im Querformat auf iPhone (844x390) – Name/Gif abgeschnitten, Sätze nicht sichtbar.
+Ok: leerer Verlauf, nicht klickbare Einträge ohne trainingId, fehlende Dauer/kcal, weights leer, unbekannte Übung (Initiale), Escaping, Wochenzahlen/Streak, Gruppen, Löschen/Zurück, TV aus Tag und wtrain, Satz toggeln, Wrap, Touch-Wischen, kein horizontaler Scroll, keine pageerrors.
+Nicht getestet: echte iOS-Safari-Wischgeste, >1000 Einträge.

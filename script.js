@@ -518,7 +518,7 @@ function renderHistory() {
   const cards = h.map((r, i) => {
     const g = histGroup(r.date), head = g !== lastG ? `<div class="hv-grp">${esc(g)}</div>` : ''; lastG = g;
     const pct = r.totalSetsPlanned ? Math.round(r.totalSetsDone / r.totalSetsPlanned * 100) : 0;
-    const full = r.totalSetsDone >= r.totalSetsPlanned;
+    const full = r.totalSetsPlanned > 0 && r.totalSetsDone >= r.totalSetsPlanned;
     const click = r.trainingId != null;
     const d = new Date(r.date + 'T00:00:00').toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit' });
     return head + `<div class="hv-card${click ? ' clickable' : ''}${full ? ' full' : ''}"${click ? ` data-act="histOpen" data-idx="${i}"` : ''}>
@@ -548,7 +548,7 @@ function renderHistDetail() {
   if (!r) { view = 'history'; return renderHistory(); }
   const profile = loadProfile();
   const pct = r.totalSetsPlanned ? Math.round(r.totalSetsDone / r.totalSetsPlanned * 100) : 0;
-  const full = r.totalSetsDone >= r.totalSetsPlanned;
+  const full = r.totalSetsPlanned > 0 && r.totalSetsDone >= r.totalSetsPlanned;
   const first = (r.exercises[0] || {}).name;
   const unitTxt = u => (UNITS[u || 'kg'] || UNITS.kg)[1];
   content.innerHTML = `<div class="hd">
@@ -805,7 +805,7 @@ setInterval(tickRest, 500);
 function renderSummary() {
   const r = summaryRec;
   if (!r) { view = 'overview'; return renderOverview(); }
-  const full = r.totalSetsDone >= r.totalSetsPlanned;
+  const full = r.totalSetsPlanned > 0 && r.totalSetsDone >= r.totalSetsPlanned;
   content.innerHTML = `<div class="pl sm">
     <div class="sm-badge${full ? '' : ' part'}">${full ? '✓' : '◐'}</div>
     <div class="sm-title">${full ? 'Training geschafft' : 'Fertig – unvollständig'}</div>
