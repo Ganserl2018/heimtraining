@@ -503,9 +503,12 @@ function renderOverview() {
   content.innerHTML = `
     <div class="overview overview-lab ${mood}">
       <div class="lab-head">
-        <div>
-          <div class="lab-head-title">HOME FORCE – ZUSTAND:<br>${moodTitle}</div>
-          <div class="lab-head-sub"><i></i>${moodSub}</div>
+        <div class="lab-brand">
+          <img class="lab-logo" src="logo.svg" alt="" width="46" height="46">
+          <div>
+            <div class="lab-head-title">HOME FORCE</div>
+            <div class="lab-chip"><i></i>${moodTitle}</div>
+          </div>
         </div>
         <button class="lab-badge" data-act="goto" data-view="profile" aria-label="Profil">${(loadProfile().name || '').trim().charAt(0).toUpperCase() || '◉'}</button>
       </div>

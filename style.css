@@ -1001,3 +1001,11 @@ button.lab-bar{cursor:pointer;} button.lab-bar:hover,button.lab-bar:active{borde
 .lab-bar-track{height:8px; border-radius:99px; background:rgba(255,255,255,.08); overflow:hidden;}
 .lab-bar-track i{display:block; height:100%; border-radius:99px; background:var(--accent); box-shadow:0 0 10px var(--lab-glow,rgba(168,240,58,.4));}
 @media (prefers-reduced-motion:no-preference){.lab-bar-track i{animation:hv-grow .7s cubic-bezier(.2,.8,.2,1) both;}}
+/* Übersicht-Kopf mit Logo */
+.lab-head{align-items:center;}
+.lab-brand{display:flex; align-items:center; gap:.75rem; min-width:0;}
+.lab-logo{width:46px; height:46px; flex:none; border-radius:12px; box-shadow:0 0 16px var(--lab-glow,rgba(168,240,58,.4));}
+body:has(.overview-lab) .lab-head-title{font-family:Anton,Impact,'Arial Narrow',sans-serif; font-weight:400; font-size:1.55rem; letter-spacing:.1em; line-height:1; color:#f2f5f3; text-shadow:none;}
+.lab-chip{display:inline-flex; align-items:center; gap:.4rem; margin-top:.4rem; padding:.18rem .6rem; border-radius:999px; font-size:.66rem; font-weight:700; letter-spacing:.14em; color:var(--lab-acc); background:color-mix(in srgb,var(--lab-acc) 12%,transparent); border:1px solid color-mix(in srgb,var(--lab-acc) 45%,transparent);}
+.lab-chip i{width:6px; height:6px; border-radius:50%; background:var(--lab-acc); box-shadow:0 0 8px var(--lab-acc);}
+@media (min-width:820px){ .lab-logo{display:none;} }
