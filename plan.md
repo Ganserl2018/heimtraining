@@ -26,7 +26,7 @@ Stand: 2026-09-30
 | V6-05 | Status-Erkennung & -Anzeige (verpasst/unvollständig/erledigt) | 🟢 done | V6-01 |
 | V6-06 | Kalenderstreifen + Verlauf-Vorschau prominenter | 🟢 done | V6-05 |
 | V6-07 | Design-Entwurf Übersichtsseite (Phase 3, eigener Design-Agent) | ⚪ open | V6-01…06 |
-| V6-08 | Design-Entwurf restliche App (Wochenplan/Verlauf/Profil/TV) | ⚪ wait | V6-07 (erst wenn Übersicht passt) |
+| V6-08 | Redesign Verlauf + TV (Wochenplan/Profil später) | ✅ done 02.10. | V6-07 |
 
 V6-07/08 Ablauf (30.09. final geklärt):
 1. Design-Agent bekommt Referenz-Screenshots (Dashboard mit KPI-Kacheln/Kalorien-Balken/
@@ -203,3 +203,5 @@ Mangel 3 (gefixt): Mobile TV Pfeile unter Tabbar -> Gif 30vh, Buttons kleiner be
 Mangel 4 (Warteliste V5-11): TV im Querformat auf iPhone (844x390) – Name/Gif abgeschnitten, Sätze nicht sichtbar.
 Ok: leerer Verlauf, nicht klickbare Einträge ohne trainingId, fehlende Dauer/kcal, weights leer, unbekannte Übung (Initiale), Escaping, Wochenzahlen/Streak, Gruppen, Löschen/Zurück, TV aus Tag und wtrain, Satz toggeln, Wrap, Touch-Wischen, kein horizontaler Scroll, keine pageerrors.
 Nicht getestet: echte iOS-Safari-Wischgeste, >1000 Einträge.
+
+## Stand 02.10. 13:45 – V6-08 live (Commit b5e76c1, script v=20261002r). Nächstes: Siri/Kurzbefehl Pausen-Timer. Warteliste neu: TV im iPhone-Querformat (V5-11). Welcome/Setup weiter GANZ ZUM SCHLUSS.
