@@ -1078,35 +1078,33 @@ function renderProfile() {
   const bad = document.body.classList.contains('mood-bad');
   content.innerHTML = `
     <div class="overview prof-page">
-      <div class="pf-hero">
-        <div class="pf-avatar">${ini ? esc(ini) : '◉'}</div>
-        <div class="pf-who">
-          <input class="pf-name" placeholder="Dein Name" maxlength="24" data-act="profileField" data-field="name" value="${esc(p.name || '')}">
-          <div class="pf-sub">${since ? 'Dabei seit ' + since : 'Noch kein Training – los geht’s'}</div>
+      <div class="pp-hero pp-t" style="--i:0">
+        <div class="pp-ring"><div class="pp-av">${ini ? esc(ini) : '◉'}</div></div>
+        <div class="pp-who">
+          <input class="pp-name" placeholder="Dein Name" maxlength="24" data-act="profileField" data-field="name" value="${esc(p.name || '')}">
+          <div class="pp-chips"><span class="lab-chip"><i></i>${since ? 'DABEI SEIT ' + esc(since.toUpperCase()) : 'NEU DABEI'}</span><span class="lab-chip pp-lv">${esc(LEVELS[p.level == null ? 0 : p.level][1].toUpperCase())}</span></div>
         </div>
       </div>
-      <div class="pf-stats">
+      <div class="pp-stats pp-t" style="--i:1">
         <div><b>${h.length}</b><span>Trainings</span></div>
         <div><b>${streak}</b><span>Streak</span></div>
         <div><b>${sets}</b><span>Sätze</span></div>
       </div>
-      <div class="ov-card pf-body">
-        <div class="pf-grid">
-          <label class="pf-fld">Gewicht<span><input type="number" inputmode="decimal" data-act="profileField" data-field="weight" value="${p.weight ?? ''}" placeholder="–"> kg</span></label>
-          <label class="pf-fld">Größe<span><input type="number" inputmode="numeric" data-act="profileField" data-field="height" value="${p.height ?? ''}" placeholder="–"> cm</span></label>
-          <label class="pf-fld">Stange<span><input type="number" inputmode="decimal" data-act="profileField" data-field="bar" value="${p.bar ?? ''}" placeholder="10"> kg</span></label>
-          <label class="pf-fld">Pause<span><input type="number" inputmode="numeric" data-act="profileField" data-field="rest" value="${p.rest ?? ''}" placeholder="90"> Sek</span></label>
-        </div>
-        <label class="pf-row">Level<span><select data-act="profileField" data-field="level"><option value=""${p.level == null ? ' selected' : ''}>Anfänger (Start)</option>${LEVELS.map(([k, l], x) => `<option value="${x}"${p.level === x ? ' selected' : ''}>${l}</option>`).join('')}</select></span></label>
-        ${(() => { const ls = levelSuggestion(); return ls != null ? `<div class="lv-msg lv-up">Zeit für <b>${LEVELS[ls][1]}</b>. <button class="ov-btn ov-btn-ghost" data-act="lvlUp" data-lv="${ls}">Übernehmen</button></div>` : ''; })()}
-        <p class="pf-hint">Gewicht und Größe bestimmen die Start-Gewichte der Level-Vorlagen. Stange ohne Eintrag = 10 kg.</p>
+      <div class="pp-body">
+        <label class="pp-tile pp-t" style="--i:2"><small>Gewicht</small><input type="number" inputmode="decimal" data-act="profileField" data-field="weight" value="${p.weight ?? ''}" placeholder="–"><em>kg</em></label>
+        <label class="pp-tile pp-t" style="--i:3"><small>Größe</small><input type="number" inputmode="numeric" data-act="profileField" data-field="height" value="${p.height ?? ''}" placeholder="–"><em>cm</em></label>
+        <label class="pp-tile pp-t" style="--i:4"><small>Stange</small><input type="number" inputmode="decimal" data-act="profileField" data-field="bar" value="${p.bar ?? ''}" placeholder="10"><em>kg</em></label>
+        <label class="pp-tile pp-t" style="--i:5"><small>Pause</small><input type="number" inputmode="numeric" data-act="profileField" data-field="rest" value="${p.rest ?? ''}" placeholder="90"><em>Sek</em></label>
       </div>
-      <div class="ov-card pf-body">
-        <div class="pf-row">Ziel: ${goal.target} Trainings in ${goal.periodDays === 7 ? '1 Woche' : goal.periodDays + ' Tagen'}<button class="ov-btn ov-btn-ghost" data-act="goalEditFromProfile">Anpassen</button></div>
-        <div class="pf-row">Trainingshinweise<button class="ov-btn ov-btn-ghost" data-act="helperReset">Zurücksetzen</button></div>
-        <div class="pf-row">Backup<span class="pf-btns"><button class="ov-btn ov-btn-ghost" data-act="backupExport">Kopieren</button><button class="ov-btn ov-btn-ghost" data-act="backupImport">Laden</button></span></div>
-        <textarea id="backup-text" class="w-note pf-ta" placeholder="Backup steht hier. Zum Laden: Text einfügen, dann nochmal „Laden“."></textarea>
+      <div class="pp-lvbox pp-t" style="--i:6">
+        ${(() => { const ls = levelSuggestion(); return ls != null ? `<div class="pp-up">Zeit für <b>${LEVELS[ls][1]}</b> <button data-act="lvlUp" data-lv="${ls}">Übernehmen</button></div>` : ''; })()}
+        <div class="pp-seg">${LEVELS.map(([k, l], x) => `<button class="${(p.level == null ? 0 : p.level) === x ? 'on' : ''}" data-act="profLevel" data-v="${x}">${l}</button>`).join('')}</div>
       </div>
+      <div class="pp-goal pp-t" style="--i:7"><div><small>ZIEL</small><span><b>${goal.target}</b> Trainings in ${goal.periodDays === 7 ? '1 Woche' : goal.periodDays + ' Tagen'}</span></div><button data-act="goalEditFromProfile">Anpassen</button></div>
+      <div class="pp-acts pp-t" style="--i:8">
+        <button data-act="helperReset">Hinweise zurücksetzen</button><button data-act="backupExport">Backup kopieren</button><button data-act="backupImport">Backup laden</button>
+      </div>
+      <textarea id="backup-text" class="pp-ta" placeholder="Backup steht hier. Zum Laden: Text einfügen, dann nochmal „Backup laden“."></textarea>
     </div>`;
 }
 
@@ -1485,6 +1483,7 @@ content.addEventListener('click', e => {
       t.exercises.splice(Number(btn.dataset.i), 1); saveWeekplan(); break;
     }
     case 'wLevel': { const t = trainingById(btn.dataset.id); const miss = applyLevel(t, Number(btn.dataset.lv)); lvMsg = miss ? 'Trage dein Gewicht im Profil ein, dann fülle ich auch die kg vor.' : ''; break; }
+    case 'profLevel': { const p = loadProfile(); p.level = Number(btn.dataset.v); saveProfile(p); break; }
     case 'lvlUp': { const p = loadProfile(); p.level = Number(btn.dataset.lv); saveProfile(p); break; }
     case 'genOpen': genRes = null; genCfg = { lv: null, goal: 'aufbau', dur: 45, groups: [] }; view = 'gen'; break;
     case 'genBack': view = 'start'; break;
