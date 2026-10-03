@@ -77,7 +77,7 @@ def main():
     ap.add_argument('--colors', type=int, default=128)
     ap.add_argument('--nodither', action='store_true')
     ap.add_argument('--lossy', type=int, default=60, help='gifsicle --lossy (0=aus), nur wenn gifsicle installiert')
-    ap.add_argument('--sharp', type=float, default=1.0, help='Blend-Schaerfe (1=weich, 2-3=kurzes Ueberblenden)')
+    ap.add_argument('--sharp', type=float, default=3.0, help='Blend-Schaerfe (1=weich, 2-3=kurzes Ueberblenden)')
     ap.add_argument('--flow', action='store_true', help='Flow erzwingen (kein Fallback)')
     ap.add_argument('--blend', action='store_true', help='Flow ausschalten (nur Ueberblenden)')
     o = ap.parse_args()
