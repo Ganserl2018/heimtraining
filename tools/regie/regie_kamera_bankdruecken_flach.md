@@ -5,3 +5,8 @@ Bewegt sich nur: Stange, Ellbogen, Oberarme, Unterarme/Hände. Bleibt gleich: Ka
 Kamera A: hinter Kopfende ca. 1,5 m, 30° über Brusthöhe, symmetrisch. Kamera B: seitlich 3/4, 40° zur Körperachse Richtung Kopfende, Brusthöhe, 2 m.
 Endfoto: Edit-Prompt "Bearbeite das ERSTE Bild dieses Chats ... verändere NUR ... alles andere PIXELGLEICH".
 QA: 1 Sichtbarkeit beide Schultern/Arme, 2 Pose Start, 3 Pose Ende, 4 Körperhaltung, 5 Pixelgleichheit Start/Ende, 6 Szene/Anatomie (5 Finger, Scheiben symmetrisch), 7 Format 3:4.
+
+## Korrektur 04.10. 01:20 (Regisseur-Bericht Mann vs Frau)
+- Befund: Mann = Kamera Fußseite leicht seitlich, Kopf rechts im Bild. Frau = Bild gespiegelt, Kopf links, andere Szene (rote Wand, Rack). Ursache: "40° Richtung Kopfende versetzt" ist mehrdeutig (Körperseite und Bildseite des Kopfes nicht festgelegt), getrennte Generierungen ohne gemeinsamen Anker.
+- Eindeutiger Kamera-Satz (Standard für alle Bankübungen im Liegen): "Kamera steht rechts neben der Bank, Brusthöhe, 2 m, 40° zur Körperachse, Blick von der Seite. Der Kopf des Sportlers liegt IMMER auf der RECHTEN Bildseite, die Füße auf der LINKEN. Kein Spiegeln."
+- QA-Punkt 8: Kopf auf der festgelegten Bildseite (rechts) und gleicher Blickwinkel/Szene wie das freigegebene Referenzbild; bei Mann/Frau-Paaren nebeneinander prüfen. Abweichung = nicht bestanden.
