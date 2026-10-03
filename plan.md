@@ -244,3 +244,9 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - Beschluss Alex 03.10.: weiter über Gemini-App, KEIN API-Key (kostet Geld, Gratis-Tier für Bildausgabe laut Preisseite "Not available"; ~0,045 $/0,5K-Bild, ungefähr).
 - Nächste Schritte: (1) Redo ~80 Beanstandete, erst nach Prüfung überschreiben; (2) Queue ab Index 98 (reverse_cable_curl) bis 440; (3) Bilder ins Repo img/ (540x720 jpg), index.json, Test, Push; (4) Endpose-/GIF-Test mit 5 Übungen.
 - Hinweise: neuer Chat alle ~3 Übungen; Gemini-Limit ca. 4 h Sperre; Grant für Gemini-Fenster läuft nach 30 min Inaktivität ab; Fenster muss auf sichtbarem Space liegen.
+
+## 03.10. 14:35 – GIF-Tool + Stand
+- tools/makegif.py neu: OpenCV-DIS-Optical-Flow, A→B→A Loop, 24 Zwischenframes/Richtung, Ghosting-Fallback auf Überblenden, 360x480, 128 Farben (--nodither/--colors 96 spart Größe). Aufruf: python3 tools/makegif.py start.jpg end.jpg out.gif
+- Nur an Querformat-/Fremd-Paaren getestet (Bankdrücken 2,15 MB, Curl 1,8 MB); echte 3:4-Paare fehlen noch. Fallback-Schwelle 0,8 = Heuristik.
+- Endpositions-Fotos existieren noch nicht (Test geplant: Bankdrücken, Kniebeuge, Klimmzüge, Rudern, Curl).
+- Gemini-Generierung läuft weiter bei Index 137 flat_bench_cable_flyes (Queue bis 440, danach ~80 Redo aus Startpos-Audit).
