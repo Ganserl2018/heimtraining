@@ -267,3 +267,12 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - Perspektivfehler: Kamera ändern (Start = Ende gleiche Kamera), Fehler sammeln und am Schluss korrigieren (~/Downloads/_redo_list.txt).
 - Neue Redos: 403 m-end/w-end, 174 m-end/w.
 - Regisseur + Kameramann: von Alex 23:14 gewünscht, Start steht aus (Pose-/Kamera-Vorgaben für 174–402 + Redo).
+
+## 04.10. 01:10 – Neuer Foto-Prozess (Team) + Bankdrück-Test
+- Beschluss Alex: Bulk-Queue gestoppt, frisch mit Team starten. Wichtigste Regel: korrekte Ausführung von Start bis Ende perfekt sichtbar, keine verdeckten Schultern/Gliedmaßen; nur die trainierten Körperteile ändern sich (auch Bein möglich), Kamera/Bank/Raum/Licht/Rumpf identisch.
+- Team: Kameramann wählt je Übung Perspektive (Kandidaten testen), Regisseur schreibt Pose-Skript, QA-Checker prüft jedes Bild sofort (Pose, Start≠Ende, keine Verdeckung, Gerät sichtbar, gleiche Szene) und gibt konkretes Feedback an Regisseur → Kameramann; max. 3 Versuche, dann Redo-Liste. Auf Alex' "Go" warten vor großen Läufen.
+- Prio Phase 1 (je 5 pro Kategorie): Langhantel-Bankdrücken flach/Schräg/Decline/(eng), Kurzhantel, Seilzug nur von oben, Aufwärmen im Stehen (neu erlaubt), Rücken (inkl. Extension), Brust/Trizeps am Gerüst, Beine, Core. Rest im Laufe der Woche. Duplikate (≈203, tools/regie/duplikate.md) zuletzt; Alex entscheidet (A raus, B gleiches Bild, C eigene Fotos).
+- Dateien im Repo: tools/regie/regie.json (293 Pose-Einträge), kamera.json (273), duplikate.md, dup_slugs.json, regie_kamera_bankdruecken_flach.md (Spezifikation + QA-Checkliste 7 Punkte).
+- Test Bankdrücken flach: A frontal (Gemini 2) Start+Ende identische Szene, GIF mit Ghosting in der Mitte; B Seite 3/4 (Gemini 2) Start+Ende identische Szene, ebenfalls Doppelstange in der Mitte (Tool fällt auf Blend zurück). Alex-Urteil: Seitenansicht zeigt die Übung am genauesten → Kamera für Bankdrücken flach = Seite 3/4.
+- Gemini-1-Versuch für B verworfen (Kopf angehoben, andere Szene). Gemini-Edit-Prompts "Bearbeite/Korrigiere" werden ignoriert; funktioniert nur "Erzeuge ein NEUES Bild … exakt dieselbe Szene … Einziger Unterschied: ENDPOSITION …" im selben Chat von Gemini 2. Mittelfoto (Zwischenposition) kam fast identisch zum Endfoto zurück → noch offen.
+- Offen: Doppelstange im GIF (Ideen: Mittelfoto mit klarerem Prompt, kürzere Strecke, Crossfade-only); Frauen-Fotos + Schräg/Decline/eng; Redo-Liste ~/Downloads/_redo_list.txt.

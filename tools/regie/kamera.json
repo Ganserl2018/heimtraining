@@ -1,0 +1,1367 @@
+[
+ {
+  "slug": "palms-down_wrist_curl_over_a_bench",
+  "kamera": "Kamera seitlich leicht schräg von vorne auf Höhe der Unterarme/Bank, Unterarme, Handgelenke und Hantel frei sichtbar, Oberkörper im Bild.",
+  "verdeckungsrisiko": "Bank oder Oberschenkel können Handgelenk-Bewegung verdecken"
+ },
+ {
+  "slug": "palms-up_barbell_wrist_curl_over_a_bench",
+  "kamera": "Kamera seitlich leicht schräg von vorne auf Höhe der Unterarme/Bank, Unterarme, Handgelenke und Hantel frei sichtbar, Oberkörper im Bild.",
+  "verdeckungsrisiko": "Bank oder Oberschenkel können Handgelenk-Bewegung verdecken"
+ },
+ {
+  "slug": "palms-up_dumbbell_wrist_curl_over_a_bench",
+  "kamera": "Kamera seitlich leicht schräg von vorne auf Höhe der Unterarme/Bank, Unterarme, Handgelenke und Hantel frei sichtbar, Oberkörper im Bild.",
+  "verdeckungsrisiko": "Bank oder Oberschenkel können Handgelenk-Bewegung verdecken"
+ },
+ {
+  "slug": "seated_dumbbell_palms-down_wrist_curl",
+  "kamera": "Kamera seitlich leicht schräg von vorne auf Höhe der Unterarme/Bank, Unterarme, Handgelenke und Hantel frei sichtbar, Oberkörper im Bild.",
+  "verdeckungsrisiko": "Bank oder Oberschenkel können Handgelenk-Bewegung verdecken"
+ },
+ {
+  "slug": "seated_dumbbell_palms-up_wrist_curl",
+  "kamera": "Kamera seitlich leicht schräg von vorne auf Höhe der Unterarme/Bank, Unterarme, Handgelenke und Hantel frei sichtbar, Oberkörper im Bild.",
+  "verdeckungsrisiko": "Bank oder Oberschenkel können Handgelenk-Bewegung verdecken"
+ },
+ {
+  "slug": "seated_one-arm_dumbbell_palms-down_wrist_curl",
+  "kamera": "Kamera seitlich leicht schräg von vorne auf Höhe der Unterarme/Bank, Unterarme, Handgelenke und Hantel frei sichtbar, Oberkörper im Bild.",
+  "verdeckungsrisiko": "Bank oder Oberschenkel können Handgelenk-Bewegung verdecken"
+ },
+ {
+  "slug": "seated_one-arm_dumbbell_palms-up_wrist_curl",
+  "kamera": "Kamera seitlich leicht schräg von vorne auf Höhe der Unterarme/Bank, Unterarme, Handgelenke und Hantel frei sichtbar, Oberkörper im Bild.",
+  "verdeckungsrisiko": "Bank oder Oberschenkel können Handgelenk-Bewegung verdecken"
+ },
+ {
+  "slug": "seated_palm-up_barbell_wrist_curl",
+  "kamera": "Kamera seitlich leicht schräg von vorne auf Höhe der Unterarme/Bank, Unterarme, Handgelenke und Hantel frei sichtbar, Oberkörper im Bild.",
+  "verdeckungsrisiko": "Bank oder Oberschenkel können Handgelenk-Bewegung verdecken"
+ },
+ {
+  "slug": "seated_palms-down_barbell_wrist_curl",
+  "kamera": "Kamera seitlich leicht schräg von vorne auf Höhe der Unterarme/Bank, Unterarme, Handgelenke und Hantel frei sichtbar, Oberkörper im Bild.",
+  "verdeckungsrisiko": "Bank oder Oberschenkel können Handgelenk-Bewegung verdecken"
+ },
+ {
+  "slug": "seated_two-arm_palms-up_low-pulley_wrist_curl",
+  "kamera": "Kamera seitlich leicht schräg von vorne auf Höhe der Unterarme/Bank, Unterarme, Handgelenke und Hantel frei sichtbar, Oberkörper im Bild.",
+  "verdeckungsrisiko": "Bank oder Oberschenkel können Handgelenk-Bewegung verdecken"
+ },
+ {
+  "slug": "standing_palms-up_barbell_behind_the_back_wrist_curl",
+  "kamera": "Kamera seitlich leicht schräg von vorne auf Höhe der Unterarme/Bank, Unterarme, Handgelenke und Hantel frei sichtbar, Oberkörper im Bild.",
+  "verdeckungsrisiko": "Bank oder Oberschenkel können Handgelenk-Bewegung verdecken"
+ },
+ {
+  "slug": "wrist_circles",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "wrist_rotations_with_straight_bar",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "barbell_glute_bridge",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, Bewegungsbein und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenbein oder Gerät kann Bewegungsbein teilweise verdecken"
+ },
+ {
+  "slug": "butt_lift__bridge_",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, Bewegungsbein und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenbein oder Gerät kann Bewegungsbein teilweise verdecken"
+ },
+ {
+  "slug": "flutter_kicks",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, Bewegungsbein und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenbein oder Gerät kann Bewegungsbein teilweise verdecken"
+ },
+ {
+  "slug": "glute_kickback",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, Bewegungsbein und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenbein oder Gerät kann Bewegungsbein teilweise verdecken"
+ },
+ {
+  "slug": "hip_extension_with_bands",
+  "kamera": "Kamera exakt seitlich auf Ellbogenhöhe, Oberarm, Unterarm, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Nahe Körperseite kann Ellbogen verdecken"
+ },
+ {
+  "slug": "hip_lift_with_band",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "kneeling_jump_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe.",
+  "verdeckungsrisiko": "Sprunghöhe könnte angeschnitten werden; Abstand groß halten"
+ },
+ {
+  "slug": "kneeling_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "leg_lift",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, Bewegungsbein und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenbein oder Gerät kann Bewegungsbein teilweise verdecken"
+ },
+ {
+  "slug": "lying_glute",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, Bewegungsbein und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenbein oder Gerät kann Bewegungsbein teilweise verdecken"
+ },
+ {
+  "slug": "one-legged_cable_kickback",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, Bewegungsbein und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenbein oder Gerät kann Bewegungsbein teilweise verdecken"
+ },
+ {
+  "slug": "pull_through",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "seated_glute",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, Bewegungsbein und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenbein oder Gerät kann Bewegungsbein teilweise verdecken"
+ },
+ {
+  "slug": "single_leg_glute_bridge",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, Bewegungsbein und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenbein oder Gerät kann Bewegungsbein teilweise verdecken"
+ },
+ {
+  "slug": "step-up_with_knee_raise",
+  "kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenarm kann den Bewegungsarm teilweise verdecken"
+ },
+ {
+  "slug": "90_90_hamstring",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "band_good_morning",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "band_good_morning__pull_through_",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "front_leg_raises",
+  "kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenarm kann den Bewegungsarm teilweise verdecken"
+ },
+ {
+  "slug": "good_morning_off_pins",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "hanging_bar_good_morning",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "inchworm",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "knee_tuck_jump",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe.",
+  "verdeckungsrisiko": "Sprunghöhe könnte angeschnitten werden; Abstand groß halten"
+ },
+ {
+  "slug": "reverse_band_sumo_deadlift",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "romanian_deadlift",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "romanian_deadlift_from_deficit",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "stiff-legged_barbell_deadlift",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "stiff-legged_dumbbell_deadlift",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "sumo_deadlift",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "sumo_deadlift_with_bands",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "vertical_swing",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "wide_stance_stiff_legs",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "bent-arm_barbell_pullover",
+  "kamera": "Kamera schräg 45 Grad von vorne-seitlich auf Bankhöhe, Brust, Arme, Gerät und Bank vollständig sichtbar.",
+  "verdeckungsrisiko": "Bank und Oberarm der Kameraseite können Armweg verdecken"
+ },
+ {
+  "slug": "cable_incline_pushdown",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "chin-up",
+  "kamera": "Kamera schräg 45 Grad von hinten-seitlich auf Rückenhöhe, Rücken, Ellbogen, Griff und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät und Stange können Gesicht/Schulter verdecken"
+ },
+ {
+  "slug": "elevated_cable_rows",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "full_range-of-motion_lat_pulldown",
+  "kamera": "Kamera schräg 45 Grad von hinten-seitlich auf Rückenhöhe, Rücken, Ellbogen, Griff und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät und Stange können Gesicht/Schulter verdecken"
+ },
+ {
+  "slug": "kneeling_high_pulley_row",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "kneeling_single-arm_high_pulley_row",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "one_arm_lat_pulldown",
+  "kamera": "Kamera schräg 45 Grad von hinten-seitlich auf Rückenhöhe, Rücken, Ellbogen, Griff und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät und Stange können Gesicht/Schulter verdecken"
+ },
+ {
+  "slug": "rope_straight-arm_pulldown",
+  "kamera": "Kamera schräg 45 Grad von hinten-seitlich auf Rückenhöhe, Rücken, Ellbogen, Griff und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät und Stange können Gesicht/Schulter verdecken"
+ },
+ {
+  "slug": "shotgun_row",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "straight-arm_pulldown",
+  "kamera": "Kamera schräg 45 Grad von hinten-seitlich auf Rückenhöhe, Rücken, Ellbogen, Griff und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät und Stange können Gesicht/Schulter verdecken"
+ },
+ {
+  "slug": "underhand_cable_pulldowns",
+  "kamera": "Kamera schräg 45 Grad von hinten-seitlich auf Rückenhöhe, Rücken, Ellbogen, Griff und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät und Stange können Gesicht/Schulter verdecken"
+ },
+ {
+  "slug": "v-bar_pulldown",
+  "kamera": "Kamera schräg 45 Grad von hinten-seitlich auf Rückenhöhe, Rücken, Ellbogen, Griff und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät und Stange können Gesicht/Schulter verdecken"
+ },
+ {
+  "slug": "v-bar_pullup",
+  "kamera": "Kamera schräg 45 Grad von hinten-seitlich auf Rückenhöhe, Rücken, Ellbogen, Griff und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät und Stange können Gesicht/Schulter verdecken"
+ },
+ {
+  "slug": "wide-grip_lat_pulldown",
+  "kamera": "Kamera schräg 45 Grad von hinten-seitlich auf Rückenhöhe, Rücken, Ellbogen, Griff und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät und Stange können Gesicht/Schulter verdecken"
+ },
+ {
+  "slug": "wide-grip_pulldown_behind_the_neck",
+  "kamera": "Kamera schräg 45 Grad von hinten-seitlich auf Rückenhöhe, Rücken, Ellbogen, Griff und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät und Stange können Gesicht/Schulter verdecken"
+ },
+ {
+  "slug": "wide-grip_rear_pull-up",
+  "kamera": "Kamera schräg 45 Grad von hinten-seitlich auf Rückenhöhe, Rücken, Ellbogen, Griff und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät und Stange können Gesicht/Schulter verdecken"
+ },
+ {
+  "slug": "barbell_deadlift",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "deadlift_with_bands",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "deficit_deadlift",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "rack_pull_with_bands",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "reverse_band_deadlift",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "seated_good_mornings",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "stiff_leg_barbell_good_morning",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "superman",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "bent_over_two-dumbbell_row",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "bent_over_two-dumbbell_row_with_palms_in",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "dumbbell_incline_row",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "incline_bench_pull",
+  "kamera": "Kamera schräg 45 Grad von vorne-seitlich auf Bankhöhe, Brust, Arme, Gerät und Bank vollständig sichtbar.",
+  "verdeckungsrisiko": "Bank und Oberarm der Kameraseite können Armweg verdecken"
+ },
+ {
+  "slug": "lying_cambered_barbell_row",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "middle_back_shrug",
+  "kamera": "Kamera frontal auf Brusthöhe, beide Schultern, Nacken, Arme und Hanteln/Stange sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Stange kann Oberschenkel verdecken; Schulterhub bei frontal klein sichtbar"
+ },
+ {
+  "slug": "one-arm_dumbbell_row",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "reverse_grip_bent-over_rows",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "seated_cable_rows",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "seated_one-arm_cable_pulley_rows",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "straight_bar_bench_mid_rows",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "barbell_full_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "barbell_hack_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "barbell_lunge",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, vorderes und hinteres Bein sowie Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Hanteln an den Seiten können Beine verdecken"
+ },
+ {
+  "slug": "barbell_side_split_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, vorderes und hinteres Bein sowie Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Hanteln an den Seiten können Beine verdecken"
+ },
+ {
+  "slug": "barbell_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "barbell_walking_lunge",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, vorderes und hinteres Bein sowie Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Hanteln an den Seiten können Beine verdecken"
+ },
+ {
+  "slug": "bench_jump",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe.",
+  "verdeckungsrisiko": "Sprunghöhe könnte angeschnitten werden; Abstand groß halten"
+ },
+ {
+  "slug": "bodyweight_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "box_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "box_squat_with_bands",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "cable_deadlifts",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "cable_hip_adduction",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, Bewegungsbein und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenbein oder Gerät kann Bewegungsbein teilweise verdecken"
+ },
+ {
+  "slug": "double_leg_butt_kick",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe.",
+  "verdeckungsrisiko": "Sprunghöhe könnte angeschnitten werden; Abstand groß halten"
+ },
+ {
+  "slug": "dumbbell_lunges",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, vorderes und hinteres Bein sowie Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Hanteln an den Seiten können Beine verdecken"
+ },
+ {
+  "slug": "dumbbell_rear_lunge",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, vorderes und hinteres Bein sowie Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Hanteln an den Seiten können Beine verdecken"
+ },
+ {
+  "slug": "dumbbell_seated_box_jump",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe.",
+  "verdeckungsrisiko": "Sprunghöhe könnte angeschnitten werden; Abstand groß halten"
+ },
+ {
+  "slug": "dumbbell_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "dumbbell_squat_to_a_bench",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "dumbbell_step_ups",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, vorderes und hinteres Bein sowie Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Hanteln an den Seiten können Beine verdecken"
+ },
+ {
+  "slug": "elevated_back_lunge",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, vorderes und hinteres Bein sowie Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Hanteln an den Seiten können Beine verdecken"
+ },
+ {
+  "slug": "fast_skipping",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "frankenstein_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "freehand_jump_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe.",
+  "verdeckungsrisiko": "Sprunghöhe könnte angeschnitten werden; Abstand groß halten"
+ },
+ {
+  "slug": "front_barbell_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "front_barbell_squat_to_a_bench",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "hip_flexion_with_band",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "jefferson_squats",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "lying_prone_quadriceps",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "narrow_stance_squats",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "one_leg_barbell_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "one-arm_side_deadlift",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät kann Beine verdecken; seitlicher Winkel hält Rückenlinie frei"
+ },
+ {
+  "slug": "overhead_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "plie_dumbbell_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "rear_leg_raises",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "reverse_band_box_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "reverse_band_power_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "rocket_jump",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe.",
+  "verdeckungsrisiko": "Sprunghöhe könnte angeschnitten werden; Abstand groß halten"
+ },
+ {
+  "slug": "scissors_jump",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe.",
+  "verdeckungsrisiko": "Sprunghöhe könnte angeschnitten werden; Abstand groß halten"
+ },
+ {
+  "slug": "single_leg_butt_kick",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe.",
+  "verdeckungsrisiko": "Sprunghöhe könnte angeschnitten werden; Abstand groß halten"
+ },
+ {
+  "slug": "speed_box_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "speed_squats",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "split_jump",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe.",
+  "verdeckungsrisiko": "Sprunghöhe könnte angeschnitten werden; Abstand groß halten"
+ },
+ {
+  "slug": "split_squat_with_dumbbells",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, vorderes und hinteres Bein sowie Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Hanteln an den Seiten können Beine verdecken"
+ },
+ {
+  "slug": "squat_with_bands",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "squat_with_plate_movers",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "squats_-_with_bands",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "standing_long_jump",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe.",
+  "verdeckungsrisiko": "Sprunghöhe könnte angeschnitten werden; Abstand groß halten"
+ },
+ {
+  "slug": "star_jump",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe.",
+  "verdeckungsrisiko": "Sprunghöhe könnte angeschnitten werden; Abstand groß halten"
+ },
+ {
+  "slug": "weighted_jump_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe.",
+  "verdeckungsrisiko": "Sprunghöhe könnte angeschnitten werden; Abstand groß halten"
+ },
+ {
+  "slug": "weighted_sissy_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "wide_stance_barbell_squat",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "zercher_squats",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "alternating_cable_shoulder_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "alternating_deltoid_raise",
+  "kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenarm kann den Bewegungsarm teilweise verdecken"
+ },
+ {
+  "slug": "anti-gravity_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "back_flyes_-_with_bands",
+  "kamera": "Kamera schräg 45 Grad von vorne-seitlich auf Bankhöhe, Brust, Arme, Gerät und Bank vollständig sichtbar.",
+  "verdeckungsrisiko": "Bank und Oberarm der Kameraseite können Armweg verdecken"
+ },
+ {
+  "slug": "band_pull_apart",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "barbell_incline_shoulder_raise",
+  "kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenarm kann den Bewegungsarm teilweise verdecken"
+ },
+ {
+  "slug": "barbell_rear_delt_row",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "barbell_shoulder_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "bent_over_dumbbell_rear_delt_raise_with_head_on_bench",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "bent_over_low-pulley_side_lateral",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "bradford_rocky_presses",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "cable_internal_rotation",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "cable_rear_delt_fly",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "cable_rope_rear-delt_rows",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "cable_seated_lateral_raise",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "cable_shoulder_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "car_drivers",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "cuban_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "dumbbell_incline_shoulder_raise",
+  "kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenarm kann den Bewegungsarm teilweise verdecken"
+ },
+ {
+  "slug": "dumbbell_lying_one-arm_rear_lateral_raise",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "dumbbell_lying_rear_lateral_raise",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "dumbbell_one-arm_shoulder_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "dumbbell_one-arm_upright_row",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "dumbbell_raise",
+  "kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenarm kann den Bewegungsarm teilweise verdecken"
+ },
+ {
+  "slug": "dumbbell_scaption",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "dumbbell_shoulder_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "external_rotation",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "external_rotation_with_band",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "external_rotation_with_cable",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "face_pull",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "front_cable_raise",
+  "kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenarm kann den Bewegungsarm teilweise verdecken"
+ },
+ {
+  "slug": "front_dumbbell_raise",
+  "kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenarm kann den Bewegungsarm teilweise verdecken"
+ },
+ {
+  "slug": "front_incline_dumbbell_raise",
+  "kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenarm kann den Bewegungsarm teilweise verdecken"
+ },
+ {
+  "slug": "front_two-dumbbell_raise",
+  "kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenarm kann den Bewegungsarm teilweise verdecken"
+ },
+ {
+  "slug": "handstand_push-ups",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "internal_rotation_with_band",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "iron_cross",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "lateral_raise_-_with_bands",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "low_pulley_row_to_neck",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "lying_one-arm_lateral_raise",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "lying_rear_delt_raise",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "one-arm_incline_lateral_raise",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "one-arm_side_laterals",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "power_partials",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "push_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "push_press_-_behind_the_neck",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "reverse_flyes",
+  "kamera": "Kamera schräg 45 Grad von vorne-seitlich auf Bankhöhe, Brust, Arme, Gerät und Bank vollständig sichtbar.",
+  "verdeckungsrisiko": "Bank und Oberarm der Kameraseite können Armweg verdecken"
+ },
+ {
+  "slug": "reverse_flyes_with_external_rotation",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "seated_barbell_military_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "seated_bent-over_rear_delt_raise",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "seated_cable_shoulder_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "seated_dumbbell_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "seated_front_deltoid",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "seated_side_lateral_raise",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "see-saw_press__alternating_side_press_",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "shoulder_press_-_with_bands",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "side_lateral_raise",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "side_laterals_to_front_raise",
+  "kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Bei seitlichem Anheben verdeckt der Rumpf nichts, aber Arme dürfen nicht aus dem Bild laufen"
+ },
+ {
+  "slug": "single_dumbbell_raise",
+  "kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenarm kann den Bewegungsarm teilweise verdecken"
+ },
+ {
+  "slug": "standing_alternating_dumbbell_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "standing_barbell_press_behind_neck",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "standing_bradford_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "standing_dumbbell_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "standing_dumbbell_straight-arm_front_delt_raise_above_head",
+  "kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenarm kann den Bewegungsarm teilweise verdecken"
+ },
+ {
+  "slug": "standing_front_barbell_raise_over_head",
+  "kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenarm kann den Bewegungsarm teilweise verdecken"
+ },
+ {
+  "slug": "standing_low-pulley_deltoid_raise",
+  "kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenarm kann den Bewegungsarm teilweise verdecken"
+ },
+ {
+  "slug": "standing_military_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "standing_palm-in_one-arm_dumbbell_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "standing_palms-in_dumbbell_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "straight_raises_on_incline_bench",
+  "kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenarm kann den Bewegungsarm teilweise verdecken"
+ },
+ {
+  "slug": "upright_barbell_row",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "barbell_shrug",
+  "kamera": "Kamera frontal auf Brusthöhe, beide Schultern, Nacken, Arme und Hanteln/Stange sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Stange kann Oberschenkel verdecken; Schulterhub bei frontal klein sichtbar"
+ },
+ {
+  "slug": "barbell_shrug_behind_the_back",
+  "kamera": "Kamera frontal auf Brusthöhe, beide Schultern, Nacken, Arme und Hanteln/Stange sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Stange kann Oberschenkel verdecken; Schulterhub bei frontal klein sichtbar"
+ },
+ {
+  "slug": "cable_shrugs",
+  "kamera": "Kamera frontal auf Brusthöhe, beide Schultern, Nacken, Arme und Hanteln/Stange sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Stange kann Oberschenkel verdecken; Schulterhub bei frontal klein sichtbar"
+ },
+ {
+  "slug": "dumbbell_shrug",
+  "kamera": "Kamera frontal auf Brusthöhe, beide Schultern, Nacken, Arme und Hanteln/Stange sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Stange kann Oberschenkel verdecken; Schulterhub bei frontal klein sichtbar"
+ },
+ {
+  "slug": "standing_dumbbell_upright_row",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "upright_cable_row",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "upright_row_-_with_bands",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "band_skull_crusher",
+  "kamera": "Kamera exakt seitlich auf Ellbogenhöhe, Oberarm, Unterarm, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Nahe Körperseite kann Ellbogen verdecken"
+ },
+ {
+  "slug": "bench_dips",
+  "kamera": "Kamera exakt seitlich auf Ellbogenhöhe, Oberarm, Unterarm, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Nahe Körperseite kann Ellbogen verdecken"
+ },
+ {
+  "slug": "bench_press_-_powerlifting",
+  "kamera": "Kamera schräg 45 Grad von vorne-seitlich auf Bankhöhe, Brust, Ellbogen, Stange/Hanteln und Bank komplett sichtbar.",
+  "verdeckungsrisiko": "Bank und Oberarm der Kameraseite können Stangenweg verdecken"
+ },
+ {
+  "slug": "board_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "body_tricep_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "body-up",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "cable_incline_triceps_extension",
+  "kamera": "Kamera exakt seitlich auf Ellbogenhöhe, Oberarm, Unterarm, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Nahe Körperseite kann Ellbogen verdecken"
+ },
+ {
+  "slug": "cable_lying_triceps_extension",
+  "kamera": "Kamera exakt seitlich auf Ellbogenhöhe, Oberarm, Unterarm, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Nahe Körperseite kann Ellbogen verdecken"
+ },
+ {
+  "slug": "cable_one_arm_tricep_extension",
+  "kamera": "Kamera exakt seitlich auf Ellbogenhöhe, Oberarm, Unterarm, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Nahe Körperseite kann Ellbogen verdecken"
+ },
+ {
+  "slug": "close-grip_barbell_bench_press",
+  "kamera": "Kamera schräg 45 Grad von vorne-seitlich auf Bankhöhe, Brust, Ellbogen, Stange/Hanteln und Bank komplett sichtbar.",
+  "verdeckungsrisiko": "Bank und Oberarm der Kameraseite können Stangenweg verdecken"
+ },
+ {
+  "slug": "close-grip_dumbbell_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "close-grip_ez-bar_press",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "close-grip_push-up_off_of_a_dumbbell",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "decline_close-grip_bench_to_skull_crusher",
+  "kamera": "Kamera exakt seitlich auf Ellbogenhöhe, Oberarm, Unterarm, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Nahe Körperseite kann Ellbogen verdecken"
+ },
+ {
+  "slug": "decline_dumbbell_triceps_extension",
+  "kamera": "Kamera exakt seitlich auf Ellbogenhöhe, Oberarm, Unterarm, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Nahe Körperseite kann Ellbogen verdecken"
+ },
+ {
+  "slug": "decline_ez_bar_triceps_extension",
+  "kamera": "Kamera exakt seitlich auf Ellbogenhöhe, Oberarm, Unterarm, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Nahe Körperseite kann Ellbogen verdecken"
+ },
+ {
+  "slug": "dumbbell_floor_press",
+  "kamera": "Kamera schräg 45 Grad von vorne-seitlich auf Bankhöhe, Brust, Ellbogen, Stange/Hanteln und Bank komplett sichtbar.",
+  "verdeckungsrisiko": "Bank und Oberarm der Kameraseite können Stangenweg verdecken"
+ },
+ {
+  "slug": "dumbbell_one-arm_triceps_extension",
+  "kamera": "Kamera exakt seitlich auf Ellbogenhöhe, Oberarm, Unterarm, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Nahe Körperseite kann Ellbogen verdecken"
+ },
+ {
+  "slug": "3_4_sit-up",
+  "kamera": "Kamera exakt seitlich auf Körperhöhe, Ganzkörper mit Rumpfwinkel, Beinen und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Nahe Arme können Rumpflinie verdecken"
+ },
+ {
+  "slug": "air_bike",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Gerät und Pedalen vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerätearme können Oberkörper verdecken"
+ },
+ {
+  "slug": "alternate_hammer_curl",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Hanteln/Stange und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Körper kann Gegenarm bei einarmiger Ausführung verdecken"
+ },
+ {
+  "slug": "alternate_heel_touchers",
+  "kamera": "Kamera schräg 45 Grad von vorne-oben auf Körperhöhe, Rumpfrotation, Arme und Beine vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Gedrehter Oberkörper kann Arme verdecken"
+ },
+ {
+  "slug": "alternate_incline_dumbbell_curl",
+  "kamera": "Kamera exakt seitlich auf Ellbogenhöhe, Oberkörper, Oberarm, Unterarm und Hantel/Stange vollständig sichtbar.",
+  "verdeckungsrisiko": "Pult/Bank kann Oberarm teilweise verdecken"
+ },
+ {
+  "slug": "barbell_ab_rollout",
+  "kamera": "Kamera exakt seitlich auf Körperhöhe, Ganzkörper mit Rumpfwinkel, Beinen und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Nahe Arme können Rumpflinie verdecken"
+ },
+ {
+  "slug": "barbell_ab_rollout_-_on_knees",
+  "kamera": "Kamera exakt seitlich auf Körperhöhe, Ganzkörper mit Rumpfwinkel, Beinen und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Nahe Arme können Rumpflinie verdecken"
+ },
+ {
+  "slug": "barbell_bench_press_-_medium_grip",
+  "kamera": "Kamera schräg 45 Grad von vorne-seitlich auf Bankhöhe, Brust, Ellbogen, Stange/Hanteln und Bank komplett sichtbar.",
+  "verdeckungsrisiko": "Bank und Oberarm der Kameraseite können Stangenweg verdecken"
+ },
+ {
+  "slug": "barbell_curls_lying_against_an_incline",
+  "kamera": "Kamera exakt seitlich auf Ellbogenhöhe, Oberkörper, Oberarm, Unterarm und Hantel/Stange vollständig sichtbar.",
+  "verdeckungsrisiko": "Pult/Bank kann Oberarm teilweise verdecken"
+ },
+ {
+  "slug": "barbell_incline_bench_press_-_medium_grip",
+  "kamera": "Kamera schräg 45 Grad von vorne-seitlich auf Bankhöhe, Brust, Ellbogen, Stange/Hanteln und Bank komplett sichtbar.",
+  "verdeckungsrisiko": "Bank und Oberarm der Kameraseite können Stangenweg verdecken"
+ },
+ {
+  "slug": "barbell_rollout_from_bench",
+  "kamera": "Kamera exakt seitlich auf Körperhöhe, Ganzkörper mit Rumpfwinkel, Beinen und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Nahe Arme können Rumpflinie verdecken"
+ },
+ {
+  "slug": "barbell_seated_calf_raise",
+  "kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenarm kann den Bewegungsarm teilweise verdecken"
+ },
+ {
+  "slug": "barbell_squat_to_a_bench",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Langhantel/Hanteln können Oberkörper teilweise verdecken"
+ },
+ {
+  "slug": "barbell_step_ups",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, vorderes und hinteres Bein sowie Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Hanteln an den Seiten können Beine verdecken"
+ },
+ {
+  "slug": "bent-knee_hip_raise",
+  "kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenarm kann den Bewegungsarm teilweise verdecken"
+ },
+ {
+  "slug": "bent_over_barbell_row",
+  "kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Nahe Schulter/Arm kann Zugweg verdecken"
+ },
+ {
+  "slug": "bottoms_up",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "butt-ups",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "cable_hammer_curls_-_rope_attachment",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Hanteln/Stange und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Körper kann Gegenarm bei einarmiger Ausführung verdecken"
+ },
+ {
+  "slug": "cable_preacher_curl",
+  "kamera": "Kamera exakt seitlich auf Ellbogenhöhe, Oberkörper, Oberarm, Unterarm und Hantel/Stange vollständig sichtbar.",
+  "verdeckungsrisiko": "Pult/Bank kann Oberarm teilweise verdecken"
+ },
+ {
+  "slug": "close-grip_front_lat_pulldown",
+  "kamera": "Kamera schräg 45 Grad von hinten-seitlich auf Rückenhöhe, Rücken, Ellbogen, Griff und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät und Stange können Gesicht/Schulter verdecken"
+ },
+ {
+  "slug": "cocoons",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "concentration_curls",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Hanteln/Stange und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Körper kann Gegenarm bei einarmiger Ausführung verdecken"
+ },
+ {
+  "slug": "cross-body_crunch",
+  "kamera": "Kamera exakt seitlich auf Körperhöhe, Ganzkörper mit Rumpfwinkel, Beinen und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Nahe Arme können Rumpflinie verdecken"
+ },
+ {
+  "slug": "cross_body_hammer_curl",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Hanteln/Stange und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Körper kann Gegenarm bei einarmiger Ausführung verdecken"
+ },
+ {
+  "slug": "crunch_-_hands_overhead",
+  "kamera": "Kamera exakt seitlich auf Körperhöhe, Ganzkörper mit Rumpfwinkel, Beinen und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Nahe Arme können Rumpflinie verdecken"
+ },
+ {
+  "slug": "cable_russian_twists",
+  "kamera": "Kamera schräg 45 Grad von vorne-oben auf Körperhöhe, Rumpfrotation, Arme und Beine vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Gedrehter Oberkörper kann Arme verdecken"
+ },
+ {
+  "slug": "monster_walk",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "oblique_crunches",
+  "kamera": "Kamera schräg 45 Grad von vorne-oben auf Körperhöhe, Rumpfrotation, Arme und Beine vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Gedrehter Oberkörper kann Arme verdecken"
+ },
+ {
+  "slug": "oblique_crunches_-_on_the_floor",
+  "kamera": "Kamera schräg 45 Grad von vorne-oben auf Körperhöhe, Rumpfrotation, Arme und Beine vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Gedrehter Oberkörper kann Arme verdecken"
+ },
+ {
+  "slug": "one_arm_dumbbell_preacher_curl",
+  "kamera": "Kamera exakt seitlich auf Ellbogenhöhe, Oberkörper, Oberarm, Unterarm und Hantel/Stange vollständig sichtbar.",
+  "verdeckungsrisiko": "Pult/Bank kann Oberarm teilweise verdecken"
+ },
+ {
+  "slug": "overhead_cable_curl",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Hanteln/Stange und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Körper kann Gegenarm bei einarmiger Ausführung verdecken"
+ },
+ {
+  "slug": "pallof_press_with_rotation",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "press_sit_up",
+  "kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar.",
+  "verdeckungsrisiko": "Gerät oder Kopf kann Ellbogenführung verdecken"
+ },
+ {
+  "slug": "rope_crunch",
+  "kamera": "Kamera exakt seitlich auf Körperhöhe, Ganzkörper mit Rumpfwinkel, Beinen und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Nahe Arme können Rumpflinie verdecken"
+ },
+ {
+  "slug": "side_leg_raises",
+  "kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenarm kann den Bewegungsarm teilweise verdecken"
+ },
+ {
+  "slug": "sit-up",
+  "kamera": "Kamera exakt seitlich auf Körperhöhe, Ganzkörper mit Rumpfwinkel, Beinen und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Nahe Arme können Rumpflinie verdecken"
+ },
+ {
+  "slug": "spider_crawl",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "standing_cable_lift",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "standing_cable_wood_chop",
+  "kamera": "Kamera schräg 45 Grad von vorne-oben auf Körperhöhe, Rumpfrotation, Arme und Beine vollständig sichtbar, Ganzkörper im Bild.",
+  "verdeckungsrisiko": "Gedrehter Oberkörper kann Arme verdecken"
+ },
+ {
+  "slug": "standing_rope_crunch",
+  "kamera": "Kamera exakt seitlich auf Körperhöhe, Ganzkörper mit Rumpfwinkel, Beinen und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Nahe Arme können Rumpflinie verdecken"
+ },
+ {
+  "slug": "toe_touchers",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "wind_sprints",
+  "kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Arm und Gerät auf der Kameraseite können Rumpf oder Beine verdecken; Bewegungsebene dennoch klar sichtbar"
+ },
+ {
+  "slug": "calf_raise_on_a_dumbbell",
+  "kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar.",
+  "verdeckungsrisiko": "Gegenarm kann den Bewegungsarm teilweise verdecken"
+ }
+]

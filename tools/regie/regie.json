@@ -1,0 +1,1798 @@
+[
+ {
+  "slug": "3_4_sit-up",
+  "geraet": "Matte",
+  "start": "Flach auf dem Rücken, Knie ca. 90° gebeugt, Füße am Boden, Hände locker hinter dem Kopf, Schultern am Boden.",
+  "ende": "Oberkörper ca. 3/4 aufgerichtet (Rücken ca. 60-70° vom Boden), Hände hinter dem Kopf, Bauch angespannt, Füße bleiben am Boden."
+ },
+ {
+  "slug": "alternate_heel_touchers",
+  "geraet": "Matte",
+  "start": "Flach auf dem Rücken, Knie gebeugt, Füße am Boden, Arme gestreckt neben dem Körper, Schultern am Boden.",
+  "ende": "Schultern leicht angehoben, Oberkörper seitlich eingerollt, eine Hand berührt die gleichseitige Ferse, andere Seite gestreckt."
+ },
+ {
+  "slug": "barbell_ab_rollout",
+  "geraet": "Langhantel mit Scheiben, Matte",
+  "start": "Kniend, Langhantel mit beiden Händen im Obergriff direkt unter den Schultern am Boden, Arme senkrecht, Körper aufrecht, Hüfte über den Knien.",
+  "ende": "Langhantel weit nach vorn gerollt, Körper fast gestreckt in einer Linie von Knien bis Schultern, Arme über den Kopf, Rücken gerade."
+ },
+ {
+  "slug": "barbell_ab_rollout_-_on_knees",
+  "geraet": "Langhantel mit Scheiben, Matte",
+  "start": "Kniend aufrecht, Langhantel im Obergriff direkt unter den Schultern am Boden, Arme senkrecht, Rücken gerade.",
+  "ende": "Hantel weit nach vorn gerollt, Oberkörper gestreckt knapp über dem Boden, Arme über Kopf, Hüfte offen, Körper in einer Linie ab den Knien."
+ },
+ {
+  "slug": "barbell_rollout_from_bench",
+  "geraet": "Flachbank, Langhantel mit Scheiben",
+  "start": "Kniend vor einer Flachbank, Unterarme/Ellbogen auf der Bank, beide Hände an der Langhantel direkt unter den Schultern, Körper aufrecht.",
+  "ende": "Langhantel nach vorn gerollt, Arme gestreckt, Körper lang gestreckt von den Knien zu den Händen, Brust nah am Boden; Bank bleibt an der Seite.",
+  "unsicher": true
+ },
+ {
+  "slug": "bent-knee_hip_raise",
+  "geraet": "Matte",
+  "start": "Flach auf dem Rücken, Knie ca. 90° gebeugt, Oberschenkel senkrecht über der Hüfte, Arme neben dem Körper, Füße in der Luft.",
+  "ende": "Hüfte vom Boden abgehoben, Knie Richtung Brust gezogen, Unterer Rücken vom Boden gelöst, Beine bleiben gebeugt."
+ },
+ {
+  "slug": "bottoms_up",
+  "geraet": "Matte",
+  "start": "Flach auf dem Rücken, Beine gestreckt senkrecht nach oben, Arme neben dem Körper, Hüfte am Boden.",
+  "ende": "Hüfte nach oben gerollt, Beine gestreckt Richtung Decke gestreckt über den Kopf geneigt, Gesäß vom Boden gelöst, Arme drücken am Boden."
+ },
+ {
+  "slug": "butt-ups",
+  "geraet": "Matte",
+  "start": "Liegestützposition auf den Händen, Arme gestreckt, Körper in einer geraden Linie.",
+  "ende": "Hüfte steil nach oben, Gesäß hoch (Pike, Körper A-Form), Beine und Arme gestreckt, Kopf zwischen den Armen."
+ },
+ {
+  "slug": "cocoons",
+  "geraet": "Matte",
+  "start": "Flach auf dem Rücken, Arme über dem Kopf gestreckt, Beine gestreckt knapp über dem Boden.",
+  "ende": "Knie zur Brust gezogen, Oberkörper eingerollt, Arme umfassen die Schienbeine, Körper zusammengerollt wie ein Ball."
+ },
+ {
+  "slug": "cross-body_crunch",
+  "geraet": "Matte",
+  "start": "Flach auf dem Rücken, Knie gebeugt, Füße am Boden, Hände leicht an den Schläfen, Schultern am Boden.",
+  "ende": "Oberkörper eingerollt und gedreht, rechter Ellbogen Richtung linkes Knie, das Knie zur Brust gezogen, andere Beine gestreckt."
+ },
+ {
+  "slug": "crunch_-_hands_overhead",
+  "geraet": "Matte",
+  "start": "Flach auf dem Rücken, Knie gebeugt, Füße am Boden, Arme gestreckt über dem Kopf neben den Ohren.",
+  "ende": "Schulterblätter vom Boden gehoben, Oberkörper eingerollt, Arme bleiben gestreckt über dem Kopf neben den Ohren, unterer Rücken am Boden."
+ },
+ {
+  "slug": "crunch_-_legs_on_exercise_ball",
+  "geraet": "Gymnastikball, Matte",
+  "start": "Flach auf dem Rücken, Waden/Unterschenkel auf dem Gymnastikball, Knie und Hüfte ca. 90°, Hände an den Schläfen, Schultern am Boden.",
+  "ende": "Oberkörper eingerollt, Schulterblätter vom Boden abgehoben, Bauch angespannt, Unterschenkel bleiben auf dem Ball, Blick zur Decke."
+ },
+ {
+  "slug": "crunches",
+  "geraet": "Matte",
+  "start": "Flach auf dem Rücken, Knie gebeugt, Füße am Boden, Hände an den Schläfen, Schultern am Boden.",
+  "ende": "Schulterblätter vom Boden gehoben, Oberkörper kurz eingerollt, Bauch angespannt, unterer Rücken bleibt am Boden."
+ },
+ {
+  "slug": "dead_bug",
+  "geraet": "Matte",
+  "start": "Flach auf dem Rücken, Arme senkrecht nach oben gestreckt, Hüfte und Knie je 90° gebeugt (Oberschenkel senkrecht), unterer Rücken am Boden.",
+  "ende": "Rechter Arm über den Kopf gestreckt, linkes Bein gestreckt knapp über dem Boden, andere Seite bleibt in Startposition, Rücken flach."
+ },
+ {
+  "slug": "decline_crunch",
+  "geraet": "Schrägbank (Decline)",
+  "start": "Auf der Decline-Bank liegend, Füße unter den Polstern, Oberkörper flach abgelegt, Hände an den Schläfen oder vor der Brust.",
+  "ende": "Oberkörper eingerollt und aufgerichtet, Schultern Richtung Knie, Bauch angespannt, Hüfte bleibt auf der Bank."
+ },
+ {
+  "slug": "dumbbell_side_bend",
+  "geraet": "Kurzhantel",
+  "start": "Aufrecht stehend, Füße hüftbreit, eine Kurzhantel in einer Hand neben dem Körper, andere Hand an der Hüfte oder hinter dem Kopf.",
+  "ende": "Oberkörper seitlich zur Hantelseite geneigt, Hantel am Oberschenkel nach unten Richtung Knie, Rumpfseite gedehnt; Hüfte bleibt gerade."
+ },
+ {
+  "slug": "elbow_to_knee",
+  "geraet": "Matte",
+  "start": "Flach auf dem Rücken, Hände hinter dem Kopf, Beine gestreckt leicht über dem Boden.",
+  "ende": "Oberkörper eingerollt und gedreht, ein Ellbogen berührt das gegenüberliegende Knie, das Knie ist zur Brust gezogen, andere Bein gestreckt."
+ },
+ {
+  "slug": "flat_bench_lying_leg_raise",
+  "geraet": "Flachbank",
+  "start": "Rücklings auf der Flachbank, Hände halten die Bank hinter dem Kopf, Beine gestreckt und knapp unterhalb Bankhöhe.",
+  "ende": "Beine gestreckt bis senkrecht angehoben (90° zum Oberkörper), Hüfte leicht angehoben, unterer Rücken bleibt auf der Bank."
+ },
+ {
+  "slug": "gorilla_chin_crunch",
+  "geraet": "Klimmzugstange / Reck",
+  "start": "Hängend an der Stange im Obergriff, Arme gestreckt, Körper gestreckt.",
+  "ende": "Kinn über der Stange, Ellbogen gebeugt, Knie Richtung Brust gezogen, Körper eingerollt.",
+  "unsicher": true
+ },
+ {
+  "slug": "hanging_leg_raise",
+  "geraet": "Klimmzugstange",
+  "start": "Hängend an der Stange, Arme gestreckt, Beine gestreckt senkrecht nach unten, Körper ruhig.",
+  "ende": "Beine gestreckt bis ca. 90° (waagerecht) nach vorn gehoben, Hüfte gebeugt, Oberkörper bleibt ruhig."
+ },
+ {
+  "slug": "hanging_pike",
+  "geraet": "Klimmzugstange",
+  "start": "Hängend an der Stange, Arme gestreckt, Beine gestreckt senkrecht nach unten.",
+  "ende": "Beine gestreckt komplett hoch bis zur Stange, Füße berühren die Stange, Körper im Pike (V-Form), Hüfte stark gebeugt."
+ },
+ {
+  "slug": "oblique_crunches",
+  "geraet": "Matte",
+  "start": "Flach auf dem Rücken, Knie gebeugt und zur Seite abgelegt, Hände hinter dem Kopf, Schultern am Boden.",
+  "ende": "Oberkörper seitlich eingerollt Richtung gebeugte Knie, Schultern vom Boden gehoben, Ellbogen zeigt zum Knie."
+ },
+ {
+  "slug": "oblique_crunches_-_on_the_floor",
+  "geraet": "Matte",
+  "start": "Auf dem Rücken, Knie gebeugt, Füße am Boden, Hände hinter dem Kopf, Schultern am Boden.",
+  "ende": "Schultern gedreht und angehoben, rechter Ellbogen Richtung linkes Knie, Oberkörper diagonal eingerollt."
+ },
+ {
+  "slug": "pallof_press_with_rotation",
+  "geraet": "Kabelzug (Seilzug) mit Griff",
+  "start": "Seitlich zum Kabelzug stehend, Griff mit beiden Händen vor der Brust gehalten, Ellbogen gebeugt, Rumpf aufrecht, Seilzug auf Brusthöhe.",
+  "ende": "Arme vor dem Körper gestreckt, Rumpf leicht vom Zug weg gedreht, Griff auf Brusthöhe weit vom Körper weg, Rumpf stabil."
+ },
+ {
+  "slug": "rope_crunch",
+  "geraet": "Kabelzug mit Tau (Rope)",
+  "start": "Kniend vor dem hohen Kabelzug, Tau mit beiden Händen an der Stirn gehalten, Rücken leicht vorgebeugt, Arme gebeugt.",
+  "ende": "Oberkörper stark eingerollt, Ellbogen nach unten Richtung Knie gezogen, Bauch maximal verkürzt, Hüfte bleibt über den Knien."
+ },
+ {
+  "slug": "scissor_kick",
+  "geraet": "Matte",
+  "start": "Flach auf dem Rücken, Beine gestreckt knapp über dem Boden nebeneinander, Hände unter dem Gesäß oder neben dem Körper.",
+  "ende": "Ein Bein gestreckt angehoben ca. 45-60°, andere Bein tief knapp über dem Boden (Schere), Beine gekreuzt."
+ },
+ {
+  "slug": "side_jackknife",
+  "geraet": "Matte",
+  "start": "Seitlich auf dem Boden liegend, unterer Arm gestreckt, oberer Hand am Kopf, Beine gestreckt übereinander.",
+  "ende": "Oberkörper und Beine gleichzeitig seitlich angehoben, Körper in der Seite zusammengeklappt (V-Form)."
+ },
+ {
+  "slug": "sit-up",
+  "geraet": "Matte",
+  "start": "Flach auf dem Rücken, Knie gebeugt, Füße am Boden, Hände hinter dem Kopf oder vor der Brust gekreuzt.",
+  "ende": "Oberkörper komplett aufgerichtet, Rücken gerade bis fast senkrecht, Ellbogen zu den Knien."
+ },
+ {
+  "slug": "spell_caster",
+  "geraet": "Matte (optional leichte Hantel)",
+  "start": "Aufrecht stehend oder breit stehend, beide Hände zusammen neben der einen Hüfte tief gehalten, Rumpf leicht zur Seite gedreht.",
+  "ende": "Beide Arme diagonal über die andere Schulter nach oben, Rumpf zur anderen Seite gedreht, Blick folgt den Händen.",
+  "unsicher": true
+ },
+ {
+  "slug": "spider_crawl",
+  "geraet": "Matte",
+  "start": "Liegestützposition, Arme gestreckt, Körper gerade.",
+  "ende": "Ein Knie seitlich zum Ellbogen derselben Seite gezogen, Hüfte leicht gebeugt, andere Bein gestreckt, Körper flach."
+ },
+ {
+  "slug": "standing_cable_lift",
+  "geraet": "Kabelzug mit Griff (tief)",
+  "start": "Seitlich zum tiefen Kabelzug stehend, Griff mit beiden Händen neben dem äußeren Knie, Rumpf leicht gedreht.",
+  "ende": "Griff diagonal über den Körper nach oben bis über die gegenüberliegende Schulter gezogen, Arme fast gestreckt, Rumpf aufgerichtet."
+ },
+ {
+  "slug": "standing_cable_wood_chop",
+  "geraet": "Kabelzug mit Griff (hoch)",
+  "start": "Seitlich zum hohen Kabelzug stehend, beide Hände halten den Griff oben seitlich über dem Kopf, Arme gestreckt.",
+  "ende": "Griff diagonal nach unten über den Körper zur gegenüberliegenden Hüfte gezogen, Rumpf gedreht, Knie leicht gebeugt."
+ },
+ {
+  "slug": "standing_rope_crunch",
+  "geraet": "Kabelzug mit Tau (Rope), hoch",
+  "start": "Aufrecht stehend vor dem hohen Kabelzug, Tau an der Stirn/Nacken mit beiden Händen, Arme gebeugt, Rücken gerade.",
+  "ende": "Oberkörper nach vorn eingerollt, Ellbogen Richtung Hüfte gezogen, Rücken rund, Bauch verkürzt."
+ },
+ {
+  "slug": "stomach_vacuum",
+  "geraet": "Ohne Gerät",
+  "start": "Aufrecht stehend, Hände an der Hüfte, Bauch locker, normale Haltung.",
+  "ende": "Bauch nach innen gezogen (Vakuum), Brustkorb geweitet, Hände an der Hüfte, Rippen sichtbar nach oben gezogen."
+ },
+ {
+  "slug": "toe_touchers",
+  "geraet": "Matte",
+  "start": "Flach auf dem Rücken, Beine senkrecht nach oben gestreckt, Arme gestreckt neben dem Körper.",
+  "ende": "Oberkörper aufgerollt, Hände berühren die Zehenspitzen der gestreckten Beine, Schultern vom Boden."
+ },
+ {
+  "slug": "tuck_crunch",
+  "geraet": "Matte",
+  "start": "Flach auf dem Rücken, Arme hinter dem Kopf, Beine gestreckt knapp über dem Boden.",
+  "ende": "Knie zur Brust gezogen, Oberkörper aufgerollt, Ellbogen berühren die Knie, Hüfte angehoben."
+ },
+ {
+  "slug": "wind_sprints",
+  "geraet": "Ohne Gerät",
+  "start": "Sprinterstart-Haltung, ein Fuß vorn, Oberkörper vorgebeugt, Arme gebeugt.",
+  "ende": "Voller Sprintschritt, ein Knie hoch, Arme gegenläufig gebeugt, Oberkörper leicht nach vorn geneigt."
+ },
+ {
+  "slug": "hip_circles__prone_",
+  "geraet": "Matte",
+  "start": "Bauchlage, Beine gestreckt, Arme verschränkt unter der Stirn.",
+  "ende": "Ein Bein im 90° gebeugten Knie angehoben, Hüfte nach außen kreisend, Oberschenkel angehoben.",
+  "unsicher": true
+ },
+ {
+  "slug": "lying_crossover",
+  "geraet": "Matte",
+  "start": "Rückenlage, Arme seitlich ausgestreckt, Beine gestreckt, ein Bein senkrecht nach oben.",
+  "ende": "Das Bein gestreckt über den Körper zur anderen Seite abgelegt, Hüfte gedreht, Schultern bleiben am Boden."
+ },
+ {
+  "slug": "monster_walk",
+  "geraet": "Widerstandsband (Mini-Band)",
+  "start": "Hüftbreiter Stand, Band um die Knöchel/oberhalb der Knie, Knie leicht gebeugt (Halb-Squat), Rücken gerade, Hände vor der Brust.",
+  "ende": "Großer Schritt zur Seite, Band gespannt, Fußabstand breit, tiefer Halb-Squat gehalten."
+ },
+ {
+  "slug": "standing_hip_circles",
+  "geraet": "Ohne Gerät (optional Wand/Halt)",
+  "start": "Aufrecht auf einem Bein, Hand an Halt, anderes Bein leicht angehoben.",
+  "ende": "Angehobenes Knie zur Seite geöffnet, Bein im großen Kreis nach außen, Oberschenkel waagerecht."
+ },
+ {
+  "slug": "groiners",
+  "geraet": "Matte",
+  "start": "Tiefe Liegestützposition auf den Händen, Arme gestreckt, Körper gerade.",
+  "ende": "Beide Füße nach vorn zu den Händen gesprungen, Knie außen von den Armen, tiefe Hocke.",
+  "unsicher": true
+ },
+ {
+  "slug": "lateral_bound",
+  "geraet": "Ohne Gerät",
+  "start": "Auf einem Bein stehend, Knie leicht gebeugt, Oberkörper leicht vorgebeugt, Arme seitlich.",
+  "ende": "Seitlicher Sprung zur anderen Seite, Landung auf dem anderen Bein, Knie gebeugt, Gegenseite abgehoben."
+ },
+ {
+  "slug": "side_leg_raises",
+  "geraet": "Matte",
+  "start": "Seitlich auf dem Boden liegend, Beine gestreckt übereinander, Kopf auf dem unteren Arm, obere Hand vor der Brust.",
+  "ende": "Oberes Bein gestreckt seitlich ca. 45° angehoben, Fuß parallel, Hüfte bleibt stabil."
+ },
+ {
+  "slug": "alternate_incline_dumbbell_curl",
+  "geraet": "Schrägbank (Incline ca. 45°), 2 Kurzhanteln",
+  "start": "Rücklings auf der Schrägbank sitzend, Rücken angelehnt, beide Arme gestreckt nach unten hängend, Hanteln im Untergriff, Ellbogen unter den Schultern.",
+  "ende": "Ein Arm gebeugt (Ellbogen ca. 30-40°), Hantel auf Schulterhöhe, Ellbogen bleibt fix, andere Arm hängt gestreckt."
+ },
+ {
+  "slug": "barbell_curls_lying_against_an_incline",
+  "geraet": "Schrägbank (hoch eingestellt), Langhantel/SZ-Stange",
+  "start": "Bäuchlings auf der Schrägbank, Brust am Polster, Arme gestreckt senkrecht nach unten hängend, Stange im Untergriff.",
+  "ende": "Stange zur Brust gecurlt, Ellbogen ca. 30-40° gebeugt, Oberarme senkrecht, Brust am Polster."
+ },
+ {
+  "slug": "cable_hammer_curls_-_rope_attachment",
+  "geraet": "Kabelzug (tief) mit Tau",
+  "start": "Aufrecht stehend vor dem tiefen Kabelzug, Tau mit Neutralgriff (Daumen oben), Arme gestreckt neben dem Körper, Ellbogen an den Rippen.",
+  "ende": "Arme gebeugt, Tau bis Schulterhöhe gezogen, Ellbogen fix an den Rippen, Handgelenke neutral."
+ },
+ {
+  "slug": "cable_preacher_curl",
+  "geraet": "Preacher-Curl-Bank, Kabelzug (tief), Stange",
+  "start": "Sitzend an der Preacher-Bank, Oberarme komplett auf dem Polster, Arme gestreckt nach vorn/unten, Stange im Untergriff.",
+  "ende": "Stange zum Kinn gecurlt, Ellbogen stark gebeugt, Oberarme bleiben auf dem Polster."
+ },
+ {
+  "slug": "concentration_curls",
+  "geraet": "Kurzhantel, Flachbank",
+  "start": "Sitzend auf der Bank, Beine breit, Oberarm innen am gleichseitigen Oberschenkel angelegt, Arm gestreckt nach unten, Hantel im Untergriff.",
+  "ende": "Hantel zur Schulter gecurlt, Ellbogen voll gebeugt, Oberarm bleibt am Oberschenkel."
+ },
+ {
+  "slug": "cross_body_hammer_curl",
+  "geraet": "2 Kurzhanteln",
+  "start": "Aufrecht stehend, Arme gestreckt neben dem Körper, Hanteln im Neutralgriff.",
+  "ende": "Eine Hantel quer vor der Brust zur gegenüberliegenden Schulter gecurlt, Ellbogen gebeugt, Neutralgriff."
+ },
+ {
+  "slug": "drag_curl",
+  "geraet": "Langhantel",
+  "start": "Aufrecht stehend, Langhantel im Untergriff vor den Oberschenkeln, Arme gestreckt.",
+  "ende": "Stange eng am Körper nach oben gezogen, Ellbogen hinter den Rumpf nach hinten geführt, Stange an der Brust."
+ },
+ {
+  "slug": "dumbbell_alternate_bicep_curl",
+  "geraet": "2 Kurzhanteln",
+  "start": "Aufrecht stehend, beide Arme gestreckt neben dem Körper, Hanteln im Untergriff.",
+  "ende": "Ein Arm gecurlt (Ellbogen ca. 30-40°), Hantel auf Schulterhöhe, andere Arm gestreckt."
+ },
+ {
+  "slug": "high_cable_curls",
+  "geraet": "Kabelzug (hoch), 2 Griffe, Kabelturm",
+  "start": "Zwischen zwei hohen Kabelzügen stehend, Arme seitlich in Schulterhöhe gestreckt, Hände im Untergriff an den Griffen.",
+  "ende": "Ellbogen gebeugt, Griffe zu den Ohren/Schläfen gezogen (Doppel-Bizeps-Pose), Oberarme waagerecht."
+ },
+ {
+  "slug": "lying_cable_curl",
+  "geraet": "Kabelzug (tief), Matte/Bank, Stange",
+  "start": "Rücklings auf dem Boden/Bank, Füße am Kabelzug, Stange im Untergriff mit gestreckten Armen auf Hüfthöhe.",
+  "ende": "Stange zur Brust gecurlt, Ellbogen am Körper, Unterarme senkrecht.",
+  "unsicher": true
+ },
+ {
+  "slug": "lying_close-grip_bar_curl_on_high_pulley",
+  "geraet": "Kabelzug (hoch), Matte",
+  "start": "Rücklings auf dem Boden mit dem Kopf zum Kabelzug, Stange im engen Untergriff, Arme gestreckt über dem Gesicht.",
+  "ende": "Stange zur Stirn/Brust gecurlt, Ellbogen gebeugt, Oberarme senkrecht.",
+  "unsicher": true
+ },
+ {
+  "slug": "one_arm_dumbbell_preacher_curl",
+  "geraet": "Preacher-Curl-Bank, 1 Kurzhantel",
+  "start": "Sitzend an der Preacher-Bank, ein Oberarm auf dem Polster, Arm gestreckt nach unten, Hantel im Untergriff.",
+  "ende": "Hantel zur Schulter gecurlt, Ellbogen voll gebeugt, Oberarm bleibt auf dem Polster."
+ },
+ {
+  "slug": "overhead_cable_curl",
+  "geraet": "2 Kabelzüge (hoch), Kabelturm",
+  "start": "Zwischen zwei Kabelzügen stehend, Arme seitlich hochgestreckt, Hände im Untergriff.",
+  "ende": "Ellbogen gebeugt, Hände neben dem Kopf, Doppel-Bizeps-Pose, Oberarme waagerecht."
+ },
+ {
+  "slug": "calf_raise_on_a_dumbbell",
+  "geraet": "Kurzhantel (liegend), Wand oder Halt",
+  "start": "Aufrecht stehend, Ballen beider Füße auf einer liegenden Kurzhantel, Fersen hängen tief, Hand zum Halt an der Wand.",
+  "ende": "Auf beiden Zehenspitzen hochgedrückt, Fersen maximal angehoben, Waden angespannt, Ballen bleiben auf der Hantel."
+ },
+ {
+  "slug": "palms-down_wrist_curl_over_a_bench",
+  "geraet": "Flachbank, Langhantel/Kurzhanteln",
+  "start": "Kniend vor der Bank, Unterarme flach auf der Bank, Handgelenke am Rand überhängend, Handflächen nach unten, Hantel im Obergriff, Hände tief gebeugt (Hantelspitzen unten).",
+  "ende": "Handgelenke maximal nach oben gestreckt, Hantel angehoben, Unterarme bleiben flach auf der Bank."
+ },
+ {
+  "slug": "palms-up_barbell_wrist_curl_over_a_bench",
+  "geraet": "Flachbank, Langhantel",
+  "start": "Kniend vor der Bank, Unterarme flach auf der Bank, Handflächen nach oben, Handgelenke am Rand überhängend, Hantel tief in den Fingerspitzen.",
+  "ende": "Handgelenke maximal nach oben gebeugt, Faust um die Stange, Unterarme flach auf der Bank."
+ },
+ {
+  "slug": "palms-up_dumbbell_wrist_curl_over_a_bench",
+  "geraet": "Flachbank, Kurzhanteln",
+  "start": "Kniend vor der Bank, Unterarme flach auf der Bank, Handflächen nach oben, Handgelenke am Rand überhängend, Hanteln tief.",
+  "ende": "Handgelenke maximal nach oben gebeugt, Hanteln hoch, Unterarme flach."
+ },
+ {
+  "slug": "seated_dumbbell_palms-down_wrist_curl",
+  "geraet": "Flachbank, Kurzhanteln",
+  "start": "Sitzend, Unterarme auf den Oberschenkeln, Handflächen nach unten, Handgelenke am Knie überhängend, Hantel tief gebeugt.",
+  "ende": "Handgelenke nach oben gestreckt, Handrücken zur Decke, Hanteln hoch."
+ },
+ {
+  "slug": "seated_dumbbell_palms-up_wrist_curl",
+  "geraet": "Flachbank, Kurzhanteln",
+  "start": "Sitzend, Unterarme auf den Oberschenkeln, Handflächen nach oben, Handgelenke überhängend, Hanteln tief.",
+  "ende": "Handgelenke maximal nach oben gebeugt, Hanteln hoch."
+ },
+ {
+  "slug": "seated_one-arm_dumbbell_palms-down_wrist_curl",
+  "geraet": "Flachbank, 1 Kurzhantel",
+  "start": "Sitzend, ein Unterarm auf dem Oberschenkel, Handfläche nach unten, Hand überhängend, Hantel tief, andere Hand am Knie.",
+  "ende": "Handgelenk nach oben gestreckt, Hantel hoch, Unterarm bleibt aufliegend."
+ },
+ {
+  "slug": "seated_one-arm_dumbbell_palms-up_wrist_curl",
+  "geraet": "Flachbank, 1 Kurzhantel",
+  "start": "Sitzend, ein Unterarm auf dem Oberschenkel, Handfläche nach oben, Hand überhängend, Hantel tief.",
+  "ende": "Handgelenk maximal gebeugt, Hantel hoch, Unterarm bleibt aufliegend."
+ },
+ {
+  "slug": "seated_palm-up_barbell_wrist_curl",
+  "geraet": "Flachbank, Langhantel",
+  "start": "Sitzend, Unterarme auf den Oberschenkeln, Handflächen nach oben, Langhantel im Untergriff, Handgelenke überhängend und tief.",
+  "ende": "Handgelenke maximal gebeugt, Stange hoch, Unterarme bleiben auf den Oberschenkeln."
+ },
+ {
+  "slug": "seated_palms-down_barbell_wrist_curl",
+  "geraet": "Flachbank, Langhantel",
+  "start": "Sitzend, Unterarme auf den Oberschenkeln, Handflächen nach unten, Langhantel im Obergriff, Handgelenke überhängend und tief.",
+  "ende": "Handgelenke nach oben gestreckt, Handrücken zur Decke, Stange hoch."
+ },
+ {
+  "slug": "seated_two-arm_palms-up_low-pulley_wrist_curl",
+  "geraet": "Kabelzug (tief), Flachbank, Stange",
+  "start": "Sitzend an der Bank vor dem tiefen Kabelzug, Unterarme auf den Oberschenkeln, Handflächen nach oben, Stange im Untergriff, Handgelenke tief.",
+  "ende": "Handgelenke maximal gebeugt, Stange hoch, Unterarme fix."
+ },
+ {
+  "slug": "standing_palms-up_barbell_behind_the_back_wrist_curl",
+  "geraet": "Langhantel",
+  "start": "Aufrecht stehend, Langhantel hinter dem Rücken im Untergriff, Arme gestreckt, Handgelenke tief (Finger öffnen).",
+  "ende": "Handgelenke gebeugt, Stange nach oben gerollt, Fäuste geschlossen, Arme gestreckt."
+ },
+ {
+  "slug": "wrist_circles",
+  "geraet": "Ohne Gerät",
+  "start": "Aufrecht stehend oder sitzend, Arme nach vorn gestreckt, Fäuste locker, Handgelenke neutral.",
+  "ende": "Handgelenke im großen Kreis nach oben/außen gebeugt, Faust zeigt zur Seite/oben, Unterarm stabil."
+ },
+ {
+  "slug": "wrist_rotations_with_straight_bar",
+  "geraet": "Gerade Stange (leicht)",
+  "start": "Sitzend, Unterarme auf den Oberschenkeln, Stange mit beiden Händen, Handgelenke neutral.",
+  "ende": "Stange nach vorn/innen gedreht, Handgelenke gebeugt, Unterarme bleiben auf den Oberschenkeln.",
+  "unsicher": true
+ },
+ {
+  "slug": "barbell_glute_bridge",
+  "geraet": "Langhantel (gepolstert), Matte",
+  "start": "Rücklings, Knie gebeugt, Füße am Boden, Langhantel über der Hüfte, Hüfte am Boden.",
+  "ende": "Hüfte hochgedrückt, Körper von Knie bis Schulter in einer Linie, Gesäß maximal angespannt, Hantel oben."
+ },
+ {
+  "slug": "butt_lift__bridge_",
+  "geraet": "Matte",
+  "start": "Rücklings, Knie gebeugt, Füße am Boden, Arme neben dem Körper, Hüfte am Boden.",
+  "ende": "Hüfte hochgedrückt, Körper von Knie bis Schulter in einer Linie, Gesäß fest angespannt."
+ },
+ {
+  "slug": "flutter_kicks",
+  "geraet": "Matte",
+  "start": "Rücklings, Beine gestreckt knapp über dem Boden, Hände unter dem Gesäß.",
+  "ende": "Ein Bein ca. 45° angehoben, andere Bein knapp über dem Boden, kurze wechselnde Beinschläge."
+ },
+ {
+  "slug": "glute_kickback",
+  "geraet": "Matte",
+  "start": "Vierfüßlerstand, Hände unter den Schultern, Knie unter den Hüften, Rücken gerade.",
+  "ende": "Ein Bein gestreckt nach hinten oben angehoben, Hüfte gestreckt, Fuß auf Hüfthöhe, Rücken neutral."
+ },
+ {
+  "slug": "hip_extension_with_bands",
+  "geraet": "Widerstandsband, Matte",
+  "start": "Vierfüßlerstand oder aufrecht, Band um den Fuß und fixiert, Bein gebeugt zur Brust.",
+  "ende": "Bein gestreckt nach hinten gedrückt, Hüfte offen, Gesäß angespannt.",
+  "unsicher": true
+ },
+ {
+  "slug": "hip_lift_with_band",
+  "geraet": "Widerstandsband, Matte",
+  "start": "Rücklings, Knie gebeugt, Band oberhalb der Knie, Füße am Boden, Hüfte am Boden.",
+  "ende": "Hüfte hochgedrückt, Knie drücken gegen das Band nach außen, Körper in einer Linie."
+ },
+ {
+  "slug": "kneeling_jump_squat",
+  "geraet": "Ohne Gerät, Matte",
+  "start": "Kniend aufrecht, Gesäß auf den Fersen, Arme vor dem Körper.",
+  "ende": "Aus dem Knien in die Hocke gesprungen, Füße am Boden, Arme nach vorn gestreckt, Körper aufrecht.",
+  "unsicher": true
+ },
+ {
+  "slug": "kneeling_squat",
+  "geraet": "Langhantel/Ohne Gerät",
+  "start": "Aufrecht kniend, Hüfte offen, Hände vor der Brust, Körper senkrecht.",
+  "ende": "Gesäß auf die Fersen abgesenkt, Hüfte gebeugt, Oberkörper leicht vorgeneigt."
+ },
+ {
+  "slug": "leg_lift",
+  "geraet": "Matte",
+  "start": "Rücklings, Beine gestreckt am Boden, Arme neben dem Körper.",
+  "ende": "Beine gestreckt senkrecht angehoben (90°), Gesäß bleibt am Boden."
+ },
+ {
+  "slug": "lying_glute",
+  "geraet": "Matte",
+  "start": "Rücklings, Knie gebeugt, Füße am Boden, ein Bein über das andere gekreuzt.",
+  "ende": "Knie zur Brust gezogen, Oberschenkel mit den Händen zur Brust gezogen, Gesäß gedehnt."
+ },
+ {
+  "slug": "one-legged_cable_kickback",
+  "geraet": "Kabelzug (tief), Knöchelmanschette",
+  "start": "Vor dem Kabelzug stehend, Manschette am Fußgelenk, Hände am Gerät, Oberkörper leicht vorgebeugt.",
+  "ende": "Bein gestreckt nach hinten gezogen, Hüfte gestreckt, Fuß hinter dem Körper."
+ },
+ {
+  "slug": "pull_through",
+  "geraet": "Kabelzug (tief) mit Tau",
+  "start": "Mit dem Rücken zum Kabelzug, Tau zwischen den Beinen gehalten, Hüfte gebeugt, Oberkörper vorgebeugt, Knie leicht gebeugt.",
+  "ende": "Hüfte nach vorn gestreckt, Körper aufrecht, Arme gestreckt vor der Hüfte, Gesäß angespannt."
+ },
+ {
+  "slug": "seated_glute",
+  "geraet": "Matte oder Stuhl",
+  "start": "Sitzend auf dem Boden, Beine gebeugt, ein Knöchel über das Knie gelegt, Rücken gerade.",
+  "ende": "Oberkörper nach vorn zum Knie geneigt, Hüfte gedehnt, Gesäß gedehnt, Rücken gerade."
+ },
+ {
+  "slug": "single_leg_glute_bridge",
+  "geraet": "Matte",
+  "start": "Rücklings, ein Fuß am Boden, anderes Bein gestreckt senkrecht nach oben, Hüfte am Boden.",
+  "ende": "Hüfte hochgedrückt, Körper in einer Linie, gestrecktes Bein bleibt oben, Gesäß angespannt."
+ },
+ {
+  "slug": "step-up_with_knee_raise",
+  "geraet": "Box/Bank",
+  "start": "Vor einer Bank stehend, ein Fuß auf der Bank, andere Fuß am Boden.",
+  "ende": "Aufrecht auf der Bank, anderes Knie hoch zur Brust gezogen, auf einem Bein stehend."
+ },
+ {
+  "slug": "90_90_hamstring",
+  "geraet": "Matte",
+  "start": "Rücklings, Hüfte und Knie je 90° gebeugt, Oberschenkel senkrecht, Hände halten die Oberschenkel hinter dem Knie.",
+  "ende": "Unterschenkel gestreckt nach oben, Bein gestreckt (Knie so weit wie möglich gestreckt), Hamstrings gedehnt."
+ },
+ {
+  "slug": "band_good_morning",
+  "geraet": "Widerstandsband",
+  "start": "Aufrecht stehend, Band unter den Füßen, Band im Nacken über den Schultern, Knie leicht gebeugt.",
+  "ende": "Hüfte nach hinten geschoben, Oberkörper parallel zum Boden vorgeneigt, Rücken gerade, Knie leicht gebeugt."
+ },
+ {
+  "slug": "band_good_morning__pull_through_",
+  "geraet": "Widerstandsband (an Stütze fixiert)",
+  "start": "Mit dem Rücken zum fixierten Band stehend, Band zwischen den Beinen gehalten, Hände vor der Hüfte, Oberkörper vorgebeugt.",
+  "ende": "Hüfte nach vorn gestreckt, Körper aufrecht, Arme vor der Hüfte, Gesäß angespannt."
+ },
+ {
+  "slug": "front_leg_raises",
+  "geraet": "Ohne Gerät",
+  "start": "Aufrecht stehend, Beine gestreckt, Arme neben dem Körper.",
+  "ende": "Ein Bein gestreckt nach vorn angehoben, Fuß auf Hüfthöhe, Oberkörper aufrecht."
+ },
+ {
+  "slug": "good_morning_off_pins",
+  "geraet": "Langhantel, Power Rack mit Pins",
+  "start": "Aufrecht stehend im Rack, Langhantel auf dem oberen Rücken, Knie leicht gebeugt, Hüfte nach hinten geschoben, Oberkörper vorgeneigt.",
+  "ende": "Oberkörper bis ca. parallel zum Boden vorgeneigt, Rücken gerade, Hantel am Nacken.",
+  "unsicher": true
+ },
+ {
+  "slug": "hanging_bar_good_morning",
+  "geraet": "Langhantel (hängend am Gestell)",
+  "start": "Aufrecht stehend, Langhantel auf dem oberen Rücken, Knie leicht gebeugt.",
+  "ende": "Oberkörper vorgeneigt bis parallel zum Boden, Hüfte nach hinten, Rücken gerade.",
+  "unsicher": true
+ },
+ {
+  "slug": "inchworm",
+  "geraet": "Ohne Gerät",
+  "start": "Aufrecht stehend, Beine gestreckt, Hände neben den Füßen, Oberkörper vorgeneigt.",
+  "ende": "Hände nach vorn in die Liegestützposition gewandert, Körper gerade, Arme gestreckt."
+ },
+ {
+  "slug": "knee_tuck_jump",
+  "geraet": "Ohne Gerät",
+  "start": "Aufrecht stehend, Knie leicht gebeugt, Arme nach hinten geschwungen.",
+  "ende": "Hochgesprungen, beide Knie zur Brust gezogen, Arme nach vorn, Oberkörper aufrecht."
+ },
+ {
+  "slug": "reverse_band_sumo_deadlift",
+  "geraet": "Langhantel, Widerstandsbänder, Power Rack",
+  "start": "Breiter Sumo-Stand, Füße ca. 45° nach außen, Hantel am Boden zwischen den Beinen, Griff innen, Knie gebeugt, Rücken gerade, Bänder gespannt.",
+  "ende": "Stand aufrecht, Hüfte und Knie gestreckt, Hantel an den Oberschenkeln, Schultern hinten."
+ },
+ {
+  "slug": "romanian_deadlift",
+  "geraet": "Langhantel",
+  "start": "Aufrecht stehend, Langhantel im Obergriff an den Oberschenkeln, Arme gestreckt, Knie leicht gebeugt.",
+  "ende": "Hüfte nach hinten geschoben, Oberkörper parallel zum Boden vorgeneigt, Hantel am Schienbein, Rücken gerade."
+ },
+ {
+  "slug": "romanian_deadlift_from_deficit",
+  "geraet": "Langhantel, Podest/Plattform (Scheiben)",
+  "start": "Auf einem Podest stehend, Fersen auf Bodenniveau, Langhantel an den Oberschenkeln, Knie leicht gebeugt.",
+  "ende": "Hüfte nach hinten, Oberkörper parallel zum Boden, Hantel unter Podesthöhe, Rücken gerade."
+ },
+ {
+  "slug": "stiff-legged_barbell_deadlift",
+  "geraet": "Langhantel",
+  "start": "Aufrecht stehend, Langhantel im Obergriff an den Oberschenkeln, Beine fast gestreckt.",
+  "ende": "Oberkörper tief vorgebeugt, Hantel am Schienbein, Beine fast gestreckt, Rücken gerade."
+ },
+ {
+  "slug": "stiff-legged_dumbbell_deadlift",
+  "geraet": "2 Kurzhanteln",
+  "start": "Aufrecht stehend, Hanteln an den Oberschenkeln, Beine fast gestreckt.",
+  "ende": "Oberkörper tief vorgebeugt, Hanteln am Schienbein, Beine fast gestreckt, Rücken gerade."
+ },
+ {
+  "slug": "sumo_deadlift",
+  "geraet": "Langhantel",
+  "start": "Breiter Sumo-Stand, Füße ca. 45° nach außen, Hantel am Boden zwischen den Beinen, Griff innen, Knie gebeugt, Rücken gerade, Arme gestreckt.",
+  "ende": "Aufrecht gestreckt, Hüfte und Knie gestreckt, Hantel an den Oberschenkeln, Schultern hinten."
+ },
+ {
+  "slug": "sumo_deadlift_with_bands",
+  "geraet": "Langhantel, Widerstandsbänder, Power Rack",
+  "start": "Breiter Sumo-Stand, Hantel am Boden, Griff innen, Knie gebeugt, Rücken gerade, Bänder an der Hantel.",
+  "ende": "Aufrecht gestreckt, Bänder gespannt, Hantel an den Oberschenkeln, Hüfte voll gestreckt."
+ },
+ {
+  "slug": "vertical_swing",
+  "geraet": "Kurzhantel/Kettlebell",
+  "start": "Breiter Stand, Hantel mit beiden Händen zwischen den Beinen, Hüfte gebeugt, Rücken gerade.",
+  "ende": "Hüfte gestreckt, Hantel mit gestreckten Armen auf Schulterhöhe, Körper aufrecht."
+ },
+ {
+  "slug": "wide_stance_stiff_legs",
+  "geraet": "Langhantel",
+  "start": "Sehr breiter Stand, Langhantel auf dem oberen Rücken, Beine fast gestreckt.",
+  "ende": "Oberkörper vorgeneigt parallel zum Boden, Beine fast gestreckt, Rücken gerade.",
+  "unsicher": true
+ },
+ {
+  "slug": "bent-arm_barbell_pullover",
+  "geraet": "Flachbank, Langhantel/SZ-Stange",
+  "start": "Rücklings quer/längs auf der Flachbank, Füße am Boden, Stange mit gebeugten Armen über der Brust, Ellbogen ca. 90°.",
+  "ende": "Stange hinter den Kopf gesenkt, Arme über dem Kopf, Ellbogen ca. 90°, Brust und Lats gedehnt."
+ },
+ {
+  "slug": "cable_incline_pushdown",
+  "geraet": "Kabelzug (hoch), Schrägbank",
+  "start": "Rücklings auf der Schrägbank, Griff über dem Kopf, Arme über dem Kopf gestreckt.",
+  "ende": "Arme gestreckt nach unten zu den Hüften gedrückt, Ellbogen fast gestreckt.",
+  "unsicher": true
+ },
+ {
+  "slug": "chin-up",
+  "geraet": "Klimmzugstange",
+  "start": "Hängend an der Stange im Untergriff, Hände schulterbreit, Arme gestreckt, Körper gestreckt.",
+  "ende": "Kinn über der Stange, Ellbogen gebeugt, Brust Richtung Stange, Schulterblätter zusammen."
+ },
+ {
+  "slug": "elevated_cable_rows",
+  "geraet": "Kabelzug (hoch), Griff",
+  "start": "Aufrecht sitzend oder stehend, Griff mit gestreckten Armen nach oben, Oberkörper leicht zurückgelehnt.",
+  "ende": "Ellbogen gebeugt, Griff zur Brust gezogen, Schulterblätter zusammen.",
+  "unsicher": true
+ },
+ {
+  "slug": "full_range-of-motion_lat_pulldown",
+  "geraet": "Latzugmaschine, Stange",
+  "start": "Sitzend an der Latzugmaschine, Oberschenkel unter den Polstern, Stange im weiten Obergriff, Arme gestreckt nach oben, Oberkörper leicht zurück.",
+  "ende": "Stange zur oberen Brust gezogen, Ellbogen nach unten und hinten, Schulterblätter zusammen, Brust raus."
+ },
+ {
+  "slug": "kneeling_high_pulley_row",
+  "geraet": "Kabelzug (hoch), Griff",
+  "start": "Kniend vor dem hohen Kabelzug, Arme gestreckt nach oben, Griff mit beiden Händen.",
+  "ende": "Ellbogen gebeugt, Griff zur Brust gezogen, Schulterblätter zusammen, Oberkörper aufrecht."
+ },
+ {
+  "slug": "kneeling_single-arm_high_pulley_row",
+  "geraet": "Kabelzug (hoch), Einhandgriff",
+  "start": "Kniend vor dem hohen Kabelzug, ein Arm gestreckt nach oben, Griff in einer Hand.",
+  "ende": "Ellbogen gebeugt, Griff zur Schulter/Brust gezogen, Schulterblatt zusammen."
+ },
+ {
+  "slug": "one_arm_lat_pulldown",
+  "geraet": "Latzugmaschine/Kabelzug (hoch), Einhandgriff",
+  "start": "Sitzend vor dem hohen Kabelzug, ein Arm gestreckt nach oben, Griff in einer Hand.",
+  "ende": "Ellbogen nach unten gezogen, Griff auf Schulterhöhe, Lat angespannt."
+ },
+ {
+  "slug": "rope_straight-arm_pulldown",
+  "geraet": "Kabelzug (hoch), Tau (Rope)",
+  "start": "Aufrecht stehend vor dem hohen Kabelzug, Arme gestreckt vor dem Körper über Kopfhöhe, Tau mit beiden Händen, Oberkörper leicht vorgeneigt.",
+  "ende": "Arme gestreckt nach unten zu den Oberschenkeln gedrückt, Tau neben den Hüften, Ellbogen fast gestreckt."
+ },
+ {
+  "slug": "shotgun_row",
+  "geraet": "Kabelzug (tief), Einhandgriff",
+  "start": "Aufrecht stehend vor dem tiefen Kabelzug, Griff in einer Hand, Arm gestreckt nach vorn.",
+  "ende": "Ellbogen gebeugt, Griff zur Hüfte gezogen, Arm nah am Körper, Rumpf aufrecht.",
+  "unsicher": true
+ },
+ {
+  "slug": "straight-arm_pulldown",
+  "geraet": "Kabelzug (hoch), gerade Stange",
+  "start": "Aufrecht stehend vor dem hohen Kabelzug, Arme gestreckt vor dem Körper in Schulterhöhe, Stange im Obergriff, Oberkörper leicht vorgeneigt.",
+  "ende": "Arme gestreckt nach unten zu den Oberschenkeln, Stange an den Hüften."
+ },
+ {
+  "slug": "underhand_cable_pulldowns",
+  "geraet": "Latzugmaschine, Stange",
+  "start": "Sitzend an der Latzugmaschine, Stange im schulterbreiten Untergriff, Arme gestreckt nach oben.",
+  "ende": "Stange zur oberen Brust gezogen, Ellbogen nach unten, Schulterblätter zusammen."
+ },
+ {
+  "slug": "v-bar_pulldown",
+  "geraet": "Latzugmaschine, V-Griff",
+  "start": "Sitzend an der Latzugmaschine, V-Griff mit beiden Händen, Arme gestreckt nach oben, Oberkörper leicht zurück.",
+  "ende": "V-Griff zur oberen Brust gezogen, Ellbogen nach unten und hinten."
+ },
+ {
+  "slug": "v-bar_pullup",
+  "geraet": "Klimmzugstange mit V-Griff",
+  "start": "Hängend am V-Griff (Neutralgriff), Arme gestreckt, Körper gestreckt.",
+  "ende": "Kinn über den Griffen, Ellbogen gebeugt, Brust zur Stange."
+ },
+ {
+  "slug": "wide-grip_lat_pulldown",
+  "geraet": "Latzugmaschine, breite Stange",
+  "start": "Sitzend, breite Stange im weiten Obergriff, Arme gestreckt nach oben, Oberkörper leicht zurück.",
+  "ende": "Stange zur oberen Brust gezogen, Ellbogen nach unten, Schulterblätter zusammen."
+ },
+ {
+  "slug": "wide-grip_pulldown_behind_the_neck",
+  "geraet": "Latzugmaschine, breite Stange",
+  "start": "Sitzend, breite Stange im weiten Obergriff, Arme gestreckt nach oben.",
+  "ende": "Stange hinter dem Kopf zum Nacken gezogen, Oberkörper aufrecht, Ellbogen nach unten."
+ },
+ {
+  "slug": "wide-grip_rear_pull-up",
+  "geraet": "Klimmzugstange",
+  "start": "Hängend an der Stange im weiten Obergriff, Arme gestreckt, Körper gestreckt.",
+  "ende": "Hinterkopf/Nacken zur Stange gezogen, Ellbogen nach unten, Oberkörper aufrecht."
+ },
+ {
+  "slug": "barbell_deadlift",
+  "geraet": "Langhantel",
+  "start": "Hüftbreiter Stand, Langhantel am Boden über den Füßen, Griff schulterbreit, Knie gebeugt, Rücken gerade, Arme gestreckt.",
+  "ende": "Aufrecht gestreckt, Hüfte und Knie gestreckt, Hantel an den Oberschenkeln, Schultern hinten."
+ },
+ {
+  "slug": "deadlift_with_bands",
+  "geraet": "Langhantel, Widerstandsbänder, Power Rack",
+  "start": "Hüftbreiter Stand, Hantel am Boden, Griff schulterbreit, Knie gebeugt, Rücken gerade, Bänder an der Hantel.",
+  "ende": "Aufrecht gestreckt, Bänder gespannt, Hantel an den Oberschenkeln."
+ },
+ {
+  "slug": "deficit_deadlift",
+  "geraet": "Langhantel, Podest",
+  "start": "Auf einem Podest stehend, Hantel am Boden, Griff schulterbreit, Knie stark gebeugt, Rücken gerade.",
+  "ende": "Aufrecht gestreckt, Hantel an den Oberschenkeln, Hüfte gestreckt."
+ },
+ {
+  "slug": "rack_pull_with_bands",
+  "geraet": "Langhantel, Power Rack, Widerstandsbänder",
+  "start": "Hüftbreiter Stand, Hantel auf Knie-Höhe auf den Pins, Griff schulterbreit, Rücken gerade, Bänder gespannt.",
+  "ende": "Aufrecht gestreckt, Hantel an den Oberschenkeln, Schultern hinten."
+ },
+ {
+  "slug": "reverse_band_deadlift",
+  "geraet": "Langhantel, Widerstandsbänder, Power Rack",
+  "start": "Hüftbreiter Stand, Hantel am Boden, Griff schulterbreit, Knie gebeugt, Rücken gerade, Bänder von oben.",
+  "ende": "Aufrecht gestreckt, Hantel an den Oberschenkeln."
+ },
+ {
+  "slug": "seated_good_mornings",
+  "geraet": "Langhantel, Flachbank",
+  "start": "Aufrecht auf der Bank sitzend, Langhantel auf dem oberen Rücken, Füße am Boden.",
+  "ende": "Oberkörper vorgeneigt, Hüfte gebeugt, Rücken gerade, Oberkörper fast parallel zum Boden."
+ },
+ {
+  "slug": "stiff_leg_barbell_good_morning",
+  "geraet": "Langhantel",
+  "start": "Aufrecht stehend, Langhantel auf dem oberen Rücken, Beine fast gestreckt.",
+  "ende": "Oberkörper vorgeneigt parallel zum Boden, Beine fast gestreckt, Rücken gerade."
+ },
+ {
+  "slug": "superman",
+  "geraet": "Matte",
+  "start": "Bauchlage, Arme nach vorn über den Kopf gestreckt, Beine gestreckt.",
+  "ende": "Arme und Beine gleichzeitig vom Boden abgehoben, Rücken überstreckt, Körper in leichter Bogenform."
+ },
+ {
+  "slug": "bent_over_two-dumbbell_row",
+  "geraet": "2 Kurzhanteln",
+  "start": "Vorgebeugt, Oberkörper fast parallel zum Boden, Knie leicht gebeugt, Rücken gerade, Arme gestreckt nach unten, Hanteln im Obergriff.",
+  "ende": "Ellbogen gebeugt, Hanteln zur Hüfte/Brust gezogen, Schulterblätter zusammen, Rücken gerade."
+ },
+ {
+  "slug": "bent_over_two-dumbbell_row_with_palms_in",
+  "geraet": "2 Kurzhanteln",
+  "start": "Vorgebeugt, Oberkörper fast parallel, Knie leicht gebeugt, Arme gestreckt nach unten, Hanteln im Neutralgriff.",
+  "ende": "Ellbogen nah am Körper nach oben gezogen, Hanteln zur Hüfte, Schulterblätter zusammen."
+ },
+ {
+  "slug": "dumbbell_incline_row",
+  "geraet": "Schrägbank (ca. 45°), 2 Kurzhanteln",
+  "start": "Bäuchlings auf der Schrägbank, Brust am Polster, Arme gestreckt nach unten hängend, Hanteln im Neutralgriff.",
+  "ende": "Ellbogen nach oben/hinten gezogen, Hanteln zur Hüfte, Schulterblätter zusammen."
+ },
+ {
+  "slug": "incline_bench_pull",
+  "geraet": "Schrägbank, Langhantel",
+  "start": "Bäuchlings auf der Schrägbank, Brust am Polster, Arme gestreckt nach unten, Hantel im Obergriff.",
+  "ende": "Ellbogen nach oben gezogen, Hantel zur Brust/Bank, Schulterblätter zusammen."
+ },
+ {
+  "slug": "lying_cambered_barbell_row",
+  "geraet": "Langhantel/Cambered Bar, Bank/Hocker",
+  "start": "Bäuchlings auf der Bank, Arme gestreckt nach unten, Cambered Bar im Obergriff.",
+  "ende": "Ellbogen nach oben gezogen, Stange zur Bank, Schulterblätter zusammen.",
+  "unsicher": true
+ },
+ {
+  "slug": "middle_back_shrug",
+  "geraet": "Kurzhanteln/Langhantel",
+  "start": "Aufrecht stehend, Hanteln neben den Oberschenkeln, Arme gestreckt, Schultern gesenkt.",
+  "ende": "Schultern nach hinten und oben gezogen, Schulterblätter zusammen, Arme gestreckt.",
+  "unsicher": true
+ },
+ {
+  "slug": "one-arm_dumbbell_row",
+  "geraet": "Flachbank, 1 Kurzhantel",
+  "start": "Eine Hand und Knie auf der Bank, Rücken parallel zum Boden, anderer Arm gestreckt nach unten mit Hantel.",
+  "ende": "Ellbogen nach oben gezogen, Hantel zur Hüfte, Schulterblatt zusammen, Rücken gerade."
+ },
+ {
+  "slug": "reverse_grip_bent-over_rows",
+  "geraet": "Langhantel",
+  "start": "Vorgebeugt, Oberkörper fast parallel, Knie leicht gebeugt, Langhantel im Untergriff, Arme gestreckt.",
+  "ende": "Ellbogen nah am Körper nach oben gezogen, Hantel zum Bauchnabel, Schulterblätter zusammen."
+ },
+ {
+  "slug": "seated_cable_rows",
+  "geraet": "Rudermaschine/Kabelzug (tief), V-Griff",
+  "start": "Sitzend, Füße auf den Platten, Knie leicht gebeugt, Griff mit gestreckten Armen vor dem Körper, Oberkörper leicht vorgeneigt.",
+  "ende": "Griff zum Bauch gezogen, Ellbogen hinten, Schulterblätter zusammen, Oberkörper aufrecht."
+ },
+ {
+  "slug": "seated_one-arm_cable_pulley_rows",
+  "geraet": "Kabelzug (tief), Einhandgriff",
+  "start": "Sitzend, Füße auf den Platten, ein Arm gestreckt nach vorn, Griff in einer Hand.",
+  "ende": "Griff zum Bauch gezogen, Ellbogen nah am Körper, Schulterblatt zusammen."
+ },
+ {
+  "slug": "straight_bar_bench_mid_rows",
+  "geraet": "Flachbank/Schrägbank, gerade Stange",
+  "start": "Bäuchlings auf der Bank, Arme gestreckt nach unten, Stange im Obergriff.",
+  "ende": "Ellbogen nach oben gezogen, Stange zur Bank, Schulterblätter zusammen.",
+  "unsicher": true
+ },
+ {
+  "slug": "barbell_full_squat",
+  "geraet": "Langhantel, Squat-Rack",
+  "start": "Aufrecht stehend, Langhantel auf dem oberen Rücken, Füße schulterbreit, Zehen leicht nach außen.",
+  "ende": "Tiefe Hocke (Hüfte unter Knieniveau), Knie über den Zehen, Oberkörper aufrecht, Rücken gerade."
+ },
+ {
+  "slug": "barbell_hack_squat",
+  "geraet": "Langhantel",
+  "start": "Aufrecht stehend, Langhantel hinter den Beinen mit gestreckten Armen, Fersen eng.",
+  "ende": "Tiefe Hocke, Hantel hinter den Beinen, Knie gebeugt, Oberkörper aufrecht."
+ },
+ {
+  "slug": "barbell_lunge",
+  "geraet": "Langhantel, Squat-Rack",
+  "start": "Aufrecht stehend, Langhantel auf dem oberen Rücken, Füße hüftbreit.",
+  "ende": "Weiter Ausfallschritt nach vorn, vorderes Knie ca. 90°, hinteres Knie knapp über dem Boden."
+ },
+ {
+  "slug": "barbell_side_split_squat",
+  "geraet": "Langhantel",
+  "start": "Breiter Stand, Langhantel auf dem oberen Rücken, Beine gestreckt.",
+  "ende": "Zur Seite abgesenkt, ein Knie gebeugt, anderes Bein gestreckt, Gewicht auf dem gebeugten Bein."
+ },
+ {
+  "slug": "barbell_squat",
+  "geraet": "Langhantel, Squat-Rack",
+  "start": "Aufrecht stehend, Langhantel auf dem oberen Rücken, Füße schulterbreit.",
+  "ende": "Hocke bis Oberschenkel parallel zum Boden, Knie ca. 90°, Oberkörper leicht vorgeneigt, Rücken gerade."
+ },
+ {
+  "slug": "barbell_walking_lunge",
+  "geraet": "Langhantel",
+  "start": "Aufrecht stehend, Langhantel auf dem oberen Rücken, Füße hüftbreit.",
+  "ende": "Weiter Ausfallschritt, vorderes Knie ca. 90°, hinteres Knie kurz über dem Boden."
+ },
+ {
+  "slug": "bench_jump",
+  "geraet": "Flachbank",
+  "start": "Aufrecht stehend vor einer Bank, Knie leicht gebeugt, Arme hinten.",
+  "ende": "Mit beiden Füßen auf die Bank gesprungen, aufrecht, Knie leicht gebeugt."
+ },
+ {
+  "slug": "bodyweight_squat",
+  "geraet": "Ohne Gerät",
+  "start": "Aufrecht stehend, Füße schulterbreit, Arme vor der Brust.",
+  "ende": "Tiefe Hocke, Oberschenkel waagerecht, Arme nach vorn gestreckt, Rücken gerade."
+ },
+ {
+  "slug": "box_squat",
+  "geraet": "Langhantel, Box/Bank",
+  "start": "Aufrecht stehend, Hantel auf dem oberen Rücken, Box hinter dem Gesäß, Füße breit.",
+  "ende": "Gesäß auf der Box abgesetzt, Oberschenkel parallel zum Boden, Oberkörper aufrecht."
+ },
+ {
+  "slug": "box_squat_with_bands",
+  "geraet": "Langhantel, Box, Widerstandsbänder",
+  "start": "Aufrecht stehend, Hantel auf dem Rücken, Bänder gespannt, Box hinter dem Gesäß.",
+  "ende": "Gesäß auf der Box, Oberschenkel parallel, Bänder entspannt, Oberkörper aufrecht."
+ },
+ {
+  "slug": "cable_deadlifts",
+  "geraet": "Kabelzug (tief), Stange",
+  "start": "Hüftbreiter Stand, Stange am Boden vor den Füßen, Knie gebeugt, Rücken gerade, Arme gestreckt.",
+  "ende": "Aufrecht gestreckt, Stange an den Oberschenkeln, Hüfte voll gestreckt."
+ },
+ {
+  "slug": "cable_hip_adduction",
+  "geraet": "Kabelzug (tief), Knöchelmanschette",
+  "start": "Seitlich zum Kabelzug stehend, Manschette am äußeren Fuß, Bein seitlich abgespreizt, Hand am Halt.",
+  "ende": "Bein vor dem Standbein überkreuzt, Oberschenkel adduziert, Hüfte stabil."
+ },
+ {
+  "slug": "double_leg_butt_kick",
+  "geraet": "Ohne Gerät",
+  "start": "Aufrecht stehend, Knie leicht gebeugt, Arme hinten.",
+  "ende": "Beidbeinig hochgesprungen, Fersen am Gesäß, Knie gebeugt."
+ },
+ {
+  "slug": "dumbbell_lunges",
+  "geraet": "2 Kurzhanteln",
+  "start": "Aufrecht stehend, Hanteln neben dem Körper, Füße hüftbreit.",
+  "ende": "Ausfallschritt, vorderes Knie ca. 90°, hinteres Knie knapp über dem Boden, Oberkörper aufrecht."
+ },
+ {
+  "slug": "dumbbell_rear_lunge",
+  "geraet": "2 Kurzhanteln",
+  "start": "Aufrecht stehend, Hanteln neben dem Körper, Füße hüftbreit.",
+  "ende": "Großer Schritt nach hinten, vorderes Knie ca. 90°, hinteres Knie knapp über dem Boden."
+ },
+ {
+  "slug": "dumbbell_seated_box_jump",
+  "geraet": "Kurzhanteln, Box",
+  "start": "Sitzend auf der Box, Hanteln neben dem Körper, Füße am Boden.",
+  "ende": "Aufgesprungen/aufrecht auf der Box, Hanteln neben dem Körper, Knie gestreckt.",
+  "unsicher": true
+ },
+ {
+  "slug": "dumbbell_squat",
+  "geraet": "2 Kurzhanteln",
+  "start": "Aufrecht stehend, Hanteln neben dem Körper, Füße schulterbreit.",
+  "ende": "Tiefe Hocke, Oberschenkel waagerecht, Hanteln neben den Knien, Rücken gerade."
+ },
+ {
+  "slug": "dumbbell_squat_to_a_bench",
+  "geraet": "2 Kurzhanteln, Flachbank",
+  "start": "Aufrecht stehend vor der Bank (Rücken zur Bank), Hanteln neben dem Körper.",
+  "ende": "Gesäß auf der Bank abgesetzt, Hanteln neben den Knien, Oberkörper aufrecht."
+ },
+ {
+  "slug": "dumbbell_step_ups",
+  "geraet": "2 Kurzhanteln, Bank/Box",
+  "start": "Vor der Bank stehend, ein Fuß auf der Bank, Hanteln neben dem Körper.",
+  "ende": "Aufrecht auf der Bank, Standbein gestreckt, anderer Fuß neben dem Standfuß."
+ },
+ {
+  "slug": "elevated_back_lunge",
+  "geraet": "Kurzhanteln/Langhantel, Podest",
+  "start": "Auf einem Podest stehend, Gewicht gehalten, Füße hüftbreit.",
+  "ende": "Weiter Schritt nach hinten vom Podest, vorderes Knie ca. 90°, hinterer Fuß am Boden.",
+  "unsicher": true
+ },
+ {
+  "slug": "fast_skipping",
+  "geraet": "Ohne Gerät",
+  "start": "Aufrecht stehend, Arme gebeugt.",
+  "ende": "Ein Knie hoch zur Hüftbeuge gezogen, gegenläufiger Arm, auf Zehenspitzen."
+ },
+ {
+  "slug": "frankenstein_squat",
+  "geraet": "Langhantel",
+  "start": "Aufrecht stehend, Langhantel vorn auf den Schultern, Arme nach vorn gestreckt.",
+  "ende": "Tiefe Hocke, Hantel vorn auf den Schultern, Arme gestreckt, Oberkörper aufrecht."
+ },
+ {
+  "slug": "freehand_jump_squat",
+  "geraet": "Ohne Gerät",
+  "start": "Tiefe Hocke, Arme hinten.",
+  "ende": "Senkrechter Sprung, Beine gestreckt, Arme nach oben, Körper gestreckt."
+ },
+ {
+  "slug": "front_barbell_squat",
+  "geraet": "Langhantel, Squat-Rack",
+  "start": "Aufrecht stehend, Hantel vorn auf den Schultern, Ellbogen hoch, Füße schulterbreit.",
+  "ende": "Tiefe Hocke, Oberschenkel waagerecht, Ellbogen hoch, Oberkörper aufrecht."
+ },
+ {
+  "slug": "front_barbell_squat_to_a_bench",
+  "geraet": "Langhantel, Flachbank",
+  "start": "Aufrecht stehend vor der Bank, Hantel vorn auf den Schultern, Ellbogen hoch.",
+  "ende": "Gesäß auf der Bank abgesetzt, Oberschenkel waagerecht, Oberkörper aufrecht."
+ },
+ {
+  "slug": "hip_flexion_with_band",
+  "geraet": "Widerstandsband",
+  "start": "Aufrecht stehend, Band um den Fuß, Bein am Boden.",
+  "ende": "Knie hoch zur Hüftbeuge angehoben, Band gespannt, Oberkörper aufrecht.",
+  "unsicher": true
+ },
+ {
+  "slug": "jefferson_squats",
+  "geraet": "Langhantel",
+  "start": "Breiter Stand, Hantel zwischen den Beinen im Kreuzgriff, Hüfte gebeugt.",
+  "ende": "Aufrecht gestreckt, Hantel zwischen den Beinen, Hüfte und Knie gestreckt."
+ },
+ {
+  "slug": "lying_prone_quadriceps",
+  "geraet": "Matte",
+  "start": "Bauchlage, Beine gestreckt, Hand am Fuß.",
+  "ende": "Knie gebeugt, Ferse zum Gesäß gezogen, Quadrizeps gedehnt, Hand am Fuß."
+ },
+ {
+  "slug": "narrow_stance_squats",
+  "geraet": "Ohne Gerät/Langhantel",
+  "start": "Aufrecht stehend, Füße eng zusammen.",
+  "ende": "Tiefe Hocke, Knie über den Zehen, Oberschenkel waagerecht."
+ },
+ {
+  "slug": "one_leg_barbell_squat",
+  "geraet": "Langhantel, Squat-Rack",
+  "start": "Auf einem Bein stehend, Hantel auf dem Rücken, anderer Fuß nach hinten abgelegt.",
+  "ende": "Tiefe Einbeinhocke, Oberschenkel waagerecht, Oberkörper aufrecht."
+ },
+ {
+  "slug": "one-arm_side_deadlift",
+  "geraet": "Langhantel/Kurzhantel",
+  "start": "Seitlich über dem Gewicht stehend, Griff in einer Hand, Knie gebeugt, Rücken gerade.",
+  "ende": "Aufrecht gestreckt, Gewicht seitlich am Oberschenkel.",
+  "unsicher": true
+ },
+ {
+  "slug": "overhead_squat",
+  "geraet": "Langhantel",
+  "start": "Aufrecht stehend, Langhantel mit gestreckten Armen über dem Kopf, Füße schulterbreit.",
+  "ende": "Tiefe Hocke, Hantel gestreckt über dem Kopf, Oberkörper aufrecht."
+ },
+ {
+  "slug": "plie_dumbbell_squat",
+  "geraet": "Kurzhantel",
+  "start": "Sehr breiter Stand, Zehen nach außen, Hantel vor dem Körper zwischen den Beinen.",
+  "ende": "Tiefe Plié-Hocke, Knie nach außen, Hantel vor dem Körper."
+ },
+ {
+  "slug": "rear_leg_raises",
+  "geraet": "Ohne Gerät",
+  "start": "Aufrecht stehend, Hand am Halt.",
+  "ende": "Ein Bein gestreckt nach hinten angehoben."
+ },
+ {
+  "slug": "reverse_band_box_squat",
+  "geraet": "Langhantel, Box, Widerstandsbänder",
+  "start": "Aufrecht stehend, Hantel auf dem Rücken, Bänder von oben, Box hinter dem Gesäß.",
+  "ende": "Gesäß auf der Box, Oberschenkel parallel, Bänder entlastet."
+ },
+ {
+  "slug": "reverse_band_power_squat",
+  "geraet": "Langhantel, Power Rack, Widerstandsbänder",
+  "start": "Aufrecht stehend, Hantel auf dem Rücken, Bänder von oben.",
+  "ende": "Tiefe Hocke, Oberschenkel waagerecht, Bänder entlastet."
+ },
+ {
+  "slug": "rocket_jump",
+  "geraet": "Ohne Gerät",
+  "start": "Tiefe Hocke, Arme hinten.",
+  "ende": "Explosiver Sprung, Körper gestreckt, Arme über dem Kopf."
+ },
+ {
+  "slug": "scissors_jump",
+  "geraet": "Ohne Gerät",
+  "start": "Ausfallschritt-Stellung, ein Fuß vorn, ein Fuß hinten.",
+  "ende": "Im Sprung die Beine gewechselt, Fußposition vertauscht."
+ },
+ {
+  "slug": "single_leg_butt_kick",
+  "geraet": "Ohne Gerät",
+  "start": "Aufrecht stehend.",
+  "ende": "Ein Bein, Ferse zum Gesäß gezogen, Knie gebeugt."
+ },
+ {
+  "slug": "speed_box_squat",
+  "geraet": "Langhantel, Box",
+  "start": "Aufrecht stehend, Hantel auf dem Rücken, Box hinter dem Gesäß.",
+  "ende": "Gesäß kurz auf der Box, Oberschenkel parallel."
+ },
+ {
+  "slug": "speed_squats",
+  "geraet": "Ohne Gerät/Langhantel",
+  "start": "Aufrecht stehend, Füße schulterbreit.",
+  "ende": "Schnelle Hocke, Oberschenkel waagerecht."
+ },
+ {
+  "slug": "split_jump",
+  "geraet": "Ohne Gerät",
+  "start": "Ausfallschritt, ein Fuß vorn, ein Fuß hinten, Knie gebeugt.",
+  "ende": "Sprung, Beine in der Luft gewechselt, Oberkörper aufrecht."
+ },
+ {
+  "slug": "split_squat_with_dumbbells",
+  "geraet": "2 Kurzhanteln",
+  "start": "Schrittstellung, hinterer Fuß hinten, Hanteln neben dem Körper.",
+  "ende": "Absenken, vorderes Knie ca. 90°, hinteres Knie knapp über dem Boden."
+ },
+ {
+  "slug": "squat_with_bands",
+  "geraet": "Widerstandsband",
+  "start": "Aufrecht stehend, Band unter den Füßen und über den Schultern.",
+  "ende": "Hocke, Oberschenkel waagerecht, Band gespannt."
+ },
+ {
+  "slug": "squat_with_plate_movers",
+  "geraet": "Hantelscheibe(n)",
+  "start": "Aufrecht stehend, Scheibe vor der Brust.",
+  "ende": "Hocke, Scheibe vor der Brust, Oberschenkel waagerecht.",
+  "unsicher": true
+ },
+ {
+  "slug": "squats_-_with_bands",
+  "geraet": "Widerstandsband",
+  "start": "Aufrecht stehend, Band unter den Füßen und über den Schultern.",
+  "ende": "Hocke, Oberschenkel waagerecht, Band gespannt."
+ },
+ {
+  "slug": "standing_long_jump",
+  "geraet": "Ohne Gerät",
+  "start": "Aufrecht stehend, Knie gebeugt, Arme hinten.",
+  "ende": "Weitsprung, Körper gestreckt, Arme vorn, in der Luft."
+ },
+ {
+  "slug": "star_jump",
+  "geraet": "Ohne Gerät",
+  "start": "Aufrecht stehend, Füße zusammen, Arme neben dem Körper.",
+  "ende": "Sprung, Arme und Beine weit gespreizt (Stern)."
+ },
+ {
+  "slug": "weighted_jump_squat",
+  "geraet": "Kurzhanteln/Langhantel",
+  "start": "Tiefe Hocke, Gewicht gehalten.",
+  "ende": "Senkrechter Sprung, Beine gestreckt, in der Luft."
+ },
+ {
+  "slug": "weighted_sissy_squat",
+  "geraet": "Hantelscheibe, Halt",
+  "start": "Aufrecht stehend, Hand am Halt, Scheibe vor der Brust.",
+  "ende": "Knie nach vorn geschoben, Oberkörper nach hinten geneigt, Fersen angehoben."
+ },
+ {
+  "slug": "wide_stance_barbell_squat",
+  "geraet": "Langhantel, Squat-Rack",
+  "start": "Sehr breiter Stand, Hantel auf dem Rücken.",
+  "ende": "Tiefe Hocke, Knie nach außen, Oberschenkel waagerecht."
+ },
+ {
+  "slug": "zercher_squats",
+  "geraet": "Langhantel",
+  "start": "Aufrecht stehend, Hantel in den Ellbogenbeugen, Arme gebeugt.",
+  "ende": "Tiefe Hocke, Hantel in den Ellbogenbeugen, Oberkörper aufrecht."
+ },
+ {
+  "slug": "alternating_cable_shoulder_press",
+  "geraet": "Kabelturm, 2 Griffe tief",
+  "start": "Aufrecht stehend/sitzend, Griffe auf Schulterhöhe, Ellbogen ca. 90°, Handflächen nach vorn.",
+  "ende": "Ein Arm gestreckt über den Kopf gedrückt, anderer Arm bleibt auf Schulterhöhe."
+ },
+ {
+  "slug": "alternating_deltoid_raise",
+  "geraet": "2 Kurzhanteln",
+  "start": "Aufrecht stehend, Hanteln vor den Oberschenkeln, Arme gestreckt.",
+  "ende": "Ein Arm gestreckt nach vorn bis Schulterhöhe angehoben, anderer Arm unten."
+ },
+ {
+  "slug": "anti-gravity_press",
+  "geraet": "Kurzhanteln, Schrägbank",
+  "start": "Bäuchlings auf der Schrägbank, Hanteln vor der Brust hängend.",
+  "ende": "Arme gestreckt nach oben gedrückt/gehoben, Hanteln über dem Kopf.",
+  "unsicher": true
+ },
+ {
+  "slug": "back_flyes_-_with_bands",
+  "geraet": "Widerstandsband",
+  "start": "Aufrecht stehend, Band mit gestreckten Armen vor der Brust.",
+  "ende": "Arme gestreckt seitlich auseinandergezogen, Band gespannt, Schulterblätter zusammen."
+ },
+ {
+  "slug": "band_pull_apart",
+  "geraet": "Widerstandsband",
+  "start": "Aufrecht stehend, Band mit gestreckten Armen vor der Brust auf Schulterhöhe.",
+  "ende": "Arme gestreckt weit auseinandergezogen, Band an der Brust, Schulterblätter zusammen."
+ },
+ {
+  "slug": "barbell_incline_shoulder_raise",
+  "geraet": "Langhantel, Schrägbank",
+  "start": "Rücklings auf der Schrägbank, Hantel mit gestreckten Armen über der Brust.",
+  "ende": "Arme gestreckt über den Kopf geführt, Hantel nach oben.",
+  "unsicher": true
+ },
+ {
+  "slug": "barbell_rear_delt_row",
+  "geraet": "Langhantel",
+  "start": "Vorgebeugt, Oberkörper parallel, Hantel im Obergriff, Arme gestreckt.",
+  "ende": "Ellbogen weit nach außen gebeugt, Hantel zur Brust, hintere Schulter angespannt."
+ },
+ {
+  "slug": "barbell_shoulder_press",
+  "geraet": "Langhantel",
+  "start": "Aufrecht, Hantel vor den Schultern, Ellbogen unter der Stange.",
+  "ende": "Arme gestreckt über dem Kopf, Hantel oben."
+ },
+ {
+  "slug": "bent_over_dumbbell_rear_delt_raise_with_head_on_bench",
+  "geraet": "Flachbank, 2 Kurzhanteln",
+  "start": "Vorgebeugt, Stirn auf der Bank, Arme hängend nach unten, Hanteln im Neutralgriff.",
+  "ende": "Arme gestreckt seitlich bis Schulterhöhe angehoben, Schulterblätter zusammen."
+ },
+ {
+  "slug": "bent_over_low-pulley_side_lateral",
+  "geraet": "Kabelzug (tief)",
+  "start": "Vorgebeugt, Griffe gekreuzt vor den Knien, Arme gestreckt.",
+  "ende": "Arme gestreckt seitlich bis Schulterhöhe angehoben."
+ },
+ {
+  "slug": "bradford_rocky_presses",
+  "geraet": "Langhantel",
+  "start": "Aufrecht, Hantel vor der Brust/Schulter.",
+  "ende": "Hantel über den Kopf gedrückt, dann hinter den Kopf gesenkt im Wechsel.",
+  "unsicher": true
+ },
+ {
+  "slug": "cable_internal_rotation",
+  "geraet": "Kabelzug (auf Ellbogenhöhe)",
+  "start": "Seitlich zum Kabelzug, Ellbogen am Körper 90°, Hand außen.",
+  "ende": "Unterarm zum Bauch gedreht, Ellbogen bleibt am Körper."
+ },
+ {
+  "slug": "cable_rear_delt_fly",
+  "geraet": "Kabelturm, 2 Griffe",
+  "start": "Gegenüber dem Kabelzug stehend, Griffe gekreuzt vor der Brust, Arme gestreckt.",
+  "ende": "Arme gestreckt weit auseinandergezogen, Schulterblätter zusammen."
+ },
+ {
+  "slug": "cable_rope_rear-delt_rows",
+  "geraet": "Kabelzug (hoch), Tau",
+  "start": "Sitzend/stehend, Tau auf Gesichtshöhe, Arme gestreckt vor dem Körper.",
+  "ende": "Ellbogen hoch nach außen gebeugt, Tau zum Gesicht gezogen."
+ },
+ {
+  "slug": "cable_seated_lateral_raise",
+  "geraet": "Kabelzug (tief), Bank",
+  "start": "Sitzend, Griff vor dem Körper, Arm gestreckt nach unten.",
+  "ende": "Arm gestreckt seitlich bis Schulterhöhe angehoben."
+ },
+ {
+  "slug": "cable_shoulder_press",
+  "geraet": "Kabelturm, Griffe",
+  "start": "Sitzend, Griffe auf Schulterhöhe, Ellbogen ca. 90°.",
+  "ende": "Arme gestreckt über dem Kopf, Griffe oben."
+ },
+ {
+  "slug": "car_drivers",
+  "geraet": "Hantelscheibe",
+  "start": "Aufrecht, Scheibe mit beiden Händen vor der Brust.",
+  "ende": "Scheibe gedreht wie ein Lenkrad, Arme gestreckt, Rotation.",
+  "unsicher": true
+ },
+ {
+  "slug": "cuban_press",
+  "geraet": "Kurzhanteln",
+  "start": "Aufrecht, Hanteln vor dem Körper, Ellbogen auf Schulterhöhe.",
+  "ende": "Rotation und Pressen über den Kopf, Arme gestreckt."
+ },
+ {
+  "slug": "dumbbell_incline_shoulder_raise",
+  "geraet": "Schrägbank, 2 Kurzhanteln",
+  "start": "Rücklings auf der Schrägbank, Hanteln mit gestreckten Armen über der Brust.",
+  "ende": "Arme gestreckt nach vorn/oben geführt, Hanteln über dem Kopf."
+ },
+ {
+  "slug": "dumbbell_lying_one-arm_rear_lateral_raise",
+  "geraet": "Flachbank, 1 Kurzhantel",
+  "start": "Seitlich auf der Bank liegend, Arm gestreckt nach unten vor dem Körper.",
+  "ende": "Arm gestreckt nach oben angehoben, senkrecht über der Schulter."
+ },
+ {
+  "slug": "dumbbell_lying_rear_lateral_raise",
+  "geraet": "Flachbank, 2 Kurzhanteln",
+  "start": "Bäuchlings auf der Bank, Arme hängend nach unten.",
+  "ende": "Arme gestreckt seitlich auf Schulterhöhe angehoben."
+ },
+ {
+  "slug": "dumbbell_one-arm_shoulder_press",
+  "geraet": "1 Kurzhantel",
+  "start": "Aufrecht, Hantel auf Schulterhöhe.",
+  "ende": "Arm gestreckt über dem Kopf."
+ },
+ {
+  "slug": "dumbbell_one-arm_upright_row",
+  "geraet": "1 Kurzhantel",
+  "start": "Aufrecht, Hantel vor den Oberschenkeln, Arm gestreckt.",
+  "ende": "Hantel zum Kinn gezogen, Ellbogen hoch über Schulterhöhe."
+ },
+ {
+  "slug": "dumbbell_raise",
+  "geraet": "2 Kurzhanteln",
+  "start": "Aufrecht, Hanteln seitlich, Arme gestreckt.",
+  "ende": "Arme gestreckt seitlich bis Schulterhöhe angehoben."
+ },
+ {
+  "slug": "dumbbell_scaption",
+  "geraet": "2 Kurzhanteln",
+  "start": "Aufrecht, Hanteln vor den Oberschenkeln, Arme gestreckt.",
+  "ende": "Arme gestreckt in V-Form (30° nach vorn) bis Schulterhöhe angehoben, Daumen oben."
+ },
+ {
+  "slug": "dumbbell_shoulder_press",
+  "geraet": "2 Kurzhanteln",
+  "start": "Aufrecht, Hanteln auf Schulterhöhe, Ellbogen 90°.",
+  "ende": "Arme gestreckt über dem Kopf, Hanteln zusammen."
+ },
+ {
+  "slug": "external_rotation",
+  "geraet": "Kurzhantel, Bank",
+  "start": "Seitlich liegend, Ellbogen am Körper 90°, Hantel vor dem Bauch.",
+  "ende": "Unterarm nach oben/außen gedreht, Ellbogen am Körper."
+ },
+ {
+  "slug": "external_rotation_with_band",
+  "geraet": "Widerstandsband",
+  "start": "Aufrecht, Ellbogen am Körper 90°, Band in der Hand, Hand vor dem Bauch.",
+  "ende": "Unterarm nach außen gedreht, Band gespannt."
+ },
+ {
+  "slug": "external_rotation_with_cable",
+  "geraet": "Kabelzug (auf Ellbogenhöhe)",
+  "start": "Seitlich, Ellbogen am Körper 90°, Hand vor dem Bauch.",
+  "ende": "Unterarm nach außen gedreht."
+ },
+ {
+  "slug": "face_pull",
+  "geraet": "Kabelzug (hoch), Tau",
+  "start": "Aufrecht, Tau auf Gesichtshöhe, Arme gestreckt.",
+  "ende": "Tau zum Gesicht gezogen, Ellbogen hoch außen, Schulterblätter zusammen."
+ },
+ {
+  "slug": "front_cable_raise",
+  "geraet": "Kabelzug (tief)",
+  "start": "Mit dem Rücken zum Kabelzug, Griff vor den Oberschenkeln.",
+  "ende": "Arm gestreckt nach vorn bis Schulterhöhe angehoben."
+ },
+ {
+  "slug": "front_dumbbell_raise",
+  "geraet": "Kurzhantel",
+  "start": "Aufrecht, Hanteln vor den Oberschenkeln.",
+  "ende": "Arme gestreckt nach vorn bis Schulterhöhe angehoben."
+ },
+ {
+  "slug": "front_incline_dumbbell_raise",
+  "geraet": "Schrägbank, Kurzhanteln",
+  "start": "Bäuchlings auf der Schrägbank, Arme gestreckt nach unten.",
+  "ende": "Arme gestreckt nach vorn bis Schulterhöhe angehoben."
+ },
+ {
+  "slug": "front_two-dumbbell_raise",
+  "geraet": "2 Kurzhanteln",
+  "start": "Aufrecht, Hanteln vor den Oberschenkeln.",
+  "ende": "Beide Arme gestreckt nach vorn bis Schulterhöhe angehoben."
+ },
+ {
+  "slug": "handstand_push-ups",
+  "geraet": "Wand",
+  "start": "Handstand an der Wand, Arme gestreckt.",
+  "ende": "Ellbogen gebeugt, Kopf zum Boden abgesenkt."
+ },
+ {
+  "slug": "internal_rotation_with_band",
+  "geraet": "Widerstandsband",
+  "start": "Aufrecht, Ellbogen am Körper 90°, Band in der Hand, Hand außen.",
+  "ende": "Unterarm zum Bauch gedreht, Band gespannt."
+ },
+ {
+  "slug": "iron_cross",
+  "geraet": "Kurzhanteln",
+  "start": "Aufrecht, Arme gestreckt seitlich auf Schulterhöhe.",
+  "ende": "Arme gestreckt vor dem Körper zusammengeführt.",
+  "unsicher": true
+ },
+ {
+  "slug": "lateral_raise_-_with_bands",
+  "geraet": "Widerstandsband",
+  "start": "Aufrecht, Band unter den Füßen, Arme gestreckt neben dem Körper.",
+  "ende": "Arme gestreckt seitlich bis Schulterhöhe angehoben."
+ },
+ {
+  "slug": "low_pulley_row_to_neck",
+  "geraet": "Kabelzug (tief), Tau",
+  "start": "Aufrecht, Tau vor den Oberschenkeln.",
+  "ende": "Tau zum Hals gezogen, Ellbogen hoch außen."
+ },
+ {
+  "slug": "lying_one-arm_lateral_raise",
+  "geraet": "Flachbank, 1 Kurzhantel",
+  "start": "Seitlich auf der Bank liegend, Arm gestreckt am Körper.",
+  "ende": "Arm gestreckt nach oben angehoben bis senkrecht."
+ },
+ {
+  "slug": "lying_rear_delt_raise",
+  "geraet": "Flachbank, 2 Kurzhanteln",
+  "start": "Bäuchlings auf der Bank, Arme hängend nach unten.",
+  "ende": "Arme gestreckt seitlich bis Schulterhöhe angehoben."
+ },
+ {
+  "slug": "one-arm_incline_lateral_raise",
+  "geraet": "Schrägbank, 1 Kurzhantel",
+  "start": "Seitlich an der Schrägbank angelehnt, Arm gestreckt nach unten.",
+  "ende": "Arm gestreckt seitlich bis Schulterhöhe angehoben."
+ },
+ {
+  "slug": "one-arm_side_laterals",
+  "geraet": "1 Kurzhantel",
+  "start": "Aufrecht, Hantel seitlich am Oberschenkel.",
+  "ende": "Arm gestreckt seitlich bis Schulterhöhe angehoben."
+ },
+ {
+  "slug": "power_partials",
+  "geraet": "Kurzhanteln",
+  "start": "Aufrecht, Hanteln an den Oberschenkeln.",
+  "ende": "Arme seitlich bis Hüfthöhe kurz angehoben.",
+  "unsicher": true
+ },
+ {
+  "slug": "push_press",
+  "geraet": "Langhantel",
+  "start": "Aufrecht, Hantel vor den Schultern, Knie leicht gebeugt.",
+  "ende": "Knie gestreckt, Arme gestreckt über dem Kopf."
+ },
+ {
+  "slug": "push_press_-_behind_the_neck",
+  "geraet": "Langhantel",
+  "start": "Aufrecht, Hantel hinter dem Nacken, Knie leicht gebeugt.",
+  "ende": "Knie gestreckt, Arme gestreckt über dem Kopf."
+ },
+ {
+  "slug": "reverse_flyes",
+  "geraet": "Kurzhanteln",
+  "start": "Vorgebeugt, Arme hängend.",
+  "ende": "Arme gestreckt seitlich auf Schulterhöhe angehoben."
+ },
+ {
+  "slug": "reverse_flyes_with_external_rotation",
+  "geraet": "Kurzhanteln",
+  "start": "Vorgebeugt, Arme hängend.",
+  "ende": "Arme seitlich angehoben, Daumen nach oben außen gedreht."
+ },
+ {
+  "slug": "seated_barbell_military_press",
+  "geraet": "Langhantel, Bank mit Rückenlehne",
+  "start": "Sitzend, Hantel vor den Schultern.",
+  "ende": "Arme gestreckt über dem Kopf."
+ },
+ {
+  "slug": "seated_bent-over_rear_delt_raise",
+  "geraet": "Flachbank, 2 Kurzhanteln",
+  "start": "Sitzend, vorgebeugt, Arme hängend.",
+  "ende": "Arme gestreckt seitlich auf Schulterhöhe angehoben."
+ },
+ {
+  "slug": "seated_cable_shoulder_press",
+  "geraet": "Kabelzug, Bank",
+  "start": "Sitzend, Griffe auf Schulterhöhe.",
+  "ende": "Arme gestreckt über dem Kopf."
+ },
+ {
+  "slug": "seated_dumbbell_press",
+  "geraet": "Bank, Kurzhanteln",
+  "start": "Sitzend, Hanteln auf Schulterhöhe.",
+  "ende": "Arme gestreckt über dem Kopf."
+ },
+ {
+  "slug": "seated_front_deltoid",
+  "geraet": "Ohne Gerät",
+  "start": "Sitzend, Arme hinter dem Rücken gefasst.",
+  "ende": "Arme gestreckt nach hinten oben gezogen, Brust offen.",
+  "unsicher": true
+ },
+ {
+  "slug": "seated_side_lateral_raise",
+  "geraet": "Bank, Kurzhanteln",
+  "start": "Sitzend, Hanteln seitlich, Arme gestreckt.",
+  "ende": "Arme gestreckt seitlich auf Schulterhöhe angehoben."
+ },
+ {
+  "slug": "see-saw_press__alternating_side_press_",
+  "geraet": "Kurzhanteln",
+  "start": "Aufrecht, Hanteln auf Schulterhöhe.",
+  "ende": "Ein Arm gestreckt über dem Kopf, andere Hantel an der Schulter."
+ },
+ {
+  "slug": "shoulder_press_-_with_bands",
+  "geraet": "Widerstandsband",
+  "start": "Aufrecht, Band unter den Füßen, Hände auf Schulterhöhe.",
+  "ende": "Arme gestreckt über dem Kopf, Band gespannt."
+ },
+ {
+  "slug": "side_lateral_raise",
+  "geraet": "Kurzhanteln",
+  "start": "Aufrecht, Hanteln seitlich, Arme gestreckt.",
+  "ende": "Arme gestreckt seitlich bis Schulterhöhe angehoben."
+ },
+ {
+  "slug": "side_laterals_to_front_raise",
+  "geraet": "Kurzhanteln",
+  "start": "Aufrecht, Hanteln seitlich.",
+  "ende": "Arme seitlich angehoben, dann gestreckt nach vorn geführt."
+ },
+ {
+  "slug": "single_dumbbell_raise",
+  "geraet": "1 Kurzhantel",
+  "start": "Aufrecht, Hantel mit beiden Händen vor den Oberschenkeln.",
+  "ende": "Hantel gestreckt nach vorn bis Schulterhöhe angehoben."
+ },
+ {
+  "slug": "standing_alternating_dumbbell_press",
+  "geraet": "Kurzhanteln",
+  "start": "Aufrecht, Hanteln auf Schulterhöhe.",
+  "ende": "Ein Arm gestreckt über dem Kopf."
+ },
+ {
+  "slug": "standing_barbell_press_behind_neck",
+  "geraet": "Langhantel",
+  "start": "Aufrecht, Hantel hinter dem Nacken.",
+  "ende": "Arme gestreckt über dem Kopf."
+ },
+ {
+  "slug": "standing_bradford_press",
+  "geraet": "Langhantel",
+  "start": "Aufrecht, Hantel vor dem Gesicht.",
+  "ende": "Hantel hinter dem Kopf, Wechsel vor/hinter.",
+  "unsicher": true
+ },
+ {
+  "slug": "standing_dumbbell_press",
+  "geraet": "Kurzhanteln",
+  "start": "Aufrecht, Hanteln auf Schulterhöhe.",
+  "ende": "Arme gestreckt über dem Kopf."
+ },
+ {
+  "slug": "standing_dumbbell_straight-arm_front_delt_raise_above_head",
+  "geraet": "Kurzhanteln",
+  "start": "Aufrecht, Hanteln vor den Oberschenkeln.",
+  "ende": "Arme gestreckt über den Kopf angehoben."
+ },
+ {
+  "slug": "standing_front_barbell_raise_over_head",
+  "geraet": "Langhantel",
+  "start": "Aufrecht, Hantel vor den Oberschenkeln.",
+  "ende": "Hantel gestreckt über den Kopf angehoben."
+ },
+ {
+  "slug": "standing_low-pulley_deltoid_raise",
+  "geraet": "Kabelzug (tief)",
+  "start": "Seitlich zum Kabelzug, Griff vor dem Körper.",
+  "ende": "Arm gestreckt seitlich bis Schulterhöhe angehoben."
+ },
+ {
+  "slug": "standing_military_press",
+  "geraet": "Langhantel",
+  "start": "Aufrecht, Hantel vor den Schultern.",
+  "ende": "Arme gestreckt über dem Kopf."
+ },
+ {
+  "slug": "standing_palm-in_one-arm_dumbbell_press",
+  "geraet": "1 Kurzhantel",
+  "start": "Aufrecht, Hantel auf Schulterhöhe, Neutralgriff.",
+  "ende": "Arm gestreckt über dem Kopf."
+ },
+ {
+  "slug": "standing_palms-in_dumbbell_press",
+  "geraet": "Kurzhanteln",
+  "start": "Aufrecht, Hanteln auf Schulterhöhe, Neutralgriff.",
+  "ende": "Arme gestreckt über dem Kopf."
+ },
+ {
+  "slug": "straight_raises_on_incline_bench",
+  "geraet": "Schrägbank, Kurzhanteln",
+  "start": "Bäuchlings auf der Schrägbank, Arme hängend.",
+  "ende": "Arme gestreckt nach vorn/seitlich angehoben."
+ },
+ {
+  "slug": "upright_barbell_row",
+  "geraet": "Langhantel",
+  "start": "Aufrecht, Hantel vor den Oberschenkeln, Arme gestreckt.",
+  "ende": "Hantel zum Kinn gezogen, Ellbogen hoch."
+ },
+ {
+  "slug": "barbell_shrug",
+  "geraet": "Langhantel",
+  "start": "Aufrecht, Hantel vor den Oberschenkeln, Arme gestreckt.",
+  "ende": "Schultern bis zu den Ohren hochgezogen."
+ },
+ {
+  "slug": "barbell_shrug_behind_the_back",
+  "geraet": "Langhantel",
+  "start": "Aufrecht, Hantel hinter dem Rücken, Arme gestreckt.",
+  "ende": "Schultern bis zu den Ohren hochgezogen."
+ },
+ {
+  "slug": "cable_shrugs",
+  "geraet": "Kabelzug (tief)",
+  "start": "Aufrecht, Griff vor den Oberschenkeln.",
+  "ende": "Schultern bis zu den Ohren hochgezogen."
+ },
+ {
+  "slug": "dumbbell_shrug",
+  "geraet": "Kurzhanteln",
+  "start": "Aufrecht, Hanteln neben dem Körper.",
+  "ende": "Schultern bis zu den Ohren hochgezogen."
+ },
+ {
+  "slug": "standing_dumbbell_upright_row",
+  "geraet": "Kurzhanteln",
+  "start": "Aufrecht, Hanteln vor den Oberschenkeln.",
+  "ende": "Hanteln zum Kinn gezogen, Ellbogen hoch."
+ },
+ {
+  "slug": "upright_cable_row",
+  "geraet": "Kabelzug (tief), Stange",
+  "start": "Aufrecht, Stange vor den Oberschenkeln.",
+  "ende": "Stange zum Kinn gezogen, Ellbogen hoch."
+ },
+ {
+  "slug": "upright_row_-_with_bands",
+  "geraet": "Widerstandsband",
+  "start": "Aufrecht, Band unter den Füßen, Hände vor den Oberschenkeln.",
+  "ende": "Hände zum Kinn gezogen, Ellbogen hoch."
+ },
+ {
+  "slug": "band_skull_crusher",
+  "geraet": "Widerstandsband, Flachbank",
+  "start": "Rücklings auf der Bank, Arme gestreckt über der Brust, Band gespannt.",
+  "ende": "Ellbogen gebeugt, Hände neben der Stirn, Oberarme senkrecht."
+ },
+ {
+  "slug": "bench_dips",
+  "geraet": "Flachbank",
+  "start": "Rücken zur Bank, Hände auf der Bankkante, Arme gestreckt, Beine gestreckt.",
+  "ende": "Ellbogen ca. 90° gebeugt, Gesäß nahe am Boden."
+ },
+ {
+  "slug": "bench_press_-_powerlifting",
+  "geraet": "Flachbank, Langhantel",
+  "start": "Rücklings, Hantel mit gestreckten Armen über der Brust, Brücke.",
+  "ende": "Hantel an der Brust, Ellbogen gebeugt."
+ },
+ {
+  "slug": "board_press",
+  "geraet": "Flachbank, Langhantel, Brett",
+  "start": "Rücklings, Hantel mit gestreckten Armen.",
+  "ende": "Hantel auf das Brett an der Brust abgesenkt."
+ },
+ {
+  "slug": "body_tricep_press",
+  "geraet": "Langhantel/Stange",
+  "start": "Aufrecht an Stange, Arme gestreckt.",
+  "ende": "Körper nach unten abgesenkt, Ellbogen gebeugt.",
+  "unsicher": true
+ },
+ {
+  "slug": "body-up",
+  "geraet": "Stange",
+  "start": "Stütz auf der Stange, Arme gestreckt.",
+  "ende": "Ellbogen gebeugt, Körper abgesenkt.",
+  "unsicher": true
+ },
+ {
+  "slug": "cable_incline_triceps_extension",
+  "geraet": "Schrägbank, Kabelzug",
+  "start": "Rücklings auf der Schrägbank, Arme über dem Kopf, Ellbogen gebeugt.",
+  "ende": "Arme gestreckt nach oben."
+ },
+ {
+  "slug": "cable_lying_triceps_extension",
+  "geraet": "Flachbank, Kabelzug",
+  "start": "Rücklings, Arme gestreckt senkrecht.",
+  "ende": "Ellbogen gebeugt, Hände hinter dem Kopf."
+ },
+ {
+  "slug": "cable_one_arm_tricep_extension",
+  "geraet": "Kabelzug (hoch), Einhandgriff",
+  "start": "Aufrecht, Ellbogen gebeugt am Körper.",
+  "ende": "Arm gestreckt nach unten."
+ },
+ {
+  "slug": "close-grip_barbell_bench_press",
+  "geraet": "Flachbank, Langhantel",
+  "start": "Rücklings, enger Griff, Arme gestreckt über der Brust.",
+  "ende": "Hantel an der Brust, Ellbogen nah am Körper."
+ },
+ {
+  "slug": "close-grip_dumbbell_press",
+  "geraet": "Flachbank, Kurzhanteln",
+  "start": "Rücklings, Hanteln eng, Arme gestreckt.",
+  "ende": "Hanteln an der Brust, Ellbogen nah am Körper."
+ },
+ {
+  "slug": "close-grip_ez-bar_press",
+  "geraet": "Flachbank, SZ-Stange",
+  "start": "Rücklings, enger Griff, Arme gestreckt.",
+  "ende": "Stange an der Brust, Ellbogen nah am Körper."
+ },
+ {
+  "slug": "close-grip_push-up_off_of_a_dumbbell",
+  "geraet": "Kurzhantel",
+  "start": "Liegestütz mit Händen eng auf einer Kurzhantel, Arme gestreckt.",
+  "ende": "Brust zur Hantel abgesenkt, Ellbogen nah am Körper."
+ },
+ {
+  "slug": "decline_close-grip_bench_to_skull_crusher",
+  "geraet": "Decline-Bank, SZ-Stange",
+  "start": "Rücklings, enger Griff, Arme gestreckt.",
+  "ende": "Stange hinter den Kopf gesenkt, Ellbogen gebeugt."
+ },
+ {
+  "slug": "decline_dumbbell_triceps_extension",
+  "geraet": "Decline-Bank, Kurzhanteln",
+  "start": "Rücklings, Arme gestreckt senkrecht.",
+  "ende": "Ellbogen gebeugt, Hanteln neben der Stirn."
+ },
+ {
+  "slug": "decline_ez_bar_triceps_extension",
+  "geraet": "Decline-Bank, SZ-Stange",
+  "start": "Rücklings, Arme gestreckt senkrecht.",
+  "ende": "Ellbogen gebeugt, Stange an der Stirn."
+ },
+ {
+  "slug": "dumbbell_floor_press",
+  "geraet": "Kurzhanteln, Matte",
+  "start": "Rücklings auf dem Boden, Arme gestreckt über der Brust.",
+  "ende": "Ellbogen am Boden aufgelegt, Hanteln an der Brust."
+ },
+ {
+  "slug": "dumbbell_one-arm_triceps_extension",
+  "geraet": "1 Kurzhantel",
+  "start": "Aufrecht, Hantel gestreckt über dem Kopf.",
+  "ende": "Ellbogen gebeugt, Hantel hinter dem Kopf."
+ },
+ {
+  "slug": "frog_sit-ups",
+  "geraet": "Matte",
+  "start": "Flach auf dem Rücken, Füße zusammen, Knie weit nach außen (Froschstellung), Hände hinter dem Kopf.",
+  "ende": "Oberkörper aufgerichtet, Hände zu den Füßen gestreckt, Knie bleiben nach außen offen."
+ },
+ {
+  "slug": "jackknife_sit-up",
+  "geraet": "Matte",
+  "start": "Flach auf dem Rücken, Arme über dem Kopf gestreckt, Beine gestreckt knapp über dem Boden.",
+  "ende": "Oberkörper und gestreckte Beine gleichzeitig angehoben, Hände berühren die Zehen oben, Körper V-förmig."
+ },
+ {
+  "slug": "janda_sit-up",
+  "geraet": "Matte",
+  "start": "Flach auf dem Rücken, Knie gebeugt, Fersen am Boden fixiert, Hände vor der Brust gekreuzt.",
+  "ende": "Oberkörper vollständig aufgerichtet, Gesäß gespannt, Knie bleiben gebeugt, Hände vor der Brust.",
+  "unsicher": true
+ },
+ {
+  "slug": "leg_pull-in",
+  "geraet": "Matte",
+  "start": "Flach auf dem Rücken, Beine gestreckt knapp über dem Boden, Hände neben dem Körper.",
+  "ende": "Beine und Oberkörper zusammengezogen, Knie zur Brust, Hände halten die Schienbeine.",
+  "unsicher": true
+ },
+ {
+  "slug": "press_sit-up",
+  "geraet": "Matte, Langhantel/Kurzhantel",
+  "start": "Flach auf dem Rücken, Hantel mit gestreckten Armen über der Brust, Knie gebeugt, Füße am Boden.",
+  "ende": "Oberkörper aufgerichtet, Arme gestreckt über dem Kopf mit der Hantel, Rücken gerade.",
+  "unsicher": true
+ },
+ {
+  "slug": "one-arm_high-pulley_cable_side_bends",
+  "geraet": "Kabelzug (hoch) mit Griff",
+  "start": "Aufrecht stehend seitlich zum hohen Kabelzug, Griff in der nahen Hand über dem Kopf gehalten, Arm leicht gebeugt, Rumpf neutral.",
+  "ende": "Oberkörper zur Gegenseite geneigt, Arm mit Griff am Körper nach unten gezogen, Rumpf seitlich verkürzt.",
+  "unsicher": true
+ }
+]
