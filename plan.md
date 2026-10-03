@@ -255,3 +255,8 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - Foto-Generierung läuft mit 2 Gemini-Accounts parallel (G1 von vorn ab Index 145, G2 von hinten ab 436). Je Übung 4 Fotos (m, m-end, w, w-end) für GIF-Agent.
 - Redo: incline_cable_chest_press + ~80 aus Startpositions-Audit. Korrekte Ausführung muss sichtbar sein; Stil nicht driften lassen.
 - Warteliste: Regisseur-Agent (Skript für Effekt/richtige Ausführung) + Kameramann-Agent (Kameraführung) – erst starten wenn Alex es sagt (Stilrisiko).
+
+## 03.10. 16:45 – Stand Generierung + Helligkeit
+- 4-Foto-Sets fertig: vorn bis isometric_wipers (151), hinten bis standing_dumbbell_triceps_extension (430). Restzeit ungefähr 20 h.
+- Alex-Wunsch: Bilder heller, Hanteln/Seile/Kabel deutlich sichtbar (ab Index 152 vorn / 429 hinten in jedem Prompt; Start+Ende je Übung gleich hell).
+- Redo: Low-Pulley-Frau (Kabel unsichtbar), ggf. Pushdown/Rope-Varianten, incline_cable_chest_press, ~80 aus Audit.
