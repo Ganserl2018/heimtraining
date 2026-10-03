@@ -260,3 +260,10 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - 4-Foto-Sets fertig: vorn bis isometric_wipers (151), hinten bis standing_dumbbell_triceps_extension (430). Restzeit ungefähr 20 h.
 - Alex-Wunsch: Bilder heller, Hanteln/Seile/Kabel deutlich sichtbar (ab Index 152 vorn / 429 hinten in jedem Prompt; Start+Ende je Übung gleich hell).
 - Redo: Low-Pulley-Frau (Kabel unsichtbar), ggf. Pushdown/Rope-Varianten, incline_cable_chest_press, ~80 aus Audit.
+
+## 03.10. 23:15 – Wechsel-Workflow + Stand (Übungsfotos)
+- Ziel: alles fertig Mo 05.10. 12:00, Push aufs Handy am Ende. Gestaffelter Gemini-Wechsel G1/G2, ≈ 28 Übungen/h.
+- Fertig (4er-Set): vorn bis Index 173, hinten bis 403; in Arbeit 174 (vorn) / 402 (hinten). ≈ 227 Übungen mit Fotos, ≈ 70 komplett (ungefähr). End-Fotos für ≈ 157 frühe Übungen fehlen.
+- Perspektivfehler: Kamera ändern (Start = Ende gleiche Kamera), Fehler sammeln und am Schluss korrigieren (~/Downloads/_redo_list.txt).
+- Neue Redos: 403 m-end/w-end, 174 m-end/w.
+- Regisseur + Kameramann: von Alex 23:14 gewünscht, Start steht aus (Pose-/Kamera-Vorgaben für 174–402 + Redo).
