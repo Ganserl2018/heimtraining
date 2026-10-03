@@ -34,7 +34,7 @@ def warp(img, f, t):
 
 def ease(t): return t * t * (3 - 2 * t)         # smoothstep
 
-def build_ab(A, B, n, force_blend=False, force_flow=False):
+def build_ab(A, B, n, force_blend=False, force_flow=False, sharp=1.0):
     """Liefert n Zwischenbilder A->B (exklusive A und B) + Info-Text."""
     fab, fba = flow(A, B), flow(B, A)           # fab: Pixel in A -> Ort in B
     # Konsistenz (Vorwaerts-Rueckwaerts) -> Vertrauen pro Pixel
@@ -62,7 +62,8 @@ def build_ab(A, B, n, force_blend=False, force_flow=False):
             b = warp(B, fab, 1 - t).astype(np.float32)      # B in Richtung A bewegt
         else:
             a, b = Af, Bf
-        fr = (1 - t) * a + t * b
+        w = float(np.clip((t - 0.5) * sharp + 0.5, 0, 1))   # sharp>1: kuerzere Doppelbild-Phase
+        fr = (1 - w) * a + w * b
         fr = static * Af + (1 - static) * fr      # unbewegter Hintergrund bleibt pixelgleich (kein Rauschen, kleiner)
         out.append(np.clip(fr, 0, 255).astype(np.uint8))
     return out, info
@@ -76,6 +77,7 @@ def main():
     ap.add_argument('--colors', type=int, default=128)
     ap.add_argument('--nodither', action='store_true')
     ap.add_argument('--lossy', type=int, default=60, help='gifsicle --lossy (0=aus), nur wenn gifsicle installiert')
+    ap.add_argument('--sharp', type=float, default=1.0, help='Blend-Schaerfe (1=weich, 2-3=kurzes Ueberblenden)')
     ap.add_argument('--flow', action='store_true', help='Flow erzwingen (kein Fallback)')
     ap.add_argument('--blend', action='store_true', help='Flow ausschalten (nur Ueberblenden)')
     o = ap.parse_args()
@@ -86,7 +88,7 @@ def main():
     else:
         ap.error('start.jpg end.jpg out.gif')
     A, B = load(a), load(b)
-    mid, info = build_ab(A, B, o.frames, o.blend, o.flow)
+    mid, info = build_ab(A, B, o.frames, o.blend, o.flow, o.sharp)
     seq = [A] + mid + [B] + mid[::-1]           # danach Loop -> A (nahtlos)
     dur = [o.hold] + [o.ms] * len(mid) + [o.hold] + [o.ms] * len(mid)
     # eine gemeinsame Palette (kein Flackern): aus A, B und Zwischenbildern
