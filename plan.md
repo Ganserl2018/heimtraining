@@ -250,3 +250,8 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - Nur an Querformat-/Fremd-Paaren getestet (Bankdrücken 2,15 MB, Curl 1,8 MB); echte 3:4-Paare fehlen noch. Fallback-Schwelle 0,8 = Heuristik.
 - Endpositions-Fotos existieren noch nicht (Test geplant: Bankdrücken, Kniebeuge, Klimmzüge, Rudern, Curl).
 - Gemini-Generierung läuft weiter bei Index 137 flat_bench_cable_flyes (Queue bis 440, danach ~80 Redo aus Startpos-Audit).
+
+## 03.10. 16:05 – 2 Accounts parallel + Warteliste
+- Foto-Generierung läuft mit 2 Gemini-Accounts parallel (G1 von vorn ab Index 145, G2 von hinten ab 436). Je Übung 4 Fotos (m, m-end, w, w-end) für GIF-Agent.
+- Redo: incline_cable_chest_press + ~80 aus Startpositions-Audit. Korrekte Ausführung muss sichtbar sein; Stil nicht driften lassen.
+- Warteliste: Regisseur-Agent (Skript für Effekt/richtige Ausführung) + Kameramann-Agent (Kameraführung) – erst starten wenn Alex es sagt (Stilrisiko).
