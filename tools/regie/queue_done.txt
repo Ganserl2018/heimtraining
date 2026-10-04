@@ -14,3 +14,8 @@ spell_caster
 toe_touchers
 spider_crawl
 superman
+chin-up
+seated_cable_rows
+stiff_leg_barbell_good_morning
+bent_over_two-dumbbell_row
+dumbbell_incline_row
