@@ -39,3 +39,4 @@ decline_dumbbell_bench_press
 rack_pulls
 decline_dumbbell_flyes
 decline_dumbbell_flyes
+close-grip_front_lat_pulldown
