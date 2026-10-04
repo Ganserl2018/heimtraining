@@ -40,3 +40,4 @@ rack_pulls
 decline_dumbbell_flyes
 decline_dumbbell_flyes
 close-grip_front_lat_pulldown
+one_arm_lat_pulldown
