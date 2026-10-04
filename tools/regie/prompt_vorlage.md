@@ -16,3 +16,6 @@ Person: athletischer Mann, ca. 30, kurze dunkle Haare, schwarzes Shirt, graue Sh
 - Pflicht: vor jeder Übung das alte DB-GIF in gifs/ ansehen (3 Frames) und Start/Ende daraus ableiten.
 - Start-/Endposition immer mit Feinheiten beschreiben, z.B. Bankdrücken: Startposition = Langhantel liegt auf der Brust, Ellbogen ca. 85°, Unterarme senkrecht; Endposition = Arme ausgestreckt (ca. 170°), Stange über den Schultern.
 - Befund Referenz (Flach, Schräg, Decline, Close-Grip): alle 4 Referenzen zeigen die Kamera schräg von der Fußseite (3/4), Person liegt quer im Bild, Kopf rechts, beide Arme und die ganze Stange sichtbar. Schrägbank ca. 40-45°. Decline: Beine in Polstern fixiert, Bank fällt zum Kopf ab. Close-Grip: Hände schulterbreit, Ellbogen eng am Körper.
+
+## Bank-Flach-Hinweis (04.10.)
+Gemini übernimmt im selben Chat den Schrägwinkel der vorigen Bank. Für flach: NEUER Chat, Satz „komplett waagerechte flache Hantelbank, Rückenlehne auf Höhe der Sitzfläche (0°)".

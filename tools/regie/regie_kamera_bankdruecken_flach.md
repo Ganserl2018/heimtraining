@@ -10,3 +10,8 @@ QA: 1 Sichtbarkeit beide Schultern/Arme, 2 Pose Start, 3 Pose Ende, 4 Körperhal
 - Befund: Mann = Kamera Fußseite leicht seitlich, Kopf rechts im Bild. Frau = Bild gespiegelt, Kopf links, andere Szene (rote Wand, Rack). Ursache: "40° Richtung Kopfende versetzt" ist mehrdeutig (Körperseite und Bildseite des Kopfes nicht festgelegt), getrennte Generierungen ohne gemeinsamen Anker.
 - Eindeutiger Kamera-Satz (Standard für alle Bankübungen im Liegen): "Kamera steht rechts neben der Bank, Brusthöhe, 2 m, 40° zur Körperachse, Blick von der Seite. Der Kopf des Sportlers liegt IMMER auf der RECHTEN Bildseite, die Füße auf der LINKEN. Kein Spiegeln."
 - QA-Punkt 8: Kopf auf der festgelegten Bildseite (rechts) und gleicher Blickwinkel/Szene wie das freigegebene Referenzbild; bei Mann/Frau-Paaren nebeneinander prüfen. Abweichung = nicht bestanden.
+
+## QA-Punkt 9 (Alex 04.10. 02:21) – Bankwinkel prüfen
+- Flach = Rückenlehne waagerecht auf Höhe der Sitzfläche, Kopf nicht höher als Hüfte. Schräg ca. 40–45°, Decline fällt zum Kopf ab.
+- QA vergleicht den Bankwinkel jedes Bildes mit der Vorgabe und mit dem Referenz-GIF. Abweichung = Fehlversuch (zählt zu max. 3).
+- Fehlfall 04.10.: Frau Close-Grip „flach" kam mit angehobener Rückenlehne (Start+Ende) → verworfen, nicht ins GIF.
