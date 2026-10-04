@@ -45,3 +45,4 @@ seated_good_mornings
 lower_back_curl
 deadlift_with_chains
 bent_over_one-arm_long_bar_row
+t-bar_row_with_handle
