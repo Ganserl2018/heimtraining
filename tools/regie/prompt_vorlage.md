@@ -25,3 +25,8 @@ Gemini übernimmt im selben Chat den Schrägwinkel der vorigen Bank. Für flach:
 - Wirkt: Mann Kurzhantel-Bankdrücken flach (Start+Ende) kam im selben Hexagon-Raum, Kopf rechts, flache Bank, zwei Hanteln.
 - Neuer Chat → Seitenverhältnis 3:4 neu setzen (sonst Querformat).
 - Dateien speichern: Download-Dialog Name direkt tippen (kh_flach_side-m / -m-end), dann Sichern.
+
+## Raum-Abwechslung (Alex 04.10. 03:09)
+Nicht mehr alle Bilder im Hexagon-Raum. Pro Übung ein anderer Raum, Mann und Frau derselben Übung im SELBEN Raum (Frau bekommt das Männer-Startbild als Referenzbild). Stil bleibt: dunkles Heimstudio, neon-grüne Akzente, gleiche Personen. Raumliste (rotieren):
+R1 schwarz gestrichene Backsteinwand mit neon-grünen Linienleuchten | R2 Betonwand mit senkrechtem neon-grünem Lichtstreifen | R3 schwarze Holzlamellen-Wand mit neon-grüner Rückbeleuchtung | R4 große Fensterfront bei Nacht mit grünem Licht | R5 dunkle Akustikpaneele mit neon-grünem Lichtring | R6 Hexagon-Wand (nur gelegentlich).
+Bisher Hexagon: Bankgruppe + alle Kurzhantel-Übungen.
