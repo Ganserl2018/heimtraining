@@ -1,0 +1,2692 @@
+[
+{
+"slug": "alternate_heel_touchers",
+"name": "Alternate Heel Touchers",
+"muscle": "abdominals",
+"regie": {
+"slug": "alternate_heel_touchers",
+"geraet": "Matte",
+"start": "Flach auf dem Rücken, Knie gebeugt, Füße am Boden, Arme gestreckt neben dem Körper, Schultern am Boden.",
+"ende": "Schultern leicht angehoben, Oberkörper seitlich eingerollt, eine Hand berührt die gleichseitige Ferse, andere Seite gestreckt."
+},
+"kamera": "Kamera schräg 45 Grad von vorne-oben auf Körperhöhe, Rumpfrotation, Arme und Beine vollständig sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "barbell_ab_rollout",
+"name": "Barbell Ab Rollout",
+"muscle": "abdominals",
+"regie": {
+"slug": "barbell_ab_rollout",
+"geraet": "Langhantel mit Scheiben, Matte",
+"start": "Kniend, Langhantel mit beiden Händen im Obergriff direkt unter den Schultern am Boden, Arme senkrecht, Körper aufrecht, Hüfte über den Knien.",
+"ende": "Langhantel weit nach vorn gerollt, Körper fast gestreckt in einer Linie von Knien bis Schultern, Arme über den Kopf, Rücken gerade."
+},
+"kamera": "Kamera exakt seitlich auf Körperhöhe, Ganzkörper mit Rumpfwinkel, Beinen und Gerät vollständig sichtbar."
+},
+{
+"slug": "bosu_ball_cable_crunch_with_side_bends",
+"name": "Bosu Ball Cable Crunch With Side Bends",
+"muscle": "abdominals",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "bottoms_up",
+"name": "Bottoms Up",
+"muscle": "abdominals",
+"regie": {
+"slug": "bottoms_up",
+"geraet": "Matte",
+"start": "Flach auf dem Rücken, Beine gestreckt senkrecht nach oben, Arme neben dem Körper, Hüfte am Boden.",
+"ende": "Hüfte nach oben gerollt, Beine gestreckt Richtung Decke gestreckt über den Kopf geneigt, Gesäß vom Boden gelöst, Arme drücken am Boden."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "butt-ups",
+"name": "Butt-Ups",
+"muscle": "abdominals",
+"regie": {
+"slug": "butt-ups",
+"geraet": "Matte",
+"start": "Liegestützposition auf den Händen, Arme gestreckt, Körper in einer geraden Linie.",
+"ende": "Hüfte steil nach oben, Gesäß hoch (Pike, Körper A-Form), Beine und Arme gestreckt, Kopf zwischen den Armen."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "cable_judo_flip",
+"name": "Cable Judo Flip",
+"muscle": "abdominals",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "cable_reverse_crunch",
+"name": "Cable Reverse Crunch",
+"muscle": "abdominals",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "cable_russian_twists",
+"name": "Cable Russian Twists",
+"muscle": "abdominals",
+"regie": null,
+"kamera": "Kamera schräg 45 Grad von vorne-oben auf Körperhöhe, Rumpfrotation, Arme und Beine vollständig sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "cable_seated_crunch",
+"name": "Cable Seated Crunch",
+"muscle": "abdominals",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "cocoons",
+"name": "Cocoons",
+"muscle": "abdominals",
+"regie": {
+"slug": "cocoons",
+"geraet": "Matte",
+"start": "Flach auf dem Rücken, Arme über dem Kopf gestreckt, Beine gestreckt knapp über dem Boden.",
+"ende": "Knie zur Brust gezogen, Oberkörper eingerollt, Arme umfassen die Schienbeine, Körper zusammengerollt wie ein Ball."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "crunch_-_legs_on_exercise_ball",
+"name": "Crunch - Legs On Exercise Ball",
+"muscle": "abdominals",
+"regie": {
+"slug": "crunch_-_legs_on_exercise_ball",
+"geraet": "Gymnastikball, Matte",
+"start": "Flach auf dem Rücken, Waden/Unterschenkel auf dem Gymnastikball, Knie und Hüfte ca. 90°, Hände an den Schläfen, Schultern am Boden.",
+"ende": "Oberkörper eingerollt, Schulterblätter vom Boden abgehoben, Bauch angespannt, Unterschenkel bleiben auf dem Ball, Blick zur Decke."
+},
+"kamera": null
+},
+{
+"slug": "dead_bug",
+"name": "Dead Bug",
+"muscle": "abdominals",
+"regie": {
+"slug": "dead_bug",
+"geraet": "Matte",
+"start": "Flach auf dem Rücken, Arme senkrecht nach oben gestreckt, Hüfte und Knie je 90° gebeugt (Oberschenkel senkrecht), unterer Rücken am Boden.",
+"ende": "Rechter Arm über den Kopf gestreckt, linkes Bein gestreckt knapp über dem Boden, andere Seite bleibt in Startposition, Rücken flach."
+},
+"kamera": null
+},
+{
+"slug": "decline_crunch",
+"name": "Decline Crunch",
+"muscle": "abdominals",
+"regie": {
+"slug": "decline_crunch",
+"geraet": "Schrägbank (Decline)",
+"start": "Auf der Decline-Bank liegend, Füße unter den Polstern, Oberkörper flach abgelegt, Hände an den Schläfen oder vor der Brust.",
+"ende": "Oberkörper eingerollt und aufgerichtet, Schultern Richtung Knie, Bauch angespannt, Hüfte bleibt auf der Bank."
+},
+"kamera": null
+},
+{
+"slug": "dumbbell_side_bend",
+"name": "Dumbbell Side Bend",
+"muscle": "abdominals",
+"regie": {
+"slug": "dumbbell_side_bend",
+"geraet": "Kurzhantel",
+"start": "Aufrecht stehend, Füße hüftbreit, eine Kurzhantel in einer Hand neben dem Körper, andere Hand an der Hüfte oder hinter dem Kopf.",
+"ende": "Oberkörper seitlich zur Hantelseite geneigt, Hantel am Oberschenkel nach unten Richtung Knie, Rumpfseite gedehnt; Hüfte bleibt gerade."
+},
+"kamera": null
+},
+{
+"slug": "elbow_to_knee",
+"name": "Elbow to Knee",
+"muscle": "abdominals",
+"regie": {
+"slug": "elbow_to_knee",
+"geraet": "Matte",
+"start": "Flach auf dem Rücken, Hände hinter dem Kopf, Beine gestreckt leicht über dem Boden.",
+"ende": "Oberkörper eingerollt und gedreht, ein Ellbogen berührt das gegenüberliegende Knie, das Knie ist zur Brust gezogen, andere Bein gestreckt."
+},
+"kamera": null
+},
+{
+"slug": "flat_bench_lying_leg_raise",
+"name": "Flat Bench Lying Leg Raise",
+"muscle": "abdominals",
+"regie": {
+"slug": "flat_bench_lying_leg_raise",
+"geraet": "Flachbank",
+"start": "Rücklings auf der Flachbank, Hände halten die Bank hinter dem Kopf, Beine gestreckt und knapp unterhalb Bankhöhe.",
+"ende": "Beine gestreckt bis senkrecht angehoben (90° zum Oberkörper), Hüfte leicht angehoben, unterer Rücken bleibt auf der Bank."
+},
+"kamera": null
+},
+{
+"slug": "gorilla_chin_crunch",
+"name": "Gorilla Chin/Crunch",
+"muscle": "abdominals",
+"regie": {
+"slug": "gorilla_chin_crunch",
+"geraet": "Klimmzugstange / Reck",
+"start": "Hängend an der Stange im Obergriff, Arme gestreckt, Körper gestreckt.",
+"ende": "Kinn über der Stange, Ellbogen gebeugt, Knie Richtung Brust gezogen, Körper eingerollt.",
+"unsicher": true
+},
+"kamera": null
+},
+{
+"slug": "landmine_180_s",
+"name": "Landmine 180's",
+"muscle": "abdominals",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "lower_back_curl",
+"name": "Lower Back Curl",
+"muscle": "abdominals",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "oblique_crunches",
+"name": "Oblique Crunches",
+"muscle": "abdominals",
+"regie": {
+"slug": "oblique_crunches",
+"geraet": "Matte",
+"start": "Flach auf dem Rücken, Knie gebeugt und zur Seite abgelegt, Hände hinter dem Kopf, Schultern am Boden.",
+"ende": "Oberkörper seitlich eingerollt Richtung gebeugte Knie, Schultern vom Boden gehoben, Ellbogen zeigt zum Knie."
+},
+"kamera": "Kamera schräg 45 Grad von vorne-oben auf Körperhöhe, Rumpfrotation, Arme und Beine vollständig sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "one-arm_high-pulley_cable_side_bends",
+"name": "One-Arm High-Pulley Cable Side Bends",
+"muscle": "abdominals",
+"regie": {
+"slug": "one-arm_high-pulley_cable_side_bends",
+"geraet": "Kabelzug (hoch) mit Griff",
+"start": "Aufrecht stehend seitlich zum hohen Kabelzug, Griff in der nahen Hand über dem Kopf gehalten, Arm leicht gebeugt, Rumpf neutral.",
+"ende": "Oberkörper zur Gegenseite geneigt, Arm mit Griff am Körper nach unten gezogen, Rumpf seitlich verkürzt.",
+"unsicher": true
+},
+"kamera": null
+},
+{
+"slug": "pallof_press",
+"name": "Pallof Press",
+"muscle": "abdominals",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "reverse_crunch",
+"name": "Reverse Crunch",
+"muscle": "abdominals",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "scissor_kick",
+"name": "Scissor Kick",
+"muscle": "abdominals",
+"regie": {
+"slug": "scissor_kick",
+"geraet": "Matte",
+"start": "Flach auf dem Rücken, Beine gestreckt knapp über dem Boden nebeneinander, Hände unter dem Gesäß oder neben dem Körper.",
+"ende": "Ein Bein gestreckt angehoben ca. 45-60°, andere Bein tief knapp über dem Boden (Schere), Beine gekreuzt."
+},
+"kamera": null
+},
+{
+"slug": "seated_barbell_twist",
+"name": "Seated Barbell Twist",
+"muscle": "abdominals",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "seated_flat_bench_leg_pull-in",
+"name": "Seated Flat Bench Leg Pull-In",
+"muscle": "abdominals",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "side_bridge",
+"name": "Side Bridge",
+"muscle": "abdominals",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "side_jackknife",
+"name": "Side Jackknife",
+"muscle": "abdominals",
+"regie": {
+"slug": "side_jackknife",
+"geraet": "Matte",
+"start": "Seitlich auf dem Boden liegend, unterer Arm gestreckt, oberer Hand am Kopf, Beine gestreckt übereinander.",
+"ende": "Oberkörper und Beine gleichzeitig seitlich angehoben, Körper in der Seite zusammengeklappt (V-Form)."
+},
+"kamera": null
+},
+{
+"slug": "sit-up",
+"name": "Sit-Up",
+"muscle": "abdominals",
+"regie": {
+"slug": "sit-up",
+"geraet": "Matte",
+"start": "Flach auf dem Rücken, Knie gebeugt, Füße am Boden, Hände hinter dem Kopf oder vor der Brust gekreuzt.",
+"ende": "Oberkörper komplett aufgerichtet, Rücken gerade bis fast senkrecht, Ellbogen zu den Knien."
+},
+"kamera": "Kamera exakt seitlich auf Körperhöhe, Ganzkörper mit Rumpfwinkel, Beinen und Gerät vollständig sichtbar."
+},
+{
+"slug": "spell_caster",
+"name": "Spell Caster",
+"muscle": "abdominals",
+"regie": {
+"slug": "spell_caster",
+"geraet": "Matte (optional leichte Hantel)",
+"start": "Aufrecht stehend oder breit stehend, beide Hände zusammen neben der einen Hüfte tief gehalten, Rumpf leicht zur Seite gedreht.",
+"ende": "Beide Arme diagonal über die andere Schulter nach oben, Rumpf zur anderen Seite gedreht, Blick folgt den Händen.",
+"unsicher": true
+},
+"kamera": null
+},
+{
+"slug": "spider_crawl",
+"name": "Spider Crawl",
+"muscle": "abdominals",
+"regie": {
+"slug": "spider_crawl",
+"geraet": "Matte",
+"start": "Liegestützposition, Arme gestreckt, Körper gerade.",
+"ende": "Ein Knie seitlich zum Ellbogen derselben Seite gezogen, Hüfte leicht gebeugt, andere Bein gestreckt, Körper flach."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "standing_cable_lift",
+"name": "Standing Cable Lift",
+"muscle": "abdominals",
+"regie": {
+"slug": "standing_cable_lift",
+"geraet": "Kabelzug mit Griff (tief)",
+"start": "Seitlich zum tiefen Kabelzug stehend, Griff mit beiden Händen neben dem äußeren Knie, Rumpf leicht gedreht.",
+"ende": "Griff diagonal über den Körper nach oben bis über die gegenüberliegende Schulter gezogen, Arme fast gestreckt, Rumpf aufgerichtet."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "standing_cable_wood_chop",
+"name": "Standing Cable Wood Chop",
+"muscle": "abdominals",
+"regie": {
+"slug": "standing_cable_wood_chop",
+"geraet": "Kabelzug mit Griff (hoch)",
+"start": "Seitlich zum hohen Kabelzug stehend, beide Hände halten den Griff oben seitlich über dem Kopf, Arme gestreckt.",
+"ende": "Griff diagonal nach unten über den Körper zur gegenüberliegenden Hüfte gezogen, Rumpf gedreht, Knie leicht gebeugt."
+},
+"kamera": "Kamera schräg 45 Grad von vorne-oben auf Körperhöhe, Rumpfrotation, Arme und Beine vollständig sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "stomach_vacuum",
+"name": "Stomach Vacuum",
+"muscle": "abdominals",
+"regie": {
+"slug": "stomach_vacuum",
+"geraet": "Ohne Gerät",
+"start": "Aufrecht stehend, Hände an der Hüfte, Bauch locker, normale Haltung.",
+"ende": "Bauch nach innen gezogen (Vakuum), Brustkorb geweitet, Hände an der Hüfte, Rippen sichtbar nach oben gezogen."
+},
+"kamera": null
+},
+{
+"slug": "toe_touchers",
+"name": "Toe Touchers",
+"muscle": "abdominals",
+"regie": {
+"slug": "toe_touchers",
+"geraet": "Matte",
+"start": "Flach auf dem Rücken, Beine senkrecht nach oben gestreckt, Arme gestreckt neben dem Körper.",
+"ende": "Oberkörper aufgerollt, Hände berühren die Zehenspitzen der gestreckten Beine, Schultern vom Boden."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "wind_sprints",
+"name": "Wind Sprints",
+"muscle": "abdominals",
+"regie": {
+"slug": "wind_sprints",
+"geraet": "Ohne Gerät",
+"start": "Sprinterstart-Haltung, ein Fuß vorn, Oberkörper vorgebeugt, Arme gebeugt.",
+"ende": "Voller Sprintschritt, ein Knie hoch, Arme gegenläufig gebeugt, Oberkörper leicht nach vorn geneigt."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "deadlift_with_chains",
+"name": "Deadlift with Chains",
+"muscle": "lower back",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "rack_pulls",
+"name": "Rack Pulls",
+"muscle": "lower back",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "seated_good_mornings",
+"name": "Seated Good Mornings",
+"muscle": "lower back",
+"regie": {
+"slug": "seated_good_mornings",
+"geraet": "Langhantel, Flachbank",
+"start": "Aufrecht auf der Bank sitzend, Langhantel auf dem oberen Rücken, Füße am Boden.",
+"ende": "Oberkörper vorgeneigt, Hüfte gebeugt, Rücken gerade, Oberkörper fast parallel zum Boden."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar."
+},
+{
+"slug": "stiff_leg_barbell_good_morning",
+"name": "Stiff Leg Barbell Good Morning",
+"muscle": "lower back",
+"regie": {
+"slug": "stiff_leg_barbell_good_morning",
+"geraet": "Langhantel",
+"start": "Aufrecht stehend, Langhantel auf dem oberen Rücken, Beine fast gestreckt.",
+"ende": "Oberkörper vorgeneigt parallel zum Boden, Beine fast gestreckt, Rücken gerade."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar."
+},
+{
+"slug": "superman",
+"name": "Superman",
+"muscle": "lower back",
+"regie": {
+"slug": "superman",
+"geraet": "Matte",
+"start": "Bauchlage, Arme nach vorn über den Kopf gestreckt, Beine gestreckt.",
+"ende": "Arme und Beine gleichzeitig vom Boden abgehoben, Rücken überstreckt, Körper in leichter Bogenform."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar."
+},
+{
+"slug": "bent_over_one-arm_long_bar_row",
+"name": "Bent Over One-Arm Long Bar Row",
+"muscle": "middle back",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "bent_over_two-arm_long_bar_row",
+"name": "Bent Over Two-Arm Long Bar Row",
+"muscle": "middle back",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "bent_over_two-dumbbell_row",
+"name": "Bent Over Two-Dumbbell Row",
+"muscle": "middle back",
+"regie": {
+"slug": "bent_over_two-dumbbell_row",
+"geraet": "2 Kurzhanteln",
+"start": "Vorgebeugt, Oberkörper fast parallel zum Boden, Knie leicht gebeugt, Rücken gerade, Arme gestreckt nach unten, Hanteln im Obergriff.",
+"ende": "Ellbogen gebeugt, Hanteln zur Hüfte/Brust gezogen, Schulterblätter zusammen, Rücken gerade."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "dumbbell_incline_row",
+"name": "Dumbbell Incline Row",
+"muscle": "middle back",
+"regie": {
+"slug": "dumbbell_incline_row",
+"geraet": "Schrägbank (ca. 45°), 2 Kurzhanteln",
+"start": "Bäuchlings auf der Schrägbank, Brust am Polster, Arme gestreckt nach unten hängend, Hanteln im Neutralgriff.",
+"ende": "Ellbogen nach oben/hinten gezogen, Hanteln zur Hüfte, Schulterblätter zusammen."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "incline_bench_pull",
+"name": "Incline Bench Pull",
+"muscle": "middle back",
+"regie": {
+"slug": "incline_bench_pull",
+"geraet": "Schrägbank, Langhantel",
+"start": "Bäuchlings auf der Schrägbank, Brust am Polster, Arme gestreckt nach unten, Hantel im Obergriff.",
+"ende": "Ellbogen nach oben gezogen, Hantel zur Brust/Bank, Schulterblätter zusammen."
+},
+"kamera": "Kamera schräg 45 Grad von vorne-seitlich auf Bankhöhe, Brust, Arme, Gerät und Bank vollständig sichtbar."
+},
+{
+"slug": "lying_cambered_barbell_row",
+"name": "Lying Cambered Barbell Row",
+"muscle": "middle back",
+"regie": {
+"slug": "lying_cambered_barbell_row",
+"geraet": "Langhantel/Cambered Bar, Bank/Hocker",
+"start": "Bäuchlings auf der Bank, Arme gestreckt nach unten, Cambered Bar im Obergriff.",
+"ende": "Ellbogen nach oben gezogen, Stange zur Bank, Schulterblätter zusammen.",
+"unsicher": true
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "one-arm_long_bar_row",
+"name": "One-Arm Long Bar Row",
+"muscle": "middle back",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "reverse_grip_bent-over_rows",
+"name": "Reverse Grip Bent-Over Rows",
+"muscle": "middle back",
+"regie": {
+"slug": "reverse_grip_bent-over_rows",
+"geraet": "Langhantel",
+"start": "Vorgebeugt, Oberkörper fast parallel, Knie leicht gebeugt, Langhantel im Untergriff, Arme gestreckt.",
+"ende": "Ellbogen nah am Körper nach oben gezogen, Hantel zum Bauchnabel, Schulterblätter zusammen."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "seated_cable_rows",
+"name": "Seated Cable Rows",
+"muscle": "middle back",
+"regie": {
+"slug": "seated_cable_rows",
+"geraet": "Rudermaschine/Kabelzug (tief), V-Griff",
+"start": "Sitzend, Füße auf den Platten, Knie leicht gebeugt, Griff mit gestreckten Armen vor dem Körper, Oberkörper leicht vorgeneigt.",
+"ende": "Griff zum Bauch gezogen, Ellbogen hinten, Schulterblätter zusammen, Oberkörper aufrecht."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "straight_bar_bench_mid_rows",
+"name": "Straight Bar Bench Mid Rows",
+"muscle": "middle back",
+"regie": {
+"slug": "straight_bar_bench_mid_rows",
+"geraet": "Flachbank/Schrägbank, gerade Stange",
+"start": "Bäuchlings auf der Bank, Arme gestreckt nach unten, Stange im Obergriff.",
+"ende": "Ellbogen nach oben gezogen, Stange zur Bank, Schulterblätter zusammen.",
+"unsicher": true
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "t-bar_row_with_handle",
+"name": "T-Bar Row with Handle",
+"muscle": "middle back",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "bent-arm_barbell_pullover",
+"name": "Bent-Arm Barbell Pullover",
+"muscle": "lats",
+"regie": {
+"slug": "bent-arm_barbell_pullover",
+"geraet": "Flachbank, Langhantel/SZ-Stange",
+"start": "Rücklings quer/längs auf der Flachbank, Füße am Boden, Stange mit gebeugten Armen über der Brust, Ellbogen ca. 90°.",
+"ende": "Stange hinter den Kopf gesenkt, Arme über dem Kopf, Ellbogen ca. 90°, Brust und Lats gedehnt."
+},
+"kamera": "Kamera schräg 45 Grad von vorne-seitlich auf Bankhöhe, Brust, Arme, Gerät und Bank vollständig sichtbar."
+},
+{
+"slug": "cable_incline_pushdown",
+"name": "Cable Incline Pushdown",
+"muscle": "lats",
+"regie": {
+"slug": "cable_incline_pushdown",
+"geraet": "Kabelzug (hoch), Schrägbank",
+"start": "Rücklings auf der Schrägbank, Griff über dem Kopf, Arme über dem Kopf gestreckt.",
+"ende": "Arme gestreckt nach unten zu den Hüften gedrückt, Ellbogen fast gestreckt.",
+"unsicher": true
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "chin-up",
+"name": "Chin-Up",
+"muscle": "lats",
+"regie": {
+"slug": "chin-up",
+"geraet": "Klimmzugstange",
+"start": "Hängend an der Stange im Untergriff, Hände schulterbreit, Arme gestreckt, Körper gestreckt.",
+"ende": "Kinn über der Stange, Ellbogen gebeugt, Brust Richtung Stange, Schulterblätter zusammen."
+},
+"kamera": "Kamera schräg 45 Grad von hinten-seitlich auf Rückenhöhe, Rücken, Ellbogen, Griff und Gerät vollständig sichtbar."
+},
+{
+"slug": "close-grip_front_lat_pulldown",
+"name": "Close-Grip Front Lat Pulldown",
+"muscle": "lats",
+"regie": null,
+"kamera": "Kamera schräg 45 Grad von hinten-seitlich auf Rückenhöhe, Rücken, Ellbogen, Griff und Gerät vollständig sichtbar."
+},
+{
+"slug": "kneeling_high_pulley_row",
+"name": "Kneeling High Pulley Row",
+"muscle": "lats",
+"regie": {
+"slug": "kneeling_high_pulley_row",
+"geraet": "Kabelzug (hoch), Griff",
+"start": "Kniend vor dem hohen Kabelzug, Arme gestreckt nach oben, Griff mit beiden Händen.",
+"ende": "Ellbogen gebeugt, Griff zur Brust gezogen, Schulterblätter zusammen, Oberkörper aufrecht."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "one_arm_lat_pulldown",
+"name": "One Arm Lat Pulldown",
+"muscle": "lats",
+"regie": {
+"slug": "one_arm_lat_pulldown",
+"geraet": "Latzugmaschine/Kabelzug (hoch), Einhandgriff",
+"start": "Sitzend vor dem hohen Kabelzug, ein Arm gestreckt nach oben, Griff in einer Hand.",
+"ende": "Ellbogen nach unten gezogen, Griff auf Schulterhöhe, Lat angespannt."
+},
+"kamera": "Kamera schräg 45 Grad von hinten-seitlich auf Rückenhöhe, Rücken, Ellbogen, Griff und Gerät vollständig sichtbar."
+},
+{
+"slug": "shotgun_row",
+"name": "Shotgun Row",
+"muscle": "lats",
+"regie": {
+"slug": "shotgun_row",
+"geraet": "Kabelzug (tief), Einhandgriff",
+"start": "Aufrecht stehend vor dem tiefen Kabelzug, Griff in einer Hand, Arm gestreckt nach vorn.",
+"ende": "Ellbogen gebeugt, Griff zur Hüfte gezogen, Arm nah am Körper, Rumpf aufrecht.",
+"unsicher": true
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "wide-grip_lat_pulldown",
+"name": "Wide-Grip Lat Pulldown",
+"muscle": "lats",
+"regie": {
+"slug": "wide-grip_lat_pulldown",
+"geraet": "Latzugmaschine, breite Stange",
+"start": "Sitzend, breite Stange im weiten Obergriff, Arme gestreckt nach oben, Oberkörper leicht zurück.",
+"ende": "Stange zur oberen Brust gezogen, Ellbogen nach unten, Schulterblätter zusammen."
+},
+"kamera": "Kamera schräg 45 Grad von hinten-seitlich auf Rückenhöhe, Rücken, Ellbogen, Griff und Gerät vollständig sichtbar."
+},
+{
+"slug": "barbell_shrug",
+"name": "Barbell Shrug",
+"muscle": "traps",
+"regie": {
+"slug": "barbell_shrug",
+"geraet": "Langhantel",
+"start": "Aufrecht, Hantel vor den Oberschenkeln, Arme gestreckt.",
+"ende": "Schultern bis zu den Ohren hochgezogen."
+},
+"kamera": "Kamera frontal auf Brusthöhe, beide Schultern, Nacken, Arme und Hanteln/Stange sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "clean_shrug",
+"name": "Clean Shrug",
+"muscle": "traps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "snatch_shrug",
+"name": "Snatch Shrug",
+"muscle": "traps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "around_the_worlds",
+"name": "Around The Worlds",
+"muscle": "chest",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "bent-arm_dumbbell_pullover",
+"name": "Bent-Arm Dumbbell Pullover",
+"muscle": "chest",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "bodyweight_flyes",
+"name": "Bodyweight Flyes",
+"muscle": "chest",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "cable_chest_press",
+"name": "Cable Chest Press",
+"muscle": "chest",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "cable_crossover",
+"name": "Cable Crossover",
+"muscle": "chest",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "cable_iron_cross",
+"name": "Cable Iron Cross",
+"muscle": "chest",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "clock_push-up",
+"name": "Clock Push-Up",
+"muscle": "chest",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "decline_dumbbell_bench_press",
+"name": "Decline Dumbbell Bench Press",
+"muscle": "chest",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "decline_dumbbell_flyes",
+"name": "Decline Dumbbell Flyes",
+"muscle": "chest",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "flat_bench_cable_flyes",
+"name": "Flat Bench Cable Flyes",
+"muscle": "chest",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "one_arm_dumbbell_bench_press",
+"name": "One Arm Dumbbell Bench Press",
+"muscle": "chest",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "plyo_push-up",
+"name": "Plyo Push-up",
+"muscle": "chest",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "push_up_to_side_plank",
+"name": "Push Up to Side Plank",
+"muscle": "chest",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "pushups",
+"name": "Pushups",
+"muscle": "chest",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "single-arm_push-up",
+"name": "Single-Arm Push-Up",
+"muscle": "chest",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "standing_cable_chest_press",
+"name": "Standing Cable Chest Press",
+"muscle": "chest",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "wide-grip_barbell_bench_press",
+"name": "Wide-Grip Barbell Bench Press",
+"muscle": "chest",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "bench_dips",
+"name": "Bench Dips",
+"muscle": "triceps",
+"regie": {
+"slug": "bench_dips",
+"geraet": "Flachbank",
+"start": "Rücken zur Bank, Hände auf der Bankkante, Arme gestreckt, Beine gestreckt.",
+"ende": "Ellbogen ca. 90° gebeugt, Gesäß nahe am Boden."
+},
+"kamera": "Kamera exakt seitlich auf Ellbogenhöhe, Oberarm, Unterarm, Gerät und Ganzkörper vollständig sichtbar."
+},
+{
+"slug": "bench_press_with_chains",
+"name": "Bench Press with Chains",
+"muscle": "triceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "body-up",
+"name": "Body-Up",
+"muscle": "triceps",
+"regie": {
+"slug": "body-up",
+"geraet": "Stange",
+"start": "Stütz auf der Stange, Arme gestreckt.",
+"ende": "Ellbogen gebeugt, Körper abgesenkt.",
+"unsicher": true
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "cable_lying_triceps_extension",
+"name": "Cable Lying Triceps Extension",
+"muscle": "triceps",
+"regie": {
+"slug": "cable_lying_triceps_extension",
+"geraet": "Flachbank, Kabelzug",
+"start": "Rücklings, Arme gestreckt senkrecht.",
+"ende": "Ellbogen gebeugt, Hände hinter dem Kopf."
+},
+"kamera": "Kamera exakt seitlich auf Ellbogenhöhe, Oberarm, Unterarm, Gerät und Ganzkörper vollständig sichtbar."
+},
+{
+"slug": "cable_one_arm_tricep_extension",
+"name": "Cable One Arm Tricep Extension",
+"muscle": "triceps",
+"regie": {
+"slug": "cable_one_arm_tricep_extension",
+"geraet": "Kabelzug (hoch), Einhandgriff",
+"start": "Aufrecht, Ellbogen gebeugt am Körper.",
+"ende": "Arm gestreckt nach unten."
+},
+"kamera": "Kamera exakt seitlich auf Ellbogenhöhe, Oberarm, Unterarm, Gerät und Ganzkörper vollständig sichtbar."
+},
+{
+"slug": "cable_rope_overhead_triceps_extension",
+"name": "Cable Rope Overhead Triceps Extension",
+"muscle": "triceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "close-grip_push-up_off_of_a_dumbbell",
+"name": "Close-Grip Push-Up off of a Dumbbell",
+"muscle": "triceps",
+"regie": {
+"slug": "close-grip_push-up_off_of_a_dumbbell",
+"geraet": "Kurzhantel",
+"start": "Liegestütz mit Händen eng auf einer Kurzhantel, Arme gestreckt.",
+"ende": "Brust zur Hantel abgesenkt, Ellbogen nah am Körper."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "dumbbell_floor_press",
+"name": "Dumbbell Floor Press",
+"muscle": "triceps",
+"regie": {
+"slug": "dumbbell_floor_press",
+"geraet": "Kurzhanteln, Matte",
+"start": "Rücklings auf dem Boden, Arme gestreckt über der Brust.",
+"ende": "Ellbogen am Boden aufgelegt, Hanteln an der Brust."
+},
+"kamera": "Kamera schräg 45 Grad von vorne-seitlich auf Bankhöhe, Brust, Ellbogen, Stange/Hanteln und Bank komplett sichtbar."
+},
+{
+"slug": "dumbbell_one-arm_triceps_extension",
+"name": "Dumbbell One-Arm Triceps Extension",
+"muscle": "triceps",
+"regie": {
+"slug": "dumbbell_one-arm_triceps_extension",
+"geraet": "1 Kurzhantel",
+"start": "Aufrecht, Hantel gestreckt über dem Kopf.",
+"ende": "Ellbogen gebeugt, Hantel hinter dem Kopf."
+},
+"kamera": "Kamera exakt seitlich auf Ellbogenhöhe, Oberarm, Unterarm, Gerät und Ganzkörper vollständig sichtbar."
+},
+{
+"slug": "ez-bar_skullcrusher",
+"name": "EZ-Bar Skullcrusher",
+"muscle": "triceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "floor_press_with_chains",
+"name": "Floor Press with Chains",
+"muscle": "triceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "lying_dumbbell_tricep_extension",
+"name": "Lying Dumbbell Tricep Extension",
+"muscle": "triceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "one_arm_floor_press",
+"name": "One Arm Floor Press",
+"muscle": "triceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "all_fours_quad_stretch",
+"name": "All Fours Quad Stretch",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "barbell_hack_squat",
+"name": "Barbell Hack Squat",
+"muscle": "quadriceps",
+"regie": {
+"slug": "barbell_hack_squat",
+"geraet": "Langhantel",
+"start": "Aufrecht stehend, Langhantel hinter den Beinen mit gestreckten Armen, Fersen eng.",
+"ende": "Tiefe Hocke, Hantel hinter den Beinen, Knie gebeugt, Oberkörper aufrecht."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar."
+},
+{
+"slug": "barbell_lunge",
+"name": "Barbell Lunge",
+"muscle": "quadriceps",
+"regie": {
+"slug": "barbell_lunge",
+"geraet": "Langhantel, Squat-Rack",
+"start": "Aufrecht stehend, Langhantel auf dem oberen Rücken, Füße hüftbreit.",
+"ende": "Weiter Ausfallschritt nach vorn, vorderes Knie ca. 90°, hinteres Knie knapp über dem Boden."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, vorderes und hinteres Bein sowie Gerät vollständig sichtbar."
+},
+{
+"slug": "barbell_side_split_squat",
+"name": "Barbell Side Split Squat",
+"muscle": "quadriceps",
+"regie": {
+"slug": "barbell_side_split_squat",
+"geraet": "Langhantel",
+"start": "Breiter Stand, Langhantel auf dem oberen Rücken, Beine gestreckt.",
+"ende": "Zur Seite abgesenkt, ein Knie gebeugt, anderes Bein gestreckt, Gewicht auf dem gebeugten Bein."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, vorderes und hinteres Bein sowie Gerät vollständig sichtbar."
+},
+{
+"slug": "barbell_squat_to_a_bench",
+"name": "Barbell Squat To A Bench",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar."
+},
+{
+"slug": "barbell_step_ups",
+"name": "Barbell Step Ups",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, vorderes und hinteres Bein sowie Gerät vollständig sichtbar."
+},
+{
+"slug": "bench_jump",
+"name": "Bench Jump",
+"muscle": "quadriceps",
+"regie": {
+"slug": "bench_jump",
+"geraet": "Flachbank",
+"start": "Aufrecht stehend vor einer Bank, Knie leicht gebeugt, Arme hinten.",
+"ende": "Mit beiden Füßen auf die Bank gesprungen, aufrecht, Knie leicht gebeugt."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe."
+},
+{
+"slug": "bodyweight_squat",
+"name": "Bodyweight Squat",
+"muscle": "quadriceps",
+"regie": {
+"slug": "bodyweight_squat",
+"geraet": "Ohne Gerät",
+"start": "Aufrecht stehend, Füße schulterbreit, Arme vor der Brust.",
+"ende": "Tiefe Hocke, Oberschenkel waagerecht, Arme nach vorn gestreckt, Rücken gerade."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar."
+},
+{
+"slug": "box_squat",
+"name": "Box Squat",
+"muscle": "quadriceps",
+"regie": {
+"slug": "box_squat",
+"geraet": "Langhantel, Box/Bank",
+"start": "Aufrecht stehend, Hantel auf dem oberen Rücken, Box hinter dem Gesäß, Füße breit.",
+"ende": "Gesäß auf der Box abgesetzt, Oberschenkel parallel zum Boden, Oberkörper aufrecht."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar."
+},
+{
+"slug": "box_squat_with_chains",
+"name": "Box Squat with Chains",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "cable_deadlifts",
+"name": "Cable Deadlifts",
+"muscle": "quadriceps",
+"regie": {
+"slug": "cable_deadlifts",
+"geraet": "Kabelzug (tief), Stange",
+"start": "Hüftbreiter Stand, Stange am Boden vor den Füßen, Knie gebeugt, Rücken gerade, Arme gestreckt.",
+"ende": "Aufrecht gestreckt, Stange an den Oberschenkeln, Hüfte voll gestreckt."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar."
+},
+{
+"slug": "cable_hip_adduction",
+"name": "Cable Hip Adduction",
+"muscle": "quadriceps",
+"regie": {
+"slug": "cable_hip_adduction",
+"geraet": "Kabelzug (tief), Knöchelmanschette",
+"start": "Seitlich zum Kabelzug stehend, Manschette am äußeren Fuß, Bein seitlich abgespreizt, Hand am Halt.",
+"ende": "Bein vor dem Standbein überkreuzt, Oberschenkel adduziert, Hüfte stabil."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, Bewegungsbein und Gerät vollständig sichtbar."
+},
+{
+"slug": "clean_pull",
+"name": "Clean Pull",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "clean_from_blocks",
+"name": "Clean from Blocks",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "double_leg_butt_kick",
+"name": "Double Leg Butt Kick",
+"muscle": "quadriceps",
+"regie": {
+"slug": "double_leg_butt_kick",
+"geraet": "Ohne Gerät",
+"start": "Aufrecht stehend, Knie leicht gebeugt, Arme hinten.",
+"ende": "Beidbeinig hochgesprungen, Fersen am Gesäß, Knie gebeugt."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe."
+},
+{
+"slug": "dumbbell_seated_box_jump",
+"name": "Dumbbell Seated Box Jump",
+"muscle": "quadriceps",
+"regie": {
+"slug": "dumbbell_seated_box_jump",
+"geraet": "Kurzhanteln, Box",
+"start": "Sitzend auf der Box, Hanteln neben dem Körper, Füße am Boden.",
+"ende": "Aufgesprungen/aufrecht auf der Box, Hanteln neben dem Körper, Knie gestreckt.",
+"unsicher": true
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe."
+},
+{
+"slug": "dumbbell_squat",
+"name": "Dumbbell Squat",
+"muscle": "quadriceps",
+"regie": {
+"slug": "dumbbell_squat",
+"geraet": "2 Kurzhanteln",
+"start": "Aufrecht stehend, Hanteln neben dem Körper, Füße schulterbreit.",
+"ende": "Tiefe Hocke, Oberschenkel waagerecht, Hanteln neben den Knien, Rücken gerade."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar."
+},
+{
+"slug": "dumbbell_squat_to_a_bench",
+"name": "Dumbbell Squat To A Bench",
+"muscle": "quadriceps",
+"regie": {
+"slug": "dumbbell_squat_to_a_bench",
+"geraet": "2 Kurzhanteln, Flachbank",
+"start": "Aufrecht stehend vor der Bank (Rücken zur Bank), Hanteln neben dem Körper.",
+"ende": "Gesäß auf der Bank abgesetzt, Hanteln neben den Knien, Oberkörper aufrecht."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar."
+},
+{
+"slug": "dumbbell_step_ups",
+"name": "Dumbbell Step Ups",
+"muscle": "quadriceps",
+"regie": {
+"slug": "dumbbell_step_ups",
+"geraet": "2 Kurzhanteln, Bank/Box",
+"start": "Vor der Bank stehend, ein Fuß auf der Bank, Hanteln neben dem Körper.",
+"ende": "Aufrecht auf der Bank, Standbein gestreckt, anderer Fuß neben dem Standfuß."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, vorderes und hinteres Bein sowie Gerät vollständig sichtbar."
+},
+{
+"slug": "fast_skipping",
+"name": "Fast Skipping",
+"muscle": "quadriceps",
+"regie": {
+"slug": "fast_skipping",
+"geraet": "Ohne Gerät",
+"start": "Aufrecht stehend, Arme gebeugt.",
+"ende": "Ein Knie hoch zur Hüftbeuge gezogen, gegenläufiger Arm, auf Zehenspitzen."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "frankenstein_squat",
+"name": "Frankenstein Squat",
+"muscle": "quadriceps",
+"regie": {
+"slug": "frankenstein_squat",
+"geraet": "Langhantel",
+"start": "Aufrecht stehend, Langhantel vorn auf den Schultern, Arme nach vorn gestreckt.",
+"ende": "Tiefe Hocke, Hantel vorn auf den Schultern, Arme gestreckt, Oberkörper aufrecht."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar."
+},
+{
+"slug": "freehand_jump_squat",
+"name": "Freehand Jump Squat",
+"muscle": "quadriceps",
+"regie": {
+"slug": "freehand_jump_squat",
+"geraet": "Ohne Gerät",
+"start": "Tiefe Hocke, Arme hinten.",
+"ende": "Senkrechter Sprung, Beine gestreckt, Arme nach oben, Körper gestreckt."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe."
+},
+{
+"slug": "front_barbell_squat",
+"name": "Front Barbell Squat",
+"muscle": "quadriceps",
+"regie": {
+"slug": "front_barbell_squat",
+"geraet": "Langhantel, Squat-Rack",
+"start": "Aufrecht stehend, Hantel vorn auf den Schultern, Ellbogen hoch, Füße schulterbreit.",
+"ende": "Tiefe Hocke, Oberschenkel waagerecht, Ellbogen hoch, Oberkörper aufrecht."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar."
+},
+{
+"slug": "front_squat__clean_grip_",
+"name": "Front Squat (Clean Grip)",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "hang_clean",
+"name": "Hang Clean",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "hang_clean_-_below_the_knees",
+"name": "Hang Clean - Below the Knees",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "heaving_snatch_balance",
+"name": "Heaving Snatch Balance",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "hip_flexion_with_band",
+"name": "Hip Flexion with Band",
+"muscle": "quadriceps",
+"regie": {
+"slug": "hip_flexion_with_band",
+"geraet": "Widerstandsband",
+"start": "Aufrecht stehend, Band um den Fuß, Bein am Boden.",
+"ende": "Knie hoch zur Hüftbeuge angehoben, Band gespannt, Oberkörper aufrecht.",
+"unsicher": true
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "jefferson_squats",
+"name": "Jefferson Squats",
+"muscle": "quadriceps",
+"regie": {
+"slug": "jefferson_squats",
+"geraet": "Langhantel",
+"start": "Breiter Stand, Hantel zwischen den Beinen im Kreuzgriff, Hüfte gebeugt.",
+"ende": "Aufrecht gestreckt, Hantel zwischen den Beinen, Hüfte und Knie gestreckt."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar."
+},
+{
+"slug": "jerk_dip_squat",
+"name": "Jerk Dip Squat",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "lying_prone_quadriceps",
+"name": "Lying Prone Quadriceps",
+"muscle": "quadriceps",
+"regie": {
+"slug": "lying_prone_quadriceps",
+"geraet": "Matte",
+"start": "Bauchlage, Beine gestreckt, Hand am Fuß.",
+"ende": "Knie gebeugt, Ferse zum Gesäß gezogen, Quadrizeps gedehnt, Hand am Fuß."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "olympic_squat",
+"name": "Olympic Squat",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "one_leg_barbell_squat",
+"name": "One Leg Barbell Squat",
+"muscle": "quadriceps",
+"regie": {
+"slug": "one_leg_barbell_squat",
+"geraet": "Langhantel, Squat-Rack",
+"start": "Auf einem Bein stehend, Hantel auf dem Rücken, anderer Fuß nach hinten abgelegt.",
+"ende": "Tiefe Einbeinhocke, Oberschenkel waagerecht, Oberkörper aufrecht."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar."
+},
+{
+"slug": "one-arm_side_deadlift",
+"name": "One-Arm Side Deadlift",
+"muscle": "quadriceps",
+"regie": {
+"slug": "one-arm_side_deadlift",
+"geraet": "Langhantel/Kurzhantel",
+"start": "Seitlich über dem Gewicht stehend, Griff in einer Hand, Knie gebeugt, Rücken gerade.",
+"ende": "Aufrecht gestreckt, Gewicht seitlich am Oberschenkel.",
+"unsicher": true
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar."
+},
+{
+"slug": "overhead_squat",
+"name": "Overhead Squat",
+"muscle": "quadriceps",
+"regie": {
+"slug": "overhead_squat",
+"geraet": "Langhantel",
+"start": "Aufrecht stehend, Langhantel mit gestreckten Armen über dem Kopf, Füße schulterbreit.",
+"ende": "Tiefe Hocke, Hantel gestreckt über dem Kopf, Oberkörper aufrecht."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar."
+},
+{
+"slug": "plie_dumbbell_squat",
+"name": "Plie Dumbbell Squat",
+"muscle": "quadriceps",
+"regie": {
+"slug": "plie_dumbbell_squat",
+"geraet": "Kurzhantel",
+"start": "Sehr breiter Stand, Zehen nach außen, Hantel vor dem Körper zwischen den Beinen.",
+"ende": "Tiefe Plié-Hocke, Knie nach außen, Hantel vor dem Körper."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar."
+},
+{
+"slug": "power_jerk",
+"name": "Power Jerk",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "power_snatch_from_blocks",
+"name": "Power Snatch from Blocks",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "rear_leg_raises",
+"name": "Rear Leg Raises",
+"muscle": "quadriceps",
+"regie": {
+"slug": "rear_leg_raises",
+"geraet": "Ohne Gerät",
+"start": "Aufrecht stehend, Hand am Halt.",
+"ende": "Ein Bein gestreckt nach hinten angehoben."
+},
+"kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "rocket_jump",
+"name": "Rocket Jump",
+"muscle": "quadriceps",
+"regie": {
+"slug": "rocket_jump",
+"geraet": "Ohne Gerät",
+"start": "Tiefe Hocke, Arme hinten.",
+"ende": "Explosiver Sprung, Körper gestreckt, Arme über dem Kopf."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe."
+},
+{
+"slug": "scissors_jump",
+"name": "Scissors Jump",
+"muscle": "quadriceps",
+"regie": {
+"slug": "scissors_jump",
+"geraet": "Ohne Gerät",
+"start": "Ausfallschritt-Stellung, ein Fuß vorn, ein Fuß hinten.",
+"ende": "Im Sprung die Beine gewechselt, Fußposition vertauscht."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe."
+},
+{
+"slug": "snatch",
+"name": "Snatch",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "snatch_balance",
+"name": "Snatch Balance",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "snatch_from_blocks",
+"name": "Snatch from Blocks",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "split_clean",
+"name": "Split Clean",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "split_jerk",
+"name": "Split Jerk",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "split_jump",
+"name": "Split Jump",
+"muscle": "quadriceps",
+"regie": {
+"slug": "split_jump",
+"geraet": "Ohne Gerät",
+"start": "Ausfallschritt, ein Fuß vorn, ein Fuß hinten, Knie gebeugt.",
+"ende": "Sprung, Beine in der Luft gewechselt, Oberkörper aufrecht."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe."
+},
+{
+"slug": "squat_jerk",
+"name": "Squat Jerk",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "squat_with_chains",
+"name": "Squat with Chains",
+"muscle": "quadriceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "squat_with_plate_movers",
+"name": "Squat with Plate Movers",
+"muscle": "quadriceps",
+"regie": {
+"slug": "squat_with_plate_movers",
+"geraet": "Hantelscheibe(n)",
+"start": "Aufrecht stehend, Scheibe vor der Brust.",
+"ende": "Hocke, Scheibe vor der Brust, Oberschenkel waagerecht.",
+"unsicher": true
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar."
+},
+{
+"slug": "standing_long_jump",
+"name": "Standing Long Jump",
+"muscle": "quadriceps",
+"regie": {
+"slug": "standing_long_jump",
+"geraet": "Ohne Gerät",
+"start": "Aufrecht stehend, Knie gebeugt, Arme hinten.",
+"ende": "Weitsprung, Körper gestreckt, Arme vorn, in der Luft."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe."
+},
+{
+"slug": "star_jump",
+"name": "Star Jump",
+"muscle": "quadriceps",
+"regie": {
+"slug": "star_jump",
+"geraet": "Ohne Gerät",
+"start": "Aufrecht stehend, Füße zusammen, Arme neben dem Körper.",
+"ende": "Sprung, Arme und Beine weit gespreizt (Stern)."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe."
+},
+{
+"slug": "weighted_sissy_squat",
+"name": "Weighted Sissy Squat",
+"muscle": "quadriceps",
+"regie": {
+"slug": "weighted_sissy_squat",
+"geraet": "Hantelscheibe, Halt",
+"start": "Aufrecht stehend, Hand am Halt, Scheibe vor der Brust.",
+"ende": "Knie nach vorn geschoben, Oberkörper nach hinten geneigt, Fersen angehoben."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar."
+},
+{
+"slug": "zercher_squats",
+"name": "Zercher Squats",
+"muscle": "quadriceps",
+"regie": {
+"slug": "zercher_squats",
+"geraet": "Langhantel",
+"start": "Aufrecht stehend, Hantel in den Ellbogenbeugen, Arme gebeugt.",
+"ende": "Tiefe Hocke, Hantel in den Ellbogenbeugen, Oberkörper aufrecht."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar."
+},
+{
+"slug": "90_90_hamstring",
+"name": "90/90 Hamstring",
+"muscle": "hamstrings",
+"regie": {
+"slug": "90_90_hamstring",
+"geraet": "Matte",
+"start": "Rücklings, Hüfte und Knie je 90° gebeugt, Oberschenkel senkrecht, Hände halten die Oberschenkel hinter dem Knie.",
+"ende": "Unterschenkel gestreckt nach oben, Bein gestreckt (Knie so weit wie möglich gestreckt), Hamstrings gedehnt."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "band_good_morning",
+"name": "Band Good Morning",
+"muscle": "hamstrings",
+"regie": {
+"slug": "band_good_morning",
+"geraet": "Widerstandsband",
+"start": "Aufrecht stehend, Band unter den Füßen, Band im Nacken über den Schultern, Knie leicht gebeugt.",
+"ende": "Hüfte nach hinten geschoben, Oberkörper parallel zum Boden vorgeneigt, Rücken gerade, Knie leicht gebeugt."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar."
+},
+{
+"slug": "clean",
+"name": "Clean",
+"muscle": "hamstrings",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "clean_deadlift",
+"name": "Clean Deadlift",
+"muscle": "hamstrings",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "dumbbell_clean",
+"name": "Dumbbell Clean",
+"muscle": "hamstrings",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "front_leg_raises",
+"name": "Front Leg Raises",
+"muscle": "hamstrings",
+"regie": {
+"slug": "front_leg_raises",
+"geraet": "Ohne Gerät",
+"start": "Aufrecht stehend, Beine gestreckt, Arme neben dem Körper.",
+"ende": "Ein Bein gestreckt nach vorn angehoben, Fuß auf Hüfthöhe, Oberkörper aufrecht."
+},
+"kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar."
+},
+{
+"slug": "good_morning",
+"name": "Good Morning",
+"muscle": "hamstrings",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "hang_snatch",
+"name": "Hang Snatch",
+"muscle": "hamstrings",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "hang_snatch_-_below_knees",
+"name": "Hang Snatch - Below Knees",
+"muscle": "hamstrings",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "inchworm",
+"name": "Inchworm",
+"muscle": "hamstrings",
+"regie": {
+"slug": "inchworm",
+"geraet": "Ohne Gerät",
+"start": "Aufrecht stehend, Beine gestreckt, Hände neben den Füßen, Oberkörper vorgeneigt.",
+"ende": "Hände nach vorn in die Liegestützposition gewandert, Körper gerade, Arme gestreckt."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "knee_tuck_jump",
+"name": "Knee Tuck Jump",
+"muscle": "hamstrings",
+"regie": {
+"slug": "knee_tuck_jump",
+"geraet": "Ohne Gerät",
+"start": "Aufrecht stehend, Knie leicht gebeugt, Arme nach hinten geschwungen.",
+"ende": "Hochgesprungen, beide Knie zur Brust gezogen, Arme nach vorn, Oberkörper aufrecht."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper samt Boden und Bank vollständig sichtbar, genug Abstand für die Sprunghöhe."
+},
+{
+"slug": "muscle_snatch",
+"name": "Muscle Snatch",
+"muscle": "hamstrings",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "natural_glute_ham_raise",
+"name": "Natural Glute Ham Raise",
+"muscle": "hamstrings",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "power_clean",
+"name": "Power Clean",
+"muscle": "hamstrings",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "power_clean_from_blocks",
+"name": "Power Clean from Blocks",
+"muscle": "hamstrings",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "power_snatch",
+"name": "Power Snatch",
+"muscle": "hamstrings",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "snatch_deadlift",
+"name": "Snatch Deadlift",
+"muscle": "hamstrings",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "snatch_pull",
+"name": "Snatch Pull",
+"muscle": "hamstrings",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "split_snatch",
+"name": "Split Snatch",
+"muscle": "hamstrings",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "stiff-legged_dumbbell_deadlift",
+"name": "Stiff-Legged Dumbbell Deadlift",
+"muscle": "hamstrings",
+"regie": {
+"slug": "stiff-legged_dumbbell_deadlift",
+"geraet": "2 Kurzhanteln",
+"start": "Aufrecht stehend, Hanteln an den Oberschenkeln, Beine fast gestreckt.",
+"ende": "Oberkörper tief vorgebeugt, Hanteln am Schienbein, Beine fast gestreckt, Rücken gerade."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar."
+},
+{
+"slug": "sumo_deadlift",
+"name": "Sumo Deadlift",
+"muscle": "hamstrings",
+"regie": {
+"slug": "sumo_deadlift",
+"geraet": "Langhantel",
+"start": "Breiter Sumo-Stand, Füße ca. 45° nach außen, Hantel am Boden zwischen den Beinen, Griff innen, Knie gebeugt, Rücken gerade, Arme gestreckt.",
+"ende": "Aufrecht gestreckt, Hüfte und Knie gestreckt, Hantel an den Oberschenkeln, Schultern hinten."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Wirbelsäulenlinie und Gerät vollständig sichtbar."
+},
+{
+"slug": "sumo_deadlift_with_chains",
+"name": "Sumo Deadlift with Chains",
+"muscle": "hamstrings",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "vertical_swing",
+"name": "Vertical Swing",
+"muscle": "hamstrings",
+"regie": {
+"slug": "vertical_swing",
+"geraet": "Kurzhantel/Kettlebell",
+"start": "Breiter Stand, Hantel mit beiden Händen zwischen den Beinen, Hüfte gebeugt, Rücken gerade.",
+"ende": "Hüfte gestreckt, Hantel mit gestreckten Armen auf Schulterhöhe, Körper aufrecht."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "barbell_hip_thrust",
+"name": "Barbell Hip Thrust",
+"muscle": "glutes",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "butt_lift__bridge_",
+"name": "Butt Lift (Bridge)",
+"muscle": "glutes",
+"regie": {
+"slug": "butt_lift__bridge_",
+"geraet": "Matte",
+"start": "Rücklings, Knie gebeugt, Füße am Boden, Arme neben dem Körper, Hüfte am Boden.",
+"ende": "Hüfte hochgedrückt, Körper von Knie bis Schulter in einer Linie, Gesäß fest angespannt."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, Bewegungsbein und Gerät vollständig sichtbar."
+},
+{
+"slug": "flutter_kicks",
+"name": "Flutter Kicks",
+"muscle": "glutes",
+"regie": {
+"slug": "flutter_kicks",
+"geraet": "Matte",
+"start": "Rücklings, Beine gestreckt knapp über dem Boden, Hände unter dem Gesäß.",
+"ende": "Ein Bein ca. 45° angehoben, andere Bein knapp über dem Boden, kurze wechselnde Beinschläge."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, Bewegungsbein und Gerät vollständig sichtbar."
+},
+{
+"slug": "glute_kickback",
+"name": "Glute Kickback",
+"muscle": "glutes",
+"regie": {
+"slug": "glute_kickback",
+"geraet": "Matte",
+"start": "Vierfüßlerstand, Hände unter den Schultern, Knie unter den Hüften, Rücken gerade.",
+"ende": "Ein Bein gestreckt nach hinten oben angehoben, Hüfte gestreckt, Fuß auf Hüfthöhe, Rücken neutral."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, Bewegungsbein und Gerät vollständig sichtbar."
+},
+{
+"slug": "kneeling_squat",
+"name": "Kneeling Squat",
+"muscle": "glutes",
+"regie": {
+"slug": "kneeling_squat",
+"geraet": "Langhantel/Ohne Gerät",
+"start": "Aufrecht kniend, Hüfte offen, Hände vor der Brust, Körper senkrecht.",
+"ende": "Gesäß auf die Fersen abgesenkt, Hüfte gebeugt, Oberkörper leicht vorgeneigt."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper mit Knie-, Hüft- und Fußposition und Gerät vollständig sichtbar."
+},
+{
+"slug": "leg_lift",
+"name": "Leg Lift",
+"muscle": "glutes",
+"regie": {
+"slug": "leg_lift",
+"geraet": "Matte",
+"start": "Rücklings, Beine gestreckt am Boden, Arme neben dem Körper.",
+"ende": "Beine gestreckt senkrecht angehoben (90°), Gesäß bleibt am Boden."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, Bewegungsbein und Gerät vollständig sichtbar."
+},
+{
+"slug": "lying_glute",
+"name": "Lying Glute",
+"muscle": "glutes",
+"regie": {
+"slug": "lying_glute",
+"geraet": "Matte",
+"start": "Rücklings, Knie gebeugt, Füße am Boden, ein Bein über das andere gekreuzt.",
+"ende": "Knie zur Brust gezogen, Oberschenkel mit den Händen zur Brust gezogen, Gesäß gedehnt."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, Bewegungsbein und Gerät vollständig sichtbar."
+},
+{
+"slug": "one-legged_cable_kickback",
+"name": "One-Legged Cable Kickback",
+"muscle": "glutes",
+"regie": {
+"slug": "one-legged_cable_kickback",
+"geraet": "Kabelzug (tief), Knöchelmanschette",
+"start": "Vor dem Kabelzug stehend, Manschette am Fußgelenk, Hände am Gerät, Oberkörper leicht vorgebeugt.",
+"ende": "Bein gestreckt nach hinten gezogen, Hüfte gestreckt, Fuß hinter dem Körper."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, Bewegungsbein und Gerät vollständig sichtbar."
+},
+{
+"slug": "pull_through",
+"name": "Pull Through",
+"muscle": "glutes",
+"regie": {
+"slug": "pull_through",
+"geraet": "Kabelzug (tief) mit Tau",
+"start": "Mit dem Rücken zum Kabelzug, Tau zwischen den Beinen gehalten, Hüfte gebeugt, Oberkörper vorgebeugt, Knie leicht gebeugt.",
+"ende": "Hüfte nach vorn gestreckt, Körper aufrecht, Arme gestreckt vor der Hüfte, Gesäß angespannt."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "seated_glute",
+"name": "Seated Glute",
+"muscle": "glutes",
+"regie": {
+"slug": "seated_glute",
+"geraet": "Matte oder Stuhl",
+"start": "Sitzend auf dem Boden, Beine gebeugt, ein Knöchel über das Knie gelegt, Rücken gerade.",
+"ende": "Oberkörper nach vorn zum Knie geneigt, Hüfte gedehnt, Gesäß gedehnt, Rücken gerade."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, Bewegungsbein und Gerät vollständig sichtbar."
+},
+{
+"slug": "single_leg_glute_bridge",
+"name": "Single Leg Glute Bridge",
+"muscle": "glutes",
+"regie": {
+"slug": "single_leg_glute_bridge",
+"geraet": "Matte",
+"start": "Rücklings, ein Fuß am Boden, anderes Bein gestreckt senkrecht nach oben, Hüfte am Boden.",
+"ende": "Hüfte hochgedrückt, Körper in einer Linie, gestrecktes Bein bleibt oben, Gesäß angespannt."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Ganzkörper, Bewegungsbein und Gerät vollständig sichtbar."
+},
+{
+"slug": "barbell_seated_calf_raise",
+"name": "Barbell Seated Calf Raise",
+"muscle": "calves",
+"regie": null,
+"kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar."
+},
+{
+"slug": "calf_raise_on_a_dumbbell",
+"name": "Calf Raise On A Dumbbell",
+"muscle": "calves",
+"regie": {
+"slug": "calf_raise_on_a_dumbbell",
+"geraet": "Kurzhantel (liegend), Wand oder Halt",
+"start": "Aufrecht stehend, Ballen beider Füße auf einer liegenden Kurzhantel, Fersen hängen tief, Hand zum Halt an der Wand.",
+"ende": "Auf beiden Zehenspitzen hochgedrückt, Fersen maximal angehoben, Waden angespannt, Ballen bleiben auf der Hantel."
+},
+"kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar."
+},
+{
+"slug": "dumbbell_seated_one-leg_calf_raise",
+"name": "Dumbbell Seated One-Leg Calf Raise",
+"muscle": "calves",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "knee_circles",
+"name": "Knee Circles",
+"muscle": "calves",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "standing_barbell_calf_raise",
+"name": "Standing Barbell Calf Raise",
+"muscle": "calves",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "band_hip_adductions",
+"name": "Band Hip Adductions",
+"muscle": "adductors",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "groiners",
+"name": "Groiners",
+"muscle": "adductors",
+"regie": {
+"slug": "groiners",
+"geraet": "Matte",
+"start": "Tiefe Liegestützposition auf den Händen, Arme gestreckt, Körper gerade.",
+"ende": "Beide Füße nach vorn zu den Händen gesprungen, Knie außen von den Armen, tiefe Hocke.",
+"unsicher": true
+},
+"kamera": null
+},
+{
+"slug": "lateral_bound",
+"name": "Lateral Bound",
+"muscle": "adductors",
+"regie": {
+"slug": "lateral_bound",
+"geraet": "Ohne Gerät",
+"start": "Auf einem Bein stehend, Knie leicht gebeugt, Oberkörper leicht vorgebeugt, Arme seitlich.",
+"ende": "Seitlicher Sprung zur anderen Seite, Landung auf dem anderen Bein, Knie gebeugt, Gegenseite abgehoben."
+},
+"kamera": null
+},
+{
+"slug": "side_leg_raises",
+"name": "Side Leg Raises",
+"muscle": "adductors",
+"regie": {
+"slug": "side_leg_raises",
+"geraet": "Matte",
+"start": "Seitlich auf dem Boden liegend, Beine gestreckt übereinander, Kopf auf dem unteren Arm, obere Hand vor der Brust.",
+"ende": "Oberes Bein gestreckt seitlich ca. 45° angehoben, Fuß parallel, Hüfte bleibt stabil."
+},
+"kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar."
+},
+{
+"slug": "hip_circles__prone_",
+"name": "Hip Circles (prone)",
+"muscle": "abductors",
+"regie": {
+"slug": "hip_circles__prone_",
+"geraet": "Matte",
+"start": "Bauchlage, Beine gestreckt, Arme verschränkt unter der Stirn.",
+"ende": "Ein Bein im 90° gebeugten Knie angehoben, Hüfte nach außen kreisend, Oberschenkel angehoben.",
+"unsicher": true
+},
+"kamera": null
+},
+{
+"slug": "lying_crossover",
+"name": "Lying Crossover",
+"muscle": "abductors",
+"regie": {
+"slug": "lying_crossover",
+"geraet": "Matte",
+"start": "Rückenlage, Arme seitlich ausgestreckt, Beine gestreckt, ein Bein senkrecht nach oben.",
+"ende": "Das Bein gestreckt über den Körper zur anderen Seite abgelegt, Hüfte gedreht, Schultern bleiben am Boden."
+},
+"kamera": null
+},
+{
+"slug": "monster_walk",
+"name": "Monster Walk",
+"muscle": "abductors",
+"regie": {
+"slug": "monster_walk",
+"geraet": "Widerstandsband (Mini-Band)",
+"start": "Hüftbreiter Stand, Band um die Knöchel/oberhalb der Knie, Knie leicht gebeugt (Halb-Squat), Rücken gerade, Hände vor der Brust.",
+"ende": "Großer Schritt zur Seite, Band gespannt, Fußabstand breit, tiefer Halb-Squat gehalten."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "standing_hip_circles",
+"name": "Standing Hip Circles",
+"muscle": "abductors",
+"regie": {
+"slug": "standing_hip_circles",
+"geraet": "Ohne Gerät (optional Wand/Halt)",
+"start": "Aufrecht auf einem Bein, Hand an Halt, anderes Bein leicht angehoben.",
+"ende": "Angehobenes Knie zur Seite geöffnet, Bein im großen Kreis nach außen, Oberschenkel waagerecht."
+},
+"kamera": null
+},
+{
+"slug": "anti-gravity_press",
+"name": "Anti-Gravity Press",
+"muscle": "shoulders",
+"regie": {
+"slug": "anti-gravity_press",
+"geraet": "Kurzhanteln, Schrägbank",
+"start": "Bäuchlings auf der Schrägbank, Hanteln vor der Brust hängend.",
+"ende": "Arme gestreckt nach oben gedrückt/gehoben, Hanteln über dem Kopf.",
+"unsicher": true
+},
+"kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar."
+},
+{
+"slug": "arnold_dumbbell_press",
+"name": "Arnold Dumbbell Press",
+"muscle": "shoulders",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "back_flyes_-_with_bands",
+"name": "Back Flyes - With Bands",
+"muscle": "shoulders",
+"regie": {
+"slug": "back_flyes_-_with_bands",
+"geraet": "Widerstandsband",
+"start": "Aufrecht stehend, Band mit gestreckten Armen vor der Brust.",
+"ende": "Arme gestreckt seitlich auseinandergezogen, Band gespannt, Schulterblätter zusammen."
+},
+"kamera": "Kamera schräg 45 Grad von vorne-seitlich auf Bankhöhe, Brust, Arme, Gerät und Bank vollständig sichtbar."
+},
+{
+"slug": "band_pull_apart",
+"name": "Band Pull Apart",
+"muscle": "shoulders",
+"regie": {
+"slug": "band_pull_apart",
+"geraet": "Widerstandsband",
+"start": "Aufrecht stehend, Band mit gestreckten Armen vor der Brust auf Schulterhöhe.",
+"ende": "Arme gestreckt weit auseinandergezogen, Band an der Brust, Schulterblätter zusammen."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "barbell_rear_delt_row",
+"name": "Barbell Rear Delt Row",
+"muscle": "shoulders",
+"regie": {
+"slug": "barbell_rear_delt_row",
+"geraet": "Langhantel",
+"start": "Vorgebeugt, Oberkörper parallel, Hantel im Obergriff, Arme gestreckt.",
+"ende": "Ellbogen weit nach außen gebeugt, Hantel zur Brust, hintere Schulter angespannt."
+},
+"kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "bent_over_low-pulley_side_lateral",
+"name": "Bent Over Low-Pulley Side Lateral",
+"muscle": "shoulders",
+"regie": {
+"slug": "bent_over_low-pulley_side_lateral",
+"geraet": "Kabelzug (tief)",
+"start": "Vorgebeugt, Griffe gekreuzt vor den Knien, Arme gestreckt.",
+"ende": "Arme gestreckt seitlich bis Schulterhöhe angehoben."
+},
+"kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "cable_rear_delt_fly",
+"name": "Cable Rear Delt Fly",
+"muscle": "shoulders",
+"regie": {
+"slug": "cable_rear_delt_fly",
+"geraet": "Kabelturm, 2 Griffe",
+"start": "Gegenüber dem Kabelzug stehend, Griffe gekreuzt vor der Brust, Arme gestreckt.",
+"ende": "Arme gestreckt weit auseinandergezogen, Schulterblätter zusammen."
+},
+"kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "cable_seated_lateral_raise",
+"name": "Cable Seated Lateral Raise",
+"muscle": "shoulders",
+"regie": {
+"slug": "cable_seated_lateral_raise",
+"geraet": "Kabelzug (tief), Bank",
+"start": "Sitzend, Griff vor dem Körper, Arm gestreckt nach unten.",
+"ende": "Arm gestreckt seitlich bis Schulterhöhe angehoben."
+},
+"kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "cable_shoulder_press",
+"name": "Cable Shoulder Press",
+"muscle": "shoulders",
+"regie": {
+"slug": "cable_shoulder_press",
+"geraet": "Kabelturm, Griffe",
+"start": "Sitzend, Griffe auf Schulterhöhe, Ellbogen ca. 90°.",
+"ende": "Arme gestreckt über dem Kopf, Griffe oben."
+},
+"kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar."
+},
+{
+"slug": "car_drivers",
+"name": "Car Drivers",
+"muscle": "shoulders",
+"regie": {
+"slug": "car_drivers",
+"geraet": "Hantelscheibe",
+"start": "Aufrecht, Scheibe mit beiden Händen vor der Brust.",
+"ende": "Scheibe gedreht wie ein Lenkrad, Arme gestreckt, Rotation.",
+"unsicher": true
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "clean_and_jerk",
+"name": "Clean and Jerk",
+"muscle": "shoulders",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "clean_and_press",
+"name": "Clean and Press",
+"muscle": "shoulders",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "cuban_press",
+"name": "Cuban Press",
+"muscle": "shoulders",
+"regie": {
+"slug": "cuban_press",
+"geraet": "Kurzhanteln",
+"start": "Aufrecht, Hanteln vor dem Körper, Ellbogen auf Schulterhöhe.",
+"ende": "Rotation und Pressen über den Kopf, Arme gestreckt."
+},
+"kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar."
+},
+{
+"slug": "dumbbell_incline_shoulder_raise",
+"name": "Dumbbell Incline Shoulder Raise",
+"muscle": "shoulders",
+"regie": {
+"slug": "dumbbell_incline_shoulder_raise",
+"geraet": "Schrägbank, 2 Kurzhanteln",
+"start": "Rücklings auf der Schrägbank, Hanteln mit gestreckten Armen über der Brust.",
+"ende": "Arme gestreckt nach vorn/oben geführt, Hanteln über dem Kopf."
+},
+"kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar."
+},
+{
+"slug": "dumbbell_one-arm_shoulder_press",
+"name": "Dumbbell One-Arm Shoulder Press",
+"muscle": "shoulders",
+"regie": {
+"slug": "dumbbell_one-arm_shoulder_press",
+"geraet": "1 Kurzhantel",
+"start": "Aufrecht, Hantel auf Schulterhöhe.",
+"ende": "Arm gestreckt über dem Kopf."
+},
+"kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar."
+},
+{
+"slug": "dumbbell_scaption",
+"name": "Dumbbell Scaption",
+"muscle": "shoulders",
+"regie": {
+"slug": "dumbbell_scaption",
+"geraet": "2 Kurzhanteln",
+"start": "Aufrecht, Hanteln vor den Oberschenkeln, Arme gestreckt.",
+"ende": "Arme gestreckt in V-Form (30° nach vorn) bis Schulterhöhe angehoben, Daumen oben."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "dumbbell_shoulder_press",
+"name": "Dumbbell Shoulder Press",
+"muscle": "shoulders",
+"regie": {
+"slug": "dumbbell_shoulder_press",
+"geraet": "2 Kurzhanteln",
+"start": "Aufrecht, Hanteln auf Schulterhöhe, Ellbogen 90°.",
+"ende": "Arme gestreckt über dem Kopf, Hanteln zusammen."
+},
+"kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar."
+},
+{
+"slug": "external_rotation",
+"name": "External Rotation",
+"muscle": "shoulders",
+"regie": {
+"slug": "external_rotation",
+"geraet": "Kurzhantel, Bank",
+"start": "Seitlich liegend, Ellbogen am Körper 90°, Hantel vor dem Bauch.",
+"ende": "Unterarm nach oben/außen gedreht, Ellbogen am Körper."
+},
+"kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "external_rotation_with_band",
+"name": "External Rotation with Band",
+"muscle": "shoulders",
+"regie": {
+"slug": "external_rotation_with_band",
+"geraet": "Widerstandsband",
+"start": "Aufrecht, Ellbogen am Körper 90°, Band in der Hand, Hand vor dem Bauch.",
+"ende": "Unterarm nach außen gedreht, Band gespannt."
+},
+"kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "front_incline_dumbbell_raise",
+"name": "Front Incline Dumbbell Raise",
+"muscle": "shoulders",
+"regie": {
+"slug": "front_incline_dumbbell_raise",
+"geraet": "Schrägbank, Kurzhanteln",
+"start": "Bäuchlings auf der Schrägbank, Arme gestreckt nach unten.",
+"ende": "Arme gestreckt nach vorn bis Schulterhöhe angehoben."
+},
+"kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar."
+},
+{
+"slug": "front_two-dumbbell_raise",
+"name": "Front Two-Dumbbell Raise",
+"muscle": "shoulders",
+"regie": {
+"slug": "front_two-dumbbell_raise",
+"geraet": "2 Kurzhanteln",
+"start": "Aufrecht, Hanteln vor den Oberschenkeln.",
+"ende": "Beide Arme gestreckt nach vorn bis Schulterhöhe angehoben."
+},
+"kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar."
+},
+{
+"slug": "handstand_push-ups",
+"name": "Handstand Push-Ups",
+"muscle": "shoulders",
+"regie": {
+"slug": "handstand_push-ups",
+"geraet": "Wand",
+"start": "Handstand an der Wand, Arme gestreckt.",
+"ende": "Ellbogen gebeugt, Kopf zum Boden abgesenkt."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "internal_rotation_with_band",
+"name": "Internal Rotation with Band",
+"muscle": "shoulders",
+"regie": {
+"slug": "internal_rotation_with_band",
+"geraet": "Widerstandsband",
+"start": "Aufrecht, Ellbogen am Körper 90°, Band in der Hand, Hand außen.",
+"ende": "Unterarm zum Bauch gedreht, Band gespannt."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "iron_cross",
+"name": "Iron Cross",
+"muscle": "shoulders",
+"regie": {
+"slug": "iron_cross",
+"geraet": "Kurzhanteln",
+"start": "Aufrecht, Arme gestreckt seitlich auf Schulterhöhe.",
+"ende": "Arme gestreckt vor dem Körper zusammengeführt.",
+"unsicher": true
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "jerk_balance",
+"name": "Jerk Balance",
+"muscle": "shoulders",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "landmine_linear_jammer",
+"name": "Landmine Linear Jammer",
+"muscle": "shoulders",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "lying_rear_delt_raise",
+"name": "Lying Rear Delt Raise",
+"muscle": "shoulders",
+"regie": {
+"slug": "lying_rear_delt_raise",
+"geraet": "Flachbank, 2 Kurzhanteln",
+"start": "Bäuchlings auf der Bank, Arme hängend nach unten.",
+"ende": "Arme gestreckt seitlich bis Schulterhöhe angehoben."
+},
+"kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "one-arm_incline_lateral_raise",
+"name": "One-Arm Incline Lateral Raise",
+"muscle": "shoulders",
+"regie": {
+"slug": "one-arm_incline_lateral_raise",
+"geraet": "Schrägbank, 1 Kurzhantel",
+"start": "Seitlich an der Schrägbank angelehnt, Arm gestreckt nach unten.",
+"ende": "Arm gestreckt seitlich bis Schulterhöhe angehoben."
+},
+"kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "power_partials",
+"name": "Power Partials",
+"muscle": "shoulders",
+"regie": {
+"slug": "power_partials",
+"geraet": "Kurzhanteln",
+"start": "Aufrecht, Hanteln an den Oberschenkeln.",
+"ende": "Arme seitlich bis Hüfthöhe kurz angehoben.",
+"unsicher": true
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "rack_delivery",
+"name": "Rack Delivery",
+"muscle": "shoulders",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "seated_front_deltoid",
+"name": "Seated Front Deltoid",
+"muscle": "shoulders",
+"regie": {
+"slug": "seated_front_deltoid",
+"geraet": "Ohne Gerät",
+"start": "Sitzend, Arme hinter dem Rücken gefasst.",
+"ende": "Arme gestreckt nach hinten oben gezogen, Brust offen.",
+"unsicher": true
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "shoulder_press_-_with_bands",
+"name": "Shoulder Press - With Bands",
+"muscle": "shoulders",
+"regie": {
+"slug": "shoulder_press_-_with_bands",
+"geraet": "Widerstandsband",
+"start": "Aufrecht, Band unter den Füßen, Hände auf Schulterhöhe.",
+"ende": "Arme gestreckt über dem Kopf, Band gespannt."
+},
+"kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar."
+},
+{
+"slug": "side_lateral_raise",
+"name": "Side Lateral Raise",
+"muscle": "shoulders",
+"regie": {
+"slug": "side_lateral_raise",
+"geraet": "Kurzhanteln",
+"start": "Aufrecht, Hanteln seitlich, Arme gestreckt.",
+"ende": "Arme gestreckt seitlich bis Schulterhöhe angehoben."
+},
+"kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "side_laterals_to_front_raise",
+"name": "Side Laterals to Front Raise",
+"muscle": "shoulders",
+"regie": {
+"slug": "side_laterals_to_front_raise",
+"geraet": "Kurzhanteln",
+"start": "Aufrecht, Hanteln seitlich.",
+"ende": "Arme seitlich angehoben, dann gestreckt nach vorn geführt."
+},
+"kamera": "Kamera frontal auf Brusthöhe leicht erhöht (bei Rear-Delt-Varianten von hinten/schräg 45 Grad), beide Arme in voller Spannweite und Hanteln sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "single-arm_linear_jammer",
+"name": "Single-Arm Linear Jammer",
+"muscle": "shoulders",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "smith_incline_shoulder_raise",
+"name": "Smith Incline Shoulder Raise",
+"muscle": "shoulders",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "standing_barbell_press_behind_neck",
+"name": "Standing Barbell Press Behind Neck",
+"muscle": "shoulders",
+"regie": {
+"slug": "standing_barbell_press_behind_neck",
+"geraet": "Langhantel",
+"start": "Aufrecht, Hantel hinter dem Nacken.",
+"ende": "Arme gestreckt über dem Kopf."
+},
+"kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar."
+},
+{
+"slug": "standing_dumbbell_straight-arm_front_delt_raise_above_head",
+"name": "Standing Dumbbell Straight-Arm Front Delt Raise Above Head",
+"muscle": "shoulders",
+"regie": {
+"slug": "standing_dumbbell_straight-arm_front_delt_raise_above_head",
+"geraet": "Kurzhanteln",
+"start": "Aufrecht, Hanteln vor den Oberschenkeln.",
+"ende": "Arme gestreckt über den Kopf angehoben."
+},
+"kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar."
+},
+{
+"slug": "standing_front_barbell_raise_over_head",
+"name": "Standing Front Barbell Raise Over Head",
+"muscle": "shoulders",
+"regie": {
+"slug": "standing_front_barbell_raise_over_head",
+"geraet": "Langhantel",
+"start": "Aufrecht, Hantel vor den Oberschenkeln.",
+"ende": "Hantel gestreckt über den Kopf angehoben."
+},
+"kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar."
+},
+{
+"slug": "standing_low-pulley_deltoid_raise",
+"name": "Standing Low-Pulley Deltoid Raise",
+"muscle": "shoulders",
+"regie": {
+"slug": "standing_low-pulley_deltoid_raise",
+"geraet": "Kabelzug (tief)",
+"start": "Seitlich zum Kabelzug, Griff vor dem Körper.",
+"ende": "Arm gestreckt seitlich bis Schulterhöhe angehoben."
+},
+"kamera": "Kamera exakt seitlich auf Schulterhöhe, Ganzkörper, Arm und Gerät vollständig sichtbar."
+},
+{
+"slug": "standing_military_press",
+"name": "Standing Military Press",
+"muscle": "shoulders",
+"regie": {
+"slug": "standing_military_press",
+"geraet": "Langhantel",
+"start": "Aufrecht, Hantel vor den Schultern.",
+"ende": "Arme gestreckt über dem Kopf."
+},
+"kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Gerät und Ganzkörper vollständig sichtbar."
+},
+{
+"slug": "upright_barbell_row",
+"name": "Upright Barbell Row",
+"muscle": "shoulders",
+"regie": {
+"slug": "upright_barbell_row",
+"geraet": "Langhantel",
+"start": "Aufrecht, Hantel vor den Oberschenkeln, Arme gestreckt.",
+"ende": "Hantel zum Kinn gezogen, Ellbogen hoch."
+},
+"kamera": "Kamera exakt seitlich auf Hüfthöhe, Rücken, Ellbogen, Zugweg und Gerät vollständig sichtbar, Ganzkörper im Bild."
+},
+{
+"slug": "alternate_hammer_curl",
+"name": "Alternate Hammer Curl",
+"muscle": "biceps",
+"regie": null,
+"kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Hanteln/Stange und Ganzkörper vollständig sichtbar."
+},
+{
+"slug": "barbell_curl",
+"name": "Barbell Curl",
+"muscle": "biceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "cable_hammer_curls_-_rope_attachment",
+"name": "Cable Hammer Curls - Rope Attachment",
+"muscle": "biceps",
+"regie": {
+"slug": "cable_hammer_curls_-_rope_attachment",
+"geraet": "Kabelzug (tief) mit Tau",
+"start": "Aufrecht stehend vor dem tiefen Kabelzug, Tau mit Neutralgriff (Daumen oben), Arme gestreckt neben dem Körper, Ellbogen an den Rippen.",
+"ende": "Arme gebeugt, Tau bis Schulterhöhe gezogen, Ellbogen fix an den Rippen, Handgelenke neutral."
+},
+"kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Hanteln/Stange und Ganzkörper vollständig sichtbar."
+},
+{
+"slug": "cable_preacher_curl",
+"name": "Cable Preacher Curl",
+"muscle": "biceps",
+"regie": {
+"slug": "cable_preacher_curl",
+"geraet": "Preacher-Curl-Bank, Kabelzug (tief), Stange",
+"start": "Sitzend an der Preacher-Bank, Oberarme komplett auf dem Polster, Arme gestreckt nach vorn/unten, Stange im Untergriff.",
+"ende": "Stange zum Kinn gecurlt, Ellbogen stark gebeugt, Oberarme bleiben auf dem Polster."
+},
+"kamera": "Kamera exakt seitlich auf Ellbogenhöhe, Oberkörper, Oberarm, Unterarm und Hantel/Stange vollständig sichtbar."
+},
+{
+"slug": "concentration_curls",
+"name": "Concentration Curls",
+"muscle": "biceps",
+"regie": {
+"slug": "concentration_curls",
+"geraet": "Kurzhantel, Flachbank",
+"start": "Sitzend auf der Bank, Beine breit, Oberarm innen am gleichseitigen Oberschenkel angelegt, Arm gestreckt nach unten, Hantel im Untergriff.",
+"ende": "Hantel zur Schulter gecurlt, Ellbogen voll gebeugt, Oberarm bleibt am Oberschenkel."
+},
+"kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Hanteln/Stange und Ganzkörper vollständig sichtbar."
+},
+{
+"slug": "cross_body_hammer_curl",
+"name": "Cross Body Hammer Curl",
+"muscle": "biceps",
+"regie": {
+"slug": "cross_body_hammer_curl",
+"geraet": "2 Kurzhanteln",
+"start": "Aufrecht stehend, Arme gestreckt neben dem Körper, Hanteln im Neutralgriff.",
+"ende": "Eine Hantel quer vor der Brust zur gegenüberliegenden Schulter gecurlt, Ellbogen gebeugt, Neutralgriff."
+},
+"kamera": "Kamera schräg 45 Grad von vorne auf Brusthöhe, beide Arme, Hanteln/Stange und Ganzkörper vollständig sichtbar."
+},
+{
+"slug": "dumbbell_bicep_curl",
+"name": "Dumbbell Bicep Curl",
+"muscle": "biceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "ez-bar_curl",
+"name": "EZ-Bar Curl",
+"muscle": "biceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "hammer_curls",
+"name": "Hammer Curls",
+"muscle": "biceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "high_cable_curls",
+"name": "High Cable Curls",
+"muscle": "biceps",
+"regie": {
+"slug": "high_cable_curls",
+"geraet": "Kabelzug (hoch), 2 Griffe, Kabelturm",
+"start": "Zwischen zwei hohen Kabelzügen stehend, Arme seitlich in Schulterhöhe gestreckt, Hände im Untergriff an den Griffen.",
+"ende": "Ellbogen gebeugt, Griffe zu den Ohren/Schläfen gezogen (Doppel-Bizeps-Pose), Oberarme waagerecht."
+},
+"kamera": null
+},
+{
+"slug": "incline_dumbbell_curl",
+"name": "Incline Dumbbell Curl",
+"muscle": "biceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "lying_cable_curl",
+"name": "Lying Cable Curl",
+"muscle": "biceps",
+"regie": {
+"slug": "lying_cable_curl",
+"geraet": "Kabelzug (tief), Matte/Bank, Stange",
+"start": "Rücklings auf dem Boden/Bank, Füße am Kabelzug, Stange im Untergriff mit gestreckten Armen auf Hüfthöhe.",
+"ende": "Stange zur Brust gecurlt, Ellbogen am Körper, Unterarme senkrecht.",
+"unsicher": true
+},
+"kamera": null
+},
+{
+"slug": "lying_high_bench_barbell_curl",
+"name": "Lying High Bench Barbell Curl",
+"muscle": "biceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "lying_supine_dumbbell_curl",
+"name": "Lying Supine Dumbbell Curl",
+"muscle": "biceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "preacher_curl",
+"name": "Preacher Curl",
+"muscle": "biceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "reverse_barbell_curl",
+"name": "Reverse Barbell Curl",
+"muscle": "biceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "reverse_cable_curl",
+"name": "Reverse Cable Curl",
+"muscle": "biceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "seated_close-grip_concentration_barbell_curl",
+"name": "Seated Close-Grip Concentration Barbell Curl",
+"muscle": "biceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "seated_dumbbell_curl",
+"name": "Seated Dumbbell Curl",
+"muscle": "biceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "spider_curl",
+"name": "Spider Curl",
+"muscle": "biceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "standing_biceps_cable_curl",
+"name": "Standing Biceps Cable Curl",
+"muscle": "biceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "standing_concentration_curl",
+"name": "Standing Concentration Curl",
+"muscle": "biceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "standing_dumbbell_reverse_curl",
+"name": "Standing Dumbbell Reverse Curl",
+"muscle": "biceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "two-arm_dumbbell_preacher_curl",
+"name": "Two-Arm Dumbbell Preacher Curl",
+"muscle": "biceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "zottman_curl",
+"name": "Zottman Curl",
+"muscle": "biceps",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "cable_wrist_curl",
+"name": "Cable Wrist Curl",
+"muscle": "forearms",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "dumbbell_lying_pronation",
+"name": "Dumbbell Lying Pronation",
+"muscle": "forearms",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "dumbbell_lying_supination",
+"name": "Dumbbell Lying Supination",
+"muscle": "forearms",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "finger_curls",
+"name": "Finger Curls",
+"muscle": "forearms",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "palms-down_wrist_curl_over_a_bench",
+"name": "Palms-Down Wrist Curl Over A Bench",
+"muscle": "forearms",
+"regie": {
+"slug": "palms-down_wrist_curl_over_a_bench",
+"geraet": "Flachbank, Langhantel/Kurzhanteln",
+"start": "Kniend vor der Bank, Unterarme flach auf der Bank, Handgelenke am Rand überhängend, Handflächen nach unten, Hantel im Obergriff, Hände tief gebeugt (Hantelspitzen unten).",
+"ende": "Handgelenke maximal nach oben gestreckt, Hantel angehoben, Unterarme bleiben flach auf der Bank."
+},
+"kamera": "Kamera seitlich leicht schräg von vorne auf Höhe der Unterarme/Bank, Unterarme, Handgelenke und Hantel frei sichtbar, Oberkörper im Bild."
+},
+{
+"slug": "palms-up_barbell_wrist_curl_over_a_bench",
+"name": "Palms-Up Barbell Wrist Curl Over A Bench",
+"muscle": "forearms",
+"regie": {
+"slug": "palms-up_barbell_wrist_curl_over_a_bench",
+"geraet": "Flachbank, Langhantel",
+"start": "Kniend vor der Bank, Unterarme flach auf der Bank, Handflächen nach oben, Handgelenke am Rand überhängend, Hantel tief in den Fingerspitzen.",
+"ende": "Handgelenke maximal nach oben gebeugt, Faust um die Stange, Unterarme flach auf der Bank."
+},
+"kamera": "Kamera seitlich leicht schräg von vorne auf Höhe der Unterarme/Bank, Unterarme, Handgelenke und Hantel frei sichtbar, Oberkörper im Bild."
+},
+{
+"slug": "standing_palms-up_barbell_behind_the_back_wrist_curl",
+"name": "Standing Palms-Up Barbell Behind The Back Wrist Curl",
+"muscle": "forearms",
+"regie": {
+"slug": "standing_palms-up_barbell_behind_the_back_wrist_curl",
+"geraet": "Langhantel",
+"start": "Aufrecht stehend, Langhantel hinter dem Rücken im Untergriff, Arme gestreckt, Handgelenke tief (Finger öffnen).",
+"ende": "Handgelenke gebeugt, Stange nach oben gerollt, Fäuste geschlossen, Arme gestreckt."
+},
+"kamera": "Kamera seitlich leicht schräg von vorne auf Höhe der Unterarme/Bank, Unterarme, Handgelenke und Hantel frei sichtbar, Oberkörper im Bild."
+},
+{
+"slug": "wrist_circles",
+"name": "Wrist Circles",
+"muscle": "forearms",
+"regie": {
+"slug": "wrist_circles",
+"geraet": "Ohne Gerät",
+"start": "Aufrecht stehend oder sitzend, Arme nach vorn gestreckt, Fäuste locker, Handgelenke neutral.",
+"ende": "Handgelenke im großen Kreis nach oben/außen gebeugt, Faust zeigt zur Seite/oben, Unterarm stabil."
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "wrist_rotations_with_straight_bar",
+"name": "Wrist Rotations with Straight Bar",
+"muscle": "forearms",
+"regie": {
+"slug": "wrist_rotations_with_straight_bar",
+"geraet": "Gerade Stange (leicht)",
+"start": "Sitzend, Unterarme auf den Oberschenkeln, Stange mit beiden Händen, Handgelenke neutral.",
+"ende": "Stange nach vorn/innen gedreht, Handgelenke gebeugt, Unterarme bleiben auf den Oberschenkeln.",
+"unsicher": true
+},
+"kamera": "Kamera exakt seitlich (90 Grad) auf Hüfthöhe, Ganzkörper und Gerät vollständig sichtbar."
+},
+{
+"slug": "isometric_neck_exercise_-_front_and_back",
+"name": "Isometric Neck Exercise - Front And Back",
+"muscle": "neck",
+"regie": null,
+"kamera": null
+},
+{
+"slug": "isometric_neck_exercise_-_sides",
+"name": "Isometric Neck Exercise - Sides",
+"muscle": "neck",
+"regie": null,
+"kamera": null
+}
+]
