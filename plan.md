@@ -290,3 +290,9 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - QA-Punkt 9 (Bankwinkel) + 10 (Geräte-Realismus: nichts verbogen/dazugedichtet) in tools/regie/regie_kamera_bankdruecken_flach.md.
 - Frau: Schrägbank Start2/Ende2 übernommen (Arme leicht lang, ok). Close-Grip Frau: 3 Versuche (Bank schräg, Kopf links/anderer Raum) → mit Referenzbild neu.
 - Beide Geminis parallel: G1 Mann, G2 Frau.
+
+## 04.10. 03:10 – Phase 1 Fortschritt (autonom, beide Geminis)
+- Technik-Recherche: tools/regie/technik_1..3.md (Quellen + Winkel; Gradzahlen meist Richtwerte).
+- Fertig (Start+Ende, Mann+Frau, Hexagon-Raum via Referenzbild, GIFs gebaut, in ~/Downloads): Bankdrücken flach/Schräg/Decline(Mann)/eng; KH-Bankdrücken flach (m,w), KH-Schrägbank (m,w), KH-Fliegende (m,w), Einarmiges KH-Rudern (m,w), KH-Schulterdrücken sitzend (m,w). Dateinamen: kh_<übung>_<kamera>-m/w(-end).jpeg.
+- Offen Bankgruppe: Frau Decline (Gemini rendert nicht), Mann/Frau flach (Langhantel, Raum angleichen).
+- Weiter: Seilzug oben (5), Aufwärmen (5), Rücken (5), Gerüst (5), Beine (5), Core (5).
