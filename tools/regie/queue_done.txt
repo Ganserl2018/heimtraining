@@ -49,3 +49,4 @@ t-bar_row_with_handle
 around_the_worlds
 kneeling_high_pulley_row
 cable_crossover
+cable_iron_cross
