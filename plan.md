@@ -276,3 +276,11 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - Test Bankdrücken flach: A frontal (Gemini 2) Start+Ende identische Szene, GIF mit Ghosting in der Mitte; B Seite 3/4 (Gemini 2) Start+Ende identische Szene, ebenfalls Doppelstange in der Mitte (Tool fällt auf Blend zurück). Alex-Urteil: Seitenansicht zeigt die Übung am genauesten → Kamera für Bankdrücken flach = Seite 3/4.
 - Gemini-1-Versuch für B verworfen (Kopf angehoben, andere Szene). Gemini-Edit-Prompts "Bearbeite/Korrigiere" werden ignoriert; funktioniert nur "Erzeuge ein NEUES Bild … exakt dieselbe Szene … Einziger Unterschied: ENDPOSITION …" im selben Chat von Gemini 2. Mittelfoto (Zwischenposition) kam fast identisch zum Endfoto zurück → noch offen.
 - Offen: Doppelstange im GIF (Ideen: Mittelfoto mit klarerem Prompt, kürzere Strecke, Crossfade-only); Frauen-Fotos + Schräg/Decline/eng; Redo-Liste ~/Downloads/_redo_list.txt.
+
+## 04.10. 02:15 – Bankdrück-Gruppe (Phase 1) Stand
+- Regel: Prompts zurück zum Original-Muster (fester Stil-Block + kurzer variabler Teil), siehe tools/regie/prompt_vorlage.md; vor jeder Übung alte Referenz-GIFs in gifs/ ansehen; Start/Ende mit Feinangaben (Start Stange auf Brust, Ellbogen ≈85°; Ende Arme KOMPLETT gestreckt 180°).
+- Kamera: flach = Seite 3/4; Schrägbank = reine Seitenansicht (90°); Decline + eng (Mann) = reine Seite. Frontal/3-4 bei Schrägbank verworfen (Ellbogen im Ende nicht sichtbar gestreckt).
+- Fertig/abgenommen (Mann): flach, Schrägbank (GIF gut), Decline (passt, Hintergrund grau → neue Mann-Bilder mit „neon-grünem Hexagon-Licht an der Wand"). Frau: flach (anderer Raum), Schrägbank (Hexagon-Raum, gut).
+- Eng (Close-Grip) Mann: Start/Ende + GIF erzeugt (Blend), QA durch Alex offen. Erste Version falsche Bank → mit verstellbarer Bank neu.
+- Offen/Redo: Frau Decline (Gemini rendert Schrägbank/Sitzen, 3 Versuche → Redo-Liste), Frau eng. Frage an Alex: Mann/Frau im selben Raum (Hexagon)?
+- Danach: Kurzhantel, Seilzug oben, Aufwärmen stehend, Rücken, Brust/Trizeps Gerüst, Beine, Core (je 5).
