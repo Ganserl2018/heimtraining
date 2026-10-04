@@ -51,3 +51,4 @@ kneeling_high_pulley_row
 cable_crossover
 cable_iron_cross
 dumbbell_side_bend
+dumbbell_side_bend
