@@ -54,3 +54,5 @@ dumbbell_side_bend
 dumbbell_side_bend
 wind_sprints
 wind_sprints
+shotgun_row
+shotgun_row
