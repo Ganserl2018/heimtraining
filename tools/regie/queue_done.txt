@@ -19,3 +19,5 @@ seated_cable_rows
 stiff_leg_barbell_good_morning
 bent_over_two-dumbbell_row
 dumbbell_incline_row
+reverse_grip_bent-over_rows
+straight_bar_bench_mid_rows
