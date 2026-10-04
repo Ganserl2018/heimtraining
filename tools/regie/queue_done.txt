@@ -24,3 +24,4 @@ straight_bar_bench_mid_rows
 wide-grip_lat_pulldown
 cable_reverse_crunch
 cable_seated_crunch
+pallof_press
