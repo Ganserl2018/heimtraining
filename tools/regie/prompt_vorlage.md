@@ -19,3 +19,9 @@ Person: athletischer Mann, ca. 30, kurze dunkle Haare, schwarzes Shirt, graue Sh
 
 ## Bank-Flach-Hinweis (04.10.)
 Gemini übernimmt im selben Chat den Schrägwinkel der vorigen Bank. Für flach: NEUER Chat, Satz „komplett waagerechte flache Hantelbank, Rückenlehne auf Höhe der Sitzfläche (0°)".
+
+## Referenzbild-Trick (Alex 04.10. 02:26) – Raum/Stil gleich halten
+- Wenn Raum/Hintergrund abweicht: ein gutes Bild des anderen Geschlechts (z.B. schraeg_side-w-start2) per „+" → Dateien hochladen anhängen und schreiben: „im EXAKT gleichen Raum wie auf dem Referenzbild (gleiche Wand mit Hexagon-Licht, gleicher Boden, gleiche Beleuchtung), gleiche reine Seitenansicht, Kopf rechts".
+- Wirkt: Mann Kurzhantel-Bankdrücken flach (Start+Ende) kam im selben Hexagon-Raum, Kopf rechts, flache Bank, zwei Hanteln.
+- Neuer Chat → Seitenverhältnis 3:4 neu setzen (sonst Querformat).
+- Dateien speichern: Download-Dialog Name direkt tippen (kh_flach_side-m / -m-end), dann Sichern.

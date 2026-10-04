@@ -284,3 +284,9 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - Eng (Close-Grip) Mann: Start/Ende + GIF erzeugt (Blend), QA durch Alex offen. Erste Version falsche Bank → mit verstellbarer Bank neu.
 - Offen/Redo: Frau Decline (Gemini rendert Schrägbank/Sitzen, 3 Versuche → Redo-Liste), Frau eng. Frage an Alex: Mann/Frau im selben Raum (Hexagon)?
 - Danach: Kurzhantel, Seilzug oben, Aufwärmen stehend, Rücken, Brust/Trizeps Gerüst, Beine, Core (je 5).
+
+## 04.10. 02:35 – Referenzbild-Trick + QA 9/10
+- Alex: Raum der Frau als Referenzbild an Gemini für den Mann anhängen → gleicher Raum. Funktioniert (Kurzhantel-Bankdrücken flach Mann: Start+Ende fertig, Raum gleich).
+- QA-Punkt 9 (Bankwinkel) + 10 (Geräte-Realismus: nichts verbogen/dazugedichtet) in tools/regie/regie_kamera_bankdruecken_flach.md.
+- Frau: Schrägbank Start2/Ende2 übernommen (Arme leicht lang, ok). Close-Grip Frau: 3 Versuche (Bank schräg, Kopf links/anderer Raum) → mit Referenzbild neu.
+- Beide Geminis parallel: G1 Mann, G2 Frau.
