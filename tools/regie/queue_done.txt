@@ -34,3 +34,4 @@ bent-arm_dumbbell_pullover
 decline_crunch
 decline_crunch
 decline_crunch
+barbell_hip_thrust
