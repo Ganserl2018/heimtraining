@@ -296,3 +296,8 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - Fertig (Start+Ende, Mann+Frau, Hexagon-Raum via Referenzbild, GIFs gebaut, in ~/Downloads): Bankdrücken flach/Schräg/Decline(Mann)/eng; KH-Bankdrücken flach (m,w), KH-Schrägbank (m,w), KH-Fliegende (m,w), Einarmiges KH-Rudern (m,w), KH-Schulterdrücken sitzend (m,w). Dateinamen: kh_<übung>_<kamera>-m/w(-end).jpeg.
 - Offen Bankgruppe: Frau Decline (Gemini rendert nicht), Mann/Frau flach (Langhantel, Raum angleichen).
 - Weiter: Seilzug oben (5), Aufwärmen (5), Rücken (5), Gerüst (5), Beine (5), Core (5).
+
+## 04.10. 03:30 – Seilzug-Set (Phase 1)
+- Fertig (Mann+Frau, Start+Ende, Downloads `sz_*`): Gerader-Arm-Pulldown (Beton R2), Trizepsdrücken Seil (Backstein R1), Face Pull (Holzlamellen R3, 3/4), Kniender Cable-Crunch (Akustik+Lichtring R5, Seite).
+- Offen Seilzug: Pushdown gerade Stange (fast identisch zu Seil-Pushdown, Raum R4 Fensterfront).
+- Danach: Aufwärmen (5), Rücken (5), Gerüst (5), Beine (5), Core (5).
