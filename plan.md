@@ -301,3 +301,9 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - Fertig (Mann+Frau, Start+Ende, Downloads `sz_*`): Gerader-Arm-Pulldown (Beton R2), Trizepsdrücken Seil (Backstein R1), Face Pull (Holzlamellen R3, 3/4), Kniender Cable-Crunch (Akustik+Lichtring R5, Seite).
 - Offen Seilzug: Pushdown gerade Stange (fast identisch zu Seil-Pushdown, Raum R4 Fensterfront).
 - Danach: Aufwärmen (5), Rücken (5), Gerüst (5), Beine (5), Core (5).
+
+## 04.10. 04:15 – Aufwärmen (Phase 1)
+- Fertig (M+W, Start+Ende, `aw_*`): Hampelmann (Backstein, Front), Armkreisen (Holzlamellen; Ende = Arme senkrecht oben, Front-Vorwärts-Arme ging nicht), Beinschwingen (Akustik+Ring, Hand am Rack), Rumpfdrehen (Beton).
+- Offen: Hüftkreisen – Gemini zeigt Beckenversatz nicht (nur Start-m); Redo-Liste. Idee: 3/4-Kamera/Seite.
+- Hampelmann brauchte KEINE Zwischenbilder.
+- Seilzug-Set komplett (siehe 03:30). Nächste: Rücken (5), Gerüst (5), Beine (5), Core (5).
