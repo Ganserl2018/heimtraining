@@ -52,3 +52,5 @@ cable_crossover
 cable_iron_cross
 dumbbell_side_bend
 dumbbell_side_bend
+wind_sprints
+wind_sprints
