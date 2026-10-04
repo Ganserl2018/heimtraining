@@ -307,3 +307,9 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - Offen: Hüftkreisen – Gemini zeigt Beckenversatz nicht (nur Start-m); Redo-Liste. Idee: 3/4-Kamera/Seite.
 - Hampelmann brauchte KEINE Zwischenbilder.
 - Seilzug-Set komplett (siehe 03:30). Nächste: Rücken (5), Gerüst (5), Beine (5), Core (5).
+
+## 04.10. 06:05 – Rücken, Gerüst, Beine, Core (Phase 1 fertig)
+- Rücken ×5 (`rk_*`): Hyperextension, Klimmzug, Rudern, Kreuzheben, Reverse Fly. Gerüst ×5 (`gr_*`): Brust-Dips, Trizeps-Dips, Liegestütze erhöht, Inverted Row, Hanging Knee Raise. Beine ×4 (`bn_*`): Kniebeuge, Ausfall, RDL, Wadenheben. Core ×5 (`cr_*`): Plank (Start=Knie-Plank, Ende=voll), Crunch, Russian Twist (3 Versuche, Doppel-Hantel), Bicycle Crunch (Spiegelung entfernt), Beinheben liegend.
+- Alle M+W, Start+Ende, GIFs (Blend) gebaut in /tmp/out (Cloud), Fotos in ~/Downloads.
+- Redo-Liste: Hüftkreisen, Hip Thrust (m+w, Gemini zeigt Sitzen auf Bank), Trizeps-Dips (schwache Absenkung), Frau Decline.
+- Nächste Schritte: Fotos auf 540x720 q82, GIFs neu bauen, in App einbinden (img/index.json + Version, Playwright 390/1300), dann restliche ~441 Übungen, Duplikate zuletzt (Alex entscheidet).
