@@ -31,3 +31,4 @@ standing_cable_lift
 reverse_crunch
 barbell_shrug
 bent-arm_dumbbell_pullover
+decline_crunch
