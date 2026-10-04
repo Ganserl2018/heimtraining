@@ -6,3 +6,6 @@ cocoons
 crunch_-_legs_on_exercise_ball
 elbow_to_knee
 flat_bench_lying_leg_raise
+scissor_kick
+oblique_crunches
+side_jackknife
