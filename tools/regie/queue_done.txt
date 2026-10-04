@@ -35,3 +35,4 @@ decline_crunch
 decline_crunch
 decline_crunch
 barbell_hip_thrust
+decline_dumbbell_bench_press
