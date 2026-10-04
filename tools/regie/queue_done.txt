@@ -25,3 +25,4 @@ wide-grip_lat_pulldown
 cable_reverse_crunch
 cable_seated_crunch
 pallof_press
+standing_cable_wood_chop
