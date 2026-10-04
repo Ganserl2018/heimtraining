@@ -29,3 +29,4 @@ standing_cable_wood_chop
 side_bridge
 standing_cable_lift
 reverse_crunch
+barbell_shrug
