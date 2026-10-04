@@ -42,3 +42,4 @@ decline_dumbbell_flyes
 close-grip_front_lat_pulldown
 one_arm_lat_pulldown
 seated_good_mornings
+lower_back_curl
