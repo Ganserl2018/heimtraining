@@ -313,3 +313,7 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - Alle M+W, Start+Ende, GIFs (Blend) gebaut in /tmp/out (Cloud), Fotos in ~/Downloads.
 - Redo-Liste: Hüftkreisen, Hip Thrust (m+w, Gemini zeigt Sitzen auf Bank), Trizeps-Dips (schwache Absenkung), Frau Decline.
 - Nächste Schritte: Fotos auf 540x720 q82, GIFs neu bauen, in App einbinden (img/index.json + Version, Playwright 390/1300), dann restliche ~441 Übungen, Duplikate zuletzt (Alex entscheidet).
+
+## 04.10. 10:10 – App-Einbindung Phase 1
+- 26 Übungen (m+w) als GIF + Startfoto in img/ eingebunden (index.json v4, 500 Einträge): Kniebeuge→barbell_squat, Ausfall→dumbbell_lunges, RDL, Wade→standing_dumbbell_calf_raise, Plank, Crunch→crunches, Russian Twist, Bicycle→air_bike, Hyperext, Klimmzug→pullups, Rudern→bent_over_barbell_row, Kreuzheben→barbell_deadlift, Reverse Fly, Trizeps-Dips→dips_-_triceps_version, Liegestütze Füße erhöht, Knee Raise→hanging_leg_raise, KH flach/schräg/Fliegende/Rudern/Schulter, Seilzug ×5.
+- Nicht zugeordnet (kein Pool-Slug oder Datei unklar): Brust-Dips, Inverted Row, Beinheben liegend (Matte), Aufwärmen ×4 (aw_*), Langhantel-Bankgruppe (Dateinamen schraeg_/close_/decline_ unklar).
