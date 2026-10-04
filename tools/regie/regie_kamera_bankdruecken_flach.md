@@ -15,3 +15,7 @@ QA: 1 Sichtbarkeit beide Schultern/Arme, 2 Pose Start, 3 Pose Ende, 4 Körperhal
 - Flach = Rückenlehne waagerecht auf Höhe der Sitzfläche, Kopf nicht höher als Hüfte. Schräg ca. 40–45°, Decline fällt zum Kopf ab.
 - QA vergleicht den Bankwinkel jedes Bildes mit der Vorgabe und mit dem Referenz-GIF. Abweichung = Fehlversuch (zählt zu max. 3).
 - Fehlfall 04.10.: Frau Close-Grip „flach" kam mit angehobener Rückenlehne (Start+Ende) → verworfen, nicht ins GIF.
+
+## QA-Punkt 10 (Alex 04.10. 02:23) – Geräte-Realismus
+- Bank, Stange, Scheiben, Seil/Kabel müssen echt und plausibel aussehen: nichts verbogen, nichts dazugedichtet (zusätzliche Teile, doppelte Stangen/Scheiben, Fantasie-Geräte), Stange gerade, gleiche Scheibenzahl in Start und Ende, gleiche Bank in Start und Ende.
+- Abweichung = Fehlversuch (zählt zu max. 3).
