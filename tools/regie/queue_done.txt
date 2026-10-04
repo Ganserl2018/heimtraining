@@ -9,3 +9,8 @@ flat_bench_lying_leg_raise
 scissor_kick
 oblique_crunches
 side_jackknife
+sit-up
+spell_caster
+toe_touchers
+spider_crawl
+superman
