@@ -1,0 +1,327 @@
+[
+ {
+  "slug": "cable_chest_press",
+  "geraet": "EINE Kabelzug-Station mit zwei Griffen auf Brusthöhe, dazu EINE Sitzbank/Sitz mit Rückenlehne (Rücken zur Station, Kabel kommen von hinten)",
+  "startposition": "Sitzend, Rücken fest an der Lehne, Füße flach am Boden, Griffe auf Schulter-/Brusthöhe, Handgelenke neutral, Ellbogen gebeugt, Griffe leicht an der Brust, Schulterblätter zurück und unten",
+  "endposition": "Ellbogen vollständig gestreckt aber nicht durchgedrückt, beide Griffe vor der Brust auf Schulterhöhe nahe zusammen, Schulterblätter bleiben zurückgezogen",
+  "kamera": "Seitlich, exakt 90° zum Körper, Oberkörper, Arme und Kabelverlauf sichtbar",
+  "typische_fehler": [
+   "Kopf vorgeschoben oder Schultern nach vorn gerundet",
+   "Starkes Hohlkreuz"
+  ],
+  "quelle": [
+   "https://www.acefitness.org/education-and-resources/lifestyle/exercise-library/165/seated-cable-press"
+  ],
+  "schwer_darstellbar": false,
+  "hinweis": "Station-Ausrichtung (Kabel hinter dem Sitz) ist Richtwert, ACE nennt nur Griffhöhe Schulter/Brust"
+ },
+ {
+  "slug": "close-grip_front_lat_pulldown",
+  "geraet": "EINE Latzug-Station mit EINER kurzen Stange/engem Griff, Oberschenkelpolster",
+  "startposition": "Sitzend unter dem Gerät, Griff enger als schulterbreit, Arme oben vollständig gestreckt (Lats gedehnt), Oberkörper ca. 30° nach hinten geneigt, Brust raus, leichtes Hohlkreuz, Blick nach vorn",
+  "endposition": "Stange berührt die obere Brust, Oberarme und Schultern nach unten und hinten gezogen, Ellbogen nah am Körper unter der Stange, Oberkörper bleibt in 30° Neigung",
+  "kamera": "Seitlich, Oberkörperneigung, Stangenhöhe und Ellbogenstellung sichtbar",
+  "typische_fehler": [
+   "Oberkörper schwingt weit zurück",
+   "Stange hinter den Kopf oder zu weiter Griff"
+  ],
+  "quelle": [
+   "https://bodybuilding.com/exercises/close-grip-front-lat-pulldown",
+   "https://www.strengthlog.com/close-grip-lat-pulldown/"
+  ],
+  "schwer_darstellbar": false
+ },
+ {
+  "slug": "one_arm_lat_pulldown",
+  "geraet": "EINE Kabelzug-Station, Hochzug, EIN Einzelgriff",
+  "startposition": "Neben dem Gerät, Kabel hoch eingestellt, Einzelgriff in einer Hand, Arm nach oben gestreckt, Oberkörper aufrecht, Füße schulterbreit/Knie leicht gebeugt (oder sitzend/kniend), Schulterblatt gelöst",
+  "endposition": "Griff auf Schulter-/Brusthöhe heruntergezogen, Ellbogen eng am Rumpf nach unten, Schulterblatt unten/zurück, Oberkörper aufrecht, freie Hand am Gerät oder Bein",
+  "kamera": "Frontal-45° zur arbeitenden Seite, Arm, Kabel und Oberkörper sichtbar",
+  "typische_fehler": [
+   "Oberkörper lehnt zurück",
+   "Oberer Trapez hochgezogen, Ellbogen nach hinten weg"
+  ],
+  "quelle": [
+   "https://loadmuscle.com/exercises/cable-one-arm-lat-pulldown",
+   "https://planfit.ai/en/exercise/one-arm-cable-lat-pulldown"
+  ],
+  "schwer_darstellbar": false,
+  "hinweis": "Quellen uneinheitlich bei Sitz/Stand/Kniend; Standard-Variante: Kabel hoch, Einzelgriff"
+ },
+ {
+  "slug": "kneeling_high_pulley_row",
+  "geraet": "EINE Kabelzug-Station, Kabel hoch eingestellt, EIN Griff (oder Seil/Stange), Knieauflage Matte",
+  "startposition": "Kniend (beide Knie oder Halbkniestand) vor der Station, Kabel von oben, Griff mit gestreckten Armen vor dem Körper, Oberkörper aufrecht bis leicht vorgeneigt, Rücken gerade",
+  "endposition": "Ellbogen führen nach hinten, Griff auf Brust-/Rippenhöhe herangezogen, Schulterblätter zusammen, Oberkörper stabil ohne Rotation",
+  "kamera": "Seitlich, Kabelschräge, Ellbogenweg und Oberkörper sichtbar",
+  "typische_fehler": [
+   "Rundrücken oder Rotation des Oberkörpers",
+   "Kabel wird horizontal statt von oben gezeigt"
+  ],
+  "quelle": [
+   "https://exercises.virtuagym.com/exercise/pulley-high-row/",
+   "https://eleiko.inspire360.com/resource/6595c9ecc3c4b2cd9d0e9ed3"
+  ],
+  "schwer_darstellbar": false,
+  "hinweis": "Keine Quelle mit exakter Definition gefunden (Virtuagym: Stand, Overhand; Eleiko: Halbkniend, Kabel Taillenhöhe). Kabelhöhe oben ist Annahme aus Namen."
+ },
+ {
+  "slug": "cable_crossover",
+  "geraet": "EINE Kabelzug-Doppelstation (zwei Rollen) mit ZWEI Einzelgriffen, Rollen auf höchster Position",
+  "startposition": "Mittig zwischen den Türmen, Füße schulterbreit, ein Fuß leicht vorn, Oberkörper leicht nach vorn geneigt, Arme seitlich/schräg nach oben-außen gespreizt, Ellbogen leicht gebeugt, Brust raus",
+  "endposition": "Beide Hände vor dem Körper auf Bauch-/Hüfthöhe zusammengeführt (Griffe berühren sich fast), Ellbogen leicht gebeugt, wie Baum umarmen, Brust angespannt",
+  "kamera": "Frontal, leicht erhöht oder 45°, Kabelverlauf von oben beidseitig und Armspreizung sichtbar",
+  "typische_fehler": [
+   "Arme gestreckt/gesperrt",
+   "Rollen auf Brusthöhe statt oben"
+  ],
+  "quelle": [
+   "https://planfit.ai/en/exercise/cable-crossover",
+   "https://bellsofsteel.us/blogs/content/how-to-properly-do-a-cable-crossover"
+  ],
+  "schwer_darstellbar": false
+ },
+ {
+  "slug": "cable_incline_pushdown",
+  "geraet": "EINE Kabelzug-Station mit hoher Rolle, EINE gerade Stange, EINE Schrägbank (ca. 45°)",
+  "startposition": "Rücklings auf Schrägbank (ca. 45°), Rücken zur hohen Rolle gewandt (Bodybuilding.com), Arme gestreckt nach vorn/unten, gerade Stange im Obergriff schulterbreit ca. 2 Zoll vor den Oberschenkeln",
+  "endposition": "Gestreckte Arme im Halbkreis nach oben gezogen, Stange direkt über dem Kopf, Oberarme nur aus der Schulter bewegt, Ellbogen bleiben gestreckt",
+  "kamera": "Seitlich, Bogenbahn der gestreckten Arme und Schrägbank sichtbar",
+  "typische_fehler": [
+   "Mit Trizeps-Pushdown verwechselt: hier gestreckte Arme (Lats), kein Ellbogenbeugen",
+   "Bank flach statt schräg"
+  ],
+  "quelle": [
+   "https://bodybuilding.com/exercises/cable-incline-pushdown",
+   "https://fitnessvolt.com/cable-incline-pushdown/"
+  ],
+  "schwer_darstellbar": false,
+  "hinweis": "Quellen widersprüchlich: Bodybuilding.com (liegend, Stange Oberschenkel -> über Kopf) vs. FitnessVolt (sitzend 45°, Ellbogen nach unten bis Torsohöhe, Lats). Hier Bodybuilding.com-Variante gewählt."
+ },
+ {
+  "slug": "bodyweight_flyes",
+  "geraet": "ZWEI gleich beladene EZ-Stangen (rollbar) nebeneinander auf dem Boden",
+  "startposition": "Liegestütz-Position über den Stangen, Gewicht auf Zehen und Händen, Hände auf je einer Stange, Arme gestreckt, Körper gerade",
+  "endposition": "Stangen nach außen gerollt: Arme weit gespreizt, Ellbogen gebeugt, Brust tief über dem Boden, Körper gerade, Stangen weit auseinander",
+  "kamera": "Frontal von vorn auf Bodenhöhe, Stangenabstand und Armspreizung sichtbar",
+  "typische_fehler": [
+   "Nur ein Stab oder Hände auf dem Boden ohne Stangen",
+   "Körper durchhängend oder Hintern hoch"
+  ],
+  "quelle": [
+   "https://bodybuilding.com/exercises/bodyweight-flyes",
+   "https://fitnessvolt.com/24103/bodyweight-fly/"
+  ],
+  "schwer_darstellbar": false
+ },
+ {
+  "slug": "clock_push-up",
+  "geraet": "KEIN Gerät (nur Boden/Matte), optional Zifferblatt-Markierung am Boden",
+  "startposition": "Liegestütz-Position, Arme gestreckt, Hände etwa schulterbreit, Körper gerade, Gewicht auf Händen und Zehen",
+  "endposition": "Unten: Brust nah am Boden, Ellbogen gebeugt; Hände und Füße um ca. 30° im Uhrzeigersinn versetzt zur Ausgangsstellung (Richtungswechsel nach jeder Wiederholung)",
+  "kamera": "Von schräg oben (45°), damit versetzte Hand-/Fußposition sichtbar",
+  "typische_fehler": [
+   "Wirkt wie normaler Liegestütz ohne Drehung",
+   "Hüfte hängt durch"
+  ],
+  "quelle": [
+   "https://www.bodybuilding.com/exercises/clock-push-up",
+   "https://physitrack.com/home-exercise-video/push-up-on-clock-face"
+  ],
+  "schwer_darstellbar": true,
+  "hinweis": "Rotation nur über Folge von Wiederholungen sichtbar, Einzelfoto schwer"
+ },
+ {
+  "slug": "decline_dumbbell_bench_press",
+  "geraet": "ZWEI Kurzhanteln, EINE Negativbank (30-45° Neigung, Kopf unten) mit Fußhalter",
+  "startposition": "Auf der Negativbank liegend, Füße fixiert, Hanteln mit gestreckten Armen über der Brust, Schulterblätter zusammen, Brust raus",
+  "endposition": "Hanteln seitlich der Brust, Ellbogen ca. 90°, Unterarme senkrecht, Ellbogen seitlich ausgestellt",
+  "kamera": "Frontal vom Kopfende der Bank oder 45° vorn; Bankneigung und Ellbogenwinkel sichtbar",
+  "typische_fehler": [
+   "Bank flach oder ansteigend dargestellt",
+   "Starkes Hohlkreuz oder Hüfte abgehoben"
+  ],
+  "quelle": [
+   "https://nfpt.com/how-to-do-a-decline-bench-press-with-dumbbells/"
+  ],
+  "schwer_darstellbar": false
+ },
+ {
+  "slug": "decline_dumbbell_flyes",
+  "geraet": "ZWEI Kurzhanteln, EINE Negativbank (ca. 30° Neigung, Kopf unten)",
+  "startposition": "Liegend auf Negativbank, Arme nach oben gestreckt, Hanteln über der Brust, Handflächen zueinander, Ellbogen leicht gebeugt, Schulterblätter zusammen",
+  "endposition": "Arme seitlich abgesenkt, Ellbogen auf Schulterhöhe (leicht gebeugt), Handgelenke gerade, weiter Bogen, Brust gedehnt",
+  "kamera": "Frontal vom Kopfende oder leicht schräg oben; Armspreizung sichtbar",
+  "typische_fehler": [
+   "Arme gestreckt wie Bankdrücken",
+   "Ellbogen stark gebeugt (wirkt wie Pressen)"
+  ],
+  "quelle": [
+   "https://nfpt.com/how-to-do-decline-bench-dumbbell-flyes/",
+   "https://www.muscleandstrength.com/node/3811"
+  ],
+  "schwer_darstellbar": false,
+  "hinweis": "NFPT: Handflächen nach oben, M&S: Baum-Umarmung (neutral)"
+ },
+ {
+  "slug": "barbell_shrug",
+  "geraet": "EINE Langhantel",
+  "startposition": "Stehend, Langhantel in gestreckten Armen vor dem Körper (Oberschenkel), Schultern entspannt unten, Griff etwa schulterbreit, Blick geradeaus",
+  "endposition": "Schultern gerade nach oben Richtung Ohren gezogen, Arme bleiben gestreckt, Hantel höher an den Oberschenkeln/Hüfte, Trapez angespannt",
+  "kamera": "Seitlich bzw. frontal, Schulterlinie deutlich höher als Start",
+  "typische_fehler": [
+   "Arme gebeugt (Bizeps-Curl-Look)",
+   "Schultern kreisen oder Kopf vorgeschoben"
+  ],
+  "quelle": [
+   "https://www.strengthlog.com/barbell-shrug/"
+  ],
+  "schwer_darstellbar": false,
+  "hinweis": "Griffbreite/Stand nur Richtwert, Quelle knapp"
+ },
+ {
+  "slug": "lower_back_curl",
+  "geraet": "KEIN Gerät (Matte), Bodyweight",
+  "startposition": "Bauchlage, Arme seitlich ausgestreckt, Gesicht zum Boden",
+  "endposition": "Rumpf angehoben: Brust vom Boden gelöst, Wirbelsäule gestreckt, Arme bleiben seitlich ohne sich abzustützen, Beine bleiben am Boden",
+  "kamera": "Seitlich auf Bodenhöhe, Rumpfwinkel sichtbar",
+  "typische_fehler": [
+   "Arme stützen auf",
+   "Beine hochgezogen oder Überstreckung"
+  ],
+  "quelle": [
+   "https://www.exercise.com/exercises/lower-back-curl"
+  ],
+  "schwer_darstellbar": false,
+  "hinweis": "Nur eine Quelle gefunden, Detail knapp"
+ },
+ {
+  "slug": "stomach_vacuum",
+  "geraet": "KEIN Gerät",
+  "startposition": "Stehend (Füße hüftbreit), aufrecht, Rippen über Becken, Hände an Hüfte oder Oberschenkeln (alternativ Hände abgestützt, leicht vorgebeugt), Bauch normal",
+  "endposition": "Nach vollem Ausatmen Bauch aktiv nach innen/oben gezogen (Bauchdecke eingezogen, sichtbar hohl), Brust nicht angehoben, Wirbelsäule neutral",
+  "kamera": "Seitlich, nackter Oberkörper-Profil, Bauchkontur ein- vs. ausgezogen",
+  "typische_fehler": [
+   "Brust angehoben statt Bauch eingezogen",
+   "Wirbelsäule gebeugt oder überstreckt"
+  ],
+  "quelle": [
+   "https://learn.athleanx.com/articles/abs-for-men/how-to-do-stomach-vacuums"
+  ],
+  "schwer_darstellbar": true,
+  "hinweis": "Kaum sichtbarer Unterschied, Kontrast nur in der Bauchkontur"
+ },
+ {
+  "slug": "seated_good_mornings",
+  "geraet": "EINE Langhantel, EINE flache Bank (rittlings sitzend)",
+  "startposition": "Aufrecht sitzend auf der Bank, Langhantel hinter dem Nacken auf den Trapezen (wie Kniebeuge), Füße flach vor sich, Knie gebeugt, Wirbelsäule neutral",
+  "endposition": "Oberkörper aus der Hüfte nach vorn gekippt, Rücken gerade/neutral, Brust nach vorn-unten, Oberkörper nahe parallel zum Boden, Hantel bleibt auf dem Rücken",
+  "kamera": "Seitlich, Rumpfneigung, gerader Rücken und Hantel sichtbar",
+  "typische_fehler": [
+   "Rundrücken",
+   "Hantel vor dem Körper statt auf Trapezen"
+  ],
+  "quelle": [
+   "https://www.catalystathletics.com/exercise/184/Seated-Good-Morning",
+   "https://www.muscleandstrength.com/node/3658"
+  ],
+  "schwer_darstellbar": false,
+  "hinweis": "Rumpfwinkel am Umkehrpunkt (nahe parallel) ist Richtwert"
+ },
+ {
+  "slug": "rack_pulls",
+  "geraet": "EINE Langhantel im Power Rack auf Sicherheitsstangen (Höhe ca. Knie)",
+  "startposition": "Hantel auf Pins ca. Kniehöhe (2-3 Zoll über/unter), Füße schulterbreit, Schienbeine nahe der Stange, Rücken flach, Hüfte zurück, Arme gestreckt, Griff Obergriff oder Kreuzgriff",
+  "endposition": "Aufrecht mit Lockout, Hüfte nach vorn, Gesäß angespannt, Schultern zurück, Hantel an Oberschenkeln, Arme gestreckt",
+  "kamera": "Seitlich, Hantelhöhe am Knie bzw. Lockout, Rack erkennbar",
+  "typische_fehler": [
+   "Rundrücken",
+   "Überstreckung im Lockout; Hantel vom Boden statt vom Rack"
+  ],
+  "quelle": [
+   "https://www.garagegymreviews.com/how-to-rack-pull"
+  ],
+  "schwer_darstellbar": false
+ },
+ {
+  "slug": "deadlift_with_chains",
+  "geraet": "EINE Langhantel mit schweren Ketten (an Hülsen/Scheibenaußenseite aufgehängt)",
+  "startposition": "Konventionelle Kreuzheben-Ausgangsstellung, Hantel über den Schnürsenkeln, Hüftbreit, Hüfte höher als Knie, Rücken gerade, Arme gestreckt, Ketten liegen größtenteils am Boden",
+  "endposition": "Lockout aufrecht, Hüfte gestreckt, Arme gestreckt, Ketten fast komplett vom Boden gehoben und hängen von der Hantel",
+  "kamera": "Seitlich, Ketten als Höhenunterschied (Boden vs. hängend) sichtbar",
+  "typische_fehler": [
+   "Ketten fehlen oder liegen nur außen",
+   "Hüfte zu tief (Kniebeuge-Look)"
+  ],
+  "quelle": [
+   "https://www.muscleandstrength.com/node/49447",
+   "https://barbell-logic.com/how-to-set-up-chains"
+  ],
+  "schwer_darstellbar": false,
+  "hinweis": "Kettenanordnung nur beschrieben, nicht Bild belegt"
+ },
+ {
+  "slug": "bent_over_one-arm_long_bar_row",
+  "geraet": "EINE Langhantel, ein Ende in der Landmine/Ecke fixiert, Gewicht am freien Ende",
+  "startposition": "Neben der Stange stehend, Knie gebeugt, Hüfte nach hinten, Oberkörper vorgebeugt, Brust hoch, Arbeitsarm hängt gestreckt zur Stange (Griff nahe Hülse)",
+  "endposition": "Gewicht seitlich an Körper gezogen, Ellbogen gebeugt, Schulterblatt zurückgezogen, Oberkörper stabil",
+  "kamera": "Seitlich von der Greifseite, Rumpfneigung, Zug und Stange sichtbar",
+  "typische_fehler": [
+   "Rumpf rotiert oder Rundrücken",
+   "Stange wird freihändig ohne fixiertes Ende gezeigt"
+  ],
+  "quelle": [
+   "https://bodybuilding.com/exercises/detail/view/name/one-arm-long-bar-row",
+   "https://www.muscleandstrength.com/node/3654"
+  ],
+  "schwer_darstellbar": false
+ },
+ {
+  "slug": "t-bar_row_with_handle",
+  "geraet": "EINE T-Bar-Row-Stange (Landmine, Scheiben am Ende) mit V-Griff",
+  "startposition": "Straddling der Stange, Füße schulterbreit, Knie leicht gebeugt, Hüfte gebeugt, Rücken gerade, Brust nahe parallel zum Boden, Griff mit beiden Händen, Arme gestreckt",
+  "endposition": "Griff zur unteren Brust gezogen, Ellbogen nach hinten, Schulterblätter zusammen, Rücken weiter gerade",
+  "kamera": "Seitlich, Rumpf parallel und Armweg sichtbar",
+  "typische_fehler": [
+   "Rundrücken",
+   "Hüfte aufrichten beim Ziehen"
+  ],
+  "quelle": [
+   "https://garagegymreviews.com/t-bar-row"
+  ],
+  "schwer_darstellbar": false,
+  "hinweis": "Bodybuilding.com-Seite war nicht abrufbar; Quelle für Griffwinkel dünn"
+ },
+ {
+  "slug": "around_the_worlds",
+  "geraet": "ZWEI Kurzhanteln, EINE flache Bank",
+  "startposition": "Rücklings auf Flachbank, Arme gestreckt neben den Oberschenkeln (parallel zum Boden), Handflächen nach oben, Ellbogen leicht gebeugt",
+  "endposition": "Arme im Halbkreis seitlich über den Kopf geführt, Hanteln hinter dem Kopf (Arme parallel zum Boden, Brust gedehnt)",
+  "kamera": "Frontal vom Kopf- oder Fußende; Armposition links/rechts und über Kopf sichtbar",
+  "typische_fehler": [
+   "Arme gehen senkrecht nach oben statt im Bogen",
+   "Ellbogen stark gebeugt"
+  ],
+  "quelle": [
+   "https://www.bodybuilding.com/exercises/around-the-worlds"
+  ],
+  "schwer_darstellbar": false
+ },
+ {
+  "slug": "cable_iron_cross",
+  "geraet": "EINE Kabelzug-Doppelstation, beide Rollen auf höchster Position, ZWEI Einzelgriffe",
+  "startposition": "Aufrecht zwischen den Türmen, Füße in Linie mit Rollen, Arme seitlich leicht über Schulterhöhe gespreizt, Griffe neutral, leichte Ellbogenbeugung",
+  "endposition": "Beide Griffe vor dem Körper zusammengeführt (Arme leicht gebeugt, Bewegung aus Schulter), Brust angespannt, Kabel von oben beidseitig",
+  "kamera": "Frontal, Armspannweite und beide Kabel sichtbar",
+  "typische_fehler": [
+   "Arme stark gebeugt",
+   "Rollen auf Brusthöhe statt oben"
+  ],
+  "quelle": [
+   "https://www.muscleandstrength.com/node/3816",
+   "https://bodybuilding.com/exercises/cable-iron-cross"
+  ],
+  "schwer_darstellbar": false,
+  "hinweis": "Bodybuilding.com-Seite ohne verwertbare Details"
+ }
+]
