@@ -103,3 +103,5 @@ dumbbell_step_ups
 dumbbell_step_ups
 dumbbell_squat_to_a_bench
 dumbbell_squat_to_a_bench
+frankenstein_squat
+frankenstein_squat
