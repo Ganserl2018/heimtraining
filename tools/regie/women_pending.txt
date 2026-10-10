@@ -90,3 +90,4 @@ seated_flat_bench_leg_pull-in
 seated_barbell_twist
 box_squat_with_chains
 good_morning
+dumbbell_clean

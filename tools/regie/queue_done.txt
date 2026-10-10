@@ -238,3 +238,5 @@ box_squat_with_chains
 box_squat_with_chains
 good_morning
 good_morning
+dumbbell_clean
+dumbbell_clean
