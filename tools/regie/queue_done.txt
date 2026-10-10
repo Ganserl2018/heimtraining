@@ -89,3 +89,5 @@ standing_military_press
 standing_military_press
 overhead_squat
 overhead_squat
+front_barbell_squat
+front_barbell_squat
