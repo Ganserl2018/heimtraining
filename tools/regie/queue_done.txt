@@ -95,3 +95,5 @@ bodyweight_squat
 bodyweight_squat
 sumo_deadlift
 sumo_deadlift
+concentration_curls
+concentration_curls
