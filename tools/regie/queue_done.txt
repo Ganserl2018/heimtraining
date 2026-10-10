@@ -130,3 +130,7 @@ vertical_swing
 vertical_swing
 standing_dumbbell_straight-arm_front_delt_raise_above_head
 standing_dumbbell_straight-arm_front_delt_raise_above_head
+scissors_jump
+scissors_jump
+power_partials
+power_partials
