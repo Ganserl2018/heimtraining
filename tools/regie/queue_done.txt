@@ -254,3 +254,5 @@ power_snatch
 power_snatch
 split_jerk
 split_jerk
+olympic_squat
+olympic_squat
