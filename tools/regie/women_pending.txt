@@ -86,3 +86,4 @@ clean_pull
 snatch_shrug
 clean_from_blocks
 dumbbell_one-arm_triceps_extension
+seated_flat_bench_leg_pull-in
