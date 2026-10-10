@@ -56,3 +56,5 @@ squat_with_plate_movers
 butt_lift__bridge_
 flutter_kicks
 glute_kickback
+dead_bug
+90_90_hamstring
