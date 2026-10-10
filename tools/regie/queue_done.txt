@@ -262,3 +262,5 @@ clean
 clean
 jerk_dip_squat
 jerk_dip_squat
+split_clean
+split_clean
