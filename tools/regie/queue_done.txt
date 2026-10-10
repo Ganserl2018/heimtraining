@@ -276,3 +276,5 @@ heaving_snatch_balance
 heaving_snatch_balance
 snatch_from_blocks
 snatch_from_blocks
+power_clean_from_blocks
+power_clean_from_blocks
