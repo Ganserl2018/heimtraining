@@ -72,3 +72,5 @@ dumbbell_shoulder_press
 dumbbell_shoulder_press
 dumbbell_scaption
 dumbbell_scaption
+dumbbell_one-arm_shoulder_press
+dumbbell_one-arm_shoulder_press
