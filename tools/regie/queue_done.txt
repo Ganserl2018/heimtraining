@@ -105,3 +105,5 @@ dumbbell_squat_to_a_bench
 dumbbell_squat_to_a_bench
 frankenstein_squat
 frankenstein_squat
+jefferson_squats
+jefferson_squats
