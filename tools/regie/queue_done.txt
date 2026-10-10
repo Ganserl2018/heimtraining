@@ -284,3 +284,5 @@ clean_deadlift
 clean_deadlift
 snatch_deadlift
 snatch_deadlift
+snatch_pull
+snatch_pull
