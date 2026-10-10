@@ -111,3 +111,6 @@ cuban_press
 cuban_press
 dumbbell_incline_shoulder_raise
 dumbbell_incline_shoulder_raise
+front_incline_dumbbell_raise
+star_jump
+star_jump
