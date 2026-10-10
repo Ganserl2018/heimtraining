@@ -116,3 +116,5 @@ star_jump
 star_jump
 split_jump
 split_jump
+freehand_jump_squat
+freehand_jump_squat
