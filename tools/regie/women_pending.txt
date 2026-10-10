@@ -34,3 +34,5 @@ zercher_squats
 standing_barbell_press_behind_neck
 side_laterals_to_front_raise
 barbell_side_split_squat
+vertical_swing
+standing_dumbbell_straight-arm_front_delt_raise_above_head
