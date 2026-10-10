@@ -260,3 +260,5 @@ snatch
 snatch
 clean
 clean
+jerk_dip_squat
+jerk_dip_squat
