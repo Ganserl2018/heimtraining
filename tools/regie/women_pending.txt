@@ -4,3 +4,4 @@ dumbbell_one-arm_triceps_extension
 barbell_lunge
 dumbbell_floor_press
 dumbbell_squat
+side_lateral_raise

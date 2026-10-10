@@ -64,3 +64,5 @@ dumbbell_floor_press
 dumbbell_floor_press
 dumbbell_squat
 dumbbell_squat
+side_lateral_raise
+side_lateral_raise
