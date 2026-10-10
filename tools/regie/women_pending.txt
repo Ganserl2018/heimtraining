@@ -10,3 +10,4 @@ dumbbell_shoulder_press
 dumbbell_scaption
 dumbbell_one-arm_shoulder_press
 cross_body_hammer_curl
+stiff-legged_dumbbell_deadlift
