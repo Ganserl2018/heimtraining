@@ -64,3 +64,5 @@ lateral_bound
 standing_hip_circles
 bench_dips
 gorilla_chin_crunch
+lying_prone_quadriceps
+seated_front_deltoid

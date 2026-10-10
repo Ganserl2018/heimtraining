@@ -186,3 +186,7 @@ bench_dips
 bench_dips
 gorilla_chin_crunch
 gorilla_chin_crunch
+lying_prone_quadriceps
+lying_prone_quadriceps
+seated_front_deltoid
+seated_front_deltoid
