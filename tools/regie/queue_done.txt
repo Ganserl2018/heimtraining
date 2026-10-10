@@ -85,3 +85,5 @@ front_leg_raises
 rear_leg_raises
 upright_barbell_row
 upright_barbell_row
+standing_military_press
+standing_military_press

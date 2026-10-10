@@ -14,3 +14,4 @@ stiff-legged_dumbbell_deadlift
 plie_dumbbell_squat
 front_leg_raises
 upright_barbell_row
+standing_military_press
