@@ -218,3 +218,5 @@ barbell_step_ups
 barbell_step_ups
 hang_clean
 hang_clean
+front_squat__clean_grip_
+front_squat__clean_grip_

@@ -80,3 +80,4 @@ wide-grip_barbell_bench_press
 barbell_squat_to_a_bench
 barbell_step_ups
 hang_clean
+front_squat__clean_grip_
