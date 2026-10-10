@@ -89,3 +89,4 @@ dumbbell_one-arm_triceps_extension
 seated_flat_bench_leg_pull-in
 seated_barbell_twist
 box_squat_with_chains
+good_morning

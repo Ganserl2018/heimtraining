@@ -236,3 +236,5 @@ seated_barbell_twist
 seated_barbell_twist
 box_squat_with_chains
 box_squat_with_chains
+good_morning
+good_morning
