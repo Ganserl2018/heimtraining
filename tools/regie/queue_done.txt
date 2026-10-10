@@ -150,3 +150,7 @@ rocket_jump
 rocket_jump
 close-grip_push-up_off_of_a_dumbbell
 close-grip_push-up_off_of_a_dumbbell
+knee_tuck_jump
+knee_tuck_jump
+inchworm
+inchworm
