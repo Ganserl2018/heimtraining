@@ -84,3 +84,4 @@ front_squat__clean_grip_
 bent_over_two-arm_long_bar_row
 clean_pull
 snatch_shrug
+clean_from_blocks
