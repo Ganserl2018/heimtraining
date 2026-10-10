@@ -252,3 +252,5 @@ hang_snatch
 hang_snatch
 power_snatch
 power_snatch
+split_jerk
+split_jerk

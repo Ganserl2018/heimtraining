@@ -97,3 +97,4 @@ seated_glute
 power_clean
 hang_snatch
 power_snatch
+split_jerk
