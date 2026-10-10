@@ -28,3 +28,4 @@ jefferson_squats
 cuban_press
 dumbbell_incline_shoulder_raise
 star_jump
+split_jump
