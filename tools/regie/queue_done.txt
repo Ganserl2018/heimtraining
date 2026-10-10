@@ -68,3 +68,5 @@ side_lateral_raise
 side_lateral_raise
 front_two-dumbbell_raise
 front_two-dumbbell_raise
+dumbbell_shoulder_press
+dumbbell_shoulder_press
