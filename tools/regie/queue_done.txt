@@ -246,3 +246,5 @@ lying_glute
 lying_glute
 seated_glute
 seated_glute
+power_clean
+power_clean

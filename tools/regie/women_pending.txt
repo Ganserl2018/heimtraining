@@ -94,3 +94,4 @@ dumbbell_clean
 leg_lift
 lying_glute
 seated_glute
+power_clean
