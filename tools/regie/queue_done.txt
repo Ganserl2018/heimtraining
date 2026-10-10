@@ -222,3 +222,5 @@ front_squat__clean_grip_
 front_squat__clean_grip_
 bent_over_two-arm_long_bar_row
 bent_over_two-arm_long_bar_row
+clean_pull
+clean_pull
