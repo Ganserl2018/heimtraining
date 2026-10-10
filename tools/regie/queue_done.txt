@@ -242,3 +242,5 @@ dumbbell_clean
 dumbbell_clean
 leg_lift
 leg_lift
+lying_glute
+lying_glute

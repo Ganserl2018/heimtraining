@@ -92,3 +92,4 @@ box_squat_with_chains
 good_morning
 dumbbell_clean
 leg_lift
+lying_glute
