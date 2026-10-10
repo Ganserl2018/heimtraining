@@ -74,3 +74,5 @@ dumbbell_scaption
 dumbbell_scaption
 dumbbell_one-arm_shoulder_press
 dumbbell_one-arm_shoulder_press
+cross_body_hammer_curl
+cross_body_hammer_curl
