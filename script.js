@@ -528,7 +528,7 @@ function renderOverview() {
 // V8-04: Wochenplan-Einträge (haben trainingId) sind anklickbar -> Detailseite mit Dauer/Kalorien.
 // V6-08: Verlauf als Foto-Kacheln mit Wochenkopf, Gruppierung nach Woche/Monat.
 let imgSet = new Set();
-fetch('img/index.json?v=50').then(r => r.json()).then(a => { imgSet = new Set(a); }).catch(() => {});
+fetch('img/index.json?v=51').then(r => r.json()).then(a => { imgSet = new Set(a); }).catch(() => {});
 function slugOf(g) { return (g || '').replace(/^gifs\//, '').replace(/\.gif$/, ''); }
 // Foto passend zum Profil (m/w); ohne Foto -> GIF
 function imgOf(ex) {

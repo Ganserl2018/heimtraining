@@ -5,3 +5,4 @@ barbell_lunge
 dumbbell_floor_press
 dumbbell_squat
 side_lateral_raise
+front_two-dumbbell_raise

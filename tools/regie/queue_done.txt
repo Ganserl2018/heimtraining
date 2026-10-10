@@ -66,3 +66,5 @@ dumbbell_squat
 dumbbell_squat
 side_lateral_raise
 side_lateral_raise
+front_two-dumbbell_raise
+front_two-dumbbell_raise
