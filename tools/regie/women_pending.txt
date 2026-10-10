@@ -68,3 +68,5 @@ lying_prone_quadriceps
 seated_front_deltoid
 pushups
 all_fours_quad_stretch
+plyo_push-up
+push_up_to_side_plank
