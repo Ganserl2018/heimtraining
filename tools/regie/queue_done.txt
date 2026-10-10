@@ -258,3 +258,5 @@ olympic_squat
 olympic_squat
 snatch
 snatch
+clean
+clean
