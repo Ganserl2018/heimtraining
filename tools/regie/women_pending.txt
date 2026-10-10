@@ -106,3 +106,4 @@ split_clean
 squat_jerk
 power_jerk
 snatch_balance
+split_snatch

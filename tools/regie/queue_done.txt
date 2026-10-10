@@ -270,3 +270,5 @@ power_jerk
 power_jerk
 snatch_balance
 snatch_balance
+split_snatch
+split_snatch
