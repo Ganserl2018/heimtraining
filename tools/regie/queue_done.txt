@@ -97,3 +97,5 @@ sumo_deadlift
 sumo_deadlift
 concentration_curls
 concentration_curls
+box_squat
+box_squat

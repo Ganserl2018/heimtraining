@@ -20,3 +20,4 @@ front_barbell_squat
 bodyweight_squat
 sumo_deadlift
 concentration_curls
+box_squat
