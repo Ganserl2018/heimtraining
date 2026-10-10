@@ -109,3 +109,5 @@ jefferson_squats
 jefferson_squats
 cuban_press
 cuban_press
+dumbbell_incline_shoulder_raise
+dumbbell_incline_shoulder_raise

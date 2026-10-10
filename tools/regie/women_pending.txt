@@ -26,3 +26,4 @@ dumbbell_squat_to_a_bench
 frankenstein_squat
 jefferson_squats
 cuban_press
+dumbbell_incline_shoulder_raise
