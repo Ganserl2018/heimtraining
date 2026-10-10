@@ -91,3 +91,5 @@ overhead_squat
 overhead_squat
 front_barbell_squat
 front_barbell_squat
+bodyweight_squat
+bodyweight_squat
