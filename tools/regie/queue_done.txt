@@ -248,3 +248,5 @@ seated_glute
 seated_glute
 power_clean
 power_clean
+hang_snatch
+hang_snatch
