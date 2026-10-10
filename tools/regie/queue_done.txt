@@ -214,3 +214,5 @@ wide-grip_barbell_bench_press
 wide-grip_barbell_bench_press
 barbell_squat_to_a_bench
 barbell_squat_to_a_bench
+barbell_step_ups
+barbell_step_ups
