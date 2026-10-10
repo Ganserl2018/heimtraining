@@ -328,3 +328,10 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - decline_crunch: eingebunden mit Abstrichen (Ende m/w nur ~45–50° aufgerichtet, Alex akzeptiert); Frau-Start an Ende-Look angepasst.
 - Redo-Liste: ~/Downloads/_redo_list.txt (~28 Übungen); G2 weiter im Bildlimit, alles in G1. Queue: ~237 Slugs offen (tools/regie/queue.json minus img/<slug>-m.gif).
 - Nächste: Hip Thrust (Skizze), Cable Chest Press, Close-Grip Lat Pulldown, Rest aus bewegung.json.
+
+## 04.10. 21:30 – Bildproduktion Schnell-Modus (Speichern 10.10.)
+- Eingebaut seit 14:30 (m+w): decline_dumbbell_flyes, close-grip_front_lat_pulldown, one_arm_lat_pulldown, seated_good_mornings, lower_back_curl, deadlift_with_chains, bent_over_one-arm_long_bar_row, t-bar_row_with_handle, around_the_worlds, kneeling_high_pulley_row, cable_crossover, cable_iron_cross, dumbbell_side_bend. Nur Mann: wind_sprints, shotgun_row (Frauen offen, tools/regie/women_pending.txt). Letzter Commit 85e8bdf, ~105 Männer-GIFs.
+- Schnell-Modus (Alex 19:04): Mann-Paare zuerst, Frauen gebündelt später (tools/integ2.sh <slug> <nbase> m|w), 1 Checker-Lauf pro Übung, wenig Screenshots. "Knapp/kaum auffällig" = akzeptieren + Redo-Liste.
+- Zurückgestellt (Gemini scheitert, Details in ~/Downloads/_redo_list.txt): cable_incline_pushdown, bodyweight_flyes, clock_push-up, stomach_vacuum, one-arm_high-pulley_cable_side_bends, gorilla_chin_crunch, incline_bench_pull, bench_dips, bent-arm_barbell_pullover, lying_cambered_barbell_row.
+- Offen: ca. 210 Queue-Slugs; nächste: dumbbell_one-arm_triceps_extension (Mann), dann einfache Stehübungen. Duplikate (184) zuletzt, Alex entscheidet. Wochenlimit war am 04.10. leer.
+- Kniffe: siehe Vault 06_Debugging/gemini-uebungsbilder-pose-erkenntnisse.md (Editor-Download, Seitenansicht Brust AUF Bank, "DEUTLICH"-Edit).
