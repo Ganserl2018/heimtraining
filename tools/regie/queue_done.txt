@@ -134,3 +134,7 @@ scissors_jump
 scissors_jump
 power_partials
 power_partials
+iron_cross
+iron_cross
+barbell_rear_delt_row
+barbell_rear_delt_row
