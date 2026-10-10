@@ -224,3 +224,5 @@ bent_over_two-arm_long_bar_row
 bent_over_two-arm_long_bar_row
 clean_pull
 clean_pull
+snatch_shrug
+snatch_shrug
