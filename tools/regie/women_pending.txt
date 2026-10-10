@@ -93,3 +93,4 @@ good_morning
 dumbbell_clean
 leg_lift
 lying_glute
+seated_glute

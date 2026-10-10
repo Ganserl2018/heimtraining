@@ -244,3 +244,5 @@ leg_lift
 leg_lift
 lying_glute
 lying_glute
+seated_glute
+seated_glute
