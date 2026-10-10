@@ -240,3 +240,5 @@ good_morning
 good_morning
 dumbbell_clean
 dumbbell_clean
+leg_lift
+leg_lift
