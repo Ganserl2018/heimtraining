@@ -142,3 +142,7 @@ one-arm_side_deadlift
 one-arm_side_deadlift
 barbell_hack_squat
 barbell_hack_squat
+double_leg_butt_kick
+double_leg_butt_kick
+fast_skipping
+fast_skipping
