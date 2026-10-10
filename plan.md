@@ -335,3 +335,9 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - Zurückgestellt (Gemini scheitert, Details in ~/Downloads/_redo_list.txt): cable_incline_pushdown, bodyweight_flyes, clock_push-up, stomach_vacuum, one-arm_high-pulley_cable_side_bends, gorilla_chin_crunch, incline_bench_pull, bench_dips, bent-arm_barbell_pullover, lying_cambered_barbell_row.
 - Offen: ca. 210 Queue-Slugs; nächste: dumbbell_one-arm_triceps_extension (Mann), dann einfache Stehübungen. Duplikate (184) zuletzt, Alex entscheidet. Wochenlimit war am 04.10. leer.
 - Kniffe: siehe Vault 06_Debugging/gemini-uebungsbilder-pose-erkenntnisse.md (Editor-Download, Seitenansicht Brust AUF Bank, "DEUTLICH"-Edit).
+
+## 10.10. 12:45 – Bildproduktion (Speichern)
+- 194 Männer-GIFs im Repo (Commit 1565a21), 86 Slugs warten auf Frauen (tools/regie/women_pending.txt), queue_done.txt 228.
+- Heute neu nur Mann (28): dead_bug, 90_90_hamstring, hip_flexion_with_band, stomach_vacuum, lateral_bound, standing_hip_circles, bench_dips, gorilla_chin_crunch, lying_prone_quadriceps, seated_front_deltoid, pushups, all_fours_quad_stretch, plyo_push-up, push_up_to_side_plank, clean_shrug, single-arm_push-up, lying_dumbbell_tricep_extension, one_arm_floor_press, one_arm_dumbbell_bench_press, ez-bar_skullcrusher, wide-grip_barbell_bench_press, barbell_squat_to_a_bench, barbell_step_ups, hang_clean, front_squat__clean_grip_, bent_over_two-arm_long_bar_row, clean_pull, snatch_shrug.
+- Schwach aber akzeptiert (Redo-Liste): plyo_push-up (Luftphase kaum sichtbar), stomach_vacuum/clean_shrug (kleiner Unterschied).
+- Linkes Gemini im Bildlimit, nur rechtes nutzbar. Weiter: Rest Mann-Queue, dann Frauen (integ2.sh … w), Duplikate (184) zuletzt – Alex entscheidet.
