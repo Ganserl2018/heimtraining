@@ -182,3 +182,7 @@ lateral_bound
 lateral_bound
 standing_hip_circles
 standing_hip_circles
+bench_dips
+bench_dips
+gorilla_chin_crunch
+gorilla_chin_crunch
