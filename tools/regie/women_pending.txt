@@ -81,3 +81,4 @@ barbell_squat_to_a_bench
 barbell_step_ups
 hang_clean
 front_squat__clean_grip_
+bent_over_two-arm_long_bar_row
