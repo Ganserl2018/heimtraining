@@ -266,3 +266,5 @@ split_clean
 split_clean
 squat_jerk
 squat_jerk
+power_jerk
+power_jerk
