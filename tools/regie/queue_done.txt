@@ -190,3 +190,7 @@ lying_prone_quadriceps
 lying_prone_quadriceps
 seated_front_deltoid
 seated_front_deltoid
+pushups
+pushups
+all_fours_quad_stretch
+all_fours_quad_stretch
