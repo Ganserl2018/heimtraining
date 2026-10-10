@@ -70,3 +70,5 @@ front_two-dumbbell_raise
 front_two-dumbbell_raise
 dumbbell_shoulder_press
 dumbbell_shoulder_press
+dumbbell_scaption
+dumbbell_scaption
