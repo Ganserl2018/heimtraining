@@ -99,3 +99,4 @@ hang_snatch
 power_snatch
 split_jerk
 olympic_squat
+snatch
