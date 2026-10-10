@@ -31,3 +31,4 @@ star_jump
 split_jump
 freehand_jump_squat
 zercher_squats
+standing_barbell_press_behind_neck

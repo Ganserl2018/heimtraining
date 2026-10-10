@@ -120,3 +120,5 @@ freehand_jump_squat
 freehand_jump_squat
 zercher_squats
 zercher_squats
+standing_barbell_press_behind_neck
+standing_barbell_press_behind_neck
