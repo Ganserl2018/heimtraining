@@ -278,3 +278,5 @@ snatch_from_blocks
 snatch_from_blocks
 power_clean_from_blocks
 power_clean_from_blocks
+muscle_snatch
+muscle_snatch
