@@ -210,3 +210,7 @@ one_arm_dumbbell_bench_press
 one_arm_dumbbell_bench_press
 ez-bar_skullcrusher
 ez-bar_skullcrusher
+wide-grip_barbell_bench_press
+wide-grip_barbell_bench_press
+barbell_squat_to_a_bench
+barbell_squat_to_a_bench
