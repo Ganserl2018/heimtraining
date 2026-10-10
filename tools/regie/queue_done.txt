@@ -198,3 +198,7 @@ plyo_push-up
 plyo_push-up
 push_up_to_side_plank
 push_up_to_side_plank
+clean_shrug
+clean_shrug
+single-arm_push-up
+single-arm_push-up
