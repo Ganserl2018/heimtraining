@@ -228,3 +228,5 @@ snatch_shrug
 snatch_shrug
 clean_from_blocks
 clean_from_blocks
+dumbbell_one-arm_triceps_extension
+dumbbell_one-arm_triceps_extension

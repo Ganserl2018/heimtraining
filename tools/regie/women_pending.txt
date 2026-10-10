@@ -85,3 +85,4 @@ bent_over_two-arm_long_bar_row
 clean_pull
 snatch_shrug
 clean_from_blocks
+dumbbell_one-arm_triceps_extension
