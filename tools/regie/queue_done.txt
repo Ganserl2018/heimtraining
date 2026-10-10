@@ -60,3 +60,5 @@ dumbbell_one-arm_triceps_extension
 dumbbell_one-arm_triceps_extension
 barbell_lunge
 barbell_lunge
+dumbbell_floor_press
+dumbbell_floor_press

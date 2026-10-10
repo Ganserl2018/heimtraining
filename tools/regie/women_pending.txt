@@ -2,3 +2,4 @@ wind_sprints
 shotgun_row
 dumbbell_one-arm_triceps_extension
 barbell_lunge
+dumbbell_floor_press
