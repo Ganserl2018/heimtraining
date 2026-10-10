@@ -202,3 +202,7 @@ clean_shrug
 clean_shrug
 single-arm_push-up
 single-arm_push-up
+lying_dumbbell_tricep_extension
+lying_dumbbell_tricep_extension
+one_arm_floor_press
+one_arm_floor_press

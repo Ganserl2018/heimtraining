@@ -72,3 +72,5 @@ plyo_push-up
 push_up_to_side_plank
 clean_shrug
 single-arm_push-up
+lying_dumbbell_tricep_extension
+one_arm_floor_press
