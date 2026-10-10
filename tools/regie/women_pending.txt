@@ -103,3 +103,4 @@ snatch
 clean
 jerk_dip_squat
 split_clean
+squat_jerk
