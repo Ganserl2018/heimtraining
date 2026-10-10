@@ -108,3 +108,4 @@ power_jerk
 snatch_balance
 split_snatch
 heaving_snatch_balance
+snatch_from_blocks

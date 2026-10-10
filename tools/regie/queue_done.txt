@@ -274,3 +274,5 @@ split_snatch
 split_snatch
 heaving_snatch_balance
 heaving_snatch_balance
+snatch_from_blocks
+snatch_from_blocks
