@@ -178,3 +178,7 @@ hip_flexion_with_band
 hip_flexion_with_band
 stomach_vacuum
 stomach_vacuum
+lateral_bound
+lateral_bound
+standing_hip_circles
+standing_hip_circles
