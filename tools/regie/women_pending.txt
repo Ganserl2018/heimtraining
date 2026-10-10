@@ -40,3 +40,5 @@ scissors_jump
 power_partials
 iron_cross
 barbell_rear_delt_row
+one-arm_side_deadlift
+barbell_hack_squat

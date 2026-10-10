@@ -138,3 +138,7 @@ iron_cross
 iron_cross
 barbell_rear_delt_row
 barbell_rear_delt_row
+one-arm_side_deadlift
+one-arm_side_deadlift
+barbell_hack_squat
+barbell_hack_squat
