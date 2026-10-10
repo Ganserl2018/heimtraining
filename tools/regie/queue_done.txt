@@ -154,3 +154,7 @@ knee_tuck_jump
 knee_tuck_jump
 inchworm
 inchworm
+standing_long_jump
+standing_long_jump
+kneeling_squat
+kneeling_squat
