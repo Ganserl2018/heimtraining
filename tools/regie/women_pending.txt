@@ -32,3 +32,5 @@ split_jump
 freehand_jump_squat
 zercher_squats
 standing_barbell_press_behind_neck
+side_laterals_to_front_raise
+barbell_side_split_squat
