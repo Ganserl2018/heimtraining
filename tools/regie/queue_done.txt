@@ -268,3 +268,5 @@ squat_jerk
 squat_jerk
 power_jerk
 power_jerk
+snatch_balance
+snatch_balance
