@@ -174,3 +174,7 @@ dead_bug
 dead_bug
 90_90_hamstring
 90_90_hamstring
+hip_flexion_with_band
+hip_flexion_with_band
+stomach_vacuum
+stomach_vacuum

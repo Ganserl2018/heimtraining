@@ -58,3 +58,5 @@ flutter_kicks
 glute_kickback
 dead_bug
 90_90_hamstring
+hip_flexion_with_band
+stomach_vacuum
