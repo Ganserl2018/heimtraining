@@ -99,3 +99,5 @@ concentration_curls
 concentration_curls
 box_squat
 box_squat
+dumbbell_step_ups
+dumbbell_step_ups

@@ -21,3 +21,4 @@ bodyweight_squat
 sumo_deadlift
 concentration_curls
 box_squat
+dumbbell_step_ups
