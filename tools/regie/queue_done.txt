@@ -78,3 +78,5 @@ cross_body_hammer_curl
 cross_body_hammer_curl
 stiff-legged_dumbbell_deadlift
 stiff-legged_dumbbell_deadlift
+plie_dumbbell_squat
+plie_dumbbell_squat
