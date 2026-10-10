@@ -83,3 +83,5 @@ plie_dumbbell_squat
 front_leg_raises
 front_leg_raises
 rear_leg_raises
+upright_barbell_row
+upright_barbell_row
