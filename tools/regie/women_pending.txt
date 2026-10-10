@@ -44,3 +44,5 @@ one-arm_side_deadlift
 barbell_hack_squat
 double_leg_butt_kick
 fast_skipping
+rocket_jump
+close-grip_push-up_off_of_a_dumbbell

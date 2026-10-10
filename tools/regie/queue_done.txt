@@ -146,3 +146,7 @@ double_leg_butt_kick
 double_leg_butt_kick
 fast_skipping
 fast_skipping
+rocket_jump
+rocket_jump
+close-grip_push-up_off_of_a_dumbbell
+close-grip_push-up_off_of_a_dumbbell
