@@ -282,3 +282,5 @@ muscle_snatch
 muscle_snatch
 clean_deadlift
 clean_deadlift
+snatch_deadlift
+snatch_deadlift

@@ -112,3 +112,4 @@ snatch_from_blocks
 power_clean_from_blocks
 muscle_snatch
 clean_deadlift
+snatch_deadlift
