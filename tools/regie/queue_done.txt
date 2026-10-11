@@ -424,3 +424,5 @@ shoulder_press_-_with_bands
 shoulder_press_-_with_bands
 single-arm_linear_jammer
 single-arm_linear_jammer
+smith_incline_shoulder_raise
+smith_incline_shoulder_raise
