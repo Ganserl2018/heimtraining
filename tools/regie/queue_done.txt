@@ -404,3 +404,5 @@ clean_and_press
 clean_and_press
 handstand_push-ups
 handstand_push-ups
+external_rotation
+external_rotation
