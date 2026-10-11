@@ -594,3 +594,4 @@ hang_snatch
 leg_lift
 lying_glute
 seated_glute
+power_snatch
