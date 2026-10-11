@@ -551,3 +551,4 @@ inchworm
 standing_long_jump
 kneeling_squat
 calf_raise_on_a_dumbbell
+bench_jump
