@@ -294,3 +294,5 @@ natural_glute_ham_raise
 natural_glute_ham_raise
 one-arm_long_bar_row
 one-arm_long_bar_row
+landmine_180_s
+landmine_180_s
