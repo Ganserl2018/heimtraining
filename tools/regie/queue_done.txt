@@ -310,3 +310,5 @@ bench_press_with_chains
 bench_press_with_chains
 power_snatch_from_blocks
 power_snatch_from_blocks
+squat_with_chains
+squat_with_chains
