@@ -436,3 +436,5 @@ barbell_curl
 barbell_curl
 dumbbell_bicep_curl
 dumbbell_bicep_curl
+ez-bar_curl
+ez-bar_curl
