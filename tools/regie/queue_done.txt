@@ -394,3 +394,5 @@ cable_rear_delt_fly
 cable_rear_delt_fly
 cable_seated_lateral_raise
 cable_seated_lateral_raise
+cable_shoulder_press
+cable_shoulder_press
