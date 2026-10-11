@@ -440,3 +440,5 @@ ez-bar_curl
 ez-bar_curl
 hammer_curls
 hammer_curls
+incline_dumbbell_curl
+incline_dumbbell_curl
