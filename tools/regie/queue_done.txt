@@ -390,3 +390,5 @@ back_flyes_-_with_bands
 back_flyes_-_with_bands
 bent_over_low-pulley_side_lateral
 bent_over_low-pulley_side_lateral
+cable_rear_delt_fly
+cable_rear_delt_fly

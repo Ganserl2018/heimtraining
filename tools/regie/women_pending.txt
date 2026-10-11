@@ -166,3 +166,4 @@ band_hip_adductions
 anti-gravity_press
 back_flyes_-_with_bands
 bent_over_low-pulley_side_lateral
+cable_rear_delt_fly
