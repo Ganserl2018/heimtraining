@@ -320,3 +320,5 @@ standing_barbell_calf_raise
 standing_barbell_calf_raise
 barbell_seated_calf_raise
 barbell_seated_calf_raise
+dumbbell_seated_one-leg_calf_raise
+dumbbell_seated_one-leg_calf_raise

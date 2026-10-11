@@ -131,3 +131,4 @@ sumo_deadlift_with_chains
 single_leg_glute_bridge
 standing_barbell_calf_raise
 barbell_seated_calf_raise
+dumbbell_seated_one-leg_calf_raise
