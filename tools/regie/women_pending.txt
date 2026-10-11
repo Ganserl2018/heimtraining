@@ -202,3 +202,4 @@ seated_close-grip_concentration_barbell_curl
 seated_dumbbell_curl
 spider_curl
 standing_biceps_cable_curl
+standing_concentration_curl

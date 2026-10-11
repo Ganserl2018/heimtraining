@@ -462,3 +462,5 @@ spider_curl
 spider_curl
 standing_biceps_cable_curl
 standing_biceps_cable_curl
+standing_concentration_curl
+standing_concentration_curl
