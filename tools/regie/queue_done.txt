@@ -490,3 +490,5 @@ wrist_rotations_with_straight_bar
 wrist_rotations_with_straight_bar
 isometric_neck_exercise_-_front_and_back
 isometric_neck_exercise_-_front_and_back
+isometric_neck_exercise_-_sides
+isometric_neck_exercise_-_sides
