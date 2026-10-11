@@ -562,3 +562,4 @@ stomach_vacuum
 lateral_bound
 standing_hip_circles
 bench_dips
+gorilla_chin_crunch
