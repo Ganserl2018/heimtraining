@@ -374,3 +374,5 @@ cable_rope_overhead_triceps_extension
 cable_rope_overhead_triceps_extension
 cable_deadlifts
 cable_deadlifts
+cable_hip_adduction
+cable_hip_adduction
