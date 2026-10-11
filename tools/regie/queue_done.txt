@@ -348,3 +348,5 @@ one-arm_high-pulley_cable_side_bends
 one-arm_high-pulley_cable_side_bends
 bosu_ball_cable_crunch_with_side_bends
 bosu_ball_cable_crunch_with_side_bends
+incline_bench_pull
+incline_bench_pull
