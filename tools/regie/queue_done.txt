@@ -346,3 +346,5 @@ cable_judo_flip
 cable_judo_flip
 one-arm_high-pulley_cable_side_bends
 one-arm_high-pulley_cable_side_bends
+bosu_ball_cable_crunch_with_side_bends
+bosu_ball_cable_crunch_with_side_bends
