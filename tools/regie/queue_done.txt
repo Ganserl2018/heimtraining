@@ -596,3 +596,4 @@ lying_glute
 seated_glute
 power_snatch
 split_jerk
+olympic_squat
