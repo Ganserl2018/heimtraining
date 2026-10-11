@@ -414,3 +414,5 @@ jerk_balance
 jerk_balance
 lying_rear_delt_raise
 lying_rear_delt_raise
+one-arm_incline_lateral_raise
+one-arm_incline_lateral_raise
