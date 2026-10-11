@@ -480,3 +480,5 @@ finger_curls
 finger_curls
 palms-down_wrist_curl_over_a_bench
 palms-down_wrist_curl_over_a_bench
+palms-up_barbell_wrist_curl_over_a_bench
+palms-up_barbell_wrist_curl_over_a_bench
