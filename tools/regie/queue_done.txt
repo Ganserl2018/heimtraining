@@ -648,3 +648,4 @@ lying_cambered_barbell_row
 bent-arm_barbell_pullover
 cable_incline_pushdown
 bodyweight_flyes
+clock_push-up
