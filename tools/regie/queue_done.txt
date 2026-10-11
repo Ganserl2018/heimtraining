@@ -398,3 +398,5 @@ cable_shoulder_press
 cable_shoulder_press
 car_drivers
 car_drivers
+clean_and_jerk
+clean_and_jerk

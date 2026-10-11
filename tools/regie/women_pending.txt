@@ -170,3 +170,4 @@ cable_rear_delt_fly
 cable_seated_lateral_raise
 cable_shoulder_press
 car_drivers
+clean_and_jerk
