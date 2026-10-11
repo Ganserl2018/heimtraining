@@ -155,3 +155,4 @@ rear_leg_raises
 flat_bench_cable_flyes
 standing_cable_chest_press
 cable_lying_triceps_extension
+cable_one_arm_tricep_extension
