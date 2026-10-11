@@ -499,3 +499,4 @@ cable_preacher_curl
 high_cable_curls
 high_cable_curls
 wind_sprints
+shotgun_row
