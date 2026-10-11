@@ -326,3 +326,5 @@ groiners
 groiners
 knee_circles
 knee_circles
+side_leg_raises
+side_leg_raises
