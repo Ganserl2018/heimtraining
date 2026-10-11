@@ -292,3 +292,5 @@ hang_snatch_-_below_knees
 hang_snatch_-_below_knees
 natural_glute_ham_raise
 natural_glute_ham_raise
+one-arm_long_bar_row
+one-arm_long_bar_row
