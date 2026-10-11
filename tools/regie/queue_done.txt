@@ -636,3 +636,4 @@ side_leg_raises
 hip_circles__prone_
 monster_walk
 arnold_dumbbell_press
+band_pull_apart
