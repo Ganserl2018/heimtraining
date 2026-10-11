@@ -340,3 +340,5 @@ band_good_morning
 band_good_morning
 cable_chest_press
 cable_chest_press
+cable_russian_twists
+cable_russian_twists
