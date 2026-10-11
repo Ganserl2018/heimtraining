@@ -215,3 +215,4 @@ palms-up_barbell_wrist_curl_over_a_bench
 standing_palms-up_barbell_behind_the_back_wrist_curl
 wrist_circles
 wrist_rotations_with_straight_bar
+isometric_neck_exercise_-_front_and_back
