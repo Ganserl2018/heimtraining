@@ -638,3 +638,4 @@ monster_walk
 arnold_dumbbell_press
 band_pull_apart
 band_good_morning
+cable_chest_press
