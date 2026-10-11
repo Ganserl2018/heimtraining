@@ -188,3 +188,4 @@ standing_front_barbell_raise_over_head
 standing_low-pulley_deltoid_raise
 alternate_hammer_curl
 barbell_curl
+dumbbell_bicep_curl
