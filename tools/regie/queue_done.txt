@@ -392,3 +392,5 @@ bent_over_low-pulley_side_lateral
 bent_over_low-pulley_side_lateral
 cable_rear_delt_fly
 cable_rear_delt_fly
+cable_seated_lateral_raise
+cable_seated_lateral_raise
