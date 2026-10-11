@@ -334,3 +334,5 @@ monster_walk
 monster_walk
 arnold_dumbbell_press
 arnold_dumbbell_press
+band_pull_apart
+band_pull_apart
