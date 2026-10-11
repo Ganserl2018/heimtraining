@@ -476,3 +476,5 @@ dumbbell_lying_pronation
 dumbbell_lying_pronation
 dumbbell_lying_supination
 dumbbell_lying_supination
+finger_curls
+finger_curls
