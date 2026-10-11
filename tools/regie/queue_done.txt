@@ -420,3 +420,5 @@ landmine_linear_jammer
 landmine_linear_jammer
 rack_delivery
 rack_delivery
+shoulder_press_-_with_bands
+shoulder_press_-_with_bands
