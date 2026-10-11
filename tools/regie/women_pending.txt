@@ -182,3 +182,4 @@ one-arm_incline_lateral_raise
 landmine_linear_jammer
 rack_delivery
 shoulder_press_-_with_bands
+single-arm_linear_jammer

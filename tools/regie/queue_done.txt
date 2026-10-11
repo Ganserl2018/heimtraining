@@ -422,3 +422,5 @@ rack_delivery
 rack_delivery
 shoulder_press_-_with_bands
 shoulder_press_-_with_bands
+single-arm_linear_jammer
+single-arm_linear_jammer
