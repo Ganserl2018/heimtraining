@@ -324,3 +324,5 @@ dumbbell_seated_one-leg_calf_raise
 dumbbell_seated_one-leg_calf_raise
 groiners
 groiners
+knee_circles
+knee_circles
