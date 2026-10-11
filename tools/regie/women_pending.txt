@@ -219,3 +219,4 @@ isometric_neck_exercise_-_front_and_back
 isometric_neck_exercise_-_sides
 cable_hammer_curls_-_rope_attachment
 cable_preacher_curl
+high_cable_curls
