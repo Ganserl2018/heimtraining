@@ -517,3 +517,4 @@ upright_barbell_row
 standing_military_press
 overhead_squat
 front_barbell_squat
+bodyweight_squat
