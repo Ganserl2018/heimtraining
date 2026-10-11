@@ -466,3 +466,5 @@ standing_concentration_curl
 standing_concentration_curl
 standing_dumbbell_reverse_curl
 standing_dumbbell_reverse_curl
+two-arm_dumbbell_preacher_curl
+two-arm_dumbbell_preacher_curl
