@@ -426,3 +426,5 @@ single-arm_linear_jammer
 single-arm_linear_jammer
 smith_incline_shoulder_raise
 smith_incline_shoulder_raise
+standing_front_barbell_raise_over_head
+standing_front_barbell_raise_over_head
