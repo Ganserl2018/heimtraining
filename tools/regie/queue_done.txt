@@ -356,3 +356,5 @@ bent-arm_barbell_pullover
 bent-arm_barbell_pullover
 cable_incline_pushdown
 cable_incline_pushdown
+bodyweight_flyes
+bodyweight_flyes
