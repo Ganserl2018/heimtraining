@@ -560,3 +560,4 @@ glute_kickback
 hip_flexion_with_band
 stomach_vacuum
 lateral_bound
+standing_hip_circles
