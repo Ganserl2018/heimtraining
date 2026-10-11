@@ -460,3 +460,5 @@ seated_dumbbell_curl
 seated_dumbbell_curl
 spider_curl
 spider_curl
+standing_biceps_cable_curl
+standing_biceps_cable_curl
