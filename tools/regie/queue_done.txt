@@ -486,3 +486,5 @@ standing_palms-up_barbell_behind_the_back_wrist_curl
 standing_palms-up_barbell_behind_the_back_wrist_curl
 wrist_circles
 wrist_circles
+wrist_rotations_with_straight_bar
+wrist_rotations_with_straight_bar
