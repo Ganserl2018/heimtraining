@@ -157,3 +157,4 @@ standing_cable_chest_press
 cable_lying_triceps_extension
 cable_one_arm_tricep_extension
 cable_rope_overhead_triceps_extension
+cable_deadlifts
