@@ -341,3 +341,9 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - Heute neu nur Mann (28): dead_bug, 90_90_hamstring, hip_flexion_with_band, stomach_vacuum, lateral_bound, standing_hip_circles, bench_dips, gorilla_chin_crunch, lying_prone_quadriceps, seated_front_deltoid, pushups, all_fours_quad_stretch, plyo_push-up, push_up_to_side_plank, clean_shrug, single-arm_push-up, lying_dumbbell_tricep_extension, one_arm_floor_press, one_arm_dumbbell_bench_press, ez-bar_skullcrusher, wide-grip_barbell_bench_press, barbell_squat_to_a_bench, barbell_step_ups, hang_clean, front_squat__clean_grip_, bent_over_two-arm_long_bar_row, clean_pull, snatch_shrug.
 - Schwach aber akzeptiert (Redo-Liste): plyo_push-up (Luftphase kaum sichtbar), stomach_vacuum/clean_shrug (kleiner Unterschied).
 - Linkes Gemini im Bildlimit, nur rechtes nutzbar. Weiter: Rest Mann-Queue, dann Frauen (integ2.sh … w), Duplikate (184) zuletzt – Alex entscheidet.
+
+### 11.10. 13:50 – Bildproduktion (Speichern)
+- 263 Männer-GIFs im Repo, women_pending.txt 156 Zeilen (Frauen offen), ~66 Mann-Slugs offen (Kabel/Band/Maschinen).
+- Neu seit 10.10. 12:45: Olympic-/Block-Varianten, Bodyweight/Mobility, Ketten/Wade, band_*, cable_* (chest_press, russian_twists, judo_flip, incline_pushdown, flyes), one-arm_high-pulley side bends, bosu crunch, incline_bench_pull, lying_cambered_barbell_row, bent-arm_barbell_pullover, bodyweight_flyes, clock_push-up, rear_leg_raises.
+- Akzeptiert mit Abstrichen (~/Downloads/_redo_list.txt): cable_incline_pushdown, bodyweight_flyes u.a.
+- Beide Gemini-Apps wieder frei, laufen parallel. Nächste: cable_lying_triceps_extension, cable_one_arm_tricep_extension, cable_rope_overhead_triceps_extension, cable_deadlifts, cable_hip_adduction, one-legged_cable_kickback. Danach Frauen (integ2.sh … w), Duplikate (184) zuletzt.
