@@ -146,3 +146,4 @@ cable_judo_flip
 one-arm_high-pulley_cable_side_bends
 bosu_ball_cable_crunch_with_side_bends
 incline_bench_pull
+lying_cambered_barbell_row

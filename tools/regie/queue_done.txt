@@ -350,3 +350,5 @@ bosu_ball_cable_crunch_with_side_bends
 bosu_ball_cable_crunch_with_side_bends
 incline_bench_pull
 incline_bench_pull
+lying_cambered_barbell_row
+lying_cambered_barbell_row
