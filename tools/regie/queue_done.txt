@@ -386,3 +386,5 @@ band_hip_adductions
 band_hip_adductions
 anti-gravity_press
 anti-gravity_press
+back_flyes_-_with_bands
+back_flyes_-_with_bands
