@@ -296,3 +296,5 @@ one-arm_long_bar_row
 one-arm_long_bar_row
 landmine_180_s
 landmine_180_s
+body-up
+body-up
