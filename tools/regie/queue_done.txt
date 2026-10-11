@@ -364,3 +364,5 @@ rear_leg_raises
 rear_leg_raises
 flat_bench_cable_flyes
 flat_bench_cable_flyes
+standing_cable_chest_press
+standing_cable_chest_press
