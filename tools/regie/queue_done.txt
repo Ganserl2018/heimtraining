@@ -458,3 +458,5 @@ seated_close-grip_concentration_barbell_curl
 seated_close-grip_concentration_barbell_curl
 seated_dumbbell_curl
 seated_dumbbell_curl
+spider_curl
+spider_curl
