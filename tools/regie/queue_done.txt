@@ -590,3 +590,4 @@ box_squat_with_chains
 good_morning
 dumbbell_clean
 power_clean
+hang_snatch
