@@ -585,3 +585,4 @@ clean_pull
 snatch_shrug
 clean_from_blocks
 seated_flat_bench_leg_pull-in
+seated_barbell_twist
