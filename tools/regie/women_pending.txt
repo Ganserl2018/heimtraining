@@ -148,3 +148,4 @@ bosu_ball_cable_crunch_with_side_bends
 incline_bench_pull
 lying_cambered_barbell_row
 bent-arm_barbell_pullover
+cable_incline_pushdown

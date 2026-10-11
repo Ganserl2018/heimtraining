@@ -354,3 +354,5 @@ lying_cambered_barbell_row
 lying_cambered_barbell_row
 bent-arm_barbell_pullover
 bent-arm_barbell_pullover
+cable_incline_pushdown
+cable_incline_pushdown
