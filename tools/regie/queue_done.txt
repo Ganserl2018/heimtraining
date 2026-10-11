@@ -450,3 +450,5 @@ lying_supine_dumbbell_curl
 lying_supine_dumbbell_curl
 preacher_curl
 preacher_curl
+reverse_barbell_curl
+reverse_barbell_curl
