@@ -408,3 +408,5 @@ external_rotation
 external_rotation
 internal_rotation_with_band
 internal_rotation_with_band
+external_rotation_with_band
+external_rotation_with_band

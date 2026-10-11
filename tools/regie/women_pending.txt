@@ -175,3 +175,4 @@ clean_and_press
 handstand_push-ups
 external_rotation
 internal_rotation_with_band
+external_rotation_with_band
