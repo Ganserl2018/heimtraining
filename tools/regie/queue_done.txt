@@ -442,3 +442,5 @@ hammer_curls
 hammer_curls
 incline_dumbbell_curl
 incline_dumbbell_curl
+lying_cable_curl
+lying_cable_curl

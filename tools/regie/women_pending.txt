@@ -192,3 +192,4 @@ dumbbell_bicep_curl
 ez-bar_curl
 hammer_curls
 incline_dumbbell_curl
+lying_cable_curl
