@@ -452,3 +452,5 @@ preacher_curl
 preacher_curl
 reverse_barbell_curl
 reverse_barbell_curl
+reverse_cable_curl
+reverse_cable_curl
