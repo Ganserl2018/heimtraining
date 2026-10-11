@@ -592,3 +592,4 @@ dumbbell_clean
 power_clean
 hang_snatch
 leg_lift
+lying_glute
