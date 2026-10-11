@@ -135,3 +135,4 @@ dumbbell_seated_one-leg_calf_raise
 groiners
 knee_circles
 side_leg_raises
+hip_circles__prone_
