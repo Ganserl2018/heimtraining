@@ -557,3 +557,4 @@ butt_lift__bridge_
 flutter_kicks
 glute_kickback
 90_90_hamstring
+hip_flexion_with_band
