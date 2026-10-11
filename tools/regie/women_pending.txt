@@ -121,3 +121,4 @@ one-arm_long_bar_row
 landmine_180_s
 body-up
 dumbbell_seated_box_jump
+one_leg_barbell_squat
