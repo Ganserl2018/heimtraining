@@ -180,3 +180,4 @@ jerk_balance
 lying_rear_delt_raise
 one-arm_incline_lateral_raise
 landmine_linear_jammer
+rack_delivery
