@@ -559,3 +559,4 @@ glute_kickback
 90_90_hamstring
 hip_flexion_with_band
 stomach_vacuum
+lateral_bound
