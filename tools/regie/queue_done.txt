@@ -376,3 +376,5 @@ cable_deadlifts
 cable_deadlifts
 cable_hip_adduction
 cable_hip_adduction
+one-legged_cable_kickback
+one-legged_cable_kickback
