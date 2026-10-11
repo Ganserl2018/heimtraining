@@ -308,3 +308,5 @@ floor_press_with_chains
 floor_press_with_chains
 bench_press_with_chains
 bench_press_with_chains
+power_snatch_from_blocks
+power_snatch_from_blocks
