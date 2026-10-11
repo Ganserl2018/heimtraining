@@ -569,3 +569,4 @@ pushups
 all_fours_quad_stretch
 plyo_push-up
 push_up_to_side_plank
+clean_shrug
