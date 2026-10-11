@@ -152,3 +152,4 @@ cable_incline_pushdown
 bodyweight_flyes
 clock_push-up
 rear_leg_raises
+flat_bench_cable_flyes

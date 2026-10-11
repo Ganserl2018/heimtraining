@@ -362,3 +362,5 @@ clock_push-up
 clock_push-up
 rear_leg_raises
 rear_leg_raises
+flat_bench_cable_flyes
+flat_bench_cable_flyes
