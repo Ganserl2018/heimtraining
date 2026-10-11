@@ -589,3 +589,4 @@ seated_barbell_twist
 box_squat_with_chains
 good_morning
 dumbbell_clean
+power_clean
