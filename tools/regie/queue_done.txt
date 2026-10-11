@@ -622,3 +622,4 @@ dumbbell_seated_box_jump
 one_leg_barbell_squat
 weighted_sissy_squat
 floor_press_with_chains
+bench_press_with_chains
