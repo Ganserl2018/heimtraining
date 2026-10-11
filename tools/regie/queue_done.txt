@@ -448,3 +448,5 @@ lying_high_bench_barbell_curl
 lying_high_bench_barbell_curl
 lying_supine_dumbbell_curl
 lying_supine_dumbbell_curl
+preacher_curl
+preacher_curl
