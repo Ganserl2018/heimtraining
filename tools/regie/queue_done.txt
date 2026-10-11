@@ -566,3 +566,4 @@ gorilla_chin_crunch
 lying_prone_quadriceps
 seated_front_deltoid
 pushups
+all_fours_quad_stretch
