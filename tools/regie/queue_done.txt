@@ -555,3 +555,4 @@ bench_jump
 squat_with_plate_movers
 butt_lift__bridge_
 flutter_kicks
+glute_kickback
