@@ -547,3 +547,4 @@ fast_skipping
 rocket_jump
 close-grip_push-up_off_of_a_dumbbell
 knee_tuck_jump
+inchworm
