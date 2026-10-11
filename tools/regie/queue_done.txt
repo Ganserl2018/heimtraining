@@ -298,3 +298,5 @@ landmine_180_s
 landmine_180_s
 body-up
 body-up
+dumbbell_seated_box_jump
+dumbbell_seated_box_jump
