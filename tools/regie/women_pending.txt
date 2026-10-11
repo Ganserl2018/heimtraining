@@ -186,3 +186,4 @@ single-arm_linear_jammer
 smith_incline_shoulder_raise
 standing_front_barbell_raise_over_head
 standing_low-pulley_deltoid_raise
+alternate_hammer_curl
