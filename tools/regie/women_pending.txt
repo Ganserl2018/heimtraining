@@ -199,3 +199,4 @@ preacher_curl
 reverse_barbell_curl
 reverse_cable_curl
 seated_close-grip_concentration_barbell_curl
+seated_dumbbell_curl
