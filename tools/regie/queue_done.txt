@@ -432,3 +432,5 @@ standing_low-pulley_deltoid_raise
 standing_low-pulley_deltoid_raise
 alternate_hammer_curl
 alternate_hammer_curl
+barbell_curl
+barbell_curl
