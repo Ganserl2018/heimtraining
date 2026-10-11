@@ -538,3 +538,4 @@ vertical_swing
 standing_dumbbell_straight-arm_front_delt_raise_above_head
 scissors_jump
 power_partials
+iron_cross
