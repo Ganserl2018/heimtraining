@@ -613,3 +613,4 @@ clean_deadlift
 snatch_deadlift
 snatch_pull
 hang_clean_-_below_the_knees
+hang_snatch_-_below_knees
