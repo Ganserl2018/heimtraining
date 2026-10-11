@@ -500,3 +500,4 @@ high_cable_curls
 high_cable_curls
 wind_sprints
 shotgun_row
+dumbbell_one-arm_triceps_extension
