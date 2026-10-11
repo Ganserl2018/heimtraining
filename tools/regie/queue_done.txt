@@ -416,3 +416,5 @@ lying_rear_delt_raise
 lying_rear_delt_raise
 one-arm_incline_lateral_raise
 one-arm_incline_lateral_raise
+landmine_linear_jammer
+landmine_linear_jammer
