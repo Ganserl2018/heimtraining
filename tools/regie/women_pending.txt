@@ -177,3 +177,4 @@ external_rotation
 internal_rotation_with_band
 external_rotation_with_band
 jerk_balance
+lying_rear_delt_raise
