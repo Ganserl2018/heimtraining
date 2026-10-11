@@ -626,3 +626,4 @@ bench_press_with_chains
 power_snatch_from_blocks
 squat_with_chains
 sumo_deadlift_with_chains
+single_leg_glute_bridge
