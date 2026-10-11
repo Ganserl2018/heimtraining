@@ -599,3 +599,4 @@ split_jerk
 olympic_squat
 snatch
 clean
+jerk_dip_squat
