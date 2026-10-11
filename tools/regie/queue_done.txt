@@ -478,3 +478,5 @@ dumbbell_lying_supination
 dumbbell_lying_supination
 finger_curls
 finger_curls
+palms-down_wrist_curl_over_a_bench
+palms-down_wrist_curl_over_a_bench
