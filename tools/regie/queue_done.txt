@@ -366,3 +366,5 @@ flat_bench_cable_flyes
 flat_bench_cable_flyes
 standing_cable_chest_press
 standing_cable_chest_press
+cable_lying_triceps_extension
+cable_lying_triceps_extension
