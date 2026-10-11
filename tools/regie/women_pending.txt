@@ -143,3 +143,4 @@ band_good_morning
 cable_chest_press
 cable_russian_twists
 cable_judo_flip
+one-arm_high-pulley_cable_side_bends
