@@ -336,3 +336,5 @@ arnold_dumbbell_press
 arnold_dumbbell_press
 band_pull_apart
 band_pull_apart
+band_good_morning
+band_good_morning
