@@ -330,3 +330,5 @@ side_leg_raises
 side_leg_raises
 hip_circles__prone_
 hip_circles__prone_
+monster_walk
+monster_walk
