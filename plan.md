@@ -358,3 +358,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 4. Hellere Grüntöne bei den Tagen, damit belegte stärker hervorstechen.
 5. Übungsbilder etwas heller (CSS-brightness).
 6. Tagestraining-Seite schöner/übersichtlicher, weniger Scrollen.
+7. Bankdrücken-Leiste (Übersicht) ersetzen durch Rückwärts-Leiste: 156 Trainings in einem Jahr, zählt runter.
