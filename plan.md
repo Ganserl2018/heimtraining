@@ -350,3 +350,8 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 
 ## 12.10. 12:20 – Übungsbilder KOMPLETT (Mann + Frau)
 - 329 Männer-GIFs + 329 Frauen-GIFs im Repo, women_pending.txt leer. Offen: 184 Duplikate (Alex entscheidet), Redo-Liste (~/Downloads/_redo_list.txt), Warteliste (Siri-Pausen-Timer, Welcome/Setup, V10-03 Token-Rotation). Alex muss echtes Stangengewicht eintragen.
+
+## 13.10. Korrekturen-Liste (Alex) – Start erst bei "Go"
+1. Übungen überall anklickbar → öffnet Übungs-Datenseite (Daten der Übung).
+2. Übungs-Datenseite existiert, sieht schlecht aus → verschönern (Phase 3 Design).
+3. (folgt von Alex)
