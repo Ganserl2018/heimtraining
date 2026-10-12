@@ -660,3 +660,4 @@ cable_hip_adduction
 one-legged_cable_kickback
 pull_through
 lying_crossover
+band_hip_adductions
