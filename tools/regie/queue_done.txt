@@ -720,3 +720,4 @@ cable_preacher_curl
 high_cable_curls
 low_cable_crossover
 decline_barbell_bench_press
+seated_bent-over_two-arm_dumbbell_triceps_extension
