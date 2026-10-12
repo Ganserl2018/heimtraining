@@ -1171,3 +1171,49 @@ body:has(.overview-lab) .lab-head-title{font-family:Anton,Impact,'Arial Narrow',
 }
 .tx-sheet .pp-seg button{padding-left:.3rem; padding-right:.3rem; font-size:.78rem; min-width:0;}
 .pp-gen{margin-bottom:.5rem}
+
+/* V15: Korrekturen 13.10. */
+/* 5: Übungsbilder heller */
+img[src*="img/"],.xr-img,.tx-th img,.browse-gif,.hv-card img,.pv-ex img,.hd-th img{filter:brightness(1.2) contrast(1.03);}
+.player-bg,.pf-bg{filter:brightness(1.12);}
+/* 1/2: Übungs-Detailsheet */
+.dt-bg{align-items:flex-end; padding:0; padding-bottom:0; z-index:60;}
+.dt-sheet{width:100%; max-width:520px; max-height:calc(100dvh - 4.2rem); overflow-y:auto; background:var(--panel); border-radius:22px 22px 0 0; border:1px solid var(--border); border-bottom:0; box-shadow:0 -10px 40px rgba(0,0,0,.5); padding-bottom:calc(4.6rem + env(safe-area-inset-bottom,0px)); -webkit-overflow-scrolling:touch;}
+.dt-hero{position:relative; background:#000; overflow:hidden;}
+.dt-hero img{width:100%; max-height:36dvh; object-fit:contain; display:block;}
+.dt-hero::after{content:''; position:absolute; inset:auto 0 0 0; height:40%; background:linear-gradient(180deg,transparent,var(--panel)); pointer-events:none;}
+.dt-x{position:absolute; top:.6rem; right:.6rem; z-index:2; width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.55); color:#fff; font-size:1rem;}
+.dt-body{padding:.2rem 1rem 1rem; display:flex; flex-direction:column; gap:.55rem;}
+.dt-name{margin:0; font-size:1.25rem; line-height:1.2;}
+.dt-tags{display:flex; flex-wrap:wrap; gap:.35rem;}
+.dt-tag{font-size:.72rem; font-weight:700; padding:.25rem .6rem; border-radius:99px; background:rgba(255,255,255,.08); color:var(--text-dim);}
+.dt-tag.on{background:var(--accent); color:#10140a;}
+.dt-secm{font-size:.78rem; color:var(--accent); font-weight:700;}
+.dt-sec{font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--text-dim); margin-top:.4rem;}
+.dt-wcs{display:grid; gap:.45rem;}
+.dt-wc{background:rgba(255,255,255,.05); border-left:3px solid var(--accent); border-radius:12px; padding:.5rem .7rem; font-size:.8rem; line-height:1.35;}
+.dt-wc p{margin:0; color:rgba(255,255,255,.85);} .dt-wc .dt-opt{color:var(--text-dim); font-size:.76rem;}
+.dt-wc-h{display:flex; justify-content:space-between; align-items:center; margin-bottom:.15rem;}
+.dt-wc-h b{color:var(--accent); font-size:.74rem; letter-spacing:.06em; text-transform:uppercase;}
+.dt-wc-h i{display:flex; gap:3px;} .dt-wc-h u{width:14px; height:6px; border-radius:3px; background:var(--accent);}
+.dt-add{display:flex; flex-wrap:wrap; gap:.4rem;}
+.dt-chip{min-height:40px; padding:.4rem .9rem; border-radius:99px; border:1px solid var(--border); background:transparent; color:var(--text); font-size:.82rem; font-weight:600;}
+.dt-chip.on{border-color:var(--accent); color:var(--accent);}
+/* 3/4: Wochentage mit Belegung, belegte hell */
+.lab-week .lab-day{padding:.5rem 0 .4rem; transition:transform .1s;}
+.lab-week .lab-day.lab-frei{opacity:.5;}
+.lab-week .lab-day.lab-belegt{background:color-mix(in srgb,var(--lab-acc) 24%,#1b2222); border:1.5px solid var(--lab-acc); box-shadow:0 0 12px var(--lab-glow);}
+.lab-week .lab-day.lab-belegt b{color:#fff;}
+.lab-week .lab-day.lab-heute{outline:2px solid #fff; outline-offset:1px;}
+.lab-occ{display:block; font-size:.56rem; line-height:1.15; color:var(--lab-dim); padding:0 .15rem; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;}
+.lab-belegt .lab-occ{color:#fff; font-weight:700;}
+.lab-section:last-of-type{font-size:.82rem; letter-spacing:.1em;}
+/* 6: Tagestraining kompakt */
+button.tx-th{padding:0; border:0; cursor:pointer; position:relative;}
+button.tx-th::after{content:'ⓘ'; position:absolute; right:1px; bottom:0; font-size:.7rem; color:#fff; text-shadow:0 0 4px #000; line-height:1;}
+button.tx-nm{background:none; border:0; text-align:left; color:inherit; font:inherit; padding:0 1.3rem 0 0; position:relative; cursor:pointer; min-height:40px; justify-content:center;}
+.tx-nm .tx-ch{position:absolute; right:0; top:50%; transform:translateY(-50%); font-style:normal; color:var(--text-dim); font-size:.8rem;}
+.tx-row:not(.open) .tx-ed,.tx-row:not(.open) .qc,.tx-row:not(.open) .xc-pills,.tx-row:not(.open) .ts-mv,.tx-row:not(.open) .tx-rm{display:none;}
+.tx-row.open{border-color:var(--accent);}
+.tx-row:not(.open){grid-template-columns:40px minmax(0,1fr);}
+.exinfo{cursor:pointer;}

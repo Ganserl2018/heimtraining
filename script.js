@@ -96,9 +96,9 @@ function loadGoal() { try { return JSON.parse(localStorage.getItem(GOALKEY)) || 
 function saveGoal(g) { try { localStorage.setItem(GOALKEY, JSON.stringify(g)); } catch (e) {} }
 let goalEditing = false;
 // V6-04: Langzeit-Leiste (Trainings pro Jahr/Monat ODER Kraft-Ziel einer Übung)
-const LGKEY = 'heimtraining.longgoal';
+const LGKEY = 'heimtraining.longgoal2';
 let longEditing = false, longDraftType = null;
-function loadLong() { try { return JSON.parse(localStorage.getItem(LGKEY)) || { type: 'count', target: 150, per: 'year' }; } catch (e) { return { type: 'count', target: 150, per: 'year' }; } }
+function loadLong() { try { return JSON.parse(localStorage.getItem(LGKEY)) || { type: 'count', target: 156, per: 'year' }; } catch (e) { return { type: 'count', target: 156, per: 'year' }; } }
 function saveLong(g) { try { localStorage.setItem(LGKEY, JSON.stringify(g)); } catch (e) {} }
 function wProgRaw() {
   let wp = null;
@@ -230,7 +230,8 @@ function applyMood() {
   document.body.classList.toggle('mood-good', !bad);
 }
 
-function render() {
+function render() { renderView(); mountDetail(); }
+function renderView() {
   document.body.classList.toggle('playing', view === 'play');
   if (weekplan.some(x => x.draft && !(view === 'wtrain' && wId === x.id) && view !== 'picker' && !picker)) weekplan = weekplan.filter(x => !x.draft || (view === 'wtrain' && wId === x.id));
   applyMood();
@@ -440,27 +441,17 @@ function renderOverview() {
   const wkItems = weekDates.flatMap(ds => scheduled.map(w => trainingStatusForDate(w, ds)).filter(x => x && x !== 'vorher'));
   const wkPlanned = wkItems.length, wkDone = wkItems.filter(x => x === 'erledigt').length;
   const lg = loadLong();
-  let lgTitle, lgLabel, lgPct;
-  if (lg.type === 'strength' && lg.ex) {
-    const mx = Math.max(0, ...h.flatMap(r => r.exercises.filter(e => e.name === lg.ex).flatMap(e => (e.weights || []).filter(w => w != null).map(Number))));
-    const cur = Math.max(mx, Number(lg.from) || 0), span = (Number(lg.to) || 1) - (Number(lg.from) || 0);
-    lgTitle = lg.ex.toUpperCase(); lgLabel = `${cur} / ${lg.to} kg`; lgPct = span > 0 ? (cur - (Number(lg.from) || 0)) / span : 0;
-  } else {
-    const yr = t.slice(0, 4), since2 = lg.per === 'month' ? t.slice(0, 7) + '-01' : yr + '-01-01';
-    const n = h.filter(r => r.date >= since2 && r.date <= t).length;
-    lgTitle = lg.per === 'month' ? 'TRAININGS DIESEN MONAT' : 'TRAININGS ' + yr; lgLabel = `${n} / ${lg.target}`; lgPct = n / Math.max(lg.target, 1);
-  }
+  const yr = t.slice(0, 4), since2 = lg.per === 'month' ? t.slice(0, 7) + '-01' : yr + '-01-01';
+  const nDone = h.filter(r => r.date >= since2 && r.date <= t).length, tgt = Math.max(lg.target || 156, 1), left = Math.max(0, tgt - nDone);
+  const lgTitle = 'COUNTDOWN ' + (lg.per === 'month' ? 'MONAT' : yr), lgLabel = left ? `NOCH ${left} VON ${tgt}` : 'ZIEL GESCHAFFT 🔥', lgPct = left / tgt;
   const bar = (title, label, pct, act) => `<${act ? 'button data-act="' + act + '"' : 'div'} class="lab-bar"><div class="lab-bar-top"><span>${esc(title)}</span><b>${esc(label)}</b></div><div class="lab-bar-track"><i style="width:${Math.round(Math.max(0, Math.min(1, pct)) * 100)}%"></i></div></${act ? 'button' : 'div'}>`;
   const barsBlock = `<div class="lab-bars">${bar('DIESE WOCHE', wkPlanned ? wkDone + ' / ' + wkPlanned : '–', wkPlanned ? wkDone / wkPlanned : 0)}${bar(lgTitle, lgLabel, lgPct, 'longEdit')}</div>`;
   const exNames = [...new Set([...h.flatMap(r => r.exercises.map(e => e.name)), ...weekplan.flatMap(w => w.exercises.map(e => e.name))])];
   const dt = longDraftType || lg.type;
   const longBlock = `<div class="goal-sheet"><div class="goal-edit">
       <div class="ov-card-title">Langzeit-Ziel</div>
-      <div class="lv-pills"><button class="lv-p${dt === 'count' ? ' on' : ''}" data-act="longType" data-v="count">Trainings</button><button class="lv-p${dt === 'strength' ? ' on' : ''}" data-act="longType" data-v="strength">Kraft-Ziel</button></div>
-      ${dt === 'strength' ? `<label>Übung <input id="lg-ex" list="lg-exl" value="${esc(lg.ex || '')}" placeholder="z. B. Barbell Squat"><datalist id="lg-exl">${exNames.map(n => `<option value="${esc(n)}">`).join('')}</datalist></label>
-      <label>von <input id="lg-from" type="number" min="0" inputmode="decimal" value="${lg.from ?? ''}"> kg auf <input id="lg-to" type="number" min="1" inputmode="decimal" value="${lg.to ?? ''}"> kg</label>`
-      : `<label>Ziel <input id="lg-target" type="number" min="1" inputmode="numeric" value="${lg.target || 150}"> Trainings pro
-        <select id="lg-per"><option value="year"${lg.per !== 'month' ? ' selected' : ''}>Jahr</option><option value="month"${lg.per === 'month' ? ' selected' : ''}>Monat</option></select></label>`}
+      <label>Ziel <input id="lg-target" type="number" min="1" inputmode="numeric" value="${lg.target || 156}"> Trainings pro
+        <select id="lg-per"><option value="year"${lg.per !== 'month' ? ' selected' : ''}>Jahr</option><option value="month"${lg.per === 'month' ? ' selected' : ''}>Monat</option></select></label>
       <div class="edit-bar"><button class="ov-btn" data-act="longSave">Speichern</button><button class="ov-btn ov-btn-ghost" data-act="longCancel">Abbrechen</button></div>
     </div></div>`;
 
@@ -494,10 +485,10 @@ function renderOverview() {
       : items.length ? 'erledigt' : null;
     const DB = '<svg class="lab-db" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>';
     const hasEx = items.some(x => x.w.exercises.length);
-    const sub = !worst ? '(Ruhe)' : worst === 'verpasst' ? '⚠' : worst === 'unvollständig' ? '!' : DB;
+    const sub = !worst ? '–' : worst === 'verpasst' ? '⚠' : worst === 'unvollständig' ? '!' : DB;
     const target = (items.find(x => x.status !== 'erledigt') || items[0] || {}).w;
     const act = target ? `data-act="wOpen2" data-id="${target.id}"` : `data-act="wDayNew" data-wd="${wdKeyOf(ds)}" data-date="${ds}"`;
-    return `<button class="lab-day${worst ? ' lab-' + worst : ''}${worst && worst !== 'verpasst' ? (hasEx ? ' lab-ex' : ' lab-leer') : ''}${ds === t ? ' lab-heute' : ''}" ${act}><b>${WD_LABELS[wdKeyOf(ds)]}</b><span>${sub}</span></button>`;
+    return `<button class="lab-day${worst ? ' lab-' + worst + ' lab-belegt' : ' lab-frei'}${worst && worst !== 'verpasst' ? (hasEx ? ' lab-ex' : ' lab-leer') : ''}${ds === t ? ' lab-heute' : ''}" ${act}><b>${WD_LABELS[wdKeyOf(ds)]}</b><span>${sub}</span><small class="lab-occ">${items.length ? items.map(x => esc(x.w.name)).join(' · ') : 'frei'}</small></button>`;
   }).join('');
 
   content.innerHTML = `
@@ -519,7 +510,7 @@ function renderOverview() {
       <button class="lab-start${hasMissedThisWeek ? ' lab-start-broken' : ''}" ${startAttr}>
         <svg class="lab-start-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span>${startLabel}<small>${quick ? btnSub : ''}</small></span>
       </button>
-      <div class="lab-section">WOCHENPLAN-STREIFEN</div>
+      <div class="lab-section">WOCHENTAGE · BELEGUNG</div>
       <div class="lab-week">${wdOrder}</div>
     </div>${goalEditing ? goalBlock : ''}${longEditing ? longBlock : ''}`;
 }
@@ -616,8 +607,8 @@ function renderHistDetail() {
         const done = k < ex.setsDone, w = ws[k];
         return `<span class="hd-w${done ? ' on' : ''}">${w != null ? esc(w) + (u ? ' ' + u : '') : (done ? '✓' : '–')}</span>`;
       }).join('');
-      return `<div class="hd-ex"><div class="hd-th">${hvPhoto(ex.name) || `<i>${esc(ex.name.charAt(0))}</i>`}</div>
-        <div class="hd-nm"><b>${esc(ex.name)}</b><span>${esc(ex.muscle || '')}</span></div>
+      return `<div class="hd-ex"><div class="hd-th exinfo" data-act="exInfo" data-name="${esc(ex.name)}">${hvPhoto(ex.name) || `<i>${esc(ex.name.charAt(0))}</i>`}</div>
+        <div class="hd-nm exinfo" data-act="exInfo" data-name="${esc(ex.name)}"><b>${esc(ex.name)}</b><span>${esc(ex.muscle || '')}</span></div>
         <div class="hd-cnt">${ex.setsDone}/${ex.setsTotal}</div>
         <div class="hd-chips">${chips}</div></div>`;
     }).join('')}</div>
@@ -809,7 +800,7 @@ function renderPlay() {
     </div>
     <div class="pf-dots">${t.exercises.map((e, i) => `<button class="${i === playIdx ? 'cur' : ''}${doneN(e) >= (e.sets || 3) ? ' ok' : doneN(e) ? ' part' : ''}" data-act="playGo" data-i="${i}" aria-label="Übung ${i + 1}"></button>`).join('')}</div>
     <div class="pf-bottom">
-      <div class="pf-ex">${esc(ex.name)}<small>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}${goal}</small></div>
+      <div class="pf-ex exinfo" data-act="exInfo" data-name="${esc(ex.name)}">${esc(ex.name)}<small>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}${goal}</small></div>
       <div class="pf-lab" id="pf-lab">${restEnd > Date.now() ? 'PAUSE' : 'WORKOUT'}</div>
       <div class="pf-time" id="pf-time">0:00</div>
       <div class="pf-restbtns${restEnd > Date.now() ? '' : ' off'}" id="rest"><button data-act="restAdd">+15 s</button><button data-act="restSkip">Skip</button></div>
@@ -871,7 +862,7 @@ function renderPreview() {
     <div class="pl-top"><button class="pl-x" data-act="prevBack" aria-label="Zurück">‹</button>
       <div class="pl-title"><b>${esc(t.name)}</b><span>${t.exercises.length} Übungen · ${sets} Sätze</span></div>
       ${p ? '' : `<button class="pl-x pl-del" data-act="prevDelete" aria-label="Training löschen">🗑</button>`}</div>
-    <div class="pv-list">${t.exercises.map((e, i) => `<div class="pv-ex"><span class="pv-n">${i + 1}</span>
+    <div class="pv-list">${t.exercises.map((e, i) => `<div class="pv-ex exinfo" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span>
       <img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
       <div><b>${esc(e.name)}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)} · ${e.sets || 3} Sätze</em></div></div>`).join('')}</div>
     <div class="pl-nav"><button class="pl-next" data-act="prevGo">▶ TRAINING STARTEN</button></div>
@@ -1043,9 +1034,11 @@ function txRow(t, ex, i) {
   const pills = split ? `<div class="xc-pills">${Array.from({ length: n }, (_, k) => `<div class="xc-pill"><b>${k + 1}</b>${u === 'kg' ? fld('wPlan', 'w', k, at(k, 'w')) : ''}${fld('wPlan', 'r', k, at(k, 'r'))}</div>`).join('')}</div>` : '';
   const chips = split ? '' : `${u === 'kg' ? qchips('w', `[data-act=wPlanAll][data-f=w]`) : ''}${qchips('r', `[data-act=wPlanAll][data-f=r]`)}`;
   const last = i === t.exercises.length - 1;
-  return `<div class="tx-row ts-set xc" style="--i:${Math.min(i, 10)}">
-    <div class="tx-th"><img src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"></div>
-    <div class="tx-nm"><b>${esc(ex.name)}</b><em>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</em></div>
+  const key = t.id + '|' + i, open = txOpen === key;
+  const sumTxt = u === 'none' ? n + ' Sätze' : n + ' × ' + (uniform ? (at(0, 'r') ?? '–') + ' ' + rl : 'variiert') + (u === 'kg' && at(0, 'w') != null ? ' · ' + (uniform ? at(0, 'w') : 'ab ' + at(0, 'w')) + ' kg' : '');
+  return `<div class="tx-row ts-set xc${open ? ' open' : ''}" style="--i:${Math.min(i, 10)}">
+    <button class="tx-th" data-act="exInfo" data-name="${esc(ex.name)}" aria-label="Übungsdaten"><img src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"></button>
+    <button class="tx-nm" data-act="txToggle" data-key="${esc(key)}"><b>${esc(ex.name)}</b><em>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)} · ${sumTxt}</em><i class="tx-ch">${open ? '▴' : '▾'}</i></button>
     <span class="ts-mv"><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="-1" aria-label="Nach oben"${i === 0 ? ' disabled' : ''}>▲</button><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="1" aria-label="Nach unten"${last ? ' disabled' : ''}>▼</button></span>
     <button class="tx-rm" data-act="wRemoveEx" data-id="${t.id}" data-i="${i}" aria-label="Übung entfernen">✕</button>
     <div class="tx-ed">${step}${vals}${sel}</div>${chips}${pills}
@@ -1154,6 +1147,7 @@ function renderProfile() {
 // (auf Desktop-Breite steht die Sidebar-Version daneben, hier der Direktzugriff für iPhone).
 let browsePage = 0;
 const BPAGE = 24; let browseLimit = BPAGE;
+let txOpen = null; // Tagestraining: welche Übungszeile ist zum Bearbeiten aufgeklappt
 let browseQ = '', browseSel = null, filterOpen = false; // "Alle Übungen": Suchtext, gewählte Übung (Detail-Sheet), Filter-Sheet offen
 // Gerät aus dem Namen (DB hat kein Feld) – nur für das Badge
 function equipBadge(name) {
@@ -1226,8 +1220,37 @@ function xrPills(withEquip) {
   return h;
 }
 const XR_SEARCH_ICO = '<svg class="xr-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+
+// Übungs-Detailseite (Sheet) – von überall per Tipp auf Foto/Name erreichbar
+function equipLabel(name) { const f = EQUIP_LIST.find(([k]) => k !== 'none' && matchesEquip(name, k)); return f ? f[1] : 'Ohne Geräte'; }
+function detailSheetHtml(ex) {
+  const w = WCLASS[ex.muscle] || ['im Zielmuskel', 'Muskelaufbau', 'maximale Kraft'];
+  const sec = secondaries(ex);
+  const cls = (t, lv, a, b) => `<div class="dt-wc dt-${lv}"><div class="dt-wc-h"><b>${t}</b><i>${'<u></u>'.repeat(lv === 'l' ? 1 : lv === 'm' ? 2 : 3)}</i></div><p>${a}</p><p class="dt-opt">${b}</p></div>`;
+  const add = view === 'allex' ? `<div class="dt-sec">Zu Training hinzufügen</div>
+    <div class="dt-add">${weekplan.map(t => { const has = t.exercises.some(e => e.name === ex.name);
+      return `<button class="dt-chip${has ? ' on' : ''}" data-act="browseAdd" data-id="${t.id}">${esc(t.name)}${has ? ' ✓' : ''}</button>`; }).join('')}</div>` : '';
+  return `<div class="goal-sheet dt-bg" data-act="browseClose"><div class="dt-sheet">
+    <div class="dt-hero"><img src="${esc(imgOf(ex))}" alt="" onerror="this.style.visibility='hidden'"><button class="dt-x" data-act="browseClose" aria-label="Schließen">✕</button></div>
+    <div class="dt-body">
+      <h2 class="dt-name">${esc(ex.name)}</h2>
+      <div class="dt-tags"><span class="dt-tag on">${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</span>${MUSCLE_GROUPS[ex.muscle] ? `<span class="dt-tag">${MUSCLE_GROUPS[ex.muscle]}</span>` : ''}<span class="dt-tag">${equipLabel(ex.name)}</span></div>
+      ${sec.length ? `<div class="dt-secm">Zusätzlich: ${sec.join(', ')}</div>` : ''}
+      <div class="dt-sec">Gewichtsklassen</div>
+      <div class="dt-wcs">
+        ${cls('Leicht', 'l', 'Geringer Aufwand, minimales Verletzungsrisiko.', `Straffung, Definition, bessere Haltung ${w[0]}.`)}
+        ${cls('Moderat', 'm', 'Mittlerer, kontrollierter Aufwand.', `Muskelaufbau für ${w[1]}.`)}
+        ${cls('Schwer', 'h', 'Hoher Aufwand, strikte Technik.', `${w[2]}, sichtbarer Kraftzuwachs.`)}
+      </div>
+      ${add}
+    </div></div></div>`;
+}
+function mountDetail() {
+  document.querySelectorAll('.dt-bg').forEach(n => n.remove());
+  if (browseSel == null || !pool[browseSel]) return;
+  content.insertAdjacentHTML('beforeend', detailSheetHtml(pool[browseSel]));
+}
 function renderAllEx() {
-  const ex = browseSel != null ? pool[browseSel] : null;
   const chip = (act, v, label, on) => `<button class="chip${on ? ' active' : ''}" data-act="${act}" data-v="${v}">${label}</button>`;
   const active = [
     ...(filterCat ? [['fCat', filterCat, CAT_LIST.find(c => c[0] === filterCat)[1]]] : []),
@@ -1244,16 +1267,6 @@ function renderAllEx() {
       <div class="filter-chips">${CAT_LIST.map(([k, l]) => chip('fCat', k, l, filterCat === k)).join('')}</div>
       <div class="edit-bar"><button class="ov-btn ov-btn-ghost" data-act="fReset">Zurücksetzen</button><button class="ov-btn" data-act="fClose">Fertig</button></div>
     </div></div>` : '';
-  const sheet = ex ? `<div class="goal-sheet"><div class="goal-edit browse-sheet">
-      <img class="browse-gif" src="${esc(imgOf(ex))}" alt="" onerror="this.style.visibility='hidden'">
-      <div class="exercise-name">${esc(ex.name)}</div>
-      <div class="exercise-muscle">${esc(ex.muscle)}${MUSCLE_GROUPS[ex.muscle] ? ' · ' + MUSCLE_GROUPS[ex.muscle] : ''}</div>
-      ${wclassHtml(ex)}
-      <div class="ov-card-title">Zu Training hinzufügen</div>
-      <div class="browse-trainings">${weekplan.map(t => { const has = t.exercises.some(e => e.name === ex.name);
-        return `<button class="ov-btn ov-btn-ghost${has ? ' browse-has' : ''}" data-act="browseAdd" data-id="${t.id}">${esc(t.name)}${has ? ' ✓' : ''}</button>`; }).join('')}</div>
-      <button class="ov-btn" data-act="browseClose">Schließen</button>
-    </div></div>` : '';
   const st = content.scrollTop;
   content.innerHTML = `<div class="xr">
       <div class="xr-top">
@@ -1265,7 +1278,7 @@ function renderAllEx() {
       <div class="xr-count" id="pager-info"></div>
       <div id="results" class="xr-grid"></div>
       <button id="xr-more" class="xr-more" data-act="bMore" hidden></button>
-    </div>${filterSheet}${sheet}`;
+    </div>${filterSheet}`;
   const q = document.getElementById('q');
   q.addEventListener('input', () => { browseQ = q.value; browseLimit = BPAGE; renderResults(q.value); });
   renderResults(browseQ);
@@ -1340,8 +1353,9 @@ function flushQ() {
 flushQ();
 
 content.addEventListener('click', e => {
-  const btn = e.target.closest('button[data-act], .weeklist-card[data-act], .wp-card[data-act], .history-item[data-act], .hv-card[data-act]');
+  const btn = e.target.closest('button[data-act], .exinfo[data-act], .dt-bg[data-act], .weeklist-card[data-act], .wp-card[data-act], .history-item[data-act], .hv-card[data-act]');
   if (!btn) return;
+  if (btn.classList.contains('dt-bg') && e.target !== btn) return;
   const i = Number(btn.dataset.i);
   const arr = list().slice();
   const xrRefresh = () => { browseLimit = BPAGE; if (view === 'allex') { browsePage = 0; render(); content.scrollTop = 0; } else renderResults(document.getElementById('q').value); };
@@ -1566,6 +1580,8 @@ content.addEventListener('click', e => {
       saveWeekplan(); break;
     }
     case 'wUnsched': { const t = trainingById(btn.dataset.id); t.weekdays = t.weekdays.filter(x => x !== btn.dataset.wd); saveWeekplan(); break; }
+    case 'exInfo': { const k = pool.findIndex(x => x.name === btn.dataset.name); if (k >= 0) browseSel = k; break; }
+    case 'txToggle': txOpen = txOpen === btn.dataset.key ? null : btn.dataset.key; break;
     case 'browsePick': browseSel = Number(btn.dataset.p); break;
     case 'browseClose': browseSel = null; break;
     case 'browseAdd': {
@@ -1620,10 +1636,10 @@ content.addEventListener('click', e => {
     case 'longCancel': longEditing = false; longDraftType = null; break;
     case 'longSave': {
       const ty = longDraftType || loadLong().type, g = id => document.getElementById(id)?.value;
-      if (ty === 'strength') {
+      if (false) {
         const ex = (g('lg-ex') || '').trim(), from = Number(g('lg-from')) || 0, to = Number(g('lg-to')) || 0;
         if (ex && to > from) saveLong({ type: 'strength', ex, from, to });
-      } else saveLong({ type: 'count', target: Math.max(1, Number(g('lg-target')) || 150), per: g('lg-per') === 'month' ? 'month' : 'year' });
+      } else saveLong({ type: 'count', target: Math.max(1, Number(g('lg-target')) || 156), per: g('lg-per') === 'month' ? 'month' : 'year' });
       longEditing = false; longDraftType = null; break;
     }
     case 'quickStart': playStart(btn.dataset.id); picker = null; break;

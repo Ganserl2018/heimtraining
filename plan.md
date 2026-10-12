@@ -359,3 +359,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 5. Übungsbilder etwas heller (CSS-brightness).
 6. Tagestraining-Seite schöner/übersichtlicher, weniger Scrollen.
 7. Bankdrücken-Leiste (Übersicht) ersetzen durch Rückwärts-Leiste: 156 Trainings in einem Jahr, zählt runter.
+- 13.10. 02:30 V15-1..7 umgesetzt + gepusht: globale Übungs-Detailseite (Tipp auf Foto/Name in Tagestraining, Vorschau, Verlauf, Player, Alle Übungen), neues Sheet-Design, Wochentage mit Belegung + helle belegte Tage, Bilder +20% Helligkeit, Tagestraining-Zeilen einklappbar (Name = bearbeiten, Foto = Info), Countdown-Leiste 156/Jahr (neuer Key longgoal2). Test 390px ok; Alex prüft live.
