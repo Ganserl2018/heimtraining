@@ -696,3 +696,4 @@ lying_supine_dumbbell_curl
 preacher_curl
 reverse_barbell_curl
 reverse_cable_curl
+seated_close-grip_concentration_barbell_curl
