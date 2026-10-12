@@ -707,3 +707,4 @@ zottman_curl
 cable_wrist_curl
 dumbbell_lying_pronation
 dumbbell_lying_supination
+finger_curls
