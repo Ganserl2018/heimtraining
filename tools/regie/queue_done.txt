@@ -708,3 +708,4 @@ cable_wrist_curl
 dumbbell_lying_pronation
 dumbbell_lying_supination
 finger_curls
+palms-down_wrist_curl_over_a_bench
