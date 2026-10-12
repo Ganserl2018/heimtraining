@@ -706,3 +706,4 @@ two-arm_dumbbell_preacher_curl
 zottman_curl
 cable_wrist_curl
 dumbbell_lying_pronation
+dumbbell_lying_supination
