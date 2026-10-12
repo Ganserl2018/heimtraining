@@ -677,3 +677,4 @@ internal_rotation_with_band
 lying_rear_delt_raise
 one-arm_incline_lateral_raise
 jerk_balance
+landmine_linear_jammer
