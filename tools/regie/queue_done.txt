@@ -675,3 +675,4 @@ external_rotation
 external_rotation_with_band
 internal_rotation_with_band
 lying_rear_delt_raise
+one-arm_incline_lateral_raise
