@@ -354,4 +354,7 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 ## 13.10. Korrekturen-Liste (Alex) – Start erst bei "Go"
 1. Übungen überall anklickbar → öffnet Übungs-Datenseite (Daten der Übung).
 2. Übungs-Datenseite existiert, sieht schlecht aus → verschönern (Phase 3 Design).
-3. (folgt von Alex)
+3. "Zu Training hinzufügen" (Sheet in Alle Übungen): Wochentagbelegung statt Wochenplan-Streifen (Tage als Auswahl mit Belegung).
+4. Hellere Grüntöne bei den Tagen, damit belegte stärker hervorstechen.
+5. Übungsbilder etwas heller (CSS-brightness).
+6. Tagestraining-Seite schöner/übersichtlicher, weniger Scrollen.
