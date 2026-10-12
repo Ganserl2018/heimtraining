@@ -687,3 +687,4 @@ standing_front_barbell_raise_over_head
 barbell_curl
 alternate_hammer_curl
 dumbbell_bicep_curl
+ez-bar_curl
