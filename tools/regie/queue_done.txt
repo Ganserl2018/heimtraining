@@ -674,3 +674,4 @@ handstand_push-ups
 external_rotation
 external_rotation_with_band
 internal_rotation_with_band
+lying_rear_delt_raise
