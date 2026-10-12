@@ -347,3 +347,6 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - Neu seit 10.10. 12:45: Olympic-/Block-Varianten, Bodyweight/Mobility, Ketten/Wade, band_*, cable_* (chest_press, russian_twists, judo_flip, incline_pushdown, flyes), one-arm_high-pulley side bends, bosu crunch, incline_bench_pull, lying_cambered_barbell_row, bent-arm_barbell_pullover, bodyweight_flyes, clock_push-up, rear_leg_raises.
 - Akzeptiert mit Abstrichen (~/Downloads/_redo_list.txt): cable_incline_pushdown, bodyweight_flyes u.a.
 - Beide Gemini-Apps wieder frei, laufen parallel. Nächste: cable_lying_triceps_extension, cable_one_arm_tricep_extension, cable_rope_overhead_triceps_extension, cable_deadlifts, cable_hip_adduction, one-legged_cable_kickback. Danach Frauen (integ2.sh … w), Duplikate (184) zuletzt.
+
+## 12.10. 12:20 – Übungsbilder KOMPLETT (Mann + Frau)
+- 329 Männer-GIFs + 329 Frauen-GIFs im Repo, women_pending.txt leer. Offen: 184 Duplikate (Alex entscheidet), Redo-Liste (~/Downloads/_redo_list.txt), Warteliste (Siri-Pausen-Timer, Welcome/Setup, V10-03 Token-Rotation). Alex muss echtes Stangengewicht eintragen.
