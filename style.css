@@ -1329,3 +1329,15 @@ body:not(:has(.overview-lab)) .topbar{padding-bottom:.55rem !important;}
 .wp .sv-auto-t i{font-size:.72rem;}
 .wp .wp-card{padding:.3rem .7rem;} .wp .wp-add{min-height:34px !important;}
 .xr-landing .wv-tile{aspect-ratio:3/3.3 !important;} .xr-landing{gap:.5rem; margin-bottom:.5rem;}
+/* V16f M1 Trainings-Detail kompakt */
+.tx-head{flex-wrap:nowrap; padding:.1rem 0 .35rem; gap:.5rem;}
+.tx-head h2{font-size:1.3rem; flex:0 1 auto;}
+.tx-hbtns button{min-height:36px; padding:0 .7rem;}
+.tx-hint{margin-bottom:.35rem;}
+.tx-hint .hh{position:relative; padding:.4rem 2.6rem .4rem .7rem;}
+.tx-hint .hh-top{position:absolute; top:0; right:0; padding:0;}
+.tx-hint .hh-top b{display:none;}
+.tx-hint .hh-top button{font-size:0; min-height:44px; min-width:44px; padding:0; border:0; background:none;}
+.tx-hint .hh-top button::after{content:'✕'; font-size:.95rem; color:var(--text-dim);}
+.tx-hint .hh p{margin:0; font-size:.76rem; line-height:1.25;}
+.tx-sum{padding-left:14px; padding-right:14px;}
