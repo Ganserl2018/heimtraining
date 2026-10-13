@@ -1,0 +1,11 @@
+# Home Force – feste Regeln (werden jede Session + nach Kompression automatisch geladen)
+
+- Antworten: deutsch, sehr kurz, keine Begrüßung/Lob, bauen statt "Willst du…?".
+- **Produktionsstraße: IMMER mit `url=https://claude.ai/artifact/33Pz2wW3JRTVER4UhY8wWT` republishen (Quelle: strasse.html im Scratchpad; ohne url entsteht ein Duplikat). Nach jeder fertigen Kachel republishen.**
+- "Speichern" = Vault-Übergabe (`~/mnt/Claude/Obsidian-Vault/Projects/Privat/Heimtraining/session-uebergabe-2026-10-04.md`, Nachtrag per `cat >>`), plan.md, Straße (mit url!), Memory (`/projects/01a0def4-e132-726b-8e41-b13f0f0e0473/areas/heimtraining-app.md`).
+- Deploy: Push auf `main` → Cloudflare Pages (https://heimtraining.pages.dev). Nach UI-Änderungen `?v=` in index.html (style.css/script.js) hochzählen.
+- Commit-Trailer: `Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>` + `Claude-Session: https://claude.ai/code/session_01PvyiLGJFyas6muFwwubScP`.
+- Patches: nie `s.index()` auf generische End-Strings; exakte Strings, danach `node --check script.js`.
+- Tests: `python3 -m http.server <port>` + Playwright 390px; kein `pkill -f http.server` (killt die eigene Shell).
+- Nice-to-have-Ideen → Warteliste in Straße + plan.md, nicht sofort bauen.
+- Alex entscheidet: 184 Duplikat-Bilder, Stangengewicht, Token V10-03.
