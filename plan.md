@@ -371,3 +371,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - Warteliste (13.10. 15:30): Übungs-Zähler – zeigt welche Übungen Alex wie oft macht (Verlauf/Fortschritt). Erst nach aktuellem Feature.
 
 **Straße-Adresse (immer per url republishen, nie ohne): https://claude.ai/artifact/33Pz2wW3JRTVER4UhY8wWT**
+- 13.10. Wochenplan kompakter: Vorlagen-Kacheln flacher, passt ohne Scrollen (leer)

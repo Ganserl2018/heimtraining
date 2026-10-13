@@ -1273,3 +1273,12 @@ button.tx-nm{background:none; border:0; text-align:left; color:inherit; font:inh
 .xr-landing{grid-column:1/-1;} .xr-landing .wv-tile{aspect-ratio:3/3.6;} .xr-landing .wv-name{font-size:1rem;}
 
 .xr-landing{margin-bottom:.5rem;}
+
+/* V16: Wochenplan kompakter, Vorlagen passen auf eine Seite */
+.wv-grid .wv-tile{aspect-ratio:1/.78;} .wv-grid{gap:.4rem;}
+.wv-grid .wv-name{font-size:.8rem; bottom:.35rem;} .wv-grid .wv-n{min-width:20px; height:20px; font-size:.66rem;}
+.xr-landing .wv-tile{aspect-ratio:3/3.6;}
+.wp-empty{display:none;} :where(#content) .wp-add{min-height:44px;}
+.sv-auto{margin:.1rem 0 .4rem; padding:.7rem 1rem;}
+.wv-grid .wv-tile{aspect-ratio:1/.86;}
+.wv-grid .wv-tile{aspect-ratio:1/.8;}
