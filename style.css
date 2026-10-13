@@ -1270,3 +1270,4 @@ button.tx-nm{background:none; border:0; text-align:left; color:inherit; font:inh
 .dt-chip-b{width:28px; height:28px; border-radius:9px; font-size:.72rem;}
 .dt-chip-t b{font-size:.78rem;} .dt-chip-t small{font-size:.62rem;}
 .ps-sheet .dt-body{overflow-y:auto;}
+.xr-landing{grid-column:1/-1;} .xr-landing .wv-tile{aspect-ratio:3/3.6;} .xr-landing .wv-name{font-size:1rem;}

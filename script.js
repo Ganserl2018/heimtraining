@@ -375,6 +375,14 @@ function renderResults(query) {
     hits.push(i);
   });
   const act = view === 'allex' ? 'browsePick' : 'pick';
+  const landing = view === 'allex' && !filterMuscle && !words.length && !filterEquip && !filterCat && !filterMus;
+  if (landing) {
+    const cover = g => { const l = pool.filter(e => MUSCLE_GROUPS[e.muscle] === g); return l.find(e => isCompound(e.name)) || l[0]; };
+    document.getElementById('results').innerHTML = `<div class="wv-grid xr-landing">${MUSCLE_GROUP_LIST.map(g => { const e0 = cover(g), n = pool.filter(e => MUSCLE_GROUPS[e.muscle] === g).length; return `<button class="wv-tile" data-act="fMuscle" data-v="${g}">${e0 ? `<img src="${esc(imgOf(e0))}" alt="" onerror="this.style.visibility='hidden'">` : ''}<span class="wv-n">${n}</span><span class="wv-name">${g}</span></button>`; }).join('')}</div>`;
+    const info0 = document.getElementById('pager-info'); if (info0) info0.textContent = `${pool.length} Übungen · Muskelgruppe wählen`;
+    const more0 = document.getElementById('xr-more'); if (more0) more0.hidden = true;
+    return;
+  }
   const shown = hits.slice(0, browseLimit);
   document.getElementById('results').innerHTML = shown.map(i => xrTile(i, act)).join('') +
     (hits.length === 0 ? '<p class="placeholder xr-empty">Keine Treffer – Filter/Suche anpassen.</p>' : '');
@@ -1325,7 +1333,7 @@ function renderAllEx() {
       <div class="xr-top">
         <div class="xr-search">${XR_SEARCH_ICO}<input id="q" type="search" placeholder="${pool.length} Übungen durchsuchen…" value="${esc(browseQ)}" autocomplete="off">
           <button class="xr-filter${nF ? ' on' : ''}" data-act="fOpen">Filter${nF ? `<b>${nF}</b>` : ''}</button></div>
-        ${xrPills(false)}
+        ${filterMuscle ? `<div class="xr-pills"><button class="xr-pill" data-act="fMuscle" data-v="">‹ Muskelgruppen</button><button class="xr-pill active" data-act="fMuscle" data-v="${filterMuscle}">${filterMuscle}</button></div>` : ''}
         ${nF ? `<div class="xr-pills xr-pills-sub">${active.map(([a, v, l]) => `<button class="xr-pill active" data-act="${a}" data-v="${v}">${l} ✕</button>`).join('')}</div>` : ''}
       </div>
       <div class="xr-count" id="pager-info"></div>
