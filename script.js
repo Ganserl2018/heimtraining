@@ -452,12 +452,13 @@ function renderOverview() {
   // V6-04: Wochen-Leiste + Langzeit-Leiste
   const wkItems = weekDates.flatMap(ds => scheduled.map(w => trainingStatusForDate(w, ds)).filter(x => x && x !== 'vorher'));
   const wkPlanned = wkItems.length, wkDone = wkItems.filter(x => x === 'erledigt').length;
+  const wkHist = h.filter(r => r.date >= weekDates[0] && r.date <= weekDates[6]).length;
   const lg = loadLong();
   const yr = t.slice(0, 4), since2 = lg.per === 'month' ? t.slice(0, 7) + '-01' : yr + '-01-01';
   const nDone = h.filter(r => r.date >= since2 && r.date <= t).length, tgt = Math.max(lg.target || 156, 1), left = Math.max(0, tgt - nDone);
   const lgTitle = 'COUNTDOWN ' + (lg.per === 'month' ? 'MONAT' : yr), lgLabel = left ? `NOCH ${left} VON ${tgt}` : 'ZIEL GESCHAFFT 🔥', lgPct = left / tgt;
   const bar = (title, label, pct, act) => `<${act ? 'button data-act="' + act + '"' : 'div'} class="lab-bar"><div class="lab-bar-top"><span>${esc(title)}</span><b>${esc(label)}</b></div><div class="lab-bar-track"><i style="width:${Math.round(Math.max(0, Math.min(1, pct)) * 100)}%"></i></div></${act ? 'button' : 'div'}>`;
-  const barsBlock = `<div class="lab-bars">${bar('DIESE WOCHE', wkPlanned ? wkDone + ' / ' + wkPlanned : '–', wkPlanned ? wkDone / wkPlanned : 0)}${bar(lgTitle, lgLabel, lgPct, 'longEdit')}</div>`;
+  const barsBlock = `<div class="lab-bars">${wkPlanned ? bar('DIESE WOCHE', wkDone + ' / ' + wkPlanned, wkDone / wkPlanned) : (wkHist ? bar('DIESE WOCHE', wkHist + ' ERLEDIGT', 1) : '')}${bar(lgTitle, lgLabel, lgPct, 'longEdit')}</div>`;
   const exNames = [...new Set([...h.flatMap(r => r.exercises.map(e => e.name)), ...weekplan.flatMap(w => w.exercises.map(e => e.name))])];
   const dt = longDraftType || lg.type;
   const longBlock = `<div class="goal-sheet"><div class="goal-edit">
