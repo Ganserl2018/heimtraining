@@ -688,7 +688,7 @@ function genSave(start) {
 function renderGen() {
   const lv = genLevel(), p = loadProfile();
   const pill = (act, v, l, on) => `<button class="lv-p${on ? ' on' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
-  const res = genRes ? `<div class="gn-res">${genRes.map((e, i) => `<div class="gn-ex"><span class="pv-n">${i + 1}</span><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+  const res = genRes ? `<div class="gn-res">${genRes.map((e, i) => `<div class="gn-ex exinfo" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
       <div><b>${esc(e.name)}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)} · ${e.sets} × ${e.plan[0].r} ${e.unit === 'sek' ? 'Sek' : 'Wdh'}${e.plan[0].w != null && e.unit === 'kg' ? ' · ca. ' + e.plan[0].w + ' kg' : ''}</em></div></div>`).join('')}
       <div class="lv-note">Vorschlag mit ca.-Werten. Technik vor Gewicht, bei Schmerzen abbrechen.${!p.weight && genRes.some(e => e.unit === 'kg') ? ' Gewicht im Profil eintragen, dann kommen auch kg-Vorschläge.' : ''}</div>
       <div class="gn-btns"><button class="ts-save" data-act="genSave">✓ SPEICHERN</button><button class="pl-next ts-go" data-act="genGo">▶ SPEICHERN &amp; STARTEN</button><button class="ts-add" data-act="genDo">⟳ Neu mischen</button></div></div>` : '';
