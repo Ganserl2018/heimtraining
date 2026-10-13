@@ -369,3 +369,5 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - 13.10. Alle Übungen: zweite Kachelreihe Push/Pull/Beine
 - 13.10. Alle Übungen: zweite Reihe Warmup/Push/Pull
 - Warteliste (13.10. 15:30): Übungs-Zähler – zeigt welche Übungen Alex wie oft macht (Verlauf/Fortschritt). Erst nach aktuellem Feature.
+
+**Straße-Adresse (immer per url republishen, nie ohne): https://claude.ai/artifact/33Pz2wW3JRTVER4UhY8wWT**
