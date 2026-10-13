@@ -1240,10 +1240,11 @@ function detailSheetHtml(ex) {
     <div class="dt-add">${weekplan.map(t => { const has = t.exercises.some(e => e.name === ex.name);
       return `<button class="dt-chip${has ? ' on' : ''}" data-act="browseAdd" data-id="${t.id}">${esc(t.name)}${has ? ' ✓' : ''}</button>`; }).join('')}</div>` : '';
   return `<div class="goal-sheet dt-bg" data-act="browseClose"><div class="dt-sheet">
-    <div class="dt-hero"><img src="${esc(imgOf(ex))}" alt="" onerror="this.style.visibility='hidden'"><button class="dt-x" data-act="browseClose" aria-label="Schließen">✕</button></div>
+    <button class="dt-x" data-act="browseClose" aria-label="Schließen">✕</button>
+    <div class="dt-hero"><img src="${esc(imgOf(ex))}" alt="" onerror="this.style.visibility='hidden'"></div>
     <div class="dt-body">
       <h2 class="dt-name">${esc(ex.name)}</h2>
-      <div class="dt-tags"><span class="dt-tag on">${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</span>${MUSCLE_GROUPS[ex.muscle] ? `<span class="dt-tag">${MUSCLE_GROUPS[ex.muscle]}</span>` : ''}<span class="dt-tag">${equipLabel(ex.name)}</span></div>
+      <div class="dt-tags"><span class="dt-tag on">${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</span>${MUSCLE_GROUPS[ex.muscle] && MUSCLE_GROUPS[ex.muscle] !== (MUSCLE_DE[ex.muscle] || ex.muscle) ? `<span class="dt-tag">${MUSCLE_GROUPS[ex.muscle]}</span>` : ''}<span class="dt-tag">${equipLabel(ex.name)}</span></div>
       ${sec.length ? `<div class="dt-secm">Zusätzlich: ${sec.join(', ')}</div>` : ''}
       <div class="dt-sec">Gewichtsklassen</div>
       <div class="dt-wcs">
@@ -1252,6 +1253,7 @@ function detailSheetHtml(ex) {
         ${cls('Schwer', 'h', 'Hoher Aufwand, strikte Technik.', `${w[2]}, sichtbarer Kraftzuwachs.`)}
       </div>
       ${add}
+      <button class="ov-btn dt-close" data-act="browseClose">Schließen</button>
     </div></div></div>`;
 }
 function mountDetail() {
