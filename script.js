@@ -230,7 +230,7 @@ function applyMood() {
   document.body.classList.toggle('mood-good', !bad);
 }
 
-function render() { renderView(); mountDetail(); }
+function render() { renderView(); mountDetail(); mountPresetSheet(); }
 function renderView() {
   document.body.classList.toggle('playing', view === 'play');
   if (weekplan.some(x => x.draft && !(view === 'wtrain' && wId === x.id) && view !== 'picker' && !picker)) weekplan = weekplan.filter(x => !x.draft || (view === 'wtrain' && wId === x.id));
@@ -631,6 +631,32 @@ const PRESETS = [
   { key: 'core', grp: 'core', name: 'Core', ex: ['Cable Crunch', 'Hanging Leg Raise', 'Plank', 'Crunches'] },
 ];
 function presetThumb(p) { const e = presetExercises(p)[0]; return e ? `<img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.remove()">` : ''; }
+
+// Vorlagen-Auswahl: ALLE Übungen der Muskelgruppe, Anzahl wählen oder einzeln abhaken
+let psSheet = null; // { key, sel:Set(index) }
+function presetAll(p) {
+  const cur = presetExercises(p).slice(0, p.ex.length ? p.ex.filter(n => pool.some(e => e.name === n)).length : 0);
+  const f = PRESET_FILL[p.key], out = cur.slice(), names = new Set(out.map(e => e.name));
+  const lists = (f ? f[0] : []).map(m => pool.filter(e => e.muscle === m && !names.has(e.name)).sort((a, b) => (isCompound(b.name) - isCompound(a.name)) || a.name.localeCompare(b.name)));
+  for (let k = 0; lists.some(l => l.length > k); k++) for (const l of lists) if (l[k]) out.push({ name: l[k].name, muscle: l[k].muscle, gif: l[k].gif, sets: 3, note: '', unit: defaultUnit(l[k].name) });
+  return out;
+}
+function psPick(n) { const p = PRESETS.find(x => x.key === psSheet.key); psSheet.sel = new Set(Array.from({ length: Math.min(n, presetAll(p).length) }, (_, i) => i)); }
+function mountPresetSheet() {
+  document.querySelectorAll('.ps-bg').forEach(n => n.remove());
+  if (!psSheet) return;
+  const p = PRESETS.find(x => x.key === psSheet.key); if (!p) return;
+  const all = presetAll(p), n = psSheet.sel.size;
+  const pill = c => `<button class="dt-chip${(c === 0 ? n === all.length : n === c) ? ' on' : ''}" data-act="psCount" data-v="${c}">${c || 'Alle ' + all.length}</button>`;
+  content.insertAdjacentHTML('beforeend', `<div class="goal-sheet dt-bg ps-bg" data-act="psClose"><div class="dt-sheet ps-sheet">
+    <div class="dt-body"><h2 class="dt-name">${esc(p.name)} · ${all.length} Übungen im Pool</h2>
+      <div class="dt-sec">Wie viele?</div><div class="dt-add">${[5, 8, 10, 12].filter(c => c < all.length).map(pill).join('')}${pill(0)}</div>
+      <div class="dt-sec">Oder einzeln wählen</div>
+      <div class="ps-list">${all.map((e, i) => `<button class="ps-row${psSheet.sel.has(i) ? ' on' : ''}" data-act="psTog" data-i="${i}"><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><span><b>${esc(e.name)}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)}</em></span><i>${psSheet.sel.has(i) ? '✓' : ''}</i></button>`).join('')}</div>
+    </div>
+    <div class="ps-bar"><button class="ov-btn ov-btn-ghost" data-act="psClose">Abbrechen</button><button class="ov-btn" data-act="psCreate"${n ? '' : ' disabled'}>Anlegen · ${n}</button></div>
+  </div></div>`);
+}
 // Vorlagen: kuratierte Übungen zuerst, dann reihum mit passenden Pool-Übungen auf Zielanzahl aufgefüllt
 const PRESET_FILL = { push: [['chest', 'shoulders', 'triceps'], 10], pull: [['lats', 'middle back', 'biceps', 'traps'], 10], legs: [['quadriceps', 'hamstrings', 'glutes', 'calves'], 10],
   back: [['lats', 'middle back', 'lower back', 'traps'], 8], chest: [['chest'], 8], shoulders: [['shoulders', 'traps'], 8], triceps: [['triceps'], 8], biceps: [['biceps', 'forearms'], 8], core: [['abdominals'], 8] };
@@ -1383,7 +1409,7 @@ flushQ();
 content.addEventListener('click', e => {
   const btn = e.target.closest('button[data-act], .exinfo[data-act], .dt-bg[data-act], .weeklist-card[data-act], .wp-card[data-act], .history-item[data-act], .hv-card[data-act]');
   if (!btn) return;
-  if (btn.classList.contains('dt-bg') && e.target !== btn) return;
+  if ((btn.classList.contains('dt-bg') || btn.classList.contains('ps-bg')) && e.target !== btn) return;
   const i = Number(btn.dataset.i);
   const arr = list().slice();
   const xrRefresh = () => { browseLimit = BPAGE; if (view === 'allex') { browsePage = 0; render(); content.scrollTop = 0; } else renderResults(document.getElementById('q').value); };
@@ -1527,11 +1553,14 @@ content.addEventListener('click', e => {
     case 'wUnitSet': trainingById(btn.dataset.id).exercises[Number(btn.dataset.i)].unit = btn.dataset.u; saveWeekplan(); break;
     case 'hintOk': helperHide(btn.dataset.id); break;
     case 'helperReset': try { localStorage.removeItem(HELPKEY); } catch (e) {} break;
-    case 'wpPreset': {
-      const p = PRESETS.find(x => x.key === btn.dataset.key); if (!p) break;
-      let t = weekplan.find(w => w.presetKey === p.key);
-      if (!t) { t = { id: 'w' + Date.now(), name: p.name, presetKey: p.key, exercises: presetExercises(p), weekdays: [], since: {}, time: '' }; weekplan.push(t); saveWeekplan(); }
-      wId = t.id; view = 'wtrain'; break;
+    case 'wpPreset': { const p = PRESETS.find(x => x.key === btn.dataset.key); if (!p) break; const ex = weekplan.find(w => w.presetKey === p.key); if (ex) { wId = ex.id; view = 'wtrain'; break; } psSheet = { key: p.key, sel: new Set() }; psPick(8); break; }
+    case 'psClose': psSheet = null; break;
+    case 'psCount': psPick(Number(btn.dataset.v) || 999); break;
+    case 'psTog': { const k = Number(btn.dataset.i); psSheet.sel.has(k) ? psSheet.sel.delete(k) : psSheet.sel.add(k); break; }
+    case 'psCreate': {
+      const p = PRESETS.find(x => x.key === psSheet.key), all = presetAll(p);
+      const t = { id: 'w' + Date.now(), name: p.name, presetKey: p.key, exercises: all.filter((_, i) => psSheet.sel.has(i)), weekdays: [], since: {}, time: '' };
+      weekplan.push(t); saveWeekplan(); psSheet = null; wId = t.id; view = 'wtrain'; break;
     }
     case 'wOpen2': wId = btn.dataset.id; view = 'wtrain'; break;
     case 'wDayNew': {
