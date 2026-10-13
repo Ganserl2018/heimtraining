@@ -373,3 +373,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 **Straße-Adresse (immer per url republishen, nie ohne): https://claude.ai/artifact/33Pz2wW3JRTVER4UhY8wWT**
 - 13.10. Wochenplan kompakter: Vorlagen-Kacheln flacher, passt ohne Scrollen (leer)
 - 13.10. Vorlagen-Auswahl-Sheet kompakt (10 Zeilen sichtbar), eigene Trainings als schmale Zeilen
+- 13.10. 19:xx QA-Checker Gesamtlauf: Bericht reports/qa-2026-10-13-gesamt.md. Behoben: Warmup-Chip-Bug (Operator-Priorität), Mann/Frau-Umschalter 2 Spalten. Offen (Warteliste/nächste): TV-Button-Position Übersicht, Auto-Training ohne Scroll + Hinweis, Vorlagen-Sheet toter Bereich, Muskelnamen deutsch überall, Tagesseite Mobil, Touch-Targets <44px, Übersicht passt auf echtem iPhone nicht (Wochentage-Streifen unter Tab-Leiste, vom Checker verpasst), "Diese Woche -" leer (verpasst).

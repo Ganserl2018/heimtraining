@@ -1293,3 +1293,4 @@ button.tx-nm{background:none; border:0; text-align:left; color:inherit; font:inh
 .wp .wp-card{min-height:0; padding:.4rem .7rem; gap:.5rem;}
 .wp .wp-card .wp-thumbs{display:none;}
 .wp .wp-card-name{font-size:.92rem;} .wp .wp-card-meta{font-size:.7rem;}
+.pp-seg.pp-gen{grid-template-columns:repeat(2,1fr);}

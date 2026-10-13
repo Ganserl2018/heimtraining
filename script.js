@@ -1335,7 +1335,7 @@ function renderAllEx() {
       <div class="xr-top">
         <div class="xr-search">${XR_SEARCH_ICO}<input id="q" type="search" placeholder="${pool.length} Übungen durchsuchen…" value="${esc(browseQ)}" autocomplete="off">
           <button class="xr-filter${nF ? ' on' : ''}" data-act="fOpen">Filter${nF ? `<b>${nF}</b>` : ''}</button></div>
-        ${filterMuscle || filterSplit ? `<div class="xr-pills"><button class="xr-pill" data-act="fMuscle" data-v="">‹ Zurück</button><button class="xr-pill active" data-act="fMuscle" data-v="${filterMuscle || ''}">${filterMuscle || filterSplit === 'warm' ? 'Warmup' : (PRESETS.find(p => p.key === filterSplit) || {}).name}</button></div>` : ''}
+        ${filterMuscle || filterSplit ? `<div class="xr-pills"><button class="xr-pill" data-act="fMuscle" data-v="">‹ Zurück</button><button class="xr-pill active" data-act="fMuscle" data-v="${filterMuscle || ''}">${filterMuscle ? filterMuscle : (filterSplit === 'warm' ? 'Warmup' : (PRESETS.find(p => p.key === filterSplit) || {}).name)}</button></div>` : ''}
         ${nF ? `<div class="xr-pills xr-pills-sub">${active.map(([a, v, l]) => `<button class="xr-pill active" data-act="${a}" data-v="${v}">${l} ✕</button>`).join('')}</div>` : ''}
       </div>
       <div class="xr-count" id="pager-info"></div>
