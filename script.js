@@ -42,6 +42,9 @@ function loadWeekplan() {
   } catch (e) {}
   return WEEKDAY_SEED.map(([id, name]) => ({ id, name, exercises: [] }));
 }
+const ARKEY = 'heimtraining.archive'; let archOpen = false;
+function loadArchive() { try { const r = JSON.parse(localStorage.getItem(ARKEY)); return Array.isArray(r) ? r : []; } catch (e) { return []; } }
+function saveArchive(a) { try { localStorage.setItem(ARKEY, JSON.stringify(a)); } catch (e) {} }
 function saveWeekplan() { try { localStorage.setItem(WKEY, JSON.stringify(weekplan)); } catch (e) {} }
 weekplan = loadWeekplan().filter(x => !x.draft);
 // V6-01: fehlende Felder bei alten/bestehenden Trainings nachrüsten (weekdays/time optional, leer = kein Zeitplan)
@@ -951,18 +954,21 @@ function renderWeeklist() {
   const customCards = custom.map(t => {
     const th = t.exercises.slice(0, 3).map(ex => `<img src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`).join('');
     const st = trainingStatusForDate(t, t0);
-    return `<div class="wp-card" data-act="wOpen2" data-id="${t.id}">
+    return `<div class="wp-sw" data-sw="${t.id}"><div class="wp-sw-bg"><span class="a">📥 Archiv</span><span class="d">Löschen 🗑</span></div><div class="wp-card" data-act="wOpen2" data-id="${t.id}">
       <div class="wp-thumbs">${th || DB}</div>
       <div class="wp-card-body"><div class="wp-card-name">${esc(t.name)}</div><div class="wp-card-meta">${meta(t)}${st ? ' · ' + STATUS_LABEL[st] : ''}</div></div>
       <span class="wp-chev">›</span>
-    </div>`;
+    </div></div>`;
   }).join('');
+  const arch = loadArchive();
+  const archBlock = arch.length ? `<button class="wp-arch-h" data-act="archToggle">ARCHIV (${arch.length}) ${archOpen ? '▾' : '▸'}</button>${archOpen ? arch.map(t => `<div class="wp-card wp-arch"><div class="wp-card-body"><div class="wp-card-name">${esc(t.name)}</div><div class="wp-card-meta">${t.exercises.length} Übungen</div></div><button data-act="wRestore" data-id="${t.id}">Zurückholen</button></div>`).join('') : ''}` : '';
   content.innerHTML = `
     <div class="wp">
       <div class="wp-sec">DIESE WOCHE</div>
       <div class="wp-days">${dayTiles}</div>
       <div class="wp-sec">MEINE TRAININGS</div>
       ${customCards || '<p class="placeholder wp-empty">Noch keine eigenen Trainings.</p>'}
+      ${archBlock}
       ${addingTraining ? hint('name', 1, 'Gib deinem Training einen Namen, zum Beispiel „Oberkörper“ oder „Montag“. Danach geht es mit den Übungen weiter.') : ''}
       ${addingTraining
         ? `<div class="wp-card wp-new"><input id="new-training-name" placeholder="Name des Trainings…" autofocus>
@@ -1669,6 +1675,8 @@ content.addEventListener('click', e => {
     case 'wSavePack': saveWeekplan(); view = 'start'; break;
     case 'wStart': playStart(btn.dataset.id); break;
     case 'wSkip': { const t = trainingById(btn.dataset.id); (t.skipped = t.skipped || []).push(btn.dataset.date); saveWeekplan(); break; }
+    case 'archToggle': archOpen = !archOpen; break;
+    case 'wRestore': { const ar = loadArchive(), t = ar.find(x => x.id === btn.dataset.id); if (t) { saveArchive(ar.filter(x => x.id !== t.id)); weekplan.push(t); saveWeekplan(); } break; }
     case 'wDelete': {
       const t = trainingById(btn.dataset.id);
       if (!confirm(`Training „${t.name}“ löschen? (Verlauf bleibt erhalten)`)) return;
@@ -1861,6 +1869,38 @@ content.addEventListener('touchend', e => {
   else if (!playDrawer && Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.5) { if (dx < 0) go('playNext'); else go('playPrev'); }
 }, { passive: true });
 
+// Wischen auf eigenen Trainings: rechts = Archiv, links = Löschen
+let _sw = null, _swDone = 0;
+content.addEventListener('touchstart', e => {
+  const w = e.target.closest('.wp-sw'); if (!w || e.touches.length !== 1) { _sw = null; return; }
+  _sw = { w, card: w.querySelector('.wp-card'), x: e.touches[0].clientX, y: e.touches[0].clientY, dx: 0, lock: '' };
+}, { passive: true });
+content.addEventListener('touchmove', e => {
+  if (!_sw) return;
+  const dx = e.touches[0].clientX - _sw.x, dy = e.touches[0].clientY - _sw.y;
+  if (!_sw.lock) { if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy) * 1.5) _sw.lock = 'h'; else if (Math.abs(dy) > 8) { _sw = null; return; } else return; }
+  e.preventDefault(); _sw.dx = dx;
+  _sw.card.style.transition = 'none'; _sw.card.style.transform = `translateX(${dx}px)`;
+  _sw.w.dataset.dir = dx > 0 ? 'r' : 'l';
+}, { passive: false });
+content.addEventListener('touchend', () => {
+  if (!_sw) return;
+  const { w, card, dx, lock } = _sw; _sw = null;
+  if (lock !== 'h') return;
+  _swDone = Date.now();
+  const id = w.dataset.sw, TH = Math.min(110, w.offsetWidth * 0.3);
+  card.style.transition = 'transform .2s'; 
+  if (Math.abs(dx) < TH) { card.style.transform = ''; return; }
+  card.style.transform = `translateX(${dx > 0 ? '110%' : '-110%'})`;
+  setTimeout(() => {
+    const t = weekplan.find(x => x.id === id);
+    if (!t) { render(); return; }
+    if (dx > 0) { const ar = loadArchive(); ar.push(t); saveArchive(ar); weekplan = weekplan.filter(x => x.id !== id); saveWeekplan(); }
+    else if (confirm(`Training „${t.name}“ löschen? (Verlauf bleibt erhalten)`)) { weekplan = weekplan.filter(x => x.id !== id); saveWeekplan(); }
+    render();
+  }, 180);
+});
+content.addEventListener('click', e => { if (Date.now() - _swDone < 400) { e.stopPropagation(); e.preventDefault(); } }, true);
 // Schnellwahl-Chips: setzen/addieren, Fokus im Feld behalten (Tastatur bleibt)
 content.addEventListener('pointerdown', e => { if (e.target.closest('.qc button')) e.preventDefault(); });
 content.addEventListener('click', e => {

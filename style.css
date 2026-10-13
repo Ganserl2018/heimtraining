@@ -1348,3 +1348,11 @@ body.mood-bad{--text:#fbeeec; --text-dim:#dcc2be; --text-faint:#c9a29c;}
 .overview-lab{--lab-dim:#aebbb6;}
 .overview-lab.mood-bad{--lab-dim:#cfaaa4;}
 .lab-day span,.lab-occ{color:#b9c6c1;}
+/* V16h Wischen: Archiv / Löschen */
+.wp-sw{position:relative; overflow:hidden; border-radius:14px; touch-action:pan-y;}
+.wp-sw-bg{position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between; padding:0 1rem; font-weight:800; font-size:.85rem; border-radius:14px; background:#233; color:#fff;}
+.wp-sw-bg .a,.wp-sw-bg .d{opacity:0;} .wp-sw[data-dir=r] .wp-sw-bg{background:#1d6fb8;} .wp-sw[data-dir=r] .a{opacity:1;}
+.wp-sw[data-dir=l] .wp-sw-bg{background:#c42618;} .wp-sw[data-dir=l] .d{opacity:1;}
+.wp-sw .wp-card{position:relative; background:var(--panel);}
+.wp-arch-h{background:none; border:0; color:var(--text-dim); font-weight:700; font-size:.72rem; letter-spacing:.1em; padding:.6rem 0 .3rem; text-align:left; min-height:44px;}
+.wp-arch{opacity:.85;} .wp-arch button{min-height:44px; padding:0 .8rem; border-radius:999px; border:1px solid var(--border); background:none; color:var(--text); font-weight:700; font-size:.8rem;}
