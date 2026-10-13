@@ -631,9 +631,21 @@ const PRESETS = [
   { key: 'core', grp: 'core', name: 'Core', ex: ['Cable Crunch', 'Hanging Leg Raise', 'Plank', 'Crunches'] },
 ];
 function presetThumb(p) { const e = presetExercises(p)[0]; return e ? `<img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.remove()">` : ''; }
+// Vorlagen: kuratierte Übungen zuerst, dann reihum mit passenden Pool-Übungen auf Zielanzahl aufgefüllt
+const PRESET_FILL = { push: [['chest', 'shoulders', 'triceps'], 10], pull: [['lats', 'middle back', 'biceps', 'traps'], 10], legs: [['quadriceps', 'hamstrings', 'glutes', 'calves'], 10],
+  back: [['lats', 'middle back', 'lower back', 'traps'], 8], chest: [['chest'], 8], shoulders: [['shoulders', 'traps'], 8], triceps: [['triceps'], 8], biceps: [['biceps', 'forearms'], 8], core: [['abdominals'], 8] };
+const presetCache = {};
 function presetExercises(p) {
-  return p.ex.map(n => pool.find(e => e.name === n)).filter(Boolean)
-    .map(e => ({ name: e.name, muscle: e.muscle, gif: e.gif, sets: 3, note: '', unit: defaultUnit(e.name) }));
+  if (presetCache[p.key] && presetCache[p.key].n === pool.length) return presetCache[p.key].v;
+  const mk = e => ({ name: e.name, muscle: e.muscle, gif: e.gif, sets: 3, note: '', unit: defaultUnit(e.name) });
+  const out = p.ex.map(n => pool.find(e => e.name === n)).filter(Boolean);
+  const f = PRESET_FILL[p.key];
+  if (f) {
+    const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine|deadlift|snatch|clean|jerk|behind (the )?neck|weighted|one-arm|single/i;
+    const lists = f[0].map(m => pool.filter(e => e.muscle === m && !bad.test(e.name) && !out.includes(e)).sort((a, b) => (isCompound(b.name) - isCompound(a.name)) || a.name.localeCompare(b.name)));
+    for (let k = 0; out.length < f[1] && lists.some(l => l.length > k); k++) for (const l of lists) if (l[k] && out.length < f[1]) out.push(l[k]);
+  }
+  const v = out.map(mk); presetCache[p.key] = { n: pool.length, v }; return v;
 }
 
 // ---- V13 W-02: Auto-Trainingsgenerator (Regeln: Coach-Bericht) ----
