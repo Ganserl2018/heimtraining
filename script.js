@@ -266,7 +266,7 @@ function renderView() {
       <img class="exercise-gif" src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
       <div class="exercise-info">
         <div class="exercise-name">${esc(ex.name)}</div>
-        <div class="exercise-muscle">${esc(ex.muscle)}</div>
+        <div class="exercise-muscle">${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</div>
         <div class="sets">${Array.from({ length: SETS }, (_, k) =>
           `<button class="set${setsOf(ex.name)[k] ? ' done' : ''}" data-act="set" data-i="${i}" data-k="${k}">Satz ${k + 1}${setsOf(ex.name)[k] ? ' ✓' : ''}</button>`).join('')}</div>
       </div>
@@ -295,8 +295,10 @@ const MUSCLE_GROUPS = {
 };
 const MUSCLE_GROUP_LIST = ['Brust', 'Rücken', 'Schultern', 'Arme', 'Bauch', 'Beine'];
 const EQUIP_LIST = [['dumbbell', 'Kurzhantel'], ['barbell', 'Langhantel'], ['cable', 'Seilzug'], ['band', 'Band'], ['none', 'Ohne Geräte']];
+const DB_HIDDEN = /around the worlds|hammer curl|zottman|concentration curl|arnold|renegade|goblet|farmer|incline curl|preacher curl/i; // Kurzhantel-Übungen ohne das Wort im Namen
 function matchesEquip(name, key) {
   const n = name.toLowerCase();
+  if (DB_HIDDEN.test(n) && !/barbell|cable|band|smith|machine|kettlebell/.test(n)) return key === 'dumbbell';
   if (key === 'none') return !['dumbbell', 'barbell', 'cable', 'band', 'smith', 'ez barbell'].some(k => n.includes(k));
   return n.includes(key);
 }
@@ -618,7 +620,7 @@ function renderHistDetail() {
         return `<span class="hd-w${done ? ' on' : ''}">${w != null ? esc(w) + (u ? ' ' + u : '') : (done ? '✓' : '–')}</span>`;
       }).join('');
       return `<div class="hd-ex"><div class="hd-th exinfo" data-act="exInfo" data-name="${esc(ex.name)}">${hvPhoto(ex.name) || `<i>${esc(ex.name.charAt(0))}</i>`}</div>
-        <div class="hd-nm exinfo" data-act="exInfo" data-name="${esc(ex.name)}"><b>${esc(ex.name)}</b><span>${esc(ex.muscle || '')}</span></div>
+        <div class="hd-nm exinfo" data-act="exInfo" data-name="${esc(ex.name)}"><b>${esc(ex.name)}</b><span>${esc(MUSCLE_DE[ex.muscle] || ex.muscle || '')}</span></div>
         <div class="hd-cnt">${ex.setsDone}/${ex.setsTotal}</div>
         <div class="hd-chips">${chips}</div></div>`;
     }).join('')}</div>
@@ -748,7 +750,7 @@ function renderGen() {
     <div class="lv"><div class="lv-h">Ziel</div><div class="lv-pills">${GOALS.map(([k, l]) => pill('genGoal', k, l, genCfg.goal === k)).join('')}</div></div>
     <div class="lv"><div class="lv-h">Dauer</div><div class="lv-pills">${[30, 45, 60, 90].map(d => pill('genDur', d, d + ' Min', genCfg.dur === d)).join('')}</div></div>
     <div class="lv"><div class="lv-h">Anzahl Übungen</div><div class="lv-pills">${[0, 3, 4, 5, 6, 8, 10].map(c => pill('genCnt', c, c ? c : 'Auto', (genCfg.count || 0) === c)).join('')}</div></div>
-    <div class="lv"><div class="lv-h">Muskelgruppen</div><div class="lv-pills">${MUSCLE_GROUP_LIST.map(m => pill('genGrp', m, m, genCfg.groups.includes(m))).join('')}</div></div>
+    <div class="lv"><div class="lv-h">Muskelgruppen${genCfg.groups.length ? '' : ' <em>· mindestens eine wählen</em>'}</div><div class="lv-pills">${MUSCLE_GROUP_LIST.map(m => pill('genGrp', m, m, genCfg.groups.includes(m))).join('')}</div></div>
     ${genRes ? '' : `<div class="gn-btns"><button class="pl-next ts-go" data-act="genDo"${genCfg.groups.length ? '' : ' disabled'}>✨ ZUSAMMENSTELLEN</button><button class="ts-add gn-sur" data-act="genSurprise">🎲 Überrasch mich<small>Tausch der Muskelgruppen und der Übungen</small></button></div>`}
     ${res}
   </div>`;
@@ -1375,7 +1377,7 @@ function renderTV() {
         <div class="tv-gifbox"><img class="tv-gif" src="${esc(imgOf(ex))}" alt="" onerror="this.style.visibility='hidden'"></div>
         <div class="tv-side">
           <div class="tv-name">${esc(ex.name)}</div>
-          <div class="tv-muscle">${esc(ex.muscle)}</div>
+          <div class="tv-muscle">${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</div>
           <div class="tv-done"><b>${doneN}</b> / ${n} Sätze</div>
           <div class="tv-sets" style="--n:${n}">${Array.from({ length: n }, (_, k) =>
             `<button class="set${isDone(k) ? ' done' : ''}" data-act="${wt ? 'tvWSet' : 'set'}" data-i="${tvIndex}" data-k="${k}">${isDone(k) ? '✓' : k + 1}</button>`).join('')}</div>

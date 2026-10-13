@@ -1,0 +1,22 @@
+const h=require('./qa-iphone-harness.js');
+(async()=>{const {b,p,errs}=await h.open();
+const go=async(name,fn)=>{try{await fn();await p.waitForTimeout(900);const r=await h.fit(p);
+ const sheet=await p.evaluate(()=>{const s=document.querySelector('.dt-sheet,.goal-edit');if(!s)return null;const r=s.getBoundingClientRect();return {sh:s.scrollHeight,ch:s.clientHeight,top:Math.round(r.top),bot:Math.round(r.bottom)}});
+ console.log(name,JSON.stringify(r),sheet?'SHEET '+JSON.stringify(sheet):'',(r.lastBottom>r.tabTop&&!sheet)?'<<CUT':'');
+ await p.screenshot({path:'/tmp/qa/r2-'+name+'.png'});}catch(e){console.log(name,'ERR',e.message.split('\n')[0])}};
+const click=s=>p.evaluate(s=>document.querySelector(s).click(),s);
+await go('start',()=>click('.tab[data-view=start]'));
+await go('allex-landing',()=>click('.tab[data-view=allex]'));
+await go('allex-drill',()=>click('.wv-tile[data-v=Brust]'));
+await go('detail',()=>click('[data-act=browsePick]'));
+await click('[data-act=browseClose]');
+await go('allex-split',()=>click('.tab[data-view=allex]').then(()=>p.waitForTimeout(300)).then(()=>click('.wv-tile[data-act=fSplit]')));
+await go('weeklist',()=>click('.tab[data-view=weeklist]'));
+await go('gen',()=>click('[data-act=genOpen]'));
+await go('weeklist2',()=>click('.tab[data-view=weeklist]'));
+await go('presetsheet',()=>click('.wv-tile[data-key=chest]'));
+await go('created',()=>click('[data-act=psCreate]'));
+await go('weeklist3',()=>click('.tab[data-view=weeklist]'));
+await go('opentraining',()=>click('.wp-card[data-act=wOpen2]'));
+await go('history',()=>click('.tab[data-view=history]'));
+console.log(errs);await b.close()})()

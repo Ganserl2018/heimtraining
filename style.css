@@ -16,7 +16,7 @@ html,body{margin:0;padding:0;overflow:hidden;position:fixed;width:100%;height:10
 body{
   background:var(--bg); color:var(--text);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  display:flex; flex-direction:column; height:100vh; height:100dvh;
+  display:flex; flex-direction:column; height:calc(100vh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px)); height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));
 }
 .topbar{
   padding:1rem 1.1rem calc(1rem + env(safe-area-inset-top,0px));
@@ -191,7 +191,7 @@ body{
 .ov-btn-ghost:active{border-color:var(--text-dim); color:var(--text);}
 
 /* V9-03 Lab-Design (Gemini-Vorlagen grün/rot, vermessen): Gesamtstimmung per .mood-good/.mood-bad */
-.overview-lab{display:flex; flex-direction:column; align-items:stretch; justify-content:space-evenly; gap:.9rem; height:100%; min-height:0; overflow:hidden; margin:-1rem -1.1rem 0; padding:1.4rem 1.1rem calc(4.2rem + env(safe-area-inset-bottom,0px));
+.overview-lab{display:flex; flex-direction:column; align-items:stretch; justify-content:space-evenly; gap:.9rem; height:100%; min-height:0; overflow:hidden; margin:-1rem -1.1rem 0; padding:1.4rem 1.1rem calc(5.2rem + env(safe-area-inset-bottom,0px));
   --lab-bg:#121818; --lab-acc:#a8f03a; --lab-glow:rgba(168,240,58,.45); --lab-panel:#1b2222; --lab-dim:#7d8a86; background:radial-gradient(120% 60% at 50% 30%, #1a2420, var(--lab-bg) 70%); color:#e6ece8;}
 .overview-lab.mood-bad{--lab-bg:#150b0b; --lab-acc:#e8301f; --lab-glow:rgba(232,48,31,.5); --lab-panel:#241212; --lab-dim:#8a6a66; background:radial-gradient(120% 60% at 50% 30%, #2a1210, var(--lab-bg) 70%);}
 .lab-head{display:flex; justify-content:space-between; align-items:flex-start; gap:.6rem;}
@@ -238,7 +238,7 @@ body{
 .overview-lab .lab-ring svg{position:absolute; inset:0;}
 
 /* V9-05: Übersicht ohne Titelleiste (steht schon im Lab-Header); nur TV-Knopf bleibt, schwebend */
-body:has(.overview-lab) .topbar{position:absolute; top:calc(env(safe-area-inset-top,0px) + .5rem); right:.6rem; z-index:5; padding:0; border:0; background:none;}
+body:has(.overview-lab) .topbar{position:absolute; top:1.9rem; right:.6rem; z-index:5; padding:0; border:0; background:none;}
 body:has(.overview-lab) .topbar h1{display:none;}
 body:has(.overview-lab) .lab-badge{margin-right:3.2rem;}
 .overview-lab .lab-ring-text small{font-size:clamp(.4rem,5cqw,.58rem);}
@@ -1294,3 +1294,38 @@ button.tx-nm{background:none; border:0; text-align:left; color:inherit; font:inh
 .wp .wp-card .wp-thumbs{display:none;}
 .wp .wp-card-name{font-size:.92rem;} .wp .wp-card-meta{font-size:.7rem;}
 .pp-seg.pp-gen{grid-template-columns:repeat(2,1fr);}
+/* V16b: Wochenplan flacher (echte iPhone-Höhe) */
+.wv-grid .wv-tile{aspect-ratio:1/.66;}
+.wp .wp-sec{margin:.6rem 0 .3rem;}
+.wp .wp-days{margin-bottom:.1rem;}
+.sv-auto{padding:.55rem .9rem; margin:.1rem 0 .2rem;}
+:where(#content) .wp-add{min-height:38px;}
+/* V16c: Tab-Leiste über Kacheln, flachere Kopfzeile */
+.tabbar{z-index:30;}
+body:not(:has(.overview-lab)) .topbar{padding-bottom:.55rem !important;}
+.wv-grid .wv-tile{aspect-ratio:1/.58;}
+.wp .wp-sec{margin:.5rem 0 .25rem;}
+.wv-grid .wv-tile{aspect-ratio:1/.54;}
+.wv-tile img{object-position:50% 18%;}
+/* V16d: Auto-Training kompakt – alles auf einer Seite */
+.gn .lv{margin:0 0 .3rem; padding:.4rem .7rem .5rem;}
+.gn .lv-h{font-size:.74rem; margin-bottom:.25rem; text-transform:uppercase; letter-spacing:.06em; opacity:.8;}
+.gn .lv-pills{gap:.3rem;}
+.gn .lv-p{padding:.35rem .5rem; min-height:38px; font-size:.8rem;}
+.gn .pl-top{margin-bottom:.35rem;} .gn .pl-title b{display:none;} .gn .pl-title span{font-size:.82rem;}
+.gn .pl-x{width:40px; height:40px;}
+.gn .gn-btns{flex-direction:row; flex-wrap:wrap; gap:.4rem; margin:.4rem 0;}
+.gn .gn-btns .ts-go{flex:2 1 55%;} .gn .gn-btns .gn-sur{flex:1 1 35%; flex-direction:column;}
+.gn{padding-bottom:1rem;}
+.gn .gn-sur small{display:none;} .gn .gn-btns button{min-height:52px; padding:.5rem .6rem;}
+.gn .gn-btns .ts-go:disabled{opacity:.55;}
+/* V16e: Start-Seite – leere Paket-Kachel als schmale Zeile, Pakete flacher */
+.sv-add{aspect-ratio:auto; flex-direction:row; min-height:64px; grid-column:1/-1; border-radius:16px;}
+.sv-add-plus{font-size:1.8rem;}
+.sv-pack{aspect-ratio:4/3;}
+:where(#content) .wp-day{min-height:60px; padding:.4rem 0 .35rem;}
+.wv-grid .wv-tile{aspect-ratio:1/.5;}
+.wp .wp-sec{margin:.4rem 0 .2rem;}
+.wp .sv-auto-t i{font-size:.72rem;}
+.wp .wp-card{padding:.3rem .7rem;} .wp .wp-add{min-height:34px !important;}
+.xr-landing .wv-tile{aspect-ratio:3/3.3 !important;} .xr-landing{gap:.5rem; margin-bottom:.5rem;}
