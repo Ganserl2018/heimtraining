@@ -623,13 +623,14 @@ const PRESETS = [
   { key: 'push', grp: 'split', name: 'Push', ex: ['Barbell Bench Press - Medium Grip', 'Incline Dumbbell Press', 'Dumbbell Flyes', 'Side Lateral Raise', 'Triceps Pushdown', 'Dips - Triceps Version'] },
   { key: 'pull', grp: 'split', name: 'Pull', ex: ['Bent Over Barbell Row', 'Wide-Grip Lat Pulldown', 'Pullups', 'Face Pull', 'Barbell Curl', 'Alternate Hammer Curl'] },
   { key: 'legs', grp: 'split', name: 'Beine', ex: ['Barbell Squat', 'Romanian Deadlift', 'Dumbbell Lunges', 'Barbell Hip Thrust', 'Standing Barbell Calf Raise'] },
-  { key: 'back', grp: 'musc', name: 'Nur Rücken', ex: ['Bent Over Barbell Row', 'Wide-Grip Lat Pulldown', 'Pullups', 'Straight-Arm Pulldown', 'Barbell Shrug'] },
-  { key: 'chest', grp: 'musc', name: 'Nur Brust', ex: ['Barbell Bench Press - Medium Grip', 'Incline Dumbbell Press', 'Dumbbell Flyes', 'Decline Barbell Bench Press', 'Push-Up Wide'] },
+  { key: 'back', grp: 'musc', name: 'Rücken', ex: ['Bent Over Barbell Row', 'Wide-Grip Lat Pulldown', 'Pullups', 'Straight-Arm Pulldown', 'Barbell Shrug'] },
+  { key: 'chest', grp: 'musc', name: 'Brust', ex: ['Barbell Bench Press - Medium Grip', 'Incline Dumbbell Press', 'Dumbbell Flyes', 'Decline Barbell Bench Press', 'Push-Up Wide'] },
   { key: 'shoulders', grp: 'musc', name: 'Schultern', ex: ['Side Lateral Raise', 'Face Pull', 'Dumbbell Shrug', 'Arnold Dumbbell Press', 'Dumbbell Lying Rear Lateral Raise'] },
-  { key: 'triceps', grp: 'musc', name: 'Nur Trizeps', ex: ['Triceps Pushdown', 'EZ-Bar Skullcrusher', 'Triceps Pushdown - Rope Attachment', 'Bench Dips', 'Close-Grip Barbell Bench Press'] },
-  { key: 'biceps', grp: 'musc', name: 'Nur Bizeps', ex: ['Barbell Curl', 'Alternate Hammer Curl', 'Cable Preacher Curl', 'Alternate Incline Dumbbell Curl'] },
+  { key: 'triceps', grp: 'musc', name: 'Trizeps', ex: ['Triceps Pushdown', 'EZ-Bar Skullcrusher', 'Triceps Pushdown - Rope Attachment', 'Bench Dips', 'Close-Grip Barbell Bench Press'] },
+  { key: 'biceps', grp: 'musc', name: 'Bizeps', ex: ['Barbell Curl', 'Alternate Hammer Curl', 'Cable Preacher Curl', 'Alternate Incline Dumbbell Curl'] },
   { key: 'core', grp: 'core', name: 'Core', ex: ['Cable Crunch', 'Hanging Leg Raise', 'Plank', 'Crunches'] },
 ];
+function presetThumb(p) { const e = presetExercises(p)[0]; return e ? `<img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.remove()">` : ''; }
 function presetExercises(p) {
   return p.ex.map(n => pool.find(e => e.name === n)).filter(Boolean)
     .map(e => ({ name: e.name, muscle: e.muscle, gif: e.gif, sets: 3, note: '', unit: defaultUnit(e.name) }));
@@ -715,7 +716,7 @@ function renderStart() {
       </span>
       <span class="sv-pk-go" aria-hidden="true">›</span></button></div>`;
   const mini = (p, wide) => { const n = presetExercises(p).length; return `<button class="sv-vl${wide ? ' sv-wide' : ''}" data-act="stPreset" data-key="${p.key}">
-      <span class="sv-vl-ic">${DB}</span><span class="sv-vl-name">${esc(p.name)}</span><span class="sv-vl-n">${n}</span></button>`; };
+      <span class="sv-vl-ic">${presetThumb(p) || DB}</span><span class="sv-vl-name">${esc(p.name)}</span><span class="sv-vl-n">${n}</span></button>`; };
   const own = weekplan.filter(w => w.exercises.length).sort((a, b) => (a.presetKey ? 1 : 0) - (b.presetKey ? 1 : 0));
   const ownIds = new Set(own.map(w => w.presetKey).filter(Boolean));
   content.innerHTML = `<div class="sv">
@@ -914,7 +915,7 @@ function renderWeeklist() {
       ${addingTraining ? '' : `<div class="wp-sec">VORLAGEN</div>
       <div class="sv-vls">${[['split', 'Split'], ['musc', 'Einzelne Muskeln'], ['core', 'Core & Bauch']].map(([g, l]) => {
         const ps = PRESETS.filter(p => p.grp === g && !weekplan.some(w => w.presetKey === p.key));
-        return ps.length ? `<div class="sv-sub">${l}</div>${ps.map((p, i) => `<button class="sv-vl${ps.length % 2 === 1 && i === ps.length - 1 ? ' sv-wide' : ''}" data-act="wpPreset" data-key="${p.key}"><span class="sv-vl-ic">${DB}</span><span class="sv-vl-name">${esc(p.name)}</span><span class="sv-vl-n">${presetExercises(p).length}</span></button>`).join('')}` : '';
+        return ps.length ? `<div class="sv-sub">${l}</div>${ps.map((p, i) => `<button class="sv-vl${ps.length % 2 === 1 && i === ps.length - 1 ? ' sv-wide' : ''}" data-act="wpPreset" data-key="${p.key}"><span class="sv-vl-ic">${presetThumb(p) || DB}</span><span class="sv-vl-name">${esc(p.name)}</span><span class="sv-vl-n">${presetExercises(p).length}</span></button>`).join('')}` : '';
       }).join('')}</div>
       <button class="sv-auto" data-act="genOpen"><span class="sv-auto-ic">✨</span><span class="sv-auto-t"><b>AUTO-TRAINING</b><i>Level, Ziel, Dauer und Muskeln wählen, den Rest macht die App</i></span><span class="sv-pk-go" aria-hidden="true">›</span></button>`}
       ${addingTraining ? hint('name', 1, 'Gib deinem Training einen Namen, zum Beispiel „Oberkörper“ oder „Montag“. Danach geht es mit den Übungen weiter.') : ''}
