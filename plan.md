@@ -360,3 +360,5 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 6. Tagestraining-Seite schöner/übersichtlicher, weniger Scrollen.
 7. Bankdrücken-Leiste (Übersicht) ersetzen durch Rückwärts-Leiste: 156 Trainings in einem Jahr, zählt runter.
 - 13.10. 02:30 V15-1..7 umgesetzt + gepusht: globale Übungs-Detailseite (Tipp auf Foto/Name in Tagestraining, Vorschau, Verlauf, Player, Alle Übungen), neues Sheet-Design, Wochentage mit Belegung + helle belegte Tage, Bilder +20% Helligkeit, Tagestraining-Zeilen einklappbar (Name = bearbeiten, Foto = Info), Countdown-Leiste 156/Jahr (neuer Key longgoal2). Test 390px ok; Alex prüft live.
+- 13.10. 02:55 Nachträge V15 (alle gepusht, letzter Commit 32fd977): Auto-Training-Vorschau anklickbar; Wochenplan-Seite neu (Meine Trainings, Auto-Training-Karte, Vorlagen als Foto-Kacheln: Muskelgruppen oben, Split darunter, Namen ohne "Nur"); Auto-Training mit "Anzahl Übungen" (Auto/3-10); Detailseite: X sticky + Schließen-Button, doppelter Tag weg.
+- OFFEN: Alex meinte "hier fehlt was?" auf der Detailseite – Antwort steht aus (Ausführungstext? Satz/Wdh-Empfehlung?). Alex prüft live auf iPhone.
