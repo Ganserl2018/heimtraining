@@ -1296,7 +1296,6 @@ function detailSheetHtml(ex) {
         ${cls('Schwer', 'h', 'Hoher Aufwand, strikte Technik.', `${w[2]}, sichtbarer Kraftzuwachs.`)}
       </div>
       ${add}
-      <button class="ov-btn dt-close" data-act="browseClose">Schließen</button>
     </div></div></div>`;
 }
 function mountDetail() {
