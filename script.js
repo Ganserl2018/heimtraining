@@ -1232,13 +1232,18 @@ const XR_SEARCH_ICO = '<svg class="xr-ico" viewBox="0 0 24 24" aria-hidden="true
 
 // Übungs-Detailseite (Sheet) – von überall per Tipp auf Foto/Name erreichbar
 function equipLabel(name) { const f = EQUIP_LIST.find(([k]) => k !== 'none' && matchesEquip(name, k)); return f ? f[1] : 'Ohne Geräte'; }
+const DT_DAYS = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
+function dtIdx(n) { const i = DT_DAYS.findIndex(d => n === d + 'straining'); return i < 0 ? 7 : i; }
+function dtShort(n) { const i = dtIdx(n); return i < 7 ? DT_DAYS[i] : n; }
+function dtBadge(n) { const i = dtIdx(n); return i < 7 ? DT_DAYS[i].slice(0, 2) : '+'; }
+function dtDayList() { return weekplan.map((t, k) => [t, k]).sort((a, b) => dtIdx(a[0].name) - dtIdx(b[0].name) || a[1] - b[1]).map(x => x[0]); }
 function detailSheetHtml(ex) {
   const w = WCLASS[ex.muscle] || ['im Zielmuskel', 'Muskelaufbau', 'maximale Kraft'];
   const sec = secondaries(ex);
   const cls = (t, lv, a, b) => `<div class="dt-wc dt-${lv}"><div class="dt-wc-h"><b>${t}</b><i>${'<u></u>'.repeat(lv === 'l' ? 1 : lv === 'm' ? 2 : 3)}</i></div><p>${a}</p><p class="dt-opt">${b}</p></div>`;
   const add = view === 'allex' ? `<div class="dt-sec">Zu Training hinzufügen</div>
-    <div class="dt-add">${weekplan.map(t => { const has = t.exercises.some(e => e.name === ex.name);
-      return `<button class="dt-chip${has ? ' on' : ''}" data-act="browseAdd" data-id="${t.id}">${esc(t.name)}${has ? ' ✓' : ''}</button>`; }).join('')}</div>` : '';
+    <div class="dt-add">${dtDayList().map(t => { const has = t.exercises.some(e => e.name === ex.name);
+      return `<button class="dt-chip${has ? ' on' : ''}" data-act="browseAdd" data-id="${t.id}"><span class="dt-chip-b">${dtBadge(t.name)}</span><span class="dt-chip-t"><b>${esc(dtShort(t.name))}</b><small>${has ? '✓ Hinzugefügt' : (dtIdx(t.name) < 7 ? 'Training' : 'Eigenes Training')}</small></span></button>`; }).join('')}</div>` : '';
   return `<div class="goal-sheet dt-bg" data-act="browseClose"><div class="dt-sheet">
     <button class="dt-x" data-act="browseClose" aria-label="Schließen">✕</button>
     <div class="dt-hero"><img src="${esc(imgOf(ex))}" alt="" onerror="this.style.visibility='hidden'"></div>

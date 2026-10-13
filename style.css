@@ -1196,9 +1196,16 @@ img[src*="img/"],.xr-img,.tx-th img,.browse-gif,.hv-card img,.pv-ex img,.hd-th i
 .dt-wc-h{display:flex; justify-content:space-between; align-items:center; margin-bottom:.15rem;}
 .dt-wc-h b{color:var(--accent); font-size:.74rem; letter-spacing:.06em; text-transform:uppercase;}
 .dt-wc-h i{display:flex; gap:3px;} .dt-wc-h u{width:14px; height:6px; border-radius:3px; background:var(--accent);}
-.dt-add{display:flex; flex-wrap:wrap; gap:.4rem;}
-.dt-chip{min-height:40px; padding:.4rem .9rem; border-radius:99px; border:1px solid var(--border); background:transparent; color:var(--text); font-size:.82rem; font-weight:600;}
-.dt-chip.on{border-color:var(--accent); color:var(--accent);}
+.dt-add{display:grid; grid-template-columns:1fr 1fr; gap:.5rem;}
+.dt-chip{display:flex; align-items:center; gap:.6rem; min-height:54px; padding:.45rem .7rem .45rem .5rem; border-radius:16px; border:1px solid var(--border); background:rgba(255,255,255,.05); color:var(--text); text-align:left; transition:transform .1s, border-color .15s, background .15s;}
+.dt-chip:active{transform:scale(.96);}
+.dt-chip-b{flex:none; width:36px; height:36px; border-radius:11px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,.07); color:var(--accent); font-size:.85rem; font-weight:800; letter-spacing:.02em;}
+.dt-chip-t{display:flex; flex-direction:column; min-width:0; line-height:1.2;}
+.dt-chip-t b{font-size:.88rem; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.dt-chip-t small{font-size:.68rem; color:var(--text-dim); font-weight:600;}
+.dt-chip.on{border-color:var(--accent); background:rgba(255,255,255,.09);}
+.dt-chip.on .dt-chip-b{background:var(--accent); color:var(--on-accent);}
+.dt-chip.on small{color:var(--accent);}
 /* 3/4: Wochentage mit Belegung, belegte hell */
 .lab-week .lab-day{padding:.5rem 0 .4rem; transition:transform .1s;}
 .lab-week .lab-day.lab-frei{opacity:.5;}
