@@ -15,6 +15,7 @@ const DAY_LABELS = { push: 'Push', pull: 'Pull', legs: 'Legs', core: 'Core' };
 let tvIndex = 0;      // aktuelle Übung im TV-Modus
 let tvReturn = null;  // V4: {view, day} – wohin "Zurück" aus der TV-Ansicht führt
 let picker = null;   // null = Tagesansicht, sonst {index[, wid]} (index null = hinzufügen)
+let filterSplit = null; // Alle Übungen: Push/Pull/Beine-Kachel
 let filterMuscle = null; // V2-10: Bildergalerie-Picker – aktiver Muskelgruppen-Chip
 let filterEquip = null;  // V2-10: aktiver Ausrüstungs-Chip
 let filterMus = null;    // Einzelmuskel-Filter (nur Alle Übungen)
@@ -369,16 +370,17 @@ function renderResults(query) {
     const s = (ex.name + ' ' + ex.muscle).toLowerCase();
     if (!words.every(w => wordMatches(w, ex))) return;
     if (filterMuscle && MUSCLE_GROUPS[ex.muscle] !== filterMuscle) return;
+    if (filterSplit && !PRESET_FILL[filterSplit][0].includes(ex.muscle)) return;
     if (filterEquip && !matchesEquip(ex.name, filterEquip)) return;
     if (filterCat && ex.category !== filterCat) return;
     if (filterMus && ex.muscle !== filterMus) return;
     hits.push(i);
   });
   const act = view === 'allex' ? 'browsePick' : 'pick';
-  const landing = view === 'allex' && !filterMuscle && !words.length && !filterEquip && !filterCat && !filterMus;
+  const landing = view === 'allex' && !filterMuscle && !filterSplit && !words.length && !filterEquip && !filterCat && !filterMus;
   if (landing) {
     const cover = g => { const l = pool.filter(e => MUSCLE_GROUPS[e.muscle] === g); return l.find(e => isCompound(e.name)) || l[0]; };
-    document.getElementById('results').innerHTML = `<div class="wv-grid xr-landing">${MUSCLE_GROUP_LIST.map(g => { const e0 = cover(g), n = pool.filter(e => MUSCLE_GROUPS[e.muscle] === g).length; return `<button class="wv-tile" data-act="fMuscle" data-v="${g}">${e0 ? `<img src="${esc(imgOf(e0))}" alt="" onerror="this.style.visibility='hidden'">` : ''}<span class="wv-n">${n}</span><span class="wv-name">${g}</span></button>`; }).join('')}</div>`;
+    document.getElementById('results').innerHTML = `<div class="wv-grid xr-landing">${MUSCLE_GROUP_LIST.map(g => { const e0 = cover(g), n = pool.filter(e => MUSCLE_GROUPS[e.muscle] === g).length; return `<button class="wv-tile" data-act="fMuscle" data-v="${g}">${e0 ? `<img src="${esc(imgOf(e0))}" alt="" onerror="this.style.visibility='hidden'">` : ''}<span class="wv-n">${n}</span><span class="wv-name">${g}</span></button>`; }).join('')}</div><div class="wv-grid xr-landing xr-split">${PRESETS.filter(p => p.grp === 'split').map(p => { const e0 = presetExercises(p)[0], n = pool.filter(e => PRESET_FILL[p.key][0].includes(e.muscle)).length; return `<button class="wv-tile" data-act="fSplit" data-v="${p.key}">${e0 ? `<img src="${esc(imgOf(e0))}" alt="" onerror="this.style.visibility='hidden'">` : ''}<span class="wv-n">${n}</span><span class="wv-name">${p.name}</span></button>`; }).join('')}</div>`;
     const info0 = document.getElementById('pager-info'); if (info0) info0.textContent = `${pool.length} Übungen · Muskelgruppe wählen`;
     const more0 = document.getElementById('xr-more'); if (more0) more0.hidden = true;
     return;
@@ -1333,7 +1335,7 @@ function renderAllEx() {
       <div class="xr-top">
         <div class="xr-search">${XR_SEARCH_ICO}<input id="q" type="search" placeholder="${pool.length} Übungen durchsuchen…" value="${esc(browseQ)}" autocomplete="off">
           <button class="xr-filter${nF ? ' on' : ''}" data-act="fOpen">Filter${nF ? `<b>${nF}</b>` : ''}</button></div>
-        ${filterMuscle ? `<div class="xr-pills"><button class="xr-pill" data-act="fMuscle" data-v="">‹ Muskelgruppen</button><button class="xr-pill active" data-act="fMuscle" data-v="${filterMuscle}">${filterMuscle}</button></div>` : ''}
+        ${filterMuscle || filterSplit ? `<div class="xr-pills"><button class="xr-pill" data-act="fMuscle" data-v="">‹ Zurück</button><button class="xr-pill active" data-act="fMuscle" data-v="${filterMuscle || ''}">${filterMuscle || (PRESETS.find(p => p.key === filterSplit) || {}).name}</button></div>` : ''}
         ${nF ? `<div class="xr-pills xr-pills-sub">${active.map(([a, v, l]) => `<button class="xr-pill active" data-act="${a}" data-v="${v}">${l} ✕</button>`).join('')}</div>` : ''}
       </div>
       <div class="xr-count" id="pager-info"></div>
@@ -1421,7 +1423,9 @@ content.addEventListener('click', e => {
   const arr = list().slice();
   const xrRefresh = () => { browseLimit = BPAGE; if (view === 'allex') { browsePage = 0; render(); content.scrollTop = 0; } else renderResults(document.getElementById('q').value); };
   if (btn.dataset.act === 'bMore') { browseLimit += BPAGE; renderResults(document.getElementById('q').value); return; }
+  if (btn.dataset.act === 'fSplit') { filterSplit = btn.dataset.v; xrRefresh(); return; }
   if (btn.dataset.act === 'fMuscle') {
+    filterSplit = null;
     filterMuscle = (filterMuscle === btn.dataset.v) ? null : (btn.dataset.v || null);
     document.querySelectorAll('[data-act="fMuscle"]').forEach(b => b.classList.toggle('active', b.dataset.v === (filterMuscle || '')));
     xrRefresh();
@@ -1437,7 +1441,7 @@ content.addEventListener('click', e => {
     filterMus = (filterMus === btn.dataset.v) ? null : btn.dataset.v;
     xrRefresh(); return;
   }
-  if (btn.dataset.act === 'fReset') { filterMuscle = filterEquip = filterCat = filterMus = null; xrRefresh(); return; }
+  if (btn.dataset.act === 'fReset') { filterSplit = filterMuscle = filterEquip = filterCat = filterMus = null; xrRefresh(); return; }
   if (btn.dataset.act === 'fOpen') { filterOpen = true; render(); return; }
   if (btn.dataset.act === 'fClose') { filterOpen = false; render(); return; }
   if (btn.dataset.act === 'fCat') {

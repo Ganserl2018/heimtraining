@@ -1271,3 +1271,5 @@ button.tx-nm{background:none; border:0; text-align:left; color:inherit; font:inh
 .dt-chip-t b{font-size:.78rem;} .dt-chip-t small{font-size:.62rem;}
 .ps-sheet .dt-body{overflow-y:auto;}
 .xr-landing{grid-column:1/-1;} .xr-landing .wv-tile{aspect-ratio:3/3.6;} .xr-landing .wv-name{font-size:1rem;}
+
+.xr-landing{margin-bottom:.5rem;}

@@ -366,3 +366,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - 13.10. 15:00 Speichern: Detailseite (Schließen), Vorlagen (alle Pool-Übungen, Anzahl/Einzelwahl, Foto-Kacheln), Wochenplan-Seite neu; Straße aufgeräumt (V14 komplett, Offene-Punkte-Block neu). Warteliste: Swipe-to-delete (V5-11). OFFEN: Detailseite "was fehlt?" (V16-5), V11-05 Status unklar. Als Nächstes: Straße komplett umbauen (Tabs Offen/In Arbeit/Fertig, eine Zeile pro Kachel).
 - 13.10. V16-5 Detailseite kompakt ohne Scrollen, Schließen-Button entfernt (X bleibt)
 - 13.10. Alle Übungen: Muskelgruppen-Fototiles als Einstieg (Drill-down, ‹ Muskelgruppen)
+- 13.10. Alle Übungen: zweite Kachelreihe Push/Pull/Beine
