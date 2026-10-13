@@ -911,19 +911,20 @@ function renderWeeklist() {
     <div class="wp">
       <div class="wp-sec">DIESE WOCHE</div>
       <div class="wp-days">${dayTiles}</div>
-      <div class="wp-sec">TRAININGS</div>
-      ${customCards || '<p class="placeholder">Noch keine eigenen Trainings – z. B. „Ganzkörper“ oder „Mobility“.</p>'}
-      ${addingTraining ? '' : `<div class="wp-sec">VORLAGEN</div>
-      <div class="sv-vls st-grid">${[['split', 'Split'], ['musc', 'Einzelne Muskeln'], ['core', 'Core & Bauch']].map(([g, l]) => {
-        const ps = PRESETS.filter(p => p.grp === g && !weekplan.some(w => w.presetKey === p.key));
-        return ps.length ? `<div class="sv-sub">${l}</div>${ps.map(p => { const exs = presetExercises(p); return `<button class="st-card" data-act="wpPreset" data-key="${p.key}"><div class="st-thumbs">${exs.slice(0, 4).map(ex => `<img src="${esc(imgOf(ex))}" alt="" onerror="this.style.visibility='hidden'">`).join('')}</div><div class="st-name">${esc(p.name)}</div><div class="st-meta">${exs.length} Üb.</div></button>`; }).join('')}` : '';
-      }).join('')}</div>
-      <button class="sv-auto" data-act="genOpen"><span class="sv-auto-ic">✨</span><span class="sv-auto-t"><b>AUTO-TRAINING</b><i>Level, Ziel, Dauer und Muskeln wählen, den Rest macht die App</i></span><span class="sv-pk-go" aria-hidden="true">›</span></button>`}
+      <div class="wp-sec">MEINE TRAININGS</div>
+      ${customCards || '<p class="placeholder wp-empty">Noch keine eigenen Trainings.</p>'}
       ${addingTraining ? hint('name', 1, 'Gib deinem Training einen Namen, zum Beispiel „Oberkörper“ oder „Montag“. Danach geht es mit den Übungen weiter.') : ''}
       ${addingTraining
         ? `<div class="wp-card wp-new"><input id="new-training-name" placeholder="Name des Trainings…" autofocus>
              <div class="edit-bar"><button data-act="wNewTrainingSave">Speichern</button><button data-act="wNewTrainingCancel">Abbrechen</button></div></div>`
-        : `<button class="wp-add" data-act="wNewTraining">+ Neues Training</button>`}
+        : `<button class="wp-add" data-act="wNewTraining">+ Neues Training</button>
+      <button class="sv-auto" data-act="genOpen"><span class="sv-auto-ic">✨</span><span class="sv-auto-t"><b>AUTO-TRAINING</b><i>Level, Ziel, Dauer, Anzahl und Muskeln wählen – den Rest macht die App</i></span><span class="sv-pk-go" aria-hidden="true">›</span></button>
+      ${(() => {
+        const tile = p => { const exs = presetExercises(p), e0 = exs[0]; return `<button class="wv-tile" data-act="wpPreset" data-key="${p.key}">${e0 ? `<img src="${esc(imgOf(e0))}" alt="" onerror="this.style.visibility='hidden'">` : ''}<span class="wv-n">${exs.length}</span><span class="wv-name">${esc(p.name)}</span></button>`; };
+        const free = p => !weekplan.some(w => w.presetKey === p.key);
+        const musc = PRESETS.filter(p => (p.grp === 'musc' || p.grp === 'core') && free(p)), split = PRESETS.filter(p => p.grp === 'split' && free(p));
+        return (musc.length ? `<div class="wp-sec">VORLAGEN · MUSKELGRUPPEN</div><div class="wv-grid">${musc.map(tile).join('')}</div>` : '') + (split.length ? `<div class="wp-sec">VORLAGEN · SPLIT</div><div class="wv-grid">${split.map(tile).join('')}</div>` : '');
+      })()}`}
     </div>`;
   if (addingTraining) document.getElementById('new-training-name')?.focus();
 }
