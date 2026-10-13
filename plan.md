@@ -367,3 +367,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - 13.10. V16-5 Detailseite kompakt ohne Scrollen, Schließen-Button entfernt (X bleibt)
 - 13.10. Alle Übungen: Muskelgruppen-Fototiles als Einstieg (Drill-down, ‹ Muskelgruppen)
 - 13.10. Alle Übungen: zweite Kachelreihe Push/Pull/Beine
+- 13.10. Alle Übungen: zweite Reihe Warmup/Push/Pull

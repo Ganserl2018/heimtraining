@@ -370,7 +370,7 @@ function renderResults(query) {
     const s = (ex.name + ' ' + ex.muscle).toLowerCase();
     if (!words.every(w => wordMatches(w, ex))) return;
     if (filterMuscle && MUSCLE_GROUPS[ex.muscle] !== filterMuscle) return;
-    if (filterSplit && !PRESET_FILL[filterSplit][0].includes(ex.muscle)) return;
+    if (filterSplit === 'warm' ? ex.category !== 'warmup' : filterSplit && !PRESET_FILL[filterSplit][0].includes(ex.muscle)) return;
     if (filterEquip && !matchesEquip(ex.name, filterEquip)) return;
     if (filterCat && ex.category !== filterCat) return;
     if (filterMus && ex.muscle !== filterMus) return;
@@ -380,7 +380,7 @@ function renderResults(query) {
   const landing = view === 'allex' && !filterMuscle && !filterSplit && !words.length && !filterEquip && !filterCat && !filterMus;
   if (landing) {
     const cover = g => { const l = pool.filter(e => MUSCLE_GROUPS[e.muscle] === g); return l.find(e => isCompound(e.name)) || l[0]; };
-    document.getElementById('results').innerHTML = `<div class="wv-grid xr-landing">${MUSCLE_GROUP_LIST.map(g => { const e0 = cover(g), n = pool.filter(e => MUSCLE_GROUPS[e.muscle] === g).length; return `<button class="wv-tile" data-act="fMuscle" data-v="${g}">${e0 ? `<img src="${esc(imgOf(e0))}" alt="" onerror="this.style.visibility='hidden'">` : ''}<span class="wv-n">${n}</span><span class="wv-name">${g}</span></button>`; }).join('')}</div><div class="wv-grid xr-landing xr-split">${PRESETS.filter(p => p.grp === 'split').map(p => { const e0 = presetExercises(p)[0], n = pool.filter(e => PRESET_FILL[p.key][0].includes(e.muscle)).length; return `<button class="wv-tile" data-act="fSplit" data-v="${p.key}">${e0 ? `<img src="${esc(imgOf(e0))}" alt="" onerror="this.style.visibility='hidden'">` : ''}<span class="wv-n">${n}</span><span class="wv-name">${p.name}</span></button>`; }).join('')}</div>`;
+    document.getElementById('results').innerHTML = `<div class="wv-grid xr-landing">${MUSCLE_GROUP_LIST.map(g => { const e0 = cover(g), n = pool.filter(e => MUSCLE_GROUPS[e.muscle] === g).length; return `<button class="wv-tile" data-act="fMuscle" data-v="${g}">${e0 ? `<img src="${esc(imgOf(e0))}" alt="" onerror="this.style.visibility='hidden'">` : ''}<span class="wv-n">${n}</span><span class="wv-name">${g}</span></button>`; }).join('')}</div><div class="wv-grid xr-landing xr-split">${[{ key: 'warm', name: 'Warmup' }, ...PRESETS.filter(p => p.key === 'push' || p.key === 'pull')].map(p => { const w = p.key === 'warm', e0 = w ? pool.find(e => e.category === 'warmup') : presetExercises(p)[0], n = w ? pool.filter(e => e.category === 'warmup').length : pool.filter(e => PRESET_FILL[p.key][0].includes(e.muscle)).length; return `<button class="wv-tile" data-act="fSplit" data-v="${p.key}">${e0 ? `<img src="${esc(imgOf(e0))}" alt="" onerror="this.style.visibility='hidden'">` : ''}<span class="wv-n">${n}</span><span class="wv-name">${p.name}</span></button>`; }).join('')}</div>`;
     const info0 = document.getElementById('pager-info'); if (info0) info0.textContent = `${pool.length} Übungen · Muskelgruppe wählen`;
     const more0 = document.getElementById('xr-more'); if (more0) more0.hidden = true;
     return;
@@ -1335,7 +1335,7 @@ function renderAllEx() {
       <div class="xr-top">
         <div class="xr-search">${XR_SEARCH_ICO}<input id="q" type="search" placeholder="${pool.length} Übungen durchsuchen…" value="${esc(browseQ)}" autocomplete="off">
           <button class="xr-filter${nF ? ' on' : ''}" data-act="fOpen">Filter${nF ? `<b>${nF}</b>` : ''}</button></div>
-        ${filterMuscle || filterSplit ? `<div class="xr-pills"><button class="xr-pill" data-act="fMuscle" data-v="">‹ Zurück</button><button class="xr-pill active" data-act="fMuscle" data-v="${filterMuscle || ''}">${filterMuscle || (PRESETS.find(p => p.key === filterSplit) || {}).name}</button></div>` : ''}
+        ${filterMuscle || filterSplit ? `<div class="xr-pills"><button class="xr-pill" data-act="fMuscle" data-v="">‹ Zurück</button><button class="xr-pill active" data-act="fMuscle" data-v="${filterMuscle || ''}">${filterMuscle || filterSplit === 'warm' ? 'Warmup' : (PRESETS.find(p => p.key === filterSplit) || {}).name}</button></div>` : ''}
         ${nF ? `<div class="xr-pills xr-pills-sub">${active.map(([a, v, l]) => `<button class="xr-pill active" data-act="${a}" data-v="${v}">${l} ✕</button>`).join('')}</div>` : ''}
       </div>
       <div class="xr-count" id="pager-info"></div>
