@@ -372,3 +372,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 
 **Straße-Adresse (immer per url republishen, nie ohne): https://claude.ai/artifact/33Pz2wW3JRTVER4UhY8wWT**
 - 13.10. Wochenplan kompakter: Vorlagen-Kacheln flacher, passt ohne Scrollen (leer)
+- 13.10. Vorlagen-Auswahl-Sheet kompakt (10 Zeilen sichtbar), eigene Trainings als schmale Zeilen

@@ -1282,3 +1282,14 @@ button.tx-nm{background:none; border:0; text-align:left; color:inherit; font:inh
 .sv-auto{margin:.1rem 0 .4rem; padding:.7rem 1rem;}
 .wv-grid .wv-tile{aspect-ratio:1/.86;}
 .wv-grid .wv-tile{aspect-ratio:1/.8;}
+
+/* V16: Auswahl-Sheet kompakt (mehr Übungen sichtbar) + eigene Trainings als schmale Zeilen */
+.ps-bar{padding:.55rem 1rem .6rem;}
+.ps-sheet .dt-name{font-size:.95rem;} .ps-sheet .dt-body{gap:.25rem; padding-top:.7rem;}
+.ps-sheet .dt-add{gap:.3rem; flex-wrap:nowrap;}
+.ps-sheet .dt-chip{min-width:0; min-height:34px; padding:.3rem .55rem; font-size:.8rem; flex:1 1 auto;}
+.ps-row{min-height:44px; padding:.25rem .5rem;} .ps-row img{width:36px; height:36px;}
+.ps-list{gap:.25rem;}
+.wp .wp-card{min-height:0; padding:.4rem .7rem; gap:.5rem;}
+.wp .wp-card .wp-thumbs{display:none;}
+.wp .wp-card-name{font-size:.92rem;} .wp .wp-card-meta{font-size:.7rem;}
