@@ -1341,3 +1341,10 @@ body:not(:has(.overview-lab)) .topbar{padding-bottom:.55rem !important;}
 .tx-hint .hh-top button::after{content:'✕'; font-size:.95rem; color:var(--text-dim);}
 .tx-hint .hh p{margin:0; font-size:.76rem; line-height:1.25;}
 .tx-sum{padding-left:14px; padding-right:14px;}
+/* V16g Schrift heller */
+:root,body{--text:#f6f4ee; --text-dim:#c4c9c3; --text-faint:#a0a7a1;}
+body.mood-good,body:not(.mood-bad){--text:#f4f8f5; --text-dim:#ccd6d1; --text-faint:#a9b6b0;}
+body.mood-bad{--text:#fbeeec; --text-dim:#dcc2be; --text-faint:#c9a29c;}
+.overview-lab{--lab-dim:#aebbb6;}
+.overview-lab.mood-bad{--lab-dim:#cfaaa4;}
+.lab-day span,.lab-occ{color:#b9c6c1;}
