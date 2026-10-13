@@ -637,7 +637,7 @@ function presetExercises(p) {
 
 // ---- V13 W-02: Auto-Trainingsgenerator (Regeln: Coach-Bericht) ----
 const GENKEY = 'heimtraining.genlast';
-let genJust = false;
+let genJust = false, genFrom = null;
 let genCfg = { lv: null, goal: 'aufbau', dur: 45, groups: [] }, genRes = null;
 const GRANK = { Beine: 3, Rücken: 3, Brust: 3, Schultern: 2, Arme: 1, Bauch: 0 };
 const MORDER = ['quadriceps', 'hamstrings', 'glutes', 'chest', 'lats', 'middle back', 'lower back', 'shoulders', 'traps', 'biceps', 'triceps', 'forearms', 'calves', 'abdominals'];
@@ -911,6 +911,12 @@ function renderWeeklist() {
       <div class="wp-days">${dayTiles}</div>
       <div class="wp-sec">TRAININGS</div>
       ${customCards || '<p class="placeholder">Noch keine eigenen Trainings – z. B. „Ganzkörper“ oder „Mobility“.</p>'}
+      ${addingTraining ? '' : `<div class="wp-sec">VORLAGEN</div>
+      <div class="sv-vls">${[['split', 'Split'], ['musc', 'Einzelne Muskeln'], ['core', 'Core & Bauch']].map(([g, l]) => {
+        const ps = PRESETS.filter(p => p.grp === g && !weekplan.some(w => w.presetKey === p.key));
+        return ps.length ? `<div class="sv-sub">${l}</div>${ps.map((p, i) => `<button class="sv-vl${ps.length % 2 === 1 && i === ps.length - 1 ? ' sv-wide' : ''}" data-act="wpPreset" data-key="${p.key}"><span class="sv-vl-ic">${DB}</span><span class="sv-vl-name">${esc(p.name)}</span><span class="sv-vl-n">${presetExercises(p).length}</span></button>`).join('')}` : '';
+      }).join('')}</div>
+      <button class="sv-auto" data-act="genOpen"><span class="sv-auto-ic">✨</span><span class="sv-auto-t"><b>AUTO-TRAINING</b><i>Level, Ziel, Dauer und Muskeln wählen, den Rest macht die App</i></span><span class="sv-pk-go" aria-hidden="true">›</span></button>`}
       ${addingTraining ? hint('name', 1, 'Gib deinem Training einen Namen, zum Beispiel „Oberkörper“ oder „Montag“. Danach geht es mit den Übungen weiter.') : ''}
       ${addingTraining
         ? `<div class="wp-card wp-new"><input id="new-training-name" placeholder="Name des Trainings…" autofocus>
@@ -1499,6 +1505,12 @@ content.addEventListener('click', e => {
     case 'wUnitSet': trainingById(btn.dataset.id).exercises[Number(btn.dataset.i)].unit = btn.dataset.u; saveWeekplan(); break;
     case 'hintOk': helperHide(btn.dataset.id); break;
     case 'helperReset': try { localStorage.removeItem(HELPKEY); } catch (e) {} break;
+    case 'wpPreset': {
+      const p = PRESETS.find(x => x.key === btn.dataset.key); if (!p) break;
+      let t = weekplan.find(w => w.presetKey === p.key);
+      if (!t) { t = { id: 'w' + Date.now(), name: p.name, presetKey: p.key, exercises: presetExercises(p), weekdays: [], since: {}, time: '' }; weekplan.push(t); saveWeekplan(); }
+      wId = t.id; view = 'wtrain'; break;
+    }
     case 'wOpen2': wId = btn.dataset.id; view = 'wtrain'; break;
     case 'wDayNew': {
       // Ruhetag angetippt → neues Tagestraining für diesen Wochentag anlegen und direkt öffnen
@@ -1543,8 +1555,8 @@ content.addEventListener('click', e => {
     case 'profGender': { const p = loadProfile(); p.gender = btn.dataset.v; saveProfile(p); break; }
     case 'profLevel': { const p = loadProfile(); p.level = Number(btn.dataset.v); saveProfile(p); break; }
     case 'lvlUp': { const p = loadProfile(); p.level = Number(btn.dataset.lv); saveProfile(p); break; }
-    case 'genOpen': genRes = null; genCfg = { lv: null, goal: 'aufbau', dur: 45, groups: [] }; view = 'gen'; break;
-    case 'genBack': view = 'start'; break;
+    case 'genOpen': genFrom = view === 'weeklist' ? 'weeklist' : null; genRes = null; genCfg = { lv: null, goal: 'aufbau', dur: 45, groups: [] }; view = 'gen'; break;
+    case 'genBack': view = genFrom || 'start'; genFrom = null; break;
     case 'genLv': genCfg.lv = Number(btn.dataset.v); genRes = null; break;
     case 'genGoal': genCfg.goal = btn.dataset.v; genRes = null; break;
     case 'genDur': genCfg.dur = Number(btn.dataset.v); genRes = null; break;
