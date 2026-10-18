@@ -792,6 +792,8 @@ function renderStart() {
   const own = weekplan.filter(w => w.exercises.length).sort((a, b) => (a.presetKey ? 1 : 0) - (b.presetKey ? 1 : 0));
   const ownIds = new Set(own.map(w => w.presetKey).filter(Boolean));
   content.innerHTML = `<div class="sv">
+    <div class="sv-lab">GERÄTE HEUTE</div>
+    <div class="sv-gear">${GEAR.map(([k, l]) => `<button class="lv-p${loadGear().includes(k) ? ' on' : ''}" data-act="genGear" data-v="${k}">${l}</button>`).join('')}</div>
     <button class="sv-auto" data-act="genOpen"><span class="sv-auto-ic">✨</span><span class="sv-auto-t"><b>JETZT TRAINIEREN</b><i>Zeit, Fokus, Geräte – fertig</i></span><span class="sv-pk-go" aria-hidden="true">›</span></button>
     <div class="sv-lab">MEINE PAKETE</div>
     <div class="sv-packs">${own.map(pack).join('')}<button class="sv-add" data-act="wNewTraining"><span class="sv-add-plus">+</span><span>${own.length ? 'Eigenes Training' : 'Erstes Training erstellen'}</span></button></div>
@@ -1650,7 +1652,7 @@ content.addEventListener('click', e => {
     case 'genCnt': genCfg.count = Number(btn.dataset.v) || null; genRes = null; break;
     case 'genDur': genCfg.dur = Number(btn.dataset.v); genRes = null; break;
     case 'genGrp': { const m = btn.dataset.v, i = genCfg.groups.indexOf(m); if (i >= 0) genCfg.groups.splice(i, 1); else genCfg.groups.push(m); genRes = null; break; }
-    case 'genGear': { const k = btn.dataset.v, i = genCfg.gear.indexOf(k); if (i >= 0) genCfg.gear.splice(i, 1); else genCfg.gear.push(k); try { localStorage.setItem(GEARKEY, JSON.stringify(genCfg.gear)); } catch (e2) {} genRes = null; break; }
+    case 'genGear': { const k = btn.dataset.v, g = loadGear(), i = g.indexOf(k); if (i >= 0) g.splice(i, 1); else g.push(k); genCfg.gear = g; try { localStorage.setItem(GEARKEY, JSON.stringify(g)); } catch (e2) {} genRes = null; break; }
     case 'genMinS': genCfg.minSets = Number(btn.dataset.v); genRes = null; break;
     case 'genMinR': genCfg.minReps = Number(btn.dataset.v); genRes = null; break;
     case 'genDo': generate(); break;

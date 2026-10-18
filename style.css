@@ -1411,3 +1411,7 @@ body.mood-bad{--text:#fbeeec; --text-dim:#dcc2be; --text-faint:#c9a29c;}
   .sv-lab{margin:.2rem .1rem 0; font-size:.85rem;}
 }
 @media (max-width:600px){ .sv-pack{aspect-ratio:16/8 !important;} .sv-packs{gap:.4rem;} }
+.sv-gear{display:flex; flex-wrap:wrap; gap:.25rem;}
+.sv-gear .lv-p{flex:0 1 auto; padding:0 .55rem; min-height:34px; font-size:.76rem; border-radius:999px; border:1px solid rgba(255,255,255,.12); background:transparent; color:inherit; font-weight:700;}
+.sv-gear .lv-p.on{background:var(--accent); color:#0b140a; border-color:var(--accent);}
+@media (max-width:600px){ .sv-sub{display:none;} .sv-vl{min-height:38px;} }
