@@ -2057,7 +2057,7 @@ document.addEventListener('input', e => { if (e.target.id !== 'gp-q') return; co
 // Auto-Update: beim Zurückkehren in die App prüfen, ob eine neuere Version live ist, dann neu laden
 (function () {
   const cur = (document.querySelector('script[src^="script.js"]') || {}).src || '';
-  const chk = () => fetch('index.html', { cache: 'no-store' }).then(r => r.text()).then(t => { const m = t.match(/script\.js\?v=([0-9a-z]+)/); if (m && cur && !cur.endsWith('v=' + m[1]) && !document.getElementById('gp-root')) location.reload(); }).catch(() => {});
+  const chk = () => fetch('index.html', { cache: 'no-store' }).then(r => r.text()).then(t => { const m = t.match(/script\.js\?v=([0-9A-Za-z]+)/); if (m && cur && !cur.endsWith('v=' + m[1]) && !document.getElementById('gp-root')) location.reload(); }).catch(() => {});
   document.addEventListener('visibilitychange', () => { if (!document.hidden) chk(); });
   setTimeout(chk, 3000);
 })();

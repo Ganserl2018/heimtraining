@@ -14,3 +14,4 @@
 - **QA-Maße Alex-iPhone (18.10. aus Screenshot ermittelt):** Viewport 402x874, Safe-Area oben 59/unten 34, Text ~118% größer als Standard (Tab "Übungen" ohne Umbruch!). Test immer: `ZOOM=118 VH=874 ET=59 EB=34 node …` mit `tools/qa-iphone-harness.js` (Env VW/VH/ET/EB/ZOOM). Kein Scrollen auf Übersicht/Profil/Wochenplan; Tab-Leisten-Höhe wird per JS als `--tabh` gemessen.
 - **Bild-Probleme (Übergänge, Pose, Seil, Helligkeit):** ZUERST `bild-stil.md` + Vault `06_Debugging/` lesen, dort stehen die funktionierenden Rezepte (GIF-Blend, LED-Prompt, Face-Pull). Erst danach raten/fragen. Vor dem Senden Bewegungslogik prüfen.
 - **QA Neu-Optik (V18):** Harness mit `NEWTAB=1` starten (schwebende Tab-Leiste, kein Zusatz-Padding).
+- **`?v=` nur Ziffern + Kleinbuchstaben** (z. B. 20261018b). Großbuchstaben brechen den Auto-Update-Check (Regex) → Endlos-Reload, App springt zur Startseite.
