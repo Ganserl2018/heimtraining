@@ -20,9 +20,9 @@
 "Alternate Heel Touchers": {
 "de": "Fersen abwechselnd berühren",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
@@ -47,9 +47,9 @@
 "Barbell Side Bend": {
 "de": "Langhantel-Seitbeuge",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Seitlich zum Seilzug, Griff mit beiden Händen.",
+"Diagonal über den Körper ziehen, Rumpf dreht mit.",
+"Kontrolliert zurück."
 ],
 "auto": true
 },
@@ -65,18 +65,18 @@
 "Bottoms Up": {
 "de": "Bottoms Up",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Position einnehmen, Bauch fest.",
+"Beine/Rumpf kontrolliert bewegen.",
+"Langsam zurück."
 ],
 "auto": true
 },
 "Butt-Ups": {
 "de": "Butt-Ups",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Position einnehmen, Bauch fest.",
+"Beine/Rumpf kontrolliert bewegen.",
+"Langsam zurück."
 ],
 "auto": true
 },
@@ -92,9 +92,9 @@
 "Cable Judo Flip": {
 "de": "Kabelzug-Judo-Flip",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Seitlich zum Seilzug, Griff mit beiden Händen.",
+"Diagonal über den Körper ziehen, Rumpf dreht mit.",
+"Kontrolliert zurück."
 ],
 "auto": true
 },
@@ -128,9 +128,9 @@
 "Cocoons": {
 "de": "Cocoons",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Position einnehmen, Bauch fest.",
+"Beine/Rumpf kontrolliert bewegen.",
+"Langsam zurück."
 ],
 "auto": true
 },
@@ -164,9 +164,9 @@
 "Dead Bug": {
 "de": "Dead Bug",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Position einnehmen, Bauch fest.",
+"Beine/Rumpf kontrolliert bewegen.",
+"Langsam zurück."
 ],
 "auto": true
 },
@@ -200,9 +200,9 @@
 "Dumbbell Side Bend": {
 "de": "Kurzhantel-Seitbeuge",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Seitlich zum Seilzug, Griff mit beiden Händen.",
+"Diagonal über den Körper ziehen, Rumpf dreht mit.",
+"Kontrolliert zurück."
 ],
 "auto": true
 },
@@ -218,9 +218,9 @@
 "Flat Bench Leg Pull-In": {
 "de": "Beinzug auf der Flachbank",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Position einnehmen, Bauch fest.",
+"Beine/Rumpf kontrolliert bewegen.",
+"Langsam zurück."
 ],
 "auto": true
 },
@@ -263,9 +263,9 @@
 "Hanging Pike": {
 "de": "Hängendes Pike",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Position einnehmen, Bauch fest.",
+"Beine/Rumpf kontrolliert bewegen.",
+"Langsam zurück."
 ],
 "auto": true
 },
@@ -299,9 +299,9 @@
 "Leg Pull-In": {
 "de": "Beinzug",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Position einnehmen, Bauch fest.",
+"Beine/Rumpf kontrolliert bewegen.",
+"Langsam zurück."
 ],
 "auto": true
 },
@@ -335,27 +335,27 @@
 "One-Arm High-Pulley Cable Side Bends": {
 "de": "Einarmige Kabel-Seitbeuge (hoch)",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Seitlich zum Seilzug, Griff mit beiden Händen.",
+"Diagonal über den Körper ziehen, Rumpf dreht mit.",
+"Kontrolliert zurück."
 ],
 "auto": true
 },
 "Pallof Press": {
 "de": "Pallof Press",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Seitlich zum Seilzug stehen, Griff vor der Brust.",
+"Arme gerade nach vorne drücken, Rumpf gegen den Zug stabil halten.",
+"Kurz halten, zurück zur Brust."
 ],
 "auto": true
 },
 "Pallof Press With Rotation": {
 "de": "Pallof Press mit Rotation",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Seitlich zum Seilzug stehen, Griff vor der Brust.",
+"Arme gerade nach vorne drücken, Rumpf gegen den Zug stabil halten.",
+"Kurz halten, zurück zur Brust."
 ],
 "auto": true
 },
@@ -407,18 +407,18 @@
 "Scissor Kick": {
 "de": "Scherenschlag",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Position einnehmen, Bauch fest.",
+"Beine/Rumpf kontrolliert bewegen.",
+"Langsam zurück."
 ],
 "auto": true
 },
 "Seated Flat Bench Leg Pull-In": {
 "de": "Sitzender Beinzug auf der Flachbank",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Position einnehmen, Bauch fest.",
+"Beine/Rumpf kontrolliert bewegen.",
+"Langsam zurück."
 ],
 "auto": true
 },
@@ -434,9 +434,9 @@
 "Side Jackknife": {
 "de": "Seitlicher Jackknife",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
@@ -452,36 +452,36 @@
 "Spell Caster": {
 "de": "Spell Caster",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Position einnehmen, Bauch fest.",
+"Beine/Rumpf kontrolliert bewegen.",
+"Langsam zurück."
 ],
 "auto": true
 },
 "Spider Crawl": {
 "de": "Spider Crawl",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
 "Standing Cable Lift": {
 "de": "Kabel-Lift im Stand",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Seitlich zum Seilzug, Griff mit beiden Händen.",
+"Diagonal über den Körper ziehen, Rumpf dreht mit.",
+"Kontrolliert zurück."
 ],
 "auto": true
 },
 "Standing Cable Wood Chop": {
 "de": "Kabel-Holzhacker im Stand",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Seitlich zum Seilzug, Griff mit beiden Händen.",
+"Diagonal über den Körper ziehen, Rumpf dreht mit.",
+"Kontrolliert zurück."
 ],
 "auto": true
 },
@@ -497,18 +497,18 @@
 "Stomach Vacuum": {
 "de": "Stomach Vacuum",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Position einnehmen, Bauch fest.",
+"Beine/Rumpf kontrolliert bewegen.",
+"Langsam zurück."
 ],
 "auto": true
 },
 "Toe Touchers": {
 "de": "Zehen berühren",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
@@ -524,36 +524,36 @@
 "Wind Sprints": {
 "de": "Sprints",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
 "Hip Circles (prone)": {
 "de": "Hüftkreisen (Bauchlage)",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
 "Monster Walk": {
 "de": "Monster Walk",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
 "Standing Hip Circles": {
 "de": "Hüftkreisen im Stand",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
@@ -569,18 +569,18 @@
 "Groiners": {
 "de": "Groiners",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
 "Lateral Bound": {
 "de": "Seitlicher Sprung",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
@@ -1028,9 +1028,9 @@
 "Bent-Arm Dumbbell Pullover": {
 "de": "Kurzhantel-Pullover mit gebeugten Armen",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Gewicht über der Brust halten.",
+"Arme im Bogen hinter den Kopf führen.",
+"Zurück über die Brust ziehen."
 ],
 "auto": true
 },
@@ -1046,18 +1046,18 @@
 "Cable Crossover": {
 "de": "Kabelzug-Crossover",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Leicht vorgelehnt, Arme seitlich offen.",
+"Hände im Bogen vor der Brust zusammenführen.",
+"Kurz anspannen, kontrolliert öffnen."
 ],
 "auto": true
 },
 "Cable Iron Cross": {
 "de": "Kabel-Iron-Cross",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Leicht vorgelehnt, Arme seitlich offen.",
+"Hände im Bogen vor der Brust zusammenführen.",
+"Kurz anspannen, kontrolliert öffnen."
 ],
 "auto": true
 },
@@ -1073,9 +1073,9 @@
 "Cross Over - With Bands": {
 "de": "Crossover mit Bändern",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Leicht vorgelehnt, Arme seitlich offen.",
+"Hände im Bogen vor der Brust zusammenführen.",
+"Kurz anspannen, kontrolliert öffnen."
 ],
 "auto": true
 },
@@ -1181,9 +1181,9 @@
 "Incline Dumbbell Bench With Palms Facing In": {
 "de": "Schrägbankdrücken mit Kurzhanteln (Handflächen innen)",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Bank einstellen, Schulterblätter zusammen.",
+"Gewichte kontrolliert zur Brust senken.",
+"Nach oben drücken."
 ],
 "auto": true
 },
@@ -1208,9 +1208,9 @@
 "Incline Dumbbell Press": {
 "de": "Schrägbankdrücken mit Kurzhanteln",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Bank einstellen, Schulterblätter zusammen.",
+"Gewichte kontrolliert zur Brust senken.",
+"Nach oben drücken."
 ],
 "auto": true
 },
@@ -1253,36 +1253,36 @@
 "Isometric Chest Squeezes": {
 "de": "Isometrisches Brustpressen",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Hände vor der Brust gegeneinander drücken.",
+"Spannung 5–10 Sek. halten.",
+"Lösen und wiederholen."
 ],
 "auto": true
 },
 "Isometric Wipers": {
 "de": "Isometrische Wischer",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Hände vor der Brust gegeneinander drücken.",
+"Spannung 5–10 Sek. halten.",
+"Lösen und wiederholen."
 ],
 "auto": true
 },
 "Low Cable Crossover": {
 "de": "Tiefes Kabel-Crossover",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Leicht vorgelehnt, Arme seitlich offen.",
+"Hände im Bogen vor der Brust zusammenführen.",
+"Kurz anspannen, kontrolliert öffnen."
 ],
 "auto": true
 },
 "Neck Press": {
 "de": "Nackendrücken",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Neutrale Haltung.",
+"Langsam die Bewegung ausführen.",
+"Zurück zur Mitte."
 ],
 "auto": true
 },
@@ -1361,9 +1361,9 @@
 "Single-Arm Cable Crossover": {
 "de": "Einarmiges Kabel-Crossover",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Leicht vorgelehnt, Arme seitlich offen.",
+"Hände im Bogen vor der Brust zusammenführen.",
+"Kurz anspannen, kontrolliert öffnen."
 ],
 "auto": true
 },
@@ -1388,9 +1388,9 @@
 "Straight-Arm Dumbbell Pullover": {
 "de": "Kurzhantel-Pullover mit gestreckten Armen",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Gewicht über der Brust halten.",
+"Arme im Bogen hinter den Kopf führen.",
+"Zurück über die Brust ziehen."
 ],
 "auto": true
 },
@@ -1469,18 +1469,18 @@
 "Wrist Circles": {
 "de": "Handgelenkkreisen",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
 "Wrist Rotations with Straight Bar": {
 "de": "Handgelenkrotation mit Stange",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
@@ -1496,9 +1496,9 @@
 "Barbell Hip Thrust": {
 "de": "Langhantel-Hip-Thrust",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Oberer Rücken aufgelegt, Füße fest.",
+"Hüfte nach oben strecken, Gesäß anspannen.",
+"Kontrolliert absenken."
 ],
 "auto": true
 },
@@ -1514,9 +1514,9 @@
 "Flutter Kicks": {
 "de": "Flutter Kicks",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Position einnehmen, Bauch fest.",
+"Beine/Rumpf kontrolliert bewegen.",
+"Langsam zurück."
 ],
 "auto": true
 },
@@ -1541,9 +1541,9 @@
 "Hip Lift with Band": {
 "de": "Hüftheben mit Band",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Oberer Rücken aufgelegt, Füße fest.",
+"Hüfte nach oben strecken, Gesäß anspannen.",
+"Kontrolliert absenken."
 ],
 "auto": true
 },
@@ -1568,9 +1568,9 @@
 "Leg Lift": {
 "de": "Beinheben",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Position einnehmen, Bauch fest.",
+"Beine/Rumpf kontrolliert bewegen.",
+"Langsam zurück."
 ],
 "auto": true
 },
@@ -1586,9 +1586,9 @@
 "Pull Through": {
 "de": "Pull Through",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Oberer Rücken aufgelegt, Füße fest.",
+"Hüfte nach oben strecken, Gesäß anspannen.",
+"Kontrolliert absenken."
 ],
 "auto": true
 },
@@ -1613,9 +1613,9 @@
 "90/90 Hamstring": {
 "de": "Hamstring-Dehnung 90/90",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Bequeme Ausgangsposition.",
+"Langsam in die Dehnung gehen.",
+"Ruhig atmen, halten."
 ],
 "auto": true
 },
@@ -1667,9 +1667,9 @@
 "Inchworm": {
 "de": "Inchworm",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
@@ -1757,9 +1757,9 @@
 "Bent-Arm Barbell Pullover": {
 "de": "Langhantel-Pullover mit gebeugten Armen",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Gewicht über der Brust halten.",
+"Arme im Bogen hinter den Kopf führen.",
+"Zurück über die Brust ziehen."
 ],
 "auto": true
 },
@@ -2135,27 +2135,27 @@
 "Isometric Neck Exercise - Front And Back": {
 "de": "Isometrische Nackenübung (vorn und hinten)",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Hände vor der Brust gegeneinander drücken.",
+"Spannung 5–10 Sek. halten.",
+"Lösen und wiederholen."
 ],
 "auto": true
 },
 "Isometric Neck Exercise - Sides": {
 "de": "Isometrische Nackenübung (seitlich)",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Hände vor der Brust gegeneinander drücken.",
+"Spannung 5–10 Sek. halten.",
+"Lösen und wiederholen."
 ],
 "auto": true
 },
 "All Fours Quad Stretch": {
 "de": "Quadrizeps-Dehnung im Vierfüßlerstand",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Bequeme Ausgangsposition.",
+"Langsam in die Dehnung gehen.",
+"Ruhig atmen, halten."
 ],
 "auto": true
 },
@@ -2261,9 +2261,9 @@
 "Double Leg Butt Kick": {
 "de": "Fersen-zum-Po-Kick (beidbeinig)",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Position einnehmen, Bauch fest.",
+"Beine/Rumpf kontrolliert bewegen.",
+"Langsam zurück."
 ],
 "auto": true
 },
@@ -2423,27 +2423,27 @@
 "Rocket Jump": {
 "de": "Raketensprung",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
 "Scissors Jump": {
 "de": "Scherensprung",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
 "Single Leg Butt Kick": {
 "de": "Fersen-zum-Po-Kick (einbeinig)",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Position einnehmen, Bauch fest.",
+"Beine/Rumpf kontrolliert bewegen.",
+"Langsam zurück."
 ],
 "auto": true
 },
@@ -2495,18 +2495,18 @@
 "Standing Long Jump": {
 "de": "Standweitsprung",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
 "Star Jump": {
 "de": "Hampelmann-Sprung (Star Jump)",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
@@ -2621,9 +2621,9 @@
 "Cable Internal Rotation": {
 "de": "Innenrotation am Kabel",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
@@ -2756,27 +2756,27 @@
 "External Rotation": {
 "de": "Außenrotation",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
 "External Rotation with Band": {
 "de": "Außenrotation mit Band",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
 "External Rotation with Cable": {
 "de": "Außenrotation am Kabel",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
@@ -2828,18 +2828,18 @@
 "Internal Rotation with Band": {
 "de": "Innenrotation mit Band",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Aufrechte Grundposition.",
+"Bewegung schwungvoll, aber kontrolliert ausführen.",
+"Zur Ausgangsposition zurück."
 ],
 "auto": true
 },
 "Iron Cross": {
 "de": "Iron Cross",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Leicht vorgelehnt, Arme seitlich offen.",
+"Hände im Bogen vor der Brust zusammenführen.",
+"Kurz anspannen, kontrolliert öffnen."
 ],
 "auto": true
 },
@@ -3008,9 +3008,9 @@
 "Standing Barbell Press Behind Neck": {
 "de": "Stehendes Nackendrücken mit Langhantel",
 "schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
+"Neutrale Haltung.",
+"Langsam die Bewegung ausführen.",
+"Zurück zur Mitte."
 ],
 "auto": true
 },
