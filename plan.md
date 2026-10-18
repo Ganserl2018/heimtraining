@@ -428,3 +428,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - W3 Übungsseite: Bilder GANZ groß (aktuell zu klein).
 - W4 Selbst erstellte Trainings: Seite intuitiver + übersichtlicher.
 - Hinweis: weitere Ideen folgen; Optik muss auf Neon-Grün + Lichteinfall aufbauen (V18 Mint abgelehnt).
+- W1b Start-Button-Logo: neon-grüne Hantel oder 💪 im runden Button (23:27).
