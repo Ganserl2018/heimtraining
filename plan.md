@@ -406,3 +406,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 ## 18.10. 16:25 – Probe-Übungen neuer Stil abgenommen (Alex: "viel besser, passt zu 90%")
 - 5 Mann-GIFs (RDL, Face Pull, Kniebeuge neu mit starken LED-Streifen; Bank + KH-Schulterdrücken alte Bilder) in /home/claude/show5/final/. Prompt-Bausteine in bild-stil.md.
 - Offen: Alex entscheidet, ob der ganze Bildsatz (M+W, ~400 Übungen) so neu gemacht wird; die 10% Rest-Kritik noch nicht benannt.
+- 16:31 Face Pull v3 (Turm auf Augenhöhe, Seil zum Gesicht) gesendet; Regel Bewegungslogik-Check in bild-stil.md

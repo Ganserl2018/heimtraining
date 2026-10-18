@@ -29,3 +29,8 @@ Zuordnung: Szene = stabiler Hash des Übungsnamens (nie ändern).
 - Pose-Satz: "PURE SIDE PROFILE (shoulders and hips perpendicular to the camera, NO torso rotation toward the camera)", Start und Ende im selben Chat; Endbild ausdrücklich deutlich tiefer/weiter beschreiben.
 - GIF: tools/makegif.py start end out.gif --blend --sharp 2 --frames 8 --ms 70 --hold 600 (nicht Flow, keine Zwischenposen).
 - Probe-Szenen: RDL Fensterfront+LED-Rahmen, Face Pull Holzlamellen+LED-Kante, Kniebeuge Beton+LED-Streifen; Bank/Schulterdrücken alte 3/4-Bilder behalten (schon LED).
+
+## Bewegungslogik-Check (18.10. 16:31, Alex-Regel)
+- Vor dem Senden JEDES Bild-Paar auf unlogische Bewegung/Geräte prüfen: Was bewegt sich wirklich? Seil/Kabel gespannt? Zugrichtung korrekt?
+- Face Pull: Zugturm auf Augenhöhe, Seil waagerecht gespannt, weit weg vom Turm; Start Arme gestreckt, Ende Seil am Gesicht, Ellbogen hoch/außen. NICHT nur Hände hochheben.
+- Zugübungen: Kabel immer straff, Zugrichtung entlang des Kabels.
