@@ -391,3 +391,8 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - 2026-10-18: Übungsnamen DE (names_de.json, dn()), Umschalter Profil (lang), Hantelbank-Bereinigung -34, Optik-Entwurf Design-Artefakt 8rG4HWfnffiuvERX42XnaL; v=20261018u
 - 2026-10-18: Knopf 'Bild falsch' (Detailseite, localStorage heimtraining.badimg) + 'Liste kopieren' im Profil; Bildprüfung 396: 345 ok/51 unsicher (Vault Bildpruefung-2026-10-18.md); v=20261018v
 - 2026-10-18: bild-stil.md angelegt (Szenen/Licht/Kleidung modern/Positionen). Offen: gilt nur für neue Bilder oder ganzes Set?
+
+## 18.10. 15:57 – 5 Probe-Übungen neuer Stil + GIF-Übergänge
+- 5 Probe-GIFs (Mann) via Gemini/Chrome erzeugt (Bankdrücken, RDL, Face Pull, KH-Schulterdrücken, Kniebeuge), Aufnahme ohne Download per Zoom+save_to_disk (Cursor per Inpaint entfernt, unterer 4,5%-Rand abgeschnitten).
+- Alex: Helligkeit ok, Übergänge verschwommen (Doppelbild-Ghosting bei großer Bewegung). Fix v2 RDL: Zwischenbild von Gemini ("Not right… nur 20° Neigung") + tools/makegif_multi.py (Keyframes, N=6, SHARP=5). Test geschickt, Entscheidung zu den anderen 4 offen.
+- Offen: Mittelbilder für Bench/FP/DP/Squat; dann Entscheid Alex: ganzen Bildsatz im neuen Stil neu (M+W gleiche Szene).
