@@ -34,3 +34,10 @@ Zuordnung: Szene = stabiler Hash des Übungsnamens (nie ändern).
 - Vor dem Senden JEDES Bild-Paar auf unlogische Bewegung/Geräte prüfen: Was bewegt sich wirklich? Seil/Kabel gespannt? Zugrichtung korrekt?
 - Face Pull: Zugturm auf Augenhöhe, Seil waagerecht gespannt, weit weg vom Turm; Start Arme gestreckt, Ende Seil am Gesicht, Ellbogen hoch/außen. NICHT nur Hände hochheben.
 - Zugübungen: Kabel immer straff, Zugrichtung entlang des Kabels.
+
+## Face-Pull-Rezept, das passt (18.10. 16:33, Alex: "passt sehr gut")
+- Gleiche Szene/Kamera/Seitenprofil wie Start. Zugturm-Rolle exakt auf AUGENHÖHE des Mannes → Seil verläuft waagerecht und gespannt.
+- Start-Prompt: "cable pulley carriage at exactly EYE HEIGHT, cable perfectly HORIZONTAL and taut, arms fully extended forward, hands at eye level on the cable line".
+- Ende-Prompt (Create a NEW image, same scene): "PULLED the rope straight back along the horizontal cable: rope ends beside his ears, hands next to face at eye level, elbows flared high and wide at shoulder height, shoulders squeezed back, torso upright with very slight lean back, cable still taut and horizontal, pure side profile".
+- GIF: ./mk.sh start end out.gif (Blend, nur Start+Ende).
+- Allgemein für Zugübungen: Rollenhöhe = Bewegungslinie der Hände; Kabel nie durchhängend; Bewegung = Hände entlang des Kabels zum Körper.
