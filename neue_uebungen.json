@@ -1,0 +1,100 @@
+[
+ {
+  "name": "Hyperextension",
+  "de": "Hyperextension (Römischer Stuhl)",
+  "muscle": "lower back",
+  "gear": "hyperextension-bank",
+  "schritte": [
+   "Hüfte auf dem Polster, Fersen fixiert, Oberkörper hängt nach unten.",
+   "Rücken gerade bis Körper eine Linie bildet, nicht überstrecken.",
+   "Kontrolliert wieder absenken."
+  ],
+  "logik": "Hüftknick = Drehpunkt, Oberkörper bewegt sich, Beine fix",
+  "perspektive": "Seitenprofil",
+  "bild": "offen"
+ },
+ {
+  "name": "Bird Dog",
+  "de": "Bird Dog (Vierfüßler-Diagonale)",
+  "muscle": "lower back",
+  "gear": "body",
+  "schritte": [
+   "Vierfüßlerstand, Rücken neutral.",
+   "Gegenüberliegenden Arm und Bein waagerecht strecken.",
+   "Kurz halten, ohne Hüftdrehung zurück, Seite wechseln."
+  ],
+  "logik": "Hüfte bleibt waagerecht, kein Hohlkreuz",
+  "perspektive": "Seitenprofil",
+  "bild": "offen"
+ },
+ {
+  "name": "Cat-Cow",
+  "de": "Katze-Kuh",
+  "muscle": "lower back",
+  "gear": "body",
+  "schritte": [
+   "Vierfüßlerstand.",
+   "Rücken rund machen (Katze), dann Hohlkreuz mit Blick nach oben (Kuh).",
+   "Langsam im Atemrhythmus wechseln."
+  ],
+  "logik": "Nur Wirbelsäule bewegt sich, Arme/Hüfte bleiben",
+  "perspektive": "Seitenprofil",
+  "bild": "offen"
+ },
+ {
+  "name": "Child's Pose",
+  "de": "Kindhaltung",
+  "muscle": "lower back",
+  "gear": "body",
+  "schritte": [
+   "Kniend, Gesäß zu den Fersen.",
+   "Arme nach vorne strecken, Stirn zum Boden.",
+   "Ruhig atmen, 30–60 Sek. halten."
+  ],
+  "logik": "Gesäß bleibt auf den Fersen",
+  "perspektive": "Seitenprofil",
+  "bild": "offen"
+ },
+ {
+  "name": "Superman Hold",
+  "de": "Superman-Halten",
+  "muscle": "lower back",
+  "gear": "body",
+  "schritte": [
+   "Bauchlage, Arme nach vorne gestreckt.",
+   "Arme und Beine gleichzeitig leicht anheben, Blick zum Boden.",
+   "2–3 Sek. halten, kontrolliert ablegen."
+  ],
+  "logik": "Nacken neutral, nicht überstrecken",
+  "perspektive": "Seitenprofil",
+  "bild": "offen"
+ },
+ {
+  "name": "Single-Leg Romanian Deadlift",
+  "de": "Einbeiniges Rumänisches Kreuzheben",
+  "muscle": "hamstrings",
+  "gear": "dumbbell",
+  "schritte": [
+   "Auf einem Bein stehen, Kurzhantel in der Gegenhand.",
+   "Oberkörper nach vorne, freies Bein nach hinten strecken, Rücken gerade.",
+   "Hüfte strecken und aufrichten."
+  ],
+  "logik": "Beine+Oberkörper bilden eine waagerechte Linie, Hüfte bleibt gerade",
+  "perspektive": "Seitenprofil",
+  "bild": "offen"
+ },
+ {
+  "name": "Bulgarian Split Squat",
+  "de": "Bulgarischer Split Squat",
+  "muscle": "quadriceps",
+  "gear": "bench, dumbbell",
+  "schritte": [
+   "Hinterer Fuß auf der Bank, vorderer Fuß weit vorne.",
+   "Hinteres Knie Richtung Boden senken, Oberkörper aufrecht.",
+   "Aus der vorderen Ferse hochdrücken."
+  ],
+  "logik": "Vorderes Knie über dem Fuß, Oberkörper aufrecht",
+  "perspektive": "Seitenprofil",
+  "bild": "offen"
+ }
+]
