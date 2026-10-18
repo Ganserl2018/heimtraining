@@ -241,7 +241,7 @@ function renderView() {
   document.body.classList.toggle('playing', view === 'play');
   if (weekplan.some(x => x.draft && !(view === 'wtrain' && wId === x.id) && view !== 'picker' && !picker)) weekplan = weekplan.filter(x => !x.draft || (view === 'wtrain' && wId === x.id));
   applyMood();
-  const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', start: 'Training wählen', gen: 'Auto-Training', play: 'Workout', preview: 'Training', summary: 'Geschafft', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
+  const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', start: 'Training wählen', gen: 'Jetzt trainieren', play: 'Workout', preview: 'Training', summary: 'Geschafft', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
   document.querySelector('.topbar h1').textContent = view === 'wtrain' ? ((trainingById(wId) || {}).name || 'Training') : (titles[view] || 'Home Force');
   syncTabActive();
   { const pn = (loadProfile().name || '').trim(), bad = document.body.classList.contains('mood-bad');
@@ -694,10 +694,21 @@ function presetExercises(p) {
 // ---- V13 W-02: Auto-Trainingsgenerator (Regeln: Coach-Bericht) ----
 const GENKEY = 'heimtraining.genlast';
 let genJust = false, genFrom = null;
-let genCfg = { lv: null, goal: 'aufbau', dur: 45, count: null, groups: [] }, genRes = null;
+const GEAR = [['barbell', 'Langhantel'], ['dumbbell', 'Kurzhanteln'], ['cable', 'Seilzug'], ['band', 'Bänder'], ['rig', 'Klimmzug'], ['ext', 'Extension'], ['body', 'Körper']];
+const GEARKEY = 'heimtraining.gear';
+function loadGear() { try { const g = JSON.parse(localStorage.getItem(GEARKEY)); if (Array.isArray(g)) return g; } catch (e) {} return GEAR.map(x => x[0]); }
+function gearOf(name) {
+  const n = name.toLowerCase();
+  if (/hyperext|back extension/.test(n)) return /no hyperextension bench/.test(n) ? 'body' : 'ext';
+  if (/pull-?up|chin-?up|\bdips?\b|inverted row|hanging|muscle.up/.test(n)) return 'rig';
+  for (const k of ['barbell', 'dumbbell', 'cable', 'band']) if (matchesEquip(n, k)) return k;
+  return /kettlebell/.test(n) ? 'kb' : 'body';
+}
+function newGenCfg() { return { lv: null, goal: 'aufbau', dur: 30, count: null, groups: [], gear: loadGear(), minSets: 0, minReps: 0 }; }
+let genCfg = newGenCfg(), genRes = null;
 const GRANK = { Beine: 3, Rücken: 3, Brust: 3, Schultern: 2, Arme: 1, Bauch: 0 };
 const MORDER = ['quadriceps', 'hamstrings', 'glutes', 'chest', 'lats', 'middle back', 'lower back', 'shoulders', 'traps', 'biceps', 'triceps', 'forearms', 'calves', 'abdominals'];
-const GCOUNT = { 30: [3, 4, 5], 45: [4, 5, 6], 60: [5, 7, 8], 90: [7, 9, 11] }, GISO = { 30: 1, 45: 2, 60: 3, 90: 4 };
+const GCOUNT = { 20: [2, 3, 4], 30: [3, 4, 5], 45: [4, 5, 6], 60: [5, 7, 8], 90: [7, 9, 11] }, GISO = { 20: 1, 30: 1, 45: 2, 60: 3, 90: 4 };
 function genLevel() { return genCfg.lv != null ? genCfg.lv : (loadProfile().level != null ? loadProfile().level : 0); }
 function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 function isCompound(n) { n = n.toLowerCase(); return !/pullover|pushdown|fly|flye|raise|curl|extension|kickback|shrug/.test(n) && /press|squat|deadlift|row|pull-?up|pulldown|lunge|dip|chin|push-?up/.test(n); }
@@ -706,7 +717,7 @@ function generate() {
   let last = []; try { last = JSON.parse(localStorage.getItem(GENKEY)) || []; } catch (e) {}
   const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine/i;
   const hard = /deadlift|rack pull|clean|snatch|jerk|weighted|good morning|behind (the )?neck|guillotine|zercher|jefferson|overhead squat|olympic|sissy|muscle.up|atlas|pistol|single-arm push/i;
-  const base = pool.filter(e => !bad.test(e.name) && MUSCLE_GROUPS[e.muscle] && (lv > 0 || !hard.test(e.name)));
+  const base = pool.filter(e => !bad.test(e.name) && MUSCLE_GROUPS[e.muscle] && (lv > 0 || !hard.test(e.name)) && genCfg.gear.includes(gearOf(e.name)));
   const n = genCfg.count || GCOUNT[genCfg.dur][lv], isoMax = genCfg.count ? Math.ceil(n / 2) : GISO[genCfg.dur];
   const gs = g.slice().sort((a, b) => GRANK[b] - GRANK[a]);
   const per = gs.map((_, i) => Math.floor(n / gs.length) + (i < n % gs.length ? 1 : 0));
@@ -730,7 +741,8 @@ function generate() {
   });
   picked.sort((a, b) => (isCompound(b.name) - isCompound(a.name)) || ((GRANK[MUSCLE_GROUPS[b.muscle]] || 0) - (GRANK[MUSCLE_GROUPS[a.muscle]] || 0)) || (MORDER.indexOf(a.muscle) - MORDER.indexOf(b.muscle)));
   const exs = picked.map(e => ({ name: e.name, muscle: e.muscle, gif: e.gif, sets: 3, note: '', unit: defaultUnit(e.name) }));
-  exs.forEach(ex => { const r = suggestEx(ex, lv, genCfg.goal); ex.sets = r.sets; ex.plan = Array.from({ length: r.sets }, () => ({ w: r.w, r: r.reps })); });
+  exs.forEach(ex => { const r = suggestEx(ex, lv, genCfg.goal); ex.sets = Math.max(r.sets, genCfg.minSets || 0); const reps = ex.unit === 'sek' ? r.reps : Math.max(r.reps, genCfg.minReps || 0); ex.plan = Array.from({ length: ex.sets }, () => ({ w: r.w, r: reps })); });
+  if (!exs.length) { genRes = []; genJust = true; return; }
   try { localStorage.setItem(GENKEY, JSON.stringify(picked.map(e => e.name).concat(last).slice(0, 24))); } catch (e) {}
   genRes = exs; genJust = true;
 }
@@ -744,19 +756,23 @@ function genSave(start) {
 function renderGen() {
   const lv = genLevel(), p = loadProfile();
   const pill = (act, v, l, on) => `<button class="lv-p${on ? ' on' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
-  const res = genRes ? `<div class="gn-res">${genRes.map((e, i) => `<div class="gn-ex exinfo" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+  const res = genRes && !genRes.length ? `<div class="gn-res"><div class="lv-note">Mit diesen Geräten und diesem Fokus finde ich keine Übungen. Mehr Geräte oder anderen Fokus wählen.</div></div>` : genRes ? `<div class="gn-res">${genRes.map((e, i) => `<div class="gn-ex exinfo" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
       <div><b>${esc(e.name)}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)} · ${e.sets} × ${e.plan[0].r} ${e.unit === 'sek' ? 'Sek' : 'Wdh'}${e.plan[0].w != null && e.unit === 'kg' ? ' · ca. ' + e.plan[0].w + ' kg' : ''}</em></div></div>`).join('')}
       <div class="lv-note">Vorschlag mit ca.-Werten. Technik vor Gewicht, bei Schmerzen abbrechen.${!p.weight && genRes.some(e => e.unit === 'kg') ? ' Gewicht im Profil eintragen, dann kommen auch kg-Vorschläge.' : ''}</div>
       <div class="gn-btns"><button class="ts-save" data-act="genSave">✓ SPEICHERN</button><button class="pl-next ts-go" data-act="genGo">▶ SPEICHERN &amp; STARTEN</button><button class="ts-add" data-act="genDo">⟳ Neu mischen</button></div></div>` : '';
   const scrollRes = genJust; genJust = false;
   content.innerHTML = `<div class="gn">
-    <div class="pl-top"><button class="pl-x" data-act="genBack" aria-label="Zurück">‹</button><div class="pl-title"><b>Auto-Training</b><span>Wir stellen dir ein Training zusammen</span></div></div>
+    <div class="pl-top"><button class="pl-x" data-act="genBack" aria-label="Zurück">‹</button><div class="pl-title"><b>Jetzt trainieren</b><span>Zeit, Fokus, Geräte – den Rest macht die App</span></div></div>
+    <div class="lv"><div class="lv-h">Zeit</div><div class="lv-pills">${[20, 30, 45, 60].map(d => pill('genDur', d, d + ' Min', genCfg.dur === d)).join('')}</div></div>
+    <div class="lv"><div class="lv-h">Fokus${genCfg.groups.length ? '' : ' <em>· mindestens eine wählen</em>'}</div><div class="lv-pills">${MUSCLE_GROUP_LIST.map(m => pill('genGrp', m, m, genCfg.groups.includes(m))).join('')}</div></div>
+    <div class="lv"><div class="lv-h">Geräte heute</div><div class="lv-pills">${GEAR.map(([k, l]) => pill('genGear', k, l, genCfg.gear.includes(k))).join('')}</div></div>
+    <div class="lv"><div class="lv-h">Mindestens</div><div class="lv-row"><span>Sätze</span>${[0, 3, 4, 5].map(c => pill('genMinS', c, c || 'Auto', genCfg.minSets === c)).join('')}</div><div class="lv-row"><span>Wdh</span>${[0, 8, 10, 12, 15].map(c => pill('genMinR', c, c || 'Auto', genCfg.minReps === c)).join('')}</div></div>
+    <details class="gn-more"><summary>Mehr: Level, Ziel, Anzahl</summary>
     <div class="lv"><div class="lv-h">Level</div><div class="lv-pills">${LEVELS.map(([k, l], x) => pill('genLv', x, l, lv === x)).join('')}</div></div>
     <div class="lv"><div class="lv-h">Ziel</div><div class="lv-pills">${GOALS.map(([k, l]) => pill('genGoal', k, l, genCfg.goal === k)).join('')}</div></div>
-    <div class="lv"><div class="lv-h">Dauer</div><div class="lv-pills">${[30, 45, 60, 90].map(d => pill('genDur', d, d + ' Min', genCfg.dur === d)).join('')}</div></div>
     <div class="lv"><div class="lv-h">Anzahl Übungen</div><div class="lv-pills">${[0, 3, 4, 5, 6, 8, 10].map(c => pill('genCnt', c, c ? c : 'Auto', (genCfg.count || 0) === c)).join('')}</div></div>
-    <div class="lv"><div class="lv-h">Muskelgruppen${genCfg.groups.length ? '' : ' <em>· mindestens eine wählen</em>'}</div><div class="lv-pills">${MUSCLE_GROUP_LIST.map(m => pill('genGrp', m, m, genCfg.groups.includes(m))).join('')}</div></div>
-    ${genRes ? '' : `<div class="gn-btns"><button class="pl-next ts-go" data-act="genDo"${genCfg.groups.length ? '' : ' disabled'}>✨ ZUSAMMENSTELLEN</button><button class="ts-add gn-sur" data-act="genSurprise">🎲 Überrasch mich<small>Tausch der Muskelgruppen und der Übungen</small></button></div>`}
+    </details>
+    ${genRes && genRes.length ? '' : `<div class="gn-btns"><button class="pl-next ts-go" data-act="genDo"${genCfg.groups.length ? '' : ' disabled'}>✨ ZUSAMMENSTELLEN</button><button class="ts-add gn-sur" data-act="genSurprise">🎲 Überrasch mich<small>Tausch der Muskelgruppen und der Übungen</small></button></div>`}
     ${res}
   </div>`;
   if (scrollRes) setTimeout(() => { const r = document.querySelector('.gn-res'); if (r) r.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
@@ -776,9 +792,9 @@ function renderStart() {
   const own = weekplan.filter(w => w.exercises.length).sort((a, b) => (a.presetKey ? 1 : 0) - (b.presetKey ? 1 : 0));
   const ownIds = new Set(own.map(w => w.presetKey).filter(Boolean));
   content.innerHTML = `<div class="sv">
+    <button class="sv-auto" data-act="genOpen"><span class="sv-auto-ic">✨</span><span class="sv-auto-t"><b>JETZT TRAINIEREN</b><i>Zeit, Fokus, Geräte – fertig</i></span><span class="sv-pk-go" aria-hidden="true">›</span></button>
     <div class="sv-lab">MEINE PAKETE</div>
     <div class="sv-packs">${own.map(pack).join('')}<button class="sv-add" data-act="wNewTraining"><span class="sv-add-plus">+</span><span>${own.length ? 'Eigenes Training' : 'Erstes Training erstellen'}</span></button></div>
-    <button class="sv-auto" data-act="genOpen"><span class="sv-auto-ic">✨</span><span class="sv-auto-t"><b>AUTO-TRAINING</b><i>Level, Ziel, Dauer und Muskeln wählen, den Rest macht die App</i></span><span class="sv-pk-go" aria-hidden="true">›</span></button>
     <div class="sv-lab">VORLAGEN</div>
     <div class="sv-vls">${[['split', 'Split'], ['musc', 'Einzelne Muskeln'], ['core', 'Core & Bauch']].map(([g, l]) => {
       const ps = PRESETS.filter(p => p.grp === g && !ownIds.has(p.key));
@@ -976,7 +992,7 @@ function renderWeeklist() {
         ? `<div class="wp-card wp-new"><input id="new-training-name" placeholder="Name des Trainings…" autofocus>
              <div class="edit-bar"><button data-act="wNewTrainingSave">Speichern</button><button data-act="wNewTrainingCancel">Abbrechen</button></div></div>`
         : `<button class="wp-add" data-act="wNewTraining">+ Neues Training</button>
-      <button class="sv-auto" data-act="genOpen"><span class="sv-auto-ic">✨</span><span class="sv-auto-t"><b>AUTO-TRAINING</b><i>Level, Ziel, Dauer, Anzahl und Muskeln wählen – den Rest macht die App</i></span><span class="sv-pk-go" aria-hidden="true">›</span></button>
+      <button class="sv-auto" data-act="genOpen"><span class="sv-auto-ic">✨</span><span class="sv-auto-t"><b>JETZT TRAINIEREN</b><i>Zeit, Fokus, Geräte und Mindestumfang wählen – den Rest macht die App</i></span><span class="sv-pk-go" aria-hidden="true">›</span></button>
       ${(() => {
         const tile = p => { const exs = presetExercises(p), e0 = exs[0]; return `<button class="wv-tile" data-act="wpPreset" data-key="${p.key}">${e0 ? `<img src="${esc(imgOf(e0))}" alt="" onerror="this.style.visibility='hidden'">` : ''}<span class="wv-n">${exs.length}</span><span class="wv-name">${esc(p.name)}</span></button>`; };
         const free = p => !weekplan.some(w => w.presetKey === p.key);
@@ -1627,13 +1643,16 @@ content.addEventListener('click', e => {
     case 'profGender': { const p = loadProfile(); p.gender = btn.dataset.v; saveProfile(p); break; }
     case 'profLevel': { const p = loadProfile(); p.level = Number(btn.dataset.v); saveProfile(p); break; }
     case 'lvlUp': { const p = loadProfile(); p.level = Number(btn.dataset.lv); saveProfile(p); break; }
-    case 'genOpen': genFrom = view === 'weeklist' ? 'weeklist' : null; genRes = null; genCfg = { lv: null, goal: 'aufbau', dur: 45, count: null, groups: [] }; view = 'gen'; break;
+    case 'genOpen': genFrom = view === 'weeklist' ? 'weeklist' : null; genRes = null; genCfg = newGenCfg(); view = 'gen'; break;
     case 'genBack': view = genFrom || 'start'; genFrom = null; break;
     case 'genLv': genCfg.lv = Number(btn.dataset.v); genRes = null; break;
     case 'genGoal': genCfg.goal = btn.dataset.v; genRes = null; break;
     case 'genCnt': genCfg.count = Number(btn.dataset.v) || null; genRes = null; break;
     case 'genDur': genCfg.dur = Number(btn.dataset.v); genRes = null; break;
     case 'genGrp': { const m = btn.dataset.v, i = genCfg.groups.indexOf(m); if (i >= 0) genCfg.groups.splice(i, 1); else genCfg.groups.push(m); genRes = null; break; }
+    case 'genGear': { const k = btn.dataset.v, i = genCfg.gear.indexOf(k); if (i >= 0) genCfg.gear.splice(i, 1); else genCfg.gear.push(k); try { localStorage.setItem(GEARKEY, JSON.stringify(genCfg.gear)); } catch (e2) {} genRes = null; break; }
+    case 'genMinS': genCfg.minSets = Number(btn.dataset.v); genRes = null; break;
+    case 'genMinR': genCfg.minReps = Number(btn.dataset.v); genRes = null; break;
     case 'genDo': generate(); break;
     case 'genSurprise': { const gl = shuffle(MUSCLE_GROUP_LIST).slice(0, 2 + Math.floor(Math.random() * 2)); genCfg.groups = gl; generate(); break; }
     case 'genSave': genSave(false); break;

@@ -1379,3 +1379,22 @@ body.mood-bad{--text:#fbeeec; --text-dim:#dcc2be; --text-faint:#c9a29c;}
   .wp .wp-add{min-height:30px !important;} .sv-auto{padding-top:.4rem; padding-bottom:.4rem;}
   .wp .wp-card{padding:.2rem .7rem;}
 }
+/* V17-1 Jetzt trainieren */
+.gn-more{margin:.2rem 0;} .gn-more summary{min-height:40px; display:flex; align-items:center; color:var(--text-dim); font-size:.8rem; font-weight:700; cursor:pointer; list-style:none;}
+.gn-more summary::-webkit-details-marker{display:none}
+.gn .lv-pills{flex-wrap:wrap;} .gn .lv-p{padding-left:.7rem; padding-right:.7rem;}
+.gn .pl-title{display:none;} .gn .pl-top{margin:0 0 .2rem; min-height:0;}
+.gn .pl-x{width:36px; height:36px;}
+.gn .lv{margin:0 0 .25rem; padding:.3rem .6rem .4rem;}
+.gn .lv-h{margin-bottom:.2rem; font-size:.7rem;}
+.gn .lv-pills{gap:.25rem;} .gn .lv-p{flex:0 1 auto; padding:0 .6rem; min-height:34px; font-size:.76rem;}
+.lv-row{display:flex; align-items:center; gap:.25rem; margin-top:.2rem;} .lv-row span{flex:none; width:2.6rem; font-size:.7rem; color:var(--text-dim); font-weight:700;}
+.lv-row .lv-p{flex:1 1 0 !important; padding:0 .2rem !important;}
+.gn .gn-btns button{min-height:46px;}
+.gn{position:relative;} .gn .pl-top{position:absolute; top:.35rem; right:.5rem; z-index:2; margin:0;}
+.gn .pl-x{width:34px; height:34px; min-height:0;}
+.gn .lv-p{padding:0 .45rem; min-height:32px; font-size:.72rem;}
+.gn .lv-pills{gap:.2rem;}
+.lv-row .lv-p{min-height:32px;}
+.gn-more summary{min-height:32px;}
+.gn .gn-btns{margin:.3rem 0 0;} .gn .gn-btns button{min-height:44px;}
