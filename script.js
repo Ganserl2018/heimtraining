@@ -128,13 +128,15 @@ function prog() {
 function saveProg() { try { localStorage.setItem(PKEY, JSON.stringify(progress)); } catch (e) {} }
 const setsOf = name => { const d = prog().done[day]; return (d && Array.isArray(d[name])) ? d[name] : []; };
 
+let gearFix = {}; // gearfix.json: Name -> {s:'ok'|'no', g:[Geräte]} (Alex' Heim-Gym, fest)
 let metByName = {}; // V8-01/03: name -> MET-Wert
 Promise.all([
   fetch('exercises.json').then(r => r.json()),
   fetch('pool.json').then(r => r.json()),
-  fetch('met.json').then(r => r.json()).catch(() => [])
-]).then(([b, p, met]) => {
-  base = b; pool = p;
+  fetch('met.json').then(r => r.json()).catch(() => []),
+  fetch('gearfix.json').then(r => r.json()).catch(() => ({}))
+]).then(([b, p, met, gf]) => {
+  base = b; pool = p; gearFix = gf;
   met.forEach(m => { metByName[m.name] = m.met; });
   render();
 }).catch(err => { content.innerHTML = `<p class="error">Fehler beim Laden: ${err}</p>`; });
@@ -698,6 +700,7 @@ const GEAR = [['barbell', 'Langhantel'], ['dumbbell', 'Kurzhanteln'], ['cable', 
 const GEARKEY = 'heimtraining.gear2';
 function loadGear() { try { const g = JSON.parse(localStorage.getItem(GEARKEY)); if (Array.isArray(g)) return g; } catch (e) {} return GEAR.map(x => x[0]); }
 function gearOf(name) { // Liste der benötigten Geräte
+  if (gearFix[name]) return gearFix[name].g;
   const n = name.toLowerCase(), r = [];
   if (/hyperext|back extension/.test(n)) return /no hyperextension bench/.test(n) ? ['body'] : ['ext'];
   if (/pull-?up|chin-?up|\bdips?\b|inverted row|hanging|muscle.up/.test(n) && !/bench dip/.test(n)) r.push('rig');
@@ -721,7 +724,7 @@ function generate() {
   let last = []; try { last = JSON.parse(localStorage.getItem(GENKEY)) || []; } catch (e) {}
   const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine/i;
   const hard = /deadlift|rack pull|clean|snatch|jerk|weighted|good morning|behind (the )?neck|guillotine|zercher|jefferson|overhead squat|olympic|sissy|muscle.up|atlas|pistol|single-arm push/i;
-  const base = pool.filter(e => !bad.test(e.name) && MUSCLE_GROUPS[e.muscle] && (lv > 0 || !hard.test(e.name)) && gearOf(e.name).every(k => genCfg.gear.includes(k)));
+  const base = pool.filter(e => !bad.test(e.name) && !(gearFix[e.name] && gearFix[e.name].s === 'no') && MUSCLE_GROUPS[e.muscle] && (lv > 0 || !hard.test(e.name)) && gearOf(e.name).every(k => genCfg.gear.includes(k)));
   const n = genCfg.count || GCOUNT[genCfg.dur][lv], isoMax = genCfg.count ? Math.ceil(n / 2) : GISO[genCfg.dur];
   const gs = g.slice().sort((a, b) => GRANK[b] - GRANK[a]);
   const per = gs.map((_, i) => Math.floor(n / gs.length) + (i < n % gs.length ? 1 : 0));
