@@ -23,3 +23,9 @@ Zuordnung: Szene = stabiler Hash des Übungsnamens (nie ändern).
 ## Positionen
 - Pro Übung vorher Start- und Endposition + typischer Fehler festlegen (z. B. Bankdrücken: Stange an der Brust → Arme gestreckt über der Brust).
 - Bild-GIF zeigt Start → Ende → Start; bei der Prüfung gegen diese Vorgabe checken.
+
+## Prompt-Bausteine, die funktioniert haben (18.10. 16:20, Alex: "passt zu 90%")
+- Szene-Satz: "PROMINENT glowing neon-green LED light strips clearly visible: <Streifen am Fenster/Wandsockel/senkrecht am Wandrand> … Bright even exposure on the man and the floor, mid-dark background (not black)."
+- Pose-Satz: "PURE SIDE PROFILE (shoulders and hips perpendicular to the camera, NO torso rotation toward the camera)", Start und Ende im selben Chat; Endbild ausdrücklich deutlich tiefer/weiter beschreiben.
+- GIF: tools/makegif.py start end out.gif --blend --sharp 2 --frames 8 --ms 70 --hold 600 (nicht Flow, keine Zwischenposen).
+- Probe-Szenen: RDL Fensterfront+LED-Rahmen, Face Pull Holzlamellen+LED-Kante, Kniebeuge Beton+LED-Streifen; Bank/Schulterdrücken alte 3/4-Bilder behalten (schon LED).

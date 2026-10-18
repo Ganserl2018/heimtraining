@@ -402,3 +402,7 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - Bild-Regeln RDL (gelten für alle Probe-Übungen): Start UND Ende im gleichen Chat mit "PURE SIDE PROFILE, shoulders and hips perpendicular to camera, NO torso rotation toward the camera"; Endbild ausdrücklich tiefer ("Stange eine Handbreit über dem Boden", 60° Neigung); Startbild neu im selben Profil erzeugen, wenn das erste leicht gedreht ist (Alex: "dreht sich während der Übung").
 - Aufnahme ohne Download: Chrome zoom+save_to_disk, unteren 4,5 % abschneiden (Gemini-Handle), Mauszeiger im Bild per cv2.inpaint entfernen.
 - Offen: Bench/Face Pull/KH-Schulter/Kniebeuge mit demselben Verfahren (Profil-Endbild, --blend --sharp 2); dann Alex-Entscheid über ganzen Bildsatz.
+
+## 18.10. 16:25 – Probe-Übungen neuer Stil abgenommen (Alex: "viel besser, passt zu 90%")
+- 5 Mann-GIFs (RDL, Face Pull, Kniebeuge neu mit starken LED-Streifen; Bank + KH-Schulterdrücken alte Bilder) in /home/claude/show5/final/. Prompt-Bausteine in bild-stil.md.
+- Offen: Alex entscheidet, ob der ganze Bildsatz (M+W, ~400 Übungen) so neu gemacht wird; die 10% Rest-Kritik noch nicht benannt.
