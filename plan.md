@@ -390,3 +390,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - 18.10. Körperstelle ↔ Fokus gekoppelt: Körperstelle antippen schaltet ihre Fokus-Gruppe automatisch an (z. B. Unt. Rücken → Rücken), Gruppe antippen entfernt ihre Körperstellen. Fokus-Gruppe und ihre Stellen nie doppelt.
 - 2026-10-18: Übungsnamen DE (names_de.json, dn()), Umschalter Profil (lang), Hantelbank-Bereinigung -34, Optik-Entwurf Design-Artefakt 8rG4HWfnffiuvERX42XnaL; v=20261018u
 - 2026-10-18: Knopf 'Bild falsch' (Detailseite, localStorage heimtraining.badimg) + 'Liste kopieren' im Profil; Bildprüfung 396: 345 ok/51 unsicher (Vault Bildpruefung-2026-10-18.md); v=20261018v
+- 2026-10-18: bild-stil.md angelegt (Szenen/Licht/Kleidung modern/Positionen). Offen: gilt nur für neue Bilder oder ganzes Set?
