@@ -741,6 +741,19 @@ const SPOTS = ['lower back', 'lats', 'middle back', 'traps', 'neck', 'glutes', '
 const spotGrp = m => MUSCLE_GROUPS[m] === 'Sonstiges' ? 'Schultern' : MUSCLE_GROUPS[m];
 const grpOn = m => genCfg.groups.includes(m) || genCfg.groups.some(x => x.startsWith('m:') && spotGrp(x.slice(2)) === m);
 const grpLabel = g => g.startsWith('m:') ? (MUSCLE_DE[g.slice(2)] || g.slice(2)) : g;
+// Welche Geräte sind für den gewählten Fokus überhaupt nützlich? (Anzahl passender Übungen je Gerät)
+function gearCounts() {
+  const g = genCfg.groups, lv = genLevel(), out = {};
+  const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine/i;
+  const hard = /deadlift|rack pull|clean|snatch|jerk|weighted|good morning|behind (the )?neck|guillotine|zercher|jefferson|overhead squat|olympic|sissy|muscle.up|atlas|pistol|single-arm push/i;
+  const core = (e, grp) => grp.startsWith('m:') ? e.muscle === grp.slice(2) : MUSCLE_GROUPS[e.muscle] === grp && (grp !== 'Rücken' || (e.muscle === 'lats' || e.muscle === 'middle back'));
+  pool.forEach(e => {
+    if (bad.test(e.name) || (gearFix[e.name] && gearFix[e.name].s === 'no') || !MUSCLE_GROUPS[e.muscle] || (lv === 0 && hard.test(e.name))) return;
+    if (!g.some(x => core(e, x))) return;
+    gearOf(e.name).forEach(k => { out[k] = (out[k] || 0) + 1; });
+  });
+  return out;
+}
 function genBase(lv) {
   const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine/i;
   const hard = /deadlift|rack pull|clean|snatch|jerk|weighted|good morning|behind (the )?neck|guillotine|zercher|jefferson|overhead squat|olympic|sissy|muscle.up|atlas|pistol|single-arm push/i;
@@ -829,11 +842,11 @@ function renderGen() {
       <div class="gn-btns"><button class="ts-save" data-act="genSave">✓ SPEICHERN</button><button class="pl-next ts-go" data-act="genGo">▶ SPEICHERN &amp; STARTEN</button><button class="ts-add" data-act="genDo">⟳ Neu mischen</button></div></div>` : '';
   const scrollRes = genJust; genJust = false;
   content.innerHTML = `<div class="gn">
-    <div class="pl-top"><button class="pl-x" data-act="genBack" aria-label="Zurück">‹</button><div class="pl-title"><b>Jetzt trainieren</b><span>Zeit, Fokus, Geräte – den Rest macht die App</span></div></div>
-    <div class="lv"><div class="lv-h">Zeit</div><div class="lv-pills">${[20, 30, 45, 60].map(d => pill('genDur', d, d + ' Min', genCfg.dur === d)).join('')}</div></div>
+    <div class="pl-top"><button class="pl-x" data-act="genBack" aria-label="Zurück">‹</button><div class="pl-title"><b>Jetzt trainieren</b><span>Fokus, Geräte, Zeit – den Rest macht die App</span></div></div>
     <div class="lv"><div class="lv-h">Fokus${genCfg.groups.length ? '' : ' <em>· mindestens eine wählen</em>'}</div><div class="lv-pills">${MUSCLE_GROUP_LIST.map(m => pill('genGrp', m, m, grpOn(m))).join('')}</div></div>
-    <details class="gn-more"${genCfg.groups.some(x => x.startsWith('m:')) ? ' open' : ''}><summary>Genau: Körperstelle${genCfg.groups.filter(x => x.startsWith('m:')).map(x => ' · ' + grpLabel(x)).join('')}</summary><div class="lv"><div class="lv-pills">${SPOTS.map(m => pill('genGrp', 'm:' + m, MUSCLE_DE[m] || m, genCfg.groups.includes('m:' + m))).join('')}</div></div></details>
-    <div class="lv"><div class="lv-h">Geräte heute</div><div class="lv-pills">${GEAR.map(([k, l]) => pill('genGear', k, l, genCfg.gear.includes(k))).join('')}</div></div>
+    <details class="gn-more" open><summary>Genau: Körperstelle${genCfg.groups.filter(x => x.startsWith('m:')).map(x => ' · ' + grpLabel(x)).join('')}</summary><div class="lv"><div class="lv-pills">${SPOTS.map(m => pill('genGrp', 'm:' + m, MUSCLE_DE[m] || m, genCfg.groups.includes('m:' + m))).join('')}</div></div></details>
+    ${genCfg.groups.length ? (() => { const gc = gearCounts(); return `<div class="lv"><div class="lv-h">Geräte heute <em>· passend zum Fokus</em></div><div class="lv-pills">${GEAR.filter(([k]) => k === 'body' || gc[k]).map(([k, l]) => pill('genGear', k, l + (gc[k] ? ' <small>' + gc[k] + '</small>' : ''), genCfg.gear.includes(k))).join('')}</div></div>`; })() : '<div class="lv"><div class="lv-h">Geräte heute <em>· erst Fokus wählen</em></div></div>'}
+    <div class="lv"><div class="lv-h">Zeit</div><div class="lv-pills">${[20, 30, 45, 60].map(d => pill('genDur', d, d + ' Min', genCfg.dur === d)).join('')}</div></div>
     <div class="lv"><div class="lv-h">Umfang</div><div class="lv-row"><span>Übungen</span>${[0, 3, 4, 5, 6, 8].map(c => pill('genCnt', c, c || 'Auto', (genCfg.count || 0) === c)).join('')}</div><div class="lv-row"><span>Sätze</span>${[0, 3, 4, 5].map(c => pill('genMinS', c, c || 'Auto', genCfg.minSets === c)).join('')}</div><div class="lv-row"><span>Wdh</span>${[0, 8, 10, 12, 15].map(c => pill('genMinR', c, c || 'Auto', genCfg.minReps === c)).join('')}</div></div>
     <details class="gn-more"><summary>Mehr: Level, Ziel</summary>
     <div class="lv"><div class="lv-h">Level</div><div class="lv-pills">${LEVELS.map(([k, l], x) => pill('genLv', x, l, lv === x)).join('')}</div></div>
@@ -859,9 +872,7 @@ function renderStart() {
   const own = weekplan.filter(w => w.exercises.length).sort((a, b) => (a.presetKey ? 1 : 0) - (b.presetKey ? 1 : 0));
   const ownIds = new Set(own.map(w => w.presetKey).filter(Boolean));
   content.innerHTML = `<div class="sv">
-    <div class="sv-lab">GERÄTE HEUTE</div>
-    <div class="sv-gear">${GEAR.map(([k, l]) => `<button class="lv-p${loadGear().includes(k) ? ' on' : ''}" data-act="genGear" data-v="${k}">${l}</button>`).join('')}</div>
-    <button class="sv-auto" data-act="genOpen"><span class="sv-auto-ic">✨</span><span class="sv-auto-t"><b>JETZT TRAINIEREN</b><i>Zeit, Fokus, Geräte – fertig</i></span><span class="sv-pk-go" aria-hidden="true">›</span></button>
+    <button class="sv-auto" data-act="genOpen"><span class="sv-auto-ic">✨</span><span class="sv-auto-t"><b>JETZT TRAINIEREN</b><i>Fokus, Geräte, Zeit – fertig</i></span><span class="sv-pk-go" aria-hidden="true">›</span></button>
     <div class="sv-lab">MEINE PAKETE</div>
     <div class="sv-packs">${own.map(pack).join('')}<button class="sv-add" data-act="wNewTraining"><span class="sv-add-plus">+</span><span>${own.length ? 'Eigenes Training' : 'Erstes Training erstellen'}</span></button></div>
     <div class="sv-lab">VORLAGEN</div>
