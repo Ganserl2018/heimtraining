@@ -1425,3 +1425,13 @@ body.mood-bad{--text:#fbeeec; --text-dim:#dcc2be; --text-faint:#c9a29c;}
 .gn-sw-bg span{opacity:0} .gn-sw[data-dir=r] .gn-sw-bg span:first-child,.gn-sw[data-dir=l] .gn-sw-bg span:last-child{opacity:1}
 .gn-sw .gn-ex{position:relative; background:var(--bg,#0f1417)}
 .gn-new{animation:gnIn .25s ease-out} @keyframes gnIn{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+
+.gn-pk{margin-left:auto; flex:none; width:44px; height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.18); background:transparent; color:var(--accent,#b6f04a); font-size:1.2rem}
+.gn-sw[data-dir=r] .gn-sw-bg{background:#b88a00}
+.gp-ov{position:fixed; inset:0; z-index:60; background:var(--bg,#14171a); display:flex; flex-direction:column; padding:calc(env(safe-area-inset-top) + .6rem) 1rem 1rem}
+.gp-h{display:flex; justify-content:space-between; align-items:center; font-size:1.05rem; margin-bottom:.5rem}
+.gp-x{width:44px; height:44px; border:0; background:transparent; color:#fff; font-size:1.3rem}
+.gp-q{width:100%; padding:.7rem .8rem; border-radius:12px; border:1px solid rgba(255,255,255,.2); background:#1d2124; color:#fff; font-size:1rem; margin-bottom:.5rem}
+.gp-list{flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch}
+.gp-r{display:flex; align-items:center; gap:.7rem; width:100%; text-align:left; background:transparent; border:0; border-bottom:1px solid rgba(255,255,255,.06); padding:.4rem .1rem; color:#fff}
+.gp-r img{width:48px; height:48px; border-radius:10px; object-fit:cover; background:#10171a} .gp-r b{display:block; font-size:.9rem} .gp-r em{font-style:normal; font-size:.75rem; opacity:.7}

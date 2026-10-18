@@ -383,3 +383,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 ## 18.10. Gear-Durchgang (Alex entschieden)
 - Olympische Übungen raus; Dips nur "Dips - Triceps Version"; Seilzug-von-unten + Pallof → Türanker-Band; GHR ja. Fest in gearfix.json (430 ok / 84 nicht machbar), gearOf() + generate() nutzen es. Offen: "Kann ich nicht"-Marker in der App, Studio-Schalter (V5-14).
 - 18.10. V17 Wisch-Tausch in Auto-Ergebnisliste: Übung wischen (links/rechts) → raus, neue passende (gleiche Gruppe, Geräte ok, nicht doppelt) rückt nach. "Kann ich nicht"-Marker verworfen (Alex: "kompletter Käse").
+- 18.10. Auto-Liste: rechts wischen = ★ Favorit (heimtraining.favs), links = neue Übung, ⇄-Button = Direktauswahl (Overlay mit Suche, gleiche Gruppe zuerst, Favoriten vor). Warteliste: Favoriten im Generator bevorzugen / Favoriten-Filter in Übungen.
