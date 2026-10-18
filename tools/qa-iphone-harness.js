@@ -8,7 +8,7 @@ exports.open=async(port=8793)=>{
   await p.route('**/style.css*',async r=>{const t=fs.readFileSync(process.env.CSS||'/home/claude/heimtraining/style.css','utf8').replace(/env\(safe-area-inset-bottom,\s*0px\)/g,(process.env.EB||'34')+'px').replace(/env\(safe-area-inset-top,\s*0px\)/g,(process.env.ET||'14')+'px').replace(/env\(safe-area-inset-top\)/g,(process.env.ET||'14')+'px').replace(/env\(safe-area-inset-bottom\)/g,(process.env.EB||'34')+'px');await r.fulfill({body:t,contentType:'text/css'})});
   await p.goto('http://localhost:'+port+'/');
   await p.addStyleTag({content:`@font-face{font-family:Anton;src:url(data:font/woff2;base64,${font}) format('woff2')}
-   .tabbar{padding-bottom:calc(34px + 26px) !important} ${process.env.ZOOM?'html{font-size:'+process.env.ZOOM+'% !important}':''}`});
+   ${process.env.NEWTAB?"":".tabbar{padding-bottom:calc(34px + 26px) !important}"} ${process.env.ZOOM?'html{font-size:'+process.env.ZOOM+'% !important}':''}`});
   await p.evaluate(()=>window.dispatchEvent(new Event('resize')));await p.waitForTimeout(900);
   return {b,p,errs};
 };

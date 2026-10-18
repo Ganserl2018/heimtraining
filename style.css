@@ -1446,3 +1446,31 @@ body.mood-bad{--text:#fbeeec; --text-dim:#dcc2be; --text-faint:#c9a29c;}
 
 .dt-steps{margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.35rem;font-size:.86rem;line-height:1.35;color:var(--text,#e6edf3);}
 .dt-steps li::marker{color:var(--accent);font-weight:800;}
+
+/* ===== V18 Neu-Optik (Design-Entwurf 8rG4HWfnffiuvERX42XnaL): tiefes Blauschwarz, Mint-Grün #4ade80, Anton + DM Sans, weiche Karten ===== */
+body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
+body.mood-good,body:not(.mood-bad){--bg:#0b0f14; --bg-raise:#131a21; --panel:#131a21; --panel-2:#1a2129; --border:#232e38; --border-soft:#1a2129;
+  --text:#eef2ee; --text-dim:#a3b0ba; --text-faint:#8b98a5; --accent:#4ade80; --chalk:#4ade80; --chalk-deep:#22c55e; --ok:#4ade80; --on-accent:#06210f; --lab-glow:rgba(74,222,128,.4); --tab-acc:#4ade80;}
+body.mood-good,body:not(.mood-bad){background:radial-gradient(120% 55% at 50% -10%,#16301f 0%,#0b0f14 58%) no-repeat,#0b0f14;}
+body:has(.mood-good){--tab-acc:#4ade80;}
+.overview-lab:not(.mood-bad){--lab-bg:#0b0f14; --lab-acc:#4ade80; --lab-glow:rgba(74,222,128,.4); --lab-panel:#131a21; --lab-dim:#a3b0ba; background:radial-gradient(120% 55% at 50% -10%,#16301f 0%,#0b0f14 58%);}
+.overview-lab:not(.mood-bad) .ov-btn{background:#4ade80; color:#06210f;}
+/* Überschriften: Anton */
+.topbar h1,.dt-name,.pp-name,h2.pf-h,.lab-title,.ov-title{font-family:Anton,Impact,'Arial Narrow',sans-serif; font-weight:400; letter-spacing:.04em; text-transform:uppercase;}
+.topbar h1{color:#4ade80; text-shadow:0 0 18px rgba(74,222,128,.35);}
+body.mood-bad .topbar h1{color:var(--accent); text-shadow:0 0 18px rgba(232,48,31,.35);}
+.topbar{border-bottom:1px solid #1a2129; background:transparent;}
+/* Karten, Buttons, Pills weicher */
+.wp-card,.dt-wc,.lab-bar,.lab-card,.xr-card,.sv-card,.gn-more,.pp-tile,.goal-sheet .goal-edit{border-radius:20px;}
+.ov-btn,.chip,.xr-pill,.dt-chip,.dt-bad,.dt-tag,.pp-seg button{border-radius:999px;}
+button.ov-btn,.ov-btn{font-weight:700; letter-spacing:.02em; min-height:48px;}
+.ov-btn{box-shadow:0 12px 26px -14px rgba(74,222,128,.7);}
+body.mood-bad .ov-btn{box-shadow:0 12px 26px -14px rgba(232,48,31,.7);}
+.dt-sheet{border-radius:28px 28px 0 0; background:#0f151b;}
+.dt-sec{font-family:Anton,Impact,sans-serif; font-weight:400; letter-spacing:.14em; color:var(--text-faint);}
+/* Schwebende Tab-Leiste (nur Handy) */
+@media (max-width:819px){
+  .tabbar{left:10px; right:10px; bottom:calc(env(safe-area-inset-bottom,0px) + 6px); padding-bottom:0; border-radius:24px; border:1px solid #2a343e; background:rgba(19,26,33,.94); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); box-shadow:0 18px 40px -16px rgba(0,0,0,.8); overflow:hidden;}
+  .tab.active::before{left:30%; right:30%;}
+  body.mood-bad .tabbar{border-color:#3d2321; background:rgba(36,18,18,.94);}
+}

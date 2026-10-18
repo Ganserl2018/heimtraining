@@ -414,3 +414,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - 16:47 Wochenlimit-Reset = jeden Freitag 22:00 Uhr (Berlin). Erinnerung 23.10. auf 22:00 (20:00Z) verschoben
 - 16:52 szenen-plan.py verfeinert: nur noch 32 von 396 mit ⚠ (Shrugs, Step-Ups, Presses, Rack Pulls u. a.). Hinweis: Squat-Regel nennt 'Stange' auch bei Körpergewichts-Sprüngen → beim Prüfen am Freitag korrigieren.
 - 16:58 V17: Detailseite zeigt Abschnitt 'Anleitung' (3 Schritte, aus anleitungen_de.json, nur für regelbasiert erkannte Übungen ~364; Standard-Fälle ohne Text). ?v=20261018x. iPhone-Test ok.
+- 2026-10-18 17:15 V18 NEU-OPTIK live (Design-Entwurf 8rG4HWfnffiuvERX42XnaL): Blauschwarz #0b0f14, Mint #4ade80, Anton+DM Sans, runde Karten/Pills, schwebende Tab-Leiste, Anleitung-Abschnitt in Detailseite. Rot-Modus bleibt. ?v=20261018y. iPhone-Test (402x874, 118%): Übersicht/Plan/Verlauf/Jetzt ohne Scrollen/Abschneiden. Harness NEWTAB=1.
