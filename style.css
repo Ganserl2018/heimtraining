@@ -1356,3 +1356,26 @@ body.mood-bad{--text:#fbeeec; --text-dim:#dcc2be; --text-faint:#c9a29c;}
 .wp-sw .wp-card{position:relative; background:var(--panel);}
 .wp-arch-h{background:none; border:0; color:var(--text-dim); font-weight:700; font-size:.72rem; letter-spacing:.1em; padding:.6rem 0 .3rem; text-align:left; min-height:44px;}
 .wp-arch{opacity:.85;} .wp-arch button{min-height:44px; padding:0 .8rem; border-radius:999px; border:1px solid var(--border); background:none; color:var(--text); font-weight:700; font-size:.8rem;}
+/* V16i iPhone: Tab-Leiste exakt messen, kompakter, Notfall-Scroll */
+.overview-lab{gap:.55rem; padding-bottom:calc(var(--tabh,5.2rem) + .7rem); overflow-y:auto; overflow-x:hidden; justify-content:space-evenly;}
+#content:has(.overview-lab){overflow:hidden;}
+.overview-lab{overflow:hidden; padding-bottom:calc(var(--tabh,5.2rem) + .1rem);}
+/* V16j Profil iPhone ohne Scrollen */
+@media (max-width:600px){
+  #content:has(.prof-page){padding-bottom:calc(var(--tabh,5rem) + .2rem);}
+  .prof-page{gap:.45rem;}
+  .pp-av{width:54px; height:54px; font-size:1.7rem;} .pp-name{font-size:1.4rem; min-height:36px;}
+  .pp-stats div{padding:.35rem .3rem;} .pp-stats b{font-size:1.6rem;}
+  .pp-tile{height:68px; padding:.2rem;} .pp-tile input{font-size:1.7rem; min-height:34px;}
+  .pp-seg button{min-height:40px;}
+  .pp-goal{padding:.35rem .8rem;} .pp-goal button{min-height:40px;}
+  .pp-reset{min-height:40px;}
+}
+/* V16k Wochenplan iPhone kompakter */
+@media (max-width:600px){
+  .wp .wv-grid .wv-tile{aspect-ratio:1/.4;} .wp .wv-grid{gap:.3rem;}
+  :where(#content) .wp-day{min-height:50px; padding:.25rem 0 .2rem;}
+  .wp .wp-sec{margin:.3rem 0 .15rem;}
+  .wp .wp-add{min-height:30px !important;} .sv-auto{padding-top:.4rem; padding-bottom:.4rem;}
+  .wp .wp-card{padding:.2rem .7rem;}
+}

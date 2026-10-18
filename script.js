@@ -234,7 +234,9 @@ function applyMood() {
   document.body.classList.toggle('mood-good', !bad);
 }
 
-function render() { renderView(); mountDetail(); mountPresetSheet(); }
+function fitTabH() { const tb = document.getElementById('tabbar'); if (!tb) return; const o = Math.max(0, document.body.getBoundingClientRect().bottom - tb.getBoundingClientRect().top); document.documentElement.style.setProperty('--tabh', Math.round(o) + 'px'); }
+window.addEventListener('resize', fitTabH);
+function render() { renderView(); mountDetail(); mountPresetSheet(); fitTabH(); }
 function renderView() {
   document.body.classList.toggle('playing', view === 'play');
   if (weekplan.some(x => x.draft && !(view === 'wtrain' && wId === x.id) && view !== 'picker' && !picker)) weekplan = weekplan.filter(x => !x.draft || (view === 'wtrain' && wId === x.id));
@@ -979,7 +981,7 @@ function renderWeeklist() {
         const tile = p => { const exs = presetExercises(p), e0 = exs[0]; return `<button class="wv-tile" data-act="wpPreset" data-key="${p.key}">${e0 ? `<img src="${esc(imgOf(e0))}" alt="" onerror="this.style.visibility='hidden'">` : ''}<span class="wv-n">${exs.length}</span><span class="wv-name">${esc(p.name)}</span></button>`; };
         const free = p => !weekplan.some(w => w.presetKey === p.key);
         const musc = PRESETS.filter(p => (p.grp === 'musc' || p.grp === 'core') && free(p)), split = PRESETS.filter(p => p.grp === 'split' && free(p));
-        return (musc.length ? `<div class="wp-sec">VORLAGEN · MUSKELGRUPPEN</div><div class="wv-grid">${musc.map(tile).join('')}</div>` : '') + (split.length ? `<div class="wp-sec">VORLAGEN · SPLIT</div><div class="wv-grid">${split.map(tile).join('')}</div>` : '');
+        return (musc.length || split.length ? `<div class="wp-sec">VORLAGEN</div>` : '') + (musc.length ? `<div class="wv-grid">${musc.map(tile).join('')}</div>` : '') + (split.length ? `<div class="wv-grid" style="margin-top:.3rem">${split.map(tile).join('')}</div>` : '');
       })()}`}
     </div>`;
   if (addingTraining) document.getElementById('new-training-name')?.focus();

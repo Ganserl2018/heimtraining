@@ -11,3 +11,4 @@
 - Alex entscheidet: 184 Duplikat-Bilder, Stangengewicht, Token V10-03.
 - **QA-Höhe = echtes iPhone:** Der Standard-Test mit 390x844 liegt ~70px zu großzügig. Immer `tools/qa-iphone-harness.js` nutzen (Viewport 402x815, simulierte Safe-Areas oben 14/unten 34, breitere Tab-Leiste, Anton-Font via `npm i @fontsource/anton` in /tmp/qa-font). Es misst, ob Inhalt unter der Tab-Leiste endet (`fit`). Beispiel: `tools/qa-iphone-run.js` (Server auf Port 8793 nötig). Beim Checker-Agent immer mitgeben.
 - body-Höhe = 100dvh minus Safe-Areas (sonst ragt der Inhalt unter die Tab-Leiste, "schneidet ab").
+- **QA-Maße Alex-iPhone (18.10. aus Screenshot ermittelt):** Viewport 402x874, Safe-Area oben 59/unten 34, Text ~118% größer als Standard (Tab "Übungen" ohne Umbruch!). Test immer: `ZOOM=118 VH=874 ET=59 EB=34 node …` mit `tools/qa-iphone-harness.js` (Env VW/VH/ET/EB/ZOOM). Kein Scrollen auf Übersicht/Profil/Wochenplan; Tab-Leisten-Höhe wird per JS als `--tabh` gemessen.
