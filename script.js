@@ -768,11 +768,10 @@ function renderGen() {
     <div class="lv"><div class="lv-h">Zeit</div><div class="lv-pills">${[20, 30, 45, 60].map(d => pill('genDur', d, d + ' Min', genCfg.dur === d)).join('')}</div></div>
     <div class="lv"><div class="lv-h">Fokus${genCfg.groups.length ? '' : ' <em>· mindestens eine wählen</em>'}</div><div class="lv-pills">${MUSCLE_GROUP_LIST.map(m => pill('genGrp', m, m, genCfg.groups.includes(m))).join('')}</div></div>
     <div class="lv"><div class="lv-h">Geräte heute</div><div class="lv-pills">${GEAR.map(([k, l]) => pill('genGear', k, l, genCfg.gear.includes(k))).join('')}</div></div>
-    <div class="lv"><div class="lv-h">Mindestens</div><div class="lv-row"><span>Sätze</span>${[0, 3, 4, 5].map(c => pill('genMinS', c, c || 'Auto', genCfg.minSets === c)).join('')}</div><div class="lv-row"><span>Wdh</span>${[0, 8, 10, 12, 15].map(c => pill('genMinR', c, c || 'Auto', genCfg.minReps === c)).join('')}</div></div>
-    <details class="gn-more"><summary>Mehr: Level, Ziel, Anzahl</summary>
+    <div class="lv"><div class="lv-h">Umfang</div><div class="lv-row"><span>Übungen</span>${[0, 3, 4, 5, 6, 8].map(c => pill('genCnt', c, c || 'Auto', (genCfg.count || 0) === c)).join('')}</div><div class="lv-row"><span>Sätze</span>${[0, 3, 4, 5].map(c => pill('genMinS', c, c || 'Auto', genCfg.minSets === c)).join('')}</div><div class="lv-row"><span>Wdh</span>${[0, 8, 10, 12, 15].map(c => pill('genMinR', c, c || 'Auto', genCfg.minReps === c)).join('')}</div></div>
+    <details class="gn-more"><summary>Mehr: Level, Ziel</summary>
     <div class="lv"><div class="lv-h">Level</div><div class="lv-pills">${LEVELS.map(([k, l], x) => pill('genLv', x, l, lv === x)).join('')}</div></div>
     <div class="lv"><div class="lv-h">Ziel</div><div class="lv-pills">${GOALS.map(([k, l]) => pill('genGoal', k, l, genCfg.goal === k)).join('')}</div></div>
-    <div class="lv"><div class="lv-h">Anzahl Übungen</div><div class="lv-pills">${[0, 3, 4, 5, 6, 8, 10].map(c => pill('genCnt', c, c ? c : 'Auto', (genCfg.count || 0) === c)).join('')}</div></div>
     </details>
     ${genRes && genRes.length ? '' : `<div class="gn-btns"><button class="pl-next ts-go" data-act="genDo"${genCfg.groups.length ? '' : ' disabled'}>✨ ZUSAMMENSTELLEN</button><button class="ts-add gn-sur" data-act="genSurprise">🎲 Überrasch mich<small>Tausch der Muskelgruppen und der Übungen</small></button></div>`}
     ${res}
