@@ -129,6 +129,8 @@ function saveProg() { try { localStorage.setItem(PKEY, JSON.stringify(progress))
 const setsOf = name => { const d = prog().done[day]; return (d && Array.isArray(d[name])) ? d[name] : []; };
 
 let namesDe = {}; // names_de.json: englischer Schlüsselname -> deutsche Anzeige
+const BADKEY = 'heimtraining.badimg';
+function loadBad() { try { return JSON.parse(localStorage.getItem(BADKEY)) || []; } catch (e) { return []; } }
 const dn = n => (loadProfile().lang === 'en' ? n : (namesDe[n] || n));
 let gearFix = {}; // gearfix.json: Name -> {s:'ok'|'no', g:[Geräte]} (Alex' Heim-Gym, fest)
 let metByName = {}; // V8-01/03: name -> MET-Wert
@@ -1291,6 +1293,7 @@ function renderProfile() {
       </div>
       <div class="pp-goal pp-t" style="--i:7"><div><small>ZIEL</small><span><b>${goal.target}</b> Trainings in ${goal.periodDays === 7 ? '1 Woche' : goal.periodDays + ' Tagen'}</span></div><button data-act="goalEditFromProfile">Anpassen</button></div>
       <button class="pp-reset pp-t" style="--i:8" data-act="helperReset">Trainingshinweise zurücksetzen</button>
+      ${loadBad().length ? `<button class="pp-reset pp-t" style="--i:9" data-act="badCopy">⚑ ${loadBad().length} falsche Bilder · Liste kopieren</button>` : ''}
     </div>`;
 }
 
@@ -1391,6 +1394,7 @@ function detailSheetHtml(ex) {
     <div class="dt-hero"><img src="${esc(imgOf(ex))}" alt="" onerror="this.style.visibility='hidden'"></div>
     <div class="dt-body">
       <h2 class="dt-name">${esc(dn(ex.name))}</h2>
+      <button class="dt-bad${loadBad().includes(ex.name) ? ' on' : ''}" data-act="badImg" data-name="${esc(ex.name)}">${loadBad().includes(ex.name) ? '✓ Bild als falsch markiert' : '⚑ Bild falsch'}</button>
       <div class="dt-tags"><span class="dt-tag on">${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</span>${MUSCLE_GROUPS[ex.muscle] && MUSCLE_GROUPS[ex.muscle] !== (MUSCLE_DE[ex.muscle] || ex.muscle) ? `<span class="dt-tag">${MUSCLE_GROUPS[ex.muscle]}</span>` : ''}<span class="dt-tag">${equipLabel(ex.name)}</span></div>
       ${sec.length ? `<div class="dt-secm">Zusätzlich: ${sec.join(', ')}</div>` : ''}
       <div class="dt-sec">Gewichtsklassen</div>
@@ -1764,6 +1768,8 @@ content.addEventListener('click', e => {
     case 'exInfo': { const k = pool.findIndex(x => x.name === btn.dataset.name); if (k >= 0) browseSel = k; break; }
     case 'txToggle': txOpen = txOpen === btn.dataset.key ? null : btn.dataset.key; break;
     case 'browsePick': browseSel = Number(btn.dataset.p); break;
+    case 'badImg': { const l = loadBad(), n = btn.dataset.name, k = l.indexOf(n); if (k >= 0) l.splice(k, 1); else l.push(n); try { localStorage.setItem(BADKEY, JSON.stringify(l)); } catch (e) {} break; }
+    case 'badCopy': { const t = loadBad().join('\n'); try { navigator.clipboard.writeText(t); btn.textContent = '✓ Kopiert'; } catch (e) { prompt('Liste:', t); } return; }
     case 'browseClose': browseSel = null; break;
     case 'browseAdd': {
       const t = trainingById(btn.dataset.id), ex = pool[browseSel];
