@@ -864,7 +864,7 @@ function renderStart() {
   const pack = t => `<div class="sv-wrap"><button class="sv-del" data-act="stDelete" data-id="${t.id}" aria-label="Training löschen">🗑</button><button class="sv-pack${t.presetKey ? ' pre' : ' sv-own'}" data-act="stStart" data-id="${t.id}">
       <span class="sv-pk-tag">${t.presetKey ? 'VORLAGE' : '★ EIGEN'}</span>
       <span class="sv-pk-bot">
-        <span class="sv-pk-name">${esc(t.name)}</span>
+        <span class="sv-pk-name nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></span>
         <span class="sv-pk-meta"><b class="sv-pk-n">${t.exercises.length}</b> Übung${t.exercises.length === 1 ? '' : 'en'}<i>${esc(muscles(t.exercises))}</i></span>
       </span>
       <span class="sv-pk-go" aria-hidden="true">›</span></button></div>`;
@@ -1014,7 +1014,7 @@ function renderPreview() {
   const sets = t.exercises.reduce((a, e) => a + (e.sets || 3), 0);
   content.innerHTML = `<div class="pv">
     <div class="pl-top"><button class="pl-x" data-act="prevBack" aria-label="Zurück">‹</button>
-      <div class="pl-title"><b>${esc(t.name)}</b><span>${t.exercises.length} Übungen · ${sets} Sätze</span></div>
+      <div class="pl-title"><b class="nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></b><span>${t.exercises.length} Übungen · ${sets} Sätze</span></div>
       ${p ? '' : `<button class="pl-x pl-del" data-act="prevDelete" aria-label="Training löschen">🗑</button>`}</div>
     <div class="pv-list">${t.exercises.map((e, i) => `<div class="pv-ex exinfo" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span>
       <img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
@@ -1055,12 +1055,12 @@ function renderWeeklist() {
     const st = trainingStatusForDate(t, t0);
     return `<div class="wp-sw" data-sw="${t.id}"><div class="wp-sw-bg"><span class="a">📥 Archiv</span><span class="d">Löschen 🗑</span></div><div class="wp-card" data-act="wOpen2" data-id="${t.id}">
       <div class="wp-thumbs">${th || DB}</div>
-      <div class="wp-card-body"><div class="wp-card-name">${esc(t.name)}</div><div class="wp-card-meta">${meta(t)}${st ? ' · ' + STATUS_LABEL[st] : ''}</div></div>
+      <div class="wp-card-body"><div class="wp-card-name nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></div><div class="wp-card-meta">${meta(t)}${st ? ' · ' + STATUS_LABEL[st] : ''}</div></div>
       <span class="wp-chev">›</span>
     </div></div>`;
   }).join('');
   const arch = loadArchive();
-  const archBlock = arch.length ? `<button class="wp-arch-h" data-act="archToggle">ARCHIV (${arch.length}) ${archOpen ? '▾' : '▸'}</button>${archOpen ? arch.map(t => `<div class="wp-card wp-arch"><div class="wp-card-body"><div class="wp-card-name">${esc(t.name)}</div><div class="wp-card-meta">${t.exercises.length} Übungen</div></div><button data-act="wRestore" data-id="${t.id}">Zurückholen</button></div>`).join('') : ''}` : '';
+  const archBlock = arch.length ? `<button class="wp-arch-h" data-act="archToggle">ARCHIV (${arch.length}) ${archOpen ? '▾' : '▸'}</button>${archOpen ? arch.map(t => `<div class="wp-card wp-arch"><div class="wp-card-body"><div class="wp-card-name nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></div><div class="wp-card-meta">${t.exercises.length} Übungen</div></div><button data-act="wRestore" data-id="${t.id}">Zurückholen</button></div>`).join('') : ''}` : '';
   content.innerHTML = `
     <div class="wp">
       <div class="wp-sec">DIESE WOCHE</div>
@@ -1225,7 +1225,7 @@ function renderWTrain() {
     : step === 5 && hasEx ? hint('go', 5, 'Fertig eingerichtet! Tippe auf „Training starten“, wenn du loslegen willst. Alles lässt sich jederzeit ändern.') : '';
   const head = renameId === t.id
     ? `<div class="tx-head"><input id="rename-input" placeholder="Name des Trainings…" value="${esc(t.name)}"><div class="tx-hbtns"><button data-act="wRenameSave" data-id="${t.id}">Speichern</button><button data-act="wRenameCancel" data-id="${t.id}">Abbrechen</button></div></div>`
-    : `<div class="tx-head"><h2>${esc(t.name)}</h2><span class="lab-chip"><i></i>${t.exercises.length} ÜBUNG${t.exercises.length === 1 ? '' : 'EN'} · ${totalSets} SÄTZE</span><div class="tx-hbtns"><button data-act="wRename" data-id="${t.id}">Umbenennen</button></div></div>`;
+    : `<div class="tx-head"><h2 class="nm-edit" data-act="wRename" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></h2><span class="lab-chip"><i></i>${t.exercises.length} ÜBUNG${t.exercises.length === 1 ? '' : 'EN'} · ${totalSets} SÄTZE</span><div class="tx-hbtns"><button data-act="wRename" data-id="${t.id}">Umbenennen</button></div></div>`;
   const dayLbl = hasDays ? WD_KEYS.filter(k => t.weekdays.includes(k)).map(k => WD_LABELS[k]).join(' ') : 'Tage wählen';
   const lvNow = t.level != null ? LEVELS[t.level][1] : 'Level';
   const ctl = hasEx ? `<aside class="tx-ctl${ctlOpen ? ' open' : ''}">
@@ -1529,7 +1529,7 @@ function flushQ() {
 flushQ();
 
 content.addEventListener('click', e => {
-  const btn = e.target.closest('button[data-act], .exinfo[data-act], .dt-bg[data-act], .weeklist-card[data-act], .wp-card[data-act], .history-item[data-act], .hv-card[data-act]');
+  const btn = e.target.closest('.nm-edit[data-act], button[data-act], .exinfo[data-act], .dt-bg[data-act], .weeklist-card[data-act], .wp-card[data-act], .history-item[data-act], .hv-card[data-act]');
   if (!btn) return;
   if ((btn.classList.contains('dt-bg') || btn.classList.contains('ps-bg')) && e.target !== btn) return;
   const i = Number(btn.dataset.i);
@@ -1711,6 +1711,7 @@ content.addEventListener('click', e => {
       addingTraining = false; wId = t.id; view = 'wtrain'; break;
     }
     case 'wRename': renameId = btn.dataset.id; break;
+    case 'tName': wId = btn.dataset.id; renameId = btn.dataset.id; view = 'wtrain'; break;
     case 'wRenameCancel': { const d = trainingById(btn.dataset.id); if (d && d.draft) { weekplan = weekplan.filter(x => x !== d); view = 'weeklist'; } renameId = null; break; }
     case 'wRenameSave': {
       const name = (document.getElementById('rename-input')?.value || '').trim();

@@ -1450,3 +1450,5 @@ body.mood-bad{--text:#fbeeec; --text-dim:#dcc2be; --text-faint:#c9a29c;}
 
 .gn-name{width:100%; min-height:44px; padding:.5rem .8rem; border-radius:12px; border:1px solid var(--border); background:var(--panel); color:var(--text); font-size:1rem;}
 .gn-name::placeholder{color:var(--text-faint);}
+
+.nm-edit{cursor:text;} .nm-pen{font-style:normal; font-size:.62em; margin-left:.4em; opacity:.55; vertical-align:middle;}
