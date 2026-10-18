@@ -396,3 +396,9 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - 5 Probe-GIFs (Mann) via Gemini/Chrome erzeugt (Bankdrücken, RDL, Face Pull, KH-Schulterdrücken, Kniebeuge), Aufnahme ohne Download per Zoom+save_to_disk (Cursor per Inpaint entfernt, unterer 4,5%-Rand abgeschnitten).
 - Alex: Helligkeit ok, Übergänge verschwommen (Doppelbild-Ghosting bei großer Bewegung). Fix v2 RDL: Zwischenbild von Gemini ("Not right… nur 20° Neigung") + tools/makegif_multi.py (Keyframes, N=6, SHARP=5). Test geschickt, Entscheidung zu den anderen 4 offen.
 - Offen: Mittelbilder für Bench/FP/DP/Squat; dann Entscheid Alex: ganzen Bildsatz im neuen Stil neu (M+W gleiche Szene).
+
+## 18.10. 16:15 – GIF-Übergänge: was die Lösung war (Alex: "jetzt passt es")
+- Lösung = Methode vom 4.10.: `python3 tools/makegif.py start.png end.png out.gif --blend --sharp 2 --frames 8 --ms 70 --hold 600` (nur 2 Bilder, reines kurzes Überblenden, lange Standbilder). NICHT Flow (Auto wählt bei großer Bewegung FLOW → Doppelkopf/Wackeln), NICHT makegif_multi/Zwischenposen (Gemini setzt Hüfte/Stange pro Bild anders → Wackeln). makegif_multi.py bleibt im Repo, nicht benutzen.
+- Bild-Regeln RDL (gelten für alle Probe-Übungen): Start UND Ende im gleichen Chat mit "PURE SIDE PROFILE, shoulders and hips perpendicular to camera, NO torso rotation toward the camera"; Endbild ausdrücklich tiefer ("Stange eine Handbreit über dem Boden", 60° Neigung); Startbild neu im selben Profil erzeugen, wenn das erste leicht gedreht ist (Alex: "dreht sich während der Übung").
+- Aufnahme ohne Download: Chrome zoom+save_to_disk, unteren 4,5 % abschneiden (Gemini-Handle), Mauszeiger im Bild per cv2.inpaint entfernen.
+- Offen: Bench/Face Pull/KH-Schulter/Kniebeuge mit demselben Verfahren (Profil-Endbild, --blend --sharp 2); dann Alex-Entscheid über ganzen Bildsatz.
