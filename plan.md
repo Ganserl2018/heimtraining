@@ -421,3 +421,10 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - 2026-10-18 17:30 Jetzt trainieren: Namensfeld gleich am Anfang (optional, Standard 'Auto · Fokus'); Umbenennen später im Training wie gehabt. ?v=20261018c
 - 2026-10-18: Trainingsname überall anklickbar (Wochenplan-Karte, Archiv, Detail-Titel, Vorschau, Pack-Name) → Umbenennen; Player-Titel nicht. v=20261018d
 - 2026-10-18: Stift-Symbol als grüner Kreis-Badge, Name nicht mehr abgeschnitten, Umbenennen-Button entfernt (v=20261018e)
+
+## Warteliste – Alex-Ideen 2026-10-18 23:03 (Optik-Umbau "mehr Wumms", einfacher/intuitiver) – NICHT bauen bis Go
+- W1 Startseite: nur EIN großer runder Start-Button, sonst nichts.
+- W2 Seite 2 = Planungsseite: alles sofort gut sichtbar + intuitiv einstellbar, Trainings werden hier gespeichert.
+- W3 Übungsseite: Bilder GANZ groß (aktuell zu klein).
+- W4 Selbst erstellte Trainings: Seite intuitiver + übersichtlicher.
+- Hinweis: weitere Ideen folgen; Optik muss auf Neon-Grün + Lichteinfall aufbauen (V18 Mint abgelehnt).
