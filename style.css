@@ -1435,3 +1435,6 @@ body.mood-bad{--text:#fbeeec; --text-dim:#dcc2be; --text-faint:#c9a29c;}
 .gp-list{flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch}
 .gp-r{display:flex; align-items:center; gap:.7rem; width:100%; text-align:left; background:transparent; border:0; border-bottom:1px solid rgba(255,255,255,.06); padding:.4rem .1rem; color:#fff}
 .gp-r img{width:48px; height:48px; border-radius:10px; object-fit:cover; background:#10171a} .gp-r b{display:block; font-size:.9rem} .gp-r em{font-style:normal; font-size:.75rem; opacity:.7}
+
+.gp-x{width:auto; padding:0 .8rem; border:1px solid rgba(255,255,255,.25); border-radius:12px; font-size:.9rem; font-weight:800}
+.gp-cancel{flex:none; margin-top:.6rem; min-height:52px; border-radius:14px; border:2px solid var(--accent,#b6f04a); background:transparent; color:var(--accent,#b6f04a); font-weight:900; font-size:1rem; margin-bottom:env(safe-area-inset-bottom)}
