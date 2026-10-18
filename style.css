@@ -1428,7 +1428,7 @@ body.mood-bad{--text:#fbeeec; --text-dim:#dcc2be; --text-faint:#c9a29c;}
 
 .gn-pk{margin-left:auto; flex:none; width:44px; height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.18); background:transparent; color:var(--accent,#b6f04a); font-size:1.2rem}
 .gn-sw[data-dir=r] .gn-sw-bg{background:#b88a00}
-.gp-ov{position:fixed; inset:0; z-index:60; background:var(--bg,#14171a); display:flex; flex-direction:column; padding:calc(env(safe-area-inset-top) + .6rem) 1rem 1rem}
+.gp-ov{position:fixed; inset:0; z-index:500; background:var(--bg,#14171a); display:flex; flex-direction:column; padding:calc(env(safe-area-inset-top) + .6rem) 1rem 1rem}
 .gp-h{display:flex; justify-content:space-between; align-items:center; font-size:1.05rem; margin-bottom:.5rem}
 .gp-x{width:44px; height:44px; border:0; background:transparent; color:#fff; font-size:1.3rem}
 .gp-q{width:100%; padding:.7rem .8rem; border-radius:12px; border:1px solid rgba(255,255,255,.2); background:#1d2124; color:#fff; font-size:1rem; margin-bottom:.5rem}

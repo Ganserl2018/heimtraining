@@ -238,7 +238,18 @@ function applyMood() {
 
 function fitTabH() { const tb = document.getElementById('tabbar'); if (!tb) return; const o = Math.max(0, document.body.getBoundingClientRect().bottom - tb.getBoundingClientRect().top); document.documentElement.style.setProperty('--tabh', Math.round(o) + 'px'); }
 window.addEventListener('resize', fitTabH);
-function render() { renderView(); mountDetail(); mountPresetSheet(); fitTabH(); }
+function mountGenPick() { // Direktauswahl liegt am body (über Kopfzeile + Tab-Leiste)
+  const old = document.getElementById('gp-root'); if (old) old.remove();
+  if (view !== 'gen' || genPick < 0 || !genRes || !genRes[genPick]) return;
+  const d = document.createElement('div'); d.id = 'gp-root'; d.innerHTML = genPickHtml();
+  d.addEventListener('click', e => {
+    const b = e.target.closest('[data-act]'); if (!b) return;
+    if (b.dataset.act === 'genPickDo') genPickSet(b.dataset.name); else if (b.dataset.act === 'genPickClose') genPick = -1; else return;
+    render();
+  });
+  document.body.appendChild(d);
+}
+function render() { renderView(); mountDetail(); mountPresetSheet(); mountGenPick(); fitTabH(); }
 function renderView() {
   document.body.classList.toggle('playing', view === 'play');
   if (weekplan.some(x => x.draft && !(view === 'wtrain' && wId === x.id) && view !== 'picker' && !picker)) weekplan = weekplan.filter(x => !x.draft || (view === 'wtrain' && wId === x.id));
@@ -818,7 +829,6 @@ function renderGen() {
     </details>
     ${genRes && genRes.length ? '' : `<div class="gn-btns"><button class="pl-next ts-go" data-act="genDo"${genCfg.groups.length ? '' : ' disabled'}>✨ ZUSAMMENSTELLEN</button><button class="ts-add gn-sur" data-act="genSurprise">🎲 Überrasch mich<small>Tausch der Muskelgruppen und der Übungen</small></button></div>`}
     ${res}
-    ${genPick >= 0 && genRes && genRes[genPick] ? genPickHtml() : ''}
   </div>`;
   if (scrollRes) setTimeout(() => { const r = document.querySelector('.gn-res'); if (r) r.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
 }
