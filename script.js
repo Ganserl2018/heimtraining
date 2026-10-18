@@ -719,12 +719,34 @@ const GCOUNT = { 20: [2, 3, 4], 30: [3, 4, 5], 45: [4, 5, 6], 60: [5, 7, 8], 90:
 function genLevel() { return genCfg.lv != null ? genCfg.lv : (loadProfile().level != null ? loadProfile().level : 0); }
 function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 function isCompound(n) { n = n.toLowerCase(); return !/pullover|pushdown|fly|flye|raise|curl|extension|kickback|shrug/.test(n) && /press|squat|deadlift|row|pull-?up|pulldown|lunge|dip|chin|push-?up/.test(n); }
+function genBase(lv) {
+  const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine/i;
+  const hard = /deadlift|rack pull|clean|snatch|jerk|weighted|good morning|behind (the )?neck|guillotine|zercher|jefferson|overhead squat|olympic|sissy|muscle.up|atlas|pistol|single-arm push/i;
+  return pool.filter(e => !bad.test(e.name) && !(gearFix[e.name] && gearFix[e.name].s === 'no') && MUSCLE_GROUPS[e.muscle] && (lv > 0 || !hard.test(e.name)) && gearOf(e.name).every(k => genCfg.gear.includes(k)));
+}
+// Wisch-Tausch: Übung i raus, passende neue (gleiche Gruppe, Geräte ok, nicht schon drin) rückt nach
+function genSwap(i) {
+  const old = genRes && genRes[i]; if (!old) return;
+  const lv = genLevel(), grp = MUSCLE_GROUPS[old.muscle], inList = genRes.map(x => x.name);
+  const ok = e => MUSCLE_GROUPS[e.muscle] === grp && !inList.includes(e.name);
+  let c = genBase(lv).filter(e => ok(e) && e.muscle === old.muscle);
+  if (grp === 'Rücken' || !c.length) c = genBase(lv).filter(ok);
+  if (!c.length) return;
+  const same = c.filter(e => isCompound(e.name) === isCompound(old.name));
+  const e = shuffle(same.length ? same : c)[0];
+  const ex = { name: e.name, muscle: e.muscle, gif: e.gif, sets: 3, note: '', unit: defaultUnit(e.name) };
+  const r = suggestEx(ex, lv, genCfg.goal); ex.sets = Math.max(r.sets, genCfg.minSets || 0);
+  const reps = ex.unit === 'sek' ? r.reps : Math.max(r.reps, genCfg.minReps || 0);
+  ex.plan = Array.from({ length: ex.sets }, () => ({ w: r.w, r: reps }));
+  genRes[i] = ex; genSwapped = i;
+}
+let genSwapped = -1;
 function generate() {
   const lv = genLevel(), g = genCfg.groups.length ? genCfg.groups : ['Brust'];
   let last = []; try { last = JSON.parse(localStorage.getItem(GENKEY)) || []; } catch (e) {}
   const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine/i;
   const hard = /deadlift|rack pull|clean|snatch|jerk|weighted|good morning|behind (the )?neck|guillotine|zercher|jefferson|overhead squat|olympic|sissy|muscle.up|atlas|pistol|single-arm push/i;
-  const base = pool.filter(e => !bad.test(e.name) && !(gearFix[e.name] && gearFix[e.name].s === 'no') && MUSCLE_GROUPS[e.muscle] && (lv > 0 || !hard.test(e.name)) && gearOf(e.name).every(k => genCfg.gear.includes(k)));
+  const base = genBase(lv);
   const n = genCfg.count || GCOUNT[genCfg.dur][lv], isoMax = genCfg.count ? Math.ceil(n / 2) : GISO[genCfg.dur];
   const gs = g.slice().sort((a, b) => GRANK[b] - GRANK[a]);
   const per = gs.map((_, i) => Math.floor(n / gs.length) + (i < n % gs.length ? 1 : 0));
@@ -751,7 +773,7 @@ function generate() {
   exs.forEach(ex => { const r = suggestEx(ex, lv, genCfg.goal); ex.sets = Math.max(r.sets, genCfg.minSets || 0); const reps = ex.unit === 'sek' ? r.reps : Math.max(r.reps, genCfg.minReps || 0); ex.plan = Array.from({ length: ex.sets }, () => ({ w: r.w, r: reps })); });
   if (!exs.length) { genRes = []; genJust = true; return; }
   try { localStorage.setItem(GENKEY, JSON.stringify(picked.map(e => e.name).concat(last).slice(0, 24))); } catch (e) {}
-  genRes = exs; genJust = true;
+  genRes = exs; genJust = true; genSwapped = -1;
 }
 function genSave(start) {
   if (!genRes || !genRes.length) return;
@@ -763,9 +785,9 @@ function genSave(start) {
 function renderGen() {
   const lv = genLevel(), p = loadProfile();
   const pill = (act, v, l, on) => `<button class="lv-p${on ? ' on' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
-  const res = genRes && !genRes.length ? `<div class="gn-res"><div class="lv-note">Mit diesen Geräten und diesem Fokus finde ich keine Übungen. Mehr Geräte oder anderen Fokus wählen.</div></div>` : genRes ? `<div class="gn-res">${genRes.map((e, i) => `<div class="gn-ex exinfo" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
-      <div><b>${esc(e.name)}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)} · ${e.sets} × ${e.plan[0].r} ${e.unit === 'sek' ? 'Sek' : 'Wdh'}${e.plan[0].w != null && e.unit === 'kg' ? ' · ca. ' + e.plan[0].w + ' kg' : ''}</em></div></div>`).join('')}
-      <div class="lv-note">Vorschlag mit ca.-Werten. Technik vor Gewicht, bei Schmerzen abbrechen.${!p.weight && genRes.some(e => e.unit === 'kg') ? ' Gewicht im Profil eintragen, dann kommen auch kg-Vorschläge.' : ''}</div>
+  const res = genRes && !genRes.length ? `<div class="gn-res"><div class="lv-note">Mit diesen Geräten und diesem Fokus finde ich keine Übungen. Mehr Geräte oder anderen Fokus wählen.</div></div>` : genRes ? `<div class="gn-res">${genRes.map((e, i) => `<div class="gn-sw" data-gsw="${i}"><div class="gn-sw-bg"><span>↻ Neue Übung</span><span>Neue Übung ↻</span></div><div class="gn-ex exinfo${i === genSwapped ? ' gn-new' : ''}" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+      <div><b>${esc(e.name)}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)} · ${e.sets} × ${e.plan[0].r} ${e.unit === 'sek' ? 'Sek' : 'Wdh'}${e.plan[0].w != null && e.unit === 'kg' ? ' · ca. ' + e.plan[0].w + ' kg' : ''}</em></div></div></div>`).join('')}
+      <div class="lv-note">Wischen = Übung tauschen. Vorschlag mit ca.-Werten. Technik vor Gewicht, bei Schmerzen abbrechen.${!p.weight && genRes.some(e => e.unit === 'kg') ? ' Gewicht im Profil eintragen, dann kommen auch kg-Vorschläge.' : ''}</div>
       <div class="gn-btns"><button class="ts-save" data-act="genSave">✓ SPEICHERN</button><button class="pl-next ts-go" data-act="genGo">▶ SPEICHERN &amp; STARTEN</button><button class="ts-add" data-act="genDo">⟳ Neu mischen</button></div></div>` : '';
   const scrollRes = genJust; genJust = false;
   content.innerHTML = `<div class="gn">
@@ -1928,6 +1950,28 @@ content.addEventListener('touchend', () => {
     else if (confirm(`Training „${t.name}“ löschen? (Verlauf bleibt erhalten)`)) { weekplan = weekplan.filter(x => x.id !== id); saveWeekplan(); }
     render();
   }, 180);
+});
+// Wischen in der Auto-Ergebnisliste: Übung tauschen
+let _gs = null;
+content.addEventListener('touchstart', e => {
+  const w = e.target.closest('.gn-sw'); if (!w || e.touches.length !== 1) { _gs = null; return; }
+  _gs = { w, card: w.querySelector('.gn-ex'), x: e.touches[0].clientX, y: e.touches[0].clientY, dx: 0, lock: '' };
+}, { passive: true });
+content.addEventListener('touchmove', e => {
+  if (!_gs) return;
+  const dx = e.touches[0].clientX - _gs.x, dy = e.touches[0].clientY - _gs.y;
+  if (!_gs.lock) { if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy) * 1.5) _gs.lock = 'h'; else if (Math.abs(dy) > 8) { _gs = null; return; } else return; }
+  e.preventDefault(); _gs.dx = dx; _gs.card.style.transition = 'none'; _gs.card.style.transform = `translateX(${dx}px)`; _gs.w.dataset.dir = dx > 0 ? 'r' : 'l';
+}, { passive: false });
+content.addEventListener('touchend', () => {
+  if (!_gs) return;
+  const { w, card, dx, lock } = _gs; _gs = null;
+  if (lock !== 'h') return;
+  _swDone = Date.now();
+  card.style.transition = 'transform .18s';
+  if (Math.abs(dx) < Math.min(90, w.offsetWidth * 0.25)) { card.style.transform = ''; return; }
+  card.style.transform = `translateX(${dx > 0 ? '110%' : '-110%'})`;
+  setTimeout(() => { genSwap(Number(w.dataset.gsw)); render(); }, 170);
 });
 content.addEventListener('click', e => { if (Date.now() - _swDone < 400) { e.stopPropagation(); e.preventDefault(); } }, true);
 // Schnellwahl-Chips: setzen/addieren, Fokus im Feld behalten (Tastatur bleibt)

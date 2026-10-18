@@ -1418,3 +1418,10 @@ body.mood-bad{--text:#fbeeec; --text-dim:#dcc2be; --text-faint:#c9a29c;}
 .gn .lv-p{padding:0 .38rem; font-size:.7rem;} .gn .lv-pills{gap:.18rem;}
 .lv-row span{width:3.6rem;}
 .gn .lv{margin-bottom:.2rem;}
+
+/* V17 Wisch-Tausch Auto-Liste */
+.gn-sw{position:relative; overflow:hidden; touch-action:pan-y}
+.gn-sw-bg{position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between; padding:0 1rem; font-weight:800; font-size:.8rem; background:#1d6fb8; color:#fff}
+.gn-sw-bg span{opacity:0} .gn-sw[data-dir=r] .gn-sw-bg span:first-child,.gn-sw[data-dir=l] .gn-sw-bg span:last-child{opacity:1}
+.gn-sw .gn-ex{position:relative; background:var(--bg,#0f1417)}
+.gn-new{animation:gnIn .25s ease-out} @keyframes gnIn{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
