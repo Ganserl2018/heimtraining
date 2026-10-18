@@ -1174,7 +1174,7 @@ body:has(.overview-lab) .lab-head-title{font-family:Anton,Impact,'Arial Narrow',
 
 /* V15: Korrekturen 13.10. */
 /* 5: Übungsbilder heller */
-img[src*="img/"],.xr-img,.tx-th img,.browse-gif,.hv-card img,.pv-ex img,.hd-th img{filter:brightness(1.2) contrast(1.03);}
+img[src*="img/"],.xr-img,.tx-th img,.browse-gif,.hv-card img,.pv-ex img,.hd-th img{filter:url(#lift) contrast(1.04);}
 .player-bg,.pf-bg{filter:brightness(1.12);}
 /* 1/2: Übungs-Detailsheet */
 .dt-bg{align-items:flex-end; padding:0; padding-bottom:0; z-index:60;}
