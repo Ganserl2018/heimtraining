@@ -731,6 +731,8 @@ function genLevel() { return genCfg.lv != null ? genCfg.lv : (loadProfile().leve
 function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 function isCompound(n) { n = n.toLowerCase(); return !/pullover|pushdown|fly|flye|raise|curl|extension|kickback|shrug/.test(n) && /press|squat|deadlift|row|pull-?up|pulldown|lunge|dip|chin|push-?up/.test(n); }
 const SPOTS = ['lower back', 'lats', 'middle back', 'traps', 'neck', 'glutes', 'hamstrings', 'quadriceps', 'calves', 'biceps', 'triceps', 'forearms', 'abductors', 'adductors'];
+const spotGrp = m => MUSCLE_GROUPS[m] === 'Sonstiges' ? 'Schultern' : MUSCLE_GROUPS[m];
+const grpOn = m => genCfg.groups.includes(m) || genCfg.groups.some(x => x.startsWith('m:') && spotGrp(x.slice(2)) === m);
 const grpLabel = g => g.startsWith('m:') ? (MUSCLE_DE[g.slice(2)] || g.slice(2)) : g;
 function genBase(lv) {
   const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine/i;
@@ -822,7 +824,7 @@ function renderGen() {
   content.innerHTML = `<div class="gn">
     <div class="pl-top"><button class="pl-x" data-act="genBack" aria-label="Zurück">‹</button><div class="pl-title"><b>Jetzt trainieren</b><span>Zeit, Fokus, Geräte – den Rest macht die App</span></div></div>
     <div class="lv"><div class="lv-h">Zeit</div><div class="lv-pills">${[20, 30, 45, 60].map(d => pill('genDur', d, d + ' Min', genCfg.dur === d)).join('')}</div></div>
-    <div class="lv"><div class="lv-h">Fokus${genCfg.groups.length ? '' : ' <em>· mindestens eine wählen</em>'}</div><div class="lv-pills">${MUSCLE_GROUP_LIST.map(m => pill('genGrp', m, m, genCfg.groups.includes(m))).join('')}</div></div>
+    <div class="lv"><div class="lv-h">Fokus${genCfg.groups.length ? '' : ' <em>· mindestens eine wählen</em>'}</div><div class="lv-pills">${MUSCLE_GROUP_LIST.map(m => pill('genGrp', m, m, grpOn(m))).join('')}</div></div>
     <details class="gn-more"${genCfg.groups.some(x => x.startsWith('m:')) ? ' open' : ''}><summary>Genau: Körperstelle${genCfg.groups.filter(x => x.startsWith('m:')).map(x => ' · ' + grpLabel(x)).join('')}</summary><div class="lv"><div class="lv-pills">${SPOTS.map(m => pill('genGrp', 'm:' + m, MUSCLE_DE[m] || m, genCfg.groups.includes('m:' + m))).join('')}</div></div></details>
     <div class="lv"><div class="lv-h">Geräte heute</div><div class="lv-pills">${GEAR.map(([k, l]) => pill('genGear', k, l, genCfg.gear.includes(k))).join('')}</div></div>
     <div class="lv"><div class="lv-h">Umfang</div><div class="lv-row"><span>Übungen</span>${[0, 3, 4, 5, 6, 8].map(c => pill('genCnt', c, c || 'Auto', (genCfg.count || 0) === c)).join('')}</div><div class="lv-row"><span>Sätze</span>${[0, 3, 4, 5].map(c => pill('genMinS', c, c || 'Auto', genCfg.minSets === c)).join('')}</div><div class="lv-row"><span>Wdh</span>${[0, 8, 10, 12, 15].map(c => pill('genMinR', c, c || 'Auto', genCfg.minReps === c)).join('')}</div></div>
@@ -1712,7 +1714,12 @@ content.addEventListener('click', e => {
     case 'genGoal': genCfg.goal = btn.dataset.v; genRes = null; break;
     case 'genCnt': genCfg.count = Number(btn.dataset.v) || null; genRes = null; break;
     case 'genDur': genCfg.dur = Number(btn.dataset.v); genRes = null; break;
-    case 'genGrp': { const m = btn.dataset.v, i = genCfg.groups.indexOf(m); if (i >= 0) genCfg.groups.splice(i, 1); else genCfg.groups.push(m); genRes = null; break; }
+    case 'genGrp': {
+      const m = btn.dataset.v, G = genCfg.groups;
+      if (m.startsWith('m:')) { const i = G.indexOf(m); if (i >= 0) G.splice(i, 1); else { G.push(m); const pg = G.indexOf(spotGrp(m.slice(2))); if (pg >= 0) G.splice(pg, 1); } } // Körperstelle verfeinert die Gruppe
+      else if (G.some(x => x.startsWith('m:') && spotGrp(x.slice(2)) === m)) genCfg.groups = G.filter(x => !(x.startsWith('m:') && spotGrp(x.slice(2)) === m)); // Gruppe antippen = ihre Körperstellen weg
+      else { const i = G.indexOf(m); if (i >= 0) G.splice(i, 1); else G.push(m); }
+      genRes = null; break; }
     case 'genGear': { const k = btn.dataset.v, g = loadGear(), i = g.indexOf(k); if (i >= 0) g.splice(i, 1); else g.push(k); genCfg.gear = g; try { localStorage.setItem(GEARKEY, JSON.stringify(g)); } catch (e2) {} genRes = null; break; }
     case 'genMinS': genCfg.minSets = Number(btn.dataset.v); genRes = null; break;
     case 'genMinR': genCfg.minReps = Number(btn.dataset.v); genRes = null; break;
