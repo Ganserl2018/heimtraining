@@ -829,7 +829,7 @@ function generate() {
 function genSave(start) {
   if (!genRes || !genRes.length) return;
   const g = genCfg.groups.length ? genCfg.groups : ['Brust'], lv = genLevel();
-  const t = { id: 'w' + Date.now(), name: 'Auto · ' + g.map(grpLabel).join('/'), exercises: genRes, weekdays: [], since: {}, time: '', level: lv, goal: genCfg.goal, auto: true };
+  const t = { id: 'w' + Date.now(), name: (genCfg.name || '').trim().slice(0, 40) || 'Auto · ' + g.map(grpLabel).join('/'), exercises: genRes, weekdays: [], since: {}, time: '', level: lv, goal: genCfg.goal, auto: true };
   weekplan.push(t); saveWeekplan(); genRes = null;
   if (start) playStart(t.id); else view = 'start';
 }
@@ -843,6 +843,7 @@ function renderGen() {
   const scrollRes = genJust; genJust = false;
   content.innerHTML = `<div class="gn">
     <div class="pl-top"><button class="pl-x" data-act="genBack" aria-label="Zurück">‹</button><div class="pl-title"><b>Jetzt trainieren</b><span>Fokus, Geräte, Zeit – den Rest macht die App</span></div></div>
+    <div class="lv"><div class="lv-h">Name <em>· optional, später umbenennbar</em></div><input id="gen-name" class="gn-name" maxlength="40" placeholder="${esc('Auto · ' + (genCfg.groups.length ? genCfg.groups.map(grpLabel).join('/') : 'Fokus'))}" value="${esc(genCfg.name || '')}"></div>
     <div class="lv"><div class="lv-h">Fokus${genCfg.groups.length ? '' : ' <em>· mindestens eine wählen</em>'}</div><div class="lv-pills">${MUSCLE_GROUP_LIST.map(m => pill('genGrp', m, m, grpOn(m))).join('')}</div></div>
     <details class="gn-more" open><summary>Genau: Körperstelle${genCfg.groups.filter(x => x.startsWith('m:')).map(x => ' · ' + grpLabel(x)).join('')}</summary><div class="lv"><div class="lv-pills">${SPOTS.map(m => pill('genGrp', 'm:' + m, MUSCLE_DE[m] || m, genCfg.groups.includes('m:' + m))).join('')}</div></div></details>
     ${genCfg.groups.length ? (() => { const gc = gearCounts(); return `<div class="lv"><div class="lv-h">Geräte heute <em>· passend zum Fokus</em></div><div class="lv-pills">${GEAR.filter(([k]) => k === 'body' || gc[k]).map(([k, l]) => pill('genGear', k, l + (gc[k] ? ' <small>' + gc[k] + '</small>' : ''), genCfg.gear.includes(k))).join('')}</div></div>`; })() : '<div class="lv"><div class="lv-h">Geräte heute <em>· erst Fokus wählen</em></div></div>'}
@@ -2052,7 +2053,7 @@ content.addEventListener('click', e => {
   inp.dispatchEvent(new Event('input', { bubbles: true }));
 });
 
-document.addEventListener('input', e => { if (e.target.id !== 'gp-q') return; const q = e.target.value.toLowerCase().trim(); document.querySelectorAll('.gp-r').forEach(b => { b.style.display = !q || b.dataset.q.includes(q) ? '' : 'none'; }); });
+document.addEventListener('input', e => { if (e.target.id === 'gen-name') { genCfg.name = e.target.value; return; } if (e.target.id !== 'gp-q') return; const q = e.target.value.toLowerCase().trim(); document.querySelectorAll('.gp-r').forEach(b => { b.style.display = !q || b.dataset.q.includes(q) ? '' : 'none'; }); });
 
 // Auto-Update: beim Zurückkehren in die App prüfen, ob eine neuere Version live ist, dann neu laden
 (function () {

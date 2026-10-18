@@ -1447,3 +1447,6 @@ body.mood-bad{--text:#fbeeec; --text-dim:#dcc2be; --text-faint:#c9a29c;}
 .dt-steps{margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.35rem;font-size:.86rem;line-height:1.35;color:var(--text,#e6edf3);}
 .dt-steps li::marker{color:var(--accent);font-weight:800;}
 .lv-p small{font-size:.68em; opacity:.7; margin-left:.25em; font-weight:700;}
+
+.gn-name{width:100%; min-height:44px; padding:.5rem .8rem; border-radius:12px; border:1px solid var(--border); background:var(--panel); color:var(--text); font-size:1rem;}
+.gn-name::placeholder{color:var(--text-faint);}
