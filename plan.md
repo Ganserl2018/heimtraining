@@ -408,3 +408,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - Offen: Alex entscheidet, ob der ganze Bildsatz (M+W, ~400 Übungen) so neu gemacht wird; die 10% Rest-Kritik noch nicht benannt.
 - 16:31 Face Pull v3 (Turm auf Augenhöhe, Seil zum Gesicht) gesendet; Regel Bewegungslogik-Check in bild-stil.md
 - 16:33 Face Pull v3 von Alex abgenommen; Rezept in bild-stil.md
+- 16:35 Wochenlimit Claude bei 92% → heute keine Bildproduktion mehr. Offen: 4 Probe-Übungen auf Bewegungslogik prüfen, Entscheidung Gesamtsatz, Optik-Go
