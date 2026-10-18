@@ -8,30 +8,12 @@
 ],
 "auto": true
 },
-"Air Bike": {
-"de": "Air Bike (Fahrrad-Crunch)",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
-],
-"auto": true
-},
 "Alternate Heel Touchers": {
 "de": "Fersen abwechselnd berühren",
 "schritte": [
 "Aufrechte Grundposition.",
 "Bewegung schwungvoll, aber kontrolliert ausführen.",
 "Zur Ausgangsposition zurück."
-],
-"auto": true
-},
-"Barbell Ab Rollout": {
-"de": "Langhantel-Bauchroller",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
 ],
 "auto": true
 },
@@ -557,15 +539,6 @@
 ],
 "auto": true
 },
-"Band Hip Adductions": {
-"de": "Adduktion mit Band",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
-],
-"auto": true
-},
 "Groiners": {
 "de": "Groiners",
 "schritte": [
@@ -986,15 +959,6 @@
 "Leichte Ellbogenbeugung beibehalten.",
 "Gewichte in einem Bogen bis auf Schulterhöhe führen.",
 "Kurz halten, langsam ablassen."
-],
-"auto": true
-},
-"Around The Worlds": {
-"de": "Around the Worlds",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
 ],
 "auto": true
 },
@@ -1961,39 +1925,12 @@
 ],
 "auto": true
 },
-"Rack Pull with Bands": {
-"de": "Rack Pull mit Bändern",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
-],
-"auto": true
-},
-"Rack Pulls": {
-"de": "Rack Pulls",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
-],
-"auto": true
-},
 "Stiff Leg Barbell Good Morning": {
 "de": "Good Morning mit gestreckten Beinen (Langhantel)",
 "schritte": [
 "Aufrecht stehen, Stange/Gewicht vor den Oberschenkeln halten.",
 "Hüfte weit nach hinten schieben, Rücken gerade lassen, Gewicht nah am Körper nach unten führen.",
 "Beim Dehnen der Beinrückseite stoppen, Hüfte nach vorne treiben und aufrichten."
-],
-"auto": true
-},
-"Superman": {
-"de": "Superman",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
 ],
 "auto": true
 },
@@ -2057,15 +1994,6 @@
 "Hüfte beugen, Rücken gerade, Gewicht hängt mit gestreckten Armen.",
 "Ellbogen nach hinten ziehen, bis das Gewicht den Bauch erreicht.",
 "Schulterblätter zusammen, kontrolliert absenken."
-],
-"auto": true
-},
-"Middle Back Shrug": {
-"de": "Schulterblatt-Zug (mittlerer Rücken)",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
 ],
 "auto": true
 },
@@ -2213,15 +2141,6 @@
 ],
 "auto": true
 },
-"Barbell Step Ups": {
-"de": "Langhantel-Step-ups",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
-],
-"auto": true
-},
 "Barbell Walking Lunge": {
 "de": "Langhantel-Ausfallschritte (gehend)",
 "schritte": [
@@ -2246,15 +2165,6 @@
 "Gewicht über den Fußmitten greifen, Rücken gerade, Brust raus.",
 "Mit den Beinen drücken und Hüfte strecken; Gewicht bleibt nah am Körper.",
 "Oben aufrecht stehen, kontrolliert wieder absetzen."
-],
-"auto": true
-},
-"Cable Hip Adduction": {
-"de": "Kabel-Hüftadduktion",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
 ],
 "auto": true
 },
@@ -2303,30 +2213,12 @@
 ],
 "auto": true
 },
-"Dumbbell Step Ups": {
-"de": "Kurzhantel-Step-ups",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
-],
-"auto": true
-},
 "Elevated Back Lunge": {
 "de": "Erhöhter Ausfallschritt rückwärts",
 "schritte": [
 "Schulterbreit stehen, Brust raus, Bauch fest.",
 "Hüfte nach hinten-unten schieben, Knie in Richtung der Zehen.",
 "Aus den Fersen kräftig hochdrücken."
-],
-"auto": true
-},
-"Fast Skipping": {
-"de": "Schnelles Skipping",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
 ],
 "auto": true
 },
@@ -2354,15 +2246,6 @@
 "Schulterbreit stehen, Brust raus, Bauch fest.",
 "Hüfte nach hinten-unten schieben, Knie in Richtung der Zehen.",
 "Aus den Fersen kräftig hochdrücken."
-],
-"auto": true
-},
-"Hip Flexion with Band": {
-"de": "Hüftbeugung mit Band",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
 ],
 "auto": true
 },
@@ -2564,15 +2447,6 @@
 ],
 "auto": true
 },
-"Band Pull Apart": {
-"de": "Band Pull Apart",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
-],
-"auto": true
-},
 "Barbell Incline Shoulder Raise": {
 "de": "Langhantel-Schrägbank-Schulterheben",
 "schritte": [
@@ -2606,15 +2480,6 @@
 "Leichte Ellbogenbeugung beibehalten.",
 "Gewichte in einem Bogen bis auf Schulterhöhe führen.",
 "Kurz halten, langsam ablassen."
-],
-"auto": true
-},
-"Bent Over Low-Pulley Side Lateral": {
-"de": "Seitheben vorgebeugt am tiefen Kabel",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
 ],
 "auto": true
 },
@@ -2660,24 +2525,6 @@
 "Gewichte auf Schulterhöhe, Bauch und Gesäß fest.",
 "Senkrecht über den Kopf drücken.",
 "Oben kurz halten, kontrolliert zurück auf Schulterhöhe."
-],
-"auto": true
-},
-"Car Drivers": {
-"de": "Car Drivers",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
-],
-"auto": true
-},
-"Cuban Press": {
-"de": "Cuban Press",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
 ],
 "auto": true
 },
@@ -2732,15 +2579,6 @@
 "Leichte Ellbogenbeugung beibehalten.",
 "Gewichte in einem Bogen bis auf Schulterhöhe führen.",
 "Kurz halten, langsam ablassen."
-],
-"auto": true
-},
-"Dumbbell Scaption": {
-"de": "Scaption mit Kurzhanteln",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
 ],
 "auto": true
 },
@@ -2888,15 +2726,6 @@
 ],
 "auto": true
 },
-"One-Arm Side Laterals": {
-"de": "Einarmiges Seitheben",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
-],
-"auto": true
-},
 "Reverse Flyes With External Rotation": {
 "de": "Reverse Flyes mit Außenrotation",
 "schritte": [
@@ -2933,30 +2762,12 @@
 ],
 "auto": true
 },
-"Seated Dumbbell Press": {
-"de": "Sitzendes Kurzhantel-Schulterdrücken",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
-],
-"auto": true
-},
 "Seated Side Lateral Raise": {
 "de": "Sitzendes Seitheben",
 "schritte": [
 "Leichte Ellbogenbeugung beibehalten.",
 "Gewichte in einem Bogen bis auf Schulterhöhe führen.",
 "Kurz halten, langsam ablassen."
-],
-"auto": true
-},
-"See-Saw Press (Alternating Side Press)": {
-"de": "See-Saw-Press (Wechsel)",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
 ],
 "auto": true
 },
@@ -2996,30 +2807,12 @@
 ],
 "auto": true
 },
-"Standing Alternating Dumbbell Press": {
-"de": "Stehendes Kurzhantel-Drücken im Wechsel",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
-],
-"auto": true
-},
 "Standing Barbell Press Behind Neck": {
 "de": "Stehendes Nackendrücken mit Langhantel",
 "schritte": [
 "Neutrale Haltung.",
 "Langsam die Bewegung ausführen.",
 "Zurück zur Mitte."
-],
-"auto": true
-},
-"Standing Dumbbell Press": {
-"de": "Stehendes Kurzhantel-Schulterdrücken",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
 ],
 "auto": true
 },
@@ -3059,24 +2852,6 @@
 ],
 "auto": true
 },
-"Standing Palm-In One-Arm Dumbbell Press": {
-"de": "Stehendes einarmiges Kurzhantel-Drücken (Handfläche innen)",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
-],
-"auto": true
-},
-"Standing Palms-In Dumbbell Press": {
-"de": "Stehendes Kurzhantel-Drücken (Handflächen innen)",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
-],
-"auto": true
-},
 "Straight Raises on Incline Bench": {
 "de": "Gerades Heben an der Schrägbank",
 "schritte": [
@@ -3092,42 +2867,6 @@
 "Hüfte beugen, Rücken gerade, Gewicht hängt mit gestreckten Armen.",
 "Ellbogen nach hinten ziehen, bis das Gewicht den Bauch erreicht.",
 "Schulterblätter zusammen, kontrolliert absenken."
-],
-"auto": true
-},
-"Barbell Shrug": {
-"de": "Langhantel-Shrugs",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
-],
-"auto": true
-},
-"Barbell Shrug Behind The Back": {
-"de": "Langhantel-Shrugs hinter dem Rücken",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
-],
-"auto": true
-},
-"Cable Shrugs": {
-"de": "Kabel-Shrugs",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
-],
-"auto": true
-},
-"Dumbbell Shrug": {
-"de": "Kurzhantel-Shrugs",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
 ],
 "auto": true
 },
@@ -3221,15 +2960,6 @@
 ],
 "auto": true
 },
-"Close-Grip Dumbbell Press": {
-"de": "Enges Kurzhantel-Drücken",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
-],
-"auto": true
-},
 "Close-Grip Push-Up off of a Dumbbell": {
 "de": "Enge Liegestütze auf Kurzhantel",
 "schritte": [
@@ -3317,15 +3047,6 @@
 "Hände unter den Schultern, Körper gerade.",
 "Brust kontrolliert zum Boden senken.",
 "Kraftvoll hochdrücken."
-],
-"auto": true
-},
-"JM Press": {
-"de": "JM Press",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
 ],
 "auto": true
 },
@@ -3506,15 +3227,6 @@
 "Oberarm/Ellbogen fixieren.",
 "Arm bis zur vollen Streckung führen.",
 "Kurz anspannen, kontrolliert zurück."
-],
-"auto": true
-},
-"Tate Press": {
-"de": "Tate Press",
-"schritte": [
-"Stabile Ausgangsposition einnehmen.",
-"Bewegung kontrolliert über den vollen Weg ausführen.",
-"Endposition kurz halten, langsam zurück."
 ],
 "auto": true
 },

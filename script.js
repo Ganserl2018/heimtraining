@@ -128,6 +128,7 @@ function prog() {
 function saveProg() { try { localStorage.setItem(PKEY, JSON.stringify(progress)); } catch (e) {} }
 const setsOf = name => { const d = prog().done[day]; return (d && Array.isArray(d[name])) ? d[name] : []; };
 
+let anleitungen = {};
 let namesDe = {}; // names_de.json: englischer Schlüsselname -> deutsche Anzeige
 const BADKEY = 'heimtraining.badimg';
 function loadBad() { try { return JSON.parse(localStorage.getItem(BADKEY)) || []; } catch (e) { return []; } }
@@ -139,9 +140,10 @@ Promise.all([
   fetch('pool.json').then(r => r.json()),
   fetch('met.json').then(r => r.json()).catch(() => []),
   fetch('gearfix.json').then(r => r.json()).catch(() => ({})),
-  fetch('names_de.json').then(r => r.json()).catch(() => ({}))
-]).then(([b, p, met, gf, nd]) => {
-  base = b; pool = p; gearFix = gf; namesDe = nd;
+  fetch('names_de.json').then(r => r.json()).catch(() => ({})),
+  fetch('anleitungen_de.json').then(r => r.json()).catch(() => ({}))
+]).then(([b, p, met, gf, nd, an]) => {
+  base = b; pool = p; gearFix = gf; namesDe = nd; anleitungen = an;
   met.forEach(m => { metByName[m.name] = m.met; });
   render();
 }).catch(err => { content.innerHTML = `<p class="error">Fehler beim Laden: ${err}</p>`; });
@@ -1397,6 +1399,7 @@ function detailSheetHtml(ex) {
       <button class="dt-bad${loadBad().includes(ex.name) ? ' on' : ''}" data-act="badImg" data-name="${esc(ex.name)}">${loadBad().includes(ex.name) ? '✓ Bild als falsch markiert' : '⚑ Bild falsch'}</button>
       <div class="dt-tags"><span class="dt-tag on">${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</span>${MUSCLE_GROUPS[ex.muscle] && MUSCLE_GROUPS[ex.muscle] !== (MUSCLE_DE[ex.muscle] || ex.muscle) ? `<span class="dt-tag">${MUSCLE_GROUPS[ex.muscle]}</span>` : ''}<span class="dt-tag">${equipLabel(ex.name)}</span></div>
       ${sec.length ? `<div class="dt-secm">Zusätzlich: ${sec.join(', ')}</div>` : ''}
+      ${(anleitungen[ex.name] || {}).schritte ? `<div class="dt-sec">Anleitung</div><ol class="dt-steps">${anleitungen[ex.name].schritte.map(t => `<li>${esc(t)}</li>`).join('')}</ol>` : ''}
       <div class="dt-sec">Gewichtsklassen</div>
       <div class="dt-wcs">
         ${cls('Leicht', 'l', 'Geringer Aufwand, minimales Verletzungsrisiko.', `Straffung, Definition, bessere Haltung ${w[0]}.`)}

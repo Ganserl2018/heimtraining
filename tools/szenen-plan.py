@@ -54,7 +54,7 @@ for x in P:
     k+=1;gg=g.get('g',[]);s,e,l,steps,pers=rule(n);d=(s,e,l,steps,pers)==DEF or rule(n)[3]==DEF[3]
     dflt+=d
     out.append(f"| {k} | {n} | {N.get(n,'')} | {', '.join(GEAR.get(i,i) for i in gg)} | {scene(n,gg)} {SC[scene(n,gg)]} | {s} | {e} | {l} | {'⚠' if d else '✓'} |")
-    AN[n]={'de':N.get(n,n),'schritte':steps.split('|'),'auto':True}
+    if not d: AN[n]={'de':N.get(n,n),'schritte':steps.split('|'),'auto':True}
 open('szenen-plan.md','w').write('\n'.join(out)+'\n')
 json.dump(AN,open('anleitungen_de.json','w'),ensure_ascii=False,indent=0)
 print(k,'Übungen,',dflt,'Standard (⚠)')
