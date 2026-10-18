@@ -730,6 +730,8 @@ const GCOUNT = { 20: [2, 3, 4], 30: [3, 4, 5], 45: [4, 5, 6], 60: [5, 7, 8], 90:
 function genLevel() { return genCfg.lv != null ? genCfg.lv : (loadProfile().level != null ? loadProfile().level : 0); }
 function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 function isCompound(n) { n = n.toLowerCase(); return !/pullover|pushdown|fly|flye|raise|curl|extension|kickback|shrug/.test(n) && /press|squat|deadlift|row|pull-?up|pulldown|lunge|dip|chin|push-?up/.test(n); }
+const SPOTS = ['lower back', 'lats', 'middle back', 'traps', 'neck', 'glutes', 'hamstrings', 'quadriceps', 'calves', 'biceps', 'triceps', 'forearms', 'abductors', 'adductors'];
+const grpLabel = g => g.startsWith('m:') ? (MUSCLE_DE[g.slice(2)] || g.slice(2)) : g;
 function genBase(lv) {
   const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine/i;
   const hard = /deadlift|rack pull|clean|snatch|jerk|weighted|good morning|behind (the )?neck|guillotine|zercher|jefferson|overhead squat|olympic|sissy|muscle.up|atlas|pistol|single-arm push/i;
@@ -775,11 +777,11 @@ function generate() {
   const hard = /deadlift|rack pull|clean|snatch|jerk|weighted|good morning|behind (the )?neck|guillotine|zercher|jefferson|overhead squat|olympic|sissy|muscle.up|atlas|pistol|single-arm push/i;
   const base = genBase(lv);
   const n = genCfg.count || GCOUNT[genCfg.dur][lv], isoMax = genCfg.count ? Math.ceil(n / 2) : GISO[genCfg.dur];
-  const gs = g.slice().sort((a, b) => GRANK[b] - GRANK[a]);
+  const gs = g.slice().sort((a, b) => (GRANK[b] || 0) - (GRANK[a] || 0));
   const per = gs.map((_, i) => Math.floor(n / gs.length) + (i < n % gs.length ? 1 : 0));
   const picked = []; let isoUsed = 0;
   gs.forEach((grp, gi) => {
-    const core = e => MUSCLE_GROUPS[e.muscle] === grp && (grp !== 'Rücken' || ((e.muscle === 'lats' || e.muscle === 'middle back') && !/pushdown/i.test(e.name)));
+    const core = e => grp.startsWith('m:') ? e.muscle === grp.slice(2) : MUSCLE_GROUPS[e.muscle] === grp && (grp !== 'Rücken' || ((e.muscle === 'lats' || e.muscle === 'middle back') && !/pushdown/i.test(e.name)));
     let cand = shuffle(base.filter(e => core(e) && !last.includes(e.name)));
     if (cand.length < per[gi]) cand = shuffle(base.filter(e => core(e)));
     if (grp === 'Arme') { // Bizeps/Trizeps abwechselnd
@@ -805,7 +807,7 @@ function generate() {
 function genSave(start) {
   if (!genRes || !genRes.length) return;
   const g = genCfg.groups.length ? genCfg.groups : ['Brust'], lv = genLevel();
-  const t = { id: 'w' + Date.now(), name: 'Auto · ' + g.join('/'), exercises: genRes, weekdays: [], since: {}, time: '', level: lv, goal: genCfg.goal, auto: true };
+  const t = { id: 'w' + Date.now(), name: 'Auto · ' + g.map(grpLabel).join('/'), exercises: genRes, weekdays: [], since: {}, time: '', level: lv, goal: genCfg.goal, auto: true };
   weekplan.push(t); saveWeekplan(); genRes = null;
   if (start) playStart(t.id); else view = 'start';
 }
@@ -821,6 +823,7 @@ function renderGen() {
     <div class="pl-top"><button class="pl-x" data-act="genBack" aria-label="Zurück">‹</button><div class="pl-title"><b>Jetzt trainieren</b><span>Zeit, Fokus, Geräte – den Rest macht die App</span></div></div>
     <div class="lv"><div class="lv-h">Zeit</div><div class="lv-pills">${[20, 30, 45, 60].map(d => pill('genDur', d, d + ' Min', genCfg.dur === d)).join('')}</div></div>
     <div class="lv"><div class="lv-h">Fokus${genCfg.groups.length ? '' : ' <em>· mindestens eine wählen</em>'}</div><div class="lv-pills">${MUSCLE_GROUP_LIST.map(m => pill('genGrp', m, m, genCfg.groups.includes(m))).join('')}</div></div>
+    <details class="gn-more"${genCfg.groups.some(x => x.startsWith('m:')) ? ' open' : ''}><summary>Genau: Körperstelle${genCfg.groups.filter(x => x.startsWith('m:')).map(x => ' · ' + grpLabel(x)).join('')}</summary><div class="lv"><div class="lv-pills">${SPOTS.map(m => pill('genGrp', 'm:' + m, MUSCLE_DE[m] || m, genCfg.groups.includes('m:' + m))).join('')}</div></div></details>
     <div class="lv"><div class="lv-h">Geräte heute</div><div class="lv-pills">${GEAR.map(([k, l]) => pill('genGear', k, l, genCfg.gear.includes(k))).join('')}</div></div>
     <div class="lv"><div class="lv-h">Umfang</div><div class="lv-row"><span>Übungen</span>${[0, 3, 4, 5, 6, 8].map(c => pill('genCnt', c, c || 'Auto', (genCfg.count || 0) === c)).join('')}</div><div class="lv-row"><span>Sätze</span>${[0, 3, 4, 5].map(c => pill('genMinS', c, c || 'Auto', genCfg.minSets === c)).join('')}</div><div class="lv-row"><span>Wdh</span>${[0, 8, 10, 12, 15].map(c => pill('genMinR', c, c || 'Auto', genCfg.minReps === c)).join('')}</div></div>
     <details class="gn-more"><summary>Mehr: Level, Ziel</summary>
