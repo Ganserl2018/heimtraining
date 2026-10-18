@@ -1398,3 +1398,16 @@ body.mood-bad{--text:#fbeeec; --text-dim:#dcc2be; --text-faint:#c9a29c;}
 .lv-row .lv-p{min-height:32px;}
 .gn-more summary{min-height:32px;}
 .gn .gn-btns{margin:.3rem 0 0;} .gn .gn-btns button{min-height:44px;}
+/* V17 Start-Seite ohne Scrollen (iPhone) */
+@media (max-width:600px){
+  .sv{gap:.35rem;}
+  .sv-vls{grid-template-columns:repeat(3,minmax(0,1fr)); gap:.3rem;}
+  .sv-vl{min-height:40px; padding:0 .5rem; gap:.3rem;} .sv-vl-ic{display:none;}
+  .sv-vl-name{font-size:.8rem;} .sv-vl-n{font-size:.85rem;}
+  .sv-wide{grid-column:auto !important;}
+  .sv-sub{margin:.25rem .1rem 0;}
+  .sv-add{min-height:48px;}
+  .sv-auto{margin:.1rem 0 .2rem;}
+  .sv-lab{margin:.2rem .1rem 0; font-size:.85rem;}
+}
+@media (max-width:600px){ .sv-pack{aspect-ratio:16/8 !important;} .sv-packs{gap:.4rem;} }
