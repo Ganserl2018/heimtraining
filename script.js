@@ -128,15 +128,18 @@ function prog() {
 function saveProg() { try { localStorage.setItem(PKEY, JSON.stringify(progress)); } catch (e) {} }
 const setsOf = name => { const d = prog().done[day]; return (d && Array.isArray(d[name])) ? d[name] : []; };
 
+let namesDe = {}; // names_de.json: englischer Schlüsselname -> deutsche Anzeige
+const dn = n => (loadProfile().lang === 'en' ? n : (namesDe[n] || n));
 let gearFix = {}; // gearfix.json: Name -> {s:'ok'|'no', g:[Geräte]} (Alex' Heim-Gym, fest)
 let metByName = {}; // V8-01/03: name -> MET-Wert
 Promise.all([
   fetch('exercises.json').then(r => r.json()),
   fetch('pool.json').then(r => r.json()),
   fetch('met.json').then(r => r.json()).catch(() => []),
-  fetch('gearfix.json').then(r => r.json()).catch(() => ({}))
-]).then(([b, p, met, gf]) => {
-  base = b; pool = p; gearFix = gf;
+  fetch('gearfix.json').then(r => r.json()).catch(() => ({})),
+  fetch('names_de.json').then(r => r.json()).catch(() => ({}))
+]).then(([b, p, met, gf, nd]) => {
+  base = b; pool = p; gearFix = gf; namesDe = nd;
   met.forEach(m => { metByName[m.name] = m.met; });
   render();
 }).catch(err => { content.innerHTML = `<p class="error">Fehler beim Laden: ${err}</p>`; });
@@ -190,7 +193,7 @@ function renderAllExBlock() {
   el.innerHTML = DAYS.map(d => {
     const items = itemsFor(d);
     const sub = `<div class="side-sublist">${items.map((ex, i) =>
-      `<button data-act="sideSwap" data-day="${d}" data-i="${i}">${esc(ex.name)}</button>`).join('')}</div>`;
+      `<button data-act="sideSwap" data-day="${d}" data-i="${i}">${esc(dn(ex.name))}</button>`).join('')}</div>`;
     return `<div class="side-group${!subExpanded[d] ? ' collapsed' : ''}">
       <div class="side-head">
         <button class="tab${(view === 'day' && day === d) ? ' active' : ''}" data-act="goDay" data-day="${d}">${DAY_LABELS[d]}</button>
@@ -210,7 +213,7 @@ function renderWeekplanBlock() {
   el.innerHTML = weekplan.map(t => {
     const has = t.exercises && t.exercises.length;
     const sub = has ? `<div class="side-sublist">${t.exercises.map(ex =>
-      `<button data-act="wOpen" data-id="${t.id}">${esc(ex.name)}</button>`).join('')}</div>` : '';
+      `<button data-act="wOpen" data-id="${t.id}">${esc(dn(ex.name))}</button>`).join('')}</div>` : '';
     return `<div class="side-group${has && !wSubExpanded[t.id] ? ' collapsed' : ''}">
       <div class="side-head">
         <button class="tab${(view === 'wtrain' && wId === t.id) ? ' active' : ''}" data-act="wOpen" data-id="${t.id}">${esc(t.name)}</button>
@@ -283,7 +286,7 @@ function renderView() {
     <div class="exercise">
       <img class="exercise-gif" src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
       <div class="exercise-info">
-        <div class="exercise-name">${esc(ex.name)}</div>
+        <div class="exercise-name">${esc(dn(ex.name))}</div>
         <div class="exercise-muscle">${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</div>
         <div class="sets">${Array.from({ length: SETS }, (_, k) =>
           `<button class="set${setsOf(ex.name)[k] ? ' done' : ''}" data-act="set" data-i="${i}" data-k="${k}">Satz ${k + 1}${setsOf(ex.name)[k] ? ' ✓' : ''}</button>`).join('')}</div>
@@ -341,7 +344,7 @@ function renderPicker() {
           <button class="xr-filter" data-act="cancel">Abbrechen</button></div>
         ${xrPills(true)}
       </div>
-      <p class="xr-hint">${picker.index === null ? 'Hinzufügen' : 'Ersetzen: ' + esc(currentList()[picker.index].name)}</p>
+      <p class="xr-hint">${picker.index === null ? 'Hinzufügen' : 'Ersetzen: ' + esc(dn(currentList()[picker.index].name))}</p>
       <div class="xr-count" id="pager-info"></div>
       <div id="results" class="xr-grid"></div>
       <button id="xr-more" class="xr-more" data-act="bMore" hidden></button>
@@ -373,7 +376,7 @@ const DE_SYN = {
 const deNorm = t => String(t).toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss').replace(/-/g, ' ');
 function wordMatches(w, ex) {
   const n = deNorm(w);
-  const hay = deNorm(ex.name + ' ' + ex.muscle + ' ' + (MUSCLE_DE[ex.muscle] || '') + ' ' + (MUSCLE_GROUPS[ex.muscle] || '')) + ' ';
+  const hay = deNorm(ex.name + ' ' + (namesDe[ex.name] || '') + ' ' + ex.muscle + ' ' + (MUSCLE_DE[ex.muscle] || '') + ' ' + (MUSCLE_GROUPS[ex.muscle] || '')) + ' ';
   if (hay.includes(n)) return true;
   if (/^aufwaerm|^warm/.test(n) && ex.category === 'warmup') return true;
   if (n.length < 3) return false;
@@ -638,7 +641,7 @@ function renderHistDetail() {
         return `<span class="hd-w${done ? ' on' : ''}">${w != null ? esc(w) + (u ? ' ' + u : '') : (done ? '✓' : '–')}</span>`;
       }).join('');
       return `<div class="hd-ex"><div class="hd-th exinfo" data-act="exInfo" data-name="${esc(ex.name)}">${hvPhoto(ex.name) || `<i>${esc(ex.name.charAt(0))}</i>`}</div>
-        <div class="hd-nm exinfo" data-act="exInfo" data-name="${esc(ex.name)}"><b>${esc(ex.name)}</b><span>${esc(MUSCLE_DE[ex.muscle] || ex.muscle || '')}</span></div>
+        <div class="hd-nm exinfo" data-act="exInfo" data-name="${esc(ex.name)}"><b>${esc(dn(ex.name))}</b><span>${esc(MUSCLE_DE[ex.muscle] || ex.muscle || '')}</span></div>
         <div class="hd-cnt">${ex.setsDone}/${ex.setsTotal}</div>
         <div class="hd-chips">${chips}</div></div>`;
     }).join('')}</div>
@@ -682,7 +685,7 @@ function mountPresetSheet() {
     <div class="dt-body"><h2 class="dt-name">${esc(p.name)} · ${all.length} Übungen im Pool</h2>
       <div class="dt-sec">Wie viele?</div><div class="dt-add">${[5, 8, 10, 12].filter(c => c < all.length).map(pill).join('')}${pill(0)}</div>
       <div class="dt-sec">Oder einzeln wählen</div>
-      <div class="ps-list">${all.map((e, i) => `<button class="ps-row${psSheet.sel.has(i) ? ' on' : ''}" data-act="psTog" data-i="${i}"><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><span><b>${esc(e.name)}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)}</em></span><i>${psSheet.sel.has(i) ? '✓' : ''}</i></button>`).join('')}</div>
+      <div class="ps-list">${all.map((e, i) => `<button class="ps-row${psSheet.sel.has(i) ? ' on' : ''}" data-act="psTog" data-i="${i}"><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><span><b>${esc(dn(e.name))}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)}</em></span><i>${psSheet.sel.has(i) ? '✓' : ''}</i></button>`).join('')}</div>
     </div>
     <div class="ps-bar"><button class="ov-btn ov-btn-ghost" data-act="psClose">Abbrechen</button><button class="ov-btn" data-act="psCreate"${n ? '' : ' disabled'}>Anlegen · ${n}</button></div>
   </div></div>`);
@@ -770,7 +773,7 @@ function genPickSet(name) {
 function genPickHtml() {
   const old = genRes[genPick], lv = genLevel(), inList = genRes.map(x => x.name), fav = loadFavs();
   const c = genBase(lv).filter(e => !inList.includes(e.name)).sort((a, b) => (MUSCLE_GROUPS[b.muscle] === MUSCLE_GROUPS[old.muscle]) - (MUSCLE_GROUPS[a.muscle] === MUSCLE_GROUPS[old.muscle]) || (fav.includes(b.name) - fav.includes(a.name)) || a.name.localeCompare(b.name));
-  return `<div class="gp-ov"><div class="gp-h"><b>Übung ersetzen</b><button class="gp-x" data-act="genPickClose">✕ Abbrechen</button></div><input id="gp-q" class="gp-q" type="search" placeholder="Suchen…" autocomplete="off"><div class="gp-list">${c.map(e => `<button class="gp-r" data-act="genPickDo" data-name="${esc(e.name)}" data-q="${esc(e.name.toLowerCase())}"><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><span><b>${fav.includes(e.name) ? '★ ' : ''}${esc(e.name)}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)}</em></span></button>`).join('')}</div><button class="gp-cancel" data-act="genPickClose">ABBRECHEN</button></div>`;
+  return `<div class="gp-ov"><div class="gp-h"><b>Übung ersetzen</b><button class="gp-x" data-act="genPickClose">✕ Abbrechen</button></div><input id="gp-q" class="gp-q" type="search" placeholder="Suchen…" autocomplete="off"><div class="gp-list">${c.map(e => `<button class="gp-r" data-act="genPickDo" data-name="${esc(e.name)}" data-q="${esc(e.name.toLowerCase())}"><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><span><b>${fav.includes(e.name) ? '★ ' : ''}${esc(dn(e.name))}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)}</em></span></button>`).join('')}</div><button class="gp-cancel" data-act="genPickClose">ABBRECHEN</button></div>`;
 }
 function generate() {
   const lv = genLevel(), g = genCfg.groups.length ? genCfg.groups : ['Brust'];
@@ -817,7 +820,7 @@ function renderGen() {
   const lv = genLevel(), p = loadProfile();
   const pill = (act, v, l, on) => `<button class="lv-p${on ? ' on' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
   const res = genRes && !genRes.length ? `<div class="gn-res"><div class="lv-note">Mit diesen Geräten und diesem Fokus finde ich keine Übungen. Mehr Geräte oder anderen Fokus wählen.</div></div>` : genRes ? `<div class="gn-res">${genRes.map((e, i) => `<div class="gn-sw" data-gsw="${i}"><div class="gn-sw-bg"><span>★ Favorit</span><span>Neue Übung ↻</span></div><div class="gn-ex exinfo${i === genSwapped ? ' gn-new' : ''}" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
-      <div><b>${loadFavs().includes(e.name) ? '★ ' : ''}${esc(e.name)}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)} · ${e.sets} × ${e.plan[0].r} ${e.unit === 'sek' ? 'Sek' : 'Wdh'}${e.plan[0].w != null && e.unit === 'kg' ? ' · ca. ' + e.plan[0].w + ' kg' : ''}</em></div><button class="gn-pk" data-act="genPickOpen" data-i="${i}" aria-label="Übung wählen">⇄</button></div></div>`).join('')}
+      <div><b>${loadFavs().includes(e.name) ? '★ ' : ''}${esc(dn(e.name))}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)} · ${e.sets} × ${e.plan[0].r} ${e.unit === 'sek' ? 'Sek' : 'Wdh'}${e.plan[0].w != null && e.unit === 'kg' ? ' · ca. ' + e.plan[0].w + ' kg' : ''}</em></div><button class="gn-pk" data-act="genPickOpen" data-i="${i}" aria-label="Übung wählen">⇄</button></div></div>`).join('')}
       <div class="lv-note">Rechts wischen = ★ Favorit, links = neue Übung, ⇄ = selbst wählen. Vorschlag mit ca.-Werten. Technik vor Gewicht, bei Schmerzen abbrechen.${!p.weight && genRes.some(e => e.unit === 'kg') ? ' Gewicht im Profil eintragen, dann kommen auch kg-Vorschläge.' : ''}</div>
       <div class="gn-btns"><button class="ts-save" data-act="genSave">✓ SPEICHERN</button><button class="pl-next ts-go" data-act="genGo">▶ SPEICHERN &amp; STARTEN</button><button class="ts-add" data-act="genDo">⟳ Neu mischen</button></div></div>` : '';
   const scrollRes = genJust; genJust = false;
@@ -935,7 +938,7 @@ function renderPlay() {
     </div>
     <div class="pf-dots">${t.exercises.map((e, i) => `<button class="${i === playIdx ? 'cur' : ''}${doneN(e) >= (e.sets || 3) ? ' ok' : doneN(e) ? ' part' : ''}" data-act="playGo" data-i="${i}" aria-label="Übung ${i + 1}"></button>`).join('')}</div>
     <div class="pf-bottom">
-      <div class="pf-ex exinfo" data-act="exInfo" data-name="${esc(ex.name)}">${esc(ex.name)}<small>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}${goal}</small></div>
+      <div class="pf-ex exinfo" data-act="exInfo" data-name="${esc(ex.name)}">${esc(dn(ex.name))}<small>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}${goal}</small></div>
       <div class="pf-lab" id="pf-lab">${restEnd > Date.now() ? 'PAUSE' : 'WORKOUT'}</div>
       <div class="pf-time" id="pf-time">0:00</div>
       <div class="pf-restbtns${restEnd > Date.now() ? '' : ' off'}" id="rest"><button data-act="restAdd">+15 s</button><button data-act="restSkip">Skip</button></div>
@@ -950,7 +953,7 @@ function renderPlay() {
     <div class="pf-sheet${playDrawer ? ' open' : ''}" id="pf-sheet">
       <button class="pf-sheet-grip" data-act="playClose" aria-label="Schließen"><i></i></button>
       <div class="pf-sheet-in">
-        <div class="pf-sh-t">${esc(ex.name)}</div>
+        <div class="pf-sh-t">${esc(dn(ex.name))}</div>
         <div class="pf-chips">${Array.from({ length: n }, (_, k) => `<button class="pl-chip${(sets[k] || {}).done ? ' done' : ''}${k === cur ? ' cur' : ''}" data-act="playSel" data-k="${k}" aria-label="Satz ${k + 1}">${(sets[k] || {}).done ? '✓' : k + 1}</button>`).join('')}</div>
         ${unit === 'none' ? '' : `<label class="pl-now-in"><input id="pf-in" type="number" inputmode="decimal" data-act="wWeight" data-id="${t.id}" data-i="${playIdx}" data-k="${cur}" value="${curS.weight ?? ''}" placeholder="${curPh ?? (curP.r != null && unit !== 'kg' ? curP.r : '–')}"><span>${UNITS[unit][1] || ''}</span></label>${qchips(unit === 'kg' ? 'w' : 'r', '#pf-in')}`}
         ${curS.done ? `<button class="pf-sh-btn ghost" data-act="playSet" data-k="${cur}">✓ Erledigt – zurücknehmen</button>` : ''}
@@ -981,7 +984,7 @@ function renderSummary() {
     <div class="sm-title">${full ? 'Training geschafft' : 'Fertig – unvollständig'}</div>
     <div class="sm-sub">${esc(r.day)}</div>
     <div class="pf-stats"><div><b>${r.durationMin ?? '–'}</b><span>Minuten</span></div><div><b>${r.totalSetsDone}/${r.totalSetsPlanned}</b><span>Sätze</span></div><div><b>${r.calories ?? '–'}</b><span>kcal</span></div></div>
-    <div class="ov-card">${r.exercises.map(e => `<div class="pf-row"><span>${esc(e.name)}</span><b>${e.setsDone}/${e.setsTotal}</b></div>`).join('')}</div>
+    <div class="ov-card">${r.exercises.map(e => `<div class="pf-row"><span>${esc(dn(e.name))}</span><b>${e.setsDone}/${e.setsTotal}</b></div>`).join('')}</div>
     <button class="ov-btn sm-done" data-act="summaryDone">Fertig</button>
   </div>`;
 }
@@ -999,7 +1002,7 @@ function renderPreview() {
       ${p ? '' : `<button class="pl-x pl-del" data-act="prevDelete" aria-label="Training löschen">🗑</button>`}</div>
     <div class="pv-list">${t.exercises.map((e, i) => `<div class="pv-ex exinfo" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span>
       <img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
-      <div><b>${esc(e.name)}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)} · ${e.sets || 3} Sätze</em></div></div>`).join('')}</div>
+      <div><b>${esc(dn(e.name))}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)} · ${e.sets || 3} Sätze</em></div></div>`).join('')}</div>
     <div class="pl-nav"><button class="pl-next" data-act="prevGo">▶ TRAINING STARTEN</button></div>
   </div>`;
 }
@@ -1162,7 +1165,7 @@ function exCard(t, ex, i) {
   else rowB += `${u === 'kg' ? fld('wPlanAll', 'w', null, at(0, 'w')) : ''}${fld('wPlanAll', 'r', null, at(0, 'r'))}`;
   const pills = split ? `<div class="xc-pills">${Array.from({ length: n }, (_, k) => `<div class="xc-pill"><b>${k + 1}</b>${u === 'kg' ? fld('wPlan', 'w', k, at(k, 'w')) : ''}${fld('wPlan', 'r', k, at(k, 'r'))}</div>`).join('')}</div>` : '';
   const chips = split ? '' : `${u === 'kg' ? qchips('w', `[data-act=wPlanAll][data-f=w]`) : ''}${qchips('r', `[data-act=wPlanAll][data-f=r]`)}`;
-  return `<div class="ts-set xc"><div class="xc-top"><span class="xc-n">${esc(ex.name)}</span>${sel}</div><div class="xc-row">${rowB}</div>${chips}${pills}</div>`;
+  return `<div class="ts-set xc"><div class="xc-top"><span class="xc-n">${esc(dn(ex.name))}</span>${sel}</div><div class="xc-row">${rowB}</div>${chips}${pills}</div>`;
 }
 let lvMsg = '', ctlOpen = false;
 function txRow(t, ex, i) {
@@ -1183,7 +1186,7 @@ function txRow(t, ex, i) {
   const sumTxt = u === 'none' ? n + ' Sätze' : n + ' × ' + (uniform ? (at(0, 'r') ?? '–') + ' ' + rl : 'variiert') + (u === 'kg' && at(0, 'w') != null ? ' · ' + (uniform ? at(0, 'w') : 'ab ' + at(0, 'w')) + ' kg' : '');
   return `<div class="tx-row ts-set xc${open ? ' open' : ''}" style="--i:${Math.min(i, 10)}">
     <button class="tx-th" data-act="exInfo" data-name="${esc(ex.name)}" aria-label="Übungsdaten"><img src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"></button>
-    <button class="tx-nm" data-act="txToggle" data-key="${esc(key)}"><b>${esc(ex.name)}</b><em>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)} · ${sumTxt}</em><i class="tx-ch">${open ? '▴' : '▾'}</i></button>
+    <button class="tx-nm" data-act="txToggle" data-key="${esc(key)}"><b>${esc(dn(ex.name))}</b><em>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)} · ${sumTxt}</em><i class="tx-ch">${open ? '▴' : '▾'}</i></button>
     <span class="ts-mv"><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="-1" aria-label="Nach oben"${i === 0 ? ' disabled' : ''}>▲</button><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="1" aria-label="Nach unten"${last ? ' disabled' : ''}>▼</button></span>
     <button class="tx-rm" data-act="wRemoveEx" data-id="${t.id}" data-i="${i}" aria-label="Übung entfernen">✕</button>
     <div class="tx-ed">${step}${vals}${sel}</div>${chips}${pills}
@@ -1280,7 +1283,10 @@ function renderProfile() {
       </div>
       <div class="pp-lvbox pp-t" style="--i:6">
         ${(() => { const ls = levelSuggestion(); return ls != null ? `<div class="pp-up">Zeit für <b>${LEVELS[ls][1]}</b> <button data-act="lvlUp" data-lv="${ls}">Übernehmen</button></div>` : ''; })()}
+        <div class="pp-duo">
         <div class="pp-seg pp-gen">${[['m', 'Mann'], ['w', 'Frau']].map(([k, l]) => `<button class="${(p.gender || 'm') === k ? 'on' : ''}" data-act="profGender" data-v="${k}">${l}</button>`).join('')}</div>
+        <div class="pp-seg pp-lang">${[['de', 'Deutsch'], ['en', 'English']].map(([k, l]) => `<button class="${(p.lang || 'de') === k ? 'on' : ''}" data-act="profLang" data-v="${k}">${l}</button>`).join('')}</div>
+        </div>
         <div class="pp-seg">${LEVELS.map(([k, l], x) => `<button class="${(p.level == null ? 0 : p.level) === x ? 'on' : ''}" data-act="profLevel" data-v="${x}">${l}</button>`).join('')}</div>
       </div>
       <div class="pp-goal pp-t" style="--i:7"><div><small>ZIEL</small><span><b>${goal.target}</b> Trainings in ${goal.periodDays === 7 ? '1 Woche' : goal.periodDays + ' Tagen'}</span></div><button data-act="goalEditFromProfile">Anpassen</button></div>
@@ -1355,7 +1361,7 @@ function xrTile(i, act) {
     <img class="xr-img" src="${esc(imgOf(e))}" alt="" loading="lazy" decoding="async" onerror="this.style.visibility='hidden'">
     <span class="xr-musc">${esc(muscleLabel(e))}</span>
     <span class="xr-eq">${equipBadge(e.name)}</span>
-    <span class="xr-name">${esc(e.name)}</span>
+    <span class="xr-name">${esc(dn(e.name))}</span>
   </button>`;
 }
 function xrPills(withEquip) {
@@ -1384,7 +1390,7 @@ function detailSheetHtml(ex) {
     <button class="dt-x" data-act="browseClose" aria-label="Schließen">✕</button>
     <div class="dt-hero"><img src="${esc(imgOf(ex))}" alt="" onerror="this.style.visibility='hidden'"></div>
     <div class="dt-body">
-      <h2 class="dt-name">${esc(ex.name)}</h2>
+      <h2 class="dt-name">${esc(dn(ex.name))}</h2>
       <div class="dt-tags"><span class="dt-tag on">${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</span>${MUSCLE_GROUPS[ex.muscle] && MUSCLE_GROUPS[ex.muscle] !== (MUSCLE_DE[ex.muscle] || ex.muscle) ? `<span class="dt-tag">${MUSCLE_GROUPS[ex.muscle]}</span>` : ''}<span class="dt-tag">${equipLabel(ex.name)}</span></div>
       ${sec.length ? `<div class="dt-secm">Zusätzlich: ${sec.join(', ')}</div>` : ''}
       <div class="dt-sec">Gewichtsklassen</div>
@@ -1462,7 +1468,7 @@ function renderTV() {
       <div class="tv-main">
         <div class="tv-gifbox"><img class="tv-gif" src="${esc(imgOf(ex))}" alt="" onerror="this.style.visibility='hidden'"></div>
         <div class="tv-side">
-          <div class="tv-name">${esc(ex.name)}</div>
+          <div class="tv-name">${esc(dn(ex.name))}</div>
           <div class="tv-muscle">${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</div>
           <div class="tv-done"><b>${doneN}</b> / ${n} Sätze</div>
           <div class="tv-sets" style="--n:${n}">${Array.from({ length: n }, (_, k) =>
@@ -1540,7 +1546,7 @@ content.addEventListener('click', e => {
   }
   switch (btn.dataset.act) {
     case 'del':
-      if (!confirm(`„${arr[i].name}“ entfernen?`)) return;
+      if (!confirm(`„${dn(arr[i].name)}“ entfernen?`)) return;
       arr.splice(i, 1); save(arr); break;
     case 'set': {
       const p = prog(), name = arr[i].name, k = Number(btn.dataset.k);
@@ -1697,11 +1703,12 @@ content.addEventListener('click', e => {
       if (j < 0 || j >= t.exercises.length) return; [t.exercises[i], t.exercises[j]] = [t.exercises[j], t.exercises[i]]; saveWeekplan(); break; }
     case 'wRemoveEx': {
       const t = trainingById(btn.dataset.id);
-      if (!confirm(`„${t.exercises[Number(btn.dataset.i)].name}“ entfernen?`)) return;
+      if (!confirm(`„${dn(t.exercises[Number(btn.dataset.i)].name)}“ entfernen?`)) return;
       t.exercises.splice(Number(btn.dataset.i), 1); saveWeekplan(); break;
     }
     case 'ctlToggle': ctlOpen = !ctlOpen; break;
     case 'wLevel': { const t = trainingById(btn.dataset.id); const miss = applyLevel(t, Number(btn.dataset.lv)); lvMsg = miss ? 'Trage dein Gewicht im Profil ein, dann fülle ich auch die kg vor.' : ''; break; }
+    case 'profLang': { const p = loadProfile(); p.lang = btn.dataset.v; saveProfile(p); break; }
     case 'profGender': { const p = loadProfile(); p.gender = btn.dataset.v; saveProfile(p); break; }
     case 'profLevel': { const p = loadProfile(); p.level = Number(btn.dataset.v); saveProfile(p); break; }
     case 'lvlUp': { const p = loadProfile(); p.level = Number(btn.dataset.lv); saveProfile(p); break; }

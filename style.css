@@ -1438,3 +1438,5 @@ body.mood-bad{--text:#fbeeec; --text-dim:#dcc2be; --text-faint:#c9a29c;}
 
 .gp-x{width:auto; padding:0 .8rem; border:1px solid rgba(255,255,255,.25); border-radius:12px; font-size:.9rem; font-weight:800}
 .gp-cancel{flex:none; margin-top:.6rem; min-height:52px; border-radius:14px; border:2px solid var(--accent,#b6f04a); background:transparent; color:var(--accent,#b6f04a); font-weight:900; font-size:1rem; margin-bottom:env(safe-area-inset-bottom)}
+.pp-seg.pp-lang{grid-template-columns:repeat(2,1fr);margin-bottom:.5rem}
+.pp-duo{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:.5rem}.pp-duo .pp-seg{margin:0}.pp-seg.pp-lang{margin-bottom:0}
