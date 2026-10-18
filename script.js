@@ -702,7 +702,9 @@ function gearOf(name) { // Liste der benötigten Geräte
   if (/hyperext|back extension/.test(n)) return /no hyperextension bench/.test(n) ? ['body'] : ['ext'];
   if (/pull-?up|chin-?up|\bdips?\b|inverted row|hanging|muscle.up/.test(n) && !/bench dip/.test(n)) r.push('rig');
   if (/long bar|t-bar|\bez.?bar|\bez-curl/.test(n)) r.push('barbell'); else for (const k of ['barbell', 'dumbbell', 'cable', 'band']) if (matchesEquip(n, k)) { r.push(k); break; }
+  if (!r.includes('cable') && /pushdown|pulldown|face pull|pull.?through/.test(n) && !/band/.test(n)) r.push('cable');
   if (/kettlebell/.test(n)) r.push('kb');
+  if (r.includes('cable') && (/low|seated|row|lying|incline|bench|kickback|deadlift|hip |preacher|press|flye|shrug|upright|front|wrist|judo|iron cross|squat|lift|lateral|one.?legged/.test(n) || (/curl/.test(n) && !/high|overhead/.test(n)))) r.push('lowpulley'); // Seilzug nur von oben
   if (/bench|incline|decline|lying|preacher|skull|flyes|one-arm dumbbell row|pullover/.test(n) && !/hyperext/.test(n)) r.push('bench');
   return r.length ? r : ['body'];
 }
