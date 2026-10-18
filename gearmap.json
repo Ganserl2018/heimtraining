@@ -1,0 +1,3537 @@
+{
+"3/4 Sit-Up": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Air Bike": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Alternate Heel Touchers": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Ab Rollout": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Ab Rollout - On Knees": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Rollout from Bench": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Side Bend": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Bent-Knee Hip Raise": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Bosu Ball Cable Crunch With Side Bends": {
+"g": [],
+"s": "no",
+"r": "Zubehör/Maschine fehlt"
+},
+"Bottoms Up": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Butt-Ups": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Cable Crunch": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Cable Judo Flip": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Cable Reverse Crunch": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Cable Russian Twists": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Cable Seated Crunch": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Cocoons": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Cross-Body Crunch": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Crunch - Hands Overhead": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Crunch - Legs On Exercise Ball": {
+"g": [],
+"s": "no",
+"r": "Zubehör/Maschine fehlt"
+},
+"Crunches": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Dead Bug": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Decline Crunch": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Decline Oblique Crunch": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Decline Reverse Crunch": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Side Bend": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Elbow to Knee": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Flat Bench Leg Pull-In": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Flat Bench Lying Leg Raise": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Frog Sit-Ups": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Gorilla Chin/Crunch": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Hanging Leg Raise": {
+"g": [
+"rig"
+],
+"s": "ok",
+"r": "Klimmzugstange"
+},
+"Hanging Pike": {
+"g": [
+"rig"
+],
+"s": "ok",
+"r": "Klimmzugstange"
+},
+"Jackknife Sit-Up": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Janda Sit-Up": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Kneeling Cable Crunch With Alternating Oblique Twists": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Landmine 180's": {
+"g": [],
+"s": "no",
+"r": "Landmine"
+},
+"Leg Pull-In": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Lower Back Curl": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Oblique Crunches": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Oblique Crunches - On The Floor": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"One-Arm High-Pulley Cable Side Bends": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Pallof Press": {
+"g": [
+"cable"
+],
+"s": "ask",
+"r": "Pallof (Seilzug auf Brusthöhe)"
+},
+"Pallof Press With Rotation": {
+"g": [
+"cable"
+],
+"s": "ask",
+"r": "Pallof (Seilzug auf Brusthöhe)"
+},
+"Plank": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Press Sit-Up": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Reverse Crunch": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Rope Crunch": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Russian Twist": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Scissor Kick": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Barbell Twist": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Flat Bench Leg Pull-In": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Leg Tucks": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Side Bridge": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Side Jackknife": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Sit-Up": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Spell Caster": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Spider Crawl": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Cable Lift": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Standing Cable Wood Chop": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Standing Rope Crunch": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Stomach Vacuum": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Toe Touchers": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Tuck Crunch": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Wind Sprints": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Hip Circles (prone)": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Lying Crossover": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Monster Walk": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Hip Circles": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Band Hip Adductions": {
+"g": [
+"band"
+],
+"s": "ok",
+"r": "Bänder"
+},
+"Groiners": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Lateral Bound": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Side Leg Raises": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Alternate Hammer Curl": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Alternate Incline Dumbbell Curl": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Curl": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Curls Lying Against An Incline": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Cable Hammer Curls - Rope Attachment": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Cable Preacher Curl": {
+"g": [],
+"s": "no",
+"r": "Scottbank fehlt"
+},
+"Close-Grip EZ Bar Curl": {
+"g": [],
+"s": "no",
+"r": "SZ-Stange fehlt"
+},
+"Close-Grip EZ-Bar Curl with Band": {
+"g": [],
+"s": "no",
+"r": "SZ-Stange fehlt"
+},
+"Close-Grip Standing Barbell Curl": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Concentration Curls": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Cross Body Hammer Curl": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Drag Curl": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Alternate Bicep Curl": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Bicep Curl": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Prone Incline Curl": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"EZ-Bar Curl": {
+"g": [],
+"s": "no",
+"r": "SZ-Stange fehlt"
+},
+"Flexor Incline Dumbbell Curls": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Hammer Curls": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"High Cable Curls": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Incline Dumbbell Curl": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Incline Hammer Curls": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Incline Inner Biceps Curl": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Lying Cable Curl": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Lying Close-Grip Bar Curl On High Pulley": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Lying High Bench Barbell Curl": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Lying Supine Dumbbell Curl": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"One Arm Dumbbell Preacher Curl": {
+"g": [],
+"s": "no",
+"r": "Scottbank fehlt"
+},
+"Overhead Cable Curl": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Preacher Curl": {
+"g": [],
+"s": "no",
+"r": "Scottbank fehlt"
+},
+"Preacher Hammer Dumbbell Curl": {
+"g": [],
+"s": "no",
+"r": "Scottbank fehlt"
+},
+"Reverse Barbell Curl": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Reverse Barbell Preacher Curls": {
+"g": [],
+"s": "no",
+"r": "Scottbank fehlt"
+},
+"Reverse Cable Curl": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Seated Biceps": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Close-Grip Concentration Barbell Curl": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Dumbbell Curl": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Dumbbell Inner Biceps Curl": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Spider Curl": {
+"g": [],
+"s": "no",
+"r": "Scottbank fehlt"
+},
+"Standing Biceps Cable Curl": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Standing Concentration Curl": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Dumbbell Reverse Curl": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Inner-Biceps Curl": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Standing One-Arm Cable Curl": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Standing One-Arm Dumbbell Curl Over Incline Bench": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Two-Arm Dumbbell Preacher Curl": {
+"g": [],
+"s": "no",
+"r": "Scottbank fehlt"
+},
+"Wide-Grip Standing Barbell Curl": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Zottman Curl": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Zottman Preacher Curl": {
+"g": [],
+"s": "no",
+"r": "Scottbank fehlt"
+},
+"Barbell Seated Calf Raise": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Calf Raise On A Dumbbell": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Calf Raises - With Bands": {
+"g": [
+"band"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Seated One-Leg Calf Raise": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Knee Circles": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Rocking Standing Calf Raise": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Barbell Calf Raise": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Dumbbell Calf Raise": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Around The Worlds": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Bench Press - Medium Grip": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Guillotine Bench Press": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Incline Bench Press - Medium Grip": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Bench Press - With Bands": {
+"g": [
+"band",
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Bent-Arm Dumbbell Pullover": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Bodyweight Flyes": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Cable Chest Press": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Cable Crossover": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Cable Iron Cross": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Clock Push-Up": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Cross Over - With Bands": {
+"g": [
+"band"
+],
+"s": "ok",
+"r": ""
+},
+"Decline Barbell Bench Press": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Decline Dumbbell Bench Press": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Decline Dumbbell Flyes": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Bench Press": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Bench Press with Neutral Grip": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Flyes": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Flat Bench Cable Flyes": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Front Raise And Pullover": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Hammer Grip Incline DB Bench Press": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Incline Cable Chest Press": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Incline Cable Flye": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Incline Dumbbell Bench With Palms Facing In": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Incline Dumbbell Flyes": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Incline Dumbbell Flyes - With A Twist": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Incline Dumbbell Press": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Incline Push-Up": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Incline Push-Up Medium": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Incline Push-Up Reverse Grip": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Incline Push-Up Wide": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Isometric Chest Squeezes": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Isometric Wipers": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Low Cable Crossover": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Neck Press": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"One Arm Dumbbell Bench Press": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"One-Arm Flat Bench Dumbbell Flye": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Plyo Push-up": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Push Up to Side Plank": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Push-Up Wide": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Push-Ups With Feet Elevated": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Pushups": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Pushups (Close and Wide Hand Positions)": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Single-Arm Cable Crossover": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Single-Arm Push-Up": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Cable Chest Press": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Straight-Arm Dumbbell Pullover": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Wide-Grip Barbell Bench Press": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Wide-Grip Decline Barbell Bench Press": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Wide-Grip Decline Barbell Pullover": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Cable Wrist Curl": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Dumbbell Lying Pronation": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Lying Supination": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Finger Curls": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Palms-Down Dumbbell Wrist Curl Over A Bench": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Palms-Down Wrist Curl Over A Bench": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Palms-Up Barbell Wrist Curl Over A Bench": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Palms-Up Dumbbell Wrist Curl Over A Bench": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Dumbbell Palms-Down Wrist Curl": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Dumbbell Palms-Up Wrist Curl": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Seated One-Arm Dumbbell Palms-Down Wrist Curl": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Seated One-Arm Dumbbell Palms-Up Wrist Curl": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Palm-Up Barbell Wrist Curl": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Palms-Down Barbell Wrist Curl": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Two-Arm Palms-Up Low-Pulley Wrist Curl": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Standing Palms-Up Barbell Behind The Back Wrist Curl": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Wrist Circles": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Wrist Rotations with Straight Bar": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Glute Bridge": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Hip Thrust": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Butt Lift (Bridge)": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Flutter Kicks": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Glute Kickback": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Hip Extension with Bands": {
+"g": [
+"band"
+],
+"s": "ok",
+"r": ""
+},
+"Hip Lift with Band": {
+"g": [
+"band"
+],
+"s": "ok",
+"r": "Bänder"
+},
+"Kneeling Jump Squat": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Kneeling Squat": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Leg Lift": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Lying Glute": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"One-Legged Cable Kickback": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Pull Through": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Seated Glute": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Single Leg Glute Bridge": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Step-up with Knee Raise": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"90/90 Hamstring": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Band Good Morning": {
+"g": [
+"band"
+],
+"s": "ok",
+"r": "Bänder"
+},
+"Band Good Morning (Pull Through)": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Clean": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Clean Deadlift": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Dumbbell Clean": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Front Leg Raises": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Good Morning": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Good Morning off Pins": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Hang Snatch": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Hang Snatch - Below Knees": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Hanging Bar Good Morning": {
+"g": [
+"rig"
+],
+"s": "ok",
+"r": "Klimmzugstange"
+},
+"Inchworm": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Knee Tuck Jump": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Muscle Snatch": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Natural Glute Ham Raise": {
+"g": [
+"ext"
+],
+"s": "ask",
+"r": "Extension-Stuhl / GHR"
+},
+"Power Clean": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Power Clean from Blocks": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Power Snatch": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Reverse Band Sumo Deadlift": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Romanian Deadlift": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Romanian Deadlift from Deficit": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Snatch Deadlift": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Snatch Pull": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Split Snatch": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Stiff-Legged Barbell Deadlift": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Stiff-Legged Dumbbell Deadlift": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Sumo Deadlift": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Sumo Deadlift with Bands": {
+"g": [
+"band",
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Sumo Deadlift with Chains": {
+"g": [],
+"s": "no",
+"r": "Ketten"
+},
+"Vertical Swing": {
+"g": [],
+"s": "no",
+"r": "Kettlebell fehlt"
+},
+"Wide Stance Stiff Legs": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Bent-Arm Barbell Pullover": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Cable Incline Pushdown": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Chin-Up": {
+"g": [
+"rig"
+],
+"s": "ok",
+"r": "Klimmzugstange"
+},
+"Close-Grip Front Lat Pulldown": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Elevated Cable Rows": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Full Range-Of-Motion Lat Pulldown": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Kneeling High Pulley Row": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Kneeling Single-Arm High Pulley Row": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"One Arm Lat Pulldown": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Pullups": {
+"g": [
+"rig"
+],
+"s": "ok",
+"r": "Klimmzugstange"
+},
+"Rope Straight-Arm Pulldown": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Shotgun Row": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Straight-Arm Pulldown": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Underhand Cable Pulldowns": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"V-Bar Pulldown": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"V-Bar Pullup": {
+"g": [
+"rig"
+],
+"s": "ok",
+"r": "Klimmzugstange"
+},
+"Wide-Grip Lat Pulldown": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Wide-Grip Pulldown Behind The Neck": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Wide-Grip Rear Pull-Up": {
+"g": [
+"rig"
+],
+"s": "ok",
+"r": "Klimmzugstange"
+},
+"Barbell Deadlift": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Deadlift with Bands": {
+"g": [
+"band",
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Deadlift with Chains": {
+"g": [],
+"s": "no",
+"r": "Ketten"
+},
+"Deficit Deadlift": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Hyperextensions With No Hyperextension Bench": {
+"g": [],
+"s": "ok",
+"r": "Boden"
+},
+"Rack Pull with Bands": {
+"g": [
+"band",
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Rack Pulls": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Reverse Band Deadlift": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Seated Good Mornings": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Stiff Leg Barbell Good Morning": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Superman": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Bent Over Barbell Row": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Bent Over One-Arm Long Bar Row": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Bent Over Two-Arm Long Bar Row": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Bent Over Two-Dumbbell Row": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Bent Over Two-Dumbbell Row With Palms In": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Incline Row": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Incline Bench Pull": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Lying Cambered Barbell Row": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Middle Back Shrug": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"One-Arm Dumbbell Row": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"One-Arm Long Bar Row": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Reverse Grip Bent-Over Rows": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Cable Rows": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Seated One-arm Cable Pulley Rows": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Straight Bar Bench Mid Rows": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"T-Bar Row with Handle": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Isometric Neck Exercise - Front And Back": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Isometric Neck Exercise - Sides": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"All Fours Quad Stretch": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Full Squat": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Hack Squat": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Lunge": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Side Split Squat": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Squat": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Squat To A Bench": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Step Ups": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Walking Lunge": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Bench Jump": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Bodyweight Squat": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Box Squat": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Box Squat with Bands": {
+"g": [
+"band",
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Box Squat with Chains": {
+"g": [],
+"s": "no",
+"r": "Ketten"
+},
+"Cable Deadlifts": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Cable Hip Adduction": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Clean Pull": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Clean from Blocks": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Double Leg Butt Kick": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Lunges": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Rear Lunge": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Seated Box Jump": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Squat": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Squat To A Bench": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Step Ups": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Elevated Back Lunge": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Fast Skipping": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Frankenstein Squat": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Freehand Jump Squat": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Front Barbell Squat": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Front Barbell Squat To A Bench": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Front Squat (Clean Grip)": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Hang Clean": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Hang Clean - Below the Knees": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Heaving Snatch Balance": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Hip Flexion with Band": {
+"g": [
+"band"
+],
+"s": "ok",
+"r": "Bänder"
+},
+"Jefferson Squats": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Jerk Dip Squat": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Lying Prone Quadriceps": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Narrow Stance Squats": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Olympic Squat": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"One Leg Barbell Squat": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"One-Arm Side Deadlift": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Overhead Squat": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Plie Dumbbell Squat": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Power Jerk": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Power Snatch from Blocks": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Rear Leg Raises": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Reverse Band Box Squat": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Reverse Band Power Squat": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Rocket Jump": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Scissors Jump": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Single Leg Butt Kick": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Snatch": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Snatch Balance": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Snatch from Blocks": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Speed Box Squat": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Speed Squats": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Split Clean": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Split Jerk": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Split Jump": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Split Squat with Dumbbells": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Squat Jerk": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Squat with Bands": {
+"g": [
+"band",
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Squat with Chains": {
+"g": [],
+"s": "no",
+"r": "Ketten"
+},
+"Squat with Plate Movers": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Squats - With Bands": {
+"g": [
+"band",
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Long Jump": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Star Jump": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Weighted Jump Squat": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Weighted Sissy Squat": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Wide Stance Barbell Squat": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Zercher Squats": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Alternating Cable Shoulder Press": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Alternating Deltoid Raise": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Anti-Gravity Press": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Arnold Dumbbell Press": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Back Flyes - With Bands": {
+"g": [
+"band",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Band Pull Apart": {
+"g": [
+"band"
+],
+"s": "ok",
+"r": "Bänder"
+},
+"Barbell Incline Shoulder Raise": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Rear Delt Row": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Shoulder Press": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Bent Over Dumbbell Rear Delt Raise With Head On Bench": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Bent Over Low-Pulley Side Lateral": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Bradford/Rocky Presses": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Cable Internal Rotation": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Cable Rear Delt Fly": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Cable Rope Rear-Delt Rows": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Cable Seated Lateral Raise": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Cable Shoulder Press": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Car Drivers": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Clean and Jerk": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Clean and Press": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Cuban Press": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Incline Shoulder Raise": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Lying One-Arm Rear Lateral Raise": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Lying Rear Lateral Raise": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell One-Arm Shoulder Press": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell One-Arm Upright Row": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Raise": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Scaption": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Shoulder Press": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"External Rotation": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"External Rotation with Band": {
+"g": [
+"band"
+],
+"s": "ok",
+"r": "Bänder"
+},
+"External Rotation with Cable": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Face Pull": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Front Cable Raise": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Front Dumbbell Raise": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Front Incline Dumbbell Raise": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Front Two-Dumbbell Raise": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Handstand Push-Ups": {
+"g": [
+"rig"
+],
+"s": "ask",
+"r": "Dips/Handstand am Gerüst"
+},
+"Internal Rotation with Band": {
+"g": [
+"band"
+],
+"s": "ok",
+"r": "Bänder"
+},
+"Iron Cross": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Jerk Balance": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Landmine Linear Jammer": {
+"g": [],
+"s": "no",
+"r": "Landmine"
+},
+"Lateral Raise - With Bands": {
+"g": [
+"band"
+],
+"s": "ok",
+"r": ""
+},
+"Low Pulley Row To Neck": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Lying One-Arm Lateral Raise": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Lying Rear Delt Raise": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"One-Arm Incline Lateral Raise": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"One-Arm Side Laterals": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Power Partials": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Push Press": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Push Press - Behind the Neck": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Rack Delivery": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Reverse Flyes": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Reverse Flyes With External Rotation": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Barbell Military Press": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Bent-Over Rear Delt Raise": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Cable Shoulder Press": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Seated Dumbbell Press": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Front Deltoid": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Side Lateral Raise": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"See-Saw Press (Alternating Side Press)": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Shoulder Press - With Bands": {
+"g": [
+"band"
+],
+"s": "ok",
+"r": ""
+},
+"Side Lateral Raise": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Side Laterals to Front Raise": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Single Dumbbell Raise": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Single-Arm Linear Jammer": {
+"g": [],
+"s": "no",
+"r": "Landmine"
+},
+"Smith Incline Shoulder Raise": {
+"g": [],
+"s": "no",
+"r": "Smith-Maschine"
+},
+"Standing Alternating Dumbbell Press": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Barbell Press Behind Neck": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Bradford Press": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Standing Dumbbell Press": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Dumbbell Straight-Arm Front Delt Raise Above Head": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Front Barbell Raise Over Head": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Low-Pulley Deltoid Raise": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Standing Military Press": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Palm-In One-Arm Dumbbell Press": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Palms-In Dumbbell Press": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Straight Raises on Incline Bench": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Upright Barbell Row": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Shrug": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Barbell Shrug Behind The Back": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Cable Shrugs": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Clean Shrug": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Dumbbell Shrug": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Snatch Shrug": {
+"g": [],
+"s": "ask",
+"r": "Olympische Übungen (Plattform/Technik)"
+},
+"Standing Dumbbell Upright Row": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Upright Cable Row": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Upright Row - With Bands": {
+"g": [
+"band"
+],
+"s": "ok",
+"r": ""
+},
+"Band Skull Crusher": {
+"g": [
+"band"
+],
+"s": "ok",
+"r": "Bänder"
+},
+"Bench Dips": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": "Bank"
+},
+"Bench Press - Powerlifting": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Bench Press with Chains": {
+"g": [],
+"s": "no",
+"r": "Ketten"
+},
+"Board Press": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Body Tricep Press": {
+"g": [
+"rig"
+],
+"s": "ask",
+"r": "Dips/Handstand am Gerüst"
+},
+"Body-Up": {
+"g": [
+"rig"
+],
+"s": "ask",
+"r": "Dips/Handstand am Gerüst"
+},
+"Cable Incline Triceps Extension": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Cable Lying Triceps Extension": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Cable One Arm Tricep Extension": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Cable Rope Overhead Triceps Extension": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Close-Grip Barbell Bench Press": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Close-Grip Dumbbell Press": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Close-Grip EZ-Bar Press": {
+"g": [],
+"s": "no",
+"r": "SZ-Stange fehlt"
+},
+"Close-Grip Push-Up off of a Dumbbell": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Decline Close-Grip Bench To Skull Crusher": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Decline Dumbbell Triceps Extension": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Decline EZ Bar Triceps Extension": {
+"g": [],
+"s": "no",
+"r": "SZ-Stange fehlt"
+},
+"Dips - Triceps Version": {
+"g": [
+"rig"
+],
+"s": "ask",
+"r": "Dips/Handstand am Gerüst"
+},
+"Dumbbell Floor Press": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell One-Arm Triceps Extension": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Dumbbell Tricep Extension -Pronated Grip": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"EZ-Bar Skullcrusher": {
+"g": [],
+"s": "no",
+"r": "SZ-Stange fehlt"
+},
+"Floor Press": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Floor Press with Chains": {
+"g": [],
+"s": "no",
+"r": "Ketten"
+},
+"Incline Barbell Triceps Extension": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Incline Push-Up Close-Grip": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"JM Press": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Kneeling Cable Triceps Extension": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Low Cable Triceps Extension": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Lying Close-Grip Barbell Triceps Extension Behind The Head": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Lying Close-Grip Barbell Triceps Press To Chin": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Lying Dumbbell Tricep Extension": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Lying Triceps Press": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"One Arm Floor Press": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"One Arm Pronated Dumbbell Triceps Extension": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"One Arm Supinated Dumbbell Triceps Extension": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Overhead Triceps": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Pin Presses": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Push-Ups - Close Triceps Position": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Reverse Band Bench Press": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Reverse Grip Triceps Pushdown": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Reverse Triceps Bench Press": {
+"g": [
+"barbell",
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Bent-Over One-Arm Dumbbell Triceps Extension": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Bent-Over Two-Arm Dumbbell Triceps Extension": {
+"g": [
+"bench",
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Seated Triceps Press": {
+"g": [
+"bench"
+],
+"s": "ok",
+"r": ""
+},
+"Speed Band Overhead Triceps": {
+"g": [],
+"s": "no",
+"r": "Spezialaufbau"
+},
+"Standing Bent-Over One-Arm Dumbbell Triceps Extension": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Bent-Over Two-Arm Dumbbell Triceps Extension": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Dumbbell Triceps Extension": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Low-Pulley One-Arm Triceps Extension": {
+"g": [
+"cable"
+],
+"s": "no",
+"r": "Seilzug nur von oben vorhanden"
+},
+"Standing One-Arm Dumbbell Triceps Extension": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Overhead Barbell Triceps Extension": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Standing Towel Triceps Extension": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Tate Press": {
+"g": [
+"barbell"
+],
+"s": "ok",
+"r": ""
+},
+"Tricep Dumbbell Kickback": {
+"g": [
+"dumbbell"
+],
+"s": "ok",
+"r": ""
+},
+"Triceps Overhead Extension with Rope": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Triceps Pushdown": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Triceps Pushdown - Rope Attachment": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+},
+"Triceps Pushdown - V-Bar Attachment": {
+"g": [
+"cable"
+],
+"s": "ok",
+"r": "Seilzug oben"
+}
+}
