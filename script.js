@@ -694,15 +694,17 @@ function presetExercises(p) {
 // ---- V13 W-02: Auto-Trainingsgenerator (Regeln: Coach-Bericht) ----
 const GENKEY = 'heimtraining.genlast';
 let genJust = false, genFrom = null;
-const GEAR = [['barbell', 'Langhantel'], ['dumbbell', 'Kurzhanteln'], ['cable', 'Seilzug'], ['band', 'Bänder'], ['rig', 'Klimmzug'], ['ext', 'Extension'], ['body', 'Körper']];
-const GEARKEY = 'heimtraining.gear';
+const GEAR = [['barbell', 'Langhantel'], ['dumbbell', 'Kurzhanteln'], ['cable', 'Seilzug'], ['band', 'Bänder'], ['rig', 'Klimmzug'], ['ext', 'Extension'], ['bench', 'Hantelbank'], ['body', 'Körper']];
+const GEARKEY = 'heimtraining.gear2';
 function loadGear() { try { const g = JSON.parse(localStorage.getItem(GEARKEY)); if (Array.isArray(g)) return g; } catch (e) {} return GEAR.map(x => x[0]); }
-function gearOf(name) {
-  const n = name.toLowerCase();
-  if (/hyperext|back extension/.test(n)) return /no hyperextension bench/.test(n) ? 'body' : 'ext';
-  if (/pull-?up|chin-?up|\bdips?\b|inverted row|hanging|muscle.up/.test(n)) return 'rig';
-  for (const k of ['barbell', 'dumbbell', 'cable', 'band']) if (matchesEquip(n, k)) return k;
-  return /kettlebell/.test(n) ? 'kb' : 'body';
+function gearOf(name) { // Liste der benötigten Geräte
+  const n = name.toLowerCase(), r = [];
+  if (/hyperext|back extension/.test(n)) return /no hyperextension bench/.test(n) ? ['body'] : ['ext'];
+  if (/pull-?up|chin-?up|\bdips?\b|inverted row|hanging|muscle.up/.test(n) && !/bench dip/.test(n)) r.push('rig');
+  if (/long bar|t-bar|\bez.?bar|\bez-curl/.test(n)) r.push('barbell'); else for (const k of ['barbell', 'dumbbell', 'cable', 'band']) if (matchesEquip(n, k)) { r.push(k); break; }
+  if (/kettlebell/.test(n)) r.push('kb');
+  if (/bench|incline|decline|lying|preacher|skull|flyes|one-arm dumbbell row|pullover/.test(n) && !/hyperext/.test(n)) r.push('bench');
+  return r.length ? r : ['body'];
 }
 function newGenCfg() { return { lv: null, goal: 'aufbau', dur: 30, count: null, groups: [], gear: loadGear(), minSets: 0, minReps: 0 }; }
 let genCfg = newGenCfg(), genRes = null;
@@ -717,7 +719,7 @@ function generate() {
   let last = []; try { last = JSON.parse(localStorage.getItem(GENKEY)) || []; } catch (e) {}
   const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine/i;
   const hard = /deadlift|rack pull|clean|snatch|jerk|weighted|good morning|behind (the )?neck|guillotine|zercher|jefferson|overhead squat|olympic|sissy|muscle.up|atlas|pistol|single-arm push/i;
-  const base = pool.filter(e => !bad.test(e.name) && MUSCLE_GROUPS[e.muscle] && (lv > 0 || !hard.test(e.name)) && genCfg.gear.includes(gearOf(e.name)));
+  const base = pool.filter(e => !bad.test(e.name) && MUSCLE_GROUPS[e.muscle] && (lv > 0 || !hard.test(e.name)) && gearOf(e.name).every(k => genCfg.gear.includes(k)));
   const n = genCfg.count || GCOUNT[genCfg.dur][lv], isoMax = genCfg.count ? Math.ceil(n / 2) : GISO[genCfg.dur];
   const gs = g.slice().sort((a, b) => GRANK[b] - GRANK[a]);
   const per = gs.map((_, i) => Math.floor(n / gs.length) + (i < n % gs.length ? 1 : 0));
