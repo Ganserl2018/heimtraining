@@ -420,3 +420,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - 2026-10-18 17:25 BUG: ?v=20261018A (Großbuchstabe) → Auto-Update-Regex [0-9a-z] las nur '20261018' → Reload-Schleife, App hängt + springt zur Startseite. Fix: Regex [0-9A-Za-z], Version 20261018b, Regel in CLAUDE.md.
 - 2026-10-18 17:30 Jetzt trainieren: Namensfeld gleich am Anfang (optional, Standard 'Auto · Fokus'); Umbenennen später im Training wie gehabt. ?v=20261018c
 - 2026-10-18: Trainingsname überall anklickbar (Wochenplan-Karte, Archiv, Detail-Titel, Vorschau, Pack-Name) → Umbenennen; Player-Titel nicht. v=20261018d
+- 2026-10-18: Stift-Symbol als grüner Kreis-Badge, Name nicht mehr abgeschnitten, Umbenennen-Button entfernt (v=20261018e)

@@ -1452,3 +1452,8 @@ body.mood-bad{--text:#fbeeec; --text-dim:#dcc2be; --text-faint:#c9a29c;}
 .gn-name::placeholder{color:var(--text-faint);}
 
 .nm-edit{cursor:text;} .nm-pen{font-style:normal; font-size:.62em; margin-left:.4em; opacity:.55; vertical-align:middle;}
+
+.nm-pen{display:inline-flex; align-items:center; justify-content:center; flex:none; width:1.5rem; height:1.5rem; margin-left:.5rem; border-radius:50%; border:1px solid var(--accent); color:var(--accent); background:rgba(190,242,100,.12); font-size:.85rem !important; line-height:1; opacity:1 !important; vertical-align:middle; text-transform:none; letter-spacing:0;}
+.tx-head h2.nm-edit{display:flex; align-items:center; overflow:visible; flex:0 1 auto; min-width:4rem; max-width:100%;}
+.tx-head h2 .nm-t{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0;}
+.tx-head h2.nm-edit{max-width:62%;}

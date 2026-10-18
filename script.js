@@ -1225,7 +1225,7 @@ function renderWTrain() {
     : step === 5 && hasEx ? hint('go', 5, 'Fertig eingerichtet! Tippe auf „Training starten“, wenn du loslegen willst. Alles lässt sich jederzeit ändern.') : '';
   const head = renameId === t.id
     ? `<div class="tx-head"><input id="rename-input" placeholder="Name des Trainings…" value="${esc(t.name)}"><div class="tx-hbtns"><button data-act="wRenameSave" data-id="${t.id}">Speichern</button><button data-act="wRenameCancel" data-id="${t.id}">Abbrechen</button></div></div>`
-    : `<div class="tx-head"><h2 class="nm-edit" data-act="wRename" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></h2><span class="lab-chip"><i></i>${t.exercises.length} ÜBUNG${t.exercises.length === 1 ? '' : 'EN'} · ${totalSets} SÄTZE</span><div class="tx-hbtns"><button data-act="wRename" data-id="${t.id}">Umbenennen</button></div></div>`;
+    : `<div class="tx-head"><h2 class="nm-edit" data-act="wRename" data-id="${t.id}"><span class="nm-t">${esc(t.name)}</span><i class="nm-pen" aria-hidden="true">✎</i></h2><span class="lab-chip"><i></i>${t.exercises.length} ÜBUNG${t.exercises.length === 1 ? '' : 'EN'} · ${totalSets} SÄTZE</span></div>`;
   const dayLbl = hasDays ? WD_KEYS.filter(k => t.weekdays.includes(k)).map(k => WD_LABELS[k]).join(' ') : 'Tage wählen';
   const lvNow = t.level != null ? LEVELS[t.level][1] : 'Level';
   const ctl = hasEx ? `<aside class="tx-ctl${ctlOpen ? ' open' : ''}">
