@@ -409,3 +409,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - 16:31 Face Pull v3 (Turm auf Augenhöhe, Seil zum Gesicht) gesendet; Regel Bewegungslogik-Check in bild-stil.md
 - 16:33 Face Pull v3 von Alex abgenommen; Rezept in bild-stil.md
 - 16:35 Wochenlimit Claude bei 92% → heute keine Bildproduktion mehr. Offen: 4 Probe-Übungen auf Bewegungslogik prüfen, Entscheidung Gesamtsatz, Optik-Go
+- 16:37 Regel: keine Hintergrund-Personen, leere LED-Szene. Face Pull v3 neu machen sobald Limit frei

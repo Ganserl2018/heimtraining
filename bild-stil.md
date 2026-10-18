@@ -41,3 +41,9 @@ Zuordnung: Szene = stabiler Hash des Übungsnamens (nie ändern).
 - Ende-Prompt (Create a NEW image, same scene): "PULLED the rope straight back along the horizontal cable: rope ends beside his ears, hands next to face at eye level, elbows flared high and wide at shoulder height, shoulders squeezed back, torso upright with very slight lean back, cable still taut and horizontal, pure side profile".
 - GIF: ./mk.sh start end out.gif (Blend, nur Start+Ende).
 - Allgemein für Zugübungen: Rollenhöhe = Bewegungslinie der Hände; Kabel nie durchhängend; Bewegung = Hände entlang des Kabels zum Körper.
+
+## Hintergrund-Regel (18.10. 16:37, Alex)
+- KEINE Studio-Hintergründe mit anderen Leuten/Betrieb (z. B. Spiegel/Durchblick mit Personen beim Face Pull). Nur eine leere Szene, nur der Trainierende.
+- Szene im grünen-LED-Stil beibehalten (Wand/Boden/Kante mit LED-Streifen), sonst nichts im Hintergrund.
+- Prompt-Baustein: "completely empty room, no other people, no mirrors showing people, no gym floor activity in the background, only the glowing green LED strips".
+- Face Pull v3 hat im Spiegel rechts Personen → bei Neuerzeugung (Limit erst wieder frei) ersetzen.
