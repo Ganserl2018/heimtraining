@@ -261,7 +261,7 @@ function renderView() {
   document.body.classList.toggle('playing', view === 'play');
   if (weekplan.some(x => x.draft && !(view === 'wtrain' && wId === x.id) && view !== 'picker' && !picker)) weekplan = weekplan.filter(x => !x.draft || (view === 'wtrain' && wId === x.id));
   applyMood();
-  const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', start: 'Training wählen', gen: 'Jetzt trainieren', play: 'Workout', preview: 'Training', summary: 'Geschafft', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
+  const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', start: 'Planung', gen: 'Jetzt trainieren', play: 'Workout', preview: 'Training', summary: 'Geschafft', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
   document.querySelector('.topbar h1').textContent = view === 'wtrain' ? ((trainingById(wId) || {}).name || 'Training') : (titles[view] || 'Home Force');
   syncTabActive();
   { const pn = (loadProfile().name || '').trim(), bad = document.body.classList.contains('mood-bad');
@@ -441,7 +441,17 @@ function computeStreak(h) {
   return streak;
 }
 
+let dashMode = false;
+function renderHome() {
+  document.body.classList.remove('mood-bad');
+  const t = today(), open = weekplan.find(w => startOf(w.id, t) && !loadHistory().some(r => r.trainingId === w.id && r.date === t));
+  content.innerHTML = `<div class="home"><button class="home-btn" data-act="goto" data-view="start" aria-label="Start">
+    <span class="home-ring"></span><span class="home-core">
+    <svg viewBox="0 0 24 24" class="home-db" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>
+    <b>START</b></span></button>${open ? '<div class="home-open">Offenes Training wartet</div>' : ''}</div>`;
+}
 function renderOverview() {
+  if (!dashMode) return renderHome();
   const t = today();
   const h = loadHistory();
   const p = prog();
@@ -583,6 +593,7 @@ function histGroup(ds) {
 function renderHistory() {
   const h = loadHistory();
   if (!h.length) { content.innerHTML = `<p class="placeholder">Noch kein Training abgeschlossen.</p>`; return; }
+  const dashBtn = '<button class="hist-dash" data-act="dash">Ziele &amp; Streak ›</button>';
   const cur = weekStart(isoDay(new Date()));
   const wk = h.filter(r => weekStart(r.date) === cur);
   const wkSets = wk.reduce((a, r) => a + (r.totalSetsDone || 0), 0);
@@ -604,7 +615,7 @@ function renderHistory() {
       ${r.note ? `<div class="hv-note">${esc(r.note)}</div>` : ''}
     </div>`;
   }).join('');
-  content.innerHTML = `<div class="hv">
+  content.innerHTML = `<div class="hv">${dashBtn}
     <div class="hv-week">
       <div><b>${wk.length}</b><span>Trainings diese Woche</span></div>
       <div><b>${histStreak(h)}</b><span>Tage Streak</span></div>
@@ -872,8 +883,16 @@ function renderStart() {
       <span class="sv-vl-ic">${presetThumb(p) || DB}</span><span class="sv-vl-name">${esc(p.name)}</span><span class="sv-vl-n">${n}</span></button>`; };
   const own = weekplan.filter(w => w.exercises.length).sort((a, b) => (a.presetKey ? 1 : 0) - (b.presetKey ? 1 : 0));
   const ownIds = new Set(own.map(w => w.presetKey).filter(Boolean));
+  const qp = (act, v, l, on) => `<button class="qk-p${on ? ' on' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
+  const openT = weekplan.find(w => startOf(w.id, today()) && !loadHistory().some(r => r.trainingId === w.id && r.date === today()));
   content.innerHTML = `<div class="sv">
-    <button class="sv-auto" data-act="genOpen"><span class="sv-auto-ic">✨</span><span class="sv-auto-t"><b>JETZT TRAINIEREN</b><i>Fokus, Geräte, Zeit – fertig</i></span><span class="sv-pk-go" aria-hidden="true">›</span></button>
+    ${openT ? `<button class="sv-resume" data-act="quickStart" data-id="${openT.id}"><b>▶ WEITER</b><i>${esc(openT.name)}</i></button>` : ''}
+    <div class="qk"><div class="qk-h">SCHNELLSTART</div>
+      <div class="qk-pills">${MUSCLE_GROUP_LIST.map(m => qp('genGrp', m, m, grpOn(m))).join('')}</div>
+      <div class="qk-pills qk-time">${[20, 30, 45, 60].map(d => qp('genDur', d, d + ' Min', genCfg.dur === d)).join('')}</div>
+      <button class="qk-go" data-act="genDo"${genCfg.groups.length ? '' : ' disabled'}>✨ TRAINING BAUEN</button>
+      <button class="qk-more" data-act="genOpen">Alle Einstellungen ›</button></div>
+    <button class="sv-auto" data-act="genOpen" hidden><span class="sv-auto-ic">✨</span><span class="sv-auto-t"><b>JETZT TRAINIEREN</b><i>Fokus, Geräte, Zeit – fertig</i></span><span class="sv-pk-go" aria-hidden="true">›</span></button>
     <div class="sv-lab">MEINE PAKETE</div>
     <div class="sv-packs">${own.map(pack).join('')}<button class="sv-add" data-act="wNewTraining"><span class="sv-add-plus">+</span><span>${own.length ? 'Eigenes Training' : 'Erstes Training erstellen'}</span></button></div>
     <div class="sv-lab">VORLAGEN</div>
@@ -1594,6 +1613,7 @@ content.addEventListener('click', e => {
     case 'tvNext': tvIndex++; break;
     case 'tvBack': view = tvReturn ? tvReturn.view : 'overview'; if (tvReturn && tvReturn.day) day = tvReturn.day; if (tvReturn && tvReturn.wId) wId = tvReturn.wId; tvReturn = null; break;
     case 'goto':
+      dashMode = false;
       if (btn.dataset.day) { day = btn.dataset.day; view = 'day'; }
       else if (btn.dataset.view) { view = btn.dataset.view; }
       picker = null;
@@ -1750,7 +1770,8 @@ content.addEventListener('click', e => {
     case 'genGear': { const k = btn.dataset.v, g = loadGear(), i = g.indexOf(k); if (i >= 0) g.splice(i, 1); else g.push(k); genCfg.gear = g; try { localStorage.setItem(GEARKEY, JSON.stringify(g)); } catch (e2) {} genRes = null; break; }
     case 'genMinS': genCfg.minSets = Number(btn.dataset.v); genRes = null; break;
     case 'genMinR': genCfg.minReps = Number(btn.dataset.v); genRes = null; break;
-    case 'genDo': generate(); break;
+    case 'dash': dashMode = true; view = 'overview'; break;
+    case 'genDo': if (view === 'start') { genFrom = null; view = 'gen'; } generate(); break;
     case 'genSurprise': { const gl = shuffle(MUSCLE_GROUP_LIST).slice(0, 2 + Math.floor(Math.random() * 2)); genCfg.groups = gl; generate(); break; }
     case 'genSave': genSave(false); break;
     case 'genGo': genSave(true); break;
