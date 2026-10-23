@@ -1483,3 +1483,18 @@ body.mood-bad{--text:#fbeeec; --text-dim:#dcc2be; --text-faint:#c9a29c;}
 .sv-resume i{font-style:normal; font-weight:600; opacity:.8;}
 .hist-dash{width:100%; margin:.1rem 0 .6rem; padding:.7rem; border-radius:14px; border:1px solid var(--accent); background:rgba(184,255,60,.08); color:var(--accent); font-weight:700;}
 .sv-auto[hidden]{display:none !important;}
+/* V20 große Übungsbilder */
+@media (max-width:559px){
+  .xr-grid{grid-template-columns:1fr; gap:.8rem;}
+  .xr-tile{aspect-ratio:1/1.02; border-radius:22px;}
+  .xr-img{filter:none; object-position:center 25%;}
+  .xr-name{font-size:1.45rem; left:1rem; right:1rem; bottom:.9rem;}
+  .xr-musc,.xr-eq{font-size:.78rem; top:.7rem;}
+}
+/* V20 große Detailbilder */
+.dt-sheet{overflow-y:auto !important;}
+.dt-hero img{width:100%; height:54dvh; max-height:none; object-fit:cover; object-position:center 30%;}
+/* V20 Eigene Trainings: größere Bilder, Namen umbrechen */
+.tx-row{grid-template-columns:76px minmax(0,1fr) auto auto auto !important;}
+.tx-th{width:76px; height:76px; border-radius:14px;}
+.tx-nm .tx-n, .tx-nm b, .tx-nm > *:first-child{white-space:normal !important; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}

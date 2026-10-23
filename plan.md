@@ -430,3 +430,10 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - Hinweis: weitere Ideen folgen; Optik muss auf Neon-Grün + Lichteinfall aufbauen (V18 Mint abgelehnt).
 - W1b Start-Button-Logo: neon-grüne Hantel oder 💪 im runden Button (23:27).
 - 2026-10-23 22:05 Freitag-Reminder: Face Pull v4 ohne Hintergrund-Personen fertig (show5/fp3_led.gif, bisher NICHT ins Repo – wartet auf Alex' Ansicht). 4 Probe-Übungen geprüft: RDL/Bank/Schulterdrücken ok, Kniebeuge Arm-Wechsel. Nächster Schritt: Alex' Go für Gesamtsatz M+W.
+
+## 2026-10-24 V20 Design-Umbau (Alex: "Design jetzt, Bilder später")
+- Startseite = nur großer runder Neon-Lime Start-Button mit Hantel (Glow/Puls); alte Übersicht (Ziele/Streak) erreichbar über Verlauf → "Ziele & Streak".
+- Tab "Übersicht" → "Start". Start-Button → Planungsseite (renderStart): SCHNELLSTART (Fokus + Zeit + TRAINING BAUEN), "Alle Einstellungen", WEITER-Banner bei offenem Training, Pakete + Vorlagen.
+- Übungsliste: 1 Spalte, große Bilder ohne Filter; Detail-Sheet Bild 54dvh.
+- Eigene Trainings (wtrain): Thumbs 76px, Namen umbrechen.
+- `?v=20261024e`. Offen: Feinschliff nach Alex-Feedback am iPhone.
