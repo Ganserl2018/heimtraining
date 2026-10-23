@@ -885,7 +885,8 @@ function renderStart() {
       <div class="qk-pills">${MUSCLE_GROUP_LIST.map(m => qp('genGrp', m, m, grpOn(m))).join('')}</div>
       <div class="qk-pills qk-time">${[20, 30, 45, 60].map(d => qp('genDur', d, d + ' Min', genCfg.dur === d)).join('')}</div>
       <button class="qk-go" data-act="genDo"${genCfg.groups.length ? '' : ' disabled'}>${SP}${own.length ? 'NEU BAUEN' : 'TRAINING BAUEN'}</button>
-      <button class="qk-more" data-act="genOpen">Geräte, Umfang, Level ›</button>
+      <div class="qk-um">${[['Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0], ['Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets], ['Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps]].map(([l, a, vs, cur]) => `<div class="qk-um-r"><span>${l}</span><div>${vs.map(v => `<button class="qk-u${cur === v ? ' on' : ''}" data-act="${a}" data-v="${v}">${v || 'Auto'}</button>`).join('')}</div></div>`).join('')}</div>
+      <button class="qk-more" data-act="genOpen">Geräte &amp; Level ›</button>
     </div>
   </div>`;
 }
