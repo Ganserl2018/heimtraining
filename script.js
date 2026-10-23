@@ -243,7 +243,7 @@ function applyMood() {
   document.body.classList.toggle('mood-good', !bad);
 }
 
-function fitTabH() { const tb = document.getElementById('tabbar'); if (!tb) return; const o = Math.max(0, document.body.getBoundingClientRect().bottom - tb.getBoundingClientRect().top); document.documentElement.style.setProperty('--tabh', Math.round(o) + 'px'); }
+function fitTabH() { const tb = document.getElementById('tabbar'); if (!tb) return; if (!tb.offsetHeight) { document.documentElement.style.setProperty('--tabh', '0px'); return; } const o = Math.max(0, document.body.getBoundingClientRect().bottom - tb.getBoundingClientRect().top); document.documentElement.style.setProperty('--tabh', Math.round(o) + 'px'); }
 window.addEventListener('resize', fitTabH);
 function mountGenPick() { // Direktauswahl liegt am body (über Kopfzeile + Tab-Leiste)
   const old = document.getElementById('gp-root'); if (old) old.remove();

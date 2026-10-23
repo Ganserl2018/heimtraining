@@ -1510,3 +1510,5 @@ body.is-home .topbar{display:none;}
   background:linear-gradient(180deg,#f4ffc4 0%,#b8ff3c 55%,#6fc40c 100%); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent;
   filter:drop-shadow(0 0 14px rgba(184,255,60,.55)) drop-shadow(0 0 40px rgba(184,255,60,.3)); transform:skewX(-8deg);}
 .hb-sub{font-size:.62rem; letter-spacing:.38em; margin-right:-.38em; color:var(--text-dim); margin-top:.2rem;}
+body.is-home .tabbar{display:none !important;}
+body.is-home .home{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 1rem);}
