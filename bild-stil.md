@@ -47,3 +47,9 @@ Zuordnung: Szene = stabiler Hash des Übungsnamens (nie ändern).
 - Szene im grünen-LED-Stil beibehalten (Wand/Boden/Kante mit LED-Streifen), sonst nichts im Hintergrund.
 - Prompt-Baustein: "completely empty room, no other people, no mirrors showing people, no gym floor activity in the background, only the glowing green LED strips".
 - Face Pull v3 hat im Spiegel rechts Personen → bei Neuerzeugung (Limit erst wieder frei) ersetzen.
+
+## Face Pull v4 (23.10. – Freitag 22:00 Limit frei, leere Szene)
+- Ohne Referenzbild (Upload in Gemini per Chrome-Tool blockiert) rein per Text erzeugt: Start-Prompt aus dem Rezept + "Completely empty room, no other people, no mirrors, no gym activity..." → Szene leer, Kabel waagerecht auf Augenhöhe, Seilzug straff.
+- Ende im selben Chat mit "Create a NEW image, exactly the same scene…END POSITION…" → Gemini zeigt A/B, Option mit Ellbogen hoch/weit + Seil am Gesicht wählen (B).
+- Aufnahme: Maus per hover aus dem Bild bewegen, DANN `zoom` + save_to_disk (sonst Mauszeiger/Teilen-Symbole im Bild). Zwei Screenshots können ~23 px Versatz haben → vor mk.sh auf gleiche Höhe zuschneiden (Landmarke: oberer LED-Streifen/Schuhe).
+- Probe-Check Bewegungslogik: RDL, Bankdrücken, Schulterdrücken ok; Kniebeuge: Arme wechseln (Start Hände vor Brust, unten Arme gestreckt) → bei Go ggf. beide Frames mit gleicher Armhaltung.

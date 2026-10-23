@@ -429,3 +429,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - W4 Selbst erstellte Trainings: Seite intuitiver + übersichtlicher.
 - Hinweis: weitere Ideen folgen; Optik muss auf Neon-Grün + Lichteinfall aufbauen (V18 Mint abgelehnt).
 - W1b Start-Button-Logo: neon-grüne Hantel oder 💪 im runden Button (23:27).
+- 2026-10-23 22:05 Freitag-Reminder: Face Pull v4 ohne Hintergrund-Personen fertig (show5/fp3_led.gif, bisher NICHT ins Repo – wartet auf Alex' Ansicht). 4 Probe-Übungen geprüft: RDL/Bank/Schulterdrücken ok, Kniebeuge Arm-Wechsel. Nächster Schritt: Alex' Go für Gesamtsatz M+W.
