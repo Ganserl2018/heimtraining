@@ -1462,13 +1462,12 @@ body.mood-bad{--text:#fbeeec; --text-dim:#dcc2be; --text-faint:#c9a29c;}
 .home{height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.4rem; padding-bottom:calc(var(--tabh,5.2rem) + .5rem);}
 .home-btn{position:relative; width:min(74vw,300px); aspect-ratio:1; border-radius:50%; border:0; padding:0; background:none; -webkit-tap-highlight-color:transparent;}
 .home-core{position:absolute; inset:7%; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.3rem; color:#0b1204;
-  background:radial-gradient(circle at 32% 24%, #eaff9a 0%, #b8ff3c 38%, #7bd10f 100%); box-shadow:0 0 38px 6px rgba(184,255,60,.55), 0 0 110px 20px rgba(184,255,60,.28), inset 0 -10px 22px rgba(30,70,0,.35), inset 0 6px 14px rgba(255,255,255,.55); animation:homePulse 2.6s ease-in-out infinite;}
+  background:radial-gradient(circle at 32% 24%, #eaff9a 0%, #b8ff3c 38%, #7bd10f 100%); box-shadow:0 14px 40px rgba(0,0,0,.5), 0 0 70px 10px rgba(184,255,60,.38), inset 0 -10px 22px rgba(30,70,0,.35), inset 0 6px 14px rgba(255,255,255,.55);}
 .home-ring{position:absolute; inset:0; border-radius:50%; border:3px solid rgba(184,255,60,.55); animation:homeRing 2.6s ease-out infinite;}
 .home-db{width:46%; fill:none; stroke:#0b1204; stroke-width:2.1; stroke-linecap:round; stroke-linejoin:round;}
 .home-core b{font-family:Anton,Impact,sans-serif; font-size:2.1rem; letter-spacing:.14em; font-weight:400; margin-left:.14em;}
-.home-btn:active .home-core{transform:scale(.96); transition:transform .1s;}
+.home-core{transition:transform .16s var(--ease-out);} .home-btn:active .home-core{transform:scale(.96);}
 .home-open{font-size:.8rem; color:var(--accent); letter-spacing:.06em;}
-@keyframes homePulse{50%{box-shadow:0 0 52px 10px rgba(184,255,60,.7), 0 0 130px 30px rgba(184,255,60,.34), inset 0 -10px 22px rgba(30,70,0,.35), inset 0 6px 14px rgba(255,255,255,.55);}}
 @keyframes homeRing{0%{transform:scale(.94); opacity:.9;} 100%{transform:scale(1.18); opacity:0;}}
 .qk{border:1px solid rgba(184,255,60,.4); border-radius:20px; padding:.8rem; margin:.1rem 0 .6rem; background:linear-gradient(160deg,rgba(184,255,60,.14),rgba(184,255,60,.03)); box-shadow:0 0 22px rgba(184,255,60,.12);}
 .qk-h{font-size:.7rem; letter-spacing:.14em; color:var(--accent); font-weight:800; margin-bottom:.5rem;}
@@ -1502,18 +1501,27 @@ body.mood-bad{--text:#fbeeec; --text-dim:#dcc2be; --text-faint:#c9a29c;}
 body.is-home .topbar{display:none;}
 .home{gap:1.6rem;}
 .home-btn{width:min(62vw,255px);}
-.home-brand{display:flex; flex-direction:column; align-items:center; gap:.1rem; text-align:center;}
-.hb-top{display:flex; align-items:center; gap:.6rem; font-weight:800; font-size:.95rem; letter-spacing:.55em; margin-right:-.55em; color:#e9f5d0;}
-.hb-top i{display:block; width:2.2rem; height:2px; background:linear-gradient(90deg,transparent,var(--accent));}
-.hb-top i:last-child{transform:scaleX(-1);}
-.hb-main{font-family:Anton,Impact,sans-serif; font-weight:400; font-size:4.4rem; line-height:1; letter-spacing:.06em; margin-right:-.06em;
-  background:linear-gradient(180deg,#f4ffc4 0%,#b8ff3c 55%,#6fc40c 100%); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent;
-  filter:drop-shadow(0 0 14px rgba(184,255,60,.55)) drop-shadow(0 0 40px rgba(184,255,60,.3)); transform:skewX(-8deg);}
-.hb-sub{font-size:.62rem; letter-spacing:.38em; margin-right:-.38em; color:var(--text-dim); margin-top:.2rem;}
-body.is-home .tabbar{display:none !important;}
-body.is-home .home{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 1rem);}
-/* V20d Muskelanteile */
-.sh{display:flex; flex-wrap:wrap; gap:.15rem .55rem; margin-top:.3rem; font-size:.78rem; color:var(--text-dim);}
-.sh-i b{color:var(--accent); font-weight:800;}
-.sv-pk-meta .sh{margin-top:.15rem; font-size:.72rem;}
-.tx-share{padding:.1rem .2rem .5rem;} .tx-share .sh{margin:0; font-size:.85rem; gap:.2rem .8rem;}
+
+.home-brand{display:flex; flex-direction:column; align-items:center; line-height:.92; text-align:center;}
+.hb-home{font-family:Anton,Impact,sans-serif; font-weight:400; font-size:2.5rem; letter-spacing:.2em; margin-right:-.2em; color:transparent; -webkit-text-stroke:1.5px var(--accent);}
+.hb-main{font-family:Anton,Impact,sans-serif; font-weight:400; font-size:4.6rem; letter-spacing:.06em; margin-right:-.06em; color:var(--accent); text-shadow:0 3px 0 rgba(0,0,0,.35), 0 0 28px rgba(184,255,60,.35); transform:skewX(-8deg);}
+.qk-ic{width:1.15em; height:1.15em; fill:currentColor; margin-right:.5rem; vertical-align:-.2em;}
+::selection{background:rgba(184,255,60,.35); color:#fff;} input,textarea{caret-color:var(--accent);}
+:root{--ease-out:cubic-bezier(0.23,1,0.32,1);}
+.qk-p,.qk-go,.sv-pack,.sv-vl,.wv-tile{transition:transform .16s var(--ease-out), background-color .16s var(--ease-out), color .16s var(--ease-out), border-color .16s var(--ease-out), box-shadow .16s var(--ease-out);}
+.qk-p:active,.qk-go:active{transform:scale(.97);}
+.qk-go:disabled:active{transform:none;}
+.qk-p:focus-visible,.qk-go:focus-visible,.home-btn:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+@keyframes enterUp{from{opacity:0; transform:translateY(10px);}}
+@keyframes enterPop{from{opacity:0; transform:scale(.92);}}
+@keyframes fadeOnly{from{opacity:0;}}
+#content[data-enter] .sv > *{animation:enterUp .26s var(--ease-out) backwards;}
+#content[data-enter] .sv > :nth-child(2){animation-delay:.04s;} #content[data-enter] .sv > :nth-child(3){animation-delay:.08s;}
+#content[data-enter] .sv > :nth-child(4){animation-delay:.12s;} #content[data-enter] .sv > :nth-child(n+5){animation-delay:.16s;}
+#content[data-enter] .home-btn{animation:enterPop .5s var(--ease-out) backwards;}
+#content[data-enter] .home-brand{animation:enterUp .4s var(--ease-out) backwards;}
+@media (prefers-reduced-motion:reduce){
+  #content[data-enter] .sv > *,#content[data-enter] .home-btn,#content[data-enter] .home-brand{animation:fadeOnly .2s ease backwards;}
+  .home-ring{animation:none;} .qk-p:active,.qk-go:active,.home-btn:active .home-core{transform:none;}
+}
+.hb-home{margin-bottom:.3rem;}

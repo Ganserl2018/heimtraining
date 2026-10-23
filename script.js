@@ -258,6 +258,7 @@ function mountGenPick() { // Direktauswahl liegt am body (über Kopfzeile + Tab-
 }
 function render() { renderView(); mountDetail(); mountPresetSheet(); mountGenPick(); fitTabH(); }
 function renderView() {
+  content.toggleAttribute('data-enter', view !== window._lv); window._lv = view;
   document.body.classList.toggle('playing', view === 'play');
   document.body.classList.toggle('is-home', view === 'overview' && !dashMode);
   if (weekplan.some(x => x.draft && !(view === 'wtrain' && wId === x.id) && view !== 'picker' && !picker)) weekplan = weekplan.filter(x => !x.draft || (view === 'wtrain' && wId === x.id));
@@ -446,7 +447,7 @@ let dashMode = false;
 function renderHome() {
   document.body.classList.remove('mood-bad');
   const t = today(), open = weekplan.find(w => startOf(w.id, t) && !loadHistory().some(r => r.trainingId === w.id && r.date === t));
-  content.innerHTML = `<div class="home"><div class="home-brand"><span class="hb-top"><i></i>HOME<i></i></span><b class="hb-main">FORCE</b><span class="hb-sub">TRAIN · BUILD · REPEAT</span></div><button class="home-btn" data-act="goto" data-view="start" aria-label="Start">
+  content.innerHTML = `<div class="home"><div class="home-brand"><b class="hb-home">HOME</b><b class="hb-main">FORCE</b></div><button class="home-btn" data-act="goto" data-view="start" aria-label="Start">
     <span class="home-ring"></span><span class="home-core">
     <svg viewBox="0 0 24 24" class="home-db" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>
     <b>START</b></span></button>${open ? '<div class="home-open">Offenes Training wartet</div>' : ''}</div>`;
@@ -887,10 +888,9 @@ function renderStart() {
   const openT = weekplan.find(w => startOf(w.id, today()) && !loadHistory().some(r => r.trainingId === w.id && r.date === today()));
   content.innerHTML = `<div class="sv">
     ${openT ? `<button class="sv-resume" data-act="quickStart" data-id="${openT.id}"><b>▶ WEITER</b><i>${esc(openT.name)}</i></button>` : ''}
-    <div class="qk"><div class="qk-h">SCHNELLSTART</div>
-      <div class="qk-pills">${MUSCLE_GROUP_LIST.map(m => qp('genGrp', m, m, grpOn(m))).join('')}</div>
+    <div class="qk"><div class="qk-pills">${MUSCLE_GROUP_LIST.map(m => qp('genGrp', m, m, grpOn(m))).join('')}</div>
       <div class="qk-pills qk-time">${[20, 30, 45, 60].map(d => qp('genDur', d, d + ' Min', genCfg.dur === d)).join('')}</div>
-      <button class="qk-go" data-act="genDo"${genCfg.groups.length ? '' : ' disabled'}>✨ TRAINING BAUEN</button>
+      <button class="qk-go" data-act="genDo"${genCfg.groups.length ? '' : ' disabled'}><svg class="qk-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.1 6.4 6.4 2.1-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-2.1z"/></svg>TRAINING BAUEN</button>
       <button class="qk-more" data-act="genOpen">Alle Einstellungen ›</button></div>
     <button class="sv-auto" data-act="genOpen" hidden><span class="sv-auto-ic">✨</span><span class="sv-auto-t"><b>JETZT TRAINIEREN</b><i>Fokus, Geräte, Zeit – fertig</i></span><span class="sv-pk-go" aria-hidden="true">›</span></button>
     <div class="sv-lab">MEINE PAKETE</div>

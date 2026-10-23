@@ -440,3 +440,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V20b: Home ohne Topbar/TV, Wortmarke HOME/FORCE (Anton, skew, Glow) mittig, Button kleiner. `?v=20261024f`
 - V20d: Trainingsnamen nur noch 'Loser 1–100' (kleinste freie Nummer, umbenennbar bleibt), Muskelanteile in % (nach Sätzen, Gruppen) in Wochenplan-Karte, Paket, Detail. Gen-Namensfeld entfernt. `?v=20261024j`
 - 2026-10-24: Design-Skills (Impeccable, Taste, Emil Kowalski Motion) ins Repo .claude/skills + Pflichtregel in CLAUDE.md.
+- 2026-10-24 V20e (Impeccable polish + Emil animate): FORCE ohne Gradient-Text, HOME als Outline (kein Kicker), SCHNELLSTART-Label weg, ✨→SVG, Puls-Glow-Animation weg, Eintritts-Motion nur bei Seitenwechsel (data-enter, 260ms ease-out, Stagger), Press-Feedback, Focus-Ringe, ::selection, reduced-motion. impeccable-Launcher (Binary-Download) vom Classifier blockiert → manuell nach craft-floor. `?v=20261024l`
