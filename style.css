@@ -1498,3 +1498,15 @@ body.mood-bad{--text:#fbeeec; --text-dim:#dcc2be; --text-faint:#c9a29c;}
 .tx-row{grid-template-columns:76px minmax(0,1fr) auto auto auto !important;}
 .tx-th{width:76px; height:76px; border-radius:14px;}
 .tx-nm .tx-n, .tx-nm b, .tx-nm > *:first-child{white-space:normal !important; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+/* V20b Home: Wortmarke mittig, kein Topbar */
+body.is-home .topbar{display:none;}
+.home{gap:1.6rem;}
+.home-btn{width:min(62vw,255px);}
+.home-brand{display:flex; flex-direction:column; align-items:center; gap:.1rem; text-align:center;}
+.hb-top{display:flex; align-items:center; gap:.6rem; font-weight:800; font-size:.95rem; letter-spacing:.55em; margin-right:-.55em; color:#e9f5d0;}
+.hb-top i{display:block; width:2.2rem; height:2px; background:linear-gradient(90deg,transparent,var(--accent));}
+.hb-top i:last-child{transform:scaleX(-1);}
+.hb-main{font-family:Anton,Impact,sans-serif; font-weight:400; font-size:4.4rem; line-height:1; letter-spacing:.06em; margin-right:-.06em;
+  background:linear-gradient(180deg,#f4ffc4 0%,#b8ff3c 55%,#6fc40c 100%); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 14px rgba(184,255,60,.55)) drop-shadow(0 0 40px rgba(184,255,60,.3)); transform:skewX(-8deg);}
+.hb-sub{font-size:.62rem; letter-spacing:.38em; margin-right:-.38em; color:var(--text-dim); margin-top:.2rem;}

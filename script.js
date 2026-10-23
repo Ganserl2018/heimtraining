@@ -259,6 +259,7 @@ function mountGenPick() { // Direktauswahl liegt am body (über Kopfzeile + Tab-
 function render() { renderView(); mountDetail(); mountPresetSheet(); mountGenPick(); fitTabH(); }
 function renderView() {
   document.body.classList.toggle('playing', view === 'play');
+  document.body.classList.toggle('is-home', view === 'overview' && !dashMode);
   if (weekplan.some(x => x.draft && !(view === 'wtrain' && wId === x.id) && view !== 'picker' && !picker)) weekplan = weekplan.filter(x => !x.draft || (view === 'wtrain' && wId === x.id));
   applyMood();
   const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', start: 'Planung', gen: 'Jetzt trainieren', play: 'Workout', preview: 'Training', summary: 'Geschafft', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
@@ -445,7 +446,7 @@ let dashMode = false;
 function renderHome() {
   document.body.classList.remove('mood-bad');
   const t = today(), open = weekplan.find(w => startOf(w.id, t) && !loadHistory().some(r => r.trainingId === w.id && r.date === t));
-  content.innerHTML = `<div class="home"><button class="home-btn" data-act="goto" data-view="start" aria-label="Start">
+  content.innerHTML = `<div class="home"><div class="home-brand"><span class="hb-top"><i></i>HOME<i></i></span><b class="hb-main">FORCE</b><span class="hb-sub">TRAIN · BUILD · REPEAT</span></div><button class="home-btn" data-act="goto" data-view="start" aria-label="Start">
     <span class="home-ring"></span><span class="home-core">
     <svg viewBox="0 0 24 24" class="home-db" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>
     <b>START</b></span></button>${open ? '<div class="home-open">Offenes Training wartet</div>' : ''}</div>`;
