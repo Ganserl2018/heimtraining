@@ -438,3 +438,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - Eigene Trainings (wtrain): Thumbs 76px, Namen umbrechen.
 - `?v=20261024e`. Offen: Feinschliff nach Alex-Feedback am iPhone.
 - V20b: Home ohne Topbar/TV, Wortmarke HOME/FORCE (Anton, skew, Glow) mittig, Button kleiner. `?v=20261024f`
+- V20d: Trainingsnamen nur noch 'Loser 1–100' (kleinste freie Nummer, umbenennbar bleibt), Muskelanteile in % (nach Sätzen, Gruppen) in Wochenplan-Karte, Paket, Detail. Gen-Namensfeld entfernt. `?v=20261024j`

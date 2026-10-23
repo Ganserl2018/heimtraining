@@ -841,7 +841,7 @@ function generate() {
 function genSave(start) {
   if (!genRes || !genRes.length) return;
   const g = genCfg.groups.length ? genCfg.groups : ['Brust'], lv = genLevel();
-  const t = { id: 'w' + Date.now(), name: (genCfg.name || '').trim().slice(0, 40) || 'Auto · ' + g.map(grpLabel).join('/'), exercises: genRes, weekdays: [], since: {}, time: '', level: lv, goal: genCfg.goal, auto: true };
+  const t = { id: 'w' + Date.now(), name: loserName(), exercises: genRes, weekdays: [], since: {}, time: '', level: lv, goal: genCfg.goal, auto: true };
   weekplan.push(t); saveWeekplan(); genRes = null;
   if (start) playStart(t.id); else view = 'start';
 }
@@ -855,7 +855,6 @@ function renderGen() {
   const scrollRes = genJust; genJust = false;
   content.innerHTML = `<div class="gn">
     <div class="pl-top"><button class="pl-x" data-act="genBack" aria-label="Zurück">‹</button><div class="pl-title"><b>Jetzt trainieren</b><span>Fokus, Geräte, Zeit – den Rest macht die App</span></div></div>
-    <div class="lv"><div class="lv-h">Name <em>· optional, später umbenennbar</em></div><input id="gen-name" class="gn-name" maxlength="40" placeholder="${esc('Auto · ' + (genCfg.groups.length ? genCfg.groups.map(grpLabel).join('/') : 'Fokus'))}" value="${esc(genCfg.name || '')}"></div>
     <div class="lv"><div class="lv-h">Fokus${genCfg.groups.length ? '' : ' <em>· mindestens eine wählen</em>'}</div><div class="lv-pills">${MUSCLE_GROUP_LIST.map(m => pill('genGrp', m, m, grpOn(m))).join('')}</div></div>
     <details class="gn-more" open><summary>Genau: Körperstelle${genCfg.groups.filter(x => x.startsWith('m:')).map(x => ' · ' + grpLabel(x)).join('')}</summary><div class="lv"><div class="lv-pills">${SPOTS.map(m => pill('genGrp', 'm:' + m, MUSCLE_DE[m] || m, genCfg.groups.includes('m:' + m))).join('')}</div></div></details>
     ${genCfg.groups.length ? (() => { const gc = gearCounts(); return `<div class="lv"><div class="lv-h">Geräte heute <em>· passend zum Fokus</em></div><div class="lv-pills">${GEAR.filter(([k]) => k === 'body' || gc[k]).map(([k, l]) => pill('genGear', k, l + (gc[k] ? ' <small>' + gc[k] + '</small>' : ''), genCfg.gear.includes(k))).join('')}</div></div>`; })() : '<div class="lv"><div class="lv-h">Geräte heute <em>· erst Fokus wählen</em></div></div>'}
@@ -877,7 +876,7 @@ function renderStart() {
       <span class="sv-pk-tag">${t.presetKey ? 'VORLAGE' : '★ EIGEN'}</span>
       <span class="sv-pk-bot">
         <span class="sv-pk-name nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></span>
-        <span class="sv-pk-meta"><b class="sv-pk-n">${t.exercises.length}</b> Übung${t.exercises.length === 1 ? '' : 'en'}<i>${esc(muscles(t.exercises))}</i></span>
+        <span class="sv-pk-meta"><b class="sv-pk-n">${t.exercises.length}</b> Übung${t.exercises.length === 1 ? '' : 'en'}${shareHtml(t, 3)}</span>
       </span>
       <span class="sv-pk-go" aria-hidden="true">›</span></button></div>`;
   const mini = (p, wide) => { const n = presetExercises(p).length; return `<button class="sv-vl${wide ? ' sv-wide' : ''}" data-act="stPreset" data-key="${p.key}">
@@ -1075,7 +1074,7 @@ function renderWeeklist() {
     const st = trainingStatusForDate(t, t0);
     return `<div class="wp-sw" data-sw="${t.id}"><div class="wp-sw-bg"><span class="a">📥 Archiv</span><span class="d">Löschen 🗑</span></div><div class="wp-card" data-act="wOpen2" data-id="${t.id}">
       <div class="wp-thumbs">${th || DB}</div>
-      <div class="wp-card-body"><div class="wp-card-name nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></div><div class="wp-card-meta">${meta(t)}${st ? ' · ' + STATUS_LABEL[st] : ''}</div></div>
+      <div class="wp-card-body"><div class="wp-card-name nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></div><div class="wp-card-meta">${meta(t)}${st ? ' · ' + STATUS_LABEL[st] : ''}</div>${shareHtml(t)}</div>
       <span class="wp-chev">›</span>
     </div></div>`;
   }).join('');
@@ -1105,8 +1104,23 @@ function renderWeeklist() {
 }
 
 // V2-09: Trainings-Detail – Übungen mit Video(GIF)/Erklärung, editierbare Sätze + Gewicht, Notizen.
+function loserName() {
+  const used = new Set([...weekplan, ...loadArchive()].map(w => w.name));
+  for (let i = 1; i <= 100; i++) if (!used.has('Loser ' + i)) return 'Loser ' + i;
+  return 'Loser ' + (100 + weekplan.length);
+}
+function muscleShare(t) {
+  const m = {}; let tot = 0;
+  (t.exercises || []).forEach(e => { const k = MUSCLE_GROUPS[e.muscle] || MUSCLE_DE[e.muscle] || e.muscle, n = e.sets || 3; m[k] = (m[k] || 0) + n; tot += n; });
+  const arr = Object.entries(m).sort((a, b) => b[1] - a[1]).map(([k, n]) => [k, Math.round(n / tot * 100)]);
+  return arr;
+}
+function shareHtml(t, max) {
+  const a = muscleShare(t).slice(0, max || 4);
+  return a.length ? `<span class="sh">${a.map(([k, p]) => `<span class="sh-i"><b>${esc(k)}</b> ${p}%</span>`).join('')}</span>` : '';
+}
 function newDraft() {
-  const t = { id: 'w' + Date.now(), name: '', draft: true, exercises: [], weekdays: [], since: {}, time: '' };
+  const t = { id: 'w' + Date.now(), name: loserName(), draft: true, exercises: [], weekdays: [], since: {}, time: '' };
   weekplan.push(t); wId = t.id; renameId = t.id; view = 'wtrain'; picker = null;
 }
 const wOpen = new Set(); // UI-Zustand: 'tid:i' = Einstellungen offen, 'tid:i:s' = Sätze einzeln
@@ -1265,7 +1279,7 @@ function renderWTrain() {
   content.innerHTML = `<div class="tsx2">
     ${head}
     ${hintHtml ? `<div class="tx-hint">${hintHtml}</div>` : ''}
-    <section class="tx-list"><div class="tx-rows">${t.exercises.map((ex, i) => txRow(t, ex, i)).join('')}<button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button></div></section>
+    <section class="tx-list"><div class="tx-rows">${shareHtml(t, 6) ? `<div class="tx-share">${shareHtml(t, 6)}</div>` : ''}${t.exercises.map((ex, i) => txRow(t, ex, i)).join('')}<button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button></div></section>
     ${ctl}
   </div>`;
   const rows = content.querySelector('.tx-rows'); if (rows) rows.scrollTop = prevScroll;
@@ -1648,7 +1662,7 @@ content.addEventListener('click', e => {
       if (prevKey) {
         const p = PRESETS.find(x => x.key === prevKey);
         let t = weekplan.find(w => w.presetKey === p.key);
-        if (!t) { t = { id: 'w' + Date.now(), name: p.name, presetKey: p.key, exercises: presetExercises(p), weekdays: [], since: {}, time: '' }; weekplan.push(t); saveWeekplan(); }
+        if (!t) { t = { id: 'w' + Date.now(), name: loserName(), presetKey: p.key, exercises: presetExercises(p), weekdays: [], since: {}, time: '' }; weekplan.push(t); saveWeekplan(); }
         playStart(t.id);
       } else playStart(prevId);
       break;
@@ -1704,7 +1718,7 @@ content.addEventListener('click', e => {
     case 'psTog': { const k = Number(btn.dataset.i); psSheet.sel.has(k) ? psSheet.sel.delete(k) : psSheet.sel.add(k); break; }
     case 'psCreate': {
       const p = PRESETS.find(x => x.key === psSheet.key), all = presetAll(p);
-      const t = { id: 'w' + Date.now(), name: p.name, presetKey: p.key, exercises: all.filter((_, i) => psSheet.sel.has(i)), weekdays: [], since: {}, time: '' };
+      const t = { id: 'w' + Date.now(), name: loserName(), presetKey: p.key, exercises: all.filter((_, i) => psSheet.sel.has(i)), weekdays: [], since: {}, time: '' };
       weekplan.push(t); saveWeekplan(); psSheet = null; wId = t.id; view = 'wtrain'; break;
     }
     case 'wOpen2': wId = btn.dataset.id; view = 'wtrain'; break;
@@ -1718,7 +1732,7 @@ content.addEventListener('click', e => {
         if (!existing.weekdays.length && btn.dataset.date >= today()) { existing.weekdays = [wd]; existing.since[wd] = today(); saveWeekplan(); }
         wId = existing.id; view = 'wtrain'; picker = null; break;
       }
-      const t = { id: 'w' + Date.now(), name: nm, exercises: [], weekdays: btn.dataset.date >= today() ? [wd] : [], since: btn.dataset.date >= today() ? { [wd]: today() } : {}, time: '' }; // vergangene Tage nicht einplanen (sonst sofort "verpasst")
+      const t = { id: 'w' + Date.now(), name: loserName(), exercises: [], weekdays: btn.dataset.date >= today() ? [wd] : [], since: btn.dataset.date >= today() ? { [wd]: today() } : {}, time: '' }; // vergangene Tage nicht einplanen (sonst sofort "verpasst")
       weekplan.push(t); saveWeekplan();
       wId = t.id; view = 'wtrain'; picker = null; break;
     }
@@ -1727,7 +1741,7 @@ content.addEventListener('click', e => {
     case 'wNewTrainingSave': {
       const name = (document.getElementById('new-training-name')?.value || '').trim();
       if (!name) return;
-      const t = { id: 'w' + Date.now(), name, exercises: [], weekdays: [], since: {}, time: '' };
+      const t = { id: 'w' + Date.now(), name: loserName(), exercises: [], weekdays: [], since: {}, time: '' };
       weekplan.push(t); saveWeekplan();
       addingTraining = false; wId = t.id; view = 'wtrain'; break;
     }

@@ -1512,3 +1512,8 @@ body.is-home .topbar{display:none;}
 .hb-sub{font-size:.62rem; letter-spacing:.38em; margin-right:-.38em; color:var(--text-dim); margin-top:.2rem;}
 body.is-home .tabbar{display:none !important;}
 body.is-home .home{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 1rem);}
+/* V20d Muskelanteile */
+.sh{display:flex; flex-wrap:wrap; gap:.15rem .55rem; margin-top:.3rem; font-size:.78rem; color:var(--text-dim);}
+.sh-i b{color:var(--accent); font-weight:800;}
+.sv-pk-meta .sh{margin-top:.15rem; font-size:.72rem;}
+.tx-share{padding:.1rem .2rem .5rem;} .tx-share .sh{margin:0; font-size:.85rem; gap:.2rem .8rem;}
