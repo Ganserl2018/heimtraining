@@ -871,35 +871,22 @@ function renderGen() {
   if (scrollRes) setTimeout(() => { const r = document.querySelector('.gn-res'); if (r) r.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
 }
 function renderStart() {
-  const DB = '<svg class="lab-db" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>';
-  const muscles = exs => [...new Set(exs.map(e => MUSCLE_DE[e.muscle] || e.muscle))].slice(0, 2).join(' · ');
-  const pack = t => `<div class="sv-wrap"><button class="sv-del" data-act="stDelete" data-id="${t.id}" aria-label="Training löschen">🗑</button><button class="sv-pack${t.presetKey ? ' pre' : ' sv-own'}" data-act="stStart" data-id="${t.id}">
-      <span class="sv-pk-tag">${t.presetKey ? 'VORLAGE' : '★ EIGEN'}</span>
-      <span class="sv-pk-bot">
-        <span class="sv-pk-name nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></span>
-        <span class="sv-pk-meta"><b class="sv-pk-n">${t.exercises.length}</b> Übung${t.exercises.length === 1 ? '' : 'en'}${shareHtml(t, 3)}</span>
-      </span>
-      <span class="sv-pk-go" aria-hidden="true">›</span></button></div>`;
-  const mini = (p, wide) => { const n = presetExercises(p).length; return `<button class="sv-vl${wide ? ' sv-wide' : ''}" data-act="stPreset" data-key="${p.key}">
-      <span class="sv-vl-ic">${presetThumb(p) || DB}</span><span class="sv-vl-name">${esc(p.name)}</span><span class="sv-vl-n">${n}</span></button>`; };
-  const own = weekplan.filter(w => w.exercises.length).sort((a, b) => (a.presetKey ? 1 : 0) - (b.presetKey ? 1 : 0));
-  const ownIds = new Set(own.map(w => w.presetKey).filter(Boolean));
+  // Planung: eine Frage – "Was trainiere ich jetzt?". Gespeicherte Trainings = 1 Tipp bis ins Workout, darunter der Schnell-Bauer.
   const qp = (act, v, l, on) => `<button class="qk-p${on ? ' on' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
-  const openT = weekplan.find(w => startOf(w.id, today()) && !loadHistory().some(r => r.trainingId === w.id && r.date === today()));
+  const own = weekplan.filter(w => w.exercises.length && !w.draft);
+  const openT = own.find(w => startOf(w.id, today()) && !loadHistory().some(r => r.trainingId === w.id && r.date === today()));
+  const row = t => `<button class="pl-row${openT && openT.id === t.id ? ' open' : ''}" data-act="quickStart" data-id="${t.id}">
+      <span class="pl-row-t"><b>${esc(t.name)}</b>${shareHtml(t, 3)}</span>
+      <span class="pl-row-n">${openT && openT.id === t.id ? 'WEITER' : t.exercises.length + ' Üb.'}</span><span class="pl-row-go" aria-hidden="true">▶</span></button>`;
+  const SP = '<svg class="qk-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.1 6.4 6.4 2.1-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-2.1z"/></svg>';
   content.innerHTML = `<div class="sv">
-    ${openT ? `<button class="sv-resume" data-act="quickStart" data-id="${openT.id}"><b>▶ WEITER</b><i>${esc(openT.name)}</i></button>` : ''}
-    <div class="qk"><div class="qk-pills">${MUSCLE_GROUP_LIST.map(m => qp('genGrp', m, m, grpOn(m))).join('')}</div>
+    ${own.length ? `<div class="pl-list">${own.map(row).join('')}</div>` : ''}
+    <div class="qk">
+      <div class="qk-pills">${MUSCLE_GROUP_LIST.map(m => qp('genGrp', m, m, grpOn(m))).join('')}</div>
       <div class="qk-pills qk-time">${[20, 30, 45, 60].map(d => qp('genDur', d, d + ' Min', genCfg.dur === d)).join('')}</div>
-      <button class="qk-go" data-act="genDo"${genCfg.groups.length ? '' : ' disabled'}><svg class="qk-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.1 6.4 6.4 2.1-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-2.1z"/></svg>TRAINING BAUEN</button>
-      <button class="qk-more" data-act="genOpen">Alle Einstellungen ›</button></div>
-    <button class="sv-auto" data-act="genOpen" hidden><span class="sv-auto-ic">✨</span><span class="sv-auto-t"><b>JETZT TRAINIEREN</b><i>Fokus, Geräte, Zeit – fertig</i></span><span class="sv-pk-go" aria-hidden="true">›</span></button>
-    <div class="sv-lab">MEINE PAKETE</div>
-    <div class="sv-packs">${own.map(pack).join('')}<button class="sv-add" data-act="wNewTraining"><span class="sv-add-plus">+</span><span>${own.length ? 'Eigenes Training' : 'Erstes Training erstellen'}</span></button></div>
-    <div class="sv-lab">VORLAGEN</div>
-    <div class="sv-vls">${[['split', 'Split'], ['musc', 'Einzelne Muskeln'], ['core', 'Core & Bauch']].map(([g, l]) => {
-      const ps = PRESETS.filter(p => p.grp === g && !ownIds.has(p.key));
-      return ps.length ? `<div class="sv-sub">${l}</div>${ps.map((p, i) => mini(p, ps.length % 2 === 1 && i === ps.length - 1)).join('')}` : '';
-    }).join('')}</div>
+      <button class="qk-go" data-act="genDo"${genCfg.groups.length ? '' : ' disabled'}>${SP}${own.length ? 'NEU BAUEN' : 'TRAINING BAUEN'}</button>
+      <button class="qk-more" data-act="genOpen">Geräte, Umfang, Level ›</button>
+    </div>
   </div>`;
 }
 

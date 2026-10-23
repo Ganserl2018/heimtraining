@@ -1525,3 +1525,16 @@ body.is-home .topbar{display:none;}
   .home-ring{animation:none;} .qk-p:active,.qk-go:active,.home-btn:active .home-core{transform:none;}
 }
 .hb-home{margin-bottom:.3rem;}
+
+/* V20f Planung: flach, Farbe nur auf Auswahl + Haupt-Button */
+.qk{background:var(--panel); border:1px solid var(--border-soft); box-shadow:none; border-radius:18px;}
+.pl-list{display:grid; gap:.5rem; margin:.1rem 0 .8rem;}
+.pl-row{display:flex; align-items:center; gap:.7rem; width:100%; min-height:64px; padding:.6rem .9rem; border-radius:16px; border:1px solid var(--border-soft); background:var(--panel); color:var(--text); text-align:left; transition:transform .16s var(--ease-out), border-color .16s var(--ease-out);}
+.pl-row:active{transform:scale(.985); border-color:var(--accent);}
+.pl-row.open{border-color:var(--accent);}
+.pl-row-t{flex:1; min-width:0; display:flex; flex-direction:column;}
+.pl-row-t b{font-size:1.1rem; font-weight:800; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.pl-row-t .sh{margin-top:.1rem; font-size:.74rem;}
+.pl-row-n{font-size:.78rem; color:var(--text-dim); font-weight:700;}
+.pl-row.open .pl-row-n{color:var(--accent);}
+.pl-row-go{flex:none; width:2.6rem; height:2.6rem; border-radius:50%; background:var(--accent); color:#0b1204; display:grid; place-items:center; font-size:.9rem; padding-left:.1rem;}
