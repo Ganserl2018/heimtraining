@@ -1718,3 +1718,6 @@ body.is-gen .topbar h1::after{content:'Genau auswählen, was trainiert wird';}
 /* V20am Einstellungsseite = nur Zusatzeinstellungen (Körperstelle); Ergebnis-Ansicht mit eigenem Untertitel */
 body.is-res .topbar h1::after{content:'Wischen: Favorit oder neue Übung';}
 .gn .qk-go{margin-top:.8rem;}
+/* V20as Reihenfolge Zeit -> Geräte -> Muskeln -> Rest: nicht Freigeschaltetes gedimmt */
+.qk-grid3 .qk-p.none:not(.on){opacity:.3;}
+.qk-rows.dim{opacity:.4;}
