@@ -1756,3 +1756,7 @@ body.is-res .topbar h1::after{content:'Wischen: Favorit oder neue Übung';}
 .qk-rows{margin-top:8px; padding-top:8px; gap:5px;}
 .qk-go{min-height:46px; margin-top:8px;}
 .qk-link{min-height:36px;}
+/* V21c Planung/Einstellungen statisch: kein Scrollen, kein Wippen */
+html:has(body.is-start:not(.is-res)){overflow:hidden; overscroll-behavior:none;}
+body.is-start:not(.is-res), body.is-start:not(.is-res) #content{overflow:hidden !important; overscroll-behavior:none; touch-action:none;}
+body.is-start:not(.is-res) button{touch-action:manipulation;}
