@@ -471,3 +471,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V20am: Einstellungsseite nur noch Körperstelle (Planungsinhalte raus) + FERTIG zurück zur Planung; Ergebnis-Ansicht 'Dein Training'. ?v=20261026f
 - V20an: Spezielle Muskeln = additiv zum Fokus (Gruppe bleibt, Muskel kommt dazu; Generator holt sie zuerst, keine Duplikate). ?v=20261026h
 - V20ao: Planung zeigt gewählte spezielle Muskeln im Link 'Weitere Einstellungen · +Trizeps'. ?v=20261026i
+- V20ap: Hauptgruppen bekommen den Löwenanteil, jeder spezielle Muskel genau 1 Übung; gearfix: Hammer Grip Incline DB Bench Press -> dumbbell+bench (war barbell). ?v=20261026k

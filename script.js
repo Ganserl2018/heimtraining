@@ -828,7 +828,12 @@ function generate() {
   const base = genBase(lv);
   const n = genCfg.count || GCOUNT[genCfg.dur][lv], isoMax = genCfg.count ? Math.ceil(n / 2) : GISO[genCfg.dur];
   const gs = g.slice().sort((a, b) => (b.startsWith('m:') - a.startsWith('m:')) || ((GRANK[b] || 0) - (GRANK[a] || 0))); // spezielle Muskeln zuerst, damit sie sicher drin sind
-  const per = gs.map((_, i) => Math.floor(n / gs.length) + (i < n % gs.length ? 1 : 0));
+  const nSp = gs.filter(x => x.startsWith('m:')).length, nGr = gs.length - nSp;
+  let per;
+  if (nSp && nGr && n > nSp) { // Hauptgruppen bekommen den Löwenanteil, jeder spezielle Muskel genau 1 Übung (zusätzlich)
+    const rest = n - nSp, gsOnly = gs.filter(x => !x.startsWith('m:')); let gi2 = 0;
+    per = gs.map(x => x.startsWith('m:') ? 1 : (Math.floor(rest / nGr) + (gi2++ < rest % nGr ? 1 : 0)));
+  } else per = gs.map((_, i) => Math.floor(n / gs.length) + (i < n % gs.length ? 1 : 0));
   const picked = []; let isoUsed = 0;
   gs.forEach((grp, gi) => {
     const core = e => grp.startsWith('m:') ? e.muscle === grp.slice(2) : MUSCLE_GROUPS[e.muscle] === grp && (grp !== 'Rücken' || (isBack(e) && !/pushdown/i.test(e.name)));
