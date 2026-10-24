@@ -261,10 +261,10 @@ function renderView() {
   content.toggleAttribute('data-enter', view !== window._lv); window._lv = view;
   document.body.classList.toggle('playing', view === 'play');
   document.body.classList.toggle('is-home', view === 'overview' && !dashMode);
-  document.body.classList.toggle('is-start', view === 'start' || view === 'gen'); document.body.classList.toggle('is-gen', view === 'gen');
+  document.body.classList.toggle('is-start', view === 'start' || view === 'gen'); document.body.classList.toggle('is-gen', view === 'gen'); document.body.classList.toggle('is-res', view === 'gen' && !!genRes);
   if (weekplan.some(x => x.draft && !(view === 'wtrain' && wId === x.id) && view !== 'picker' && !picker)) weekplan = weekplan.filter(x => !x.draft || (view === 'wtrain' && wId === x.id));
   applyMood();
-  const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', start: 'Planung', gen: 'Einstellungen', play: 'Workout', preview: 'Training', summary: 'Geschafft', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
+  const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', start: 'Planung', gen: genRes ? 'Dein Training' : 'Einstellungen', play: 'Workout', preview: 'Training', summary: 'Geschafft', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
   document.querySelector('.topbar h1').textContent = view === 'wtrain' ? ((trainingById(wId) || {}).name || 'Training') : (titles[view] || 'Home Force');
   syncTabActive();
   { const pn = (loadProfile().name || '').trim(), bad = document.body.classList.contains('mood-bad');
@@ -877,10 +877,10 @@ function renderGen() {
       <div class="gn-btns"><button class="ts-save" data-act="genSave">✓ SPEICHERN</button><button class="pl-next ts-go" data-act="genGo">▶ SPEICHERN &amp; STARTEN</button><button class="ts-add" data-act="genDo">⟳ Neu mischen</button></div></div>` : '';
   const scrollRes = genJust; genJust = false;
   content.innerHTML = `<div class="gn">
-    <div class="qk">
-      ${builderHtml(true)}
-      ${genRes && genRes.length ? '' : `<button class="qk-go" data-act="genDo">${SPK}${genCfg.groups.length ? 'ZUSAMMENSTELLEN' : 'ÜBERRASCH MICH'}</button>`}
-    </div>
+    ${genRes ? '' : `<div class="qk">
+      <div class="qk-sec" style="margin-top:0">Körperstelle</div><div class="qk-spots">${SPOTS.map(m => `<button class="qk-p${genCfg.groups.includes('m:' + m) ? ' on' : ''}" data-act="genGrp" data-v="m:${m}">${MUSCLE_DE[m] || m}</button>`).join('')}</div>
+      <button class="qk-go" data-act="genBack">FERTIG</button>
+    </div>`}
     ${res}
   </div>`;
   if (scrollRes) setTimeout(() => { const r = document.querySelector('.gn-res'); if (r) r.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);

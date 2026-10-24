@@ -1695,7 +1695,7 @@ body.is-start .topbar{padding-top:.6rem;}
 body.is-home .tabbar{display:none !important;}
 /* V20ah Einstellungsseite im selben System wie Planung */
 body.is-gen .tv-icon-btn{display:none !important;}
-body.is-gen .topbar h1::after{content:'Alles einstellen, dann bauen';}
+body.is-gen .topbar h1::after{content:'Genau auswählen, was trainiert wird';}
 .gn-back{background:none; border:0; color:var(--text-dim); font-size:.95rem; font-weight:700; min-height:40px; padding:0 .3rem; margin:0 0 .3rem;}
 .gn-back:active{color:var(--accent);}
 .gn .qk{margin-top:0;}
@@ -1715,3 +1715,6 @@ body.is-gen .topbar h1::after{content:'Alles einstellen, dann bauen';}
 .qk-rows .qk-r > span::before{display:none;}
 .qk-rows{margin-top:.6rem; padding-top:.5rem;}
 .gn-back{font-size:1.7rem; line-height:1; min-width:44px; min-height:44px; text-align:left;}
+/* V20am Einstellungsseite = nur Zusatzeinstellungen (Körperstelle); Ergebnis-Ansicht mit eigenem Untertitel */
+body.is-res .topbar h1::after{content:'Wischen: Favorit oder neue Übung';}
+.gn .qk-go{margin-top:.8rem;}
