@@ -888,7 +888,9 @@ function genPickHtml() {
   const c = genBase(lv).filter(e => !inList.includes(e.name)).sort((a, b) => (MUSCLE_GROUPS[b.muscle] === MUSCLE_GROUPS[old.muscle]) - (MUSCLE_GROUPS[a.muscle] === MUSCLE_GROUPS[old.muscle]) || (fav.includes(b.name) - fav.includes(a.name)) || a.name.localeCompare(b.name));
   return `<div class="gp-ov"><div class="gp-h"><b>Übung ersetzen</b><button class="gp-x" data-act="genPickClose">✕ Abbrechen</button></div><input id="gp-q" class="gp-q" type="search" placeholder="Suchen…" autocomplete="off"><div class="gp-list">${c.map(e => `<button class="gp-r" data-act="genPickDo" data-name="${esc(e.name)}" data-q="${esc(e.name.toLowerCase())}"><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><span><b>${fav.includes(e.name) ? '★ ' : ''}${esc(dn(e.name))}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)}</em></span></button>`).join('')}</div><button class="gp-cancel" data-act="genPickClose">ABBRECHEN</button></div>`;
 }
+let genNote = '';
 function generate() {
+  genNote = '';
   const lv = genLevel(), g = genCfg.groups.length ? genCfg.groups : ['Brust'];
   let last = []; try { last = JSON.parse(localStorage.getItem(GENKEY)) || []; } catch (e) {}
   const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine/i;
@@ -934,6 +936,39 @@ function generate() {
   try { localStorage.setItem(GENKEY, JSON.stringify(picked.map(e => e.name).concat(last).slice(0, 24))); } catch (e) {}
   genRes = exs; genJust = true; genSwapped = -1;
 }
+// ---- Nächstes Training berechnen: Drücken / Ziehen / Beine rotieren, Pause je Muster + einfache Steigerung ----
+const PATTERN = { chest: 'push', shoulders: 'push', triceps: 'push', lats: 'pull', 'middle back': 'pull', traps: 'pull', 'lower back': 'pull', biceps: 'pull', forearms: 'pull' };
+const NEXT_PLANS = {
+  push: { label: 'Drücken', groups: ['Brust', 'Schultern', 'm:triceps'], info: 'Brust · Schultern · Trizeps' },
+  pull: { label: 'Ziehen', groups: ['Rücken', 'm:biceps'], info: 'Rücken · Bizeps' },
+  legs: { label: 'Beine', groups: ['Beine', 'Bauch'], info: 'Beine · Bauch' }
+};
+const isWarmName = n => { const e = pool.find(x => x.name === n); return !!(e && e.category === 'warmup'); };
+function recPattern(r) {
+  const c = { push: 0, pull: 0, legs: 0 };
+  (r.exercises || []).forEach(e => { if (e.warm || isWarmName(e.name)) return; c[PATTERN[e.muscle] || 'legs'] += e.setsDone || 0; });
+  const k = Object.keys(c).sort((a, b) => c[b] - c[a])[0]; return c[k] ? k : null;
+}
+function nextPlan() {
+  const h = loadHistory(), last = { push: null, pull: null, legs: null }; let prev = null;
+  h.forEach(r => { const k = recPattern(r); if (!k) return; if (!prev) prev = k; if (!last[k] || r.date > last[k]) last[k] = r.date; });
+  const keys = Object.keys(NEXT_PLANS), off = prev ? keys.indexOf(prev) + 1 : 0, now = today();
+  const days = k => last[k] ? Math.round((new Date(now + 'T12:00:00') - new Date(last[k] + 'T12:00:00')) / 864e5) : 999;
+  const order = keys.map((_, i) => keys[(off + i) % keys.length]);
+  const key = order.slice().sort((a, b) => days(b) - days(a) || order.indexOf(a) - order.indexOf(b))[0];
+  const d = days(key);
+  return Object.assign({ key, note: prev ? `Zuletzt ${NEXT_PLANS[prev].label}, ${NEXT_PLANS[key].label} ${d >= 999 ? 'war noch nie dran' : d === 0 ? 'war heute' : d === 1 ? 'war gestern' : 'war vor ' + d + ' Tagen'} – deshalb jetzt ${NEXT_PLANS[key].label}.` : `Noch kein Training im Verlauf – Start mit ${NEXT_PLANS[key].label}.` }, NEXT_PLANS[key]);
+}
+function applyProgression(exs) {
+  const h = loadHistory();
+  exs.forEach(ex => {
+    if (ex.warm || (ex.unit || 'kg') !== 'kg') return;
+    const r = h.find(x => (x.exercises || []).some(e => e.name === ex.name && (e.weights || []).some(w => w != null)));
+    const e = r && r.exercises.find(x => x.name === ex.name); if (!e) return;
+    const ws = e.weights.filter(w => w != null), top = Math.max(...ws), step = /dumbbell|kettlebell/i.test(ex.name) ? 2 : 2.5, ok = e.setsDone >= e.setsTotal;
+    const w = ok ? top + step : top; ex.up = ok; (ex.plan || []).forEach(p => { p.w = w; });
+  });
+}
 function genSave(start) {
   if (!genRes || !genRes.length) return;
   const g = genCfg.groups.length ? genCfg.groups : ['Brust'], lv = genLevel();
@@ -945,8 +980,8 @@ const SPK = '<svg class="qk-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="
 function renderGen() {
   const lv = genLevel(), p = loadProfile();
   const pill = (act, v, l, on) => `<button class="lv-p${on ? ' on' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
-  const res = genRes && !genRes.length ? `<div class="gn-res"><div class="lv-note">Mit diesen Geräten und diesem Fokus finde ich keine Übungen. Mehr Geräte oder anderen Fokus wählen.</div></div>` : genRes ? `<div class="gn-res">${genRes.map((e, i) => `<div class="gn-sw" data-gsw="${i}"><div class="gn-sw-bg"><span>★ Favorit</span><span>Neue Übung ↻</span></div><div class="gn-ex exinfo${i === genSwapped ? ' gn-new' : ''}" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
-      <div><b>${loadFavs().includes(e.name) ? '★ ' : ''}${esc(dn(e.name))}</b><em>${e.warm ? 'Aufwärmen · ' : ''}${esc(MUSCLE_DE[e.muscle] || e.muscle)} · ${e.sets} × ${e.plan[0].r} ${e.unit === 'sek' ? 'Sek' : 'Wdh'}${e.plan[0].w != null && e.unit === 'kg' ? ' · ca. ' + e.plan[0].w + ' kg' : ''}</em></div><button class="gn-pk" data-act="genPickOpen" data-i="${i}" aria-label="Übung wählen">⇄</button></div></div>`).join('')}
+  const res = genRes && !genRes.length ? `<div class="gn-res"><div class="lv-note">Mit diesen Geräten und diesem Fokus finde ich keine Übungen. Mehr Geräte oder anderen Fokus wählen.</div></div>` : genRes ? `<div class="gn-res">${genNote ? `<div class="lv-note">${esc(genNote)}</div>` : ''}${genRes.map((e, i) => `<div class="gn-sw" data-gsw="${i}"><div class="gn-sw-bg"><span>★ Favorit</span><span>Neue Übung ↻</span></div><div class="gn-ex exinfo${i === genSwapped ? ' gn-new' : ''}" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+      <div><b>${loadFavs().includes(e.name) ? '★ ' : ''}${esc(dn(e.name))}</b><em>${e.warm ? 'Aufwärmen · ' : ''}${esc(MUSCLE_DE[e.muscle] || e.muscle)} · ${e.sets} × ${e.plan[0].r} ${e.unit === 'sek' ? 'Sek' : 'Wdh'}${e.plan[0].w != null && e.unit === 'kg' ? ' · ' + (e.up ? '↑ ' : 'ca. ') + e.plan[0].w + ' kg' : ''}</em></div><button class="gn-pk" data-act="genPickOpen" data-i="${i}" aria-label="Übung wählen">⇄</button></div></div>`).join('')}
       <div class="lv-note">Rechts wischen = ★ Favorit, links = neue Übung, ⇄ = selbst wählen. Vorschlag mit ca.-Werten. Technik vor Gewicht, bei Schmerzen abbrechen.${!p.weight && genRes.some(e => e.unit === 'kg') ? ' Gewicht im Profil eintragen, dann kommen auch kg-Vorschläge.' : ''}</div>
       <div class="gn-btns"><button class="ts-save" data-act="genSave">✓ SPEICHERN</button><button class="pl-next ts-go" data-act="genGo">▶ SPEICHERN &amp; STARTEN</button><button class="ts-add" data-act="genDo">⟳ Neu mischen</button></div></div>` : '';
   const scrollRes = genJust; genJust = false;
@@ -996,6 +1031,7 @@ function renderStart() {
   content.innerHTML = `<div class="sv">
     <div class="qk">
       ${builderHtml(false)}
+      <button class="qk-next" data-act="genNext"><b>➜ NÄCHSTES TRAINING</b><em>${esc(nextPlan().label)} · ${esc(nextPlan().info)}</em></button>
       <button class="qk-go wander${genCfg.groups.length ? '' : ' surp'}" data-act="genDo">${SP}${genCfg.groups.length ? 'TRAINING BAUEN' : 'ÜBERRASCH MICH'}</button>
     </div>
     <button class="qk-link" data-act="genOpen">Weitere Einstellungen${genCfg.groups.some(x => x.startsWith('m:')) ? ' · +' + genCfg.groups.filter(x => x.startsWith('m:')).map(grpLabel).join(', +') : ''} ›</button>
@@ -1008,7 +1044,7 @@ function finishTraining(t) {
   const wp = wProgRaw(), dOf = wp.done[t.id] || {};
   const exercises = t.exercises.map(ex => {
     const sets = dOf[ex.name] || [];
-    return { name: ex.name, muscle: ex.muscle, setsDone: sets.filter(s => s && s.done).length, setsTotal: ex.sets || 3,
+    return { name: ex.name, muscle: ex.muscle, warm: !!ex.warm, setsDone: sets.filter(s => s && s.done).length, setsTotal: ex.sets || 3,
       unit: ex.unit || 'kg', weights: (ex.unit || 'kg') === 'none' ? [] : sets.map(s => s && s.weight != null ? s.weight : null) };
   });
   const doneTotal = exercises.reduce((s2, x) => s2 + x.setsDone, 0);
@@ -1940,6 +1976,7 @@ content.addEventListener('click', e => {
     case 'genMinR': genCfg.minReps = Number(btn.dataset.v); genRes = null; break;
     case 'dash': dashMode = true; view = 'overview'; break;
     case 'genDo': if (!genCfg.gear.length) genCfg.gear = GEAR.map(x => x[0]); if (!genCfg.groups.length) { const gcn = groupCounts(); genCfg.groups = shuffle(MUSCLE_GROUP_LIST.filter(m => gcn[m])).slice(0, 2 + Math.floor(Math.random() * 2)); } autoGear(); if (view === 'start') { genFrom = null; view = 'gen'; } generate(); break;
+    case 'genNext': { const np = nextPlan(); genCfg.groups = np.groups.slice(); if (!genCfg.gear.length) genCfg.gear = GEAR.map(x => x[0]); autoGear(); genFrom = null; if (view === 'start') view = 'gen'; generate(); if (genRes && genRes.length) { applyProgression(genRes); genNote = np.note; } break; }
     case 'genSurprise': { const gl = shuffle(MUSCLE_GROUP_LIST).slice(0, 2 + Math.floor(Math.random() * 2)); genCfg.groups = gl; generate(); break; }
     case 'genSave': genSave(false); break;
     case 'genGo': genSave(true); break;
