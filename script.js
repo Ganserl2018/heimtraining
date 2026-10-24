@@ -450,7 +450,7 @@ function renderHome() {
   document.body.classList.remove('mood-bad');
   const t = today(), open = weekplan.find(w => startOf(w.id, t) && !loadHistory().some(r => r.trainingId === w.id && r.date === t));
   content.innerHTML = `<div class="home"><div class="home-brand"><b class="hb-home">HOME</b><b class="hb-main">FORCE</b></div><button class="home-btn" data-act="goto" data-view="start" aria-label="Start">
-    <span class="home-ring"></span><span class="home-core">
+    <span class="home-ring"></span><span class="home-ring r2"></span><span class="home-ring r3"></span><span class="home-core">
     <svg viewBox="0 0 24 24" class="home-db" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>
     <b>START</b></span></button>${open ? '<div class="home-open">Offenes Training wartet</div>' : ''}</div>`;
 }
@@ -2221,3 +2221,11 @@ document.addEventListener('input', e => { if (e.target.id === 'gen-name') { genC
   document.addEventListener('visibilitychange', () => { if (!document.hidden) chk(); });
   setTimeout(chk, 3000);
 })();
+
+// Sonar-Puls (BTN-05): Tipp auf START löst zusätzlichen Ring aus
+document.addEventListener('pointerdown', e => {
+  const b = e.target.closest && e.target.closest('.home-btn');
+  if (!b || matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  const r = document.createElement('span'); r.className = 'home-ring rb'; b.appendChild(r);
+  r.addEventListener('animationend', () => r.remove());
+}, { passive: true });
