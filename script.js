@@ -924,6 +924,14 @@ function renderGen() {
   </div>`;
   if (scrollRes) setTimeout(() => { const r = document.querySelector('.gn-res'); if (r) r.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
 }
+// Live-Vorschau: welche Übungen passen zu den gewählten Geräten + Muskeln; keine = Lücke fürs nächste Bild-Batch
+function prevHtml() {
+  const gr = genCfg.groups.filter(m => !m.startsWith('m:')); if (!gr.length || !genCfg.gear.length) return '';
+  const lv = genLevel(), list = genBase(lv).filter(e => gr.some(g => MUSCLE_GROUPS[e.muscle] === g && (g !== 'Rücken' || isBack(e))));
+  if (!list.length) { try { const k = 'heimtraining.gaps', o = JSON.parse(localStorage.getItem(k)) || {}; o[gr.join('+') + ' | ' + genCfg.gear.join('+')] = 1; localStorage.setItem(k, JSON.stringify(o)); } catch (e) {} return '<div class="qk-prev none">Dafür gibt es noch keine Übung – kommt beim nächsten Bilder-Durchlauf dazu.</div>'; }
+  const nm = list.slice(0, 3).map(e => esc(dn(e.name))).join(', ');
+  return `<div class="qk-prev"><b>${list.length} Übungen</b> passen · ${nm} …</div>`;
+}
 function builderHtml(full) {
   // Gemeinsamer Baukasten für Planung (kompakt) und Einstellungsseite (full = + Körperstelle, Level, Ziel)
   const qp = (act, v, l, on, none) => `<button class="qk-p${on ? ' on' : ''}${none && !on ? ' none' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
@@ -934,6 +942,7 @@ function builderHtml(full) {
   let h = `${segRow('', 'genDur', [20, 30, 45, 60], genCfg.dur, v => v + ' Min')}
       <div class="qk-gear">${gearBtns}</div>
       <div class="qk-grid3">${MUSCLE_GROUP_LIST.map(m => qp('genGrp', m, m, grpOn(m), !genCfg.gear.length || !gcn[m])).join('')}</div>`;
+  h += prevHtml();
   if (full) h += `
       <div class="qk-sec">Spezielle Muskeln hinzufügen</div><div class="qk-spots">${SPOTS.map(m => qp('genGrp', 'm:' + m, MUSCLE_DE[m] || m, genCfg.groups.includes('m:' + m))).join('')}</div>`;
   h += `

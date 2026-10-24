@@ -490,3 +490,9 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V22g Übungs-Detail: 'Zu Training hinzufügen' in allen Ansichten + Chip 'Neues Training'; ?v=20261027o
 - V22h Fix: Übungszeilen im Training waren gequetscht (Wisch-Wrapper), Muskel-Anteile mit Abstand; ?v=20261027p
 - V22i kleinere Schrift Muskel-Anteile/Übungsnamen im Training; ?v=20261027q
+
+## Bild-Lücken fürs nächste Gemini-Batch (24.10., aus Planung-Vorschau)
+Kombinationen Muskelgruppe + einzelnes Gerät ohne Übung (App zeigt dann "kommt beim nächsten Bilder-Durchlauf"; Lücken landen auch in localStorage `heimtraining.gaps`):
+- Beine + Seilzug (echte Lücke: Cable-Leg-Übungen fehlen/gefiltert)
+- Brust/Schultern + Klimmzug-Stange, Brust/Schultern/Arme/Bauch + Extension, Beine + Klimmzug: fachlich sinnlos allein, nur mit Zusatzgerät relevant, kein Bild nötig
+Alex-Regel: Übung ohne Treffer → beim nächsten Gemini-Bildact neu erstellen.

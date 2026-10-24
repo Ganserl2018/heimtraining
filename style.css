@@ -1835,3 +1835,5 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .tx-nm b{font-size:.88rem !important; line-height:1.2;} .tx-nm em{font-size:.7rem !important;}
 
 .qk-p.auto{animation:qkauto 1.2s ease-out 1}@keyframes qkauto{0%{transform:scale(1)}30%{transform:scale(1.12);box-shadow:0 0 18px 2px var(--acc,#b6f25c)}100%{transform:scale(1)}}@media(prefers-reduced-motion:reduce){.qk-p.auto{animation:none}}
+
+.qk-prev{margin-top:.55rem; font-size:.74rem; opacity:.8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis} .qk-prev b{color:var(--acc,#b6f25c)} .qk-prev.none{opacity:1; color:#ffb020; white-space:normal}
