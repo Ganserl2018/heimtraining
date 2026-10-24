@@ -754,7 +754,7 @@ function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { co
 function isCompound(n) { n = n.toLowerCase(); return !/pullover|pushdown|fly|flye|raise|curl|extension|kickback|shrug/.test(n) && /press|squat|deadlift|row|pull-?up|pulldown|lunge|dip|chin|push-?up/.test(n); }
 const SPOTS = ['lower back', 'lats', 'middle back', 'traps', 'neck', 'glutes', 'hamstrings', 'quadriceps', 'calves', 'biceps', 'triceps', 'forearms', 'abductors', 'adductors'];
 const spotGrp = m => MUSCLE_GROUPS[m] === 'Sonstiges' ? 'Schultern' : MUSCLE_GROUPS[m];
-const grpOn = m => genCfg.groups.includes(m) || genCfg.groups.some(x => x.startsWith('m:') && spotGrp(x.slice(2)) === m);
+const grpOn = m => genCfg.groups.includes(m);
 const grpLabel = g => g.startsWith('m:') ? (MUSCLE_DE[g.slice(2)] || g.slice(2)) : g;
 // Welche Geräte sind für den gewählten Fokus überhaupt nützlich? (Anzahl passender Übungen je Gerät)
 function groupCounts() {
@@ -827,13 +827,13 @@ function generate() {
   const hard = /deadlift|rack pull|clean|snatch|jerk|weighted|good morning|behind (the )?neck|guillotine|zercher|jefferson|overhead squat|olympic|sissy|muscle.up|atlas|pistol|single-arm push/i;
   const base = genBase(lv);
   const n = genCfg.count || GCOUNT[genCfg.dur][lv], isoMax = genCfg.count ? Math.ceil(n / 2) : GISO[genCfg.dur];
-  const gs = g.slice().sort((a, b) => (GRANK[b] || 0) - (GRANK[a] || 0));
+  const gs = g.slice().sort((a, b) => (b.startsWith('m:') - a.startsWith('m:')) || ((GRANK[b] || 0) - (GRANK[a] || 0))); // spezielle Muskeln zuerst, damit sie sicher drin sind
   const per = gs.map((_, i) => Math.floor(n / gs.length) + (i < n % gs.length ? 1 : 0));
   const picked = []; let isoUsed = 0;
   gs.forEach((grp, gi) => {
     const core = e => grp.startsWith('m:') ? e.muscle === grp.slice(2) : MUSCLE_GROUPS[e.muscle] === grp && (grp !== 'Rücken' || (isBack(e) && !/pushdown/i.test(e.name)));
-    let cand = shuffle(base.filter(e => core(e) && !last.includes(e.name)));
-    if (cand.length < per[gi]) cand = shuffle(base.filter(e => core(e)));
+    let cand = shuffle(base.filter(e => core(e) && !last.includes(e.name) && !picked.includes(e)));
+    if (cand.length < per[gi]) cand = shuffle(base.filter(e => core(e) && !picked.includes(e)));
     if (grp === 'Arme') { // Bizeps/Trizeps abwechselnd
       const bi = cand.filter(e => e.muscle === 'biceps'), tri = cand.filter(e => e.muscle === 'triceps'), rest = cand.filter(e => e.muscle === 'forearms');
       const mix = []; for (let k = 0; k < Math.max(bi.length, tri.length); k++) { if (bi[k]) mix.push(bi[k]); if (tri[k]) mix.push(tri[k]); } cand = mix.concat(rest);
@@ -1800,8 +1800,7 @@ content.addEventListener('click', e => {
     case 'genDur': genCfg.dur = Number(btn.dataset.v); genRes = null; break;
     case 'genGrp': {
       const m = btn.dataset.v, G = genCfg.groups;
-      if (m.startsWith('m:')) { const i = G.indexOf(m); if (i >= 0) G.splice(i, 1); else { G.push(m); const pg = G.indexOf(spotGrp(m.slice(2))); if (pg >= 0) G.splice(pg, 1); } } // Körperstelle verfeinert die Gruppe
-      else if (G.some(x => x.startsWith('m:') && spotGrp(x.slice(2)) === m)) genCfg.groups = G.filter(x => !(x.startsWith('m:') && spotGrp(x.slice(2)) === m)); // Gruppe antippen = ihre Körperstellen weg
+      if (m.startsWith('m:')) { const i = G.indexOf(m); if (i >= 0) G.splice(i, 1); else G.push(m); } // spezielle Muskeln kommen zusätzlich zur Gruppe dazu
       else { const i = G.indexOf(m); if (i >= 0) G.splice(i, 1); else G.push(m); }
       if (view === 'start') { // Fokus antippen -> alle Geräte aktiv, mit denen es Übungen für den Fokus gibt (leer = keine)
         const gc = genCfg.groups.length ? gearCounts() : {};
