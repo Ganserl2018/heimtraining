@@ -1849,3 +1849,15 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .qk-go.wander:disabled::before{animation:none; opacity:0;}
 @keyframes wanderSpin{to{transform:rotate(360deg);}}
 @media (prefers-reduced-motion:reduce){.qk-go.wander::before{animation:none; background:#b8ff3c;}}
+
+/* Wander-Rahmen um Wochentage mit Training + hellere Hantel */
+.wp-day.wp-ex{position:relative; isolation:isolate; overflow:hidden; border-color:transparent; background:none;}
+.wp-day.wp-ex::before{content:""; position:absolute; left:50%; top:50%; width:240px; height:240px; margin:-120px 0 0 -120px; background:conic-gradient(from 0deg, transparent 0 60%, #b8ff3c 80%, #fff 93%, transparent 100%); z-index:-2; animation:wanderSpin 3s linear infinite; will-change:transform;}
+.wp-cell:nth-child(2) .wp-day.wp-ex::before{animation-delay:-.4s;} .wp-cell:nth-child(3) .wp-day.wp-ex::before{animation-delay:-.8s;} .wp-cell:nth-child(4) .wp-day.wp-ex::before{animation-delay:-1.2s;} .wp-cell:nth-child(5) .wp-day.wp-ex::before{animation-delay:-1.6s;} .wp-cell:nth-child(6) .wp-day.wp-ex::before{animation-delay:-2s;} .wp-cell:nth-child(7) .wp-day.wp-ex::before{animation-delay:-2.4s;}
+.wp-day.wp-ex::after{content:""; position:absolute; inset:2px; border-radius:8px; background:var(--panel-2); z-index:-1;}
+.wp-day.wp-ex .lab-db{color:#eaff9a; width:24px; height:24px; stroke-width:2.4; filter:drop-shadow(0 0 5px #b8ff3c) drop-shadow(0 0 12px rgba(184,255,60,.75));}
+.wp-day.wp-ex span{color:#eaff9a;}
+@media (prefers-reduced-motion:reduce){.wp-day.wp-ex::before{animation:none; background:#b8ff3c;}}
+.wp-day.wp-ex.wp-vorher{opacity:1;}
+.wp-day.wp-ex.wp-heute::after{background:var(--accent);} .wp-day.wp-ex.wp-heute::before{background:conic-gradient(from 0deg, transparent 0 55%, #fff 85%, transparent 100%);}
+.wp-day.wp-ex.wp-heute .lab-db{color:#0b1204; filter:none;}
