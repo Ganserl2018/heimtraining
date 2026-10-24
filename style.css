@@ -1888,3 +1888,5 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .dt-res svg{flex:none; width:24px; height:24px; fill:none; stroke:var(--accent); stroke-width:2.8; stroke-linecap:round; stroke-linejoin:round;}
 .dt-res small{display:block; font-size:.64rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent);}
 .dt-res b{font-weight:600; font-size:.88rem; line-height:1.3; color:var(--text);}
+.tx-rows{grid-auto-rows:max-content;} .tx-sw{height:auto; min-height:max-content;}
+.wp-sw,.gn-sw,.tr-sw{flex:none; min-height:max-content;}

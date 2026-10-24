@@ -505,3 +505,6 @@ BTN-05 aus Design-Bibliothek auf START-Button (Startseite): 3 Ringe versetzt (.9
 
 ## Hyperextension bereinigt (24.10. 23:58)
 Doppelte "Hyperextension" (ohne Bild) aus pool.json/names_de/neue_uebungen entfernt; "Hyperextensions With No Hyperextension Bench" (Bild mit Bank, Gerät ext) heißt jetzt "Hyperextensions mit Bank". v=20261028a.
+
+## Fix gequetschte Übungszeilen (25.10. 00:05)
+Trainings-Detail: Zeilen schrumpften/überlappten (Bild+Name abgeschnitten). `.tx-rows{grid-auto-rows:max-content}`, Swipe-Wrapper (.tx-sw/.wp-sw/.gn-sw/.tr-sw) `flex:none; min-height:max-content`. v=20261028b.
