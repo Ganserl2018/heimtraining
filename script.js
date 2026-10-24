@@ -182,7 +182,7 @@ function pushHistory(rec) {
 
 function syncTabActive() {
   tabs.forEach(t => {
-    const match = t.dataset.view ? (t.dataset.view === view || (t.dataset.view === 'overview' && view === 'start' && !matchMedia('(min-width:820px)').matches) || (t.dataset.view === 'history' && view === 'histdetail') || (t.dataset.view === 'weeklist' && view === 'wtrain')) : (view === 'day' && t.dataset.day === day);
+    const match = t.dataset.view ? (t.dataset.view === view || (t.dataset.view === 'overview' && view === 'start' && !matchMedia('(min-width:820px)').matches) || (t.dataset.view === 'history' && view === 'histdetail') || (t.dataset.view === (wFrom || 'weeklist') && view === 'wtrain')) : (view === 'day' && t.dataset.day === day);
     t.classList.toggle('active', match);
   });
 }
@@ -871,7 +871,7 @@ function genSave(start) {
   const g = genCfg.groups.length ? genCfg.groups : ['Brust'], lv = genLevel();
   const t = { id: 'w' + Date.now(), name: loserName(), exercises: genRes, weekdays: [], since: {}, time: '', level: lv, goal: genCfg.goal, auto: true };
   weekplan.push(t); saveWeekplan(); genRes = null;
-  if (start) playStart(t.id); else view = 'start';
+  if (start) playStart(t.id); else { trTab = 'act'; view = 'trainings'; }
 }
 const SPK = '<svg class="qk-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.1 6.4 6.4 2.1-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-2.1z"/></svg>';
 function renderGen() {
@@ -917,10 +917,9 @@ function renderStart() {
       <span class="pl-row-n">${openT && openT.id === t.id ? 'WEITER' : t.exercises.length + ' Üb.'}</span><span class="pl-row-go" aria-hidden="true">▶</span></button>`;
   const SP = '<svg class="qk-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.1 6.4 6.4 2.1-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-2.1z"/></svg>';
   content.innerHTML = `<div class="sv">
-    ${own.length ? `<div class="pl-list">${own.map(row).join('')}</div>` : ''}
     <div class="qk">
       ${builderHtml(false)}
-      <button class="qk-go" data-act="genDo">${SP}${genCfg.groups.length ? (own.length ? 'NEU BAUEN' : 'TRAINING BAUEN') : 'ÜBERRASCH MICH'}</button>
+      <button class="qk-go" data-act="genDo">${SP}${genCfg.groups.length ? 'TRAINING BAUEN' : 'ÜBERRASCH MICH'}</button>
     </div>
     <button class="qk-link" data-act="genOpen">Weitere Einstellungen${genCfg.groups.some(x => x.startsWith('m:')) ? ' · +' + genCfg.groups.filter(x => x.startsWith('m:')).map(grpLabel).join(', +') : ''} ›</button>
     </div>
@@ -1108,21 +1107,12 @@ function renderWeeklist() {
     <div class="wp">
       <div class="wp-sec">DIESE WOCHE</div>
       <div class="wp-days">${dayTiles}</div>
-      <div class="wp-sec">MEINE TRAININGS</div>
-      ${customCards || '<p class="placeholder wp-empty">Noch keine eigenen Trainings.</p>'}
-      ${archBlock}
-      ${addingTraining ? hint('name', 1, 'Gib deinem Training einen Namen, zum Beispiel „Oberkörper“ oder „Montag“. Danach geht es mit den Übungen weiter.') : ''}
-      ${addingTraining
-        ? `<div class="wp-card wp-new"><input id="new-training-name" placeholder="Name des Trainings…" autofocus>
-             <div class="edit-bar"><button data-act="wNewTrainingSave">Speichern</button><button data-act="wNewTrainingCancel">Abbrechen</button></div></div>`
-        : `<button class="wp-add" data-act="wNewTraining">+ Neues Training</button>
-      <button class="sv-auto" data-act="genOpen"><span class="sv-auto-ic">✨</span><span class="sv-auto-t"><b>JETZT TRAINIEREN</b><i>Zeit, Fokus, Geräte und Mindestumfang wählen – den Rest macht die App</i></span><span class="sv-pk-go" aria-hidden="true">›</span></button>
       ${(() => {
         const tile = p => { const exs = presetExercises(p), e0 = exs[0]; return `<button class="wv-tile" data-act="wpPreset" data-key="${p.key}">${e0 ? `<img src="${esc(imgOf(e0))}" alt="" onerror="this.style.visibility='hidden'">` : ''}<span class="wv-n">${exs.length}</span><span class="wv-name">${esc(p.name)}</span></button>`; };
         const free = p => !weekplan.some(w => w.presetKey === p.key);
         const musc = PRESETS.filter(p => (p.grp === 'musc' || p.grp === 'core') && free(p)), split = PRESETS.filter(p => p.grp === 'split' && free(p));
         return (musc.length || split.length ? `<div class="wp-sec">VORLAGEN</div>` : '') + (musc.length ? `<div class="wv-grid">${musc.map(tile).join('')}</div>` : '') + (split.length ? `<div class="wv-grid" style="margin-top:.3rem">${split.map(tile).join('')}</div>` : '');
-      })()}`}
+      })()}
     </div>`;
   if (addingTraining) document.getElementById('new-training-name')?.focus();
 }
@@ -1326,7 +1316,7 @@ function levelSuggestion() {
   return null;
 }
 // V22: Trainings-Seite – alle fertigen Trainings übersichtlich, Start mit einem Tipp
-let trTab = 'act';
+let trTab = 'act', wFrom = null;
 function renderTrainings() {
   const t0 = today(), arch = loadArchive();
   const dayNames = WD_KEYS.map(k => ({ mon: 'Montag', tue: 'Dienstag', wed: 'Mittwoch', thu: 'Donnerstag', fri: 'Freitag', sat: 'Samstag', sun: 'Sonntag' }[k] + 'straining'));
@@ -1617,7 +1607,7 @@ function flushQ() {
 flushQ();
 
 content.addEventListener('click', e => {
-  const btn = e.target.closest('.nm-edit[data-act], button[data-act], .exinfo[data-act], .dt-bg[data-act], .weeklist-card[data-act], .wp-card[data-act], .history-item[data-act], .hv-card[data-act]');
+  const btn = e.target.closest('.nm-edit[data-act], button[data-act], .exinfo[data-act], .dt-bg[data-act], .weeklist-card[data-act], .wp-card[data-act], .tr-card[data-act], .history-item[data-act], .hv-card[data-act]');
   if (!btn) return;
   if ((btn.classList.contains('dt-bg') || btn.classList.contains('ps-bg')) && e.target !== btn) return;
   const i = Number(btn.dataset.i);
@@ -1779,7 +1769,7 @@ content.addEventListener('click', e => {
       const t = { id: 'w' + Date.now(), name: loserName(), presetKey: p.key, exercises: all.filter((_, i) => psSheet.sel.has(i)), weekdays: [], since: {}, time: '' };
       weekplan.push(t); saveWeekplan(); psSheet = null; wId = t.id; view = 'wtrain'; break;
     }
-    case 'wOpen2': wId = btn.dataset.id; view = 'wtrain'; break;
+    case 'wOpen2': wFrom = view === 'trainings' ? 'trainings' : null; wId = btn.dataset.id; view = 'wtrain'; break;
     case 'wDayNew': {
       // Ruhetag angetippt → neues Tagestraining für diesen Wochentag anlegen und direkt öffnen
       const wd = btn.dataset.wd;
@@ -1887,7 +1877,7 @@ content.addEventListener('click', e => {
       if (t && ex && !t.exercises.some(e => e.name === ex.name)) { t.exercises.push({ name: ex.name, muscle: ex.muscle, gif: ex.gif, sets: 3, note: '', unit: defaultUnit(ex.name) }); saveWeekplan(); }
       break;
     }
-    case 'wSavePack': saveWeekplan(); view = 'start'; break;
+    case 'wSavePack': saveWeekplan(); trTab = 'act'; view = 'trainings'; break;
     case 'wStart': playStart(btn.dataset.id); break;
     case 'wSkip': { const t = trainingById(btn.dataset.id); (t.skipped = t.skipped || []).push(btn.dataset.date); saveWeekplan(); break; }
     case 'trTab': trTab = btn.dataset.v; break;
@@ -1896,7 +1886,7 @@ content.addEventListener('click', e => {
     case 'wDelete': {
       const t = trainingById(btn.dataset.id);
       if (!confirm(`Training „${t.name}“ löschen? (Verlauf bleibt erhalten)`)) return;
-      weekplan = weekplan.filter(w => w.id !== t.id); saveWeekplan(); wId = null; view = 'weeklist'; break;
+      weekplan = weekplan.filter(w => w.id !== t.id); saveWeekplan(); wId = null; view = wFrom === 'trainings' ? 'trainings' : 'weeklist'; break;
     }
     case 'histDelete': {
       if (!confirm('Verlaufseintrag löschen?')) return;

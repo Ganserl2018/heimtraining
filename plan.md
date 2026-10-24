@@ -482,3 +482,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V21e Wochenplan: Wochentage Anton groß, heute = Lime-Fill+Glow; ?v=20261027e
 - V22 Neuer Reiter 'Trainings' (view trainings): Aktiv/Archiv-Umschalter, Karten mit Thumbs+Start-Button, + Neu / Jetzt trainieren; 6 Tabs gleich breit; ?v=20261027g
 - Wochenplan umbenannt in 'Woche' (Tab+Titel); ?v=20261027h
+- V22b Logik-Check: Trainings-Karten klickbar (Delegate-Selektor), Speichern -> Trainings-Seite, Tab-Highlight/Löschen-Rückweg per wFrom, Planung ohne Gespeichert-Liste, Woche ohne 'Meine Trainings' (nur Tage+Vorlagen); ?v=20261027j
