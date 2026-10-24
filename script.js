@@ -1801,6 +1801,11 @@ content.addEventListener('click', e => {
       if (m.startsWith('m:')) { const i = G.indexOf(m); if (i >= 0) G.splice(i, 1); else { G.push(m); const pg = G.indexOf(spotGrp(m.slice(2))); if (pg >= 0) G.splice(pg, 1); } } // Körperstelle verfeinert die Gruppe
       else if (G.some(x => x.startsWith('m:') && spotGrp(x.slice(2)) === m)) genCfg.groups = G.filter(x => !(x.startsWith('m:') && spotGrp(x.slice(2)) === m)); // Gruppe antippen = ihre Körperstellen weg
       else { const i = G.indexOf(m); if (i >= 0) G.splice(i, 1); else G.push(m); }
+      if (view === 'start') { // Fokus antippen -> alle Geräte aktiv, mit denen es Übungen für den Fokus gibt (leer = keine)
+        const gc = genCfg.groups.length ? gearCounts() : {};
+        genCfg.gear = GEAR.map(x => x[0]).filter(k => gc[k]);
+        try { localStorage.setItem(GEARKEY, JSON.stringify(genCfg.gear)); } catch (e2) {}
+      }
       genRes = null; break; }
     case 'genGear': { const k = btn.dataset.v, g = loadGear(), i = g.indexOf(k); if (i >= 0) g.splice(i, 1); else g.push(k); genCfg.gear = g; try { localStorage.setItem(GEARKEY, JSON.stringify(g)); } catch (e2) {} if (view === 'start') {
         // an: passende Gruppen des neuen Geräts dazu; ab: nur Gruppen weg, die kein verbliebenes Gerät mehr abdeckt – von Hand weggeklickte bleiben weg

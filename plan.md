@@ -461,3 +461,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V20ac: Menüleiste auf Startseite wieder weg (Regel body.is-home .tabbar fehlte im CSS). ?v=20261025s
 - V20ad: gespeicherte Geräte beim ersten Öffnen der Planung → passende Gruppen sofort aktiv (einmal pro Sitzung). ?v=20261025t
 - V20ae: Planung öffnen = frisch: nichts gewählt außer Zeit (Geräte+Fokus leer, Geräte-Speicher geleert); V20ad entfernt; 'Überrasch mich' nutzt alle Geräte. ?v=20261025u
+- V20af: Fokus antippen aktiviert passende Geräte (umgekehrte Richtung), abwählen nimmt sie zurück. ?v=20261025v
