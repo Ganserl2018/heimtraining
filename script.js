@@ -1202,8 +1202,8 @@ function loserName() {
 }
 function muscleShare(t) {
   const m = {}; let tot = 0;
-  (t.exercises || []).forEach(e => { const k = MUSCLE_GROUPS[e.muscle] || MUSCLE_DE[e.muscle] || e.muscle, n = e.sets || 3; m[k] = (m[k] || 0) + n; tot += n; });
-  const arr = Object.entries(m).sort((a, b) => b[1] - a[1]).map(([k, n]) => [k, Math.round(n / tot * 100)]);
+  (t.exercises || []).forEach(e => { const k = e.warm ? 'Aufwärmen' : MUSCLE_GROUPS[e.muscle] || MUSCLE_DE[e.muscle] || e.muscle, n = e.sets || 3; m[k] = (m[k] || 0) + n; tot += n; });
+  const arr = Object.entries(m).sort((a, b) => (a[0] === 'Aufwärmen') - (b[0] === 'Aufwärmen') || b[1] - a[1]).map(([k, n]) => [k, Math.round(n / tot * 100)]);
   return arr;
 }
 function shareHtml(t, max) {
