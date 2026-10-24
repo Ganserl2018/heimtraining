@@ -937,27 +937,21 @@ function generate() {
   genRes = exs; genJust = true; genSwapped = -1;
 }
 // ---- Nächstes Training berechnen: Drücken / Ziehen / Beine rotieren, Pause je Muster + einfache Steigerung ----
-const PATTERN = { chest: 'push', shoulders: 'push', triceps: 'push', lats: 'pull', 'middle back': 'pull', traps: 'pull', 'lower back': 'pull', biceps: 'pull', forearms: 'pull' };
-const NEXT_PLANS = {
-  push: { label: 'Drücken', groups: ['Brust', 'Schultern', 'm:triceps'], info: 'Brust · Schultern · Trizeps' },
-  pull: { label: 'Ziehen', groups: ['Rücken', 'm:biceps'], info: 'Rücken · Bizeps' },
-  legs: { label: 'Beine', groups: ['Beine', 'Bauch'], info: 'Beine · Bauch' }
-};
 const isWarmName = n => { const e = pool.find(x => x.name === n); return !!(e && e.category === 'warmup'); };
-function recPattern(r) {
-  const c = { push: 0, pull: 0, legs: 0 };
-  (r.exercises || []).forEach(e => { if (e.warm || isWarmName(e.name)) return; c[PATTERN[e.muscle] || 'legs'] += e.setsDone || 0; });
-  const k = Object.keys(c).sort((a, b) => c[b] - c[a])[0]; return c[k] ? k : null;
-}
 function nextPlan() {
-  const h = loadHistory(), last = { push: null, pull: null, legs: null }; let prev = null;
-  h.forEach(r => { const k = recPattern(r); if (!k) return; if (!prev) prev = k; if (!last[k] || r.date > last[k]) last[k] = r.date; });
-  const keys = Object.keys(NEXT_PLANS), off = prev ? keys.indexOf(prev) + 1 : 0, now = today();
-  const days = k => last[k] ? Math.round((new Date(now + 'T12:00:00') - new Date(last[k] + 'T12:00:00')) / 864e5) : 999;
-  const order = keys.map((_, i) => keys[(off + i) % keys.length]);
-  const key = order.slice().sort((a, b) => days(b) - days(a) || order.indexOf(a) - order.indexOf(b))[0];
-  const d = days(key);
-  return Object.assign({ key, note: prev ? `Zuletzt ${NEXT_PLANS[prev].label}, ${NEXT_PLANS[key].label} ${d >= 999 ? 'war noch nie dran' : d === 0 ? 'war heute' : d === 1 ? 'war gestern' : 'war vor ' + d + ' Tagen'} – deshalb jetzt ${NEXT_PLANS[key].label}.` : `Noch kein Training im Verlauf – Start mit ${NEXT_PLANS[key].label}.` }, NEXT_PLANS[key]);
+  // Ganzkörper über die Woche, aber pro Training nur 3 Gruppen: die am längsten nicht trainierten, mit Drücken+Ziehen im Gleichgewicht
+  const last = {}, now = today();
+  loadHistory().forEach(r => (r.exercises || []).forEach(e => { if (!(e.setsDone > 0) || e.warm || isWarmName(e.name)) return; const g = MUSCLE_GROUPS[e.muscle]; if (g && g !== 'Sonstiges' && (!last[g] || r.date > last[g])) last[g] = r.date; }));
+  const days = g => last[g] ? Math.round((new Date(now + 'T12:00:00') - new Date(last[g] + 'T12:00:00')) / 864e5) : 999;
+  const byRest = l => l.slice().sort((x, y) => days(y) - days(x) || (GRANK[y] || 0) - (GRANK[x] || 0));
+  const rested = l => { const r = l.filter(g => days(g) >= 2); return r.length >= 2 ? r : l; };
+  const push = g => g === 'Brust' || g === 'Schultern';
+  let mains = byRest(rested(['Beine', 'Rücken', 'Brust', 'Schultern'])).slice(0, 2);
+  if (mains.every(push)) mains[1] = byRest(['Beine', 'Rücken'])[0]; // nie nur Drücken
+  const minor = byRest(['Arme', 'Bauch'].filter(g => days(g) >= 1).length ? ['Arme', 'Bauch'].filter(g => days(g) >= 1) : ['Arme', 'Bauch'])[0];
+  const pick = mains.concat(minor);
+  const txt = g => last[g] ? `${g} ${days(g) === 0 ? 'heute' : days(g) === 1 ? 'gestern' : 'vor ' + days(g) + ' Tagen'}` : `${g} noch nie`;
+  return { key: 'mix', label: 'Ganzkörper-Mix', groups: pick, info: pick.join(' · '), note: 'Am längsten nicht dran: ' + pick.map(txt).join(', ') + '.' };
 }
 function applyProgression(exs) {
   const h = loadHistory();
