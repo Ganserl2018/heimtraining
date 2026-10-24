@@ -1897,3 +1897,10 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .tr-fav:active{transform:scale(.85);}
 .tr-fav.on{color:#ffd23c; text-shadow:0 0 10px rgba(255,210,60,.7), 0 1px 3px rgba(0,0,0,.7);}
 .tr-seg button{font-size:.92rem; letter-spacing:.04em; padding:0 2px;}
+
+/* Favoriten-Stern sichtbarer: runder Badge */
+.tr-fav{left:6px; top:6px; width:32px; height:32px; border-radius:50%; background:rgba(0,0,0,.6); border:1px solid rgba(255,255,255,.35); font-size:1.1rem; line-height:1; text-shadow:none;}
+.tr-fav.on{border-color:#ffd23c; box-shadow:0 0 10px rgba(255,210,60,.55);}
+.tx-fav{flex:none; width:40px; height:40px; border-radius:50%; border:1px solid var(--border); background:none; color:var(--text); font-size:1.3rem; padding:0; display:grid; place-items:center;}
+.tx-fav.on{color:#ffd23c; border-color:#ffd23c; box-shadow:0 0 10px rgba(255,210,60,.5);}
+.tx-fav:active{transform:scale(.9);}
