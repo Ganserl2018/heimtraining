@@ -893,7 +893,6 @@ function renderGen() {
 }
 function renderStart() {
   // Planung: eine Frage – "Was trainiere ich jetzt?". Gespeicherte Trainings = 1 Tipp bis ins Workout, darunter der Schnell-Bauer.
-  if (!window._grpInit) { window._grpInit = true; if (!genCfg.groups.length && genCfg.gear.length) { const gcn = groupCounts(); genCfg.groups = MUSCLE_GROUP_LIST.filter(m => gcn[m]); } } // einmal pro Sitzung: gespeicherte Geräte -> passende Gruppen aktiv
   const qp = (act, v, l, on, none) => `<button class="qk-p${on ? ' on' : ''}${none && !on ? ' none' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
   const own = weekplan.filter(w => w.exercises.length && !w.draft);
   const openT = own.find(w => startOf(w.id, today()) && !loadHistory().some(r => r.trainingId === w.id && r.date === today()));
@@ -1647,7 +1646,11 @@ content.addEventListener('click', e => {
     case 'goto':
       dashMode = false;
       if (btn.dataset.day) { day = btn.dataset.day; view = 'day'; }
-      else if (btn.dataset.view) { view = btn.dataset.view; }
+      else if (btn.dataset.view) {
+        // Planung öffnen = frischer Start: nichts gewählt außer Zeit (Geräte -> passende Gruppen entstehen durch Antippen)
+        if (btn.dataset.view === 'start' && view !== 'start') { genCfg.gear = []; genCfg.groups = []; try { localStorage.setItem(GEARKEY, '[]'); } catch (e2) {} }
+        view = btn.dataset.view;
+      }
       picker = null;
       break;
     case 'swap': picker = { index: i }; filterMuscle = null; filterEquip = null; filterCat = null; break;
@@ -1807,7 +1810,7 @@ content.addEventListener('click', e => {
     case 'genMinS': genCfg.minSets = Number(btn.dataset.v); genRes = null; break;
     case 'genMinR': genCfg.minReps = Number(btn.dataset.v); genRes = null; break;
     case 'dash': dashMode = true; view = 'overview'; break;
-    case 'genDo': if (!genCfg.groups.length) genCfg.groups = shuffle(MUSCLE_GROUP_LIST).slice(0, 2 + Math.floor(Math.random() * 2)); if (view === 'start') { genFrom = null; view = 'gen'; } generate(); break;
+    case 'genDo': if (!genCfg.gear.length) genCfg.gear = GEAR.map(x => x[0]); if (!genCfg.groups.length) genCfg.groups = shuffle(MUSCLE_GROUP_LIST).slice(0, 2 + Math.floor(Math.random() * 2)); if (view === 'start') { genFrom = null; view = 'gen'; } generate(); break;
     case 'genSurprise': { const gl = shuffle(MUSCLE_GROUP_LIST).slice(0, 2 + Math.floor(Math.random() * 2)); genCfg.groups = gl; generate(); break; }
     case 'genSave': genSave(false); break;
     case 'genGo': genSave(true); break;

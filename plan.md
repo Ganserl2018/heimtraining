@@ -460,3 +460,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V20ab: Hyperextension (Rückenstrecker, Gerät Extension) in pool.json + names_de ergänzt, Bild offen (gifs/hyperextension.gif fehlt); isBack(): unterer Rücken zählt zu Rücken, wenn Übung Extension braucht. ?v=20261025r
 - V20ac: Menüleiste auf Startseite wieder weg (Regel body.is-home .tabbar fehlte im CSS). ?v=20261025s
 - V20ad: gespeicherte Geräte beim ersten Öffnen der Planung → passende Gruppen sofort aktiv (einmal pro Sitzung). ?v=20261025t
+- V20ae: Planung öffnen = frisch: nichts gewählt außer Zeit (Geräte+Fokus leer, Geräte-Speicher geleert); V20ad entfernt; 'Überrasch mich' nutzt alle Geräte. ?v=20261025u
