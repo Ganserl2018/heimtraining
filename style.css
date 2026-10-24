@@ -1760,3 +1760,12 @@ body.is-res .topbar h1::after{content:'Wischen: Favorit oder neue Übung';}
 html:has(body.is-start:not(.is-res)){overflow:hidden; overscroll-behavior:none;}
 body.is-start:not(.is-res), body.is-start:not(.is-res) #content{overflow:hidden !important; overscroll-behavior:none; touch-action:none;}
 body.is-start:not(.is-res) button{touch-action:manipulation;}
+/* V21d Hero-Titel auf allen Hauptseiten, TV weg */
+.tv-icon-btn{display:none !important;}
+:is(body[data-view=history],body[data-view=weeklist],body[data-view=allex],body[data-view=profile]) .topbar{padding-top:.6rem; padding-bottom:.4rem; border-bottom:0 !important; background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 10%,transparent),transparent) !important;}
+:is(body[data-view=history],body[data-view=weeklist],body[data-view=allex],body[data-view=profile]) .topbar h1{font-family:Anton,Impact,'Arial Narrow',sans-serif !important; font-weight:400; font-size:2.2rem !important; line-height:1; letter-spacing:.04em !important; text-transform:uppercase; color:var(--accent) !important; text-shadow:0 0 16px color-mix(in srgb,var(--accent) 40%,transparent); transform:skewX(-6deg); transform-origin:left;}
+:is(body[data-view=history],body[data-view=weeklist],body[data-view=allex],body[data-view=profile]) .topbar h1::after{display:block; margin:.2rem 0 0 2px; font-family:system-ui,-apple-system,sans-serif; font-size:.82rem; font-weight:500; letter-spacing:.02em; text-transform:none; color:color-mix(in srgb,var(--text) 75%,transparent); text-shadow:none; transform:skewX(6deg); transform-origin:left;}
+body[data-view=history] .topbar h1::after{content:'Dein Fortschritt';}
+body[data-view=weeklist] .topbar h1::after{content:'Deine Trainings';}
+body[data-view=allex] .topbar h1::after{content:'Finde deine Übung';}
+body[data-view=profile] .topbar h1::after{content:'Du und deine Werte';}

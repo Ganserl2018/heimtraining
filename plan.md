@@ -478,3 +478,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V21 Profil: Ziel als Fortschrittsbalken (x/Ziel), Gruppen 'Deine Werte'/'Level', 4er-Werte-Reihe, Sprache DE/EN, Reset-Links klein; ?v=20261027a
 - V21b Planung: Höhen in px, ~55px kürzer (Weitere Einstellungen schnitt ab); ?v=20261027b
 - V21c Planung/Einstellungen: Scroll/Wippen gesperrt; ?v=20261027c
+- V21d Hero-Titel (Anton, Glow, Untertitel) auf Wochenplan/Übungen/Verlauf/Profil, TV-Button global weg; ?v=20261027d
