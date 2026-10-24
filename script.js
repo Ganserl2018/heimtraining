@@ -731,6 +731,7 @@ let genJust = false, genFrom = null;
 const GEAR = [['barbell', 'Langhantel'], ['dumbbell', 'Kurzhanteln'], ['cable', 'Seilzug'], ['band', 'Bänder'], ['rig', 'Klimmzug'], ['ext', 'Extension'], ['bench', 'Hantelbank'], ['body', 'Körper']];
 const GEARKEY = 'heimtraining.gear2';
 function loadGear() { try { const g = JSON.parse(localStorage.getItem(GEARKEY)); if (Array.isArray(g)) return g; } catch (e) {} return GEAR.map(x => x[0]); }
+function isBack(e) { return e.muscle === 'lats' || e.muscle === 'middle back' || (e.muscle === 'lower back' && gearOf(e.name).includes('ext')); }
 function gearOf(name) { // Liste der benötigten Geräte
   if (gearFix[name]) return gearFix[name].g;
   const n = name.toLowerCase(), r = [];
@@ -773,7 +774,7 @@ function gearCounts() {
   const g = genCfg.groups, lv = genLevel(), out = {};
   const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine/i;
   const hard = /deadlift|rack pull|clean|snatch|jerk|weighted|good morning|behind (the )?neck|guillotine|zercher|jefferson|overhead squat|olympic|sissy|muscle.up|atlas|pistol|single-arm push/i;
-  const core = (e, grp) => grp.startsWith('m:') ? e.muscle === grp.slice(2) : MUSCLE_GROUPS[e.muscle] === grp && (grp !== 'Rücken' || (e.muscle === 'lats' || e.muscle === 'middle back'));
+  const core = (e, grp) => grp.startsWith('m:') ? e.muscle === grp.slice(2) : MUSCLE_GROUPS[e.muscle] === grp && (grp !== 'Rücken' || isBack(e));
   pool.forEach(e => {
     if (bad.test(e.name) || (gearFix[e.name] && gearFix[e.name].s === 'no') || !MUSCLE_GROUPS[e.muscle] || (lv === 0 && hard.test(e.name))) return;
     if (!g.some(x => core(e, x))) return;
@@ -830,7 +831,7 @@ function generate() {
   const per = gs.map((_, i) => Math.floor(n / gs.length) + (i < n % gs.length ? 1 : 0));
   const picked = []; let isoUsed = 0;
   gs.forEach((grp, gi) => {
-    const core = e => grp.startsWith('m:') ? e.muscle === grp.slice(2) : MUSCLE_GROUPS[e.muscle] === grp && (grp !== 'Rücken' || ((e.muscle === 'lats' || e.muscle === 'middle back') && !/pushdown/i.test(e.name)));
+    const core = e => grp.startsWith('m:') ? e.muscle === grp.slice(2) : MUSCLE_GROUPS[e.muscle] === grp && (grp !== 'Rücken' || (isBack(e) && !/pushdown/i.test(e.name)));
     let cand = shuffle(base.filter(e => core(e) && !last.includes(e.name)));
     if (cand.length < per[gi]) cand = shuffle(base.filter(e => core(e)));
     if (grp === 'Arme') { // Bizeps/Trizeps abwechselnd
@@ -848,7 +849,7 @@ function generate() {
   });
   // Auffüllen: wenn eine Gruppe mit den gewählten Geräten zu wenig Übungen hat, fehlende Plätze reihum aus den anderen Gruppen holen (gewünschte Anzahl einhalten)
   if (genCfg.count && picked.length < n) {
-    const coreOf = grp => e => grp.startsWith('m:') ? e.muscle === grp.slice(2) : MUSCLE_GROUPS[e.muscle] === grp && (grp !== 'Rücken' || e.muscle === 'lats' || e.muscle === 'middle back');
+    const coreOf = grp => e => grp.startsWith('m:') ? e.muscle === grp.slice(2) : MUSCLE_GROUPS[e.muscle] === grp && (grp !== 'Rücken' || isBack(e));
     const rest = gs.map(grp => shuffle(base.filter(e => coreOf(grp)(e) && !picked.includes(e))));
     for (let k = 0; picked.length < n && rest.some(r => r.length); k++) { const r = rest[k % rest.length]; const e = r.shift(); if (e && !picked.includes(e)) picked.push(e); }
   }

@@ -457,3 +457,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V20y: alle Geräte abgewählt → Fokus leer. ?v=20261025o
 - V20z: Gerät an=Gruppen dazu, ab=nur nicht mehr abgedeckte weg; manuell weggeklickte Gruppen bleiben weg. ?v=20261025p
 - V20aa: Generator hält gewählte Übungsanzahl ein (Auffüllen reihum aus anderen Gruppen, wenn eine Gruppe mit den Geräten zu wenig hat). ?v=20261025q
+- V20ab: Hyperextension (Rückenstrecker, Gerät Extension) in pool.json + names_de ergänzt, Bild offen (gifs/hyperextension.gif fehlt); isBack(): unterer Rücken zählt zu Rücken, wenn Übung Extension braucht. ?v=20261025r
