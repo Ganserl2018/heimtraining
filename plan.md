@@ -524,3 +524,7 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - 8 neue Warmup-Übungen (Armkreisen, Armschwingen, Scapular Push-Up, Katze-Kuh, Open Book, Schulterkreisen, Beinschwingen, Glute Bridge leicht) – **Bild-Lücke** (Gemini-Batch, bis dahin ohne Bild).
 - Warmups sind aus Generator/Vorlagen-Füllung ausgeschlossen; `WARM` je Muskelgruppe, `warmupsFor()` setzt 2 passende vorne ins Training (Generator, Vorlagen, einmalige Migration bestehender Trainings `warmmig1`). Wisch-Tausch einer Warmup tauscht nur gegen Warmups.
 - Profil kompakter (letzte Zeile hat ~55px Luft).
+
+## V24-A Nächstes Training berechnen (26.10.)
+- Button „➜ NÄCHSTES TRAINING“ auf der Planung: rotiert Drücken (Brust/Schultern/Trizeps) → Ziehen (Rücken/Bizeps) → Beine+Bauch nach Verlauf (längste Pause zuerst, Tiebreak: Reihenfolge nach letztem Training), baut mit Warmups + Vorschau, Gewicht = letztes Gewicht, +2,5 kg (KH +2) wenn alle Sätze geschafft (↑).
+- Offen/Warteliste: Wochenfrequenz/Erholungszeit (48 h) einrechnen, Favoriten bevorzugen, Ganzkörper-Variante bei 2×/Woche.
