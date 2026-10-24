@@ -808,6 +808,24 @@ let genSwapped = -1, genPick = -1;
 const FAVKEY = 'heimtraining.favs';
 function loadFavs() { try { const f = JSON.parse(localStorage.getItem(FAVKEY)); if (Array.isArray(f)) return f; } catch (e) {} return []; }
 function genFav(i) { const e = genRes && genRes[i]; if (!e) return; const f = loadFavs(), k = f.indexOf(e.name); if (k >= 0) f.splice(k, 1); else f.push(e.name); try { localStorage.setItem(FAVKEY, JSON.stringify(f)); } catch (x) {} }
+function wFavEx(t, i) { const e = t && t.exercises[i]; if (!e) return; const f = loadFavs(), k = f.indexOf(e.name); if (k >= 0) f.splice(k, 1); else f.push(e.name); try { localStorage.setItem(FAVKEY, JSON.stringify(f)); } catch (e2) {} }
+// Wisch-Tausch im gespeicherten Training: gleiche Muskelgruppe, deine Geräte, nicht schon drin
+function wSwapEx(t, i) {
+  const old = t && t.exercises[i]; if (!old) return;
+  const keep = genCfg.gear; genCfg.gear = loadGear();
+  const lv = genLevel(), grp = MUSCLE_GROUPS[old.muscle], inList = t.exercises.map(x => x.name);
+  const ok = e => MUSCLE_GROUPS[e.muscle] === grp && !inList.includes(e.name);
+  let c = genBase(lv).filter(e => ok(e) && e.muscle === old.muscle);
+  if (grp === 'Rücken' || !c.length) c = genBase(lv).filter(ok);
+  genCfg.gear = keep;
+  if (!c.length) return;
+  const same = c.filter(e => isCompound(e.name) === isCompound(old.name));
+  const e = shuffle(same.length ? same : c)[0];
+  const ex = { name: e.name, muscle: e.muscle, gif: e.gif, sets: old.sets || 3, note: '', unit: defaultUnit(e.name) };
+  const r = suggestEx(ex, lv, genCfg.goal);
+  ex.plan = Array.from({ length: ex.sets }, () => ({ w: r.w, r: r.reps }));
+  t.exercises[i] = ex; saveWeekplan();
+}
 function genPickSet(name) {
   const e = pool.find(x => x.name === name); if (!e || genPick < 0 || !genRes[genPick]) { genPick = -1; return; }
   const lv = genLevel(), ex = { name: e.name, muscle: e.muscle, gif: e.gif, sets: 3, note: '', unit: defaultUnit(e.name) };
@@ -1248,13 +1266,13 @@ function txRow(t, ex, i) {
   const last = i === t.exercises.length - 1;
   const key = t.id + '|' + i, open = txOpen === key;
   const sumTxt = u === 'none' ? n + ' Sätze' : n + ' × ' + (uniform ? (at(0, 'r') ?? '–') + ' ' + rl : 'variiert') + (u === 'kg' && at(0, 'w') != null ? ' · ' + (uniform ? at(0, 'w') : 'ab ' + at(0, 'w')) + ' kg' : '');
-  return `<div class="tx-row ts-set xc${open ? ' open' : ''}" style="--i:${Math.min(i, 10)}">
+  return `<div class="tx-sw" data-tsw="${t.id}|${i}"><div class="gn-sw-bg"><span>★ Favorit</span><span>Neue Übung ↻</span></div><div class="tx-row ts-set xc${open ? ' open' : ''}" style="--i:${Math.min(i, 10)}">
     <button class="tx-th" data-act="exInfo" data-name="${esc(ex.name)}" aria-label="Übungsdaten"><img src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"></button>
     <button class="tx-nm" data-act="txToggle" data-key="${esc(key)}"><b>${esc(dn(ex.name))}</b><em>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)} · ${sumTxt}</em><i class="tx-ch">${open ? '▴' : '▾'}</i></button>
     <span class="ts-mv"><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="-1" aria-label="Nach oben"${i === 0 ? ' disabled' : ''}>▲</button><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="1" aria-label="Nach unten"${last ? ' disabled' : ''}>▼</button></span>
     <button class="tx-rm" data-act="wRemoveEx" data-id="${t.id}" data-i="${i}" aria-label="Übung entfernen">✕</button>
     <div class="tx-ed">${step}${vals}${sel}</div>${chips}${pills}
-  </div>`;
+  </div></div>`;
 }
 function renderWTrain() {
   const t = trainingById(wId);
@@ -2111,8 +2129,8 @@ content.addEventListener('touchend', () => {
 // Wischen in der Auto-Ergebnisliste: Übung tauschen
 let _gs = null;
 content.addEventListener('touchstart', e => {
-  const w = e.target.closest('.gn-sw'); if (!w || e.touches.length !== 1) { _gs = null; return; }
-  _gs = { w, card: w.querySelector('.gn-ex'), x: e.touches[0].clientX, y: e.touches[0].clientY, dx: 0, lock: '' };
+  const w = e.target.closest('.gn-sw, .tx-sw'); if (!w || e.touches.length !== 1) { _gs = null; return; }
+  _gs = { w, card: w.querySelector('.gn-ex, .tx-row'), x: e.touches[0].clientX, y: e.touches[0].clientY, dx: 0, lock: '' };
 }, { passive: true });
 content.addEventListener('touchmove', e => {
   if (!_gs) return;
@@ -2128,7 +2146,7 @@ content.addEventListener('touchend', () => {
   card.style.transition = 'transform .18s';
   if (Math.abs(dx) < Math.min(90, w.offsetWidth * 0.25)) { card.style.transform = ''; return; }
   card.style.transform = dx > 0 ? '' : 'translateX(-110%)';
-  setTimeout(() => { if (dx > 0) genFav(Number(w.dataset.gsw)); else genSwap(Number(w.dataset.gsw)); render(); }, 170);
+  setTimeout(() => { if (w.dataset.tsw) { const [tid, ti] = w.dataset.tsw.split('|'); if (dx > 0) wFavEx(trainingById(tid), Number(ti)); else wSwapEx(trainingById(tid), Number(ti)); } else if (dx > 0) genFav(Number(w.dataset.gsw)); else genSwap(Number(w.dataset.gsw)); render(); }, 170);
 });
 content.addEventListener('click', e => { if (Date.now() - _swDone < 400) { e.stopPropagation(); e.preventDefault(); } }, true);
 // Schnellwahl-Chips: setzen/addieren, Fokus im Feld behalten (Tastatur bleibt)

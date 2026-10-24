@@ -485,3 +485,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V22b Logik-Check: Trainings-Karten klickbar (Delegate-Selektor), Speichern -> Trainings-Seite, Tab-Highlight/Löschen-Rückweg per wFrom, Planung ohne Gespeichert-Liste, Woche ohne 'Meine Trainings' (nur Tage+Vorlagen); ?v=20261027j
 - V22c Trainings-Karte: Beschreibung (Übungen + Muskelgruppen) + Tage Mo-So direkt zuweisen; ?v=20261027k
 - V22d Wischen auf Trainings-Karten wieder da (rechts Archiv, links Löschen), Ergebnis-Tausch geprüft; ?v=20261027l
+- V22e Wisch-Tausch auch im gespeicherten Training (links neue Übung gleiche Gruppe, rechts Favorit); ?v=20261027m

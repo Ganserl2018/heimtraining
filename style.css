@@ -1812,3 +1812,7 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .tr-days button.on{background:var(--accent); border-color:var(--accent); color:var(--on-accent,#0b1204); box-shadow:0 0 10px color-mix(in srgb,var(--accent) 45%,transparent);}
 .tr-days button:active{transform:scale(.95);}
 .tr-sw{flex:none; border-radius:18px;} .tr-sw .wp-sw-bg{border-radius:18px;} .tr-sw .tr-card{position:relative;}
+/* V22e Wisch-Tausch im Training */
+.tx-sw{position:relative; overflow:hidden; touch-action:pan-y; border-radius:14px;}
+.tx-sw .tx-row{position:relative; background:var(--bg);}
+.tx-sw .gn-sw-bg{border-radius:14px;} .tx-sw[data-dir=r] .gn-sw-bg span:first-child,.tx-sw[data-dir=l] .gn-sw-bg span:last-child{opacity:1;}
