@@ -463,3 +463,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V20ae: Planung öffnen = frisch: nichts gewählt außer Zeit (Geräte+Fokus leer, Geräte-Speicher geleert); V20ad entfernt; 'Überrasch mich' nutzt alle Geräte. ?v=20261025u
 - V20af: Fokus antippen aktiviert passende Geräte (umgekehrte Richtung), abwählen nimmt sie zurück. ?v=20261025v
 - V20ag: Gerät abwählen nimmt alle Gruppen raus, die es abdeckt (Spiegel zu 'an'). ?v=20261025w
+- V20ah: Einstellungsseite (gen) im Planungs-System: gemeinsamer builderHtml(full) (Zeit, Geräte, Fokus, Körperstelle, Umfang, Level, Ziel), gleiche Logik, Hero 'EINSTELLUNGEN', Auswahl aus Planung bleibt erhalten. ?v=20261025x

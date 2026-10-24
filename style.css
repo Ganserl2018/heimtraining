@@ -1693,3 +1693,16 @@ body.is-start .topbar{padding-top:.6rem;}
 .qk-grid3{margin-top:.9rem;}
 /* V20ac Startseite: keine Menüleiste */
 body.is-home .tabbar{display:none !important;}
+/* V20ah Einstellungsseite im selben System wie Planung */
+body.is-gen .tv-icon-btn{display:none !important;}
+body.is-gen .topbar h1::after{content:'Alles einstellen, dann bauen';}
+.gn-back{background:none; border:0; color:var(--text-dim); font-size:.95rem; font-weight:700; min-height:40px; padding:0 .3rem; margin:0 0 .3rem;}
+.gn-back:active{color:var(--accent);}
+.gn .qk{margin-top:0;}
+.gn .qk-sec{margin-top:.9rem;}
+.qk-spots{display:grid; grid-template-columns:repeat(3,1fr); gap:.35rem; margin-top:.5rem;}
+.qk-spots .qk-p{min-height:38px; font-size:.78rem; border-radius:12px; padding:0 .15rem;}
+.qk-spots .qk-p.on{background:var(--accent); color:#0b1204; border-color:var(--accent);}
+.gn .seg{margin-top:.45rem;}
+.gn .seg button{font-size:.8rem;}
+.gn{padding-bottom:5.5rem;}
