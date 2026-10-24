@@ -1410,6 +1410,7 @@ function renderTrainings() {
   const t0 = today(), arch = loadArchive();
   const dayNames = WD_KEYS.map(k => ({ mon: 'Montag', tue: 'Dienstag', wed: 'Mittwoch', thu: 'Donnerstag', fri: 'Freitag', sat: 'Samstag', sun: 'Sonntag' }[k] + 'straining'));
   const act = weekplan.filter(w => !w.draft && (!dayNames.includes(w.name) || w.exercises.length));
+  const favEx = loadFavs().map(n => pool.find(e => e.name === n)).filter(Boolean);
   const favs = act.filter(w => w.fav), list = trTab === 'arch' ? arch : trTab === 'fav' ? favs : act;
   const card = t => {
     const th = t.exercises.slice(0, 3).map(ex => `<img src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`).join('');
@@ -1423,8 +1424,8 @@ function renderTrainings() {
     return trTab === 'arch' ? c : `<div class="wp-sw tr-sw" data-sw="${t.id}"><div class="wp-sw-bg"><span class="a">📥 Archiv</span><span class="d">Löschen 🗑</span></div>${c}</div>`;
   };
   content.innerHTML = `<div class="tr">
-    <div class="tr-seg"><button class="${trTab === 'act' ? 'on' : ''}" data-act="trTab" data-v="act">Aktiv <em>${act.length}</em></button><button class="${trTab === 'fav' ? 'on' : ''}" data-act="trTab" data-v="fav">★ Favoriten <em>${favs.length}</em></button><button class="${trTab === 'arch' ? 'on' : ''}" data-act="trTab" data-v="arch">Archiv <em>${arch.length}</em></button></div>
-    <div class="tr-list">${list.length ? list.map(card).join('') : `<p class="tr-empty">${trTab === 'arch' ? 'Archiv ist leer.' : trTab === 'fav' ? 'Noch keine Favoriten. Tippe ☆ auf einem Training.' : 'Noch keine Trainings.'}</p>`}</div>
+    <div class="tr-seg"><button class="${trTab === 'act' ? 'on' : ''}" data-act="trTab" data-v="act">Aktiv <em>${act.length}</em></button><button class="${trTab === 'fav' ? 'on' : ''}" data-act="trTab" data-v="fav">★ Favoriten <em>${favs.length + favEx.length}</em></button><button class="${trTab === 'arch' ? 'on' : ''}" data-act="trTab" data-v="arch">Archiv <em>${arch.length}</em></button></div>
+    <div class="tr-list">${trTab === 'fav' && favEx.length ? `<div class="tr-fx">${favEx.map(e => `<button class="tr-fxr" data-act="exInfo" data-name="${esc(e.name)}"><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><span><b>★ ${esc(dn(e.name))}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)}</em></span></button>`).join('')}</div>` : ''}${list.length ? list.map(card).join('') : `<p class="tr-empty">${trTab === 'arch' ? 'Archiv ist leer.' : trTab === 'fav' ? (favEx.length ? '' : 'Noch keine Favoriten. Tippe ☆ bei einer Übung oder einem Training.') : 'Noch keine Trainings.'}</p>`}</div>
     <div class="tr-act"><button class="tr-new" data-act="wNewTraining">+ Neu</button><button class="tr-gen" data-act="genOpen">✦ JETZT TRAINIEREN</button></div>
   </div>`;
 }

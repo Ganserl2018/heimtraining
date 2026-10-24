@@ -1929,3 +1929,7 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .xr-ftr{grid-column:1/-1; display:flex; flex-direction:column; align-items:flex-start; gap:.15rem; padding:.8rem 1rem; border-radius:16px; border:1px solid var(--accent); background:color-mix(in srgb,var(--accent) 10%,var(--panel)); color:var(--text); text-align:left;}
 .xr-ftr b{font-family:Anton,Impact,sans-serif; font-weight:400; letter-spacing:.04em; font-size:1.15rem; text-transform:uppercase;}
 .xr-ftr em{font-style:normal; color:var(--text-dim); font-size:.85rem;}
+.tr-fx{display:grid; gap:.5rem; margin-bottom:.6rem;}
+.tr-fxr{display:flex; align-items:center; gap:.8rem; padding:.5rem; border-radius:16px; border:1px solid var(--border); background:var(--panel); color:var(--text); text-align:left;}
+.tr-fxr img{width:64px; height:64px; border-radius:12px; object-fit:cover; flex:none; background:var(--bg);}
+.tr-fxr span{display:flex; flex-direction:column; min-width:0;} .tr-fxr b{font-size:1rem;} .tr-fxr em{font-style:normal; color:var(--text-dim); font-size:.82rem;}
