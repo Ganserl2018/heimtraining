@@ -1534,7 +1534,6 @@ function dtDayList() { return weekplan.map((t, k) => [t, k]).sort((a, b) => dtId
 function detailSheetHtml(ex) {
   const w = WCLASS[ex.muscle] || ['im Zielmuskel', 'Muskelaufbau', 'maximale Kraft'];
   const sec = secondaries(ex);
-  const cls = (t, lv, a, b) => `<div class="dt-wc dt-${lv}"><div class="dt-wc-h"><b>${t}</b><i>${'<u></u>'.repeat(lv === 'l' ? 1 : lv === 'm' ? 2 : 3)}</i></div><p>${a}</p><p class="dt-opt">${b}</p></div>`;
   const add = view !== 'play' && view !== 'tv' ? `<div class="dt-sec">Zu Training hinzufügen</div>
     <div class="dt-add">${dtDayList().map(t => { const has = t.exercises.some(e => e.name === ex.name);
       return `<button class="dt-chip${has ? ' on' : ''}" data-act="browseAdd" data-id="${t.id}"><span class="dt-chip-b">${dtBadge(t.name)}</span><span class="dt-chip-t"><b>${esc(dtShort(t.name))}</b><small>${has ? '✓ Hinzugefügt' : (dtIdx(t.name) < 7 ? 'Training' : 'Eigenes Training')}</small></span></button>`; }).join('')}<button class="dt-chip" data-act="browseAddNew"><span class="dt-chip-b">+</span><span class="dt-chip-t"><b>Neues Training</b><small>mit dieser Übung</small></span></button></div>` : '';
@@ -1546,12 +1545,9 @@ function detailSheetHtml(ex) {
       <button class="dt-bad${loadBad().includes(ex.name) ? ' on' : ''}" data-act="badImg" data-name="${esc(ex.name)}">${loadBad().includes(ex.name) ? '✓ Bild als falsch markiert' : '⚑ Bild falsch'}</button>
       <div class="dt-tags"><span class="dt-tag on">${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</span>${MUSCLE_GROUPS[ex.muscle] && MUSCLE_GROUPS[ex.muscle] !== (MUSCLE_DE[ex.muscle] || ex.muscle) ? `<span class="dt-tag">${MUSCLE_GROUPS[ex.muscle]}</span>` : ''}<span class="dt-tag">${equipLabel(ex.name)}</span></div>
       ${sec.length ? `<div class="dt-secm">Zusätzlich: ${sec.join(', ')}</div>` : ''}
-      ${(anleitungen[ex.name] || {}).schritte ? `<div class="dt-sec">Anleitung</div><ol class="dt-steps">${anleitungen[ex.name].schritte.map(t => `<li>${esc(t)}</li>`).join('')}</ol>` : ''}
-      <div class="dt-sec">Gewichtsklassen</div>
-      <div class="dt-wcs">
-        ${cls('Leicht', 'l', 'Geringer Aufwand, minimales Verletzungsrisiko.', `Straffung, Definition, bessere Haltung ${w[0]}.`)}
-        ${cls('Moderat', 'm', 'Mittlerer, kontrollierter Aufwand.', `Muskelaufbau für ${w[1]}.`)}
-        ${cls('Schwer', 'h', 'Hoher Aufwand, strikte Technik.', `${w[2]}, sichtbarer Kraftzuwachs.`)}
+      <div class="dt-how">
+        ${(anleitungen[ex.name] || {}).schritte ? `<div class="dt-sec">Anleitung</div><ol class="dt-steps">${anleitungen[ex.name].schritte.map(t => `<li>${esc(t)}</li>`).join('')}</ol>` : ''}
+        <div class="dt-res"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div><small>Resultat</small><b>Straffung, Definition, bessere Haltung ${w[0]}</b></div></div>
       </div>
       ${add}
     </div></div></div>`;

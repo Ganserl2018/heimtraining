@@ -1876,3 +1876,15 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .tr-del.arm{background:#e8301f; border-color:#e8301f; color:#fff;}
 .tr-del.arm::after{content:"?"; font:700 1rem Anton,Impact,sans-serif; position:absolute; transform:translate(15px,-14px); background:#fff; color:#e8301f; border-radius:50%; width:16px; height:16px; line-height:16px; text-align:center;}
 .tr-del{position:relative;}
+
+/* Detail: Anleitung + Resultat in einer Karte */
+.dt-how{background:var(--panel-2,#1c2320); border:1px solid var(--border-soft); border-radius:16px; padding:.85rem .9rem .8rem; display:flex; flex-direction:column; gap:.7rem;}
+.dt-how .dt-sec{margin:0;}
+.dt-how .dt-steps{list-style:none; padding:0; counter-reset:st; gap:.55rem; font-size:.92rem;}
+.dt-how .dt-steps li{counter-increment:st; display:grid; grid-template-columns:26px 1fr; gap:10px; align-items:start;}
+.dt-how .dt-steps li::before{content:counter(st); width:26px; height:26px; border-radius:50%; background:var(--accent); color:var(--on-accent,#0b1204); font:400 .95rem/26px Anton,Impact,sans-serif; text-align:center;}
+.dt-how .dt-steps li::marker{content:"";}
+.dt-res{display:flex; align-items:center; gap:10px; padding:.65rem .75rem; border-radius:12px; background:color-mix(in srgb,var(--accent) 14%,transparent); border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);}
+.dt-res svg{flex:none; width:24px; height:24px; fill:none; stroke:var(--accent); stroke-width:2.8; stroke-linecap:round; stroke-linejoin:round;}
+.dt-res small{display:block; font-size:.64rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent);}
+.dt-res b{font-weight:600; font-size:.88rem; line-height:1.3; color:var(--text);}
