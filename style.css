@@ -1861,3 +1861,10 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .wp-day.wp-ex.wp-vorher{opacity:1;}
 .wp-day.wp-ex.wp-heute::after{background:var(--accent);} .wp-day.wp-ex.wp-heute::before{background:conic-gradient(from 0deg, transparent 0 55%, #fff 85%, transparent 100%);}
 .wp-day.wp-ex.wp-heute .lab-db{color:#0b1204; filter:none;}
+
+/* Wander-Rahmen auf zugewiesenen Tagen im Trainings-Reiter */
+.tr-days button.on{position:relative; isolation:isolate; overflow:hidden; background:none; border-color:transparent;}
+.tr-days button.on::before{content:""; position:absolute; left:50%; top:50%; width:120px; height:120px; margin:-60px 0 0 -60px; background:conic-gradient(from 0deg, transparent 0 55%, #fff 85%, transparent 100%); z-index:-2; animation:wanderSpin 3s linear infinite; will-change:transform;}
+.tr-days button.on:nth-child(2n)::before{animation-delay:-1s;} .tr-days button.on:nth-child(3n)::before{animation-delay:-2s;}
+.tr-days button.on::after{content:""; position:absolute; inset:2px; border-radius:8px; background:var(--accent); z-index:-1;}
+@media (prefers-reduced-motion:reduce){.tr-days button.on::before{animation:none; opacity:0;}}
