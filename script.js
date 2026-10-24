@@ -961,7 +961,7 @@ function renderStart() {
   content.innerHTML = `<div class="sv">
     <div class="qk">
       ${builderHtml(false)}
-      <button class="qk-go" data-act="genDo">${SP}${genCfg.groups.length ? 'TRAINING BAUEN' : 'ÜBERRASCH MICH'}</button>
+      <button class="qk-go wander${genCfg.groups.length ? '' : ' surp'}" data-act="genDo">${SP}${genCfg.groups.length ? 'TRAINING BAUEN' : 'ÜBERRASCH MICH'}</button>
     </div>
     <button class="qk-link" data-act="genOpen">Weitere Einstellungen${genCfg.groups.some(x => x.startsWith('m:')) ? ' · +' + genCfg.groups.filter(x => x.startsWith('m:')).map(grpLabel).join(', +') : ''} ›</button>
     </div>

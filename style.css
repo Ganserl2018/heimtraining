@@ -1840,3 +1840,12 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .qk-p.auto{animation:qkauto 1.2s ease-out 1}@keyframes qkauto{0%{transform:scale(1)}30%{transform:scale(1.12);box-shadow:0 0 18px 2px var(--acc,#b6f25c)}100%{transform:scale(1)}}@media(prefers-reduced-motion:reduce){.qk-p.auto{animation:none}}
 
 .qk-prev{margin-top:.55rem; font-size:.74rem; opacity:.8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis} .qk-prev b{color:var(--acc,#b6f25c)} .qk-prev.none{opacity:1; color:#ffb020; white-space:normal}
+
+/* Wander-Rahmen (Design-Bibliothek BTN, Wumms-Labor) auf TRAINING BAUEN / ÜBERRASCH MICH – nur transform-Animation */
+.qk-go.wander{position:relative; isolation:isolate; overflow:hidden; background:none; box-shadow:0 0 22px rgba(184,255,60,.35);}
+.qk-go.wander::before{content:""; position:absolute; left:50%; top:50%; width:max(220%,420px); aspect-ratio:1; margin:calc(max(220%,420px) / -2) 0 0 calc(max(220%,420px) / -2); background:conic-gradient(from 0deg, transparent 0 62%, #b8ff3c 80%, #fff 92%, transparent 100%); z-index:-2; animation:wanderSpin 2.8s linear infinite; will-change:transform;}
+.qk-go.wander::after{content:""; position:absolute; inset:3px; border-radius:13px; background:radial-gradient(circle at 30% 20%,#eaff9a,#b8ff3c 45%,#7bd10f); z-index:-1;}
+.qk-go.wander.surp::before{animation-duration:1.6s; background:conic-gradient(from 0deg, transparent 0 50%, #7bd10f 68%, #b8ff3c 82%, #fff 93%, transparent 100%);}
+.qk-go.wander:disabled::before{animation:none; opacity:0;}
+@keyframes wanderSpin{to{transform:rotate(360deg);}}
+@media (prefers-reduced-motion:reduce){.qk-go.wander::before{animation:none; background:#b8ff3c;}}
