@@ -878,7 +878,7 @@ function renderGen() {
   const scrollRes = genJust; genJust = false;
   content.innerHTML = `<div class="gn">
     ${genRes ? '' : `<div class="qk">
-      <div class="qk-sec" style="margin-top:0">Körperstelle</div><div class="qk-spots">${SPOTS.map(m => `<button class="qk-p${genCfg.groups.includes('m:' + m) ? ' on' : ''}" data-act="genGrp" data-v="m:${m}">${MUSCLE_DE[m] || m}</button>`).join('')}</div>
+      <div class="qk-sec" style="margin-top:0">Spezielle Muskeln hinzufügen</div><div class="qk-spots">${SPOTS.map(m => `<button class="qk-p${genCfg.groups.includes('m:' + m) ? ' on' : ''}" data-act="genGrp" data-v="m:${m}">${MUSCLE_DE[m] || m}</button>`).join('')}</div>
       <button class="qk-go" data-act="genBack">FERTIG</button>
     </div>`}
     ${res}
@@ -896,7 +896,7 @@ function builderHtml(full) {
       <div class="qk-gear">${gearBtns}</div>
       <div class="qk-grid3">${MUSCLE_GROUP_LIST.map(m => qp('genGrp', m, m, grpOn(m), !gcn[m])).join('')}</div>`;
   if (full) h += `
-      <div class="qk-sec">Körperstelle</div><div class="qk-spots">${SPOTS.map(m => qp('genGrp', 'm:' + m, MUSCLE_DE[m] || m, genCfg.groups.includes('m:' + m))).join('')}</div>`;
+      <div class="qk-sec">Spezielle Muskeln hinzufügen</div><div class="qk-spots">${SPOTS.map(m => qp('genGrp', 'm:' + m, MUSCLE_DE[m] || m, genCfg.groups.includes('m:' + m))).join('')}</div>`;
   h += `
       <div class="qk-rows">${segRow('Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0, v => v || 'Auto')}${segRow('Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets, v => v || 'Auto')}${segRow('Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps, v => v || 'Auto')}</div>`;
   return h;
