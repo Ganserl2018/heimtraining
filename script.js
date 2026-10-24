@@ -1815,7 +1815,7 @@ content.addEventListener('click', e => {
       genRes = null; break; }
     case 'genGear': { const k = btn.dataset.v, g = loadGear(), i = g.indexOf(k); if (i >= 0) g.splice(i, 1); else g.push(k); genCfg.gear = g; try { localStorage.setItem(GEARKEY, JSON.stringify(g)); } catch (e2) {} if (view === 'start') {
         // an: passende Gruppen des Geräts dazu; ab: alle Gruppen weg, die dieses Gerät abdeckt
-        if (i >= 0) { genCfg.gear = [k]; const gk = groupCounts(); genCfg.gear = g; genCfg.groups = genCfg.groups.filter(m => m.startsWith('m:') || !gk[m]); } // ab: alle Gruppen weg, die dieses Gerät abdeckt (Spiegel zu 'an')
+        if (i >= 0) { genCfg.gear = [k]; const gk = groupCounts(); genCfg.gear = g; genCfg.groups = genCfg.groups.filter(m => m.startsWith('m:') || !gk[m]); const gc2 = genCfg.groups.length ? gearCounts() : {}; genCfg.gear = g.filter(x => gc2[x]); try { localStorage.setItem(GEARKEY, JSON.stringify(genCfg.gear)); } catch (e3) {} } // ab: alle Gruppen weg, die dieses Gerät abdeckt (Spiegel zu 'an')
         else { genCfg.gear = [k]; const gk = groupCounts(); genCfg.gear = g; MUSCLE_GROUP_LIST.forEach(m => { if (gk[m] && !genCfg.groups.includes(m)) genCfg.groups.push(m); }); }
       } genRes = null; break; }
     case 'genMinS': genCfg.minSets = Number(btn.dataset.v); genRes = null; break;

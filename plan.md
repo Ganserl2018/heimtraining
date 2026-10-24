@@ -473,3 +473,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V20ao: Planung zeigt gewählte spezielle Muskeln im Link 'Weitere Einstellungen · +Trizeps'. ?v=20261026i
 - V20ap: Hauptgruppen bekommen den Löwenanteil, jeder spezielle Muskel genau 1 Übung; gearfix: Hammer Grip Incline DB Bench Press -> dumbbell+bench (war barbell). ?v=20261026k
 - V20aq: gearfix.json: 9 Bizeps-Curls (Hammer, Konzentration, Zottman, Cross-Body, Inner-Biceps, Incline Hammer/Inner) von barbell auf dumbbell(+bench) korrigiert. Offen: restliche barbell-Zuordnungen ohne 'Barbell' im Namen prüfen (Floor Press, Lower Back Curl, Finger/Wrist Curls). ?v=20261026l
+- V20ar: Gerät ab → Gruppen weg + Geräte ohne Bezug zum verbleibenden Fokus ebenfalls aus (kein 'aktiv ohne Fokus' mehr). ?v=20261026m
