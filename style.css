@@ -1827,3 +1827,6 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .to-list .to-new{justify-content:center; border-style:dashed; color:var(--accent);}
 .to-x{min-height:44px; border:0; background:none; color:var(--text-dim); font-weight:700;}
 .to-bg{border:0; padding:0; width:100%;}
+/* V22h Fix: Wisch-Wrapper quetschte Übungszeilen */
+.tx-sw{overflow:clip; min-height:min-content; flex:none;}
+.tx-share .sh,.sh{display:flex; flex-wrap:wrap; gap:.15rem .9rem;}
