@@ -783,10 +783,25 @@ function gearCounts() {
   });
   return out;
 }
-function genBase(lv) {
+function genBase(lv, anyGear) {
   const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine/i;
   const hard = /deadlift|rack pull|clean|snatch|jerk|weighted|good morning|behind (the )?neck|guillotine|zercher|jefferson|overhead squat|olympic|sissy|muscle.up|atlas|pistol|single-arm push/i;
-  return pool.filter(e => !bad.test(e.name) && !(gearFix[e.name] && gearFix[e.name].s === 'no') && MUSCLE_GROUPS[e.muscle] && (lv > 0 || !hard.test(e.name)) && gearOf(e.name).every(k => genCfg.gear.includes(k)));
+  return pool.filter(e => !bad.test(e.name) && !(gearFix[e.name] && gearFix[e.name].s === 'no') && MUSCLE_GROUPS[e.muscle] && (lv > 0 || !hard.test(e.name)) && (anyGear || gearOf(e.name).every(k => genCfg.gear.includes(k))));
+}
+// Gewählte Muskelgruppe ohne passende Übung mit den gewählten Geräten: fehlende Geräte (z. B. Bank) automatisch dazuschalten
+function autoGear() {
+  const lv = genLevel(), sel = genCfg.gear || [], added = [];
+  if (!sel.length) return added;
+  genCfg.groups.filter(m => !m.startsWith('m:')).forEach(grp => {
+    const cur = genCfg.gear;
+    const c = genBase(lv, true).filter(e => MUSCLE_GROUPS[e.muscle] === grp && (grp !== 'Rücken' || isBack(e)));
+    if (c.some(e => gearOf(e.name).every(k => cur.includes(k)))) return;
+    let best = null;
+    c.forEach(e => { const g = gearOf(e.name), miss = g.filter(k => !cur.includes(k)); if (g.some(k => cur.includes(k)) && (!best || miss.length < best.length)) best = miss; });
+    if (best && best.length) { best.forEach(k => { cur.push(k); added.push(k); }); }
+  });
+  if (added.length) { genCfg.gear = genCfg.gear.slice(); try { localStorage.setItem(GEARKEY, JSON.stringify(genCfg.gear)); } catch (e2) {} }
+  genCfg.autoAdded = added; return added;
 }
 // Wisch-Tausch: Übung i raus, passende neue (gleiche Gruppe, Geräte ok, nicht schon drin) rückt nach
 function genSwap(i) {
@@ -914,7 +929,7 @@ function builderHtml(full) {
   const qp = (act, v, l, on, none) => `<button class="qk-p${on ? ' on' : ''}${none && !on ? ' none' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
   const segRow = (l, a, vs, cur, f) => `<div class="qk-r${l ? '' : ' qk-r1'}">${l ? `<span>${l}</span>` : ''}<div class="seg" style="--n:${vs.length}">${vs.map(v => `<button class="${cur === v ? 'on' : ''}" data-act="${a}" data-v="${v}">${f(v)}</button>`).join('')}</div></div>`;
   const gc = null;
-  const gearBtns = GEAR.map(([k, l0]) => { const l = l0 === 'Kurzhanteln' ? 'Hanteln' : l0 === 'Hantelbank' ? 'Bank' : l0; return `<button class="qk-p${genCfg.gear.includes(k) ? ' on' : ''}${gc && k !== 'body' && !gc[k] ? ' none' : ''}" data-act="genGear" data-v="${k}">${l}</button>`; }).join('');
+  const gearBtns = GEAR.map(([k, l0]) => { const l = l0 === 'Kurzhanteln' ? 'Hanteln' : l0 === 'Hantelbank' ? 'Bank' : l0; return `<button class="qk-p${genCfg.gear.includes(k) ? ' on' : ''}${(genCfg.autoAdded || []).includes(k) ? ' auto' : ''}${gc && k !== 'body' && !gc[k] ? ' none' : ''}" data-act="genGear" data-v="${k}">${l}</button>`; }).join('');
   const gcn = groupCounts();
   let h = `${segRow('', 'genDur', [20, 30, 45, 60], genCfg.dur, v => v + ' Min')}
       <div class="qk-gear">${gearBtns}</div>
@@ -1872,14 +1887,14 @@ content.addEventListener('click', e => {
       const m = btn.dataset.v, G = genCfg.groups;
       if (!m.startsWith('m:') && view === 'start') { const gcn = groupCounts(); if (!genCfg.gear.length || !gcn[m]) break; }
       const i = G.indexOf(m); if (i >= 0) G.splice(i, 1); else G.push(m);
-      genRes = null; break; }
+      genCfg.autoAdded = []; autoGear(); genRes = null; break; }
     case 'genGear': { const k = btn.dataset.v, g = loadGear(), i = g.indexOf(k); if (i >= 0) g.splice(i, 1); else g.push(k); genCfg.gear = g; try { localStorage.setItem(GEARKEY, JSON.stringify(g)); } catch (e2) {}
       if (view === 'start') { const gcn = g.length ? groupCounts() : {}; genCfg.groups = genCfg.groups.filter(m => m.startsWith('m:') || gcn[m]); } // Muskeln ohne Übung für die gewählten Geräte fallen raus
-      genRes = null; break; }
+      genCfg.autoAdded = []; autoGear(); genRes = null; break; }
     case 'genMinS': genCfg.minSets = Number(btn.dataset.v); genRes = null; break;
     case 'genMinR': genCfg.minReps = Number(btn.dataset.v); genRes = null; break;
     case 'dash': dashMode = true; view = 'overview'; break;
-    case 'genDo': if (!genCfg.gear.length) genCfg.gear = GEAR.map(x => x[0]); if (!genCfg.groups.length) { const gcn = groupCounts(); genCfg.groups = shuffle(MUSCLE_GROUP_LIST.filter(m => gcn[m])).slice(0, 2 + Math.floor(Math.random() * 2)); } if (view === 'start') { genFrom = null; view = 'gen'; } generate(); break;
+    case 'genDo': if (!genCfg.gear.length) genCfg.gear = GEAR.map(x => x[0]); if (!genCfg.groups.length) { const gcn = groupCounts(); genCfg.groups = shuffle(MUSCLE_GROUP_LIST.filter(m => gcn[m])).slice(0, 2 + Math.floor(Math.random() * 2)); } autoGear(); if (view === 'start') { genFrom = null; view = 'gen'; } generate(); break;
     case 'genSurprise': { const gl = shuffle(MUSCLE_GROUP_LIST).slice(0, 2 + Math.floor(Math.random() * 2)); genCfg.groups = gl; generate(); break; }
     case 'genSave': genSave(false); break;
     case 'genGo': genSave(true); break;
