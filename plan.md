@@ -508,3 +508,6 @@ Doppelte "Hyperextension" (ohne Bild) aus pool.json/names_de/neue_uebungen entfe
 
 ## Fix gequetschte Übungszeilen (25.10. 00:05)
 Trainings-Detail: Zeilen schrumpften/überlappten (Bild+Name abgeschnitten). `.tx-rows{grid-auto-rows:max-content}`, Swipe-Wrapper (.tx-sw/.wp-sw/.gn-sw/.tr-sw) `flex:none; min-height:max-content`. v=20261028b.
+
+## V22-E Favoriten Stufe 1 (25.10. 00:12)
+★/☆ oben links auf jeder Trainingskarte (t.fav), Reiter Aktiv | ★ Favoriten | Archiv. Stufe 2 (Lieblingsübungen als eigene Liste) offen. v=20261028c.

@@ -1782,7 +1782,7 @@ body[data-view=profile] .topbar h1::after{content:'Du und deine Werte';}
 body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 /* V22 Trainings-Seite */
 .tr{display:flex; flex-direction:column; gap:10px; height:100%; min-height:0;}
-.tr-seg{display:grid; grid-template-columns:1fr 1fr; gap:4px; padding:4px; background:var(--panel); border:1px solid var(--border-soft); border-radius:16px;}
+.tr-seg{display:grid; grid-template-columns:1fr 1.5fr 1fr; gap:4px; padding:4px; background:var(--panel); border:1px solid var(--border-soft); border-radius:16px;}
 .tr-seg button{min-height:40px; border:0; border-radius:12px; background:none; color:var(--text-dim); font-family:Anton,Impact,'Arial Narrow',sans-serif; font-size:1rem; letter-spacing:.06em; text-transform:uppercase;}
 .tr-seg button em{font-style:normal; opacity:.7; margin-left:4px;}
 .tr-seg button.on{background:var(--accent); color:var(--on-accent,#0b1204); box-shadow:0 0 14px color-mix(in srgb,var(--accent) 45%,transparent);}
@@ -1890,3 +1890,10 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .dt-res b{font-weight:600; font-size:.88rem; line-height:1.3; color:var(--text);}
 .tx-rows{grid-auto-rows:max-content;} .tx-sw{height:auto; min-height:max-content;}
 .wp-sw,.gn-sw,.tr-sw{flex:none; min-height:max-content;}
+
+/* Favoriten (Trainings) */
+.tr-card{position:relative;}
+.tr-fav{position:absolute; left:2px; top:2px; width:34px; height:34px; border:0; background:none; color:#fff; font-size:1.25rem; line-height:34px; padding:0; text-shadow:0 1px 4px rgba(0,0,0,.8); display:grid; place-items:center; transition:transform .16s var(--ease-out);}
+.tr-fav:active{transform:scale(.85);}
+.tr-fav.on{color:#ffd23c; text-shadow:0 0 10px rgba(255,210,60,.7), 0 1px 3px rgba(0,0,0,.7);}
+.tr-seg button{font-size:.92rem; letter-spacing:.04em; padding:0 2px;}
