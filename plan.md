@@ -499,3 +499,6 @@ Alex-Regel: Übung ohne Treffer → beim nächsten Gemini-Bildact neu erstellen.
 
 ## Start-Button Sonar-Puls (24.10. 23:25)
 BTN-05 aus Design-Bibliothek auf START-Button (Startseite): 3 Ringe versetzt (.9 s) + Tipp-Stoß (weiß). Reduced-Motion: statische Ringe. v=20261027t. Test: Harness mit CSS=/tmp/ht/style.css (sonst lädt er alte CSS!).
+
+## Trainings löschen sichtbar (24.10. 23:50)
+🗑-Knopf auf jeder Trainingskarte (Aktiv + Archiv), Zwei-Tipp: 1. Tipp rot mit „?“ (3 s), 2. Tipp löscht; kein confirm()-Dialog. Wischen bleibt. Verlauf bleibt erhalten. v=20261027y. Favoriten-Funktion (V22-E) weiter wartet auf Go.

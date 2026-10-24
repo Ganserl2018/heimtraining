@@ -1382,8 +1382,9 @@ function renderTrainings() {
     const sh = muscleShare(t).slice(0, 3).map(x => x[0]).join(' · ');
     const meta = `${t.exercises.length} Übung${t.exercises.length === 1 ? '' : 'en'}${sh ? ' · ' + esc(sh) : ''}`;
     const go = trTab === 'arch' ? `<button class="tr-go ghost" data-act="wRestore" data-id="${t.id}">↩</button>` : `<button class="tr-go" data-act="quickStart" data-id="${t.id}" aria-label="Starten"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>`;
+    const del = `<button class="tr-del" data-act="trDel" data-id="${t.id}" aria-label="Training löschen"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button>`;
     const strip = trTab === 'arch' ? '' : `<div class="tr-days">${WD_KEYS.map(k => `<button class="${(t.weekdays || []).includes(k) ? 'on' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>`;
-    const c = `<div class="tr-card pp-t" ${trTab === 'arch' ? '' : `data-act="wOpen2" data-id="${t.id}"`}><div class="tr-th">${th || ''}</div><div class="tr-b"><b>${esc(t.name)}</b><span>${meta}</span>${st ? `<i class="tr-st tr-${st}">${STATUS_LABEL[st]}</i>` : ''}</div>${go}${strip}</div>`;
+    const c = `<div class="tr-card pp-t" ${trTab === 'arch' ? '' : `data-act="wOpen2" data-id="${t.id}"`}><div class="tr-th">${th || ''}</div><div class="tr-b"><b>${esc(t.name)}</b><span>${meta}</span>${st ? `<i class="tr-st tr-${st}">${STATUS_LABEL[st]}</i>` : ''}</div>${del}${go}${strip}</div>`;
     return trTab === 'arch' ? c : `<div class="wp-sw tr-sw" data-sw="${t.id}"><div class="wp-sw-bg"><span class="a">📥 Archiv</span><span class="d">Löschen 🗑</span></div>${c}</div>`;
   };
   content.innerHTML = `<div class="tr">
@@ -1955,6 +1956,13 @@ content.addEventListener('click', e => {
     case 'trTab': trTab = btn.dataset.v; break;
     case 'archToggle': archOpen = !archOpen; break;
     case 'wRestore': { const ar = loadArchive(), t = ar.find(x => x.id === btn.dataset.id); if (t) { saveArchive(ar.filter(x => x.id !== t.id)); weekplan.push(t); saveWeekplan(); } break; }
+    case 'trDel': {
+      // Zwei-Tipp-Löschen: 1. Tipp = rot "Löschen?", 2. Tipp (innerhalb 3 s) = weg. Verlauf bleibt.
+      if (!btn.classList.contains('arm')) { btn.classList.add('arm'); btn.dataset.t = setTimeout(() => btn.classList.remove('arm'), 3000); return; }
+      clearTimeout(Number(btn.dataset.t)); const id = btn.dataset.id;
+      if (trTab === 'arch') saveArchive(loadArchive().filter(x => x.id !== id)); else { weekplan = weekplan.filter(w => w.id !== id); saveWeekplan(); }
+      break;
+    }
     case 'wDelete': {
       const t = trainingById(btn.dataset.id);
       if (!confirm(`Training „${t.name}“ löschen? (Verlauf bleibt erhalten)`)) return;
