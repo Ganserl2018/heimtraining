@@ -877,7 +877,7 @@ function renderGen() {
       <div class="gn-btns"><button class="ts-save" data-act="genSave">✓ SPEICHERN</button><button class="pl-next ts-go" data-act="genGo">▶ SPEICHERN &amp; STARTEN</button><button class="ts-add" data-act="genDo">⟳ Neu mischen</button></div></div>` : '';
   const scrollRes = genJust; genJust = false;
   content.innerHTML = `<div class="gn">
-    <button class="gn-back" data-act="genBack" aria-label="Zurück">‹ Planung</button>
+    <button class="gn-back" data-act="genBack" aria-label="Zurück">‹</button>
     <div class="qk">
       ${builderHtml(true)}
       ${genRes && genRes.length ? '' : `<button class="qk-go" data-act="genDo">${SPK}${genCfg.groups.length ? 'ZUSAMMENSTELLEN' : 'ÜBERRASCH MICH'}</button>`}

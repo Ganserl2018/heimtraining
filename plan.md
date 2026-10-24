@@ -466,3 +466,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V20ah: Einstellungsseite (gen) im Planungs-System: gemeinsamer builderHtml(full) (Zeit, Geräte, Fokus, Körperstelle, Umfang, Level, Ziel), gleiche Logik, Hero 'EINSTELLUNGEN', Auswahl aus Planung bleibt erhalten. ?v=20261025x
 - V20ai: Level/Ziel aus Einstellungsseite entfernt (Warteliste: später wieder). ?v=20261025y
 - V20aj: Planung ohne Titel/Hero, Umfang wieder als Zahlenreihen (Übungen/Sätze/Wdh). ?v=20261026a
+- V20ak: Planungs-Titel wieder da; 'Planung' im Zurück-Knopf der Einstellungsseite entfernt (nur ‹). Planung passt ohne gespeichertes Training. ?v=20261026c
