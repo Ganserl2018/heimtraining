@@ -496,3 +496,6 @@ Kombinationen Muskelgruppe + einzelnes Gerät ohne Übung (App zeigt dann "kommt
 - Beine + Seilzug (echte Lücke: Cable-Leg-Übungen fehlen/gefiltert)
 - Brust/Schultern + Klimmzug-Stange, Brust/Schultern/Arme/Bauch + Extension, Beine + Klimmzug: fachlich sinnlos allein, nur mit Zusatzgerät relevant, kein Bild nötig
 Alex-Regel: Übung ohne Treffer → beim nächsten Gemini-Bildact neu erstellen.
+
+## Start-Button Sonar-Puls (24.10. 23:25)
+BTN-05 aus Design-Bibliothek auf START-Button (Startseite): 3 Ringe versetzt (.9 s) + Tipp-Stoß (weiß). Reduced-Motion: statische Ringe. v=20261027t. Test: Harness mit CSS=/tmp/ht/style.css (sonst lädt er alte CSS!).
