@@ -1510,9 +1510,9 @@ function detailSheetHtml(ex) {
   const w = WCLASS[ex.muscle] || ['im Zielmuskel', 'Muskelaufbau', 'maximale Kraft'];
   const sec = secondaries(ex);
   const cls = (t, lv, a, b) => `<div class="dt-wc dt-${lv}"><div class="dt-wc-h"><b>${t}</b><i>${'<u></u>'.repeat(lv === 'l' ? 1 : lv === 'm' ? 2 : 3)}</i></div><p>${a}</p><p class="dt-opt">${b}</p></div>`;
-  const add = view === 'allex' ? `<div class="dt-sec">Zu Training hinzufügen</div>
+  const add = view !== 'play' && view !== 'tv' ? `<div class="dt-sec">Zu Training hinzufügen</div>
     <div class="dt-add">${dtDayList().map(t => { const has = t.exercises.some(e => e.name === ex.name);
-      return `<button class="dt-chip${has ? ' on' : ''}" data-act="browseAdd" data-id="${t.id}"><span class="dt-chip-b">${dtBadge(t.name)}</span><span class="dt-chip-t"><b>${esc(dtShort(t.name))}</b><small>${has ? '✓ Hinzugefügt' : (dtIdx(t.name) < 7 ? 'Training' : 'Eigenes Training')}</small></span></button>`; }).join('')}</div>` : '';
+      return `<button class="dt-chip${has ? ' on' : ''}" data-act="browseAdd" data-id="${t.id}"><span class="dt-chip-b">${dtBadge(t.name)}</span><span class="dt-chip-t"><b>${esc(dtShort(t.name))}</b><small>${has ? '✓ Hinzugefügt' : (dtIdx(t.name) < 7 ? 'Training' : 'Eigenes Training')}</small></span></button>`; }).join('')}<button class="dt-chip" data-act="browseAddNew"><span class="dt-chip-b">+</span><span class="dt-chip-t"><b>Neues Training</b><small>mit dieser Übung</small></span></button></div>` : '';
   return `<div class="goal-sheet dt-bg" data-act="browseClose"><div class="dt-sheet">
     <button class="dt-x" data-act="browseClose" aria-label="Schließen">✕</button>
     <div class="dt-hero"><img src="${esc(imgOf(ex))}" alt="" onerror="this.style.visibility='hidden'"></div>
@@ -1916,6 +1916,10 @@ content.addEventListener('click', e => {
     case 'badImg': { const l = loadBad(), n = btn.dataset.name, k = l.indexOf(n); if (k >= 0) l.splice(k, 1); else l.push(n); try { localStorage.setItem(BADKEY, JSON.stringify(l)); } catch (e) {} break; }
     case 'badCopy': { const t = loadBad().join('\n'); try { navigator.clipboard.writeText(t); btn.textContent = '✓ Kopiert'; } catch (e) { prompt('Liste:', t); } return; }
     case 'browseClose': browseSel = null; break;
+    case 'browseAddNew': {
+      const ex = pool[browseSel]; if (!ex) break;
+      weekplan.push({ id: 'w' + Date.now(), name: loserName(), exercises: [{ name: ex.name, muscle: ex.muscle, gif: ex.gif, sets: 3, note: '', unit: defaultUnit(ex.name) }], weekdays: [], since: {}, time: '' }); saveWeekplan(); break;
+    }
     case 'browseAdd': {
       const t = trainingById(btn.dataset.id), ex = pool[browseSel];
       if (t && ex && !t.exercises.some(e => e.name === ex.name)) { t.exercises.push({ name: ex.name, muscle: ex.muscle, gif: ex.gif, sets: 3, note: '', unit: defaultUnit(ex.name) }); saveWeekplan(); }

@@ -487,3 +487,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V22d Wischen auf Trainings-Karten wieder da (rechts Archiv, links Löschen), Ergebnis-Tausch geprüft; ?v=20261027l
 - V22e Wisch-Tausch auch im gespeicherten Training (links neue Übung gleiche Gruppe, rechts Favorit); ?v=20261027m
 - V22f Übung in anderes Training kopieren/verschieben (Sheet, +Neues Training); ?v=20261027n
+- V22g Übungs-Detail: 'Zu Training hinzufügen' in allen Ansichten + Chip 'Neues Training'; ?v=20261027o
