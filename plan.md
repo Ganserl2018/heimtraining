@@ -479,3 +479,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V21b Planung: Höhen in px, ~55px kürzer (Weitere Einstellungen schnitt ab); ?v=20261027b
 - V21c Planung/Einstellungen: Scroll/Wippen gesperrt; ?v=20261027c
 - V21d Hero-Titel (Anton, Glow, Untertitel) auf Wochenplan/Übungen/Verlauf/Profil, TV-Button global weg; ?v=20261027d
+- V21e Wochenplan: Wochentage Anton groß, heute = Lime-Fill+Glow; ?v=20261027e

@@ -1769,3 +1769,10 @@ body[data-view=history] .topbar h1::after{content:'Dein Fortschritt';}
 body[data-view=weeklist] .topbar h1::after{content:'Deine Trainings';}
 body[data-view=allex] .topbar h1::after{content:'Finde deine Übung';}
 body[data-view=profile] .topbar h1::after{content:'Du und deine Werte';}
+/* V21e Wochenplan: Wochentage stark */
+.wp-day b{font-family:Anton,Impact,'Arial Narrow',sans-serif; font-weight:400; font-size:1.3rem; letter-spacing:.04em; line-height:1.1; color:var(--text);}
+.wp-day span{font-size:.64rem; letter-spacing:.02em;}
+.wp-days{padding:6px; gap:5px;}
+.wp-heute{background:var(--accent) !important; border-color:var(--accent) !important; box-shadow:0 0 18px color-mix(in srgb,var(--accent) 55%,transparent);}
+.wp-heute b,.wp-heute span,.wp-heute em{color:var(--on-accent,#0b1204) !important;}
+.wp-sec{font-size:.8rem; letter-spacing:.14em; color:var(--text);}
