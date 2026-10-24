@@ -1791,7 +1791,7 @@ content.addEventListener('click', e => {
       else if (G.some(x => x.startsWith('m:') && spotGrp(x.slice(2)) === m)) genCfg.groups = G.filter(x => !(x.startsWith('m:') && spotGrp(x.slice(2)) === m)); // Gruppe antippen = ihre Körperstellen weg
       else { const i = G.indexOf(m); if (i >= 0) G.splice(i, 1); else G.push(m); }
       genRes = null; break; }
-    case 'genGear': { const k = btn.dataset.v, g = loadGear(), i = g.indexOf(k); if (i >= 0) g.splice(i, 1); else g.push(k); genCfg.gear = g; try { localStorage.setItem(GEARKEY, JSON.stringify(g)); } catch (e2) {} if (view === 'start' && g.length) { const gcn = groupCounts(); genCfg.groups = MUSCLE_GROUP_LIST.filter(m => gcn[m]); } genRes = null; break; }
+    case 'genGear': { const k = btn.dataset.v, g = loadGear(), i = g.indexOf(k); if (i >= 0) g.splice(i, 1); else g.push(k); genCfg.gear = g; try { localStorage.setItem(GEARKEY, JSON.stringify(g)); } catch (e2) {} if (view === 'start') { const gcn = groupCounts(); genCfg.groups = g.length ? MUSCLE_GROUP_LIST.filter(m => gcn[m]) : []; } genRes = null; break; }
     case 'genMinS': genCfg.minSets = Number(btn.dataset.v); genRes = null; break;
     case 'genMinR': genCfg.minReps = Number(btn.dataset.v); genRes = null; break;
     case 'dash': dashMode = true; view = 'overview'; break;
