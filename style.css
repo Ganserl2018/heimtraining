@@ -1762,9 +1762,9 @@ body.is-start:not(.is-res), body.is-start:not(.is-res) #content{overflow:hidden 
 body.is-start:not(.is-res) button{touch-action:manipulation;}
 /* V21d Hero-Titel auf allen Hauptseiten, TV weg */
 .tv-icon-btn{display:none !important;}
-:is(body[data-view=history],body[data-view=weeklist],body[data-view=allex],body[data-view=profile]) .topbar{padding-top:.6rem; padding-bottom:.4rem; border-bottom:0 !important; background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 10%,transparent),transparent) !important;}
-:is(body[data-view=history],body[data-view=weeklist],body[data-view=allex],body[data-view=profile]) .topbar h1{font-family:Anton,Impact,'Arial Narrow',sans-serif !important; font-weight:400; font-size:2.2rem !important; line-height:1; letter-spacing:.04em !important; text-transform:uppercase; color:var(--accent) !important; text-shadow:0 0 16px color-mix(in srgb,var(--accent) 40%,transparent); transform:skewX(-6deg); transform-origin:left;}
-:is(body[data-view=history],body[data-view=weeklist],body[data-view=allex],body[data-view=profile]) .topbar h1::after{display:block; margin:.2rem 0 0 2px; font-family:system-ui,-apple-system,sans-serif; font-size:.82rem; font-weight:500; letter-spacing:.02em; text-transform:none; color:color-mix(in srgb,var(--text) 75%,transparent); text-shadow:none; transform:skewX(6deg); transform-origin:left;}
+:is(body[data-view=history],body[data-view=weeklist],body[data-view=allex],body[data-view=profile],body[data-view=trainings]) .topbar{padding-top:.6rem; padding-bottom:.4rem; border-bottom:0 !important; background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 10%,transparent),transparent) !important;}
+:is(body[data-view=history],body[data-view=weeklist],body[data-view=allex],body[data-view=profile],body[data-view=trainings]) .topbar h1{font-family:Anton,Impact,'Arial Narrow',sans-serif !important; font-weight:400; font-size:2.2rem !important; line-height:1; letter-spacing:.04em !important; text-transform:uppercase; color:var(--accent) !important; text-shadow:0 0 16px color-mix(in srgb,var(--accent) 40%,transparent); transform:skewX(-6deg); transform-origin:left;}
+:is(body[data-view=history],body[data-view=weeklist],body[data-view=allex],body[data-view=profile],body[data-view=trainings]) .topbar h1::after{display:block; margin:.2rem 0 0 2px; font-family:system-ui,-apple-system,sans-serif; font-size:.82rem; font-weight:500; letter-spacing:.02em; text-transform:none; color:color-mix(in srgb,var(--text) 75%,transparent); text-shadow:none; transform:skewX(6deg); transform-origin:left;}
 body[data-view=history] .topbar h1::after{content:'Dein Fortschritt';}
 body[data-view=weeklist] .topbar h1::after{content:'Deine Trainings';}
 body[data-view=allex] .topbar h1::after{content:'Finde deine Übung';}
@@ -1776,3 +1776,30 @@ body[data-view=profile] .topbar h1::after{content:'Du und deine Werte';}
 .wp-heute{background:var(--accent) !important; border-color:var(--accent) !important; box-shadow:0 0 18px color-mix(in srgb,var(--accent) 55%,transparent);}
 .wp-heute b,.wp-heute span,.wp-heute em{color:var(--on-accent,#0b1204) !important;}
 .wp-sec{font-size:.8rem; letter-spacing:.14em; color:var(--text);}
+body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
+/* V22 Trainings-Seite */
+.tr{display:flex; flex-direction:column; gap:10px; height:100%; min-height:0;}
+.tr-seg{display:grid; grid-template-columns:1fr 1fr; gap:4px; padding:4px; background:var(--panel); border:1px solid var(--border-soft); border-radius:16px;}
+.tr-seg button{min-height:40px; border:0; border-radius:12px; background:none; color:var(--text-dim); font-family:Anton,Impact,'Arial Narrow',sans-serif; font-size:1rem; letter-spacing:.06em; text-transform:uppercase;}
+.tr-seg button em{font-style:normal; opacity:.7; margin-left:4px;}
+.tr-seg button.on{background:var(--accent); color:var(--on-accent,#0b1204); box-shadow:0 0 14px color-mix(in srgb,var(--accent) 45%,transparent);}
+.tr-list{flex:1; min-height:0; overflow-y:auto; overscroll-behavior:contain; display:flex; flex-direction:column; gap:8px; scrollbar-width:none;}
+.tr-list::-webkit-scrollbar{display:none;}
+.tr-card{flex:none; display:flex; align-items:center; gap:10px; padding:8px 8px 8px 8px; background:var(--panel); border:1px solid var(--border-soft); border-radius:18px;}
+.tr-th{flex:none; width:64px; height:56px; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:2px; border-radius:12px; overflow:hidden; background:rgba(0,0,0,.3);}
+.tr-th img{width:100%; height:100%; object-fit:cover;} .tr-th img:first-child{grid-row:1/3;}
+.tr-b{flex:1; min-width:0; display:flex; flex-direction:column; gap:2px;}
+.tr-b b{font-family:Anton,Impact,'Arial Narrow',sans-serif; font-weight:400; font-size:1.2rem; letter-spacing:.03em; line-height:1.1; text-transform:uppercase; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.tr-b span{font-size:.78rem; color:var(--text-dim);}
+.tr-st{font-style:normal; align-self:flex-start; font-size:.62rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim);}
+.tr-erledigt,.tr-offen{color:var(--accent);} .tr-verpasst{color:#ff6b5e;}
+.tr-go{flex:none; width:48px; height:48px; border-radius:50%; border:0; background:var(--accent); color:var(--on-accent,#0b1204); display:grid; place-items:center; box-shadow:0 0 16px color-mix(in srgb,var(--accent) 50%,transparent);}
+.tr-go svg{width:22px; height:22px; fill:currentColor;} .tr-go.ghost{background:none; border:1px solid var(--border); color:var(--text); box-shadow:none; font-size:1.2rem;}
+.tr-empty{margin:auto; color:var(--text-dim);}
+.tr-act{flex:none; display:grid; grid-template-columns:1fr 2fr; gap:8px;}
+.tr-new,.tr-gen{min-height:48px; border-radius:16px; font-family:Anton,Impact,'Arial Narrow',sans-serif; font-size:1.05rem; letter-spacing:.06em; text-transform:uppercase;}
+.tr-new{background:none; border:1px dashed var(--border); color:var(--text);}
+.tr-gen{border:0; background:var(--accent); color:var(--on-accent,#0b1204); box-shadow:0 0 18px color-mix(in srgb,var(--accent) 45%,transparent);}
+#content:has(.tr){overflow:hidden; padding-bottom:calc(var(--tabh,5rem) + 8px);}
+@media (max-width:600px){ .tabbar .tab{font-size:.56rem; padding-left:0; padding-right:0;} .tabbar .tab-lb{white-space:nowrap;} }
+@media (max-width:600px){ .tabbar .tab{flex:1 1 0; min-width:0; font-size:.54rem;} #content:has(.tr){padding-bottom:calc(var(--tabh,5rem) + 18px);} }

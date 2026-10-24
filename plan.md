@@ -480,3 +480,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V21c Planung/Einstellungen: Scroll/Wippen gesperrt; ?v=20261027c
 - V21d Hero-Titel (Anton, Glow, Untertitel) auf Wochenplan/Übungen/Verlauf/Profil, TV-Button global weg; ?v=20261027d
 - V21e Wochenplan: Wochentage Anton groß, heute = Lime-Fill+Glow; ?v=20261027e
+- V22 Neuer Reiter 'Trainings' (view trainings): Aktiv/Archiv-Umschalter, Karten mit Thumbs+Start-Button, + Neu / Jetzt trainieren; 6 Tabs gleich breit; ?v=20261027g

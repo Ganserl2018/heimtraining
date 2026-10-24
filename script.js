@@ -264,7 +264,7 @@ function renderView() {
   document.body.classList.toggle('is-start', view === 'start' || view === 'gen'); document.body.dataset.view = view; document.body.classList.toggle('is-gen', view === 'gen'); document.body.classList.toggle('is-res', view === 'gen' && !!genRes);
   if (weekplan.some(x => x.draft && !(view === 'wtrain' && wId === x.id) && view !== 'picker' && !picker)) weekplan = weekplan.filter(x => !x.draft || (view === 'wtrain' && wId === x.id));
   applyMood();
-  const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', start: 'Planung', gen: genRes ? 'Dein Training' : 'Einstellungen', play: 'Workout', preview: 'Training', summary: 'Geschafft', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
+  const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Wochenplan', trainings: 'Trainings', start: 'Planung', gen: genRes ? 'Dein Training' : 'Einstellungen', play: 'Workout', preview: 'Training', summary: 'Geschafft', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
   document.querySelector('.topbar h1').textContent = view === 'wtrain' ? ((trainingById(wId) || {}).name || 'Training') : (titles[view] || 'Home Force');
   syncTabActive();
   { const pn = (loadProfile().name || '').trim(), bad = document.body.classList.contains('mood-bad');
@@ -277,6 +277,7 @@ function renderView() {
   if (view === 'history') return renderHistory();
   if (view === 'tv') return renderTV();
   if (view === 'weeklist') return renderWeeklist();
+  if (view === 'trainings') return renderTrainings();
   if (view === 'start') return renderStart();
   if (view === 'preview') return renderPreview();
   if (view === 'gen') return renderGen();
@@ -1324,6 +1325,28 @@ function levelSuggestion() {
   if (cur === 1) { const a = within(182); return a.length >= 60 && rate(a) >= .5 ? 2 : null; }
   return null;
 }
+// V22: Trainings-Seite – alle fertigen Trainings übersichtlich, Start mit einem Tipp
+let trTab = 'act';
+function renderTrainings() {
+  const t0 = today(), arch = loadArchive();
+  const dayNames = WD_KEYS.map(k => ({ mon: 'Montag', tue: 'Dienstag', wed: 'Mittwoch', thu: 'Donnerstag', fri: 'Freitag', sat: 'Samstag', sun: 'Sonntag' }[k] + 'straining'));
+  const act = weekplan.filter(w => !w.draft && (!dayNames.includes(w.name) || w.exercises.length));
+  const list = trTab === 'arch' ? arch : act;
+  const card = t => {
+    const th = t.exercises.slice(0, 3).map(ex => `<img src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`).join('');
+    const st = trTab === 'arch' ? '' : trainingStatusForDate(t, t0);
+    const days = t.weekdays && t.weekdays.length ? WD_KEYS.filter(k => t.weekdays.includes(k)).map(k => WD_LABELS[k]).join(' ') : '';
+    const meta = `${t.exercises.length} Übung${t.exercises.length === 1 ? '' : 'en'}${days ? ' · ' + days : ''}`;
+    const go = trTab === 'arch' ? `<button class="tr-go ghost" data-act="wRestore" data-id="${t.id}">↩</button>` : `<button class="tr-go" data-act="quickStart" data-id="${t.id}" aria-label="Starten"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>`;
+    return `<div class="tr-card pp-t" ${trTab === 'arch' ? '' : `data-act="wOpen2" data-id="${t.id}"`}><div class="tr-th">${th || ''}</div><div class="tr-b"><b>${esc(t.name)}</b><span>${meta}</span>${st ? `<i class="tr-st tr-${st}">${STATUS_LABEL[st]}</i>` : ''}</div>${go}</div>`;
+  };
+  content.innerHTML = `<div class="tr">
+    <div class="tr-seg"><button class="${trTab === 'act' ? 'on' : ''}" data-act="trTab" data-v="act">Aktiv <em>${act.length}</em></button><button class="${trTab === 'arch' ? 'on' : ''}" data-act="trTab" data-v="arch">Archiv <em>${arch.length}</em></button></div>
+    <div class="tr-list">${list.length ? list.map(card).join('') : `<p class="tr-empty">${trTab === 'arch' ? 'Archiv ist leer.' : 'Noch keine Trainings.'}</p>`}</div>
+    <div class="tr-act"><button class="tr-new" data-act="wNewTraining">+ Neu</button><button class="tr-gen" data-act="genOpen">✦ JETZT TRAINIEREN</button></div>
+  </div>`;
+}
+
 function renderProfile() {
   const p = loadProfile();
   const h = loadHistory();
@@ -1867,6 +1890,7 @@ content.addEventListener('click', e => {
     case 'wSavePack': saveWeekplan(); view = 'start'; break;
     case 'wStart': playStart(btn.dataset.id); break;
     case 'wSkip': { const t = trainingById(btn.dataset.id); (t.skipped = t.skipped || []).push(btn.dataset.date); saveWeekplan(); break; }
+    case 'trTab': trTab = btn.dataset.v; break;
     case 'archToggle': archOpen = !archOpen; break;
     case 'wRestore': { const ar = loadArchive(), t = ar.find(x => x.id === btn.dataset.id); if (t) { saveArchive(ar.filter(x => x.id !== t.id)); weekplan.push(t); saveWeekplan(); } break; }
     case 'wDelete': {
