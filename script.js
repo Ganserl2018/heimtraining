@@ -1329,7 +1329,8 @@ function renderTrainings() {
     const meta = `${t.exercises.length} Übung${t.exercises.length === 1 ? '' : 'en'}${sh ? ' · ' + esc(sh) : ''}`;
     const go = trTab === 'arch' ? `<button class="tr-go ghost" data-act="wRestore" data-id="${t.id}">↩</button>` : `<button class="tr-go" data-act="quickStart" data-id="${t.id}" aria-label="Starten"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>`;
     const strip = trTab === 'arch' ? '' : `<div class="tr-days">${WD_KEYS.map(k => `<button class="${(t.weekdays || []).includes(k) ? 'on' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>`;
-    return `<div class="tr-card pp-t" ${trTab === 'arch' ? '' : `data-act="wOpen2" data-id="${t.id}"`}><div class="tr-th">${th || ''}</div><div class="tr-b"><b>${esc(t.name)}</b><span>${meta}</span>${st ? `<i class="tr-st tr-${st}">${STATUS_LABEL[st]}</i>` : ''}</div>${go}${strip}</div>`;
+    const c = `<div class="tr-card pp-t" ${trTab === 'arch' ? '' : `data-act="wOpen2" data-id="${t.id}"`}><div class="tr-th">${th || ''}</div><div class="tr-b"><b>${esc(t.name)}</b><span>${meta}</span>${st ? `<i class="tr-st tr-${st}">${STATUS_LABEL[st]}</i>` : ''}</div>${go}${strip}</div>`;
+    return trTab === 'arch' ? c : `<div class="wp-sw tr-sw" data-sw="${t.id}"><div class="wp-sw-bg"><span class="a">📥 Archiv</span><span class="d">Löschen 🗑</span></div>${c}</div>`;
   };
   content.innerHTML = `<div class="tr">
     <div class="tr-seg"><button class="${trTab === 'act' ? 'on' : ''}" data-act="trTab" data-v="act">Aktiv <em>${act.length}</em></button><button class="${trTab === 'arch' ? 'on' : ''}" data-act="trTab" data-v="arch">Archiv <em>${arch.length}</em></button></div>
@@ -2080,7 +2081,7 @@ content.addEventListener('touchend', e => {
 let _sw = null, _swDone = 0;
 content.addEventListener('touchstart', e => {
   const w = e.target.closest('.wp-sw'); if (!w || e.touches.length !== 1) { _sw = null; return; }
-  _sw = { w, card: w.querySelector('.wp-card'), x: e.touches[0].clientX, y: e.touches[0].clientY, dx: 0, lock: '' };
+  _sw = { w, card: w.querySelector('.wp-card, .tr-card'), x: e.touches[0].clientX, y: e.touches[0].clientY, dx: 0, lock: '' };
 }, { passive: true });
 content.addEventListener('touchmove', e => {
   if (!_sw) return;

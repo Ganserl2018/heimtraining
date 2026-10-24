@@ -1811,3 +1811,4 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .tr-days button{min-height:34px; border-radius:10px; border:1px solid var(--border); background:rgba(0,0,0,.25); color:var(--text-dim); font-family:Anton,Impact,'Arial Narrow',sans-serif; font-size:.82rem; letter-spacing:.04em; text-transform:uppercase; padding:0; transition:background-color .16s var(--ease-out), color .16s var(--ease-out);}
 .tr-days button.on{background:var(--accent); border-color:var(--accent); color:var(--on-accent,#0b1204); box-shadow:0 0 10px color-mix(in srgb,var(--accent) 45%,transparent);}
 .tr-days button:active{transform:scale(.95);}
+.tr-sw{flex:none; border-radius:18px;} .tr-sw .wp-sw-bg{border-radius:18px;} .tr-sw .tr-card{position:relative;}
