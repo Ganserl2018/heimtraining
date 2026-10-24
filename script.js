@@ -1982,7 +1982,7 @@ content.addEventListener('click', e => {
       if (t && ex && !t.exercises.some(e => e.name === ex.name)) { t.exercises.push({ name: ex.name, muscle: ex.muscle, gif: ex.gif, sets: 3, note: '', unit: defaultUnit(ex.name) }); saveWeekplan(); }
       break;
     }
-    case 'wSavePack': saveWeekplan(); trTab = 'act'; view = 'trainings'; break;
+    case 'wSavePack': { const dt = trainingById(wId); if (dt && dt.draft && dt.exercises.length) delete dt.draft; } saveWeekplan(); trTab = 'act'; view = 'trainings'; break;
     case 'wStart': playStart(btn.dataset.id); break;
     case 'wSkip': { const t = trainingById(btn.dataset.id); (t.skipped = t.skipped || []).push(btn.dataset.date); saveWeekplan(); break; }
     case 'appReload': {
