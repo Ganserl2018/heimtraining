@@ -448,3 +448,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - 2026-10-24 V20j/k: Planung ein System (Sektionslabel FOKUS/GERÄTE, Segment-Regler Zeit/Übungen/Sätze/Wdh gleiche Höhe, Auswahl=Lime-Fläche, Gerätepills 4x2), FOKUS-WÄHLEN-Zustand, darunter Karte Level+Ziel (scrollt unter dem Fold). `?v=20261024y`
 - V20k–m: Planung Reihenfolge Zeit→Geräte→Fokus→Übungen/Sätze/Wdh (3 Tipp-Felder), Bauen-Button, darunter Link 'Weitere Einstellungen ›' (genOpen); Level/Ziel-Karte entfernt. ?v=20261025b
 - V20n–q: Planung Wumms (Anton, Glow, Hierarchie Fokus>Geräte), Hero 'PLANUNG' + Unterzeile, TV-Button auf Planung weg. ?v=20261025f
+- V20r–s: Designer-Review umgesetzt (Geräte leise, Tap>=40-44, weniger Glow, CTA-disabled leise, Hero 2.2rem). ?v=20261025h. Offen: Review-Punkt 3/8 teilw., CSS-Blöcke V20j–s zusammenführen.

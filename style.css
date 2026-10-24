@@ -1653,3 +1653,28 @@ body.is-start .topbar h1::after{font-size:.78rem; margin-top:.2rem;}
 .seg button{font-size:.82rem;}
 .pl-row{min-height:54px; padding:.4rem .9rem;} .pl-list{margin-bottom:.6rem;}
 .pl-row-go{width:2.3rem; height:2.3rem;}
+/* V20r Designer-Review: Geräte leise, Tap 44, weniger Glow, CTA-disabled leise, Hero */
+.qk-gear .qk-p.on{background:rgba(255,255,255,.06); color:var(--text); border-color:color-mix(in srgb,var(--accent) 45%,transparent);}
+.qk-gear .qk-p:not(.on){color:var(--text-dim); border-color:var(--border-soft);}
+.qk-gear .qk-p{min-height:44px; font-size:.74rem; letter-spacing:0;}
+.qk-grid3 .qk-p{min-height:44px;}
+.seg button{min-height:38px;}
+.pl-row-go{width:2.75rem; height:2.75rem;}
+.qk{box-shadow:none;}
+.qk-sec::before,.qk-r > span::before{box-shadow:none;}
+.seg button.on{box-shadow:none;}
+.qk-t b{color:var(--text);}
+.qk-go:disabled{color:var(--text-dim); border-color:var(--border); font-size:1.1rem;}
+.qk-go{transition:background-color .2s var(--ease-out), box-shadow .2s var(--ease-out), color .2s var(--ease-out), transform .16s var(--ease-out);}
+.qk-p{transition:background-color .16s var(--ease-out), color .16s var(--ease-out), border-color .16s var(--ease-out), transform .16s var(--ease-out);}
+body.is-start .topbar h1{font-size:2.2rem !important; text-shadow:0 0 16px color-mix(in srgb,var(--accent) 40%,transparent);}
+body.is-start .topbar h1::after{color:color-mix(in srgb,var(--text) 75%,transparent); font-weight:500; font-size:.82rem; margin-left:2px;}
+.qk-sec{margin-top:.5rem;}
+/* V20s Fit */
+.qk-gear .qk-p{min-height:40px; font-size:.7rem;}
+.qk-grid3 .qk-p{min-height:42px;}
+.qk-t{min-height:46px;}
+.qk-tri{margin-top:.55rem; padding-top:.5rem;}
+.qk-go{margin-top:.5rem;}
+body.is-start .topbar{padding-top:.6rem;}
+.qk-link{min-height:40px; margin-top:0;}
