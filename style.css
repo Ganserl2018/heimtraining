@@ -1914,3 +1914,9 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .xr-star{position:absolute; right:12px; bottom:14px; font-style:normal; color:#ffd23c; font-size:1.05rem; text-shadow:0 0 8px rgba(255,210,60,.7), 0 1px 3px rgba(0,0,0,.8); pointer-events:none;}
 .xr-tile{position:relative;}
 .wv-fav .wv-name{color:#ffd23c;}
+/* V23-D: Profil kompakter – letzte Zeile (Neu laden) hat Luft über der Tab-Leiste */
+@media (max-width:600px){
+  .pp-tile{height:62px;} .pp-tile input{font-size:1.3rem; min-height:28px;}
+  .pp-seg button{min-height:34px;}
+  .pp-foot{margin-top:-.2rem;} .pp-foot .pp-reset{min-height:28px;}
+}

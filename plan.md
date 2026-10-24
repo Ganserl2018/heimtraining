@@ -519,3 +519,8 @@ Erst nach den laufenden Features; Alex gibt das Go.
 
 ## Favoriten Stufe 2 – Lieblingsübungen (25.10. 00:40)
 ★ im Übungs-Detail (neben Name), ★ auf Kacheln, Kachel "★ Favoriten" auf Übungen-Startseite (Filter filterFav). Gleiche Liste (heimtraining.favs) wie Wisch-Favorit. v=20261028h. Noch offen: Favoriten im Generator bevorzugen (Warteliste).
+
+## V23-D Aufwärmen (26.10.)
+- 8 neue Warmup-Übungen (Armkreisen, Armschwingen, Scapular Push-Up, Katze-Kuh, Open Book, Schulterkreisen, Beinschwingen, Glute Bridge leicht) – **Bild-Lücke** (Gemini-Batch, bis dahin ohne Bild).
+- Warmups sind aus Generator/Vorlagen-Füllung ausgeschlossen; `WARM` je Muskelgruppe, `warmupsFor()` setzt 2 passende vorne ins Training (Generator, Vorlagen, einmalige Migration bestehender Trainings `warmmig1`). Wisch-Tausch einer Warmup tauscht nur gegen Warmups.
+- Profil kompakter (letzte Zeile hat ~55px Luft).

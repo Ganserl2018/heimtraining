@@ -3275,4 +3275,69 @@
 ],
 "auto": true
 }
+,
+"Arm Circles": {
+"de": "Armkreisen",
+"schritte": [
+"Aufrecht stehen, Arme seitlich ausstrecken.",
+"Kleine Kreise vor und zurück, dann größer werden.",
+"Locker bleiben, Schultern unten."
+]
+},
+"Arm Swings (Chest Opener)": {
+"de": "Armschwingen (Brust öffnen)",
+"schritte": [
+"Aufrecht stehen, Arme vor der Brust gekreuzt.",
+"Arme weit nach hinten öffnen, Brust raus.",
+"Locker zurück zur Mitte schwingen."
+]
+},
+"Scapular Push-Up": {
+"de": "Schulterblatt-Liegestütz",
+"schritte": [
+"Liegestütz-Position, Arme gestreckt.",
+"Nur die Schulterblätter zusammen- und auseinanderziehen.",
+"Ellbogen bleiben gestreckt."
+]
+},
+"Cat-Cow": {
+"de": "Katze-Kuh",
+"schritte": [
+"Vierfüßlerstand, Hände unter den Schultern.",
+"Rücken rund machen (Katze), dann Hohlkreuz mit Blick nach oben (Kuh).",
+"Langsam im Atemrhythmus."
+]
+},
+"Open Book": {
+"de": "Open Book (Brustwirbelsäule)",
+"schritte": [
+"Seitlage, Knie angewinkelt, Arme vor der Brust.",
+"Oberen Arm weit aufklappen, Blick folgt der Hand.",
+"Zurück und Seite wechseln."
+]
+},
+"Shoulder Rolls": {
+"de": "Schulterkreisen",
+"schritte": [
+"Aufrecht stehen, Arme locker.",
+"Schultern hoch, nach hinten, unten kreisen.",
+"Nach 10 Wdh. Richtung wechseln."
+]
+},
+"Leg Swings": {
+"de": "Beinschwingen",
+"schritte": [
+"Seitlich an der Wand abstützen.",
+"Bein locker vor und zurück schwingen, Schwung langsam steigern.",
+"Rumpf bleibt aufrecht, dann Bein wechseln."
+]
+},
+"Glute Bridge (Warm-Up)": {
+"de": "Glute Bridge (leicht)",
+"schritte": [
+"Rückenlage, Füße hüftbreit aufgestellt.",
+"Hüfte hoch, Gesäß oben kurz anspannen.",
+"Langsam absenken."
+]
+}
 }

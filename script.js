@@ -146,6 +146,7 @@ Promise.all([
 ]).then(([b, p, met, gf, nd, an]) => {
   base = b; pool = p; gearFix = gf; namesDe = nd; anleitungen = an;
   met.forEach(m => { metByName[m.name] = m.met; });
+  try { if (!localStorage.getItem('heimtraining.warmmig1')) { weekplan.forEach(t => { if (t.exercises && t.exercises.length && !t.exercises.some(e => e.warm)) t.exercises.unshift(...warmupsFor(t.exercises)); }); saveWeekplan(); localStorage.setItem('heimtraining.warmmig1', '1'); } } catch (e) {}
   render();
 }).catch(err => { content.innerHTML = `<p class="error">Fehler beim Laden: ${err}</p>`; });
 
@@ -691,7 +692,7 @@ let psSheet = null; // { key, sel:Set(index) }
 function presetAll(p) {
   const cur = presetExercises(p).slice(0, p.ex.length ? p.ex.filter(n => pool.some(e => e.name === n)).length : 0);
   const f = PRESET_FILL[p.key], out = cur.slice(), names = new Set(out.map(e => e.name));
-  const lists = (f ? f[0] : []).map(m => pool.filter(e => e.muscle === m && !names.has(e.name)).sort((a, b) => (isCompound(b.name) - isCompound(a.name)) || a.name.localeCompare(b.name)));
+  const lists = (f ? f[0] : []).map(m => pool.filter(e => e.muscle === m && e.category !== 'warmup' && !names.has(e.name)).sort((a, b) => (isCompound(b.name) - isCompound(a.name)) || a.name.localeCompare(b.name)));
   for (let k = 0; lists.some(l => l.length > k); k++) for (const l of lists) if (l[k]) out.push({ name: l[k].name, muscle: l[k].muscle, gif: l[k].gif, sets: 3, note: '', unit: defaultUnit(l[k].name) });
   return out;
 }
@@ -722,7 +723,7 @@ function presetExercises(p) {
   const f = PRESET_FILL[p.key];
   if (f) {
     const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine|deadlift|snatch|clean|jerk|behind (the )?neck|weighted|one-arm|single/i;
-    const lists = f[0].map(m => pool.filter(e => e.muscle === m && !bad.test(e.name) && !out.includes(e)).sort((a, b) => (isCompound(b.name) - isCompound(a.name)) || a.name.localeCompare(b.name)));
+    const lists = f[0].map(m => pool.filter(e => e.muscle === m && e.category !== 'warmup' && !bad.test(e.name) && !out.includes(e)).sort((a, b) => (isCompound(b.name) - isCompound(a.name)) || a.name.localeCompare(b.name)));
     for (let k = 0; out.length < f[1] && lists.some(l => l.length > k); k++) for (const l of lists) if (l[k] && out.length < f[1]) out.push(l[k]);
   }
   const v = out.map(mk); presetCache[p.key] = { n: pool.length, v }; return v;
@@ -754,6 +755,33 @@ const MORDER = ['quadriceps', 'hamstrings', 'glutes', 'chest', 'lats', 'middle b
 const GCOUNT = { 20: [2, 3, 4], 30: [3, 4, 5], 45: [4, 5, 6], 60: [5, 7, 8], 90: [7, 9, 11] }, GISO = { 20: 1, 30: 1, 45: 2, 60: 3, 90: 4 };
 function genLevel() { return genCfg.lv != null ? genCfg.lv : (loadProfile().level != null ? loadProfile().level : 0); }
 function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+// ---- Aufwärmen: 2 passende Übungen vorne in jedem Training ----
+const WARM = {
+  Brust: ['Arm Swings (Chest Opener)', 'Scapular Push-Up', 'Arm Circles'],
+  Rücken: ['Cat-Cow', 'Open Book', 'Shoulder Rolls', 'Superman'],
+  Schultern: ['Arm Circles', 'Shoulder Rolls', 'Seated Front Deltoid'],
+  Arme: ['Arm Circles', 'Wrist Circles', 'Overhead Triceps'],
+  Bauch: ['Cat-Cow', 'Dead Bug', 'Toe Touchers'],
+  Beine: ['Bodyweight Squat', 'Leg Swings', 'Glute Bridge (Warm-Up)', 'Standing Hip Circles', 'Inchworm']
+};
+const WARM_SEK = ['Seated Front Deltoid', 'Overhead Triceps', 'Superman'];
+function mkWarm(name) {
+  const e = pool.find(x => x.name === name); if (!e) return null;
+  const sek = WARM_SEK.includes(name), r = sek ? 30 : 12;
+  return { name: e.name, muscle: e.muscle, gif: e.gif, sets: 2, note: '', unit: sek ? 'sek' : 'wdh', plan: [{ w: null, r }, { w: null, r }], warm: true };
+}
+function warmupsFor(exs, skip) {
+  const cnt = {}; (exs || []).filter(e => !e.warm).forEach(e => { const g = MUSCLE_GROUPS[e.muscle]; if (WARM[g]) cnt[g] = (cnt[g] || 0) + 1; });
+  const gs = Object.keys(cnt).sort((a, b) => cnt[b] - cnt[a]); if (!gs.length) return [];
+  const used = new Set((skip || []).concat((exs || []).map(e => e.name))), lists = gs.map(g => shuffle(WARM[g]).filter(n => !used.has(n))), out = [];
+  for (let k = 0; out.length < 2 && lists.some(l => l.length > k); k++) for (const l of lists) { const w = l[k] && !out.some(o => o.name === l[k]) && mkWarm(l[k]); if (w && out.length < 2) out.push(w); }
+  return out;
+}
+function warmAlt(old, list) {
+  const g = MUSCLE_GROUPS[old.muscle], names = list.map(x => x.name), free = n => !names.includes(n);
+  const own = shuffle((WARM[g] || []).filter(free)), other = shuffle([].concat(...Object.values(WARM)).filter(free));
+  return mkWarm((own[0] || other[0]) || '');
+}
 function isCompound(n) { n = n.toLowerCase(); return !/pullover|pushdown|fly|flye|raise|curl|extension|kickback|shrug/.test(n) && /press|squat|deadlift|row|pull-?up|pulldown|lunge|dip|chin|push-?up/.test(n); }
 const SPOTS = ['lower back', 'lats', 'middle back', 'traps', 'neck', 'glutes', 'hamstrings', 'quadriceps', 'calves', 'biceps', 'triceps', 'forearms', 'abductors', 'adductors'];
 const spotGrp = m => MUSCLE_GROUPS[m] === 'Sonstiges' ? 'Schultern' : MUSCLE_GROUPS[m];
@@ -788,7 +816,7 @@ function gearCounts() {
 function genBase(lv, anyGear) {
   const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine/i;
   const hard = /deadlift|rack pull|clean|snatch|jerk|weighted|good morning|behind (the )?neck|guillotine|zercher|jefferson|overhead squat|olympic|sissy|muscle.up|atlas|pistol|single-arm push/i;
-  return pool.filter(e => !bad.test(e.name) && !(gearFix[e.name] && gearFix[e.name].s === 'no') && MUSCLE_GROUPS[e.muscle] && (lv > 0 || !hard.test(e.name)) && (anyGear || gearOf(e.name).every(k => genCfg.gear.includes(k))));
+  return pool.filter(e => e.category !== 'warmup' && !bad.test(e.name) && !(gearFix[e.name] && gearFix[e.name].s === 'no') && MUSCLE_GROUPS[e.muscle] && (lv > 0 || !hard.test(e.name)) && (anyGear || gearOf(e.name).every(k => genCfg.gear.includes(k))));
 }
 // Gewählte Muskelgruppe ohne passende Übung mit den gewählten Geräten: fehlende Geräte (z. B. Bank) automatisch dazuschalten
 function autoGear() {
@@ -808,6 +836,7 @@ function autoGear() {
 // Wisch-Tausch: Übung i raus, passende neue (gleiche Gruppe, Geräte ok, nicht schon drin) rückt nach
 function genSwap(i) {
   const old = genRes && genRes[i]; if (!old) return;
+  if (old.warm) { const w = warmAlt(old, genRes); if (w) { genRes[i] = w; genSwapped = i; } return; }
   const lv = genLevel(), grp = MUSCLE_GROUPS[old.muscle], inList = genRes.map(x => x.name);
   const ok = e => MUSCLE_GROUPS[e.muscle] === grp && !inList.includes(e.name);
   let c = genBase(lv).filter(e => ok(e) && e.muscle === old.muscle);
@@ -829,6 +858,7 @@ function wFavEx(t, i) { const e = t && t.exercises[i]; if (!e) return; const f =
 // Wisch-Tausch im gespeicherten Training: gleiche Muskelgruppe, deine Geräte, nicht schon drin
 function wSwapEx(t, i) {
   const old = t && t.exercises[i]; if (!old) return;
+  if (old.warm) { const w = warmAlt(old, t.exercises); if (w) { t.exercises[i] = w; saveWeekplan(); } return; }
   const keep = genCfg.gear; genCfg.gear = loadGear();
   const lv = genLevel(), grp = MUSCLE_GROUPS[old.muscle], inList = t.exercises.map(x => x.name);
   const ok = e => MUSCLE_GROUPS[e.muscle] === grp && !inList.includes(e.name);
@@ -898,6 +928,7 @@ function generate() {
   const exs = picked.map(e => ({ name: e.name, muscle: e.muscle, gif: e.gif, sets: 3, note: '', unit: defaultUnit(e.name) }));
   exs.forEach(ex => { const r = suggestEx(ex, lv, genCfg.goal); ex.sets = Math.max(r.sets, genCfg.minSets || 0); const reps = ex.unit === 'sek' ? r.reps : Math.max(r.reps, genCfg.minReps || 0); ex.plan = Array.from({ length: ex.sets }, () => ({ w: r.w, r: reps })); });
   if (!exs.length) { genRes = []; genJust = true; return; }
+  exs.unshift(...warmupsFor(exs));
   try { localStorage.setItem(GENKEY, JSON.stringify(picked.map(e => e.name).concat(last).slice(0, 24))); } catch (e) {}
   genRes = exs; genJust = true; genSwapped = -1;
 }
@@ -913,7 +944,7 @@ function renderGen() {
   const lv = genLevel(), p = loadProfile();
   const pill = (act, v, l, on) => `<button class="lv-p${on ? ' on' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
   const res = genRes && !genRes.length ? `<div class="gn-res"><div class="lv-note">Mit diesen Geräten und diesem Fokus finde ich keine Übungen. Mehr Geräte oder anderen Fokus wählen.</div></div>` : genRes ? `<div class="gn-res">${genRes.map((e, i) => `<div class="gn-sw" data-gsw="${i}"><div class="gn-sw-bg"><span>★ Favorit</span><span>Neue Übung ↻</span></div><div class="gn-ex exinfo${i === genSwapped ? ' gn-new' : ''}" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
-      <div><b>${loadFavs().includes(e.name) ? '★ ' : ''}${esc(dn(e.name))}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)} · ${e.sets} × ${e.plan[0].r} ${e.unit === 'sek' ? 'Sek' : 'Wdh'}${e.plan[0].w != null && e.unit === 'kg' ? ' · ca. ' + e.plan[0].w + ' kg' : ''}</em></div><button class="gn-pk" data-act="genPickOpen" data-i="${i}" aria-label="Übung wählen">⇄</button></div></div>`).join('')}
+      <div><b>${loadFavs().includes(e.name) ? '★ ' : ''}${esc(dn(e.name))}</b><em>${e.warm ? 'Aufwärmen · ' : ''}${esc(MUSCLE_DE[e.muscle] || e.muscle)} · ${e.sets} × ${e.plan[0].r} ${e.unit === 'sek' ? 'Sek' : 'Wdh'}${e.plan[0].w != null && e.unit === 'kg' ? ' · ca. ' + e.plan[0].w + ' kg' : ''}</em></div><button class="gn-pk" data-act="genPickOpen" data-i="${i}" aria-label="Übung wählen">⇄</button></div></div>`).join('')}
       <div class="lv-note">Rechts wischen = ★ Favorit, links = neue Übung, ⇄ = selbst wählen. Vorschlag mit ca.-Werten. Technik vor Gewicht, bei Schmerzen abbrechen.${!p.weight && genRes.some(e => e.unit === 'kg') ? ' Gewicht im Profil eintragen, dann kommen auch kg-Vorschläge.' : ''}</div>
       <div class="gn-btns"><button class="ts-save" data-act="genSave">✓ SPEICHERN</button><button class="pl-next ts-go" data-act="genGo">▶ SPEICHERN &amp; STARTEN</button><button class="ts-add" data-act="genDo">⟳ Neu mischen</button></div></div>` : '';
   const scrollRes = genJust; genJust = false;
@@ -1294,7 +1325,7 @@ function txRow(t, ex, i) {
   const sumTxt = u === 'none' ? n + ' Sätze' : n + ' × ' + (uniform ? (at(0, 'r') ?? '–') + ' ' + rl : 'variiert') + (u === 'kg' && at(0, 'w') != null ? ' · ' + (uniform ? at(0, 'w') : 'ab ' + at(0, 'w')) + ' kg' : '');
   return `<div class="tx-sw" data-tsw="${t.id}|${i}"><div class="gn-sw-bg"><span>★ Favorit</span><span>Neue Übung ↻</span></div><div class="tx-row ts-set xc${open ? ' open' : ''}" style="--i:${Math.min(i, 10)}">
     <button class="tx-th" data-act="exInfo" data-name="${esc(ex.name)}" aria-label="Übungsdaten"><img src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"></button>
-    <button class="tx-nm" data-act="txToggle" data-key="${esc(key)}"><b>${esc(dn(ex.name))}</b><em>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)} · ${sumTxt}</em><i class="tx-ch">${open ? '▴' : '▾'}</i></button>
+    <button class="tx-nm" data-act="txToggle" data-key="${esc(key)}"><b>${esc(dn(ex.name))}</b><em>${ex.warm ? '🔥 Aufwärmen · ' : ''}${esc(MUSCLE_DE[ex.muscle] || ex.muscle)} · ${sumTxt}</em><i class="tx-ch">${open ? '▴' : '▾'}</i></button>
     <span class="ts-mv"><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="-1" aria-label="Nach oben"${i === 0 ? ' disabled' : ''}>▲</button><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="1" aria-label="Nach unten"${last ? ' disabled' : ''}>▼</button></span>
     <button class="tx-rm" data-act="wRemoveEx" data-id="${t.id}" data-i="${i}" aria-label="Übung entfernen">✕</button>
     <div class="tx-ed">${step}${vals}${sel}</div>${chips}${pills}
@@ -1824,7 +1855,7 @@ content.addEventListener('click', e => {
     case 'psTog': { const k = Number(btn.dataset.i); psSheet.sel.has(k) ? psSheet.sel.delete(k) : psSheet.sel.add(k); break; }
     case 'psCreate': {
       const p = PRESETS.find(x => x.key === psSheet.key), all = presetAll(p);
-      const t = { id: 'w' + Date.now(), name: loserName(), presetKey: p.key, exercises: all.filter((_, i) => psSheet.sel.has(i)), weekdays: [], since: {}, time: '' };
+      const t = { id: 'w' + Date.now(), name: loserName(), presetKey: p.key, exercises: (sel => warmupsFor(sel).concat(sel))(all.filter((_, i) => psSheet.sel.has(i))), weekdays: [], since: {}, time: '' };
       weekplan.push(t); saveWeekplan(); psSheet = null; wId = t.id; view = 'wtrain'; break;
     }
     case 'wOpen2': wFrom = view === 'trainings' ? 'trainings' : null; wId = btn.dataset.id; view = 'wtrain'; break;
