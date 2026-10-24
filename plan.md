@@ -452,3 +452,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V20t: Geräte gewählt = Lime-Fläche. ?v=20261025i
 - V20u: Bauen-Button immer aktiv; ohne Fokus = Zufalls-Fokus (2–3 Gruppen), Label 'ÜBERRASCH MICH'. ?v=20261025j
 - V20v: Wechselwirkung Geräte↔Fokus: gewählte Geräte graut nicht passende Muskelgruppen aus (groupCounts), Fokus graut Geräte aus (gearCounts). ?v=20261025k
+- V20w: Labels Zeit/Geräte/Fokus entfernt, Geräte im Fokus-Stil (Anton, Lime+Glow). ?v=20261025m
