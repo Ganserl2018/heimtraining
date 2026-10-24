@@ -846,6 +846,12 @@ function generate() {
     for (const e of cand) { if (take.length >= per[gi]) break; if (!take.includes(e)) take.push(e); }
     picked.push(...take);
   });
+  // Auffüllen: wenn eine Gruppe mit den gewählten Geräten zu wenig Übungen hat, fehlende Plätze reihum aus den anderen Gruppen holen (gewünschte Anzahl einhalten)
+  if (genCfg.count && picked.length < n) {
+    const coreOf = grp => e => grp.startsWith('m:') ? e.muscle === grp.slice(2) : MUSCLE_GROUPS[e.muscle] === grp && (grp !== 'Rücken' || e.muscle === 'lats' || e.muscle === 'middle back');
+    const rest = gs.map(grp => shuffle(base.filter(e => coreOf(grp)(e) && !picked.includes(e))));
+    for (let k = 0; picked.length < n && rest.some(r => r.length); k++) { const r = rest[k % rest.length]; const e = r.shift(); if (e && !picked.includes(e)) picked.push(e); }
+  }
   picked.sort((a, b) => (isCompound(b.name) - isCompound(a.name)) || ((GRANK[MUSCLE_GROUPS[b.muscle]] || 0) - (GRANK[MUSCLE_GROUPS[a.muscle]] || 0)) || (MORDER.indexOf(a.muscle) - MORDER.indexOf(b.muscle)));
   const exs = picked.map(e => ({ name: e.name, muscle: e.muscle, gif: e.gif, sets: 3, note: '', unit: defaultUnit(e.name) }));
   exs.forEach(ex => { const r = suggestEx(ex, lv, genCfg.goal); ex.sets = Math.max(r.sets, genCfg.minSets || 0); const reps = ex.unit === 'sek' ? r.reps : Math.max(r.reps, genCfg.minReps || 0); ex.plan = Array.from({ length: ex.sets }, () => ({ w: r.w, r: reps })); });
