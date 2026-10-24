@@ -1991,7 +1991,7 @@ content.addEventListener('click', e => {
       return;
     }
     case 'trTab': trTab = btn.dataset.v; break;
-    case 'trFav': { const t = trainingById(btn.dataset.id); if (t) { t.fav = !t.fav; saveWeekplan(); } break; }
+    case 'trFav': { const t = trainingById(btn.dataset.id); if (t) { t.fav = !t.fav; if (t.draft && t.exercises.length) delete t.draft; saveWeekplan(); } break; }
     case 'archToggle': archOpen = !archOpen; break;
     case 'wRestore': { const ar = loadArchive(), t = ar.find(x => x.id === btn.dataset.id); if (t) { saveArchive(ar.filter(x => x.id !== t.id)); weekplan.push(t); saveWeekplan(); } break; }
     case 'trDel': {
