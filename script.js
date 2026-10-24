@@ -756,6 +756,19 @@ const spotGrp = m => MUSCLE_GROUPS[m] === 'Sonstiges' ? 'Schultern' : MUSCLE_GRO
 const grpOn = m => genCfg.groups.includes(m) || genCfg.groups.some(x => x.startsWith('m:') && spotGrp(x.slice(2)) === m);
 const grpLabel = g => g.startsWith('m:') ? (MUSCLE_DE[g.slice(2)] || g.slice(2)) : g;
 // Welche Geräte sind für den gewählten Fokus überhaupt nützlich? (Anzahl passender Übungen je Gerät)
+function groupCounts() {
+  // Wie gearCounts, umgekehrt: pro Muskelgruppe Anzahl Übungen, die mit den gewählten Geräten gehen
+  const lv = genLevel(), out = {}, sel = genCfg.gear || [];
+  const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine/i;
+  const hard = /deadlift|rack pull|clean|snatch|jerk|weighted|good morning|behind (the )?neck|guillotine|zercher|jefferson|overhead squat|olympic|sissy|muscle.up|atlas|pistol|single-arm push/i;
+  pool.forEach(e => {
+    if (bad.test(e.name) || (gearFix[e.name] && gearFix[e.name].s === 'no') || !MUSCLE_GROUPS[e.muscle] || (lv === 0 && hard.test(e.name))) return;
+    if (sel.length && !gearOf(e.name).some(k => sel.includes(k))) return;
+    const g = MUSCLE_GROUPS[e.muscle];
+    out[g] = (out[g] || 0) + 1;
+  });
+  return out;
+}
 function gearCounts() {
   const g = genCfg.groups, lv = genLevel(), out = {};
   const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine/i;
@@ -873,7 +886,7 @@ function renderGen() {
 }
 function renderStart() {
   // Planung: eine Frage – "Was trainiere ich jetzt?". Gespeicherte Trainings = 1 Tipp bis ins Workout, darunter der Schnell-Bauer.
-  const qp = (act, v, l, on) => `<button class="qk-p${on ? ' on' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
+  const qp = (act, v, l, on, none) => `<button class="qk-p${on ? ' on' : ''}${none && !on ? ' none' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
   const own = weekplan.filter(w => w.exercises.length && !w.draft);
   const openT = own.find(w => startOf(w.id, today()) && !loadHistory().some(r => r.trainingId === w.id && r.date === today()));
   const row = t => `<button class="pl-row${openT && openT.id === t.id ? ' open' : ''}" data-act="quickStart" data-id="${t.id}">
@@ -889,7 +902,7 @@ function renderStart() {
         const gearBtns = GEAR.map(([k, l0]) => { const l = l0 === 'Kurzhanteln' ? 'Hanteln' : l0 === 'Hantelbank' ? 'Bank' : l0; return `<button class="qk-p${genCfg.gear.includes(k) ? ' on' : ''}${gc && k !== 'body' && !gc[k] ? ' none' : ''}" data-act="genGear" data-v="${k}">${l}</button>`; }).join('');
         return `${segRow('Zeit', 'genDur', [20, 30, 45, 60], genCfg.dur, v => v + ' Min')}
       <div class="qk-sec">Geräte</div><div class="qk-gear">${gearBtns}</div>
-      <div class="qk-sec">Fokus</div><div class="qk-grid3">${MUSCLE_GROUP_LIST.map(m => qp('genGrp', m, m, grpOn(m))).join('')}</div>
+      <div class="qk-sec">Fokus</div><div class="qk-grid3">${(() => { const gcn = groupCounts(); return MUSCLE_GROUP_LIST.map(m => qp('genGrp', m, m, grpOn(m), !gcn[m])).join(''); })()}</div>
       <div class="qk-tri">${[['Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0], ['Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets], ['Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps]].map(([l, a, vs, cur]) => `<button class="qk-t" data-act="${a}" data-v="${vs[(vs.indexOf(cur) + 1) % vs.length]}"><span>${l}</span><b>${cur || 'Auto'}</b></button>`).join('')}</div>`;
       })()}
       <button class="qk-go" data-act="genDo">${SP}${genCfg.groups.length ? (own.length ? 'NEU BAUEN' : 'TRAINING BAUEN') : 'ÜBERRASCH MICH'}</button>

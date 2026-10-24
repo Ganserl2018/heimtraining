@@ -451,3 +451,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V20r–s: Designer-Review umgesetzt (Geräte leise, Tap>=40-44, weniger Glow, CTA-disabled leise, Hero 2.2rem). ?v=20261025h. Offen: Review-Punkt 3/8 teilw., CSS-Blöcke V20j–s zusammenführen.
 - V20t: Geräte gewählt = Lime-Fläche. ?v=20261025i
 - V20u: Bauen-Button immer aktiv; ohne Fokus = Zufalls-Fokus (2–3 Gruppen), Label 'ÜBERRASCH MICH'. ?v=20261025j
+- V20v: Wechselwirkung Geräte↔Fokus: gewählte Geräte graut nicht passende Muskelgruppen aus (groupCounts), Fokus graut Geräte aus (gearCounts). ?v=20261025k
