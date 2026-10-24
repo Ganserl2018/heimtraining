@@ -1920,3 +1920,9 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
   .pp-seg button{min-height:34px;}
   .pp-foot{margin-top:-.2rem;} .pp-foot .pp-reset{min-height:28px;}
 }
+/* V23-E: Training-Kopf – Name volle Breite, darunter Chip + Stern */
+.tx-head{display:grid; grid-template-columns:1fr auto; align-items:center; gap:.4rem .6rem; flex-wrap:unset;}
+.tx-head h2.nm-edit{grid-column:1/-1; max-width:100%; min-width:0; font-size:1.7rem; line-height:1.1;}
+.tx-head h2 .nm-t{white-space:normal; overflow:visible; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+.tx-head .lab-chip{grid-row:2; grid-column:1; justify-self:start;}
+.tx-head .tx-fav{grid-row:2; grid-column:2;}
