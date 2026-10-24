@@ -1721,3 +1721,30 @@ body.is-res .topbar h1::after{content:'Wischen: Favorit oder neue Übung';}
 /* V20as Reihenfolge Zeit -> Geräte -> Muskeln -> Rest: nicht Freigeschaltetes gedimmt */
 .qk-grid3 .qk-p.none:not(.on){opacity:.3;}
 .qk-rows.dim{opacity:.4;}
+
+/* V21 Profil: Ziel-Fortschritt, Gruppen, 4er-Werte-Reihe */
+.pp-sec{font-size:.68rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--text-dim); display:flex; align-items:center; gap:.5rem; margin:.15rem 0 -.1rem;}
+.pp-sec::before{content:''; width:6px; height:6px; border-radius:50%; background:var(--accent); box-shadow:0 0 8px var(--accent);}
+.pp-goal{position:relative; display:grid; grid-template-columns:1fr auto; align-items:center; gap:.45rem .6rem; padding:.7rem .9rem; background:radial-gradient(120% 140% at 0 0, color-mix(in srgb,var(--accent) 14%,transparent), transparent 60%), var(--panel);}
+.pg-txt{display:flex; align-items:baseline; gap:.5rem; flex-wrap:wrap;}
+.pg-txt small{width:100%; font-size:.64rem; letter-spacing:.14em; font-weight:800; color:var(--text-dim);}
+.pg-n b{font-family:Anton,Impact,sans-serif; font-weight:400; font-size:2.1rem; line-height:1; color:var(--accent); text-shadow:0 0 14px color-mix(in srgb,var(--accent) 55%,transparent);}
+.pg-n i{font-style:normal; font-family:Anton,Impact,sans-serif; font-size:1.3rem; color:var(--text-dim);}
+.pg-p{font-size:.82rem; color:var(--text-dim);}
+.pg-edit{width:44px; height:44px; padding:0; border-radius:50%; font-size:1.1rem; color:var(--text-dim);}
+.pg-bar{grid-column:1/-1; height:8px; border-radius:99px; background:color-mix(in srgb,var(--text) 10%,transparent); overflow:hidden;}
+.pg-bar i{display:block; height:100%; border-radius:99px; background:var(--accent); box-shadow:0 0 12px var(--accent); transform-origin:left; animation:pg-fill .7s cubic-bezier(.23,1,.32,1) both .25s;}
+@keyframes pg-fill{from{transform:scaleX(0)}}
+.pp-foot{display:flex; justify-content:center; gap:1.2rem; flex-wrap:wrap;}
+.pp-foot .pp-reset{min-height:32px; padding:0; font-size:.78rem; opacity:.8;}
+@media (max-width:600px){
+  .pp-hero{padding:.65rem .8rem; border-radius:20px; background:radial-gradient(90% 160% at 0 0, color-mix(in srgb,var(--accent) 16%,transparent), transparent 65%), var(--panel); border:1px solid var(--border-soft);}
+  .pp-av{width:60px; height:60px; font-size:1.9rem;}
+  .pp-body{grid-template-columns:repeat(4,1fr); gap:.4rem;}
+  .pp-tile{height:70px; border-radius:14px;} .pp-tile small{font-size:.56rem; letter-spacing:.08em;} .pp-tile input{font-size:1.45rem; min-height:32px;} .pp-tile em{font-size:.62rem;}
+  .pp-lvbox{display:flex; flex-direction:column; gap:.4rem;}
+  .pp-duo{display:grid; grid-template-columns:1.3fr 1fr; gap:.45rem;} .pp-duo .pp-seg{grid-template-columns:repeat(2,1fr);}
+  .pp-seg button{min-height:38px; font-size:.84rem;}
+  .pp-stats div{padding:.4rem .3rem;}
+}
+@media (min-width:900px){ .pp-sec,.pg-bar{display:none;} .pp-goal{display:flex;} .pp-foot{display:contents;} }

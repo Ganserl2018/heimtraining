@@ -1333,7 +1333,7 @@ function renderProfile() {
   const first = h.length ? h.reduce((m, r) => r.date < m ? r.date : m, h[0].date) : null;
   const since = first ? new Date(first + 'T12:00:00').toLocaleDateString('de-DE', { month: 'long', year: 'numeric' }) : null;
   const ini = (p.name || '').trim().charAt(0).toUpperCase();
-  const bad = document.body.classList.contains('mood-bad');
+  const gDone = h.filter(r => Date.now() - new Date(r.date + 'T12:00:00') <= goal.periodDays * 864e5).length, gPct = Math.min(100, Math.round(gDone / Math.max(1, goal.target) * 100));
   content.innerHTML = `
     <div class="overview prof-page">
       <div class="pp-hero pp-t" style="--i:0">
@@ -1348,23 +1348,31 @@ function renderProfile() {
         <div><b>${streak}</b><span>Streak</span></div>
         <div><b>${sets}</b><span>Sätze</span></div>
       </div>
-      <div class="pp-body">
-        <label class="pp-tile pp-t" style="--i:2"><small>Gewicht</small><input type="number" inputmode="decimal" data-act="profileField" data-field="weight" value="${p.weight ?? ''}" placeholder="–"><em>kg</em></label>
-        <label class="pp-tile pp-t" style="--i:3"><small>Größe</small><input type="number" inputmode="numeric" data-act="profileField" data-field="height" value="${p.height ?? ''}" placeholder="–"><em>cm</em></label>
-        <label class="pp-tile pp-t" style="--i:4"><small>Stange</small><input type="number" inputmode="decimal" data-act="profileField" data-field="bar" value="${p.bar ?? ''}" placeholder="10"><em>kg</em></label>
-        <label class="pp-tile pp-t" style="--i:5"><small>Pause</small><input type="number" inputmode="numeric" data-act="profileField" data-field="rest" value="${p.rest ?? ''}" placeholder="90"><em>Sek</em></label>
+      <div class="pp-goal pp-t" style="--i:2">
+        <div class="pg-txt"><small>ZIEL</small><span class="pg-n"><b>${gDone}</b><i>/${goal.target}</i></span><span class="pg-p">Trainings · ${goal.periodDays === 7 ? 'diese Woche' : 'letzte ' + goal.periodDays + ' Tage'}</span></div>
+        <button class="pg-edit" data-act="goalEditFromProfile" aria-label="Ziel anpassen">✎</button>
+        <div class="pg-bar"><i style="width:${gPct}%"></i></div>
       </div>
-      <div class="pp-lvbox pp-t" style="--i:6">
+      <div class="pp-sec pp-t" style="--i:3">Deine Werte</div>
+      <div class="pp-body">
+        <label class="pp-tile pp-t" style="--i:3"><small>Gewicht</small><input type="number" inputmode="decimal" data-act="profileField" data-field="weight" value="${p.weight ?? ''}" placeholder="–"><em>kg</em></label>
+        <label class="pp-tile pp-t" style="--i:4"><small>Größe</small><input type="number" inputmode="numeric" data-act="profileField" data-field="height" value="${p.height ?? ''}" placeholder="–"><em>cm</em></label>
+        <label class="pp-tile pp-t" style="--i:5"><small>Stange</small><input type="number" inputmode="decimal" data-act="profileField" data-field="bar" value="${p.bar ?? ''}" placeholder="10"><em>kg</em></label>
+        <label class="pp-tile pp-t" style="--i:6"><small>Pause</small><input type="number" inputmode="numeric" data-act="profileField" data-field="rest" value="${p.rest ?? ''}" placeholder="90"><em>Sek</em></label>
+      </div>
+      <div class="pp-lvbox pp-t" style="--i:7">
         ${(() => { const ls = levelSuggestion(); return ls != null ? `<div class="pp-up">Zeit für <b>${LEVELS[ls][1]}</b> <button data-act="lvlUp" data-lv="${ls}">Übernehmen</button></div>` : ''; })()}
+        <div class="pp-sec">Level</div>
+        <div class="pp-seg">${LEVELS.map(([k, l], x) => `<button class="${(p.level == null ? 0 : p.level) === x ? 'on' : ''}" data-act="profLevel" data-v="${x}">${l}</button>`).join('')}</div>
         <div class="pp-duo">
         <div class="pp-seg pp-gen">${[['m', 'Mann'], ['w', 'Frau']].map(([k, l]) => `<button class="${(p.gender || 'm') === k ? 'on' : ''}" data-act="profGender" data-v="${k}">${l}</button>`).join('')}</div>
-        <div class="pp-seg pp-lang">${[['de', 'Deutsch'], ['en', 'English']].map(([k, l]) => `<button class="${(p.lang || 'de') === k ? 'on' : ''}" data-act="profLang" data-v="${k}">${l}</button>`).join('')}</div>
+        <div class="pp-seg pp-lang">${[['de', 'DE'], ['en', 'EN']].map(([k, l]) => `<button class="${(p.lang || 'de') === k ? 'on' : ''}" data-act="profLang" data-v="${k}">${l}</button>`).join('')}</div>
         </div>
-        <div class="pp-seg">${LEVELS.map(([k, l], x) => `<button class="${(p.level == null ? 0 : p.level) === x ? 'on' : ''}" data-act="profLevel" data-v="${x}">${l}</button>`).join('')}</div>
       </div>
-      <div class="pp-goal pp-t" style="--i:7"><div><small>ZIEL</small><span><b>${goal.target}</b> Trainings in ${goal.periodDays === 7 ? '1 Woche' : goal.periodDays + ' Tagen'}</span></div><button data-act="goalEditFromProfile">Anpassen</button></div>
-      <button class="pp-reset pp-t" style="--i:8" data-act="helperReset">Trainingshinweise zurücksetzen</button>
-      ${loadBad().length ? `<button class="pp-reset pp-t" style="--i:9" data-act="badCopy">⚑ ${loadBad().length} falsche Bilder · Liste kopieren</button>` : ''}
+      <div class="pp-foot pp-t" style="--i:8">
+      <button class="pp-reset" data-act="helperReset">Trainingshinweise zurücksetzen</button>
+      ${loadBad().length ? `<button class="pp-reset" data-act="badCopy">⚑ ${loadBad().length} falsche Bilder kopieren</button>` : ''}
+      </div>
     </div>`;
 }
 
