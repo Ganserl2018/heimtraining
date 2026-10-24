@@ -1441,6 +1441,7 @@ function renderProfile() {
       </div>
       <div class="pp-foot pp-t" style="--i:8">
       <button class="pp-reset" data-act="helperReset">Trainingshinweise zurücksetzen</button>
+      <button class="pp-reset" data-act="appReload">↻ App neu laden · ${((document.querySelector('script[src^="script.js"]') || {}).src || '').split('v=')[1] || ''}</button>
       ${loadBad().length ? `<button class="pp-reset" data-act="badCopy">⚑ ${loadBad().length} falsche Bilder kopieren</button>` : ''}
       </div>
     </div>`;
@@ -1949,6 +1950,10 @@ content.addEventListener('click', e => {
     case 'wSavePack': saveWeekplan(); trTab = 'act'; view = 'trainings'; break;
     case 'wStart': playStart(btn.dataset.id); break;
     case 'wSkip': { const t = trainingById(btn.dataset.id); (t.skipped = t.skipped || []).push(btn.dataset.date); saveWeekplan(); break; }
+    case 'appReload': {
+      Promise.all([navigator.serviceWorker ? navigator.serviceWorker.getRegistrations().then(rs => Promise.all(rs.map(r => r.unregister()))) : 0, window.caches ? caches.keys().then(ks => Promise.all(ks.map(k => caches.delete(k)))) : 0]).catch(() => {}).then(() => location.reload());
+      return;
+    }
     case 'trTab': trTab = btn.dataset.v; break;
     case 'trFav': { const t = trainingById(btn.dataset.id); if (t) { t.fav = !t.fav; saveWeekplan(); } break; }
     case 'archToggle': archOpen = !archOpen; break;
