@@ -47,7 +47,7 @@ const ARKEY = 'heimtraining.archive'; let archOpen = false;
 function loadArchive() { try { const r = JSON.parse(localStorage.getItem(ARKEY)); return Array.isArray(r) ? r : []; } catch (e) { return []; } }
 function saveArchive(a) { try { localStorage.setItem(ARKEY, JSON.stringify(a)); } catch (e) {} }
 function saveWeekplan() { try { localStorage.setItem(WKEY, JSON.stringify(weekplan)); } catch (e) {} }
-weekplan = loadWeekplan().filter(x => !x.draft);
+weekplan = loadWeekplan().filter(x => !x.draft || (x.exercises || []).length); weekplan.forEach(x => { if ((x.exercises || []).length) delete x.draft; });
 // V6-01: fehlende Felder bei alten/bestehenden Trainings nachrüsten (weekdays/time optional, leer = kein Zeitplan)
 weekplan.forEach(t => { if (!Array.isArray(t.exercises)) t.exercises = []; if (!Array.isArray(t.weekdays)) t.weekdays = []; if (typeof t.time !== 'string') t.time = ''; if (!t.since || typeof t.since !== 'object') t.since = {}; });
 const trainingById = id => weekplan.find(t => t.id === id);
@@ -264,6 +264,7 @@ function renderView() {
   document.body.classList.toggle('playing', view === 'play');
   document.body.classList.toggle('is-home', view === 'overview' && !dashMode);
   document.body.classList.toggle('is-start', view === 'start' || view === 'gen'); document.body.dataset.view = view; document.body.classList.toggle('is-gen', view === 'gen'); document.body.classList.toggle('is-res', view === 'gen' && !!genRes);
+  weekplan.forEach(x => { if (x.draft && (x.exercises || []).length && !(view === 'wtrain' && wId === x.id)) delete x.draft; });
   if (weekplan.some(x => x.draft && !(view === 'wtrain' && wId === x.id) && view !== 'picker' && !picker)) weekplan = weekplan.filter(x => !x.draft || (view === 'wtrain' && wId === x.id));
   applyMood();
   const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Woche', trainings: 'Trainings', start: 'Planung', gen: genRes ? 'Dein Training' : 'Einstellungen', play: 'Workout', preview: 'Training', summary: 'Geschafft', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
