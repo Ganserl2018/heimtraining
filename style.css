@@ -1830,3 +1830,6 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 /* V22h Fix: Wisch-Wrapper quetschte Übungszeilen */
 .tx-sw{overflow:clip; min-height:min-content; flex:none;}
 .tx-share .sh,.sh{display:flex; flex-wrap:wrap; gap:.15rem .9rem;}
+/* V22i kleinere Schrift im Training */
+.tx-share .sh-i,.tx-share .sh-i b{font-size:.78rem !important; font-weight:600;} .tx-share .sh-i b{font-weight:800; color:var(--text);} .tx-share .sh-i{color:var(--text-dim);}
+.tx-nm b{font-size:.88rem !important; line-height:1.2;} .tx-nm em{font-size:.7rem !important;}

@@ -489,3 +489,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V22f Übung in anderes Training kopieren/verschieben (Sheet, +Neues Training); ?v=20261027n
 - V22g Übungs-Detail: 'Zu Training hinzufügen' in allen Ansichten + Chip 'Neues Training'; ?v=20261027o
 - V22h Fix: Übungszeilen im Training waren gequetscht (Wisch-Wrapper), Muskel-Anteile mit Abstand; ?v=20261027p
+- V22i kleinere Schrift Muskel-Anteile/Übungsnamen im Training; ?v=20261027q
