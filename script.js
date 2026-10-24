@@ -882,17 +882,18 @@ function renderStart() {
   content.innerHTML = `<div class="sv">
     ${own.length ? `<div class="pl-list">${own.map(row).join('')}</div>` : ''}
     <div class="qk">
-      <div class="qk-sec">Fokus</div>
-      <div class="qk-grid3">${MUSCLE_GROUP_LIST.map(m => qp('genGrp', m, m, grpOn(m))).join('')}</div>
-      <div class="qk-rows">${[['Zeit', 'genDur', [20, 30, 45, 60], genCfg.dur, v => v + ' Min'], ['Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0, v => v || 'Auto'], ['Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets, v => v || 'Auto'], ['Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps, v => v || 'Auto']].map(([l, a, vs, cur, f]) => `<div class="qk-r"><span>${l}</span><div class="seg" style="--n:${vs.length}">${vs.map(v => `<button class="${cur === v ? 'on' : ''}" data-act="${a}" data-v="${v}">${f(v)}</button>`).join('')}</div></div>`).join('')}</div>
-      ${(() => { const gc = genCfg.groups.length ? gearCounts() : null; return `<div class="qk-sec">Geräte heute</div><div class="qk-gear">${GEAR.map(([k, l0]) => { const l = l0 === 'Kurzhanteln' ? 'Hanteln' : l0 === 'Hantelbank' ? 'Bank' : l0; return `<button class="qk-p${genCfg.gear.includes(k) ? ' on' : ''}${gc && k !== 'body' && !gc[k] ? ' none' : ''}" data-act="genGear" data-v="${k}">${l}</button>`; }).join('')}</div>`; })()}
+      ${(() => {
+        const segRow = (l, a, vs, cur, f) => `<div class="qk-r"><span>${l}</span><div class="seg" style="--n:${vs.length}">${vs.map(v => `<button class="${cur === v ? 'on' : ''}" data-act="${a}" data-v="${v}">${f(v)}</button>`).join('')}</div></div>`;
+        const gc = genCfg.groups.length ? gearCounts() : null;
+        const gearBtns = GEAR.map(([k, l0]) => { const l = l0 === 'Kurzhanteln' ? 'Hanteln' : l0 === 'Hantelbank' ? 'Bank' : l0; return `<button class="qk-p${genCfg.gear.includes(k) ? ' on' : ''}${gc && k !== 'body' && !gc[k] ? ' none' : ''}" data-act="genGear" data-v="${k}">${l}</button>`; }).join('');
+        return `${segRow('Zeit', 'genDur', [20, 30, 45, 60], genCfg.dur, v => v + ' Min')}
+      <div class="qk-sec">Geräte</div><div class="qk-gear">${gearBtns}</div>
+      <div class="qk-sec">Fokus</div><div class="qk-grid3">${MUSCLE_GROUP_LIST.map(m => qp('genGrp', m, m, grpOn(m))).join('')}</div>
+      <div class="qk-tri">${[['Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0], ['Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets], ['Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps]].map(([l, a, vs, cur]) => `<button class="qk-t" data-act="${a}" data-v="${vs[(vs.indexOf(cur) + 1) % vs.length]}"><span>${l}</span><b>${cur || 'Auto'}</b></button>`).join('')}</div>`;
+      })()}
       <button class="qk-go" data-act="genDo"${genCfg.groups.length ? '' : ' disabled'}>${genCfg.groups.length ? SP + (own.length ? 'NEU BAUEN' : 'TRAINING BAUEN') : 'FOKUS WÄHLEN'}</button>
     </div>
-    <div class="qk qk-more2">
-      <div class="qk-sec">Level</div>
-      <div class="seg" style="--n:${LEVELS.length}">${LEVELS.map(([k, l], x) => `<button class="${genLevel() === x ? 'on' : ''}" data-act="genLv" data-v="${x}">${l}</button>`).join('')}</div>
-      <div class="qk-sec">Ziel</div>
-      <div class="seg" style="--n:${GOALS.length}">${GOALS.map(([k, l]) => `<button class="${genCfg.goal === k ? 'on' : ''}" data-act="genGoal" data-v="${k}">${l}</button>`).join('')}</div>
+    <button class="qk-link" data-act="genOpen">Weitere Einstellungen ›</button>
     </div>
   </div>`;
 }

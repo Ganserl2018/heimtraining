@@ -1594,3 +1594,28 @@ body.is-home .topbar{display:none;}
 .qk-more2{margin-top:.6rem;} .qk-more2 .seg button{font-size:.74rem;}
 .qk-rows{margin-top:.75rem; padding-top:.75rem; border-top:1px solid var(--border-soft);}
 .qk-rows + .qk-sec{margin-top:.8rem;}
+
+/* V20k Reihenfolge Zeit, Geräte, Fokus, Umfang – ein Label-Stil */
+.qk-r > span{font-size:.72rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--text-dim);}
+.qk-r{grid-template-columns:4.6rem 1fr;}
+.qk-rows{margin-top:.8rem; padding-top:.8rem; border-top:1px solid var(--border-soft);}
+.qk > .qk-r:first-child{margin-bottom:.2rem;}
+.qk > .qk-sec:first-child{margin-top:0;}
+.qk-sec{margin-top:.8rem;}
+
+/* V20l Umfang = 3 Tipp-Felder (Tippen = nächster Wert), kompakter */
+.qk-rows{display:none;}
+.qk-tri{display:grid; grid-template-columns:repeat(3,1fr); gap:.4rem; margin-top:.8rem; padding-top:.7rem; border-top:1px solid var(--border-soft);}
+.qk-t{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.1rem; min-height:54px; border-radius:12px; border:1px solid var(--border); background:rgba(0,0,0,.28); color:var(--text); transition:transform .16s var(--ease-out), border-color .16s var(--ease-out);}
+.qk-t span{font-size:.66rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--text-dim);}
+.qk-t b{font-size:1.05rem; font-weight:800;}
+.qk-t:active{transform:scale(.96); border-color:var(--accent);}
+.qk-grid3 .qk-p,.qk-gear .qk-p{min-height:36px;}
+.qk-gear,.qk-grid3{gap:.35rem;}
+.qk-sec{margin-top:.6rem;}
+.qk-r{margin-bottom:0;}
+.seg button{min-height:34px;}
+.qk-go{min-height:46px; margin-top:.65rem;}
+/* V20m Link zur Einstellungsseite */
+.qk-link{display:block; width:100%; margin-top:.3rem; min-height:44px; background:none; border:0; color:var(--text-dim); font-size:.9rem; font-weight:700; transition:color .16s var(--ease-out), transform .16s var(--ease-out);}
+.qk-link:active{color:var(--accent); transform:scale(.97);}

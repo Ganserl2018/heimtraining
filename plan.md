@@ -446,3 +446,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - 2026-10-24 V20h: Geräteauswahl (8 Pills, 4x2) in Planung unter Umfang, kein Scrollen (sh=ch=707). `?v=20261024s`
 - 2026-10-24 V20i: Bauen-Button ganz unten in Planung (Einstellungen oben). `?v=20261024t`
 - 2026-10-24 V20j/k: Planung ein System (Sektionslabel FOKUS/GERÄTE, Segment-Regler Zeit/Übungen/Sätze/Wdh gleiche Höhe, Auswahl=Lime-Fläche, Gerätepills 4x2), FOKUS-WÄHLEN-Zustand, darunter Karte Level+Ziel (scrollt unter dem Fold). `?v=20261024y`
+- V20k–m: Planung Reihenfolge Zeit→Geräte→Fokus→Übungen/Sätze/Wdh (3 Tipp-Felder), Bauen-Button, darunter Link 'Weitere Einstellungen ›' (genOpen); Level/Ziel-Karte entfernt. ?v=20261025b
