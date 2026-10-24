@@ -1706,3 +1706,11 @@ body.is-gen .topbar h1::after{content:'Alles einstellen, dann bauen';}
 .gn .seg{margin-top:.45rem;}
 .gn .seg button{font-size:.8rem;}
 .gn{padding-bottom:5.5rem;}
+/* V20aj Planung ohne Titel, Umfang wieder als Zahlenreihen */
+body.is-start:not(.is-gen) .topbar{display:none;}
+.qk-rows{display:grid !important; gap:.35rem; margin-top:.8rem; padding-top:.7rem; border-top:1px solid var(--border-soft);}
+.qk-rows .seg button{min-height:34px; font-size:.8rem;}
+.qk-rows .qk-r{grid-template-columns:5.2rem 1fr;}
+.qk-rows .qk-r > span{font-size:.8rem;}
+.qk-rows .qk-r > span::before{display:none;}
+.qk-rows{margin-top:.6rem; padding-top:.5rem;}
