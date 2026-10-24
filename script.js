@@ -892,7 +892,7 @@ function renderStart() {
       <div class="qk-sec">Fokus</div><div class="qk-grid3">${MUSCLE_GROUP_LIST.map(m => qp('genGrp', m, m, grpOn(m))).join('')}</div>
       <div class="qk-tri">${[['Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0], ['Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets], ['Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps]].map(([l, a, vs, cur]) => `<button class="qk-t" data-act="${a}" data-v="${vs[(vs.indexOf(cur) + 1) % vs.length]}"><span>${l}</span><b>${cur || 'Auto'}</b></button>`).join('')}</div>`;
       })()}
-      <button class="qk-go" data-act="genDo"${genCfg.groups.length ? '' : ' disabled'}>${genCfg.groups.length ? SP + (own.length ? 'NEU BAUEN' : 'TRAINING BAUEN') : 'FOKUS WÄHLEN'}</button>
+      <button class="qk-go" data-act="genDo">${SP}${genCfg.groups.length ? (own.length ? 'NEU BAUEN' : 'TRAINING BAUEN') : 'ÜBERRASCH MICH'}</button>
     </div>
     <button class="qk-link" data-act="genOpen">Weitere Einstellungen ›</button>
     </div>
@@ -1782,7 +1782,7 @@ content.addEventListener('click', e => {
     case 'genMinS': genCfg.minSets = Number(btn.dataset.v); genRes = null; break;
     case 'genMinR': genCfg.minReps = Number(btn.dataset.v); genRes = null; break;
     case 'dash': dashMode = true; view = 'overview'; break;
-    case 'genDo': if (view === 'start') { genFrom = null; view = 'gen'; } generate(); break;
+    case 'genDo': if (!genCfg.groups.length) genCfg.groups = shuffle(MUSCLE_GROUP_LIST).slice(0, 2 + Math.floor(Math.random() * 2)); if (view === 'start') { genFrom = null; view = 'gen'; } generate(); break;
     case 'genSurprise': { const gl = shuffle(MUSCLE_GROUP_LIST).slice(0, 2 + Math.floor(Math.random() * 2)); genCfg.groups = gl; generate(); break; }
     case 'genSave': genSave(false); break;
     case 'genGo': genSave(true); break;

@@ -450,3 +450,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V20n–q: Planung Wumms (Anton, Glow, Hierarchie Fokus>Geräte), Hero 'PLANUNG' + Unterzeile, TV-Button auf Planung weg. ?v=20261025f
 - V20r–s: Designer-Review umgesetzt (Geräte leise, Tap>=40-44, weniger Glow, CTA-disabled leise, Hero 2.2rem). ?v=20261025h. Offen: Review-Punkt 3/8 teilw., CSS-Blöcke V20j–s zusammenführen.
 - V20t: Geräte gewählt = Lime-Fläche. ?v=20261025i
+- V20u: Bauen-Button immer aktiv; ohne Fokus = Zufalls-Fokus (2–3 Gruppen), Label 'ÜBERRASCH MICH'. ?v=20261025j
