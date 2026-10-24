@@ -1808,8 +1808,8 @@ content.addEventListener('click', e => {
       }
       genRes = null; break; }
     case 'genGear': { const k = btn.dataset.v, g = loadGear(), i = g.indexOf(k); if (i >= 0) g.splice(i, 1); else g.push(k); genCfg.gear = g; try { localStorage.setItem(GEARKEY, JSON.stringify(g)); } catch (e2) {} if (view === 'start') {
-        // an: passende Gruppen des neuen Geräts dazu; ab: nur Gruppen weg, die kein verbliebenes Gerät mehr abdeckt – von Hand weggeklickte bleiben weg
-        if (i >= 0) { const gcn = groupCounts(); genCfg.groups = g.length ? genCfg.groups.filter(m => m.startsWith('m:') || gcn[m]) : []; }
+        // an: passende Gruppen des Geräts dazu; ab: alle Gruppen weg, die dieses Gerät abdeckt
+        if (i >= 0) { genCfg.gear = [k]; const gk = groupCounts(); genCfg.gear = g; genCfg.groups = genCfg.groups.filter(m => m.startsWith('m:') || !gk[m]); } // ab: alle Gruppen weg, die dieses Gerät abdeckt (Spiegel zu 'an')
         else { genCfg.gear = [k]; const gk = groupCounts(); genCfg.gear = g; MUSCLE_GROUP_LIST.forEach(m => { if (gk[m] && !genCfg.groups.includes(m)) genCfg.groups.push(m); }); }
       } genRes = null; break; }
     case 'genMinS': genCfg.minSets = Number(btn.dataset.v); genRes = null; break;
