@@ -1560,3 +1560,4 @@ body.is-home .topbar{display:none;}
 .qk-p{min-height:40px;} .qk-go{min-height:48px;} .qk-u,.qk-g{min-height:36px;} .qk-gh{margin:.5rem 0 .25rem;} .qk-um-r{gap:.3rem;}
 .sv{gap:0;}
 .qk-g.on{background:rgba(184,255,60,.16); color:var(--accent); border-color:var(--accent);}
+.qk-go{margin-top:.7rem;} .qk-um{margin-top:.2rem; padding-top:.6rem;} .qk-time{margin-bottom:.1rem;}
