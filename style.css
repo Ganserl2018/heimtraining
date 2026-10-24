@@ -1619,3 +1619,37 @@ body.is-home .topbar{display:none;}
 /* V20m Link zur Einstellungsseite */
 .qk-link{display:block; width:100%; margin-top:.3rem; min-height:44px; background:none; border:0; color:var(--text-dim); font-size:.9rem; font-weight:700; transition:color .16s var(--ease-out), transform .16s var(--ease-out);}
 .qk-link:active{color:var(--accent); transform:scale(.97);}
+/* V20n Wumms: Hierarchie – Fokus = Hauptentscheidung (Anton, Glow), Geräte = leise (Outline), Bauen = Neon */
+.qk{border-color:color-mix(in srgb,var(--accent) 28%,transparent); background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 9%,var(--panel)) 0,var(--panel) 38%); box-shadow:0 0 28px color-mix(in srgb,var(--accent) 12%,transparent);}
+.qk-sec,.qk-r > span{display:flex; align-items:center; gap:.5rem; color:var(--text);}
+.qk-sec::before{content:''; width:3px; height:1em; border-radius:2px; background:var(--accent); box-shadow:0 0 8px var(--accent);}
+.qk-r > span{font-family:Anton,'Arial Narrow',sans-serif; font-weight:400; font-size:.95rem; letter-spacing:.14em;}
+.qk-sec{font-family:Anton,'Arial Narrow',sans-serif; font-weight:400; font-size:.95rem; letter-spacing:.14em;}
+.seg button{font-family:Anton,'Arial Narrow',sans-serif; font-weight:400; font-size:1rem; letter-spacing:.03em;}
+.seg button.on,.qk-grid3 .qk-p.on{box-shadow:0 0 18px color-mix(in srgb,var(--accent) 55%,transparent);}
+.qk-grid3 .qk-p{min-height:46px; font-family:Anton,'Arial Narrow',sans-serif; font-weight:400; font-size:1.1rem; letter-spacing:.06em; text-transform:uppercase; border-radius:14px;}
+.qk-gear .qk-p{background:transparent; color:var(--text-dim); border:1px solid var(--border);}
+.qk-gear .qk-p.on{background:color-mix(in srgb,var(--accent) 14%,transparent); color:var(--accent); border-color:color-mix(in srgb,var(--accent) 70%,transparent); box-shadow:none;}
+.qk-t b{font-family:Anton,'Arial Narrow',sans-serif; font-weight:400; font-size:1.3rem; letter-spacing:.03em; color:var(--accent);}
+.qk-go{font-family:Anton,'Arial Narrow',sans-serif; font-weight:400; font-size:1.35rem; letter-spacing:.12em; background:var(--accent); color:#0b1204; border:0; box-shadow:0 0 26px color-mix(in srgb,var(--accent) 55%,transparent);}
+.qk-go:disabled{background:transparent; color:color-mix(in srgb,var(--accent) 70%,var(--text-dim)); border:1.5px dashed color-mix(in srgb,var(--accent) 55%,transparent); box-shadow:none;}
+/* V20o Planung-Hero: TV weg, große Headline mit Glow + Unterzeile */
+body.is-start .tv-icon-btn{display:none !important;}
+body.is-start .topbar{padding-top:.5rem; padding-bottom:.6rem; border-bottom:0 !important; background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 10%,transparent),transparent) !important;}
+body.is-start .topbar h1{font-family:Anton,Impact,'Arial Narrow',sans-serif !important; font-weight:400; font-size:2.3rem !important; line-height:1; letter-spacing:.04em !important; color:var(--accent) !important; text-shadow:0 0 22px color-mix(in srgb,var(--accent) 55%,transparent); transform:skewX(-6deg); transform-origin:left;}
+body.is-start .topbar h1::after{content:'Was trainierst du heute?'; display:block; margin-top:.35rem; font-family:system-ui,-apple-system,sans-serif; font-size:.85rem; font-weight:600; letter-spacing:.02em; text-transform:none; color:var(--text-dim); text-shadow:none; transform:skewX(6deg); transform-origin:left;}
+/* V20p Korrekturen */
+.qk-sec{justify-content:flex-start !important;}
+.seg button{white-space:nowrap; font-size:.9rem; padding:0 .1rem;}
+.qk-grid3 .qk-p{min-height:40px; font-size:1rem;}
+.qk-t{min-height:48px;} .qk-t b{font-size:1.15rem;}
+.qk-go{min-height:44px; font-size:1.25rem;}
+body.is-start .topbar{padding-top:.9rem; padding-bottom:.3rem;}
+body.is-start .topbar h1{font-size:1.9rem !important;}
+body.is-start .topbar h1::after{font-size:.78rem; margin-top:.2rem;}
+/* V20q */
+.qk-r > span::before{content:''; width:3px; height:1em; border-radius:2px; background:var(--accent); box-shadow:0 0 8px var(--accent);}
+.qk-r{grid-template-columns:5rem 1fr;}
+.seg button{font-size:.82rem;}
+.pl-row{min-height:54px; padding:.4rem .9rem;} .pl-list{margin-bottom:.6rem;}
+.pl-row-go{width:2.3rem; height:2.3rem;}
