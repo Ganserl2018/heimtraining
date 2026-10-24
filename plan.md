@@ -502,3 +502,6 @@ BTN-05 aus Design-Bibliothek auf START-Button (Startseite): 3 Ringe versetzt (.9
 
 ## Trainings löschen sichtbar (24.10. 23:50)
 🗑-Knopf auf jeder Trainingskarte (Aktiv + Archiv), Zwei-Tipp: 1. Tipp rot mit „?“ (3 s), 2. Tipp löscht; kein confirm()-Dialog. Wischen bleibt. Verlauf bleibt erhalten. v=20261027y. Favoriten-Funktion (V22-E) weiter wartet auf Go.
+
+## Hyperextension bereinigt (24.10. 23:58)
+Doppelte "Hyperextension" (ohne Bild) aus pool.json/names_de/neue_uebungen entfernt; "Hyperextensions With No Hyperextension Bench" (Bild mit Bank, Gerät ext) heißt jetzt "Hyperextensions mit Bank". v=20261028a.

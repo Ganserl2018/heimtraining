@@ -1,19 +1,5 @@
 [
  {
-  "name": "Hyperextension",
-  "de": "Hyperextension (Römischer Stuhl)",
-  "muscle": "lower back",
-  "gear": "hyperextension-bank",
-  "schritte": [
-   "Hüfte auf dem Polster, Fersen fixiert, Oberkörper hängt nach unten.",
-   "Rücken gerade bis Körper eine Linie bildet, nicht überstrecken.",
-   "Kontrolliert wieder absenken."
-  ],
-  "logik": "Hüftknick = Drehpunkt, Oberkörper bewegt sich, Beine fix",
-  "perspektive": "Seitenprofil",
-  "bild": "offen"
- },
- {
   "name": "Bird Dog",
   "de": "Bird Dog (Vierfüßler-Diagonale)",
   "muscle": "lower back",
