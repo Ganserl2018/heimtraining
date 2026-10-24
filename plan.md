@@ -470,3 +470,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V20al: Zurück-Knopf auf Einstellungsseite komplett entfernt. ?v=20261026d
 - V20am: Einstellungsseite nur noch Körperstelle (Planungsinhalte raus) + FERTIG zurück zur Planung; Ergebnis-Ansicht 'Dein Training'. ?v=20261026f
 - V20an: Spezielle Muskeln = additiv zum Fokus (Gruppe bleibt, Muskel kommt dazu; Generator holt sie zuerst, keine Duplikate). ?v=20261026h
+- V20ao: Planung zeigt gewählte spezielle Muskeln im Link 'Weitere Einstellungen · +Trizeps'. ?v=20261026i

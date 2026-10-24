@@ -916,7 +916,7 @@ function renderStart() {
       ${builderHtml(false)}
       <button class="qk-go" data-act="genDo">${SP}${genCfg.groups.length ? (own.length ? 'NEU BAUEN' : 'TRAINING BAUEN') : 'ÜBERRASCH MICH'}</button>
     </div>
-    <button class="qk-link" data-act="genOpen">Weitere Einstellungen ›</button>
+    <button class="qk-link" data-act="genOpen">Weitere Einstellungen${genCfg.groups.some(x => x.startsWith('m:')) ? ' · +' + genCfg.groups.filter(x => x.startsWith('m:')).map(grpLabel).join(', +') : ''} ›</button>
     </div>
   </div>`;
 }
