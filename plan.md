@@ -511,3 +511,8 @@ Trainings-Detail: Zeilen schrumpften/überlappten (Bild+Name abgeschnitten). `.t
 
 ## V22-E Favoriten Stufe 1 (25.10. 00:12)
 ★/☆ oben links auf jeder Trainingskarte (t.fav), Reiter Aktiv | ★ Favoriten | Archiv. Stufe 2 (Lieblingsübungen als eigene Liste) offen. v=20261028c.
+
+## Warteliste neu (25.10. 00:15, Alex: "merk das mal vor")
+- V5-16 Regelmäßiges Wiegen: Gewicht eintragen (Erinnerung/Rhythmus), Verlauf-Kurve, Basis für Fortschritt (V5-02).
+- V5-17 Regelmäßige Ganzkörper-Fotos: Fortschrittsmessung am Bild (Foto-Rhythmus, Vorher/Nachher-Vergleich; Speicherung lokal, Datenschutz klären).
+Erst nach den laufenden Features; Alex gibt das Go.
