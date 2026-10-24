@@ -1904,3 +1904,13 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .tx-fav{flex:none; width:40px; height:40px; border-radius:50%; border:1px solid var(--border); background:none; color:var(--text); font-size:1.3rem; padding:0; display:grid; place-items:center;}
 .tx-fav.on{color:#ffd23c; border-color:#ffd23c; box-shadow:0 0 10px rgba(255,210,60,.5);}
 .tx-fav:active{transform:scale(.9);}
+
+/* Lieblingsübungen */
+.dt-nr{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+.dt-nr .dt-name{flex:1; min-width:0;}
+.dt-fav{flex:none; width:44px; height:44px; border-radius:50%; border:1px solid var(--border); background:none; color:var(--text); font-size:1.4rem; padding:0; display:grid; place-items:center; transition:transform .16s var(--ease-out);}
+.dt-fav.on{color:#ffd23c; border-color:#ffd23c; box-shadow:0 0 10px rgba(255,210,60,.5);}
+.dt-fav:active{transform:scale(.88);}
+.xr-star{position:absolute; right:12px; bottom:14px; font-style:normal; color:#ffd23c; font-size:1.05rem; text-shadow:0 0 8px rgba(255,210,60,.7), 0 1px 3px rgba(0,0,0,.8); pointer-events:none;}
+.xr-tile{position:relative;}
+.wv-fav .wv-name{color:#ffd23c;}

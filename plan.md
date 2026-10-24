@@ -516,3 +516,6 @@ Trainings-Detail: Zeilen schrumpften/überlappten (Bild+Name abgeschnitten). `.t
 - V5-16 Regelmäßiges Wiegen: Gewicht eintragen (Erinnerung/Rhythmus), Verlauf-Kurve, Basis für Fortschritt (V5-02).
 - V5-17 Regelmäßige Ganzkörper-Fotos: Fortschrittsmessung am Bild (Foto-Rhythmus, Vorher/Nachher-Vergleich; Speicherung lokal, Datenschutz klären).
 Erst nach den laufenden Features; Alex gibt das Go.
+
+## Favoriten Stufe 2 – Lieblingsübungen (25.10. 00:40)
+★ im Übungs-Detail (neben Name), ★ auf Kacheln, Kachel "★ Favoriten" auf Übungen-Startseite (Filter filterFav). Gleiche Liste (heimtraining.favs) wie Wisch-Favorit. v=20261028h. Noch offen: Favoriten im Generator bevorzugen (Warteliste).
