@@ -900,9 +900,6 @@ function builderHtml(full) {
       <div class="qk-sec">Körperstelle</div><div class="qk-spots">${SPOTS.map(m => qp('genGrp', 'm:' + m, MUSCLE_DE[m] || m, genCfg.groups.includes('m:' + m))).join('')}</div>`;
   h += `
       <div class="qk-tri">${[['Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0], ['Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets], ['Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps]].map(([l, a, vs, cur]) => `<button class="qk-t" data-act="${a}" data-v="${vs[(vs.indexOf(cur) + 1) % vs.length]}"><span>${l}</span><b>${cur || 'Auto'}</b></button>`).join('')}</div>`;
-  if (full) { const lv = genLevel(); h += `
-      <div class="qk-sec">Level</div><div class="seg" style="--n:${LEVELS.length}">${LEVELS.map(([k, l], x) => `<button class="${lv === x ? 'on' : ''}" data-act="genLv" data-v="${x}">${l}</button>`).join('')}</div>
-      <div class="qk-sec">Ziel</div><div class="seg" style="--n:${GOALS.length}">${GOALS.map(([k, l]) => `<button class="${genCfg.goal === k ? 'on' : ''}" data-act="genGoal" data-v="${k}">${l}</button>`).join('')}</div>`; }
   return h;
 }
 function renderStart() {
