@@ -1678,3 +1678,5 @@ body.is-start .topbar h1::after{color:color-mix(in srgb,var(--text) 75%,transpar
 .qk-go{margin-top:.5rem;}
 body.is-start .topbar{padding-top:.6rem;}
 .qk-link{min-height:40px; margin-top:0;}
+/* V20t Geräte gewählt = Lime-Fläche (wie Fokus, ohne Glow) */
+.qk-gear .qk-p.on{background:var(--accent); color:#0b1204; border-color:var(--accent); box-shadow:none;}
