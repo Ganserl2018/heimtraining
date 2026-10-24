@@ -420,7 +420,8 @@ function renderResults(query) {
     return;
   }
   const shown = hits.slice(0, browseLimit);
-  document.getElementById('results').innerHTML = shown.map(i => xrTile(i, act)).join('') +
+  const favT = filterFav && view === 'allex' ? weekplan.filter(w => w.fav && !w.draft).map(w => `<button class="xr-ftr" data-act="wOpen2" data-id="${w.id}"><b>★ ${esc(w.name)}</b><em>Training · ${w.exercises.length} Übungen</em></button>`).join('') : '';
+  document.getElementById('results').innerHTML = favT + shown.map(i => xrTile(i, act)).join('') +
     (hits.length === 0 ? '<p class="placeholder xr-empty">Keine Treffer – Filter/Suche anpassen.</p>' : '');
   const info = document.getElementById('pager-info');
   if (info) info.textContent = hits.length ? `${hits.length} Übungen` : '';
