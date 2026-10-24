@@ -1272,7 +1272,18 @@ function txRow(t, ex, i) {
     <span class="ts-mv"><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="-1" aria-label="Nach oben"${i === 0 ? ' disabled' : ''}>▲</button><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="1" aria-label="Nach unten"${last ? ' disabled' : ''}>▼</button></span>
     <button class="tx-rm" data-act="wRemoveEx" data-id="${t.id}" data-i="${i}" aria-label="Übung entfernen">✕</button>
     <div class="tx-ed">${step}${vals}${sel}</div>${chips}${pills}
+    ${open ? `<button class="tx-to" data-act="txTo" data-id="${t.id}" data-i="${i}">↪ In anderes Training</button>` : ''}
   </div></div>`;
+}
+// Übung in anderes Training kopieren/verschieben
+let txTo = null;
+function txToSheet(t) {
+  const ex = t.exercises[txTo.i]; if (!ex) return '';
+  const others = weekplan.filter(w => w.id !== t.id && !w.draft);
+  return `<button class="to-bg" data-act="txToClose" aria-label="Schließen"></button><div class="to-sheet"><b>${esc(dn(ex.name))}</b>
+    <div class="tr-seg"><button class="${txTo.mv ? '' : 'on'}" data-act="txToMode" data-v="0">Kopieren</button><button class="${txTo.mv ? 'on' : ''}" data-act="txToMode" data-v="1">Verschieben</button></div>
+    <div class="to-list">${others.map(w => `<button data-act="txToPick" data-tid="${w.id}"><span>${esc(w.name)}</span><em>${w.exercises.length} Üb.${w.exercises.some(x => x.name === ex.name) ? ' · schon drin' : ''}</em></button>`).join('')}<button class="to-new" data-act="txToPick" data-tid="new">+ Neues Training</button></div>
+    <button class="to-x" data-act="txToClose">Abbrechen</button></div>`;
 }
 function renderWTrain() {
   const t = trainingById(wId);
@@ -1313,6 +1324,7 @@ function renderWTrain() {
     ${hintHtml ? `<div class="tx-hint">${hintHtml}</div>` : ''}
     <section class="tx-list"><div class="tx-rows">${shareHtml(t, 6) ? `<div class="tx-share">${shareHtml(t, 6)}</div>` : ''}${t.exercises.map((ex, i) => txRow(t, ex, i)).join('')}<button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button></div></section>
     ${ctl}
+    ${txTo && txTo.id === t.id ? txToSheet(t) : ''}
   </div>`;
   const rows = content.querySelector('.tx-rows'); if (rows) rows.scrollTop = prevScroll;
   if (renameId === t.id) document.getElementById('rename-input')?.focus();
@@ -1824,6 +1836,18 @@ content.addEventListener('click', e => {
     }
     case 'wMoveEx': { const t = trainingById(btn.dataset.id), i = Number(btn.dataset.i), j = i + Number(btn.dataset.d);
       if (j < 0 || j >= t.exercises.length) return; [t.exercises[i], t.exercises[j]] = [t.exercises[j], t.exercises[i]]; saveWeekplan(); break; }
+    case 'txTo': txTo = { id: btn.dataset.id, i: Number(btn.dataset.i), mv: false }; break;
+    case 'txToClose': txTo = null; break;
+    case 'txToMode': if (txTo) txTo.mv = btn.dataset.v === '1'; break;
+    case 'txToPick': {
+      const src = txTo && trainingById(txTo.id), ex = src && src.exercises[txTo.i]; if (!ex) { txTo = null; break; }
+      let tg;
+      if (btn.dataset.tid === 'new') { tg = { id: 'w' + Date.now(), name: loserName(), exercises: [], weekdays: [], since: {}, time: '' }; weekplan.push(tg); }
+      else tg = trainingById(btn.dataset.tid);
+      if (tg && !tg.exercises.some(x => x.name === ex.name)) { tg.exercises.push(JSON.parse(JSON.stringify(ex))); if (txTo.mv) src.exercises.splice(txTo.i, 1); saveWeekplan(); txTo = null; }
+      else if (tg) return;
+      break;
+    }
     case 'wRemoveEx': {
       const t = trainingById(btn.dataset.id);
       if (!confirm(`„${dn(t.exercises[Number(btn.dataset.i)].name)}“ entfernen?`)) return;
