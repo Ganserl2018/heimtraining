@@ -476,3 +476,4 @@ Gespeichert: ~/Downloads (Alex' Mac) als <gif-slug>-m|w.jpeg (765x1024), 65+ Dat
 - V20ar: Gerät ab → Gruppen weg + Geräte ohne Bezug zum verbleibenden Fokus ebenfalls aus (kein 'aktiv ohne Fokus' mehr). ?v=20261026m
 - V20as: Logik nach Alex-Reihenfolge Start → Zeit → Geräte → Muskeln → Rest, nur EINE Richtung: Geräte bestimmen, welche Muskeln wählbar sind (ohne Gerät alle gesperrt/gedimmt); Muskel-Klick ändert keine Geräte; Gerät ab nimmt nur nicht mehr abgedeckte Muskeln raus; Umfang gedimmt bis Muskel gewählt; Überrasch mich nimmt Muskeln nur aus dem, was die Geräte abdecken. ?v=20261026n
 - V21 Profil: Ziel als Fortschrittsbalken (x/Ziel), Gruppen 'Deine Werte'/'Level', 4er-Werte-Reihe, Sprache DE/EN, Reset-Links klein; ?v=20261027a
+- V21b Planung: Höhen in px, ~55px kürzer (Weitere Einstellungen schnitt ab); ?v=20261027b
