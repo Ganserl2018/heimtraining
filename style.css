@@ -1978,3 +1978,34 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .home-btn.hold .home-db{stroke:#0b1204;} .home-btn.hold .home-core b{color:#0b1204;}
 .home-btn.done .home-core{background:#8cff1a; box-shadow:0 0 130px 40px rgba(200,255,60,.95), 0 0 0 4px #fff;}
 .home-btn.done .home-db{stroke:#0b1204;} .home-btn.done .home-core b{color:#0b1204;}
+
+/* Planung als Sprung-Wizard */
+.pl{display:flex; flex-direction:column; gap:1rem; padding:.2rem 0 1rem;}
+.pl-rail{display:flex; align-items:center; gap:.7rem; min-height:34px;}
+.pl-dots{display:flex; gap:.4rem;} .pl-dots i{width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.18); transition:background .3s, transform .3s var(--ease-out,ease-out), box-shadow .3s;}
+.pl-dots i.done{background:var(--accent);} .pl-dots i.cur{background:var(--accent); transform:scale(1.5); box-shadow:0 0 12px var(--accent);}
+.pl-chips{display:flex; gap:.4rem; flex-wrap:wrap; margin-left:auto;}
+.pl-chip{padding:.3rem .7rem; border-radius:999px; border:1px solid var(--accent); background:rgba(184,255,60,.12); color:var(--accent); font-weight:700; font-size:.78rem; animation:plChip .5s cubic-bezier(.2,1.5,.4,1) backwards;}
+@keyframes plChip{0%{transform:translateY(120px) scale(.4); opacity:0;} 100%{transform:none; opacity:1;}}
+.pl-q{font-family:Anton,Impact,sans-serif; font-weight:400; font-size:2rem; letter-spacing:.04em; margin:.6rem 0 .2rem; color:#fff;}
+.pl-sub{font-size:.8rem; color:var(--text-dim); min-height:1.1rem;}
+.pl-step{animation:plIn .55s cubic-bezier(.2,1.25,.4,1) backwards;}
+.pl-step.out{animation:plOut .2s ease-in forwards;}
+@keyframes plIn{0%{transform:translateY(60px) scale(.94); opacity:0;} 100%{transform:none; opacity:1;}}
+@keyframes plOut{0%{transform:none; opacity:1;} 100%{transform:translateY(-30px) scale(.96); opacity:0;}}
+.pl-big{display:grid; grid-template-columns:1fr 1fr; gap:.8rem; margin-top:.8rem;}
+.pl-grid{display:grid; grid-template-columns:1fr 1fr; gap:.6rem; margin-top:.8rem;} .pl-grid.g3{grid-template-columns:repeat(3,1fr);}
+.pl-opt{position:relative; border-radius:18px; border:1.5px solid rgba(255,255,255,.14); background:rgba(255,255,255,.04); color:var(--text); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.1rem; min-height:92px; transition:transform .16s ease-out, background .2s, border-color .2s, box-shadow .2s; animation:plOpt .5s cubic-bezier(.2,1.4,.4,1) backwards; animation-delay:calc(var(--i) * 55ms + 120ms);}
+.pl-opt b{font-family:Anton,Impact,sans-serif; font-weight:400; font-size:2.6rem; line-height:1;} .pl-opt em{font-style:normal; font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--text-dim);}
+.pl-opt.sm{min-height:62px; font-weight:700; font-size:.95rem; border-radius:14px;} .pl-opt small{font-size:.66rem; font-weight:500; color:var(--text-dim); text-align:center;}
+.pl-opt:active{transform:scale(.95);}
+.pl-opt.on{background:rgba(184,255,60,.16); border-color:var(--accent); color:#fff; box-shadow:0 0 22px rgba(184,255,60,.35), inset 0 0 18px rgba(184,255,60,.12);}
+.pl-opt.on small{color:var(--accent);} .pl-opt.none{opacity:.35;}
+@keyframes plOpt{0%{transform:translateY(40px) scale(.8); opacity:0;} 100%{transform:none; opacity:1;}}
+.pl-big.chosen .pl-opt:not(.picked){opacity:.2; transform:scale(.92); transition:opacity .25s, transform .25s;}
+.pl-opt.picked{background:var(--accent); border-color:#fff; color:#0b1204; box-shadow:0 0 40px 6px rgba(184,255,60,.8); transform:scale(1.07); animation:plPick .4s cubic-bezier(.2,1.6,.4,1);}
+.pl-opt.picked em{color:#0b1204;}
+@keyframes plPick{0%{transform:scale(.95);} 100%{transform:scale(1.07);}}
+.pl-foot{margin-top:.4rem;}
+@media (prefers-reduced-motion:reduce){.pl-step,.pl-opt,.pl-chip{animation:none;} .pl-step.out{animation:none; opacity:0;}}
+.pl-chip{white-space:nowrap;} .pl-chips{flex-wrap:nowrap; min-width:0; justify-content:flex-end;}

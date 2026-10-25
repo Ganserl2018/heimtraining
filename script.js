@@ -1016,7 +1016,44 @@ function builderHtml(full) {
       <div class="qk-rows${genCfg.groups.length ? '' : ' dim'}">${segRow('Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0, v => v || 'Auto')}${segRow('Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets, v => v || 'Auto')}${segRow('Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps, v => v || 'Auto')}</div>`;
   return h;
 }
+// ---- Planung als Sprung-Wizard: Zeit -> Geräte -> Fokus, je Schritt eine Frage ----
+let plStep = 0, plClassic = false, plSeen = false;
+const PL_N = 3;
+function plRail() {
+  const gl = GEAR.filter(([k]) => genCfg.gear.includes(k)).map(([, l]) => l === 'Kurzhanteln' ? 'Hanteln' : l === 'Hantelbank' ? 'Bank' : l);
+  const ans = [plStep > 0 ? genCfg.dur + ' Min' : '', plStep > 1 ? (gl.length ? (gl.length > 2 ? gl.slice(0, 2).join(' + ') + ' +' + (gl.length - 2) : gl.join(' + ')) : 'alle Geräte') : ''];
+  return `<div class="pl-rail"><div class="pl-dots">${Array.from({ length: PL_N }, (_, i) => `<i class="${i < plStep ? 'done' : i === plStep ? 'cur' : ''}"></i>`).join('')}</div>
+    <div class="pl-chips">${ans.map((a, i) => a ? `<button class="pl-chip" data-act="plTo" data-v="${i}">${esc(a)}</button>` : '').join('')}</div></div>`;
+}
+function plJump(n) {
+  const el = content.querySelector('.pl-step');
+  const go = () => { plStep = Math.max(0, Math.min(PL_N - 1, n)); render(); };
+  if (!el) return go();
+  el.classList.add('out'); setTimeout(go, 200);
+}
 function renderStart() {
+  if (plClassic) return renderStartClassic();
+  if (window._lv !== 'start' || !plSeen) { plStep = 0; }
+  plSeen = true;
+  const SP = '<svg class="qk-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.1 6.4 6.4 2.1-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-2.1z"/></svg>';
+  let body = '', foot = '';
+  if (plStep === 0) {
+    body = `<h2 class="pl-q">Wie lange?</h2><div class="pl-big">${[20, 30, 45, 60].map((v, i) => `<button class="pl-opt${genCfg.dur === v ? ' on' : ''}" style="--i:${i}" data-act="plDur" data-v="${v}"><b>${v}</b><em>Min</em></button>`).join('')}</div>`;
+  } else if (plStep === 1) {
+    const gearBtns = GEAR.map(([k, l0], i) => { const l = l0 === 'Kurzhanteln' ? 'Hanteln' : l0 === 'Hantelbank' ? 'Bank' : l0; return `<button class="pl-opt sm${genCfg.gear.includes(k) ? ' on' : ''}" style="--i:${i}" data-act="genGear" data-v="${k}">${l}</button>`; }).join('');
+    body = `<h2 class="pl-q">Was baust du auf?</h2><div class="pl-grid">${gearBtns}</div><div class="pl-sub">${genCfg.gear.length ? '' : 'Nichts gewählt = alle Geräte'}</div>`;
+    foot = `<button class="qk-go" data-act="plNext">WEITER ›</button>`;
+  } else {
+    const np = nextPlan(), gcn = groupCounts();
+    if (!genCfg.groups.some(m => !m.startsWith('m:')) && !genCfg.plAuto) { genCfg.groups = np.groups.filter(m => !genCfg.gear.length || gcn[m]); genCfg.plAuto = true; }
+    const ago = g => { const t = np.note.match(new RegExp(g + ' ([^,.]+)')); return t ? t[1] : ''; };
+    body = `<h2 class="pl-q">Was ist dran?</h2><div class="pl-sub">Vorgewählt: am längsten nicht trainiert</div><div class="pl-grid g3">${MUSCLE_GROUP_LIST.map((m, i) => { const none = genCfg.gear.length && !gcn[m]; return `<button class="pl-opt sm${grpOn(m) ? ' on' : ''}${none && !grpOn(m) ? ' none' : ''}" style="--i:${i}" data-act="genGrp" data-v="${m}">${m}<small>${esc(ago(m))}</small></button>`; }).join('')}</div>${prevHtml()}`;
+    foot = `<button class="qk-go wander" data-act="genDo">${SP}TRAINING BAUEN</button>`;
+  }
+  content.innerHTML = `<div class="sv"><div class="pl">${plRail()}<div class="pl-step" data-s="${plStep}">${body}</div><div class="pl-foot">${foot}</div>
+    <button class="qk-link" data-act="plClassic">Alle Optionen auf einer Seite ›</button></div></div>`;
+}
+function renderStartClassic() {
   // Planung: eine Frage – "Was trainiere ich jetzt?". Gespeicherte Trainings = 1 Tipp bis ins Workout, darunter der Schnell-Bauer.
   const qp = (act, v, l, on, none) => `<button class="qk-p${on ? ' on' : ''}${none && !on ? ' none' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
   const own = weekplan.filter(w => w.exercises.length && !w.draft);
@@ -1801,7 +1838,7 @@ content.addEventListener('click', e => {
       if (btn.dataset.day) { day = btn.dataset.day; view = 'day'; }
       else if (btn.dataset.view) {
         // Planung öffnen = frischer Start: nichts gewählt außer Zeit (Geräte -> passende Gruppen entstehen durch Antippen)
-        if (btn.dataset.view === 'start' && view !== 'start') { genCfg.gear = []; genCfg.groups = []; try { localStorage.setItem(GEARKEY, '[]'); } catch (e2) {} }
+        if (btn.dataset.view === 'start' && view !== 'start') { plStep = 0; genCfg.plAuto = false; plClassic = false; genCfg.gear = []; genCfg.groups = []; try { localStorage.setItem(GEARKEY, '[]'); } catch (e2) {} }
         view = btn.dataset.view;
       }
       picker = null;
@@ -1960,6 +1997,11 @@ content.addEventListener('click', e => {
     case 'genLv': genCfg.lv = Number(btn.dataset.v); genRes = null; break;
     case 'genGoal': genCfg.goal = btn.dataset.v; genRes = null; break;
     case 'genCnt': genCfg.count = Number(btn.dataset.v) || null; genRes = null; break;
+    case 'plDur': { genCfg.dur = Number(btn.dataset.v); genRes = null; btn.classList.add('picked'); btn.parentNode.classList.add('chosen'); try { navigator.vibrate && navigator.vibrate(15); } catch (x) {}
+      setTimeout(() => plJump(1), 420); return; }
+    case 'plNext': plJump(plStep + 1); return;
+    case 'plTo': plJump(Number(btn.dataset.v)); return;
+    case 'plClassic': plClassic = !plClassic; break;
     case 'genDur': genCfg.dur = Number(btn.dataset.v); genRes = null; break;
     case 'genGrp': { // Reihenfolge Zeit -> Geräte -> Muskeln: Muskeln nur wählbar, wenn ein gewähltes Gerät Übungen dafür hat
       const m = btn.dataset.v, G = genCfg.groups;
