@@ -1023,12 +1023,16 @@ function builderHtml(full) {
 }
 // ---- Planung als Sprung-Wizard: Zeit -> Geräte -> Fokus, je Schritt eine Frage ----
 let plStep = 0, plClassic = false, plSeen = false, plSpots = false;
-const PL_N = 3;
+const PL_N = 3, PL_TILES = ['Brust', 'Rücken', 'Schultern', 'm:biceps', 'm:triceps', 'Bauch', 'Beine'];
 function plRail() {
   const gl = GEAR.filter(([k]) => genCfg.gear.includes(k)).map(([, l]) => l === 'Kurzhanteln' ? 'Hanteln' : l === 'Hantelbank' ? 'Bank' : l);
   const ans = [plStep > 0 ? genCfg.dur + ' Min' : '', plStep > 1 ? (gl.length ? (gl.length > 2 ? gl.slice(0, 2).join(' + ') + ' +' + (gl.length - 2) : gl.join(' + ')) : 'alle Geräte') : ''];
   return `<div class="pl-rail"><div class="pl-dots">${Array.from({ length: PL_N }, (_, i) => `<i class="${i < plStep ? 'done' : i === plStep ? 'cur' : ''}"></i>`).join('')}</div>
     <div class="pl-chips">${ans.map((a, i) => a ? `<button class="pl-chip" data-act="plTo" data-v="${i}">${esc(a)}</button>` : '').join('')}</div></div>`;
+}
+function armPick() { // Bizeps/Trizeps im Wechsel: der länger nicht trainierte kommt dran
+  const last = {}; loadHistory().forEach(r => (r.exercises || []).forEach(e => { if ((e.setsDone > 0) && !e.warm && (e.muscle === 'biceps' || e.muscle === 'triceps') && (!last[e.muscle] || r.date > last[e.muscle])) last[e.muscle] = r.date; }));
+  return (last.biceps || '') <= (last.triceps || '') ? 'm:biceps' : 'm:triceps';
 }
 function plJump(n) {
   const el = content.querySelector('.pl-step');
@@ -1050,11 +1054,11 @@ function renderStart() {
     foot = `<button class="qk-go" data-act="plNext">WEITER ›</button>`;
   } else {
     const np = nextPlan(), gcn = groupCounts();
-    if (!genCfg.groups.some(m => !m.startsWith('m:')) && !genCfg.plAuto) { genCfg.groups = np.groups.filter(m => !genCfg.gear.length || gcn[m]); genCfg.plAuto = true; }
+    if (!genCfg.groups.some(m => !m.startsWith('m:')) && !genCfg.plAuto) { genCfg.groups = np.groups.filter(m => m !== 'Arme' && (!genCfg.gear.length || gcn[m])); if (np.groups.includes('Arme')) genCfg.groups.push(armPick()); genCfg.plAuto = true; }
     const ago = g => { const t = np.note.match(new RegExp(g + ' ([^,.]+)')); return t ? t[1] : ''; };
-    body = `<h2 class="pl-q">Was ist dran?</h2><div class="pl-sub">Vorgewählt: am längsten nicht trainiert</div><div class="pl-grid g3">${MUSCLE_GROUP_LIST.map((m, i) => { const none = genCfg.gear.length && !gcn[m]; return `<button class="pl-opt sm${grpOn(m) ? ' on' : ''}${none && !grpOn(m) ? ' none' : ''}" style="--i:${i}" data-act="genGrp" data-v="${m}">${m}<small>${esc(ago(m))}</small></button>`; }).join('')}</div>
+    body = `<h2 class="pl-q">Was ist dran?</h2><div class="pl-sub">Vorgewählt: am längsten nicht trainiert</div><div class="pl-grid g3">${PL_TILES.map((m, i) => { const sp = m.startsWith('m:'), lb = sp ? (MUSCLE_DE[m.slice(2)] || m) : m, on = grpOn(m) || genCfg.groups.includes(m), blocked = (m === 'm:biceps' && genCfg.groups.includes('m:triceps')) || (m === 'm:triceps' && genCfg.groups.includes('m:biceps')), none = !sp && genCfg.gear.length && !gcn[m]; return `<button class="pl-opt sm${on ? ' on' : ''}${(none || blocked) && !on ? ' none' : ''}" style="--i:${i}" data-act="genGrp" data-v="${m}">${lb}<small>${sp ? (blocked ? 'nicht mit ' + (m === 'm:biceps' ? 'Trizeps' : 'Bizeps') : '') : esc(ago(m))}</small></button>`; }).join('')}</div>
       <button class="pl-more${plSpots || genCfg.groups.some(m => m.startsWith('m:')) ? ' open' : ''}" data-act="plSpots">${genCfg.groups.some(m => m.startsWith('m:')) ? '✓ Spezielle Muskeln' : '+ Spezielle Muskeln'}<small>${genCfg.groups.filter(m => m.startsWith('m:')).length ? genCfg.groups.filter(m => m.startsWith('m:')).map(m => MUSCLE_DE[m.slice(2)] || m.slice(2)).join(', ') : 'z. B. Nacken, Waden, Unterer Rücken'}</small></button>
-      ${plSpots || genCfg.groups.some(m => m.startsWith('m:')) ? `<div class="pl-grid g3 spots">${SPOTS.map((m, i) => `<button class="pl-opt sm${genCfg.groups.includes('m:' + m) ? ' on' : ''}" style="--i:${i}" data-act="genGrp" data-v="m:${m}">${MUSCLE_DE[m] || m}</button>`).join('')}</div>` : ''}${prevHtml()}`;
+      ${plSpots || genCfg.groups.some(m => m.startsWith('m:')) ? `<div class="pl-grid g3 spots">${SPOTS.filter(m => m !== 'biceps' && m !== 'triceps').map((m, i) => `<button class="pl-opt sm${genCfg.groups.includes('m:' + m) ? ' on' : ''}" style="--i:${i}" data-act="genGrp" data-v="m:${m}">${MUSCLE_DE[m] || m}</button>`).join('')}</div>` : ''}${prevHtml()}`;
     foot = `<button class="qk-go wander" data-act="genDo">${SP}TRAINING BAUEN</button>`;
   }
   content.innerHTML = `<div class="sv"><div class="pl">${plRail()}<div class="pl-step" data-s="${plStep}">${body}</div><div class="pl-foot">${foot}</div>
@@ -2017,6 +2021,7 @@ content.addEventListener('click', e => {
     case 'genDur': genCfg.dur = Number(btn.dataset.v); genRes = null; break;
     case 'genGrp': { // Reihenfolge Zeit -> Geräte -> Muskeln: Muskeln nur wählbar, wenn ein gewähltes Gerät Übungen dafür hat
       const m = btn.dataset.v, G = genCfg.groups;
+      { const opp = m === 'm:biceps' ? 'm:triceps' : m === 'm:triceps' ? 'm:biceps' : null; if (opp && G.includes(opp)) break; } // Bizeps und Trizeps nie im selben Training
       if (!m.startsWith('m:') && view === 'start') { const gcn = groupCounts(); if (!genCfg.gear.length || !gcn[m]) break; }
       const i = G.indexOf(m); if (i >= 0) G.splice(i, 1); else G.push(m);
       genCfg.autoAdded = []; autoGear(); genRes = null; break; }

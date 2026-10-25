@@ -533,3 +533,4 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - Erledigt: START = Halten (Ring+Füllung), Planung als Sprung-Wizard (Zeit → Geräte → Fokus, Auto-Vorschlag nach längster Pause), Ergebnisseite mit Hero-Kacheln + Karten pro Muskelfarbe.
 - Warteliste: Ergebnisseite im Detail (Bild fehlt bei manchen Übungen, Titel-Umbruch); Chips fliegen in den Rail; Vibration Geräte; Sätze/Wdh/Übungsanzahl im neuen Wizard ("Mehr").
 - Entschieden (25.10.): kein KI-Chat, es bleibt beim Wizard.
+- Regel (25.10.): Bizeps und Trizeps nie im selben Training (Wizard + Klassik gesperrt); Auto-Vorschlag wechselt per armPick(). Quelle Push/Pull: fitnessfirst.de Split-Training. Offen: Push/Pull-Logik für Auto-Vorschlag (Trizeps zu Push, Bizeps zu Pull) – Alex entscheidet.
