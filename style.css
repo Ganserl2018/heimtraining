@@ -2183,3 +2183,11 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text; user-select:te
 .wp-tr > .ti-c .ti-leg{display:flex; flex-wrap:wrap; gap:.05rem .6rem; font-size:.66rem; line-height:1.25; color:rgba(255,255,255,.75);}
 .wp-tr > .ti-c .ti-leg span{display:inline-flex; align-items:center; gap:.3rem;}
 .wp-tr > .ti-c .ti-leg i{width:7px; height:7px; border-radius:50%; background:var(--gc,#b8ff3c);}
+
+/* Schriften heller (26.10.): gedimmte Texte überall angehoben */
+:root,body{--text:#fafaf6; --text-dim:#d6dbd5; --text-faint:#b9c0b9;}
+body.mood-good,body:not(.mood-bad){--text:#f9fcfa; --text-dim:#dce5e0; --text-faint:#bfcac4;}
+body.mood-bad{--text:#fff3f1; --text-dim:#ead2ce; --text-faint:#d9b5af;}
+.pl-sub,.xr-count,.xr-hint,.pl-opt em,.pl-opt small,.wps-row span,.ti,.ti-sub{color:var(--text-dim);}
+.tr-card > .ti-c .ti-sub,.tr-b .ti-c .ti-sub{color:rgba(255,255,255,.72);}
+.tr-card > .ti-c .ti-leg,.wp-tr > .ti-c .ti-leg{color:rgba(255,255,255,.88);}
