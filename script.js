@@ -601,7 +601,7 @@ function histGroup(ds) {
 }
 function renderHistory() {
   const h = loadHistory();
-  if (!h.length) { content.innerHTML = `<p class="placeholder">Noch kein Training abgeschlossen.</p>`; return; }
+  if (!h.length) { content.innerHTML = `<div class="em-st"><div class="em-ring"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-9M15 6h6v6"/></svg></div><h2>Noch leer</h2><p>Hier wächst dein Fortschritt: jedes Training, jeder Satz, jede Serie.</p><button class="qk-go wander" data-act="genOpen">ERSTES TRAINING BAUEN</button></div>`; return; }
   const dashBtn = '<button class="hist-dash" data-act="dash">Ziele &amp; Streak ›</button>';
   const cur = weekStart(isoDay(new Date()));
   const wk = h.filter(r => weekStart(r.date) === cur);
@@ -1500,10 +1500,11 @@ function renderTrainings() {
     return trTab === 'arch' ? c : `<div class="wp-sw tr-sw" data-sw="${t.id}"><div class="wp-sw-bg"><span class="a">📥 Archiv</span><span class="d">Löschen 🗑</span></div>${c}</div>`;
   };
   const days = new Set(); act.forEach(w => (w.weekdays || []).forEach(d => days.add(d))); const exN = act.reduce((n, w) => n + w.exercises.length, 0);
-  const hero = trTab === 'act' ? `<div class="gh tr-hero"><div class="gh-row"><div class="gh-t" style="--i:0"><b>${act.length}</b><em>Trainings</em></div><div class="gh-t" style="--i:1"><b>${days.size}<small>/7</small></b><em>Tage geplant</em></div><div class="gh-t" style="--i:2"><b>${exN}</b><em>Übungen</em></div></div></div>` : '';
+  const heroFav = trTab === 'fav' ? `<div class="gh tr-hero"><div class="gh-row" style="grid-template-columns:repeat(2,1fr)"><div class="gh-t" style="--i:0"><b>${favEx.length}</b><em>Lieblingsübungen</em></div><div class="gh-t" style="--i:1"><b>${favs.length}</b><em>Lieblingstrainings</em></div></div></div>` : '';
+  const hero = heroFav || (trTab === 'act' ? `<div class="gh tr-hero"><div class="gh-row"><div class="gh-t" style="--i:0"><b>${act.length}</b><em>Trainings</em></div><div class="gh-t" style="--i:1"><b>${days.size}<small>/7</small></b><em>Tage geplant</em></div><div class="gh-t" style="--i:2"><b>${exN}</b><em>Übungen</em></div></div></div>` : '');
   content.innerHTML = `<div class="tr">${hero}
     <div class="tr-seg"><button class="${trTab === 'act' ? 'on' : ''}" data-act="trTab" data-v="act">Aktiv <em>${act.length}</em></button><button class="${trTab === 'fav' ? 'on' : ''}" data-act="trTab" data-v="fav">★ Favoriten <em>${favs.length + favEx.length}</em></button><button class="${trTab === 'arch' ? 'on' : ''}" data-act="trTab" data-v="arch">Archiv <em>${arch.length}</em></button></div>
-    <div class="tr-list">${trTab === 'fav' && favEx.length ? `<div class="tr-fx">${favEx.map(e => `<button class="tr-fxr" data-act="exInfo" data-name="${esc(e.name)}"><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><span><b>★ ${esc(dn(e.name))}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)}</em></span></button>`).join('')}</div>` : ''}${list.length ? list.map(card).join('') : `<p class="tr-empty">${trTab === 'arch' ? 'Archiv ist leer.' : trTab === 'fav' ? (favEx.length ? '' : 'Noch keine Favoriten. Tippe ☆ bei einer Übung oder einem Training.') : 'Noch keine Trainings.'}</p>`}</div>
+    <div class="tr-list">${trTab === 'fav' && favEx.length ? `<div class="tr-fx">${favEx.map(e => `<button class="tr-fxr" data-g="${esc(MUSCLE_GROUPS[e.muscle] || '')}" style="--i:${favEx.indexOf(e)}" data-act="exInfo" data-name="${esc(e.name)}"><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><span><b>${esc(dn(e.name))}</b><em><i class="gx-t g" data-g="${esc(MUSCLE_GROUPS[e.muscle] || '')}">${esc(MUSCLE_DE[e.muscle] || e.muscle)}</i></em></span><u class="tr-star">★</u></button>`).join('')}</div>` : ''}${list.length ? list.map(card).join('') : `<p class="tr-empty">${trTab === 'arch' ? 'Archiv ist leer.' : trTab === 'fav' ? (favEx.length ? '' : 'Noch keine Favoriten. Tippe ☆ bei einer Übung oder einem Training.') : 'Noch keine Trainings.'}</p>`}</div>
     <div class="tr-act"><button class="tr-new" data-act="wNewTraining">+ Neu</button><button class="tr-gen" data-act="genOpen">✦ JETZT TRAINIEREN</button></div>
   </div>`;
 }
