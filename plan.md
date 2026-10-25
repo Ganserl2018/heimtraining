@@ -532,3 +532,4 @@ Erst nach den laufenden Features; Alex gibt das Go.
 ## Planung/Ergebnis-Wizard (25.10.)
 - Erledigt: START = Halten (Ring+Füllung), Planung als Sprung-Wizard (Zeit → Geräte → Fokus, Auto-Vorschlag nach längster Pause), Ergebnisseite mit Hero-Kacheln + Karten pro Muskelfarbe.
 - Warteliste: Ergebnisseite im Detail (Bild fehlt bei manchen Übungen, Titel-Umbruch); Chips fliegen in den Rail; Vibration Geräte; Sätze/Wdh/Übungsanzahl im neuen Wizard ("Mehr").
+- Warteliste (25.10.): KI-Chat im Planungs-Wizard – Freitext wie "heute Arme, Oberarme und Schultern, sonst nichts" setzt Zeit/Geräte/Muskeln (genCfg) automatisch. Braucht Worker-Endpoint (worker/) + Claude-API-Key; Fallback ohne KI: Stichwort-Parser.
