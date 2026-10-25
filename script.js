@@ -1478,7 +1478,7 @@ function renderWTrain() {
     : step === 5 && hasEx ? hint('go', 5, 'Fertig eingerichtet! Tippe auf „Training starten“, wenn du loslegen willst. Alles lässt sich jederzeit ändern.') : '';
   const head = renameId === t.id
     ? `<div class="tx-head"><input id="rename-input" placeholder="Name des Trainings…" value="${esc(t.name)}"><div class="tx-hbtns"><button data-act="wRenameSave" data-id="${t.id}">Speichern</button><button data-act="wRenameCancel" data-id="${t.id}">Abbrechen</button></div></div>`
-    : `<div class="tx-head"><h2 class="nm-edit" data-act="wRename" data-id="${t.id}"><span class="nm-t">${esc(t.name)}</span><i class="nm-pen" aria-hidden="true">✎</i></h2><button class="tx-fav${t.fav ? ' on' : ''}" data-act="trFav" data-id="${t.id}" aria-label="Favorit">${t.fav ? '★' : '☆'}</button></div>`;
+    : `<div class="tx-head"><button class="tx-back" data-act="wBack">‹ Zurück</button><h2 class="nm-edit" data-act="wRename" data-id="${t.id}"><span class="nm-t">${esc(t.name)}</span><i class="nm-pen" aria-hidden="true">✎</i></h2><button class="tx-fav${t.fav ? ' on' : ''}" data-act="trFav" data-id="${t.id}" aria-label="Favorit">${t.fav ? '★' : '☆'}</button></div>`;
   const dayLbl = hasDays ? WD_KEYS.filter(k => t.weekdays.includes(k)).map(k => WD_LABELS[k]).join(' ') : 'Tage wählen';
   const lvNow = t.level != null ? LEVELS[t.level][1] : 'Level';
   const ctl = hasEx ? `<aside class="tx-ctl${ctlOpen ? ' open' : ''}">
@@ -1997,6 +1997,7 @@ content.addEventListener('click', e => {
       weekplan.push(t); saveWeekplan();
       wId = t.id; view = 'wtrain'; picker = null; break;
     }
+    case 'wBack': { const d = trainingById(btn.dataset.id || wId); if (d && d.draft) weekplan = weekplan.filter(x => x !== d); view = wFrom === 'trainings' ? 'trainings' : 'weeklist'; wFrom = null; picker = null; break; }
     case 'wpDay': wpSheet = { wd: btn.dataset.wd, date: btn.dataset.date }; break;
     case 'wpClose': if (e.target.closest('.wps') && !btn.matches('.ov-btn,.wps-x')) return; wpSheet = null; break;
     case 'wpAssign': { const t = trainingById(btn.dataset.id), wd = wpSheet && wpSheet.wd; if (t && wd) { if (!t.weekdays.includes(wd)) t.weekdays.push(wd); t.since = t.since || {}; t.since[wd] = wpSheet.date >= today() ? today() : wpSheet.date; saveWeekplan(); } wpSheet = null; break; }
