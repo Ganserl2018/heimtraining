@@ -2096,3 +2096,12 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .pl-opt.sm{min-height:56px;} .pl-grid.spots .pl-opt.sm{min-height:46px;}
 
 .pl-sub.warn{color:#ffae5c; font-weight:700; animation:plChip .4s cubic-bezier(.2,1.5,.4,1);}
+
+/* Übungen: Wumms-Look */
+.xr-search{border-radius:22px; box-shadow:0 6px 18px rgba(0,0,0,.35);}
+.xr-search:focus-within{box-shadow:0 0 0 1.5px var(--accent), 0 0 22px rgba(184,255,60,.3);}
+.xr-landing .wv-tile[data-g]{border:0; box-shadow:inset 0 -4px 0 var(--gc), 0 6px 18px rgba(0,0,0,.35);}
+.xr-landing .wv-tile[data-g]::after{background:linear-gradient(180deg,rgba(0,0,0,0) 35%,color-mix(in srgb,var(--gc) 28%,rgba(0,0,0,.9)));}
+.xr-landing .wv-tile[data-g] .wv-n{background:var(--gc); box-shadow:0 0 12px color-mix(in srgb,var(--gc) 70%,transparent);}
+.xr-landing .wv-tile[data-g] .wv-name{font-family:Anton,Impact,sans-serif; font-weight:400; font-size:1.25rem; letter-spacing:.04em; text-transform:uppercase; bottom:.7rem;}
+.xr-landing .wv-tile[data-g]:active{box-shadow:inset 0 -4px 0 var(--gc), 0 0 26px color-mix(in srgb,var(--gc) 60%,transparent);}
