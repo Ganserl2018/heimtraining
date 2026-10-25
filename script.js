@@ -954,13 +954,16 @@ function nextPlan() {
   return { key: 'mix', label: 'Ganzkörper-Mix', groups: pick, info: pick.join(' · '), note: 'Am längsten nicht dran: ' + pick.map(txt).join(', ') + '.' };
 }
 function applyProgression(exs) {
+  // Steigern erst, wenn die Übung 2× hintereinander komplett (alle Sätze) mit demselben Gewicht gemacht wurde
   const h = loadHistory();
   exs.forEach(ex => {
     if (ex.warm || (ex.unit || 'kg') !== 'kg') return;
-    const r = h.find(x => (x.exercises || []).some(e => e.name === ex.name && (e.weights || []).some(w => w != null)));
-    const e = r && r.exercises.find(x => x.name === ex.name); if (!e) return;
-    const ws = e.weights.filter(w => w != null), top = Math.max(...ws), step = /dumbbell|kettlebell/i.test(ex.name) ? 2 : 2.5, ok = e.setsDone >= e.setsTotal;
-    const w = ok ? top + step : top; ex.up = ok; (ex.plan || []).forEach(p => { p.w = w; });
+    const runs = h.map(r => (r.exercises || []).find(e => e.name === ex.name && (e.weights || []).some(w => w != null))).filter(Boolean).slice(0, 2);
+    if (!runs.length) return;
+    const top = e => Math.max(...e.weights.filter(w => w != null)), full = e => e.setsDone >= e.setsTotal;
+    const step = /dumbbell|kettlebell/i.test(ex.name) ? 2 : 2.5;
+    const up = runs.length === 2 && runs.every(full) && top(runs[0]) === top(runs[1]);
+    const w = top(runs[0]) + (up ? step : 0); ex.up = up; (ex.plan || []).forEach(p => { p.w = w; });
   });
 }
 function genSave(start) {

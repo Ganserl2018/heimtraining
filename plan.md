@@ -526,5 +526,5 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - Profil kompakter (letzte Zeile hat ~55px Luft).
 
 ## V24-A Nächstes Training berechnen (26.10.)
-- Button „➜ NÄCHSTES TRAINING“: Ganzkörper-Mix – 2 Hauptgruppen (Beine/Rücken/Brust/Schultern, am längsten nicht dran, nie nur Drücken) + 1 kleine (Arme/Bauch), mind. 2 Tage Pause; Vorschau mit Warmups; Gewicht = letztes, +2,5 kg (KH +2) wenn alle Sätze geschafft (↑).
+- Button „➜ NÄCHSTES TRAINING“: Ganzkörper-Mix – 2 Hauptgruppen (Beine/Rücken/Brust/Schultern, am längsten nicht dran, nie nur Drücken) + 1 kleine (Arme/Bauch), mind. 2 Tage Pause; Vorschau mit Warmups; Gewicht = letztes, +2,5 kg (KH +2) erst wenn die Übung 2× hintereinander komplett mit demselben Gewicht geschafft wurde (↑).
 - Offen/Warteliste: Wochenfrequenz/Erholungszeit (48 h) einrechnen, Favoriten bevorzugen, Ganzkörper-Variante bei 2×/Woche.
