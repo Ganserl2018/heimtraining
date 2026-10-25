@@ -534,3 +534,7 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - Warteliste: Ergebnisseite im Detail (Bild fehlt bei manchen Übungen, Titel-Umbruch); Chips fliegen in den Rail; Vibration Geräte; Sätze/Wdh/Übungsanzahl im neuen Wizard ("Mehr").
 - Entschieden (25.10.): kein KI-Chat, es bleibt beim Wizard.
 - Regel (25.10.): Bizeps und Trizeps nie im selben Training (Wizard + Klassik gesperrt); Auto-Vorschlag wechselt per armPick(). Quelle Push/Pull: fitnessfirst.de Split-Training. Push/Pull umgesetzt (25.10.): Trizeps nur mit Brust/Schultern, Bizeps nur mit Rücken (grpConflict + armPick).
+
+## Woche: Vorlagen (25.10.)
+- Muskel-Vorlagen (Rücken/Brust/…/Push/Pull/Beine) aus Wochenseite entfernt: Woche zeigt nur "Meine Trainings".
+- Warteliste: echte Vorlagen = komplette Trainingspläne (Phase 0 gemeinsam: welcher Plan, Level, Tage/Woche) – Alex legt Plan noch fest.

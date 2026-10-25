@@ -1277,12 +1277,9 @@ function renderWeeklist() {
     <div class="wp">
       <div class="wp-sec">DIESE WOCHE</div>
       <div class="wp-days">${dayTiles}</div>
-      ${(() => {
-        const tile = p => { const exs = presetExercises(p), e0 = exs[0]; return `<button class="wv-tile" data-act="wpPreset" data-key="${p.key}">${e0 ? `<img src="${esc(imgOf(e0))}" alt="" onerror="this.style.visibility='hidden'">` : ''}<span class="wv-n">${exs.length}</span><span class="wv-name">${esc(p.name)}</span></button>`; };
-        const free = p => !weekplan.some(w => w.presetKey === p.key);
-        const musc = PRESETS.filter(p => (p.grp === 'musc' || p.grp === 'core') && free(p)), split = PRESETS.filter(p => p.grp === 'split' && free(p));
-        return (musc.length || split.length ? `<div class="wp-sec">VORLAGEN</div>` : '') + (musc.length ? `<div class="wv-grid">${musc.map(tile).join('')}</div>` : '') + (split.length ? `<div class="wv-grid" style="margin-top:.3rem">${split.map(tile).join('')}</div>` : '');
-      })()}
+      <div class="wp-sec">MEINE TRAININGS</div>
+      ${customCards || '<p class="xr-hint">Noch keins. Starte ein Training auf Start und speichere es, dann taucht es hier auf.</p>'}
+      ${archBlock}
     </div>`;
   if (addingTraining) document.getElementById('new-training-name')?.focus();
 }
