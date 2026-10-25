@@ -1270,6 +1270,7 @@ function renderWeeklist() {
       <div class="wp-card-body"><div class="wp-card-name nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></div><div class="wp-card-meta">${meta(t)}${st ? ' · ' + STATUS_LABEL[st] : ''}</div></div>
       <span class="wp-chev">›</span>
       ${trInfo(t, true)}
+      <div class="tr-days">${WD_KEYS.map(k => `<button class="${(t.weekdays || []).includes(k) ? 'on' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>
     </div></div>`;
   }).join('');
   const arch = loadArchive();

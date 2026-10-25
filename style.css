@@ -2227,3 +2227,4 @@ body.mood-bad{--text:#fff3f1; --text-dim:#ead2ce; --text-faint:#d9b5af;}
 .tx-head .tx-back{grid-row:1; grid-column:1/-1;}
 .tx-head h2.nm-edit{grid-row:2; grid-column:1;}
 .tx-head .tx-fav{grid-row:2; grid-column:2; align-self:center;}
+.wp-tr > .tr-days{flex:1 0 100%;}
