@@ -2235,3 +2235,7 @@ body.mood-bad{--text:#fff3f1; --text-dim:#ead2ce; --text-faint:#d9b5af;}
 .tr-card > .tr-fav{position:static; width:36px; height:36px; align-self:center; background:none; border:0; box-shadow:none; font-size:1.4rem;}
 .tr-card > .tr-fav.on{box-shadow:none;}
 .tr-card .tr-b b{white-space:normal; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.1;}
+
+/* Planung Schritt 3 mit Speziellen Muskeln: Seite scrollt */
+body.is-start:not(.is-res) #content.pl-scroll{overflow-y:auto !important; touch-action:pan-y; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;}
+html:has(#content.pl-scroll){overflow:hidden;}

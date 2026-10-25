@@ -261,6 +261,7 @@ function mountGenPick() { // Direktauswahl liegt am body (über Kopfzeile + Tab-
 function render() { renderView(); mountDetail(); mountPresetSheet(); mountGenPick(); fitTabH(); }
 function renderView() {
   content.toggleAttribute('data-enter', view !== window._lv); window._lv = view;
+  content.classList.remove('pl-scroll');
   document.body.classList.toggle('playing', view === 'play');
   document.body.classList.toggle('is-home', view === 'overview' && !dashMode);
   document.body.classList.toggle('is-start', view === 'start' || view === 'gen'); document.body.dataset.view = view; document.body.classList.toggle('is-gen', view === 'gen'); document.body.classList.toggle('is-res', view === 'gen' && !!genRes);
@@ -1075,6 +1076,7 @@ function renderStart() {
   plMsg = '';
   content.innerHTML = `<div class="sv"><div class="pl">${plRail()}<div class="pl-step" data-s="${plStep}">${body}</div><div class="pl-foot">${foot}</div>
     <button class="qk-link" data-act="plClassic">Alle Optionen auf einer Seite ›</button></div></div>`;
+  content.classList.toggle('pl-scroll', plStep === 2 && !!(plSpots || genCfg.groups.some(m => m.startsWith('m:'))));
 }
 function renderStartClassic() {
   // Planung: eine Frage – "Was trainiere ich jetzt?". Gespeicherte Trainings = 1 Tipp bis ins Workout, darunter der Schnell-Bauer.
