@@ -2195,3 +2195,6 @@ body.mood-bad{--text:#fff3f1; --text-dim:#ead2ce; --text-faint:#d9b5af;}
 /* Tag-Sheet: unten bündig über der Tab-Leiste, oben unter der Kopfzeile */
 .goal-sheet:has(.wps){align-items:flex-end; padding-top:0; padding-bottom:calc(var(--tabh,80px) + .5rem);}
 .goal-sheet .wps{max-height:calc(100dvh - var(--tabh,80px) - 175px);}
+
+.goal-sheet:has(.wps){inset:auto 0 0 0; align-items:flex-end; padding:.5rem 1rem .6rem;}
+.goal-sheet .wps{max-height:100%; width:100%;}
