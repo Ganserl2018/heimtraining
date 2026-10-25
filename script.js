@@ -1252,7 +1252,7 @@ function renderWeeklist() {
   const t0 = today(), ws = mondayOf(t0);
   const dayNames = WD_KEYS.map(k => FULLN[k] + 'straining');
   const custom = weekplan.filter(w => !dayNames.includes(w.name) || w.exercises.length);
-  const meta = t => `${t.exercises.length} Übung${t.exercises.length === 1 ? '' : 'en'} · ${t.weekdays.length ? WD_KEYS.filter(k => t.weekdays.includes(k)).map(k => WD_LABELS[k]).join(' ') + (t.time ? ' · ' + esc(t.time) : '') : 'nicht eingeplant'}`;
+  const meta = t => `${t.exercises.length} Übung${t.exercises.length === 1 ? '' : 'en'} · ${t.weekdays.length ? (d => d.map(k => d.length <= 2 ? FULLN[k] : WD_LABELS[k]).join(d.length <= 2 ? ' + ' : ' '))(WD_KEYS.filter(k => t.weekdays.includes(k))) + (t.time ? ' · ' + esc(t.time) : '') : 'nicht eingeplant'}`;
   const dayTiles = WD_KEYS.map((k, i) => {
     const ds = addDays(ws, i);
     const items = weekplan.map(w => ({ w, status: trainingStatusForDate(w, ds) })).filter(x => x.status);
