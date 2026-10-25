@@ -1937,3 +1937,13 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .qk-next{width:100%; min-height:48px; border-radius:16px; border:1px solid var(--accent); background:color-mix(in srgb,var(--accent) 8%,transparent); color:var(--text); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.05rem; padding:.3rem .6rem; margin:.55rem 0 .5rem;}
 .qk-next b{font-size:.95rem; letter-spacing:.06em; color:var(--accent);} .qk-next em{font-style:normal; font-size:.78rem; color:var(--text-dim);}
 .qk-next:active{transform:scale(.98);}
+/* START: Halte-Ring */
+.home-btn{touch-action:none; -webkit-user-select:none; user-select:none; -webkit-touch-callout:none;} .home-btn *{-webkit-user-select:none; user-select:none; pointer-events:none;}
+.home-pg{position:absolute; inset:0; width:100%; height:100%; transform:rotate(-90deg); z-index:2;}
+.home-pg circle{fill:none; stroke:#fff; stroke-width:3; stroke-linecap:round; stroke-dasharray:358; stroke-dashoffset:358; filter:drop-shadow(0 0 5px rgba(184,255,60,.9));}
+.home-btn.hold .home-pg circle{stroke-dashoffset:0; transition:stroke-dashoffset .9s linear;}
+.home-btn.hold .home-core{transform:scale(.94);}
+.home-btn.done .home-pg circle{stroke-dashoffset:0; stroke:var(--accent);}
+.home-btn.done .home-core{transform:scale(1.03);}
+.home-hint{font-size:.8rem; color:var(--text-dim); letter-spacing:.06em; margin-top:1rem; text-align:center;}
+.home-hint.nudge{animation:hv-pulse 1s ease-out 1; color:var(--accent);}

@@ -455,9 +455,9 @@ function renderHome() {
   document.body.classList.remove('mood-bad');
   const t = today(), open = weekplan.find(w => startOf(w.id, t) && !loadHistory().some(r => r.trainingId === w.id && r.date === t));
   content.innerHTML = `<div class="home"><div class="home-brand"><b class="hb-home">HOME</b><b class="hb-main">FORCE</b></div><button class="home-btn" data-act="goto" data-view="start" aria-label="Start">
-    <span class="home-ring"></span><span class="home-ring r2"></span><span class="home-ring r3"></span><span class="home-core">
+    <span class="home-ring"></span><span class="home-ring r2"></span><span class="home-ring r3"></span><svg class="home-pg" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="57"/></svg><span class="home-core">
     <svg viewBox="0 0 24 24" class="home-db" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>
-    <b>START</b></span></button>${open ? '<div class="home-open">Offenes Training wartet</div>' : ''}</div>`;
+    <b>START</b></span></button><div class="home-hint">Halten zum Starten</div>${open ? '<div class="home-open">Offenes Training wartet</div>' : ''}</div>`;
 }
 function renderOverview() {
   if (!dashMode) return renderHome();
@@ -2282,6 +2282,21 @@ content.addEventListener('touchend', () => {
   card.style.transform = dx > 0 ? '' : 'translateX(-110%)';
   setTimeout(() => { if (w.dataset.tsw) { const [tid, ti] = w.dataset.tsw.split('|'); if (dx > 0) wFavEx(trainingById(tid), Number(ti)); else wSwapEx(trainingById(tid), Number(ti)); } else if (dx > 0) genFav(Number(w.dataset.gsw)); else genSwap(Number(w.dataset.gsw)); render(); }, 170);
 });
+// START = Halten (0,9 s) mit Ring; kurzes Tippen startet nicht
+(function () {
+  let tm = 0, cur = null;
+  const stop = () => { clearTimeout(tm); if (cur && !cur._ok) cur.classList.remove('hold'); cur = null; };
+  content.addEventListener('pointerdown', e => {
+    const b = e.target.closest && e.target.closest('.home-btn'); if (!b || b._ok) return;
+    cur = b; b.classList.add('hold');
+    try { b.setPointerCapture(e.pointerId); } catch (x) {}
+    tm = setTimeout(() => { b._ok = true; b.classList.remove('hold'); b.classList.add('done'); try { navigator.vibrate && navigator.vibrate(30); } catch (x) {} setTimeout(() => b.click(), 280); }, 900);
+  });
+  ['pointerup', 'pointercancel'].forEach(n => content.addEventListener(n, stop));
+  content.addEventListener('pointermove', e => { if (!cur) return; const r = cur.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) stop(); });
+  ['contextmenu', 'selectstart'].forEach(n => content.addEventListener(n, e => { if (e.target.closest && e.target.closest('.home-btn')) e.preventDefault(); }));
+  content.addEventListener('click', e => { const b = e.target.closest && e.target.closest('.home-btn'); if (b && !b._ok) { e.stopPropagation(); e.preventDefault(); const h = content.querySelector('.home-hint'); if (h) { h.classList.remove('nudge'); void h.offsetWidth; h.classList.add('nudge'); } } }, true);
+})();
 content.addEventListener('click', e => { if (Date.now() - _swDone < 400) { e.stopPropagation(); e.preventDefault(); } }, true);
 // Schnellwahl-Chips: setzen/addieren, Fokus im Feld behalten (Tastatur bleibt)
 content.addEventListener('pointerdown', e => { if (e.target.closest('.qc button')) e.preventDefault(); });
