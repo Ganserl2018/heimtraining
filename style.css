@@ -1952,3 +1952,21 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .home-core>.home-fill{position:absolute; inset:0; z-index:0; background:linear-gradient(0deg,#4dff1f 0%,#9cff2e 55%,#d8ff5c 100%); box-shadow:0 0 28px 6px #7dff2e inset; opacity:1; transform:scaleY(0); transform-origin:50% 100%; transition:transform .18s ease-out;}
 .home-btn.hold .home-fill{transform:scaleY(1); transition:transform .9s linear;}
 .home-btn.done .home-fill{transform:scaleY(1); transition:none;}
+
+/* START: mehr Wumms (nur transform/opacity animiert) */
+.home-btn::before{content:""; position:absolute; inset:-38%; border-radius:50%; z-index:-1; pointer-events:none; background:radial-gradient(circle,rgba(184,255,60,.55) 0%,rgba(120,255,40,.22) 38%,transparent 68%); opacity:.7; animation:homeHalo 2.4s ease-in-out infinite;}
+@keyframes homeHalo{0%,100%{transform:scale(.86); opacity:.55;} 50%{transform:scale(1.08); opacity:1;}}
+.home-ring{border-width:4px; border-color:#c8ff4d; box-shadow:0 0 18px 2px rgba(184,255,60,.55), inset 0 0 14px rgba(184,255,60,.35);}
+@keyframes homeRing{0%{transform:scale(.9); opacity:1;} 100%{transform:scale(1.75); opacity:0;}}
+.home-core{box-shadow:0 14px 40px rgba(0,0,0,.5), 0 0 90px 22px rgba(184,255,60,.55), 0 0 0 3px rgba(234,255,154,.9), inset 0 -10px 22px rgba(30,70,0,.35), inset 0 6px 14px rgba(255,255,255,.7);}
+.home-core>.home-fill{background:linear-gradient(0deg,#3dff00 0%,#8cff1a 50%,#e6ff4d 100%); box-shadow:0 -10px 26px 4px #d9ff4d, inset 0 0 40px #b6ff00;}
+.home-core>.home-fill::after{content:""; position:absolute; left:-10%; right:-10%; top:-3px; height:6px; background:#fff; border-radius:3px; filter:blur(2px); box-shadow:0 0 16px 6px #f4ffb0;}
+.home-btn.hold::before{animation-duration:.7s; opacity:1;}
+.home-btn.hold .home-ring{animation-duration:.8s;} .home-btn.hold .home-ring.r2{animation-delay:.27s;} .home-btn.hold .home-ring.r3{animation-delay:.54s;}
+.home-btn.hold .home-core{animation:homeShake .9s linear forwards; transform:scale(.94);}
+@keyframes homeShake{0%{transform:scale(.96) translate(0,0);} 30%{transform:scale(.95) translate(.6px,-.6px);} 55%{transform:scale(.94) translate(-1.2px,1px);} 80%{transform:scale(.93) translate(1.8px,-1.4px);} 100%{transform:scale(.92) translate(-2.2px,1.6px);}}
+.home-btn.done .home-core{animation:homePop .42s cubic-bezier(.2,.9,.3,1.4) forwards; box-shadow:0 0 130px 40px rgba(200,255,60,.95), 0 0 0 4px #fff;}
+@keyframes homePop{0%{transform:scale(.92);} 55%{transform:scale(1.12);} 100%{transform:scale(1.06);}}
+.home-btn.done::before{animation:none; transform:scale(1.5); opacity:1; transition:transform .4s ease-out;}
+.home-ring.rb{border-color:#fff; border-width:5px; animation:homeBurst2 .7s cubic-bezier(.2,.6,.3,1) 1 forwards;}
+@keyframes homeBurst2{0%{transform:scale(.95); opacity:1;} 100%{transform:scale(2.3); opacity:0;}}

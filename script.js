@@ -2290,7 +2290,7 @@ content.addEventListener('touchend', () => {
     const b = e.target.closest && e.target.closest('.home-btn'); if (!b || b._ok) return;
     cur = b; b.classList.add('hold');
     try { b.setPointerCapture(e.pointerId); } catch (x) {}
-    tm = setTimeout(() => { b._ok = true; b.classList.remove('hold'); b.classList.add('done'); try { navigator.vibrate && navigator.vibrate(30); } catch (x) {} setTimeout(() => b.click(), 280); }, 900);
+    tm = setTimeout(() => { b._ok = true; b.classList.remove('hold'); b.classList.add('done'); for (let i = 0; i < 2; i++) { const r = document.createElement('span'); r.className = 'home-ring rb'; r.style.animationDelay = (i * .12) + 's'; b.appendChild(r); } try { navigator.vibrate && navigator.vibrate(30); } catch (x) {} setTimeout(() => b.click(), 420); }, 900);
   });
   ['pointerup', 'pointercancel'].forEach(n => content.addEventListener(n, stop));
   content.addEventListener('pointermove', e => { if (!cur) return; const r = cur.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) stop(); });
