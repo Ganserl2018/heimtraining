@@ -2118,3 +2118,16 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 /* Kein Textmarkieren / Lupe / Kontextmenü in der App (nur Eingabefelder) */
 html,body,body *{-webkit-user-select:none; user-select:none; -webkit-touch-callout:none;}
 input,textarea,[contenteditable="true"]{-webkit-user-select:text; user-select:text;}
+
+/* Trainings-Infos */
+.ti{display:flex; flex-direction:column; gap:.35rem; width:100%; margin-top:.3rem; font-size:.78rem; color:var(--text-dim);}
+.ti-top b{color:var(--accent); font-weight:800;}
+.ti-bar{display:flex; height:8px; border-radius:4px; overflow:hidden; gap:2px; width:100%;}
+.ti-bar i{background:var(--gc,#b8ff3c); border-radius:4px; min-width:4px;}
+.ti-leg{display:flex; flex-wrap:wrap; gap:.15rem .7rem;} .ti-leg span{display:inline-flex; align-items:center; gap:.3rem;}
+.ti-leg i{width:8px; height:8px; border-radius:50%; background:var(--gc,#b8ff3c);}
+.ti-gear{display:flex; flex-wrap:wrap; gap:.3rem;} .ti-gear em{font-style:normal; font-size:.7rem; font-weight:700; padding:.12rem .55rem; border-radius:999px; background:rgba(255,255,255,.08); color:var(--text);}
+.wps-row .ti{display:flex; font-family:inherit; text-transform:none; letter-spacing:0;}
+.wp-card-body .ti{margin-top:.4rem;}
+.wps-row .ti b{font-family:inherit; font-size:inherit; letter-spacing:0; text-transform:none; font-weight:800;}
+.wps-row .ti-leg span,.wps-row .ti-top{font-size:.78rem;}

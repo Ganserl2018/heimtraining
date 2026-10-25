@@ -1267,7 +1267,7 @@ function renderWeeklist() {
     const st = trainingStatusForDate(t, t0);
     return `<div class="wp-sw" data-sw="${t.id}"><div class="wp-sw-bg"><span class="a">📥 Archiv</span><span class="d">Löschen 🗑</span></div><div class="wp-card" data-act="wOpen2" data-id="${t.id}">
       <div class="wp-thumbs">${th || DB}</div>
-      <div class="wp-card-body"><div class="wp-card-name nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></div><div class="wp-card-meta">${meta(t)}${st ? ' · ' + STATUS_LABEL[st] : ''}</div>${shareHtml(t)}</div>
+      <div class="wp-card-body"><div class="wp-card-name nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></div><div class="wp-card-meta">${meta(t)}${st ? ' · ' + STATUS_LABEL[st] : ''}</div>${trInfo(t)}</div>
       <span class="wp-chev">›</span>
     </div></div>`;
   }).join('');
@@ -1283,7 +1283,7 @@ function renderWeeklist() {
     </div>`;
   if (wpSheet) {
     const wd = wpSheet.wd;
-    const rows = weekplan.filter(w => w.exercises.length && !w.weekdays.includes(wd)).map(w => `<button class="wps-row" data-act="wpAssign" data-id="${w.id}"><b>${esc(w.name)}</b><span>${w.exercises.length} Üb.${w.weekdays.length ? ' · ' + w.weekdays.map(k => WD_LABELS[k]).join(' ') : ''}</span></button>`).join('');
+    const rows = weekplan.filter(w => w.exercises.length && !w.weekdays.includes(wd)).map(w => `<button class="wps-row" data-act="wpAssign" data-id="${w.id}"><b>${esc(w.name)}</b>${trInfo(w)}</button>`).join('');
     content.insertAdjacentHTML('beforeend', `<div class="goal-sheet" data-act="wpClose"><div class="goal-edit wps" data-stop="1"><div class="ov-card-title">${FULLN[wd]}: was trainierst du?</div>${rows || '<p class="xr-hint">Noch kein Training zum Zuweisen.</p>'}<button class="wps-row wps-new" data-act="wpNew"><b>+ Neu planen</b><span>Zeit, Geräte, Fokus</span></button><button class="ov-btn ov-btn-ghost" data-act="wpClose">Abbrechen</button></div></div>`);
   }
   if (addingTraining) document.getElementById('new-training-name')?.focus();
@@ -1304,6 +1304,18 @@ function muscleShare(t) {
 function shareHtml(t, max) {
   const a = muscleShare(t).slice(0, max || 4);
   return a.length ? `<span class="sh">${a.map(([k, p]) => `<span class="sh-i"><b>${esc(k)}</b> ${p}%</span>`).join('')}</span>` : '';
+}
+function trInfo(t) {
+  const ex = t.exercises || [], sets = ex.reduce((n, e) => n + (e.sets || 3), 0);
+  if (!ex.length) return '';
+  const min = Math.max(5, Math.round(sets * 2.5 / 5) * 5);
+  const sh = muscleShare(t).filter(([k]) => k !== 'Aufwärmen').slice(0, 4);
+  const bar = sh.length ? `<span class="ti-bar">${sh.map(([k, p]) => `<i data-g="${esc(k)}" style="flex:${p}"></i>`).join('')}</span><span class="ti-leg">${sh.map(([k, p]) => `<span data-g="${esc(k)}"><i></i>${esc(k)} ${p}%</span>`).join('')}</span>` : '';
+  const gl = [...new Set(ex.flatMap(e => gearOf(e.name)))].map(k => (GEAR.find(g => g[0] === k) || [])[1]).filter(Boolean).map(l => l === 'Kurzhanteln' ? 'Hanteln' : l === 'Hantelbank' ? 'Bank' : l);
+  const last = loadHistory().filter(r => r.trainingId === t.id).map(r => r.date).sort().pop();
+  let ago = 'noch nie trainiert';
+  if (last) { const d = Math.round((new Date(today() + 'T00:00:00') - new Date(last + 'T00:00:00')) / 864e5); ago = d <= 0 ? 'heute trainiert' : d === 1 ? 'gestern trainiert' : 'vor ' + d + ' Tagen trainiert'; }
+  return `<span class="ti"><span class="ti-top"><b>~${min} Min</b> · ${ex.length} Üb. · ${sets} Sätze · ${ago}</span>${bar}${gl.length ? `<span class="ti-gear">${gl.map(l => `<em>${esc(l)}</em>`).join('')}</span>` : ''}</span>`;
 }
 function newDraft() {
   const t = { id: 'w' + Date.now(), name: loserName(), draft: true, exercises: [], weekdays: [], since: {}, time: '' };
