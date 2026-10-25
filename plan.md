@@ -528,3 +528,7 @@ Erst nach den laufenden Features; Alex gibt das Go.
 ## V24-A Nächstes Training berechnen (26.10.)
 - Button „➜ NÄCHSTES TRAINING“: Ganzkörper-Mix – 2 Hauptgruppen (Beine/Rücken/Brust/Schultern, am längsten nicht dran, nie nur Drücken) + 1 kleine (Arme/Bauch), mind. 2 Tage Pause; Vorschau mit Warmups; Gewicht = letztes, +2,5 kg (KH +2) erst wenn die Übung 2× hintereinander komplett mit demselben Gewicht geschafft wurde (↑).
 - Offen/Warteliste: Wochenfrequenz/Erholungszeit (48 h) einrechnen, Favoriten bevorzugen, Ganzkörper-Variante bei 2×/Woche.
+
+## Planung/Ergebnis-Wizard (25.10.)
+- Erledigt: START = Halten (Ring+Füllung), Planung als Sprung-Wizard (Zeit → Geräte → Fokus, Auto-Vorschlag nach längster Pause), Ergebnisseite mit Hero-Kacheln + Karten pro Muskelfarbe.
+- Warteliste: Ergebnisseite im Detail (Bild fehlt bei manchen Übungen, Titel-Umbruch); Chips fliegen in den Rail; Vibration Geräte; Sätze/Wdh/Übungsanzahl im neuen Wizard ("Mehr").
