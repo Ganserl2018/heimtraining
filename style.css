@@ -1970,3 +1970,11 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .home-btn.done::before{animation:none; transform:scale(1.5); opacity:1; transition:transform .4s ease-out;}
 .home-ring.rb{border-color:#fff; border-width:5px; animation:homeBurst2 .7s cubic-bezier(.2,.6,.3,1) 1 forwards;}
 @keyframes homeBurst2{0%{transform:scale(.95); opacity:1;} 100%{transform:scale(2.3); opacity:0;}}
+
+/* START: dunkler Kern, Füllung hebt sich ab; Brand höher */
+.home-brand{transform:translateY(-1.6rem);}
+.home-core{background:radial-gradient(circle at 34% 24%,#2a3a12 0%,#141d08 55%,#0a0f04 100%); box-shadow:0 14px 40px rgba(0,0,0,.55), 0 0 90px 22px rgba(184,255,60,.5), 0 0 0 3px rgba(200,255,77,.95), inset 0 -10px 22px rgba(0,0,0,.5), inset 0 4px 10px rgba(184,255,60,.12);}
+.home-core .home-db{stroke:#c8ff4d; transition:stroke .3s;} .home-core b{color:#c8ff4d; transition:color .3s;}
+.home-btn.hold .home-db{stroke:#0b1204;} .home-btn.hold .home-core b{color:#0b1204;}
+.home-btn.done .home-core{background:#8cff1a; box-shadow:0 0 130px 40px rgba(200,255,60,.95), 0 0 0 4px #fff;}
+.home-btn.done .home-db{stroke:#0b1204;} .home-btn.done .home-core b{color:#0b1204;}
