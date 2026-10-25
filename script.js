@@ -1267,7 +1267,7 @@ function renderWeeklist() {
     const st = trainingStatusForDate(t, t0);
     return `<div class="wp-sw" data-sw="${t.id}"><div class="wp-sw-bg"><span class="a">📥 Archiv</span><span class="d">Löschen 🗑</span></div><div class="wp-card" data-act="wOpen2" data-id="${t.id}">
       <div class="wp-thumbs">${th || DB}</div>
-      <div class="wp-card-body"><div class="wp-card-name nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></div><div class="wp-card-meta">${meta(t)}${st ? ' · ' + STATUS_LABEL[st] : ''}</div>${trInfo(t)}</div>
+      <div class="wp-card-body"><div class="wp-card-name nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></div><div class="wp-card-meta">${meta(t)}${st ? ' · ' + STATUS_LABEL[st] : ''}</div>${shareHtml(t)}</div>
       <span class="wp-chev">›</span>
     </div></div>`;
   }).join('');
