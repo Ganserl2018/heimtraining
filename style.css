@@ -2163,3 +2163,9 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text; user-select:te
 .tr-card > .ti-c .ti-leg{display:flex; flex-wrap:wrap; gap:.1rem .7rem; font-size:.68rem; color:rgba(255,255,255,.75);}
 .tr-card > .ti-c .ti-leg span{display:inline-flex; align-items:center; gap:.3rem;}
 .tr-card > .ti-c .ti-leg i{width:7px; height:7px; border-radius:50%; background:var(--gc,#b8ff3c);}
+
+/* Trainings-Kacheln v3: nur Balken + % */
+.tr-card > .ti-c{gap:.25rem; margin:0;}
+.tr-card > .ti-c .ti-bar{height:5px;}
+.tr-card > .ti-c .ti-leg{font-size:.66rem; gap:.05rem .6rem; line-height:1.25;}
+.tr-card{row-gap:.45rem !important;}

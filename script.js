@@ -1315,7 +1315,7 @@ function trInfo(t, compact) {
   const last = loadHistory().filter(r => r.trainingId === t.id).map(r => r.date).sort().pop();
   let ago = 'noch nie trainiert';
   if (last) { const d = Math.round((new Date(today() + 'T00:00:00') - new Date(last + 'T00:00:00')) / 864e5); ago = d <= 0 ? 'heute trainiert' : d === 1 ? 'gestern trainiert' : 'vor ' + d + ' Tagen trainiert'; }
-  if (compact) return `<div class="ti ti-c"><div class="ti-top"><b>~${min} Min</b> · ${ex.length} Üb. · ${sets} Sätze · ${ago}</div>${bar}${gl.length ? `<div class="ti-sub">${esc(gl.join(' · '))}</div>` : ''}</div>`;
+  if (compact) return sh.length ? `<div class="ti ti-c">${bar}</div>` : '';
   return `<span class="ti"><span class="ti-top"><b>~${min} Min</b> · ${ex.length} Üb. · ${sets} Sätze · ${ago}</span>${bar}${gl.length ? `<span class="ti-gear">${gl.map(l => `<em>${esc(l)}</em>`).join('')}</span>` : ''}</span>`;
 }
 function newDraft() {
@@ -1529,7 +1529,7 @@ function renderTrainings() {
     const go = trTab === 'arch' ? `<button class="tr-go ghost" data-act="wRestore" data-id="${t.id}">↩</button>` : `<button class="tr-go" data-act="quickStart" data-id="${t.id}" aria-label="Starten"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>`;
     const del = `<button class="tr-del" data-act="trDel" data-id="${t.id}" aria-label="Training löschen"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button>`;
     const strip = trTab === 'arch' ? '' : `<div class="tr-days">${WD_KEYS.map(k => `<button class="${(t.weekdays || []).includes(k) ? 'on' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>`;
-    const c = `<div class="tr-card pp-t" data-g="${esc(gTop)}" style="--i:${Math.max(0, list.indexOf(t))}" ${trTab === 'arch' ? '' : `data-act="wOpen2" data-id="${t.id}"`}><div class="tr-th">${th || ''}</div>${trTab === 'arch' ? '' : `<button class="tr-fav${t.fav ? ' on' : ''}" data-act="trFav" data-id="${t.id}" aria-label="Favorit">${t.fav ? '★' : '☆'}</button>`}<div class="tr-b"><b>${esc(t.name)}</b>${trTab === 'arch' || !t.exercises.length ? `<span>${meta}</span>` : ''}${st ? `<i class="tr-st tr-${st}">${STATUS_LABEL[st]}</i>` : ''}</div>${del}${go}${trTab === 'arch' ? '' : trInfo(t, true)}${strip}</div>`;
+    const c = `<div class="tr-card pp-t" data-g="${esc(gTop)}" style="--i:${Math.max(0, list.indexOf(t))}" ${trTab === 'arch' ? '' : `data-act="wOpen2" data-id="${t.id}"`}><div class="tr-th">${th || ''}</div>${trTab === 'arch' ? '' : `<button class="tr-fav${t.fav ? ' on' : ''}" data-act="trFav" data-id="${t.id}" aria-label="Favorit">${t.fav ? '★' : '☆'}</button>`}<div class="tr-b"><b>${esc(t.name)}</b><span>${trTab === 'arch' ? meta : t.exercises.length + ' Übung' + (t.exercises.length === 1 ? '' : 'en')}</span>${st ? `<i class="tr-st tr-${st}">${STATUS_LABEL[st]}</i>` : ''}</div>${del}${go}${trTab === 'arch' ? '' : trInfo(t, true)}${strip}</div>`;
     return trTab === 'arch' ? c : `<div class="wp-sw tr-sw" data-sw="${t.id}"><div class="wp-sw-bg"><span class="a">📥 Archiv</span><span class="d">Löschen 🗑</span></div>${c}</div>`;
   };
   const days = new Set(); act.forEach(w => (w.weekdays || []).forEach(d => days.add(d))); const exN = act.reduce((n, w) => n + w.exercises.length, 0);
