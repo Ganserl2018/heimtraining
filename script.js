@@ -1285,7 +1285,7 @@ function renderWeeklist() {
   if (wpSheet) {
     const wd = wpSheet.wd;
     const rows = weekplan.filter(w => w.exercises.length && !w.weekdays.includes(wd)).map(w => `<button class="wps-row" data-act="wpAssign" data-id="${w.id}"><b>${esc(w.name)}</b>${trInfo(w)}</button>`).join('');
-    content.insertAdjacentHTML('beforeend', `<div class="goal-sheet" data-act="wpClose"><div class="goal-edit wps" data-stop="1"><div class="ov-card-title">${FULLN[wd]}: was trainierst du?</div><div class="wps-list">${rows || '<p class="xr-hint">Noch kein Training zum Zuweisen.</p>'}</div><button class="wps-row wps-new" data-act="wpNew"><b>+ Neu planen</b><span>Zeit, Geräte, Fokus</span></button><button class="ov-btn ov-btn-ghost" data-act="wpClose">Abbrechen</button></div></div>`);
+    content.insertAdjacentHTML('beforeend', `<div class="goal-sheet" data-act="wpClose"><div class="goal-edit wps" data-stop="1"><div class="wps-h"><div class="ov-card-title">${FULLN[wd]}: was trainierst du?</div><button class="wps-x" data-act="wpClose" aria-label="Abbrechen">✕</button></div><div class="wps-list">${rows || '<p class="xr-hint">Noch kein Training zum Zuweisen.</p>'}</div><button class="wps-row wps-new" data-act="wpNew"><b>+ Neu planen</b><span>Zeit, Geräte, Fokus</span></button><button class="ov-btn ov-btn-ghost" data-act="wpClose">Abbrechen</button></div></div>`);
     const sh = content.querySelector('.goal-sheet'), tb = document.getElementById('tabbar'), hd = document.querySelector('.topbar');
     if (sh) { const tt = tb ? tb.getBoundingClientRect().top : innerHeight, hb = hd ? hd.getBoundingClientRect().bottom : 0; sh.style.top = Math.round(hb) + 'px'; sh.style.bottom = Math.round(innerHeight - tt) + 'px'; sh.style.height = 'auto'; }
   }
@@ -1436,7 +1436,7 @@ function txRow(t, ex, i) {
   const last = i === t.exercises.length - 1;
   const key = t.id + '|' + i, open = txOpen === key;
   const sumTxt = u === 'none' ? n + ' Sätze' : n + ' × ' + (uniform ? (at(0, 'r') ?? '–') + ' ' + rl : 'variiert') + (u === 'kg' && at(0, 'w') != null ? ' · ' + (uniform ? at(0, 'w') : 'ab ' + at(0, 'w')) + ' kg' : '');
-  return `<div class="tx-sw" data-tsw="${t.id}|${i}"><div class="gn-sw-bg"><span>★ Favorit</span><span>Neue Übung ↻</span></div><div class="tx-row ts-set xc${open ? ' open' : ''}" style="--i:${Math.min(i, 10)}">
+  return `<div class="tx-sw" data-tsw="${t.id}|${i}"><div class="gn-sw-bg"><span>★ Favorit</span><span>Neue Übung ↻</span></div><div class="tx-row ts-set xc${open ? ' open' : ''}"${ex.warm ? '' : ` data-g="${esc(MUSCLE_GROUPS[ex.muscle] || '')}"`} style="--i:${Math.min(i, 10)}">
     <button class="tx-th" data-act="exInfo" data-name="${esc(ex.name)}" aria-label="Übungsdaten"><img src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"></button>
     <button class="tx-nm" data-act="txToggle" data-key="${esc(key)}"><b>${esc(dn(ex.name))}</b><em>${ex.warm ? '🔥 Aufwärmen · ' : ''}${esc(MUSCLE_DE[ex.muscle] || ex.muscle)} · ${sumTxt}</em><i class="tx-ch">${open ? '▴' : '▾'}</i></button>
     <span class="ts-mv"><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="-1" aria-label="Nach oben"${i === 0 ? ' disabled' : ''}>▲</button><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="1" aria-label="Nach unten"${last ? ' disabled' : ''}>▼</button></span>
@@ -1455,6 +1455,12 @@ function txToSheet(t) {
     <div class="to-list">${others.map(w => `<button data-act="txToPick" data-tid="${w.id}"><span>${esc(w.name)}</span><em>${w.exercises.length} Üb.${w.exercises.some(x => x.name === ex.name) ? ' · schon drin' : ''}</em></button>`).join('')}<button class="to-new" data-act="txToPick" data-tid="new">+ Neues Training</button></div>
     <button class="to-x" data-act="txToClose">Abbrechen</button></div>`;
 }
+function wtHero(t, sets) {
+  const min = Math.max(5, Math.round(sets * 2.5 / 5) * 5), tile = (n, l, i) => `<div class="gh-t" style="--i:${i}"><b>${n}</b><em>${l}</em></div>`;
+  const sh = muscleShare(t).filter(([k]) => k !== 'Aufwärmen').slice(0, 5);
+  const bar = sh.length ? `<span class="ti-bar">${sh.map(([k, p]) => `<i data-g="${esc(k)}" style="flex:${p}"></i>`).join('')}</span><span class="ti-leg">${sh.map(([k, p]) => `<span data-g="${esc(k)}"><i></i>${esc(k)} ${p}%</span>`).join('')}</span>` : '';
+  return `<div class="gh th-hero"><div class="gh-row">${tile(t.exercises.length, 'Übungen', 0)}${tile(sets, 'Sätze', 1)}${tile('~' + min, 'Minuten', 2)}</div>${bar ? `<div class="ti ti-c th-mix">${bar}</div>` : ''}</div>`;
+}
 function renderWTrain() {
   const t = trainingById(wId);
   if (!t) { view = 'overview'; return renderOverview(); }
@@ -1472,7 +1478,7 @@ function renderWTrain() {
     : step === 5 && hasEx ? hint('go', 5, 'Fertig eingerichtet! Tippe auf „Training starten“, wenn du loslegen willst. Alles lässt sich jederzeit ändern.') : '';
   const head = renameId === t.id
     ? `<div class="tx-head"><input id="rename-input" placeholder="Name des Trainings…" value="${esc(t.name)}"><div class="tx-hbtns"><button data-act="wRenameSave" data-id="${t.id}">Speichern</button><button data-act="wRenameCancel" data-id="${t.id}">Abbrechen</button></div></div>`
-    : `<div class="tx-head"><h2 class="nm-edit" data-act="wRename" data-id="${t.id}"><span class="nm-t">${esc(t.name)}</span><i class="nm-pen" aria-hidden="true">✎</i></h2><button class="tx-fav${t.fav ? ' on' : ''}" data-act="trFav" data-id="${t.id}" aria-label="Favorit">${t.fav ? '★' : '☆'}</button><span class="lab-chip"><i></i>${t.exercises.length} ÜBUNG${t.exercises.length === 1 ? '' : 'EN'} · ${totalSets} SÄTZE</span></div>`;
+    : `<div class="tx-head"><h2 class="nm-edit" data-act="wRename" data-id="${t.id}"><span class="nm-t">${esc(t.name)}</span><i class="nm-pen" aria-hidden="true">✎</i></h2><button class="tx-fav${t.fav ? ' on' : ''}" data-act="trFav" data-id="${t.id}" aria-label="Favorit">${t.fav ? '★' : '☆'}</button></div>`;
   const dayLbl = hasDays ? WD_KEYS.filter(k => t.weekdays.includes(k)).map(k => WD_LABELS[k]).join(' ') : 'Tage wählen';
   const lvNow = t.level != null ? LEVELS[t.level][1] : 'Level';
   const ctl = hasEx ? `<aside class="tx-ctl${ctlOpen ? ' open' : ''}">
@@ -1492,7 +1498,7 @@ function renderWTrain() {
   content.innerHTML = `<div class="tsx2">
     ${head}
     ${hintHtml ? `<div class="tx-hint">${hintHtml}</div>` : ''}
-    <section class="tx-list"><div class="tx-rows">${shareHtml(t, 6) ? `<div class="tx-share">${shareHtml(t, 6)}</div>` : ''}${t.exercises.map((ex, i) => txRow(t, ex, i)).join('')}<button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button></div></section>
+    <section class="tx-list"><div class="tx-rows">${hasEx ? wtHero(t, totalSets) : ''}${t.exercises.map((ex, i) => txRow(t, ex, i)).join('')}<button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button></div></section>
     ${ctl}
     ${txTo && txTo.id === t.id ? txToSheet(t) : ''}
   </div>`;
@@ -1992,7 +1998,7 @@ content.addEventListener('click', e => {
       wId = t.id; view = 'wtrain'; picker = null; break;
     }
     case 'wpDay': wpSheet = { wd: btn.dataset.wd, date: btn.dataset.date }; break;
-    case 'wpClose': if (e.target.closest('.wps') && !btn.classList.contains('ov-btn')) return; wpSheet = null; break;
+    case 'wpClose': if (e.target.closest('.wps') && !btn.matches('.ov-btn,.wps-x')) return; wpSheet = null; break;
     case 'wpAssign': { const t = trainingById(btn.dataset.id), wd = wpSheet && wpSheet.wd; if (t && wd) { if (!t.weekdays.includes(wd)) t.weekdays.push(wd); t.since = t.since || {}; t.since[wd] = wpSheet.date >= today() ? today() : wpSheet.date; saveWeekplan(); } wpSheet = null; break; }
     case 'wpNew': { const wd = wpSheet && wpSheet.wd, date = wpSheet && wpSheet.date; wpSheet = null; btn.dataset.wd = wd; btn.dataset.date = date; return (function () { const t = { id: 'w' + Date.now(), name: loserName(), exercises: [], weekdays: date >= today() ? [wd] : [], since: date >= today() ? { [wd]: today() } : {}, time: '' }; weekplan.push(t); saveWeekplan(); wId = t.id; view = 'wtrain'; picker = null; render(); })(); }
     case 'wNewTraining': newDraft(); break;
@@ -2422,3 +2428,5 @@ document.addEventListener('pointerdown', e => {
 
 // Kein Textmarkieren per Langdruck (außer in Eingabefeldern)
 document.addEventListener('selectstart', e => { if (!(e.target.closest && e.target.closest('input,textarea,[contenteditable="true"]'))) e.preventDefault(); });
+
+content.addEventListener('click', e => { if (wpSheet && e.target.classList && e.target.classList.contains('goal-sheet')) { wpSheet = null; render(); } });

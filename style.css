@@ -2198,3 +2198,25 @@ body.mood-bad{--text:#fff3f1; --text-dim:#ead2ce; --text-faint:#d9b5af;}
 
 .goal-sheet:has(.wps){inset:auto 0 0 0; align-items:flex-end; padding:.5rem 1rem .6rem;}
 .goal-sheet .wps{max-height:100%; width:100%;}
+
+/* Training-Detail: Wumms-Look */
+.tsx2 .tx-head h2{font-size:2rem;}
+.th-hero{margin:.1rem 0 .8rem; padding:.8rem;}
+.th-hero .gh-t b{font-size:1.9rem;}
+.th-hero .th-mix{display:flex; flex-direction:column; gap:.3rem; margin-top:.7rem;}
+.th-hero .ti-bar{display:flex; height:7px; gap:2px; border-radius:4px; overflow:hidden;}
+.th-hero .ti-bar i{background:var(--gc,#b8ff3c); border-radius:4px; min-width:4px;}
+.th-hero .ti-leg{display:flex; flex-wrap:wrap; gap:.1rem .7rem; font-size:.7rem; color:rgba(255,255,255,.88);}
+.th-hero .ti-leg span{display:inline-flex; align-items:center; gap:.3rem;} .th-hero .ti-leg i{width:7px; height:7px; border-radius:50%; background:var(--gc,#b8ff3c);}
+.tx-row{border:0; border-radius:20px; background:linear-gradient(120deg,color-mix(in srgb,var(--gc,#b8ff3c) 15%,#10171a) 0%,#10171a 55%); box-shadow:inset 4px 0 0 var(--gc,#b8ff3c), 0 5px 14px rgba(0,0,0,.3); animation:gxIn .55s cubic-bezier(.2,1.35,.4,1) backwards; animation-delay:calc(var(--i,0)*60ms + 120ms);}
+.tx-row.open{box-shadow:inset 4px 0 0 var(--gc,#b8ff3c), 0 0 0 1.5px var(--gc,#b8ff3c), 0 5px 14px rgba(0,0,0,.3);}
+.tx-th{border-radius:14px; overflow:hidden;}
+.tx-nm b{font-size:1rem;} .tx-nm em{color:color-mix(in srgb,var(--gc,#b8ff3c) 65%,#fff);}
+.tx-row:active{transform:scale(.985);}
+
+.wps-h{display:flex; align-items:center; justify-content:space-between; gap:.5rem; flex:none;}
+.wps-h .ov-card-title{margin:0;}
+.wps-x{flex:none; width:44px; height:44px; border-radius:50%; border:0; background:rgba(255,255,255,.08); color:#fff; font-size:1.1rem;}
+.th-hero{padding:.6rem; margin:0 0 .7rem;} .th-hero .gh-t{padding:.4rem 0;} .th-hero .gh-t b{font-size:1.6rem;}
+.tx-sw{border-radius:20px; overflow:hidden;} .tx-sw .gn-sw-bg{border-radius:20px;}
+.th-hero{box-shadow:none; animation:none;}
