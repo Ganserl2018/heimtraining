@@ -1022,7 +1022,7 @@ function builderHtml(full) {
   return h;
 }
 // ---- Planung als Sprung-Wizard: Zeit -> Geräte -> Fokus, je Schritt eine Frage ----
-let plStep = 0, plClassic = false, plSeen = false, plSpots = false;
+let plStep = 0, plClassic = false, plSeen = false, plSpots = false, plMsg = '';
 const PL_N = 3, PL_TILES = ['Brust', 'Rücken', 'Schultern', 'm:biceps', 'm:triceps', 'Bauch', 'Beine'];
 function plRail() {
   const gl = GEAR.filter(([k]) => genCfg.gear.includes(k)).map(([, l]) => l === 'Kurzhanteln' ? 'Hanteln' : l === 'Hantelbank' ? 'Bank' : l);
@@ -1067,11 +1067,12 @@ function renderStart() {
     const np = nextPlan(), gcn = groupCounts();
     if (!genCfg.groups.some(m => !m.startsWith('m:')) && !genCfg.plAuto) { genCfg.groups = np.groups.filter(m => m !== 'Arme' && (!genCfg.gear.length || gcn[m])); if (np.groups.includes('Arme')) { const ap = armPick(genCfg.groups); if (ap) genCfg.groups.push(ap); } genCfg.plAuto = true; }
     const ago = g => { const t = np.note.match(new RegExp(g + ' ([^,.]+)')); return t ? t[1] : ''; };
-    body = `<h2 class="pl-q">Was ist dran?</h2><div class="pl-sub">Vorgewählt: am längsten nicht trainiert</div><div class="pl-grid g3">${PL_TILES.map((m, i) => { const sp = m.startsWith('m:'), lb = sp ? (MUSCLE_DE[m.slice(2)] || m) : m, on = grpOn(m) || genCfg.groups.includes(m), blocked = !on && grpConflict(m, genCfg.groups), none = !sp && genCfg.gear.length && !gcn[m]; return `<button class="pl-opt sm${on ? ' on' : ''}${(none || blocked) && !on ? ' none' : ''}" style="--i:${i}" data-act="genGrp" data-v="${m}">${lb}<small>${blocked ? 'nicht mit ' + esc(blocked) : sp ? '' : esc(ago(m))}</small></button>`; }).join('')}</div>
+    body = `<h2 class="pl-q">Was ist dran?</h2><div class="pl-sub${plMsg ? ' warn' : ''}">${plMsg ? esc(plMsg) : 'Vorgewählt: am längsten nicht trainiert · graue Kacheln tippen erklärt, warum'}</div><div class="pl-grid g3">${PL_TILES.map((m, i) => { const sp = m.startsWith('m:'), lb = sp ? (MUSCLE_DE[m.slice(2)] || m) : m, on = grpOn(m) || genCfg.groups.includes(m), blocked = !on && grpConflict(m, genCfg.groups), none = !sp && genCfg.gear.length && !gcn[m]; return `<button class="pl-opt sm${on ? ' on' : ''}${(none || blocked) && !on ? ' none' : ''}" style="--i:${i}" data-act="genGrp" data-v="${m}">${lb}<small>${blocked ? 'nicht mit ' + esc(blocked) : sp ? '' : esc(ago(m))}</small></button>`; }).join('')}</div>
       <button class="pl-more${plSpots || genCfg.groups.some(m => m.startsWith('m:')) ? ' open' : ''}" data-act="plSpots">${genCfg.groups.some(m => m.startsWith('m:')) ? '✓ Spezielle Muskeln' : '+ Spezielle Muskeln'}<small>${genCfg.groups.filter(m => m.startsWith('m:')).length ? genCfg.groups.filter(m => m.startsWith('m:')).map(m => MUSCLE_DE[m.slice(2)] || m.slice(2)).join(', ') : 'z. B. Nacken, Waden, Unterer Rücken'}</small></button>
       ${plSpots || genCfg.groups.some(m => m.startsWith('m:')) ? `<div class="pl-grid g3 spots">${SPOTS.filter(m => m !== 'biceps' && m !== 'triceps').map((m, i) => `<button class="pl-opt sm${genCfg.groups.includes('m:' + m) ? ' on' : ''}" style="--i:${i}" data-act="genGrp" data-v="m:${m}">${MUSCLE_DE[m] || m}</button>`).join('')}</div>` : ''}${prevHtml()}`;
     foot = `<button class="qk-go wander" data-act="genDo">${SP}TRAINING BAUEN</button>`;
   }
+  plMsg = '';
   content.innerHTML = `<div class="sv"><div class="pl">${plRail()}<div class="pl-step" data-s="${plStep}">${body}</div><div class="pl-foot">${foot}</div>
     <button class="qk-link" data-act="plClassic">Alle Optionen auf einer Seite ›</button></div></div>`;
 }
@@ -2032,8 +2033,8 @@ content.addEventListener('click', e => {
     case 'genDur': genCfg.dur = Number(btn.dataset.v); genRes = null; break;
     case 'genGrp': { // Reihenfolge Zeit -> Geräte -> Muskeln: Muskeln nur wählbar, wenn ein gewähltes Gerät Übungen dafür hat
       const m = btn.dataset.v, G = genCfg.groups;
-      if (!G.includes(m) && grpConflict(m, G)) break; // Push/Pull-Trennung
-      if (!m.startsWith('m:') && view === 'start') { const gcn = groupCounts(); if (!genCfg.gear.length || !gcn[m]) break; }
+      if (!G.includes(m) && grpConflict(m, G)) { const c = grpConflict(m, G); plMsg = 'Geht nicht mit ' + c + ' (Push/Pull getrennt). Erst ' + c + ' abwählen.'; break; } // Push/Pull-Trennung
+      if (!m.startsWith('m:') && view === 'start') { const gcn = groupCounts(); if (!genCfg.gear.length || !gcn[m]) { plMsg = genCfg.gear.length ? 'Dafür gibt es mit deinen Geräten keine Übung. Geh zurück (Chip oben) und wähl ein Gerät dazu.' : 'Wähl zuerst Geräte (Schritt 2), dann passen die Muskeln.'; break; } }
       const i = G.indexOf(m); if (i >= 0) G.splice(i, 1); else G.push(m);
       genCfg.autoAdded = []; autoGear(); genRes = null; break; }
     case 'genGear': { const k = btn.dataset.v, g = loadGear(), i = g.indexOf(k); if (i >= 0) g.splice(i, 1); else g.push(k); genCfg.gear = g; try { localStorage.setItem(GEARKEY, JSON.stringify(g)); } catch (e2) {}

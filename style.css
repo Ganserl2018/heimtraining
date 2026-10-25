@@ -2094,3 +2094,5 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .pl-foot{position:sticky; bottom:0; z-index:5; margin:.4rem -.2rem 0; padding:.9rem .2rem .5rem; background:linear-gradient(180deg,transparent 0,var(--bg,#0f1417) 38%);}
 .pl-foot:empty{display:none;}
 .pl-opt.sm{min-height:56px;} .pl-grid.spots .pl-opt.sm{min-height:46px;}
+
+.pl-sub.warn{color:#ffae5c; font-weight:700; animation:plChip .4s cubic-bezier(.2,1.5,.4,1);}
