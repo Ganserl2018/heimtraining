@@ -2191,3 +2191,7 @@ body.mood-bad{--text:#fff3f1; --text-dim:#ead2ce; --text-faint:#d9b5af;}
 .pl-sub,.xr-count,.xr-hint,.pl-opt em,.pl-opt small,.wps-row span,.ti,.ti-sub{color:var(--text-dim);}
 .tr-card > .ti-c .ti-sub,.tr-b .ti-c .ti-sub{color:rgba(255,255,255,.72);}
 .tr-card > .ti-c .ti-leg,.wp-tr > .ti-c .ti-leg{color:rgba(255,255,255,.88);}
+
+/* Tag-Sheet: unten bündig über der Tab-Leiste, oben unter der Kopfzeile */
+.goal-sheet:has(.wps){align-items:flex-end; padding-top:0; padding-bottom:calc(var(--tabh,80px) + .5rem);}
+.goal-sheet .wps{max-height:calc(100dvh - var(--tabh,80px) - 175px);}
