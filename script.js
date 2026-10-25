@@ -1488,17 +1488,20 @@ function renderTrainings() {
   const favEx = loadFavs().map(n => pool.find(e => e.name === n)).filter(Boolean);
   const favs = act.filter(w => w.fav), list = trTab === 'arch' ? arch : trTab === 'fav' ? favs : act;
   const card = t => {
-    const th = t.exercises.slice(0, 3).map(ex => `<img src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`).join('');
+    const th = t.exercises.slice(0, 1).map(ex => `<img src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`).join('') + (t.exercises.length > 1 ? `<i class="tr-more">+${t.exercises.length - 1}</i>` : '');
+    const gTop = (muscleShare(t)[0] || [''])[0];
     const st = trTab === 'arch' ? '' : trainingStatusForDate(t, t0);
     const sh = muscleShare(t).slice(0, 3).map(x => x[0]).join(' · ');
     const meta = `${t.exercises.length} Übung${t.exercises.length === 1 ? '' : 'en'}${sh ? ' · ' + esc(sh) : ''}`;
     const go = trTab === 'arch' ? `<button class="tr-go ghost" data-act="wRestore" data-id="${t.id}">↩</button>` : `<button class="tr-go" data-act="quickStart" data-id="${t.id}" aria-label="Starten"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>`;
     const del = `<button class="tr-del" data-act="trDel" data-id="${t.id}" aria-label="Training löschen"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button>`;
     const strip = trTab === 'arch' ? '' : `<div class="tr-days">${WD_KEYS.map(k => `<button class="${(t.weekdays || []).includes(k) ? 'on' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>`;
-    const c = `<div class="tr-card pp-t" ${trTab === 'arch' ? '' : `data-act="wOpen2" data-id="${t.id}"`}><div class="tr-th">${th || ''}</div>${trTab === 'arch' ? '' : `<button class="tr-fav${t.fav ? ' on' : ''}" data-act="trFav" data-id="${t.id}" aria-label="Favorit">${t.fav ? '★' : '☆'}</button>`}<div class="tr-b"><b>${esc(t.name)}</b><span>${meta}</span>${st ? `<i class="tr-st tr-${st}">${STATUS_LABEL[st]}</i>` : ''}</div>${del}${go}${strip}</div>`;
+    const c = `<div class="tr-card pp-t" data-g="${esc(gTop)}" style="--i:${Math.max(0, list.indexOf(t))}" ${trTab === 'arch' ? '' : `data-act="wOpen2" data-id="${t.id}"`}><div class="tr-th">${th || ''}</div>${trTab === 'arch' ? '' : `<button class="tr-fav${t.fav ? ' on' : ''}" data-act="trFav" data-id="${t.id}" aria-label="Favorit">${t.fav ? '★' : '☆'}</button>`}<div class="tr-b"><b>${esc(t.name)}</b><span>${meta}</span>${st ? `<i class="tr-st tr-${st}">${STATUS_LABEL[st]}</i>` : ''}</div>${del}${go}${strip}</div>`;
     return trTab === 'arch' ? c : `<div class="wp-sw tr-sw" data-sw="${t.id}"><div class="wp-sw-bg"><span class="a">📥 Archiv</span><span class="d">Löschen 🗑</span></div>${c}</div>`;
   };
-  content.innerHTML = `<div class="tr">
+  const days = new Set(); act.forEach(w => (w.weekdays || []).forEach(d => days.add(d))); const exN = act.reduce((n, w) => n + w.exercises.length, 0);
+  const hero = trTab === 'act' ? `<div class="gh tr-hero"><div class="gh-row"><div class="gh-t" style="--i:0"><b>${act.length}</b><em>Trainings</em></div><div class="gh-t" style="--i:1"><b>${days.size}<small>/7</small></b><em>Tage geplant</em></div><div class="gh-t" style="--i:2"><b>${exN}</b><em>Übungen</em></div></div></div>` : '';
+  content.innerHTML = `<div class="tr">${hero}
     <div class="tr-seg"><button class="${trTab === 'act' ? 'on' : ''}" data-act="trTab" data-v="act">Aktiv <em>${act.length}</em></button><button class="${trTab === 'fav' ? 'on' : ''}" data-act="trTab" data-v="fav">★ Favoriten <em>${favs.length + favEx.length}</em></button><button class="${trTab === 'arch' ? 'on' : ''}" data-act="trTab" data-v="arch">Archiv <em>${arch.length}</em></button></div>
     <div class="tr-list">${trTab === 'fav' && favEx.length ? `<div class="tr-fx">${favEx.map(e => `<button class="tr-fxr" data-act="exInfo" data-name="${esc(e.name)}"><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><span><b>★ ${esc(dn(e.name))}</b><em>${esc(MUSCLE_DE[e.muscle] || e.muscle)}</em></span></button>`).join('')}</div>` : ''}${list.length ? list.map(card).join('') : `<p class="tr-empty">${trTab === 'arch' ? 'Archiv ist leer.' : trTab === 'fav' ? (favEx.length ? '' : 'Noch keine Favoriten. Tippe ☆ bei einer Übung oder einem Training.') : 'Noch keine Trainings.'}</p>`}</div>
     <div class="tr-act"><button class="tr-new" data-act="wNewTraining">+ Neu</button><button class="tr-gen" data-act="genOpen">✦ JETZT TRAINIEREN</button></div>
