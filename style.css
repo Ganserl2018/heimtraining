@@ -2061,3 +2061,20 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .em-ring svg{width:56px; height:56px; fill:none; stroke:var(--accent); stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round;}
 .em-st h2{font-family:Anton,Impact,sans-serif; font-weight:400; font-size:2rem; letter-spacing:.05em; margin:0;} .em-st p{color:var(--text-dim); max-width:22rem; margin:0;}
 @media (prefers-reduced-motion:reduce){.tr-fxr,.em-st,.em-ring{animation:none;}}
+
+/* Verlauf / Übungen / Woche: mehr Wumms (nur CSS) */
+.hv-week{padding:.7rem; border-radius:22px; background:linear-gradient(135deg,rgba(184,255,60,.22),rgba(184,255,60,.04) 60%); border:1.5px solid rgba(184,255,60,.5); box-shadow:0 0 30px rgba(184,255,60,.18); animation:ghIn .6s cubic-bezier(.2,1.3,.4,1) backwards;}
+.hv-week>div{background:rgba(0,0,0,.35); border:0; border-radius:16px; animation:gxIn .55s cubic-bezier(.2,1.5,.4,1) backwards;}
+.hv-week>div:nth-child(1){animation-delay:.2s;} .hv-week>div:nth-child(2){animation-delay:.3s;} .hv-week>div:nth-child(3){animation-delay:.4s;}
+.hv-week b{font-size:2.2rem; text-shadow:0 0 18px rgba(184,255,60,.6);}
+.hv-card{border:0; border-radius:22px; background:linear-gradient(120deg,rgba(255,159,67,.14) 0%,#10171a 55%); box-shadow:inset 4px 0 0 #ff9f43, 0 6px 18px rgba(0,0,0,.35); animation:gxIn .6s cubic-bezier(.2,1.35,.4,1) backwards;}
+.hv-card.full{background:linear-gradient(120deg,rgba(184,255,60,.18) 0%,#10171a 55%); box-shadow:inset 4px 0 0 var(--accent), 0 6px 18px rgba(0,0,0,.35), 0 0 22px rgba(184,255,60,.15);}
+.hv-card:nth-of-type(2){animation-delay:.1s;} .hv-card:nth-of-type(3){animation-delay:.18s;} .hv-card:nth-of-type(4){animation-delay:.26s;} .hv-card:nth-of-type(n+5){animation-delay:.32s;}
+.hv-card:active{transform:scale(.98);}
+.wv-tile{border-radius:22px; animation:gxIn .55s cubic-bezier(.2,1.4,.4,1) backwards; transition:transform .16s ease-out;}
+.wv-tile:nth-child(1){animation-delay:.05s;} .wv-tile:nth-child(2){animation-delay:.1s;} .wv-tile:nth-child(3){animation-delay:.15s;} .wv-tile:nth-child(4){animation-delay:.2s;} .wv-tile:nth-child(5){animation-delay:.25s;} .wv-tile:nth-child(6){animation-delay:.3s;} .wv-tile:nth-child(n+7){animation-delay:.35s;}
+.wv-tile:active{transform:scale(.95);}
+.wv-fav{background:linear-gradient(135deg,#3a2d05,#0c0a02) !important; box-shadow:inset 0 0 0 1.5px rgba(255,210,60,.6), 0 0 22px rgba(255,210,60,.2);}
+.wp-day{animation:gxIn .55s cubic-bezier(.2,1.4,.4,1) backwards;}
+.wp-cell:nth-child(1) .wp-day{animation-delay:.05s;} .wp-cell:nth-child(2) .wp-day{animation-delay:.1s;} .wp-cell:nth-child(3) .wp-day{animation-delay:.15s;} .wp-cell:nth-child(4) .wp-day{animation-delay:.2s;} .wp-cell:nth-child(5) .wp-day{animation-delay:.25s;} .wp-cell:nth-child(6) .wp-day{animation-delay:.3s;} .wp-cell:nth-child(7) .wp-day{animation-delay:.35s;}
+@media (prefers-reduced-motion:reduce){.hv-week,.hv-week>div,.hv-card,.wv-tile,.wp-day{animation:none;}}
