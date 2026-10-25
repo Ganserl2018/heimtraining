@@ -2082,3 +2082,9 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .pl-more{width:100%; margin-top:.8rem; padding:.7rem 1rem; border-radius:16px; border:1.5px dashed rgba(184,255,60,.5); background:rgba(184,255,60,.06); color:var(--accent); font-weight:800; display:flex; flex-direction:column; align-items:center; gap:.1rem;}
 .pl-more small{font-weight:500; font-size:.72rem; color:var(--text-dim);} .pl-more.open{border-style:solid; background:rgba(184,255,60,.14);}
 .pl-grid.spots .pl-opt.sm{min-height:48px; font-size:.82rem;}
+
+/* Fix: Wizard-Raster nicht breiter als Bildschirm, Rail-Chips nebeneinander */
+.pl,.pl-step{min-width:0; max-width:100%;}
+.pl-grid,.pl-grid.g3,.pl-big{grid-template-columns:repeat(var(--c,2),minmax(0,1fr));} .pl-grid.g3{--c:3;}
+.pl-opt{min-width:0; overflow-wrap:anywhere; hyphens:auto; padding:.3rem .2rem; text-align:center;}
+.pl-chips{flex:1 1 auto; overflow:hidden;} .pl-chip{flex:none; padding:.25rem .6rem; font-size:.74rem; border-radius:999px; width:auto; height:auto;}
