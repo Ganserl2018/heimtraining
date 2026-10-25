@@ -43,7 +43,7 @@ function loadWeekplan() {
   } catch (e) {}
   return WEEKDAY_SEED.map(([id, name]) => ({ id, name, exercises: [] }));
 }
-const ARKEY = 'heimtraining.archive'; let archOpen = false;
+const ARKEY = 'heimtraining.archive'; let archOpen = false; let wpSheet = null;
 function loadArchive() { try { const r = JSON.parse(localStorage.getItem(ARKEY)); return Array.isArray(r) ? r : []; } catch (e) { return []; } }
 function saveArchive(a) { try { localStorage.setItem(ARKEY, JSON.stringify(a)); } catch (e) {} }
 function saveWeekplan() { try { localStorage.setItem(WKEY, JSON.stringify(weekplan)); } catch (e) {} }
@@ -1259,7 +1259,7 @@ function renderWeeklist() {
     const worst = ['verpasst', 'unvollständig', 'offen', 'geplant', 'vorher', 'erledigt'].find(st => items.some(x => x.status === st)) || null;
     const n = items.reduce((sum, x) => sum + x.w.exercises.length, 0);
     const target = (items.find(x => x.status !== 'erledigt') || items[0] || {}).w;
-    const act = target ? `data-act="wOpen2" data-id="${target.id}"` : `data-act="wDayNew" data-wd="${k}" data-date="${ds}"`;
+    const act = target ? `data-act="wOpen2" data-id="${target.id}"` : `data-act="wpDay" data-wd="${k}" data-date="${ds}"`;
     return `<div class="wp-cell"><button class="wp-day${worst ? ' wp-' + worst : ' wp-aus'}${worst && worst !== 'verpasst' ? (n ? ' wp-ex' : ' wp-leer') : ''}${ds === t0 ? ' wp-heute' : ''}" ${act}><b>${WD_LABELS[k]}</b>${worst ? DB : '<em>+</em>'}<span>${worst ? (n ? n + ' Üb.' : 'leer') : 'Ruhe'}</span></button>${target ? `<button class="wp-x" data-act="wUnsched" data-id="${target.id}" data-wd="${k}" aria-label="Aus Plan entfernen">×</button>` : ''}</div>`;
   }).join('');
   const customCards = custom.map(t => {
@@ -1281,6 +1281,11 @@ function renderWeeklist() {
       ${customCards || '<p class="xr-hint">Noch keins. Starte ein Training auf Start und speichere es, dann taucht es hier auf.</p>'}
       ${archBlock}
     </div>`;
+  if (wpSheet) {
+    const wd = wpSheet.wd;
+    const rows = weekplan.filter(w => w.exercises.length && !w.weekdays.includes(wd)).map(w => `<button class="wps-row" data-act="wpAssign" data-id="${w.id}"><b>${esc(w.name)}</b><span>${w.exercises.length} Üb.${w.weekdays.length ? ' · ' + w.weekdays.map(k => WD_LABELS[k]).join(' ') : ''}</span></button>`).join('');
+    content.insertAdjacentHTML('beforeend', `<div class="goal-sheet" data-act="wpClose"><div class="goal-edit wps" data-stop="1"><div class="ov-card-title">${FULLN[wd]}: was trainierst du?</div>${rows || '<p class="xr-hint">Noch kein Training zum Zuweisen.</p>'}<button class="wps-row wps-new" data-act="wpNew"><b>+ Neu planen</b><span>Zeit, Geräte, Fokus</span></button><button class="ov-btn ov-btn-ghost" data-act="wpClose">Abbrechen</button></div></div>`);
+  }
   if (addingTraining) document.getElementById('new-training-name')?.focus();
 }
 
@@ -1970,6 +1975,10 @@ content.addEventListener('click', e => {
       weekplan.push(t); saveWeekplan();
       wId = t.id; view = 'wtrain'; picker = null; break;
     }
+    case 'wpDay': wpSheet = { wd: btn.dataset.wd, date: btn.dataset.date }; break;
+    case 'wpClose': if (e.target.closest('.wps') && !btn.classList.contains('ov-btn')) return; wpSheet = null; break;
+    case 'wpAssign': { const t = trainingById(btn.dataset.id), wd = wpSheet && wpSheet.wd; if (t && wd) { if (!t.weekdays.includes(wd)) t.weekdays.push(wd); t.since = t.since || {}; t.since[wd] = wpSheet.date >= today() ? today() : wpSheet.date; saveWeekplan(); } wpSheet = null; break; }
+    case 'wpNew': { const wd = wpSheet && wpSheet.wd, date = wpSheet && wpSheet.date; wpSheet = null; btn.dataset.wd = wd; btn.dataset.date = date; return (function () { const t = { id: 'w' + Date.now(), name: loserName(), exercises: [], weekdays: date >= today() ? [wd] : [], since: date >= today() ? { [wd]: today() } : {}, time: '' }; weekplan.push(t); saveWeekplan(); wId = t.id; view = 'wtrain'; picker = null; render(); })(); }
     case 'wNewTraining': newDraft(); break;
     case 'wNewTrainingCancel': addingTraining = false; break;
     case 'wNewTrainingSave': {
@@ -2394,3 +2403,6 @@ document.addEventListener('pointerdown', e => {
   const r = document.createElement('span'); r.className = 'home-ring rb'; b.appendChild(r);
   r.addEventListener('animationend', () => r.remove());
 }, { passive: true });
+
+// Kein Textmarkieren per Langdruck (außer in Eingabefeldern)
+document.addEventListener('selectstart', e => { if (!(e.target.closest && e.target.closest('input,textarea,[contenteditable="true"]'))) e.preventDefault(); });

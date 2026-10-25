@@ -2105,3 +2105,16 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .xr-landing .wv-tile[data-g] .wv-n{background:var(--gc); box-shadow:0 0 12px color-mix(in srgb,var(--gc) 70%,transparent);}
 .xr-landing .wv-tile[data-g] .wv-name{font-family:Anton,Impact,sans-serif; font-weight:400; font-size:1.25rem; letter-spacing:.04em; text-transform:uppercase; bottom:.7rem;}
 .xr-landing .wv-tile[data-g]:active{box-shadow:inset 0 -4px 0 var(--gc), 0 0 26px color-mix(in srgb,var(--gc) 60%,transparent);}
+
+/* Woche: Tag-Sheet */
+.wps{display:flex; flex-direction:column; gap:.5rem; max-height:70vh; overflow:auto;}
+.wps-row{display:flex; flex-direction:column; align-items:flex-start; gap:.1rem; padding:.8rem 1rem; border-radius:16px; border:0; background:rgba(255,255,255,.06); color:var(--text); text-align:left; box-shadow:inset 3px 0 0 var(--accent);}
+.wps-row b{font-family:Anton,Impact,sans-serif; font-weight:400; font-size:1.15rem; letter-spacing:.04em; text-transform:uppercase;}
+.wps-row span{font-size:.8rem; color:var(--text-dim);}
+.wps-row:active{transform:scale(.97);}
+.wps-new{background:color-mix(in srgb,var(--accent) 14%,var(--panel)); box-shadow:inset 0 0 0 1.5px var(--accent);}
+.wp, .wp *{-webkit-user-select:none; user-select:none; -webkit-touch-callout:none;}
+
+/* Kein Textmarkieren / Lupe / Kontextmenü in der App (nur Eingabefelder) */
+html,body,body *{-webkit-user-select:none; user-select:none; -webkit-touch-callout:none;}
+input,textarea,[contenteditable="true"]{-webkit-user-select:text; user-select:text;}
