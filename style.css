@@ -2169,3 +2169,17 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text; user-select:te
 .tr-card > .ti-c .ti-bar{height:5px;}
 .tr-card > .ti-c .ti-leg{font-size:.66rem; gap:.05rem .6rem; line-height:1.25;}
 .tr-card{row-gap:.45rem !important;}
+
+/* Woche: Trainingskarten im Trainings-Look */
+.wp-card.wp-tr{flex-wrap:wrap; border:0; border-radius:22px; padding:.7rem .8rem; gap:.45rem .8rem; background:linear-gradient(120deg,color-mix(in srgb,var(--gc,#b8ff3c) 16%,#10171a) 0%,#10171a 55%); box-shadow:inset 4px 0 0 var(--gc,#b8ff3c), 0 6px 18px rgba(0,0,0,.35);}
+.wp-sw:has(.wp-tr){border-radius:22px; margin-bottom:.6rem;} .wp-sw:has(.wp-tr) .wp-sw-bg{border-radius:22px;}
+.wp-tr .tr-th{width:64px; height:64px; flex:none; border-radius:16px;}
+.wp-tr .tr-more{font-size:.62rem; padding:.05rem .35rem;}
+.wp-tr .wp-card-name{font-family:Anton,Impact,sans-serif; font-weight:400; font-size:1.3rem; letter-spacing:.03em; text-transform:uppercase; color:#fff; line-height:1.1;}
+.wp-tr .wp-card-meta{color:color-mix(in srgb,var(--gc,#b8ff3c) 70%,#fff); font-size:.74rem;}
+.wp-tr > .ti-c{flex:1 0 100%; display:flex; flex-direction:column; gap:.25rem; margin:0;}
+.wp-tr > .ti-c .ti-bar{display:flex; height:5px; gap:2px; border-radius:3px; overflow:hidden;}
+.wp-tr > .ti-c .ti-bar i{background:var(--gc,#b8ff3c); border-radius:3px; min-width:4px;}
+.wp-tr > .ti-c .ti-leg{display:flex; flex-wrap:wrap; gap:.05rem .6rem; font-size:.66rem; line-height:1.25; color:rgba(255,255,255,.75);}
+.wp-tr > .ti-c .ti-leg span{display:inline-flex; align-items:center; gap:.3rem;}
+.wp-tr > .ti-c .ti-leg i{width:7px; height:7px; border-radius:50%; background:var(--gc,#b8ff3c);}
