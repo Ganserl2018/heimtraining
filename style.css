@@ -2131,3 +2131,4 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text; user-select:te
 .wp-card-body .ti{margin-top:.4rem;}
 .wps-row .ti b{font-family:inherit; font-size:inherit; letter-spacing:0; text-transform:none; font-weight:800;}
 .wps-row .ti-leg span,.wps-row .ti-top{font-size:.78rem;}
+.wps > *{flex:none;} .wps{-webkit-overflow-scrolling:touch;}
