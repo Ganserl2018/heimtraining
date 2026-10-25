@@ -1284,7 +1284,7 @@ function renderWeeklist() {
   if (wpSheet) {
     const wd = wpSheet.wd;
     const rows = weekplan.filter(w => w.exercises.length && !w.weekdays.includes(wd)).map(w => `<button class="wps-row" data-act="wpAssign" data-id="${w.id}"><b>${esc(w.name)}</b>${trInfo(w)}</button>`).join('');
-    content.insertAdjacentHTML('beforeend', `<div class="goal-sheet" data-act="wpClose"><div class="goal-edit wps" data-stop="1"><div class="ov-card-title">${FULLN[wd]}: was trainierst du?</div>${rows || '<p class="xr-hint">Noch kein Training zum Zuweisen.</p>'}<button class="wps-row wps-new" data-act="wpNew"><b>+ Neu planen</b><span>Zeit, Geräte, Fokus</span></button><button class="ov-btn ov-btn-ghost" data-act="wpClose">Abbrechen</button></div></div>`);
+    content.insertAdjacentHTML('beforeend', `<div class="goal-sheet" data-act="wpClose"><div class="goal-edit wps" data-stop="1"><div class="ov-card-title">${FULLN[wd]}: was trainierst du?</div><div class="wps-list">${rows || '<p class="xr-hint">Noch kein Training zum Zuweisen.</p>'}</div><button class="wps-row wps-new" data-act="wpNew"><b>+ Neu planen</b><span>Zeit, Geräte, Fokus</span></button><button class="ov-btn ov-btn-ghost" data-act="wpClose">Abbrechen</button></div></div>`);
   }
   if (addingTraining) document.getElementById('new-training-name')?.focus();
 }

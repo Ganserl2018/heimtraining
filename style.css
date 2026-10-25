@@ -2132,3 +2132,15 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text; user-select:te
 .wps-row .ti b{font-family:inherit; font-size:inherit; letter-spacing:0; text-transform:none; font-weight:800;}
 .wps-row .ti-leg span,.wps-row .ti-top{font-size:.78rem;}
 .wps > *{flex:none;} .wps{-webkit-overflow-scrolling:touch;}
+
+/* Tag-Sheet proportional: Liste scrollt, Fuß fix, nichts schrumpft */
+.goal-sheet .wps{display:flex; flex-direction:column; gap:.5rem; max-height:calc(100dvh - var(--tabh,80px) - 7rem); overflow:hidden; padding:1rem;}
+.wps .ov-card-title{flex:none; margin:0 0 .1rem;}
+.wps-list{flex:1 1 auto; min-height:0; overflow-y:auto; display:flex; flex-direction:column; gap:.5rem; -webkit-overflow-scrolling:touch; overscroll-behavior:contain;}
+.wps-list > *{flex:none;}
+.wps-row{flex:none; width:100%; box-sizing:border-box; min-width:0; overflow:hidden; padding:.7rem .9rem;}
+.wps-row b{line-height:1.1;}
+.wps .ti{gap:.3rem; font-size:.74rem;} .wps .ti-top{line-height:1.3;}
+.wps .ti-bar{height:6px; flex:none;} .wps .ti-leg{font-size:.72rem; line-height:1.3;}
+.wps .ti-gear{flex:none;} .wps .ti-gear em{font-size:.66rem; padding:.1rem .5rem; line-height:1.4;}
+.wps .ov-btn{flex:none; min-height:44px;}
