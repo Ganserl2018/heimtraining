@@ -1232,7 +1232,7 @@ function renderStart() {
     const gOn = g => G.some(m => { const c = fgChip(m); return c && c[2] === g; });
     const subOf = g => FG_CHIPS.filter(c => c[2] === g).map(c => { const o = onc(c); return `<button class="fg-c${o ? ' on' : ''}" data-g="${c[2]}" data-act="fgSel" data-v="${esc(c[1])}">${SUBL[c[0]] || c[0]}</button>`; }).join('');
     const grp = ['Brust', 'Schultern', 'Arme', 'Bauch', 'Rücken', 'Beine'].map(g => `<button class="fg-g${gOn(g) ? ' on' : ''}${fgOpen === g ? ' open' : ''}" data-g="${g}" data-act="fgGrp" data-v="${g}">${g}</button>` + (fgOpen === g ? `<div class="fg-sub" data-g="${g}">${subOf(g)}</div>` : '')).join('');
-    body = `<div class="fg"><div class="fg-gs">${grp}</div><div class="fg-cv"><div class="fg-views"><button data-act="fgView" data-v="0">Vorne</button><button data-act="fgView" data-v="1">Hinten</button></div></div></div>`;
+    body = `<div class="pl-ask">Wähle die Muskeln fürs Training</div><div class="fg"><div class="fg-gs">${grp}</div><div class="fg-cv"><div class="fg-views"><button data-act="fgView" data-v="0">Vorne</button><button data-act="fgView" data-v="1">Hinten</button></div></div></div>`;
     foot = `<button class="fg-next${G.length ? '' : ' off'}" data-act="plNext">WEITER ›</button>`;
   } else {
     if (!genCfg.groups.length) { plStep = 1; return renderStart(); }

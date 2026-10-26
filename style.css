@@ -2493,3 +2493,4 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .ga-ft i{width:24px; height:24px; font-size:.8rem; border-width:1.5px;}
 .ga-h span small:first-child{flex-basis:auto;}
 .ga-fine{margin-bottom:-4px;}
+.pl-ask{flex:none; font-size:1rem; color:var(--text-dim); padding:0 0 .35rem;}
