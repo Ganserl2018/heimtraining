@@ -1,0 +1,577 @@
+# Muskel-Zuordnung Übungen → 3D-Modell (zum Prüfen)
+
+Haupt = leuchtet stark, Neben = grobe Regel pro Muskelgruppe (nicht pro Übung geprüft).
+
+
+## shoulders (80)
+
+- Kabel-Schulterdrücken im Wechsel (Alternating Cable Shoulder Press): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Schulterheben im Wechsel (Alternating Deltoid Raise): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Anti-Gravity Press (Anti-Gravity Press): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Armkreisen (Arm Circles): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Arnold Press (Arnold Dumbbell Press): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Reverse Flyes mit Bändern (Back Flyes - With Bands): **posterior_delt** · Neben: triceps_long, upper_traps — Rear/Face Pull → hintere Schulter
+- Band Pull Apart (Band Pull Apart): **posterior_delt** · Neben: triceps_long, upper_traps — Rear/Face Pull → hintere Schulter
+- Langhantel-Schrägbank-Schulterheben (Barbell Incline Shoulder Raise): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Langhantel-Rudern für hintere Schulter (Barbell Rear Delt Row): **posterior_delt** · Neben: triceps_long, upper_traps — Rear/Face Pull → hintere Schulter
+- Langhantel-Schulterdrücken (Barbell Shoulder Press): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Hintere Schulter vorgebeugt (Kopf auf Bank) (Bent Over Dumbbell Rear Delt Raise With Head On Bench): **posterior_delt** · Neben: triceps_long, upper_traps — Rear/Face Pull → hintere Schulter
+- Seitheben vorgebeugt am tiefen Kabel (Bent Over Low-Pulley Side Lateral): **lateral_delt** · Neben: triceps_long, upper_traps — Seitheben → seitliche Schulter
+- Bradford-Press (Bradford/Rocky Presses): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Innenrotation am Kabel (Cable Internal Rotation): **rotator_cuff** · Neben: triceps_long, upper_traps — Rotation → Rotatorenmanschette
+- Kabel-Reverse-Fly (Cable Rear Delt Fly): **posterior_delt** · Neben: triceps_long, upper_traps — Rear/Face Pull → hintere Schulter
+- Seil-Rudern für hintere Schulter (Cable Rope Rear-Delt Rows): **posterior_delt** · Neben: triceps_long, upper_traps — Rear/Face Pull → hintere Schulter
+- Sitzendes Kabel-Seitheben (Cable Seated Lateral Raise): **lateral_delt** · Neben: triceps_long, upper_traps — Seitheben → seitliche Schulter
+- Kabel-Schulterdrücken (Cable Shoulder Press): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Car Drivers (Car Drivers): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Umsetzen und Stoßen (Clean and Jerk): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Umsetzen und Drücken (Clean and Press): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Cuban Press (Cuban Press): **rotator_cuff** · Neben: triceps_long, upper_traps — Rotation → Rotatorenmanschette
+- Kurzhantel-Schrägbank-Schulterheben (Dumbbell Incline Shoulder Raise): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Einarmiges Reverse-Heben liegend (Dumbbell Lying One-Arm Rear Lateral Raise): **lateral_delt** · Neben: triceps_long, upper_traps — Seitheben → seitliche Schulter
+- Reverse-Heben liegend (Dumbbell Lying Rear Lateral Raise): **lateral_delt** · Neben: triceps_long, upper_traps — Seitheben → seitliche Schulter
+- Einarmiges Kurzhantel-Schulterdrücken (Dumbbell One-Arm Shoulder Press): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Einarmiges Kurzhantel-Aufrechtrudern (Dumbbell One-Arm Upright Row): **lateral_delt** · Neben: triceps_long, upper_traps — Seitheben → seitliche Schulter
+- Kurzhantel-Heben (Dumbbell Raise): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Scaption mit Kurzhanteln (Dumbbell Scaption): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Kurzhantel-Schulterdrücken (Dumbbell Shoulder Press): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Außenrotation (External Rotation): **rotator_cuff** · Neben: triceps_long, upper_traps — Rotation → Rotatorenmanschette
+- Außenrotation mit Band (External Rotation with Band): **rotator_cuff** · Neben: triceps_long, upper_traps — Rotation → Rotatorenmanschette
+- Außenrotation am Kabel (External Rotation with Cable): **rotator_cuff** · Neben: triceps_long, upper_traps — Rotation → Rotatorenmanschette
+- Face Pull (Face Pull): **posterior_delt** · Neben: triceps_long, upper_traps — Rear/Face Pull → hintere Schulter
+- Kabel-Frontheben (Front Cable Raise): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Kurzhantel-Frontheben (Front Dumbbell Raise): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Frontheben an der Schrägbank (Front Incline Dumbbell Raise): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Frontheben mit zwei Kurzhanteln (Front Two-Dumbbell Raise): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Handstand-Liegestütze (Handstand Push-Ups): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Innenrotation mit Band (Internal Rotation with Band): **rotator_cuff** · Neben: triceps_long, upper_traps — Rotation → Rotatorenmanschette
+- Iron Cross (Iron Cross): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Jerk Balance (Jerk Balance): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Landmine-Jammer (Landmine Linear Jammer): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Seitheben mit Bändern (Lateral Raise - With Bands): **lateral_delt** · Neben: triceps_long, upper_traps — Seitheben → seitliche Schulter
+- Rudern zum Nacken am tiefen Kabel (Low Pulley Row To Neck): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Einarmiges Seitheben liegend (Lying One-Arm Lateral Raise): **lateral_delt** · Neben: triceps_long, upper_traps — Seitheben → seitliche Schulter
+- Hintere Schulter liegend (Lying Rear Delt Raise): **posterior_delt** · Neben: triceps_long, upper_traps — Rear/Face Pull → hintere Schulter
+- Einarmiges Seitheben an der Schrägbank (One-Arm Incline Lateral Raise): **lateral_delt** · Neben: triceps_long, upper_traps — Seitheben → seitliche Schulter
+- Einarmiges Seitheben (One-Arm Side Laterals): **lateral_delt** · Neben: triceps_long, upper_traps — Seitheben → seitliche Schulter
+- Power Partials (Power Partials): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Push Press (Push Press): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Push Press hinter dem Nacken (Push Press - Behind the Neck): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Rack Delivery (Rack Delivery): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Reverse Flyes (Reverse Flyes): **posterior_delt** · Neben: triceps_long, upper_traps — Rear/Face Pull → hintere Schulter
+- Reverse Flyes mit Außenrotation (Reverse Flyes With External Rotation): **posterior_delt** · Neben: triceps_long, upper_traps — Rear/Face Pull → hintere Schulter
+- Sitzendes Langhantel-Military-Press (Seated Barbell Military Press): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Sitzendes vorgebeugtes Reverse-Heben (Seated Bent-Over Rear Delt Raise): **posterior_delt** · Neben: triceps_long, upper_traps — Rear/Face Pull → hintere Schulter
+- Sitzendes Kabel-Schulterdrücken (Seated Cable Shoulder Press): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Sitzendes Kurzhantel-Schulterdrücken (Seated Dumbbell Press): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Vordere-Schulter-Dehnung (sitzend) (Seated Front Deltoid): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Sitzendes Seitheben (Seated Side Lateral Raise): **lateral_delt** · Neben: triceps_long, upper_traps — Seitheben → seitliche Schulter
+- See-Saw-Press (Wechsel) (See-Saw Press (Alternating Side Press)): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Schulterdrücken mit Bändern (Shoulder Press - With Bands): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Seitheben (Side Lateral Raise): **lateral_delt** · Neben: triceps_long, upper_traps — Seitheben → seitliche Schulter
+- Seitheben zu Frontheben (Side Laterals to Front Raise): **lateral_delt** · Neben: triceps_long, upper_traps — Seitheben → seitliche Schulter
+- Einzelhantel-Heben (Single Dumbbell Raise): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Einarmiger Landmine-Jammer (Single-Arm Linear Jammer): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Smith-Schrägbank-Schulterheben (Smith Incline Shoulder Raise): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Stehendes Kurzhantel-Drücken im Wechsel (Standing Alternating Dumbbell Press): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Stehendes Nackendrücken mit Langhantel (Standing Barbell Press Behind Neck): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Stehender Bradford-Press (Standing Bradford Press): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Stehendes Kurzhantel-Schulterdrücken (Standing Dumbbell Press): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Stehendes Frontheben über Kopf (Kurzhanteln) (Standing Dumbbell Straight-Arm Front Delt Raise Above Head): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Stehendes Langhantel-Frontheben über Kopf (Standing Front Barbell Raise Over Head): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Stehendes Schulterheben am tiefen Kabel (Standing Low-Pulley Deltoid Raise): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Stehendes Military Press (Standing Military Press): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Stehendes einarmiges Kurzhantel-Drücken (Handfläche innen) (Standing Palm-In One-Arm Dumbbell Press): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Stehendes Kurzhantel-Drücken (Handflächen innen) (Standing Palms-In Dumbbell Press): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps — Pressen → vordere + seitliche Schulter
+- Gerades Heben an der Schrägbank (Straight Raises on Incline Bench): **anterior_delt, lateral_delt** · Neben: triceps_long, upper_traps
+- Langhantel-Aufrechtrudern (Upright Barbell Row): **lateral_delt** · Neben: triceps_long, upper_traps — Seitheben → seitliche Schulter
+
+## quadriceps (73)
+
+- Quadrizeps-Dehnung im Vierfüßlerstand (All Fours Quad Stretch): **vastus_group, rectus_femoris** · Neben: glute_max
+- Tiefe Langhantel-Kniebeuge (Barbell Full Squat): **vastus_group, rectus_femoris** · Neben: glute_max
+- Langhantel-Hackenkniebeuge (Barbell Hack Squat): **vastus_group, rectus_femoris** · Neben: glute_max
+- Langhantel-Ausfallschritt (Barbell Lunge): **vastus_group, rectus_femoris, glute_max** — Ausfallschritt → Quadrizeps + Gesäß
+- Langhantel-Seiten-Split-Kniebeuge (Barbell Side Split Squat): **vastus_group, rectus_femoris, glute_max** — Ausfallschritt → Quadrizeps + Gesäß
+- Langhantel-Kniebeuge (Barbell Squat): **vastus_group, rectus_femoris** · Neben: glute_max
+- Langhantel-Kniebeuge auf Bank (Barbell Squat To A Bench): **vastus_group, rectus_femoris** · Neben: glute_max
+- Langhantel-Step-ups (Barbell Step Ups): **vastus_group, rectus_femoris, glute_max** — Ausfallschritt → Quadrizeps + Gesäß
+- Langhantel-Ausfallschritte (gehend) (Barbell Walking Lunge): **vastus_group, rectus_femoris, glute_max** — Ausfallschritt → Quadrizeps + Gesäß
+- Bank-Sprung (Bench Jump): **vastus_group, rectus_femoris** · Neben: glute_max
+- Kniebeuge mit Körpergewicht (Bodyweight Squat): **vastus_group, rectus_femoris** · Neben: glute_max
+- Box-Kniebeuge (Box Squat): **vastus_group, rectus_femoris** · Neben: glute_max
+- Box-Kniebeuge mit Bändern (Box Squat with Bands): **vastus_group, rectus_femoris** · Neben: glute_max
+- Box-Kniebeuge mit Ketten (Box Squat with Chains): **vastus_group, rectus_femoris** · Neben: glute_max
+- Kabel-Kreuzheben (Cable Deadlifts): **vastus_group, rectus_femoris** · Neben: glute_max
+- Kabel-Hüftadduktion (Cable Hip Adduction): **vastus_group, rectus_femoris** · Neben: glute_max
+- Clean Pull (Clean Pull): **vastus_group, rectus_femoris** · Neben: glute_max
+- Clean von Blöcken (Clean from Blocks): **vastus_group, rectus_femoris** · Neben: glute_max
+- Fersen-zum-Po-Kick (beidbeinig) (Double Leg Butt Kick): **vastus_group, rectus_femoris** · Neben: glute_max
+- Kurzhantel-Ausfallschritte (Dumbbell Lunges): **vastus_group, rectus_femoris, glute_max** — Ausfallschritt → Quadrizeps + Gesäß
+- Kurzhantel-Ausfallschritt rückwärts (Dumbbell Rear Lunge): **vastus_group, rectus_femoris, glute_max** — Ausfallschritt → Quadrizeps + Gesäß
+- Kurzhantel-Box-Sprung aus dem Sitzen (Dumbbell Seated Box Jump): **vastus_group, rectus_femoris** · Neben: glute_max
+- Kurzhantel-Kniebeuge (Dumbbell Squat): **vastus_group, rectus_femoris** · Neben: glute_max
+- Kurzhantel-Kniebeuge auf Bank (Dumbbell Squat To A Bench): **vastus_group, rectus_femoris** · Neben: glute_max
+- Kurzhantel-Step-ups (Dumbbell Step Ups): **vastus_group, rectus_femoris, glute_max** — Ausfallschritt → Quadrizeps + Gesäß
+- Erhöhter Ausfallschritt rückwärts (Elevated Back Lunge): **vastus_group, rectus_femoris, glute_max** — Ausfallschritt → Quadrizeps + Gesäß
+- Schnelles Skipping (Fast Skipping): **vastus_group, rectus_femoris** · Neben: glute_max
+- Frankenstein-Kniebeuge (Frankenstein Squat): **vastus_group, rectus_femoris** · Neben: glute_max
+- Sprung-Kniebeuge (ohne Gewicht) (Freehand Jump Squat): **vastus_group, rectus_femoris** · Neben: glute_max
+- Frontkniebeuge mit Langhantel (Front Barbell Squat): **vastus_group, rectus_femoris** · Neben: glute_max
+- Frontkniebeuge auf Bank (Front Barbell Squat To A Bench): **vastus_group, rectus_femoris** · Neben: glute_max
+- Frontkniebeuge (Clean-Griff) (Front Squat (Clean Grip)): **vastus_group, rectus_femoris** · Neben: glute_max
+- Hang Clean (Hang Clean): **vastus_group, rectus_femoris** · Neben: glute_max
+- Hang Clean (unter den Knien) (Hang Clean - Below the Knees): **vastus_group, rectus_femoris** · Neben: glute_max
+- Heaving Snatch Balance (Heaving Snatch Balance): **vastus_group, rectus_femoris** · Neben: glute_max
+- Hüftbeugung mit Band (Hip Flexion with Band): **vastus_group, rectus_femoris** · Neben: glute_max
+- Jefferson-Kniebeuge (Jefferson Squats): **vastus_group, rectus_femoris** · Neben: glute_max
+- Jerk-Dip-Kniebeuge (Jerk Dip Squat): **vastus_group, rectus_femoris** · Neben: glute_max
+- Quadrizeps-Dehnung in Bauchlage (Lying Prone Quadriceps): **vastus_group, rectus_femoris** · Neben: glute_max
+- Kniebeuge mit engem Stand (Narrow Stance Squats): **vastus_group, rectus_femoris** · Neben: glute_max
+- Olympische Kniebeuge (Olympic Squat): **vastus_group, rectus_femoris** · Neben: glute_max
+- Einbeinige Langhantel-Kniebeuge (One Leg Barbell Squat): **vastus_group, rectus_femoris** · Neben: glute_max
+- Einarmiges seitliches Kreuzheben (One-Arm Side Deadlift): **vastus_group, rectus_femoris** · Neben: glute_max
+- Überkopf-Kniebeuge (Overhead Squat): **vastus_group, rectus_femoris** · Neben: glute_max
+- Plié-Kniebeuge mit Kurzhantel (Plie Dumbbell Squat): **vastus_group, rectus_femoris** · Neben: glute_max
+- Power Jerk (Power Jerk): **vastus_group, rectus_femoris** · Neben: glute_max
+- Power Snatch von Blöcken (Power Snatch from Blocks): **vastus_group, rectus_femoris** · Neben: glute_max
+- Beinheben nach hinten (Rear Leg Raises): **vastus_group, rectus_femoris** · Neben: glute_max
+- Reverse-Band-Box-Kniebeuge (Reverse Band Box Squat): **vastus_group, rectus_femoris** · Neben: glute_max
+- Reverse-Band-Power-Kniebeuge (Reverse Band Power Squat): **vastus_group, rectus_femoris** · Neben: glute_max
+- Raketensprung (Rocket Jump): **vastus_group, rectus_femoris** · Neben: glute_max
+- Scherensprung (Scissors Jump): **vastus_group, rectus_femoris** · Neben: glute_max
+- Fersen-zum-Po-Kick (einbeinig) (Single Leg Butt Kick): **vastus_group, rectus_femoris** · Neben: glute_max
+- Reißen (Snatch) (Snatch): **vastus_group, rectus_femoris** · Neben: glute_max
+- Snatch Balance (Snatch Balance): **vastus_group, rectus_femoris** · Neben: glute_max
+- Snatch von Blöcken (Snatch from Blocks): **vastus_group, rectus_femoris** · Neben: glute_max
+- Speed-Box-Kniebeuge (Speed Box Squat): **vastus_group, rectus_femoris** · Neben: glute_max
+- Speed-Kniebeugen (Speed Squats): **vastus_group, rectus_femoris** · Neben: glute_max
+- Split Clean (Split Clean): **vastus_group, rectus_femoris** · Neben: glute_max
+- Split Jerk (Split Jerk): **vastus_group, rectus_femoris** · Neben: glute_max
+- Split-Sprung (Split Jump): **vastus_group, rectus_femoris** · Neben: glute_max
+- Split-Kniebeuge mit Kurzhanteln (Split Squat with Dumbbells): **vastus_group, rectus_femoris, glute_max** — Ausfallschritt → Quadrizeps + Gesäß
+- Squat Jerk (Squat Jerk): **vastus_group, rectus_femoris** · Neben: glute_max
+- Kniebeuge mit Bändern (Squat with Bands): **vastus_group, rectus_femoris** · Neben: glute_max
+- Kniebeuge mit Ketten (Squat with Chains): **vastus_group, rectus_femoris** · Neben: glute_max
+- Kniebeuge mit Plate Movers (Squat with Plate Movers): **vastus_group, rectus_femoris** · Neben: glute_max
+- Kniebeugen mit Bändern (Squats - With Bands): **vastus_group, rectus_femoris** · Neben: glute_max
+- Standweitsprung (Standing Long Jump): **vastus_group, rectus_femoris** · Neben: glute_max
+- Hampelmann-Sprung (Star Jump) (Star Jump): **vastus_group, rectus_femoris** · Neben: glute_max
+- Sprung-Kniebeuge mit Gewicht (Weighted Jump Squat): **vastus_group, rectus_femoris** · Neben: glute_max
+- Sissy-Kniebeuge mit Gewicht (Weighted Sissy Squat): **vastus_group, rectus_femoris** · Neben: glute_max — Extension → Quadrizeps
+- Langhantel-Kniebeuge mit weitem Stand (Wide Stance Barbell Squat): **vastus_group, rectus_femoris** · Neben: glute_max
+- Zercher-Kniebeuge (Zercher Squats): **vastus_group, rectus_femoris** · Neben: glute_max
+
+## abdominals (65)
+
+- 3/4 Sit-up (3/4 Sit-Up): **rectus_abdominis** · Neben: transverse_abdominis
+- Air Bike (Fahrrad-Crunch) (Air Bike): **rectus_abdominis** · Neben: transverse_abdominis
+- Fersen abwechselnd berühren (Alternate Heel Touchers): **rectus_abdominis** · Neben: transverse_abdominis
+- Langhantel-Bauchroller (Barbell Ab Rollout): **rectus_abdominis** · Neben: transverse_abdominis
+- Langhantel-Bauchroller auf Knien (Barbell Ab Rollout - On Knees): **rectus_abdominis** · Neben: transverse_abdominis
+- Langhantel-Rollout von der Bank (Barbell Rollout from Bench): **rectus_abdominis** · Neben: transverse_abdominis
+- Langhantel-Seitbeuge (Barbell Side Bend): **obliques** · Neben: transverse_abdominis — seitlich/Rotation → schräge Bauchmuskeln
+- Beckenheben mit gebeugten Knien (Bent-Knee Hip Raise): **rectus_abdominis** · Neben: transverse_abdominis
+- Kabel-Crunch mit Bosu und Seitbeuge (Bosu Ball Cable Crunch With Side Bends): **obliques** · Neben: transverse_abdominis — seitlich/Rotation → schräge Bauchmuskeln
+- Bottoms Up (Bottoms Up): **rectus_abdominis** · Neben: transverse_abdominis
+- Butt-Ups (Butt-Ups): **rectus_abdominis** · Neben: transverse_abdominis
+- Kabel-Crunch (Cable Crunch): **rectus_abdominis** · Neben: transverse_abdominis
+- Kabelzug-Judo-Flip (Cable Judo Flip): **rectus_abdominis** · Neben: transverse_abdominis
+- Kabel-Reverse-Crunch (Cable Reverse Crunch): **rectus_abdominis, hip_flexors** · Neben: transverse_abdominis — Beinheben → Bauch + Hüftbeuger
+- Kabel-Russian-Twist (Cable Russian Twists): **obliques** · Neben: transverse_abdominis — seitlich/Rotation → schräge Bauchmuskeln
+- Sitzender Kabel-Crunch (Cable Seated Crunch): **rectus_abdominis** · Neben: transverse_abdominis
+- Cocoons (Cocoons): **rectus_abdominis** · Neben: transverse_abdominis
+- Cross-Body-Crunch (Cross-Body Crunch): **rectus_abdominis** · Neben: transverse_abdominis
+- Crunch mit Händen über Kopf (Crunch - Hands Overhead): **rectus_abdominis** · Neben: transverse_abdominis
+- Crunch mit Beinen auf Gymnastikball (Crunch - Legs On Exercise Ball): **rectus_abdominis** · Neben: transverse_abdominis
+- Crunches (Crunches): **rectus_abdominis** · Neben: transverse_abdominis
+- Dead Bug (Dead Bug): **rectus_abdominis, transverse_abdominis** — Stütz/Core → gerader + querer Bauchmuskel
+- Negativbank-Crunch (Decline Crunch): **rectus_abdominis** · Neben: transverse_abdominis
+- Negativbank-Schräger-Crunch (Decline Oblique Crunch): **obliques** · Neben: transverse_abdominis — seitlich/Rotation → schräge Bauchmuskeln
+- Negativbank-Reverse-Crunch (Decline Reverse Crunch): **rectus_abdominis, hip_flexors** · Neben: transverse_abdominis — Beinheben → Bauch + Hüftbeuger
+- Kurzhantel-Seitbeuge (Dumbbell Side Bend): **obliques** · Neben: transverse_abdominis — seitlich/Rotation → schräge Bauchmuskeln
+- Ellbogen zum Knie (Elbow to Knee): **rectus_abdominis** · Neben: transverse_abdominis
+- Beinzug auf der Flachbank (Flat Bench Leg Pull-In): **rectus_abdominis, hip_flexors** · Neben: transverse_abdominis — Beinheben → Bauch + Hüftbeuger
+- Beinheben liegend auf der Flachbank (Flat Bench Lying Leg Raise): **rectus_abdominis, hip_flexors** · Neben: transverse_abdominis — Beinheben → Bauch + Hüftbeuger
+- Frosch-Sit-ups (Frog Sit-Ups): **rectus_abdominis** · Neben: transverse_abdominis
+- Gorilla-Crunch (Gorilla Chin/Crunch): **rectus_abdominis** · Neben: transverse_abdominis
+- Hängendes Beinheben (Hanging Leg Raise): **rectus_abdominis, hip_flexors** · Neben: transverse_abdominis — Beinheben → Bauch + Hüftbeuger
+- Hängendes Pike (Hanging Pike): **rectus_abdominis, hip_flexors** · Neben: transverse_abdominis — Beinheben → Bauch + Hüftbeuger
+- Jackknife-Sit-up (Jackknife Sit-Up): **rectus_abdominis** · Neben: transverse_abdominis
+- Janda-Sit-up (Janda Sit-Up): **rectus_abdominis** · Neben: transverse_abdominis
+- Kniender Kabel-Crunch mit Rumpfdrehung (Kneeling Cable Crunch With Alternating Oblique Twists): **obliques** · Neben: transverse_abdominis — seitlich/Rotation → schräge Bauchmuskeln
+- Landmine-180er (Landmine 180's): **rectus_abdominis** · Neben: transverse_abdominis
+- Beinzug (Leg Pull-In): **rectus_abdominis, hip_flexors** · Neben: transverse_abdominis — Beinheben → Bauch + Hüftbeuger
+- Lower-Back-Curl (Lower Back Curl): **rectus_abdominis** · Neben: transverse_abdominis
+- Schräge Crunches (Oblique Crunches): **obliques** · Neben: transverse_abdominis — seitlich/Rotation → schräge Bauchmuskeln
+- Schräge Crunches am Boden (Oblique Crunches - On The Floor): **obliques** · Neben: transverse_abdominis — seitlich/Rotation → schräge Bauchmuskeln
+- Einarmige Kabel-Seitbeuge (hoch) (One-Arm High-Pulley Cable Side Bends): **obliques** · Neben: transverse_abdominis — seitlich/Rotation → schräge Bauchmuskeln
+- Pallof Press (Pallof Press): **rectus_abdominis** · Neben: transverse_abdominis
+- Pallof Press mit Rotation (Pallof Press With Rotation): **rectus_abdominis** · Neben: transverse_abdominis
+- Unterarmstütz (Plank) (Plank): **rectus_abdominis, transverse_abdominis** — Stütz/Core → gerader + querer Bauchmuskel
+- Press-Sit-up (Press Sit-Up): **rectus_abdominis** · Neben: transverse_abdominis
+- Reverse Crunch (Reverse Crunch): **rectus_abdominis, hip_flexors** · Neben: transverse_abdominis — Beinheben → Bauch + Hüftbeuger
+- Seil-Crunch (Rope Crunch): **rectus_abdominis** · Neben: transverse_abdominis
+- Russian Twist (Russian Twist): **obliques** · Neben: transverse_abdominis — seitlich/Rotation → schräge Bauchmuskeln
+- Scherenschlag (Scissor Kick): **rectus_abdominis** · Neben: transverse_abdominis
+- Sitzende Langhantel-Rumpfdrehung (Seated Barbell Twist): **obliques** · Neben: transverse_abdominis — seitlich/Rotation → schräge Bauchmuskeln
+- Sitzender Beinzug auf der Flachbank (Seated Flat Bench Leg Pull-In): **rectus_abdominis, hip_flexors** · Neben: transverse_abdominis — Beinheben → Bauch + Hüftbeuger
+- Sitzendes Beinanziehen (Seated Leg Tucks): **rectus_abdominis** · Neben: transverse_abdominis
+- Seitstütz (Side Bridge): **rectus_abdominis** · Neben: transverse_abdominis
+- Seitlicher Jackknife (Side Jackknife): **obliques** · Neben: transverse_abdominis — seitlich/Rotation → schräge Bauchmuskeln
+- Sit-up (Sit-Up): **rectus_abdominis** · Neben: transverse_abdominis
+- Spell Caster (Spell Caster): **rectus_abdominis** · Neben: transverse_abdominis
+- Spider Crawl (Spider Crawl): **rectus_abdominis** · Neben: transverse_abdominis
+- Kabel-Lift im Stand (Standing Cable Lift): **rectus_abdominis** · Neben: transverse_abdominis
+- Kabel-Holzhacker im Stand (Standing Cable Wood Chop): **obliques** · Neben: transverse_abdominis — seitlich/Rotation → schräge Bauchmuskeln
+- Stehender Seil-Crunch (Standing Rope Crunch): **rectus_abdominis** · Neben: transverse_abdominis
+- Stomach Vacuum (Stomach Vacuum): **rectus_abdominis, transverse_abdominis** — Stütz/Core → gerader + querer Bauchmuskel
+- Zehen berühren (Toe Touchers): **rectus_abdominis** · Neben: transverse_abdominis
+- Tuck Crunch (Tuck Crunch): **rectus_abdominis** · Neben: transverse_abdominis
+- Sprints (Wind Sprints): **rectus_abdominis** · Neben: transverse_abdominis
+
+## triceps (60)
+
+- Skull Crusher mit Band (Band Skull Crusher): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt — Trizeps (Overhead betont langen Kopf)
+- Bankdrücken-Dips (Bench Dips) (Bench Dips): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Bankdrücken (Powerlifting) (Bench Press - Powerlifting): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Bankdrücken mit Ketten (Bench Press with Chains): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Board Press (Board Press): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Körper-Trizepsdrücken (Body Tricep Press): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Body-Up (Body-Up): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Kabel-Trizepsstrecken an der Schrägbank (Cable Incline Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Kabel-Trizepsstrecken liegend (Cable Lying Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt — Trizeps (Overhead betont langen Kopf)
+- Einarmiges Kabel-Trizepsstrecken (Cable One Arm Tricep Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Kabel-Trizepsstrecken über Kopf (Seil) (Cable Rope Overhead Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt — Trizeps (Overhead betont langen Kopf)
+- Enges Langhantel-Bankdrücken (Close-Grip Barbell Bench Press): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Enges Kurzhantel-Drücken (Close-Grip Dumbbell Press): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Enges SZ-Stangen-Drücken (Close-Grip EZ-Bar Press): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Enge Liegestütze auf Kurzhantel (Close-Grip Push-Up off of a Dumbbell): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Enges Negativbankdrücken zu Skull Crusher (Decline Close-Grip Bench To Skull Crusher): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt — Trizeps (Overhead betont langen Kopf)
+- Negativbank-Kurzhantel-Trizepsstrecken (Decline Dumbbell Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Negativbank-SZ-Stangen-Trizepsstrecken (Decline EZ Bar Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Dips (Trizeps) (Dips - Triceps Version): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Kurzhantel-Floor-Press (Dumbbell Floor Press): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Einarmiges Kurzhantel-Trizepsstrecken (Dumbbell One-Arm Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Kurzhantel-Trizepsstrecken (Obergriff) (Dumbbell Tricep Extension -Pronated Grip): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- SZ-Stangen-Skull-Crusher (EZ-Bar Skullcrusher): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt — Trizeps (Overhead betont langen Kopf)
+- Floor Press (Floor Press): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Floor Press mit Ketten (Floor Press with Chains): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Schrägbank-Langhantel-Trizepsstrecken (Incline Barbell Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Schräge enge Liegestütze (Incline Push-Up Close-Grip): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- JM Press (JM Press): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Kniendes Kabel-Trizepsstrecken (Kneeling Cable Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Trizepsstrecken am tiefen Kabel (Low Cable Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Liegendes enges Langhantel-Trizepsstrecken hinter den Kopf (Lying Close-Grip Barbell Triceps Extension Behind The Head): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt — Trizeps (Overhead betont langen Kopf)
+- Liegendes enges Langhantel-Trizepsdrücken zum Kinn (Lying Close-Grip Barbell Triceps Press To Chin): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt — Trizeps (Overhead betont langen Kopf)
+- Liegendes Kurzhantel-Trizepsstrecken (Lying Dumbbell Tricep Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt — Trizeps (Overhead betont langen Kopf)
+- Liegendes Trizepsdrücken (Lying Triceps Press): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt — Trizeps (Overhead betont langen Kopf)
+- Einarmiger Floor Press (One Arm Floor Press): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Einarmiges Kurzhantel-Trizepsstrecken (Obergriff) (One Arm Pronated Dumbbell Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Einarmiges Kurzhantel-Trizepsstrecken (Untergriff) (One Arm Supinated Dumbbell Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Trizepsstrecken über Kopf (Overhead Triceps): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt — Trizeps (Overhead betont langen Kopf)
+- Pin Presses (Pin Presses): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Enge Liegestütze (Trizeps) (Push-Ups - Close Triceps Position): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Reverse-Band-Bankdrücken (Reverse Band Bench Press): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Trizepsdrücken im Untergriff (Reverse Grip Triceps Pushdown): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Reverse-Trizeps-Bankdrücken (Reverse Triceps Bench Press): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Sitzendes einarmiges Trizeps-Kickback-Strecken (vorgebeugt) (Seated Bent-Over One-Arm Dumbbell Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Sitzendes beidarmiges Trizepsstrecken (vorgebeugt) (Seated Bent-Over Two-Arm Dumbbell Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Sitzendes Trizepsdrücken (Seated Triceps Press): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Speed-Band-Trizepsstrecken über Kopf (Speed Band Overhead Triceps): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt — Trizeps (Overhead betont langen Kopf)
+- Einarmiges Trizepsstrecken vorgebeugt (stehend) (Standing Bent-Over One-Arm Dumbbell Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Beidarmiges Trizepsstrecken vorgebeugt (stehend) (Standing Bent-Over Two-Arm Dumbbell Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Stehendes Kurzhantel-Trizepsstrecken (Standing Dumbbell Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Stehendes einarmiges Trizepsstrecken am tiefen Kabel (Standing Low-Pulley One-Arm Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Stehendes einarmiges Kurzhantel-Trizepsstrecken (Standing One-Arm Dumbbell Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Stehendes Langhantel-Trizepsstrecken über Kopf (Standing Overhead Barbell Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt — Trizeps (Overhead betont langen Kopf)
+- Stehendes Trizepsstrecken mit Handtuch (Standing Towel Triceps Extension): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Tate Press (Tate Press): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Kurzhantel-Kickback (Tricep Dumbbell Kickback): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Trizepsstrecken über Kopf mit Seil (Triceps Overhead Extension with Rope): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt — Trizeps (Overhead betont langen Kopf)
+- Trizepsdrücken am Kabel (Triceps Pushdown): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Trizepsdrücken am Kabel (Seil) (Triceps Pushdown - Rope Attachment): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+- Trizepsdrücken am Kabel (V-Griff) (Triceps Pushdown - V-Bar Attachment): **triceps_long, triceps_lateral, triceps_medial** · Neben: anterior_delt
+
+## chest (52)
+
+- Armschwingen (Brust öffnen) (Arm Swings (Chest Opener)): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Around the Worlds (Around The Worlds): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Langhantel-Bankdrücken (mittlerer Griff) (Barbell Bench Press - Medium Grip): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Langhantel-Guillotine-Bankdrücken (Barbell Guillotine Bench Press): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Schrägbankdrücken mit Langhantel (Barbell Incline Bench Press - Medium Grip): **pec_major_upper** · Neben: triceps_long, anterior_delt — Incline → oberer Brustmuskel
+- Bankdrücken mit Bändern (Bench Press - With Bands): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Kurzhantel-Pullover mit gebeugten Armen (Bent-Arm Dumbbell Pullover): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Fliegende mit Körpergewicht (Bodyweight Flyes): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt — Fly → ganze Brust
+- Kabel-Brustpresse (Cable Chest Press): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Kabelzug-Crossover (Cable Crossover): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt — Fly → ganze Brust
+- Kabel-Iron-Cross (Cable Iron Cross): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Clock Push-up (Clock Push-Up): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Crossover mit Bändern (Cross Over - With Bands): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Negativbankdrücken mit Langhantel (Decline Barbell Bench Press): **pec_major_lower** · Neben: triceps_long, anterior_delt — Decline/Dip → unterer Brustmuskel
+- Negativbankdrücken mit Kurzhanteln (Decline Dumbbell Bench Press): **pec_major_lower** · Neben: triceps_long, anterior_delt — Decline/Dip → unterer Brustmuskel
+- Negativbank-Kurzhantel-Fliegende (Decline Dumbbell Flyes): **pec_major_lower** · Neben: triceps_long, anterior_delt — Decline/Dip → unterer Brustmuskel
+- Kurzhantel-Bankdrücken (Dumbbell Bench Press): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Kurzhantel-Bankdrücken (neutraler Griff) (Dumbbell Bench Press with Neutral Grip): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Kurzhantel-Fliegende (Dumbbell Flyes): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt — Fly → ganze Brust
+- Kabel-Fliegende auf der Flachbank (Flat Bench Cable Flyes): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt — Fly → ganze Brust
+- Frontheben und Pullover (Front Raise And Pullover): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Schrägbankdrücken mit Kurzhanteln (Hammergriff) (Hammer Grip Incline DB Bench Press): **pec_major_upper** · Neben: triceps_long, anterior_delt — Incline → oberer Brustmuskel
+- Kabel-Brustpresse an der Schrägbank (Incline Cable Chest Press): **pec_major_upper** · Neben: triceps_long, anterior_delt — Incline → oberer Brustmuskel
+- Kabel-Fliegende an der Schrägbank (Incline Cable Flye): **pec_major_upper** · Neben: triceps_long, anterior_delt — Incline → oberer Brustmuskel
+- Schrägbankdrücken mit Kurzhanteln (Handflächen innen) (Incline Dumbbell Bench With Palms Facing In): **pec_major_upper** · Neben: triceps_long, anterior_delt — Incline → oberer Brustmuskel
+- Schrägbank-Fliegende (Incline Dumbbell Flyes): **pec_major_upper** · Neben: triceps_long, anterior_delt — Incline → oberer Brustmuskel
+- Schrägbank-Fliegende mit Drehung (Incline Dumbbell Flyes - With A Twist): **pec_major_upper** · Neben: triceps_long, anterior_delt — Incline → oberer Brustmuskel
+- Schrägbankdrücken mit Kurzhanteln (Incline Dumbbell Press): **pec_major_upper** · Neben: triceps_long, anterior_delt — Incline → oberer Brustmuskel
+- Schräge Liegestütze (Hände erhöht) (Incline Push-Up): **pec_major_upper** · Neben: triceps_long, anterior_delt — Incline → oberer Brustmuskel
+- Schräge Liegestütze (mittel) (Incline Push-Up Medium): **pec_major_upper** · Neben: triceps_long, anterior_delt — Incline → oberer Brustmuskel
+- Schräge Liegestütze (Untergriff) (Incline Push-Up Reverse Grip): **pec_major_upper** · Neben: triceps_long, anterior_delt — Incline → oberer Brustmuskel
+- Schräge Liegestütze (weit) (Incline Push-Up Wide): **pec_major_upper** · Neben: triceps_long, anterior_delt — Incline → oberer Brustmuskel
+- Isometrisches Brustpressen (Isometric Chest Squeezes): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Isometrische Wischer (Isometric Wipers): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Tiefes Kabel-Crossover (Low Cable Crossover): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt — Fly → ganze Brust
+- Nackendrücken (Neck Press): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Einarmiges Kurzhantel-Bankdrücken (One Arm Dumbbell Bench Press): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Einarmige Kurzhantel-Fliegende auf der Flachbank (One-Arm Flat Bench Dumbbell Flye): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt — Fly → ganze Brust
+- Plyometrische Liegestütze (Plyo Push-up): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Liegestütz zum Seitstütz (Push Up to Side Plank): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Weite Liegestütze (Push-Up Wide): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Liegestütze mit erhöhten Füßen (Push-Ups With Feet Elevated): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Liegestütze (Pushups): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Liegestütze (eng und weit) (Pushups (Close and Wide Hand Positions)): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Schulterblatt-Liegestütz (Scapular Push-Up): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Einarmiges Kabel-Crossover (Single-Arm Cable Crossover): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt — Fly → ganze Brust
+- Einarmiger Liegestütz (Single-Arm Push-Up): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Stehende Kabel-Brustpresse (Standing Cable Chest Press): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Kurzhantel-Pullover mit gestreckten Armen (Straight-Arm Dumbbell Pullover): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Langhantel-Bankdrücken (weiter Griff) (Wide-Grip Barbell Bench Press): **pec_major_upper, pec_major_lower** · Neben: triceps_long, anterior_delt
+- Negativbankdrücken mit Langhantel (weiter Griff) (Wide-Grip Decline Barbell Bench Press): **pec_major_lower** · Neben: triceps_long, anterior_delt — Decline/Dip → unterer Brustmuskel
+- Negativ-Pullover mit Langhantel (weiter Griff) (Wide-Grip Decline Barbell Pullover): **pec_major_lower** · Neben: triceps_long, anterior_delt — Decline/Dip → unterer Brustmuskel
+
+## biceps (48)
+
+- Hammer-Curl im Wechsel (Alternate Hammer Curl): **brachialis, brachioradialis, biceps** — Hammer → Brachialis/Brachioradialis
+- Schrägbank-Kurzhantel-Curl im Wechsel (Alternate Incline Dumbbell Curl): **biceps, brachialis** · Neben: brachioradialis
+- Langhantel-Curl (Barbell Curl): **biceps, brachialis** · Neben: brachioradialis
+- Langhantel-Curl liegend an der Schrägbank (Barbell Curls Lying Against An Incline): **biceps, brachialis** · Neben: brachioradialis
+- Kabel-Hammer-Curl mit Seil (Cable Hammer Curls - Rope Attachment): **brachialis, brachioradialis, biceps** — Hammer → Brachialis/Brachioradialis
+- Kabel-Preacher-Curl (Cable Preacher Curl): **biceps, brachialis** · Neben: brachioradialis
+- Enger SZ-Stangen-Curl (Close-Grip EZ Bar Curl): **biceps, brachialis** · Neben: brachioradialis
+- Enger SZ-Stangen-Curl mit Band (Close-Grip EZ-Bar Curl with Band): **biceps, brachialis** · Neben: brachioradialis
+- Enger Langhantel-Curl im Stand (Close-Grip Standing Barbell Curl): **biceps, brachialis** · Neben: brachioradialis
+- Konzentrations-Curl (Concentration Curls): **biceps, brachialis** · Neben: brachioradialis
+- Cross-Body-Hammer-Curl (Cross Body Hammer Curl): **brachialis, brachioradialis, biceps** — Hammer → Brachialis/Brachioradialis
+- Drag Curl (Drag Curl): **biceps, brachialis** · Neben: brachioradialis
+- Kurzhantel-Curl im Wechsel (Dumbbell Alternate Bicep Curl): **biceps, brachialis** · Neben: brachioradialis
+- Kurzhantel-Bizepscurl (Dumbbell Bicep Curl): **biceps, brachialis** · Neben: brachioradialis
+- Kurzhantel-Curl bäuchlings an der Schrägbank (Dumbbell Prone Incline Curl): **biceps, brachialis** · Neben: brachioradialis
+- SZ-Stangen-Curl (EZ-Bar Curl): **biceps, brachialis** · Neben: brachioradialis
+- Flexor-Schrägbank-Kurzhantel-Curl (Flexor Incline Dumbbell Curls): **biceps, brachialis** · Neben: brachioradialis
+- Hammer-Curls (Hammer Curls): **brachialis, brachioradialis, biceps** — Hammer → Brachialis/Brachioradialis
+- Hoher Kabel-Curl (High Cable Curls): **biceps, brachialis** · Neben: brachioradialis
+- Schrägbank-Kurzhantel-Curl (Incline Dumbbell Curl): **biceps, brachialis** · Neben: brachioradialis
+- Schrägbank-Hammer-Curl (Incline Hammer Curls): **brachialis, brachioradialis, biceps** — Hammer → Brachialis/Brachioradialis
+- Schrägbank-Curl (innerer Bizeps) (Incline Inner Biceps Curl): **biceps, brachialis** · Neben: brachioradialis
+- Liegender Kabel-Curl (Lying Cable Curl): **biceps, brachialis** · Neben: brachioradialis
+- Liegender enger Stangen-Curl am hohen Kabel (Lying Close-Grip Bar Curl On High Pulley): **biceps, brachialis** · Neben: brachioradialis
+- Liegender Langhantel-Curl auf hoher Bank (Lying High Bench Barbell Curl): **biceps, brachialis** · Neben: brachioradialis
+- Liegender Kurzhantel-Curl (Rückenlage) (Lying Supine Dumbbell Curl): **biceps, brachialis** · Neben: brachioradialis
+- Einarmiger Kurzhantel-Preacher-Curl (One Arm Dumbbell Preacher Curl): **biceps, brachialis** · Neben: brachioradialis
+- Überkopf-Kabel-Curl (Overhead Cable Curl): **biceps, brachialis** · Neben: brachioradialis
+- Preacher-Curl (Preacher Curl): **biceps, brachialis** · Neben: brachioradialis
+- Preacher-Hammer-Curl mit Kurzhantel (Preacher Hammer Dumbbell Curl): **brachialis, brachioradialis, biceps** — Hammer → Brachialis/Brachioradialis
+- Reverse-Langhantel-Curl (Reverse Barbell Curl): **biceps, brachialis** · Neben: brachioradialis
+- Reverse-Langhantel-Preacher-Curl (Reverse Barbell Preacher Curls): **biceps, brachialis** · Neben: brachioradialis
+- Reverse-Kabel-Curl (Reverse Cable Curl): **biceps, brachialis** · Neben: brachioradialis
+- Sitzende Bizepsdehnung (Seated Biceps): **biceps, brachialis** · Neben: brachioradialis
+- Sitzender enger Langhantel-Konzentrations-Curl (Seated Close-Grip Concentration Barbell Curl): **biceps, brachialis** · Neben: brachioradialis
+- Sitzender Kurzhantel-Curl (Seated Dumbbell Curl): **biceps, brachialis** · Neben: brachioradialis
+- Sitzender Kurzhantel-Curl (innerer Bizeps) (Seated Dumbbell Inner Biceps Curl): **biceps, brachialis** · Neben: brachioradialis
+- Spider-Curl (Spider Curl): **biceps, brachialis** · Neben: brachioradialis
+- Stehender Kabel-Bizepscurl (Standing Biceps Cable Curl): **biceps, brachialis** · Neben: brachioradialis
+- Stehender Konzentrations-Curl (Standing Concentration Curl): **biceps, brachialis** · Neben: brachioradialis
+- Stehender Reverse-Curl mit Kurzhanteln (Standing Dumbbell Reverse Curl): **biceps, brachialis** · Neben: brachioradialis
+- Stehender Curl (innerer Bizeps) (Standing Inner-Biceps Curl): **biceps, brachialis** · Neben: brachioradialis
+- Stehender einarmiger Kabel-Curl (Standing One-Arm Cable Curl): **biceps, brachialis** · Neben: brachioradialis
+- Stehender einarmiger Kurzhantel-Curl über Schrägbank (Standing One-Arm Dumbbell Curl Over Incline Bench): **biceps, brachialis** · Neben: brachioradialis
+- Beidarmiger Kurzhantel-Preacher-Curl (Two-Arm Dumbbell Preacher Curl): **biceps, brachialis** · Neben: brachioradialis
+- Langhantel-Curl mit weitem Griff (Wide-Grip Standing Barbell Curl): **biceps, brachialis** · Neben: brachioradialis
+- Zottman-Curl (Zottman Curl): **biceps, brachialis** · Neben: brachioradialis
+- Zottman-Preacher-Curl (Zottman Preacher Curl): **biceps, brachialis** · Neben: brachioradialis
+
+## hamstrings (33)
+
+- Hamstring-Dehnung 90/90 (90/90 Hamstring): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Good Morning mit Band (Band Good Morning): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Good Morning mit Band (Pull Through) (Band Good Morning (Pull Through)): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Umsetzen (Clean) (Clean): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Clean-Kreuzheben (Clean Deadlift): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Kurzhantel-Clean (Dumbbell Clean): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Beinheben nach vorn (Front Leg Raises): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Good Morning (Good Morning): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Good Morning von den Pins (Good Morning off Pins): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Hang Snatch (Hang Snatch): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Hang Snatch (unter den Knien) (Hang Snatch - Below Knees): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Good Morning an der Klimmzugstange (Hanging Bar Good Morning): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Inchworm (Inchworm): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Knie-Anhock-Sprung (Knee Tuck Jump): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Beinschwingen (Leg Swings): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Muscle Snatch (Muscle Snatch): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Glute-Ham-Raise (natürlich) (Natural Glute Ham Raise): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Power Clean (Power Clean): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Power Clean von Blöcken (Power Clean from Blocks): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Power Snatch (Power Snatch): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Reverse-Band-Sumo-Kreuzheben (Reverse Band Sumo Deadlift): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Rumänisches Kreuzheben (Romanian Deadlift): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Rumänisches Kreuzheben vom Podest (Romanian Deadlift from Deficit): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Snatch-Kreuzheben (Snatch Deadlift): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Snatch Pull (Snatch Pull): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Split Snatch (Split Snatch): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Kreuzheben mit gestreckten Beinen (Langhantel) (Stiff-Legged Barbell Deadlift): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Kreuzheben mit gestreckten Beinen (Kurzhanteln) (Stiff-Legged Dumbbell Deadlift): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Sumo-Kreuzheben (Sumo Deadlift): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Sumo-Kreuzheben mit Bändern (Sumo Deadlift with Bands): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Sumo-Kreuzheben mit Ketten (Sumo Deadlift with Chains): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Vertikaler Swing (Vertical Swing): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+- Kreuzheben mit gestreckten Beinen (weiter Stand) (Wide Stance Stiff Legs): **lateral_hamstrings, medial_hamstrings** · Neben: glute_max, gastrocnemius
+
+## lats (20)
+
+- Langhantel-Pullover mit gebeugten Armen (Bent-Arm Barbell Pullover): **upper_lats, teres_major** · Neben: biceps, rhomboids — Pullover → oberer Lat + Teres
+- Kabel-Schrägdrücken nach unten (Cable Incline Pushdown): **upper_lats, lower_lats** · Neben: biceps, teres_major, rhomboids
+- Klimmzug im Untergriff (Chin-up) (Chin-Up): **upper_lats, lower_lats** · Neben: biceps, teres_major, rhomboids — Klimmzug/Latzug → breiter Rücken
+- Latziehen enger Griff (Close-Grip Front Lat Pulldown): **upper_lats, lower_lats** · Neben: biceps, teres_major, rhomboids — Klimmzug/Latzug → breiter Rücken
+- Erhöhtes Kabelrudern (Elevated Cable Rows): **upper_lats, lower_lats** · Neben: biceps, teres_major, rhomboids
+- Latziehen mit vollem Bewegungsradius (Full Range-Of-Motion Lat Pulldown): **upper_lats, lower_lats** · Neben: biceps, teres_major, rhomboids — Klimmzug/Latzug → breiter Rücken
+- Kniendes Rudern am hohen Kabel (Kneeling High Pulley Row): **upper_lats, lower_lats** · Neben: biceps, teres_major, rhomboids
+- Kniendes einarmiges Rudern am hohen Kabel (Kneeling Single-Arm High Pulley Row): **upper_lats, lower_lats** · Neben: biceps, teres_major, rhomboids
+- Einarmiges Latziehen (One Arm Lat Pulldown): **upper_lats, lower_lats** · Neben: biceps, teres_major, rhomboids — Klimmzug/Latzug → breiter Rücken
+- Open Book (Brustwirbelsäule) (Open Book): **upper_lats, lower_lats** · Neben: biceps, teres_major, rhomboids
+- Klimmzüge (Pullups): **upper_lats, lower_lats** · Neben: biceps, teres_major, rhomboids — Klimmzug/Latzug → breiter Rücken
+- Seil-Armzug mit gestreckten Armen (Rope Straight-Arm Pulldown): **upper_lats, teres_major** · Neben: biceps, rhomboids — Pullover → oberer Lat + Teres
+- Shotgun Row (Shotgun Row): **upper_lats, lower_lats** · Neben: biceps, teres_major, rhomboids
+- Armzug mit gestreckten Armen am Kabel (Straight-Arm Pulldown): **upper_lats, teres_major** · Neben: biceps, rhomboids — Pullover → oberer Lat + Teres
+- Kabelziehen im Untergriff (Underhand Cable Pulldowns): **upper_lats, lower_lats** · Neben: biceps, teres_major, rhomboids — Klimmzug/Latzug → breiter Rücken
+- Latziehen mit V-Griff (V-Bar Pulldown): **upper_lats, lower_lats** · Neben: biceps, teres_major, rhomboids — Klimmzug/Latzug → breiter Rücken
+- Klimmzug mit V-Griff (V-Bar Pullup): **upper_lats, lower_lats** · Neben: biceps, teres_major, rhomboids — Klimmzug/Latzug → breiter Rücken
+- Latziehen weiter Griff (Wide-Grip Lat Pulldown): **upper_lats, lower_lats** · Neben: biceps, teres_major, rhomboids — Klimmzug/Latzug → breiter Rücken
+- Latziehen weiter Griff hinter den Nacken (Wide-Grip Pulldown Behind The Neck): **upper_lats, lower_lats** · Neben: biceps, teres_major, rhomboids — Klimmzug/Latzug → breiter Rücken
+- Klimmzug weiter Griff (zum Nacken) (Wide-Grip Rear Pull-Up): **upper_lats, lower_lats** · Neben: biceps, teres_major, rhomboids — Klimmzug/Latzug → breiter Rücken
+
+## forearms (18)
+
+- Kabel-Handgelenkcurl (Cable Wrist Curl): **forearm_flexors, forearm_extensors, brachioradialis**
+- Liegende Kurzhantel-Pronation (Dumbbell Lying Pronation): **forearm_flexors, forearm_extensors, brachioradialis**
+- Liegende Kurzhantel-Supination (Dumbbell Lying Supination): **forearm_flexors, forearm_extensors, brachioradialis**
+- Finger-Curls (Finger Curls): **forearm_flexors, forearm_extensors, brachioradialis**
+- Kurzhantel-Handgelenkcurl (Obergriff) über der Bank (Palms-Down Dumbbell Wrist Curl Over A Bench): **forearm_flexors, forearm_extensors, brachioradialis**
+- Handgelenkcurl (Obergriff) über der Bank (Palms-Down Wrist Curl Over A Bench): **forearm_flexors, forearm_extensors, brachioradialis**
+- Langhantel-Handgelenkcurl (Untergriff) über der Bank (Palms-Up Barbell Wrist Curl Over A Bench): **forearm_flexors, forearm_extensors, brachioradialis**
+- Kurzhantel-Handgelenkcurl (Untergriff) über der Bank (Palms-Up Dumbbell Wrist Curl Over A Bench): **forearm_flexors, forearm_extensors, brachioradialis**
+- Sitzender Kurzhantel-Handgelenkcurl (Obergriff) (Seated Dumbbell Palms-Down Wrist Curl): **forearm_flexors, forearm_extensors, brachioradialis**
+- Sitzender Kurzhantel-Handgelenkcurl (Untergriff) (Seated Dumbbell Palms-Up Wrist Curl): **forearm_flexors, forearm_extensors, brachioradialis**
+- Sitzender einarmiger Kurzhantel-Handgelenkcurl (Obergriff) (Seated One-Arm Dumbbell Palms-Down Wrist Curl): **forearm_flexors, forearm_extensors, brachioradialis**
+- Sitzender einarmiger Kurzhantel-Handgelenkcurl (Untergriff) (Seated One-Arm Dumbbell Palms-Up Wrist Curl): **forearm_flexors, forearm_extensors, brachioradialis**
+- Sitzender Langhantel-Handgelenkcurl (Untergriff) (Seated Palm-Up Barbell Wrist Curl): **forearm_flexors, forearm_extensors, brachioradialis**
+- Sitzender Langhantel-Handgelenkcurl (Obergriff) (Seated Palms-Down Barbell Wrist Curl): **forearm_flexors, forearm_extensors, brachioradialis**
+- Sitzender beidarmiger Handgelenkcurl am tiefen Kabel (Seated Two-Arm Palms-Up Low-Pulley Wrist Curl): **forearm_flexors, forearm_extensors, brachioradialis**
+- Langhantel-Handgelenkcurl hinter dem Rücken (Standing Palms-Up Barbell Behind The Back Wrist Curl): **forearm_flexors, forearm_extensors, brachioradialis**
+- Handgelenkkreisen (Wrist Circles): **forearm_flexors, forearm_extensors, brachioradialis**
+- Handgelenkrotation mit Stange (Wrist Rotations with Straight Bar): **forearm_flexors, forearm_extensors, brachioradialis**
+
+## glutes (17)
+
+- Langhantel-Glute-Bridge (Barbell Glute Bridge): **glute_max** · Neben: lateral_hamstrings, medial_hamstrings — Hüftstrecken → Gesäß
+- Langhantel-Hip-Thrust (Barbell Hip Thrust): **glute_max** · Neben: lateral_hamstrings, medial_hamstrings — Hüftstrecken → Gesäß
+- Gesäßheben (Bridge) (Butt Lift (Bridge)): **glute_max** · Neben: lateral_hamstrings, medial_hamstrings — Hüftstrecken → Gesäß
+- Flutter Kicks (Flutter Kicks): **glute_max** · Neben: lateral_hamstrings, medial_hamstrings
+- Glute Bridge (leicht) (Glute Bridge (Warm-Up)): **glute_max** · Neben: lateral_hamstrings, medial_hamstrings — Hüftstrecken → Gesäß
+- Glute Kickback (Glute Kickback): **glute_max** · Neben: lateral_hamstrings, medial_hamstrings — Hüftstrecken → Gesäß
+- Hüftstreckung mit Bändern (Hip Extension with Bands): **glute_max** · Neben: lateral_hamstrings, medial_hamstrings
+- Hüftheben mit Band (Hip Lift with Band): **glute_max** · Neben: lateral_hamstrings, medial_hamstrings
+- Kniender Strecksprung (Kneeling Jump Squat): **glute_max** · Neben: lateral_hamstrings, medial_hamstrings
+- Kniende Kniebeuge (Kneeling Squat): **glute_max** · Neben: lateral_hamstrings, medial_hamstrings
+- Beinheben (Leg Lift): **glute_max** · Neben: lateral_hamstrings, medial_hamstrings
+- Liegende Gesäßdehnung (Lying Glute): **glute_max** · Neben: lateral_hamstrings, medial_hamstrings
+- Einbeiniger Kabel-Kickback (One-Legged Cable Kickback): **glute_max** · Neben: lateral_hamstrings, medial_hamstrings — Hüftstrecken → Gesäß
+- Pull Through (Pull Through): **glute_max** · Neben: lateral_hamstrings, medial_hamstrings
+- Sitzende Gesäßdehnung (Seated Glute): **glute_max** · Neben: lateral_hamstrings, medial_hamstrings
+- Einbeinige Glute Bridge (Single Leg Glute Bridge): **glute_max** · Neben: lateral_hamstrings, medial_hamstrings — Hüftstrecken → Gesäß
+- Step-up mit Kniehub (Step-up with Knee Raise): **glute_max** · Neben: lateral_hamstrings, medial_hamstrings
+
+## middle back (17)
+
+- Langhantel-Rudern vorgebeugt (Bent Over Barbell Row): **rhomboids, mid_traps, teres_major** · Neben: biceps, posterior_delt
+- Einarmiges Rudern mit Langstange vorgebeugt (Bent Over One-Arm Long Bar Row): **rhomboids, mid_traps, teres_major** · Neben: biceps, posterior_delt
+- Beidarmiges Rudern mit Langstange vorgebeugt (Bent Over Two-Arm Long Bar Row): **rhomboids, mid_traps, teres_major** · Neben: biceps, posterior_delt
+- Rudern mit zwei Kurzhanteln vorgebeugt (Bent Over Two-Dumbbell Row): **rhomboids, mid_traps, teres_major** · Neben: biceps, posterior_delt
+- Rudern mit zwei Kurzhanteln (Handflächen innen) (Bent Over Two-Dumbbell Row With Palms In): **rhomboids, mid_traps, teres_major** · Neben: biceps, posterior_delt
+- Katze-Kuh (Cat-Cow): **rhomboids, mid_traps, teres_major** · Neben: biceps, posterior_delt
+- Kurzhantel-Rudern an der Schrägbank (Dumbbell Incline Row): **rhomboids, mid_traps, teres_major** · Neben: biceps, posterior_delt
+- Zug an der Schrägbank (Incline Bench Pull): **rhomboids, mid_traps, teres_major** · Neben: biceps, posterior_delt
+- Liegendes Rudern mit Cambered-Stange (Lying Cambered Barbell Row): **rhomboids, mid_traps, teres_major** · Neben: biceps, posterior_delt
+- Schulterblatt-Zug (mittlerer Rücken) (Middle Back Shrug): **rhomboids, mid_traps, teres_major** · Neben: biceps, posterior_delt
+- Einarmiges Kurzhantel-Rudern (One-Arm Dumbbell Row): **rhomboids, mid_traps, teres_major** · Neben: biceps, posterior_delt
+- Einarmiges Rudern mit Langstange (One-Arm Long Bar Row): **rhomboids, mid_traps, teres_major** · Neben: biceps, posterior_delt
+- Langhantel-Rudern im Untergriff (Reverse Grip Bent-Over Rows): **rhomboids, mid_traps, teres_major** · Neben: biceps, posterior_delt
+- Sitzendes Kabelrudern (Seated Cable Rows): **rhomboids, mid_traps, teres_major** · Neben: biceps, posterior_delt
+- Sitzendes einarmiges Kabelrudern (Seated One-arm Cable Pulley Rows): **rhomboids, mid_traps, teres_major** · Neben: biceps, posterior_delt
+- Rudern auf der Bank (gerade Stange) (Straight Bar Bench Mid Rows): **rhomboids, mid_traps, teres_major** · Neben: biceps, posterior_delt
+- T-Bar-Rudern mit Griff (T-Bar Row with Handle): **rhomboids, mid_traps, teres_major** · Neben: biceps, posterior_delt
+
+## lower back (11)
+
+- Langhantel-Kreuzheben (Barbell Deadlift): **erector_spinae** · Neben: glute_max
+- Kreuzheben mit Bändern (Deadlift with Bands): **erector_spinae** · Neben: glute_max
+- Kreuzheben mit Ketten (Deadlift with Chains): **erector_spinae** · Neben: glute_max
+- Kreuzheben vom Podest (Deficit Deadlift): **erector_spinae** · Neben: glute_max
+- Hyperextensions mit Bank (Hyperextensions With No Hyperextension Bench): **erector_spinae** · Neben: glute_max
+- Rack Pull mit Bändern (Rack Pull with Bands): **erector_spinae** · Neben: glute_max
+- Rack Pulls (Rack Pulls): **erector_spinae** · Neben: glute_max
+- Reverse-Band-Kreuzheben (Reverse Band Deadlift): **erector_spinae** · Neben: glute_max
+- Sitzende Good Mornings (Seated Good Mornings): **erector_spinae** · Neben: glute_max
+- Good Morning mit gestreckten Beinen (Langhantel) (Stiff Leg Barbell Good Morning): **erector_spinae** · Neben: glute_max
+- Superman (Superman): **erector_spinae** · Neben: glute_max
+
+## traps (10)
+
+- Langhantel-Shrugs (Barbell Shrug): **upper_traps** · Neben: rhomboids
+- Langhantel-Shrugs hinter dem Rücken (Barbell Shrug Behind The Back): **upper_traps** · Neben: rhomboids
+- Kabel-Shrugs (Cable Shrugs): **upper_traps** · Neben: rhomboids
+- Clean Shrug (Clean Shrug): **upper_traps** · Neben: rhomboids
+- Kurzhantel-Shrugs (Dumbbell Shrug): **upper_traps** · Neben: rhomboids
+- Schulterkreisen (Shoulder Rolls): **upper_traps** · Neben: rhomboids
+- Snatch Shrug (Snatch Shrug): **upper_traps** · Neben: rhomboids
+- Kurzhantel-Aufrechtrudern (Standing Dumbbell Upright Row): **upper_traps** · Neben: rhomboids
+- Kabel-Aufrechtrudern (Upright Cable Row): **upper_traps** · Neben: rhomboids
+- Aufrechtrudern mit Bändern (Upright Row - With Bands): **upper_traps** · Neben: rhomboids
+
+## calves (8)
+
+- Sitzendes Langhantel-Wadenheben (Barbell Seated Calf Raise): **soleus** — Sitzend → Schollenmuskel
+- Wadenheben auf Kurzhantel (Calf Raise On A Dumbbell): **gastrocnemius, soleus**
+- Wadenheben mit Band (Calf Raises - With Bands): **gastrocnemius, soleus**
+- Sitzendes einbeiniges Wadenheben mit Kurzhantel (Dumbbell Seated One-Leg Calf Raise): **soleus** — Sitzend → Schollenmuskel
+- Kniekreisen (Knee Circles): **gastrocnemius, soleus**
+- Wadenheben (Rocking) (Rocking Standing Calf Raise): **gastrocnemius** — Stehend → Zwillingswadenmuskel
+- Stehendes Langhantel-Wadenheben (Standing Barbell Calf Raise): **gastrocnemius** — Stehend → Zwillingswadenmuskel
+- Stehendes Kurzhantel-Wadenheben (Standing Dumbbell Calf Raise): **gastrocnemius** — Stehend → Zwillingswadenmuskel
+
+## abductors (4)
+
+- Hüftkreisen (Bauchlage) (Hip Circles (prone)): **glute_med**
+- Liegende Überkreuzbewegung (Lying Crossover): **glute_med**
+- Monster Walk (Monster Walk): **glute_med**
+- Hüftkreisen im Stand (Standing Hip Circles): **glute_med**
+
+## adductors (4)
+
+- Adduktion mit Band (Band Hip Adductions): **adductors**
+- Groiners (Groiners): **adductors**
+- Seitlicher Sprung (Lateral Bound): **adductors**
+- Seitliches Beinheben (Side Leg Raises): **adductors**
+
+## neck (2)
+
+- Isometrische Nackenübung (vorn und hinten) (Isometric Neck Exercise - Front And Back): **neck_flexors, neck_extensors**
+- Isometrische Nackenübung (seitlich) (Isometric Neck Exercise - Sides): **neck_flexors, neck_extensors**
