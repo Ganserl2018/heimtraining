@@ -1164,6 +1164,12 @@ function fgMount() {
 }
 const FG_BACK = ['Rücken', 'm:traps', 'm:middle back', 'm:lats', 'm:lower back', 'm:glutes', 'm:hamstrings', 'm:calves', 'm:triceps'], FG_FRONT = ['Brust', 'Bauch', 'm:biceps', 'm:forearms', 'm:quadriceps', 'Beine'];
 function fgFace(item) { if (!genCfg.groups.includes(item)) return; if (FG_BACK.includes(item)) fgTurn(true); else if (FG_FRONT.includes(item)) fgTurn(false); }
+function resetPlan() { // Start gedrückt: Planung komplett zurück in den Ursprung
+  const d0 = genCfg.dur; genCfg = newGenCfg(); genCfg.dur = d0; genCfg.groups = []; genCfg.gear = []; genCfg.plAuto = false;
+  genRes = null; plStep = 0; plClassic = false; fgOpen = null; plMsg = '';
+  try { localStorage.setItem(GEARKEY, '[]'); } catch (e) {}
+  if (fg && fg.ready) { fgTurn(false); fgPaint(); }
+}
 function fgTurn(back) {
   if (!fg || !fg.ready) return;
   const cam = fg.cam, p = cam.position.clone(), y = p.y, r = Math.hypot(p.x, p.z), a0 = Math.atan2(p.x, p.z), az = back ? Math.PI : 0;
@@ -2065,7 +2071,7 @@ content.addEventListener('click', e => {
       if (btn.dataset.day) { day = btn.dataset.day; view = 'day'; }
       else if (btn.dataset.view) {
         // Planung öffnen = frischer Start: nichts gewählt außer Zeit (Geräte -> passende Gruppen entstehen durch Antippen)
-        if (btn.dataset.view === 'start' && view !== 'start') { plStep = 0; { const d0 = genCfg.dur; genCfg = newGenCfg(); genCfg.dur = d0; } genRes = null; genCfg.plAuto = false; plClassic = false; genCfg.gear = []; genCfg.groups = []; try { localStorage.setItem(GEARKEY, '[]'); } catch (e2) {} }
+        if (btn.dataset.view === 'start') resetPlan();
         view = btn.dataset.view;
       }
       picker = null;
@@ -2487,6 +2493,7 @@ document.getElementById('tvIconBtn').addEventListener('click', () => {
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
     picker = null;
+    if (tab.dataset.view === 'overview' || tab.dataset.view === 'start') resetPlan();
     view = tab.dataset.view;
     render();
   });
