@@ -28,3 +28,10 @@ Neue Alex-Beschwerde, die schon mal da war → hier als Punkt ergänzen.
 - [ ] Gerätenamen: Nur Körper, Langhantel-Set, Kurzhanteln, Seilzug oben, Türanker-Bänder, Klimmzug-Gerüst, Hyperextension-Bank, Hantelbank.
 - [ ] `?v=` in index.html nur Ziffern + Kleinbuchstaben; `node --check script.js` ok; Konsole ohne neue Fehler.
 - [ ] Deploy live: https://heimtraining.pages.dev lädt die neue `?v=`-Version.
+
+## Regression durch Nebenwirkungen (Alex 27.10., nach "Optik verändert")
+- Wird ein Element nur klickbar gemacht oder sein Tag getauscht (div → button/a): Screenshot VORHER/NACHHER vergleichen, Optik muss pixelgleich bleiben. Typische Fallen: `font:inherit` setzt line-height zurück, Button-Default-Padding/Breite/letter-spacing, Specificity (`button.x` schlägt `.x`).
+- Startseite: HOME/FORCE-Schrift, Abstand zum START-Button, Sonar-Puls, Halten-und-Füllen (ca. 1 s halten → Wizard). Start-Tab zeigt IMMER diese Seite (nie die Ziele-&-Streak-Seite hängen lassen: Tab-Klick beendet dashMode).
+- HOME FORCE tippen → Woche-Seite (ohne Wizard).
+- Alex' Lieblingselemente nie entfernen oder ersetzen, auch nicht "zum Aufräumen" (Start-Button, Halten-Füllen, Neon-Look).
+- Vor "Entfernen/Abschaffen": nur bauen, wenn Alex es ausdrücklich so gesagt hat; bei Unklarheit nachfragen, was GENAU gemeint ist (Seite vs. Button).
