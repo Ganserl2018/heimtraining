@@ -612,3 +612,4 @@ Erst nach den laufenden Features; Alex gibt das Go.
     Entscheid 23:03: Level-Up, Hinweise zurücksetzen, Neu laden, falsche Bilder kopieren BLEIBEN im Profil. Nur der Ziel-Block wandert zur Woche-Seite.
     Bug (Alex 23:04, Screenshot): Profil-Fußzeile (Hinweise zurücksetzen, ↻ Neu laden, falsche Bilder) ist auf dem iPhone NICHT sichtbar – unter der Tab-Leiste abgeschnitten, Seite scrollt nicht. Löst sich mit Ziel-Block-Umzug (Platz), danach per Harness prüfen.
 11. OFFEN (Alex überlegt, 23:07): Startseite – Rolle unklar (Ring/Monatsbalken/Countdown/Wochentage doppeln Woche+Profil). Optionen: A abspecken, B abschaffen (Woche = Start). Keine Entscheidung, nichts bauen.
+    Alex 23:08: "Start Workout" entfällt (Wizard-Ergebnis hat Starten). Damit bleibt auf Start fast nichts → Entscheidung A/B hängt davon ab.
