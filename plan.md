@@ -584,3 +584,10 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - suggestGear: ~20 Übungen/Muskel, Paare (Bank+Hanteln), Körper halb. Start-Tab = resetPlan().
 - Optik-Check erledigt (QA-Bericht qa-wizard-bericht-2026-10-27.md). Trainings-Hero = Zahlenstreifen, Training-Detail kompakter.
 - Warteliste: Figur-Fähigkeiten (siehe oben), Gerät→Figur GESTOPPT, Übungskarten verdichten, GIFs cat_cow/scapular_push_up, Checker-Re-Run.
+
+## Stand 26.10. 21:45 – Geräte-Seite fertig (v=20261028d, 5bfa4da)
+- Geräte-Seite: Titel "GERÄTE WÄHLEN", Muskel-Chips darunter, Schalter-Zeilen mit Symbol-Kachel (GEAR_NAME/GEAR_SVG) statt Haken. Neue Namen: Nur Körper, Langhantel-Set, Kurzhanteln, Seilzug oben, Türanker-Bänder, Klimmzug-Gerüst, Hyperextension-Bank, Hantelbank.
+- Feinschliff von Geräte-Seite entfernt -> Block "Anpassen (Übungen/Sätze/Wdh)" auf Ergebnisseite (genAdjHtml, gnAdj); Änderung mischt sofort neu (generate()).
+- Schritt 1: Text "Wähle die Muskeln fürs Training".
+- OFFEN (Alex-Go fehlt): "Fest einplanen" (Ausfahrt Spontan-Training -> fester Wochenplan). 5 Fragen gestellt (Button-Ort, was wird fest, Tage/Uhrzeit/Name, Ziel danach, mehrere Tage). Entwurf liegt im git stash (stash@{0}), NICHT gebaut.
+- Hinweis: shell-Befehl mit `rev` auf Riesenzeile hängt (script.js ist minifiziert-lang) -> nie `rev`/`cut` auf Zeilen von script.js ohne python-Slice.
