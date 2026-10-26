@@ -601,3 +601,4 @@ Erst nach den laufenden Features; Alex gibt das Go.
 1. Ergebnisseite: Hinweis-Zeile "Wischen: → ★ Favorit · ← neue Übung · ⇄ selbst wählen" heller machen (lesbar) – Alex 26.10. 22:23
 2. Trainings-/Woche-Kacheln: rotes "+N"-Badge (tr-more) auf dem Bild entfernen, Übungszahl steht schon in der Zeile (Option B) – Alex 26.10. 22:25
 3. Tipp-Blasen im Training-Detail (hint() in renderWTrain, Schritte Name/Übung/Sätze/Tage/Start) überarbeiten + an neue Logik anpassen (Trainings kommen jetzt fertig aus dem Generator, Name Loser N) – Alex 26.10. 22:27; Vorschlag steht im Chat, wartet auf Bestätigung
+4. Geräte-Check: Training-Detail zeigt Geräte-Chips aus den Übungen (gearOf), nicht aus der Wizard-Auswahl; Aufwärmen zählt als "Körper" mit; alte Namen (Hanteln/Bank). Vorschlag: gewählte Geräte im Training speichern (t.gear) + neue Namen anzeigen, Warmups zählen nicht – Alex 26.10. 22:29; Generator selbst geprüft: hält Auswahl ein (11 Kombis, nur Warmups = Körper)

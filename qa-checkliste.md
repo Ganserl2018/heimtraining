@@ -11,6 +11,7 @@ Neue Alex-Beschwerde, die schon mal da war → hier als Punkt ergänzen.
 - [ ] Figur dreht automatisch zur Muskelseite (Rücken → hinten).
 - [ ] Geräte-Seite: 1, 2 und 4 Muskelgruppen – nichts überlappt, Titel + Chips sichtbar, Geräteliste scrollt, Name jeder Zeile einzeilig, TRAINING BAUEN sichtbar über Tab-Leiste.
 - [ ] Geräte: Vorschlag vorgewählt nachvollziehbar, Antippen schaltet um, Zähler (Üb.) plausibel (mehr Geräte → nie weniger Übungen).
+- [ ] **Geräte prüfen:** zu jeder Kombi (Muskeln × Geräte) enthält das Ergebnis nur Übungen mit gewählten Geräten (Warmups = Körper ausgenommen); Geräte-Chips im Training-Detail = gewählte Geräte. Test: Skript t27 (Playwright, generate() + gearOf je Übung). (Alex 26.10. 22:29)
 - [ ] Ergebnis: Anzahl Übungen = gewählte Anzahl (ohne Warmups), Hero-Zahlen stimmen, "Anpassen" mischt sofort neu.
 - [ ] "Anpassen": gewählte Sätze/Wdh gelten exakt für alle Übungen (nicht nur als Mindestwert), Auto = Vorschlag; Übungen-Zahl ohne Warmups. (Regression 26.10. 22:00)
 - [ ] Ergebnisseite kompakt: Hero-Streifen mit ‹, Gruppen "Aufwärmen"/"Training", Zeilen-Karten einzeilig, ⇄ rund und mittig, Nummern-Badge nicht abgeschnitten, Aktionsbereich ohne langes Scrollen sichtbar.
