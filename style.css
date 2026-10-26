@@ -2284,3 +2284,7 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .pl-lead{flex:none; min-width:0;}
 .pl-chips .pl-chip{flex:0 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis;}
 .pl.pl-fig .qk-link{display:none}
+.fg-next{flex:none; width:100%; min-height:52px; padding:.6rem 1rem; border:0; border-radius:16px; background:var(--accent); color:#0c1411; font:600 .95rem/1.2 system-ui,-apple-system,sans-serif; cursor:pointer; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; transition:transform .16s var(--ease-out);}
+.fg-next:active{transform:scale(.98);}
+.fg-next.off{background:var(--panel); color:var(--text-dim); border:1.5px dashed var(--border);}
+.pl.pl-fig{gap:.5rem;}
