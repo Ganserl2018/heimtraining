@@ -1241,7 +1241,11 @@ function renderStart() {
     ${plStep === 1 ? '' : '<button class="qk-link" data-act="plClassic">Alle Optionen auf einer Seite ›</button>'}</div></div>`;
   content.classList.remove('pl-scroll');
   content.querySelector('.pl').classList.toggle('pl-fig', plStep >= 1);
-  if (plStep === 1) fgMount();
+  if (plStep === 1) {
+    fgMount();
+    const gs = content.querySelector('.fg-gs'), op = gs && gs.querySelector('.fg-g.open');
+    if (op) { const top = op.offsetTop - gs.offsetTop - 2; if (gs.scrollHeight > gs.clientHeight) requestAnimationFrame(() => gs.scrollTo({ top, behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth' })); }
+  }
 }
 function renderStartClassic() {
   // Planung: eine Frage – "Was trainiere ich jetzt?". Gespeicherte Trainings = 1 Tipp bis ins Workout, darunter der Schnell-Bauer.
