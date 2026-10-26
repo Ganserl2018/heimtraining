@@ -2488,3 +2488,6 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .ga-h span small{flex-basis:100%; font-size:.8rem; color:var(--text-dim);}
 .ga-ft i{flex:none; width:34px; height:34px; border-radius:50%; border:1.5px solid var(--accent); display:grid; place-items:center; font-size:1.1rem; line-height:1; transition:transform 200ms cubic-bezier(.23,1,.32,1);}
 .ga-fine.open .ga-ft i{transform:rotate(180deg);}
+.ga-fine{padding-top:0; gap:0;}
+.ga-ft{min-height:36px;}
+.ga-ft i{width:24px; height:24px; font-size:.8rem; border-width:1.5px;}
