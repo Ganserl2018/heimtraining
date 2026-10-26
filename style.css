@@ -2485,3 +2485,4 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .ga-ic svg{width:28px; height:28px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;}
 .ga-r.on .ga-ic{background:var(--accent); border-color:var(--accent); color:#0c1411;}
 .ga-r{grid-template-columns:auto minmax(0,1fr) auto;}
+.ga-h span small{flex-basis:100%; font-size:.8rem; color:var(--text-dim);}
