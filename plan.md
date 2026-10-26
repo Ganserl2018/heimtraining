@@ -591,3 +591,11 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - Schritt 1: Text "Wähle die Muskeln fürs Training".
 - OFFEN (Alex-Go fehlt): "Fest einplanen" (Ausfahrt Spontan-Training -> fester Wochenplan). 5 Fragen gestellt (Button-Ort, was wird fest, Tage/Uhrzeit/Name, Ziel danach, mehrere Tage). Entwurf liegt im git stash (stash@{0}), NICHT gebaut.
 - Hinweis: shell-Befehl mit `rev` auf Riesenzeile hängt (script.js ist minifiziert-lang) -> nie `rev`/`cut` auf Zeilen von script.js ohne python-Slice.
+
+## Stand 26.10. 22:25 – Ergebnis kompakt + Fest einplanen (v=20261028k, a174a3e)
+- Ergebnisseite kompakt: Hero-Streifen mit ‹ + Muskelchips + "N Übungen · N Sätze · ~N Min", Gruppen AUFWÄRMEN/TRAINING, Zeilen-Karten ~64pt, Aktionsbereich: Speichern|Starten, darunter Neu mischen | Einplanen | Anpassen (Panels klappen darunter auf).
+- Fest einplanen: Tage wählen -> Training in Woche (genSave(false, days)); Standard jetzt 3 Sätze x 10 Wdh, Anpassen = exakte Werte (Auto = Vorschlag). Figur-Schritt klappt bei jedem Betreten ein. qa-checkliste.md für Checker angelegt (CLAUDE.md verweist darauf).
+- Neue Phase: App-Kosmetik (nur Kleinigkeiten). Alex sammelt Tipps, Claude sammelt und baut ERST nach seinem Go. Liste: siehe Abschnitt "Kosmetik-Liste" unten (wird laufend ergänzt).
+
+### Kosmetik-Liste (gesammelt, NICHT gebaut)
+- (noch leer – wartet auf Alex' Tipps)
