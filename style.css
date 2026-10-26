@@ -2557,3 +2557,5 @@ body.is-res .topbar h1::after{content:none;}
 
 .w-time-l{display:flex; align-items:center; justify-content:space-between; gap:.6rem; margin-top:.5rem; font-size:.85rem; color:var(--text-dim)}
 .w-time-l .w-schedule-time{min-width:7.5rem; min-height:40px; color:var(--text); text-align:center}
+
+.ga-c .ga-ic2{font-size:1.45em; line-height:.7; display:inline-block; vertical-align:-.12em}
