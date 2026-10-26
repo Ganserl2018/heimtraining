@@ -13,6 +13,7 @@ Neue Alex-Beschwerde, die schon mal da war → hier als Punkt ergänzen.
 - [ ] Geräte: Vorschlag vorgewählt nachvollziehbar, Antippen schaltet um, Zähler (Üb.) plausibel (mehr Geräte → nie weniger Übungen).
 - [ ] Ergebnis: Anzahl Übungen = gewählte Anzahl (ohne Warmups), Hero-Zahlen stimmen, "Anpassen" mischt sofort neu.
 - [ ] "Anpassen": gewählte Sätze/Wdh gelten exakt für alle Übungen (nicht nur als Mindestwert), Auto = Vorschlag; Übungen-Zahl ohne Warmups. (Regression 26.10. 22:00)
+- [ ] Ergebnisseite kompakt: Hero-Streifen mit ‹, Gruppen "Aufwärmen"/"Training", Zeilen-Karten einzeilig, ⇄ rund und mittig, Nummern-Badge nicht abgeschnitten, Aktionsbereich ohne langes Scrollen sichtbar.
 - [ ] "Fest einplanen" (Ergebnis): Tage wählen → Training erscheint in Woche an diesen Tagen, Planung zurückgesetzt, Button ohne Tag deaktiviert.
 - [ ] Speichern → Training erscheint in Trainings; Planung danach wieder im Ursprung.
 

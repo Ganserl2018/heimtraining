@@ -2522,3 +2522,24 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .gn-pan .qk-rows{display:flex; flex-direction:column; gap:.35rem;}
 .gn-pan .qk-r{margin:0; min-height:0; gap:.5rem;}
 .gn-pan .seg button{min-height:34px; font-size:.85rem;}
+/* Ergebnis kompakt (26.10. 22:20) */
+body.is-res .topbar h1::after{content:none;}
+.gn-res .gh.gh-s{margin:0 0 .45rem; padding:.45rem .6rem .5rem; border-radius:16px; display:flex; flex-direction:column; gap:.3rem;}
+.gn-res .gh-top{margin:0; gap:.3rem; font-size:.95rem; align-items:center;}
+.gn-res .gh-top .gn-back{flex:none; min-width:32px; min-height:32px; margin:0 .2rem 0 -.2rem; padding:0; font-size:1.6rem; line-height:1; color:var(--accent);}
+.gh-st{display:flex; gap:.9rem; font-size:.85rem; color:var(--text-dim);}
+.gh-st b{font:400 1.25rem/1 Anton,Impact,sans-serif; color:var(--accent); margin-right:.15rem;}
+.gn-wh{margin:.35rem 0 .25rem; font-size:.7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--text-dim);}
+.gn-res .gn-sw{margin-bottom:.4rem; border-radius:16px;}
+.gn-res .gn-sw .gn-ex{padding:.4rem .5rem .4rem .55rem; gap:.6rem; border-radius:16px; min-height:64px;}
+.gn-res .gn-ex img{width:52px; height:52px; border-radius:12px;}
+.gn-res .gn-ex.warm img{display:none;}
+.gn-res .gn-ex .pv-n{left:-.15rem; top:-.15rem; width:22px; height:22px; font-size:.7rem;}
+.gn-res .gn-ex.warm .pv-n{position:static; flex:none; box-shadow:none;}
+.gn-res .gx b{-webkit-line-clamp:1; font-size:.92rem; margin-bottom:.25rem;}
+.gn-res .gx-m{flex-wrap:nowrap; overflow:hidden;} .gn-res .gx-t{white-space:nowrap;}
+.gn-res .gn-ex.warm .gx-t.warm{display:none;}
+.gn-res .gn-pk{flex:none; width:36px; height:36px; min-width:36px; min-height:36px; font-size:1rem;}
+.gn-res .gn-ex .pv-n{left:.3rem; top:.3rem;}
+.gn-res .gn-ex.warm .pv-n{position:static;}
+.gn-res .gn-pk{display:grid; place-items:center; padding:0; line-height:1;}
