@@ -1467,7 +1467,6 @@ function wtInhalt(t) {
   return `<div class="inh"><div class="inh-t">Inhalt</div>
     <div class="inh-r"><span>Geräte</span><div class="inh-c">${gl.length ? chips(gl) : '<em>keine</em>'}</div></div>
     <div class="inh-r"><span>Muskeln</span><div class="inh-c">${muscleShare(t).filter(([k]) => k !== 'Aufwärmen').map(([k, p]) => `<em data-g="${esc(k)}"><i></i>${esc(k)} ${p}%</em>`).join('') || '<em>–</em>'}</div></div>
-    <div class="inh-l">${keys.map(k => `<div class="inh-g"${k === 'Aufwärmen' ? '' : ` data-g="${esc(k)}"`}><b>${esc(k)}</b><span>${grp[k].map(e => esc(dn(e.name))).join(' · ')}</span></div>`).join('')}</div>
   </div>`;
 }
 function wtHero(t, sets) {
