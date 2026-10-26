@@ -987,9 +987,11 @@ function genSave(start, days) {
   genPin = null; if (start) playStart(t.id); else if (days) { view = 'weeklist'; } else { trTab = 'act'; view = 'trainings'; }
 }
 const SPK = '<svg class="qk-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.1 6.4 6.4 2.1-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-2.1z"/></svg>';
-function genAdjHtml() {
+function genActHtml() {
   const seg = (l, a, vs, cur) => `<div class="qk-r"><span>${l}</span><div class="seg" style="--n:${vs.length}">${vs.map(v => `<button class="${cur === v ? 'on' : ''}" data-act="${a}" data-v="${v}">${v || 'Auto'}</button>`).join('')}</div></div>`;
-  return `<div class="gn-adj${gnAdj ? ' open' : ''}"><button class="gn-adj-t" data-act="gnAdj" aria-expanded="${gnAdj}"><span>Anpassen</span><em>Übungen, Sätze, Wdh</em><i>▴</i></button>${gnAdj ? `<div class="qk-rows">${seg('Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0)}${seg('Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets)}${seg('Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps)}</div>` : ''}</div>`;
+  const pan = genPin ? `<div class="gn-pan"><div class="tx-days">${WD_KEYS.map(k => `<button class="chip${genPin.includes(k) ? ' active' : ''}" data-act="genPinD" data-v="${k}">${WD_LABELS[k]}</button>`).join('')}</div><button class="ga-b ga-start" data-act="genPinOk"${genPin.length ? '' : ' disabled'}>${genPin.length ? '✓ Jede Woche ' + WD_KEYS.filter(k => genPin.includes(k)).map(k => WD_LABELS[k]).join(' ') : 'Tage antippen'}</button></div>`
+    : gnAdj ? `<div class="gn-pan"><div class="qk-rows">${seg('Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0)}${seg('Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets)}${seg('Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps)}</div></div>` : '';
+  return `<div class="gn-act"><div class="gn-act-main"><button class="ga-b ga-save" data-act="genSave">✓ Speichern</button><button class="ga-b ga-start" data-act="genGo">▶ Starten</button></div><div class="gn-act-sub"><button class="ga-c" data-act="genDo">⟳ Neu mischen</button><button class="ga-c${genPin ? ' on' : ''}" data-act="genPin">📅 Einplanen</button><button class="ga-c${gnAdj ? ' on' : ''}" data-act="gnAdj">⚙ Anpassen</button></div>${pan}</div>`;
 }
 function genHero() {
   const ex = genRes || [], sets = ex.reduce((n, e) => n + (e.sets || 0), 0), gs = [...new Set(ex.filter(e => !e.warm).map(e => MUSCLE_GROUPS[e.muscle]).filter(Boolean))];
@@ -1001,8 +1003,8 @@ function renderGen() {
   const pill = (act, v, l, on) => `<button class="lv-p${on ? ' on' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
   const res = genRes && !genRes.length ? `<div class="gn-res"><button class="gn-back" data-act="genBackWiz">‹ Zurück zur Auswahl</button><div class="lv-note">Mit diesen Geräten und diesem Fokus finde ich keine Übungen. Mehr Geräte oder anderen Fokus wählen.</div></div>` : genRes ? `<div class="gn-res"><button class="gn-back" data-act="genBackWiz">‹ Zurück zur Auswahl</button>${genHero()}${genNote ? `<div class="lv-note">${esc(genNote)}</div>` : ''}${genRes.map((e, i) => `<div class="gn-sw" data-gsw="${i}"><div class="gn-sw-bg"><span>★ Favorit</span><span>Neue Übung ↻</span></div><div class="gn-ex exinfo${i === genSwapped ? ' gn-new' : ''}${e.warm ? ' warm' : ''}" data-g="${esc(MUSCLE_GROUPS[e.muscle] || '')}" style="--i:${i}" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
       <div class="gx"><b>${loadFavs().includes(e.name) ? '★ ' : ''}${esc(dn(e.name))}</b><div class="gx-m">${e.warm ? '<span class="gx-t warm">Aufwärmen</span>' : ''}<span class="gx-t g">${esc(MUSCLE_DE[e.muscle] || e.muscle)}</span><span class="gx-t">${e.sets} × ${e.plan[0].r} ${e.unit === 'sek' ? 'Sek' : 'Wdh'}</span>${e.plan[0].w != null && e.unit === 'kg' ? `<span class="gx-t w">${e.up ? '↑ ' : 'ca. '}${e.plan[0].w} kg</span>` : ''}</div></div><button class="gn-pk" data-act="genPickOpen" data-i="${i}" aria-label="Übung wählen">⇄</button></div></div>`).join('')}
-      <div class="lv-note">Rechts wischen = ★ Favorit, links = neue Übung, ⇄ = selbst wählen. Vorschlag mit ca.-Werten. Technik vor Gewicht, bei Schmerzen abbrechen.${!p.weight && genRes.some(e => e.unit === 'kg') ? ' Gewicht im Profil eintragen, dann kommen auch kg-Vorschläge.' : ''}</div>
-      ${genAdjHtml()}${genPin ? `<div class="gn-pin"><b>An welchen Tagen jede Woche?</b><div class="tx-days">${WD_KEYS.map(k => `<button class="chip${genPin.includes(k) ? ' active' : ''}" data-act="genPinD" data-v="${k}">${WD_LABELS[k]}</button>`).join('')}</div><button class="ts-save" data-act="genPinOk"${genPin.length ? '' : ' disabled'}>✓ FEST EINPLANEN</button></div>` : ''}<div class="gn-btns"><button class="ts-save" data-act="genSave">✓ SPEICHERN</button><button class="pl-next ts-go" data-act="genGo">▶ SPEICHERN &amp; STARTEN</button><button class="ts-add" data-act="genDo">⟳ Neu mischen</button><button class="ts-add" data-act="genPin">📅 Fest einplanen (jede Woche)</button></div></div>` : '';
+      <div class="lv-note">Wischen: → ★ Favorit · ← neue Übung · ⇄ selbst wählen.${!p.weight && genRes.some(e => e.unit === 'kg') ? ' Gewicht im Profil = kg-Vorschläge.' : ''}</div>
+      ${genActHtml()}</div>` : '';
   const scrollRes = genJust; genJust = false;
   content.innerHTML = `<div class="gn">
     ${genRes ? '' : `<div class="qk">
@@ -2261,7 +2263,7 @@ content.addEventListener('click', e => {
     case 'fgSel': selToggle(btn.dataset.v); fgFace(btn.dataset.v); break;
     case 'fgView': fgTurn(btn.dataset.v === '1'); return;
     case 'plFine': plFine = !plFine; break;
-    case 'gnAdj': gnAdj = !gnAdj; break;
+    case 'gnAdj': gnAdj = !gnAdj; genPin = null; break;
     case 'genBackWiz': genPin = null; genRes = null; plClassic = false; plStep = 2; view = 'start'; break;
     case 'genBack': view = genFrom || 'start'; genFrom = null; break;
     case 'genPickOpen': genPick = Number(btn.dataset.i); break;
@@ -2296,7 +2298,7 @@ content.addEventListener('click', e => {
     case 'genNext': { const np = nextPlan(); genCfg.groups = np.groups.slice(); if (!genCfg.gear.length) genCfg.gear = GEAR.map(x => x[0]); autoGear(); genFrom = null; if (view === 'start') view = 'gen'; generate(); if (genRes && genRes.length) { applyProgression(genRes); genNote = np.note; } break; }
     case 'genSurprise': { const gl = shuffle(MUSCLE_GROUP_LIST).slice(0, 2 + Math.floor(Math.random() * 2)); genCfg.groups = gl; generate(); break; }
     case 'genSave': genSave(false); break;
-    case 'genPin': genPin = genPin ? null : []; break;
+    case 'genPin': genPin = genPin ? null : []; gnAdj = false; break;
     case 'genPinD': if (genPin) { const k = btn.dataset.v; genPin = genPin.includes(k) ? genPin.filter(x => x !== k) : [...genPin, k]; } break;
     case 'genPinOk': if (genPin && genPin.length) genSave(false, WD_KEYS.filter(k => genPin.includes(k))); break;
     case 'genGo': genSave(true); break;
