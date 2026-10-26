@@ -260,6 +260,7 @@ function mountGenPick() { // Direktauswahl liegt am body (über Kopfzeile + Tab-
 }
 function render() { renderView(); mountDetail(); mountPresetSheet(); mountGenPick(); fitTabH(); }
 function renderView() {
+  if (view === 'overview' && !dashMode) view = 'start';
   content.toggleAttribute('data-enter', view !== window._lv); window._lv = view;
   content.classList.remove('pl-scroll');
   document.body.classList.toggle('playing', view === 'play');
@@ -1437,6 +1438,22 @@ function hint(id, step, text) {
 // aktueller Schritt eines Trainings: 1 Name (immer erledigt, sonst gäbe es es nicht), 2 Übungen, 3 Tage, 4 Starten
 function helperStep(t) { return t.draft ? 1 : !t.exercises.length ? 2 : !helperDone().includes('sets') ? 3 : (!t.weekdays || !t.weekdays.length) ? 4 : 5; }
 
+function goalStripHtml() {
+  const goal = loadGoal(), h = loadHistory();
+  const gDone = h.filter(r => Date.now() - new Date(r.date + 'T12:00:00') <= goal.periodDays * 864e5).length, gPct = Math.min(100, Math.round(gDone / Math.max(1, goal.target) * 100));
+  const pd = goal.periodDays % 365 === 0 ? [goal.periodDays / 365, 'jahre'] : goal.periodDays % 30 === 0 ? [goal.periodDays / 30, 'monate'] : goal.periodDays % 7 === 0 ? [goal.periodDays / 7, 'wochen'] : [goal.periodDays, 'tage'];
+  const form = goalEditing ? `<div class="goal-edit wp-goal-edit">
+      <label>Ziel <input id="goal-target" type="number" min="1" inputmode="numeric" value="${goal.target}"> Trainings</label>
+      <label>in <input id="goal-period" type="number" min="1" inputmode="numeric" value="${pd[0]}">
+        <select id="goal-unit">${[['tage', 'Tagen'], ['wochen', 'Wochen'], ['monate', 'Monaten'], ['jahre', 'Jahren']].map(([v, l]) => `<option value="${v}"${pd[1] === v ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
+      <div class="edit-bar"><button class="ov-btn" data-act="goalSave">Speichern</button><button class="ov-btn ov-btn-ghost" data-act="goalCancel">Abbrechen</button></div>
+    </div>` : '';
+  return `<div class="pp-goal wp-goal">
+      <div class="pg-txt"><small>ZIEL</small><span class="pg-n"><b>${gDone}</b><i>/${goal.target}</i></span><span class="pg-p">Trainings · ${goal.periodDays === 7 ? 'diese Woche' : 'letzte ' + goal.periodDays + ' Tage'}</span></div>
+      <button class="pg-edit" data-act="goalEdit" aria-label="Ziel anpassen">✎</button>
+      <div class="pg-bar"><i style="width:${gPct}%"></i></div>
+    </div>${form}`;
+}
 function renderWeeklist() {
   const FULLN = { mon: 'Montag', tue: 'Dienstag', wed: 'Mittwoch', thu: 'Donnerstag', fri: 'Freitag', sat: 'Samstag', sun: 'Sonntag' };
   const DB = '<svg class="lab-db" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>';
@@ -1468,6 +1485,7 @@ function renderWeeklist() {
   const archBlock = arch.length ? `<button class="wp-arch-h" data-act="archToggle">ARCHIV (${arch.length}) ${archOpen ? '▾' : '▸'}</button>${archOpen ? arch.map(t => `<div class="wp-card wp-arch"><div class="wp-card-body"><div class="wp-card-name nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></div><div class="wp-card-meta">${t.exercises.length} Übungen</div></div><button data-act="wRestore" data-id="${t.id}">Zurückholen</button></div>`).join('') : ''}` : '';
   content.innerHTML = `
     <div class="wp">
+      ${goalStripHtml()}
       <div class="wp-sec">DIESE WOCHE</div>
       <div class="wp-days">${dayTiles}</div>
       <div class="wp-sec">MEINE TRAININGS</div>
@@ -1779,11 +1797,6 @@ function renderProfile() {
         <div><b>${h.length}</b><span>Trainings</span></div>
         <div><b>${streak}</b><span>Streak</span></div>
         <div><b>${sets}</b><span>Sätze</span></div>
-      </div>
-      <div class="pp-goal pp-t" style="--i:2">
-        <div class="pg-txt"><small>ZIEL</small><span class="pg-n"><b>${gDone}</b><i>/${goal.target}</i></span><span class="pg-p">Trainings · ${goal.periodDays === 7 ? 'diese Woche' : 'letzte ' + goal.periodDays + ' Tage'}</span></div>
-        <button class="pg-edit" data-act="goalEditFromProfile" aria-label="Ziel anpassen">✎</button>
-        <div class="pg-bar"><i style="width:${gPct}%"></i></div>
       </div>
       <div class="pp-sec pp-t" style="--i:3">Deine Werte</div>
       <div class="pp-body">

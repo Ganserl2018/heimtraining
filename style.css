@@ -2543,3 +2543,12 @@ body.is-res .topbar h1::after{content:none;}
 .gn-res .gn-ex .pv-n{left:.3rem; top:.3rem;}
 .gn-res .gn-ex.warm .pv-n{position:static;}
 .gn-res .gn-pk{display:grid; place-items:center; padding:0; line-height:1;}
+
+/* V27 Kosmetik */
+.tr-more{display:none !important}
+.lv-note,.gn .lv-note{opacity:.9; color:var(--text)}
+.wp-goal{margin-bottom:.5rem}
+.wp-goal-edit{display:flex; flex-wrap:wrap; align-items:center; gap:.5rem .8rem; margin:-.1rem 0 .6rem; padding:.6rem .9rem; background:var(--panel); border:1px solid var(--border-soft); border-radius:16px; font-size:.85rem}
+.wp-goal-edit input,.wp-goal-edit select{background:var(--bg); color:var(--text); border:1px solid var(--border); border-radius:10px; padding:.3rem .4rem; width:3.4rem; font-size:1rem}
+.wp-goal-edit select{width:auto}
+.wp-goal-edit .edit-bar{display:flex; gap:.5rem; width:100%}
