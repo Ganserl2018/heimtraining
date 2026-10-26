@@ -616,3 +616,13 @@ Erst nach den laufenden Features; Alex gibt das Go.
     Alex 23:09: Woche-Seite wird NICHT die Startseite (B abgelehnt). Start bleibt eigene Seite, Inhalt offen.
     KORREKTUR 23:11: Der "Start Workout"-Button auf der Übersicht ist der EINSTIEG in den Wizard (view=start), nicht das Ende. "Start-Seite" für Alex = Wizard-Start. Offen/Vorschlag: Tab "Start" öffnet direkt den Wizard, Übersichtsseite entfällt (Monatsziel→Woche, Streak→Profil).
     Alex 23:13 bestätigt sinngemäß: Wizard = Start und Weg zu allem → Tab "Start" = Wizard, Übersichtsseite entfällt.
+
+
+### Stand 26.10. 23:40 – Kosmetik GEBAUT (live v=20261028o)
+- #10 Ziel von Profil auf Woche-Seite (Profil = nur persönliche Daten) ✔ ce6ac83
+- #11 Start-Tab öffnet direkt den Wizard, Übersichtsseite entfällt ✔ ce6ac83 (renderView leitet overview→start; Start-Workout-Button damit weg)
+- #1 Wischen-Zeile heller ✔, #2 +N-Badge weg ✔, #5 "Offenes Training wartet" mit Übersicht weg ✔
+- #6 Arme wählt sofort Bizeps/Trizeps/Unterarme (Rücken/Beine taten es schon) ✔ 8300e1b
+- #7 Neu mischen | Einplanen | Anpassen oben unter Kopfzeile ✔ a3b60c5
+- Profil-Fußzeile (Reset/Neu laden) jetzt sichtbar? → mit iPhone-Harness (ZOOM=118 VH=874 ET=59 EB=34 NEWTAB=1) PRÜFEN, noch nicht gemessen
+- NOCH OFFEN (wartet auf Alex): #3 Tipp-Blasen, #4 Geräte-Chips im Training-Detail, #8 Übungssuche-Wizardseite, #9 DE/EN komplett (V5-18)
