@@ -1433,7 +1433,7 @@ function helperDone() { try { return JSON.parse(localStorage.getItem(HELPKEY)) |
 function helperHide(id) { const d = helperDone(); if (!d.includes(id)) d.push(id); try { localStorage.setItem(HELPKEY, JSON.stringify(d)); } catch (e) {} }
 function hint(id, step, text) {
   if (helperDone().includes(id)) return '';
-  return `<div class="hh"><div class="hh-top"><b>TRAININGSHELPER · SCHRITT ${step} VON 5</b><button data-act="hintOk" data-id="${id}">Verstanden</button></div><p>${text}</p></div>`;
+  return `<div class="hh"><div class="hh-top"><b>TIPP</b><button data-act="hintOk" data-id="${id}">Verstanden</button></div><p>${text}</p></div>`;
 }
 // aktueller Schritt eines Trainings: 1 Name (immer erledigt, sonst gäbe es es nicht), 2 Übungen, 3 Tage, 4 Starten
 function helperStep(t) { return t.draft ? 1 : !t.exercises.length ? 2 : !helperDone().includes('sets') ? 3 : (!t.weekdays || !t.weekdays.length) ? 4 : 5; }
@@ -1694,9 +1694,7 @@ function renderWTrain() {
   const ready = hasEx && hasDays && !t.draft;
   const hintHtml = t.draft && renameId === t.id ? hint('name', 1, 'Gib deinem Training einen Namen, zum Beispiel „Oberkörper“ oder „Montag“. Danach geht es mit den Übungen weiter.')
     : step === 2 ? hint('ex', 2, 'Hier fügst du Übungen hinzu: auf „+ Übung“ tippen, suchen und antippen. Du kannst mehrere nacheinander wählen.')
-    : step === 3 && hasEx ? hint('sets', 3, 'Pro Übung: Sätze, kg und Wiederholungen eintragen (gilt für alle Sätze). Felder dürfen leer bleiben.')
-    : step === 4 && hasEx ? hint('days', 4, 'Hier legst du fest, an welchen Tagen du dieses Training machst. Tippe einfach die Wochentage an.')
-    : step === 5 && hasEx ? hint('go', 5, 'Fertig eingerichtet! Tippe auf „Training starten“, wenn du loslegen willst. Alles lässt sich jederzeit ändern.') : '';
+    : hasEx && !hasDays ? hint('days', 4, 'Tage festlegen: Tippe die Wochentage an, an denen du dieses Training machst.') : '';
   const head = renameId === t.id
     ? `<div class="tx-head"><input id="rename-input" placeholder="Name des Trainings…" value="${esc(t.name)}"><div class="tx-hbtns"><button data-act="wRenameSave" data-id="${t.id}">Speichern</button><button data-act="wRenameCancel" data-id="${t.id}">Abbrechen</button></div></div>`
     : `<div class="tx-head"><button class="tx-back" data-act="wBack">‹ Zurück</button><h2 class="nm-edit" data-act="wRename" data-id="${t.id}"><span class="nm-t">${esc(t.name)}</span><i class="nm-pen" aria-hidden="true">✎</i></h2><button class="tx-fav${t.fav ? ' on' : ''}" data-act="trFav" data-id="${t.id}" aria-label="Favorit">${t.fav ? '★' : '☆'}</button></div>`;
