@@ -865,6 +865,7 @@ function genSwap(i) {
   genRes[i] = ex; genSwapped = i;
 }
 let genSwapped = -1, genPick = -1;
+let gnAdj = false;
 const FAVKEY = 'heimtraining.favs';
 function loadFavs() { try { const f = JSON.parse(localStorage.getItem(FAVKEY)); if (Array.isArray(f)) return f; } catch (e) {} return []; }
 function genFav(i) { const e = genRes && genRes[i]; if (!e) return; const f = loadFavs(), k = f.indexOf(e.name); if (k >= 0) f.splice(k, 1); else f.push(e.name); try { localStorage.setItem(FAVKEY, JSON.stringify(f)); } catch (x) {} }
@@ -986,6 +987,10 @@ function genSave(start) {
   if (start) playStart(t.id); else { trTab = 'act'; view = 'trainings'; }
 }
 const SPK = '<svg class="qk-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.1 6.4 6.4 2.1-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-2.1z"/></svg>';
+function genAdjHtml() {
+  const seg = (l, a, vs, cur) => `<div class="qk-r"><span>${l}</span><div class="seg" style="--n:${vs.length}">${vs.map(v => `<button class="${cur === v ? 'on' : ''}" data-act="${a}" data-v="${v}">${v || 'Auto'}</button>`).join('')}</div></div>`;
+  return `<div class="gn-adj${gnAdj ? ' open' : ''}"><button class="gn-adj-t" data-act="gnAdj" aria-expanded="${gnAdj}"><span>Anpassen</span><em>Übungen, Sätze, Wdh</em><i>▴</i></button>${gnAdj ? `<div class="qk-rows">${seg('Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0)}${seg('Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets)}${seg('Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps)}</div>` : ''}</div>`;
+}
 function genHero() {
   const ex = genRes || [], sets = ex.reduce((n, e) => n + (e.sets || 0), 0), gs = [...new Set(ex.filter(e => !e.warm).map(e => MUSCLE_GROUPS[e.muscle]).filter(Boolean))];
   const t = (n, l, i) => `<div class="gh-t" style="--i:${i}"><b>${n}</b><em>${l}</em></div>`;
@@ -997,7 +1002,7 @@ function renderGen() {
   const res = genRes && !genRes.length ? `<div class="gn-res"><button class="gn-back" data-act="genBackWiz">‹ Zurück zur Auswahl</button><div class="lv-note">Mit diesen Geräten und diesem Fokus finde ich keine Übungen. Mehr Geräte oder anderen Fokus wählen.</div></div>` : genRes ? `<div class="gn-res"><button class="gn-back" data-act="genBackWiz">‹ Zurück zur Auswahl</button>${genHero()}${genNote ? `<div class="lv-note">${esc(genNote)}</div>` : ''}${genRes.map((e, i) => `<div class="gn-sw" data-gsw="${i}"><div class="gn-sw-bg"><span>★ Favorit</span><span>Neue Übung ↻</span></div><div class="gn-ex exinfo${i === genSwapped ? ' gn-new' : ''}${e.warm ? ' warm' : ''}" data-g="${esc(MUSCLE_GROUPS[e.muscle] || '')}" style="--i:${i}" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
       <div class="gx"><b>${loadFavs().includes(e.name) ? '★ ' : ''}${esc(dn(e.name))}</b><div class="gx-m">${e.warm ? '<span class="gx-t warm">Aufwärmen</span>' : ''}<span class="gx-t g">${esc(MUSCLE_DE[e.muscle] || e.muscle)}</span><span class="gx-t">${e.sets} × ${e.plan[0].r} ${e.unit === 'sek' ? 'Sek' : 'Wdh'}</span>${e.plan[0].w != null && e.unit === 'kg' ? `<span class="gx-t w">${e.up ? '↑ ' : 'ca. '}${e.plan[0].w} kg</span>` : ''}</div></div><button class="gn-pk" data-act="genPickOpen" data-i="${i}" aria-label="Übung wählen">⇄</button></div></div>`).join('')}
       <div class="lv-note">Rechts wischen = ★ Favorit, links = neue Übung, ⇄ = selbst wählen. Vorschlag mit ca.-Werten. Technik vor Gewicht, bei Schmerzen abbrechen.${!p.weight && genRes.some(e => e.unit === 'kg') ? ' Gewicht im Profil eintragen, dann kommen auch kg-Vorschläge.' : ''}</div>
-      <div class="gn-btns"><button class="ts-save" data-act="genSave">✓ SPEICHERN</button><button class="pl-next ts-go" data-act="genGo">▶ SPEICHERN &amp; STARTEN</button><button class="ts-add" data-act="genDo">⟳ Neu mischen</button></div></div>` : '';
+      ${genAdjHtml()}<div class="gn-btns"><button class="ts-save" data-act="genSave">✓ SPEICHERN</button><button class="pl-next ts-go" data-act="genGo">▶ SPEICHERN &amp; STARTEN</button><button class="ts-add" data-act="genDo">⟳ Neu mischen</button></div></div>` : '';
   const scrollRes = genJust; genJust = false;
   content.innerHTML = `<div class="gn">
     ${genRes ? '' : `<div class="qk">
@@ -1243,9 +1248,9 @@ function renderStart() {
     const dots = g => `<i style="background:${FG_COL[(fgChip(g) || [0, 0, 'Arme'])[2]] || '#b8ff3c'}"></i>`;
     const need = GEAR.filter(([k]) => genCfg.gear.includes(k) || gearUse(k) > 0).sort((a, b) => genCfg.gear.includes(b[0]) - genCfg.gear.includes(a[0]));
     const exFor = k => { const S = genCfg.gear.includes(k) ? genCfg.gear : genCfg.gear.concat(k), seen = new Set(); return genBase(genLevel(), true).filter(e => genCfg.groups.some(g => fgCore(e, g)) && gearOf(e.name).includes(k) && gearOf(e.name).every(x => S.includes(x))).map(e => dn(e.name)).filter(n => !seen.has(n) && seen.add(n)).slice(0, 3).join(' · '); };
-    const gearBtns = `<div class="ga-h"><div class="ga-t"><button class="ga-back" data-act="plBack" aria-label="Zurück">‹</button><b>GERÄTE WÄHLEN</b></div><span><small>Für diese Muskeln</small>${genCfg.groups.map(g => `<em>${dots(g)}${esc(fgLabel(g))}</em>`).join('')}<small>stehen dir folgende Geräte zur Verfügung. ${genCfg.gearTouched ? 'Deine Auswahl:' : 'Vorschlag vorgewählt:'}</small></span></div>`
+    const gearBtns = `<div class="ga-h"><div class="ga-t"><button class="ga-back" data-act="plBack" aria-label="Zurück">‹</button><b>GERÄTE WÄHLEN</b></div><p class="ga-q">Welche Geräte nutzt du?</p><span>${genCfg.groups.map(g => `<em>${dots(g)}${esc(fgLabel(g))}</em>`).join('')}</span></div>`
       + `<div class="ga-list">${need.map(([k, l0]) => { const on = genCfg.gear.includes(k); return `<button class="ga-r${on ? ' on' : ''}" role="switch" aria-checked="${on}" data-act="genGear" data-v="${k}"><span class="ga-ic"><svg viewBox="0 0 32 32" aria-hidden="true">${GEAR_SVG[k] || ''}</svg></span><span class="ga-tx"><b>${GEAR_NAME[k] || gl(k, l0)}</b><small>${esc(exFor(k))}</small></span><strong class="ga-num">${gearUse(k)}<small>Üb.</small></strong></button>`; }).join('') || '<div class="ga-none">Kein Gerät passt</div>'}</div>`;
-    body = `${un.length || plMsg ? `<div class="pl-sub warn">${un.length ? 'Für ' + esc(un.map(fgLabel).join(', ')) + ' passt kein gewähltes Gerät. Gerät dazuwählen.' : esc(plMsg)}</div>` : ''}${gearBtns}<div class="ga-fine${plFine ? ' open' : ''}"><button class="ga-ft" data-act="plFine" aria-expanded="${plFine}"><span>Feinschliff</span><em>${[genCfg.count && genCfg.count + ' Üb.', genCfg.minSets && genCfg.minSets + ' Sätze', genCfg.minReps && genCfg.minReps + ' Wdh'].filter(Boolean).join(' · ') || 'Alles automatisch'}</em><i>▴</i></button>${plFine ? `<div class="qk-rows">${seg('Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0)}${seg('Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets)}${seg('Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps)}</div>` : ''}</div>`;
+    body = `${un.length || plMsg ? `<div class="pl-sub warn">${un.length ? 'Für ' + esc(un.map(fgLabel).join(', ')) + ' passt kein gewähltes Gerät. Gerät dazuwählen.' : esc(plMsg)}</div>` : ''}${gearBtns}`;
     foot = `<button class="qk-go wander${un.length ? ' off' : ''}" data-act="genDo">${SP}TRAINING BAUEN</button>`;
   }
   plMsg = '';
@@ -2256,6 +2261,7 @@ content.addEventListener('click', e => {
     case 'fgSel': selToggle(btn.dataset.v); fgFace(btn.dataset.v); break;
     case 'fgView': fgTurn(btn.dataset.v === '1'); return;
     case 'plFine': plFine = !plFine; break;
+    case 'gnAdj': gnAdj = !gnAdj; break;
     case 'genBackWiz': genRes = null; plClassic = false; plStep = 2; view = 'start'; break;
     case 'genBack': view = genFrom || 'start'; genFrom = null; break;
     case 'genPickOpen': genPick = Number(btn.dataset.i); break;
@@ -2263,7 +2269,7 @@ content.addEventListener('click', e => {
     case 'genPickDo': genPickSet(btn.dataset.name); break;
     case 'genLv': genCfg.lv = Number(btn.dataset.v); genRes = null; break;
     case 'genGoal': genCfg.goal = btn.dataset.v; genRes = null; break;
-    case 'genCnt': genCfg.count = Number(btn.dataset.v) || null; genRes = null; break;
+    case 'genCnt': { const had = !!genRes; genCfg.count = Number(btn.dataset.v) || null; genRes = null; if (had) generate(); break; }
     case 'plDur': { genCfg.dur = Number(btn.dataset.v); genRes = null; btn.classList.add('picked'); btn.parentNode.classList.add('chosen'); try { navigator.vibrate && navigator.vibrate(15); } catch (x) {}
       setTimeout(() => plJump(1), 420); return; }
     case 'plNext': if (plStep === 1 && !genCfg.groups.length) break; plJump(plStep + 1); return;
@@ -2282,8 +2288,8 @@ content.addEventListener('click', e => {
       const k = btn.dataset.v, g = loadGear(), i = g.indexOf(k); if (i >= 0) g.splice(i, 1); else g.push(k); genCfg.gear = g; try { localStorage.setItem(GEARKEY, JSON.stringify(g)); } catch (e2) {}
       if (view === 'start') { const gcn = g.length ? groupCounts() : {}; genCfg.groups = genCfg.groups.filter(m => m.startsWith('m:') || gcn[m]); } // Muskeln ohne Übung für die gewählten Geräte fallen raus
       genCfg.autoAdded = []; autoGear(); genRes = null; break; }
-    case 'genMinS': genCfg.minSets = Number(btn.dataset.v); genRes = null; break;
-    case 'genMinR': genCfg.minReps = Number(btn.dataset.v); genRes = null; break;
+    case 'genMinS': { const had = !!genRes; genCfg.minSets = Number(btn.dataset.v); genRes = null; if (had) generate(); break; }
+    case 'genMinR': { const had = !!genRes; genCfg.minReps = Number(btn.dataset.v); genRes = null; if (had) generate(); break; }
     case 'dash': dashMode = true; view = 'overview'; break;
     case 'genDo': if (view === 'start' && !plClassic) { if (!genCfg.groups.length) { plMsg = 'Erst Muskeln wählen.'; break; } const un = uncovered(); if (un.length) { plMsg = 'Für ' + un.map(fgLabel).join(', ') + ' passt kein gewähltes Gerät. Gerät dazuwählen.'; break; } }
       if (!genCfg.gear.length) genCfg.gear = GEAR.map(x => x[0]); if (!genCfg.groups.length) { const gcn = groupCounts(); genCfg.groups = shuffle(MUSCLE_GROUP_LIST.filter(m => gcn[m])).slice(0, 2 + Math.floor(Math.random() * 2)); } autoGear(); if (view === 'start') { genFrom = null; view = 'gen'; } generate(); break;

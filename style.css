@@ -2494,3 +2494,12 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .ga-h span small:first-child{flex-basis:auto;}
 .ga-fine{margin-bottom:-4px;}
 .pl-ask{flex:none; font-size:1rem; color:var(--text-dim); padding:0 0 .35rem;}
+/* Geräte-Seite: Frage statt Satz, Feinschliff weg */
+.ga-q{margin:0; font-size:1rem; color:var(--text-dim);}
+.ga-h span{flex-direction:row;}
+.gn-adj{margin:.4rem 0; border:1px dashed var(--border); border-radius:12px; padding:0 .8rem;}
+.gn-adj-t{display:flex; align-items:center; gap:.6rem; width:100%; min-height:44px; padding:0; background:none; border:0; color:var(--text); text-align:left; cursor:pointer;}
+.gn-adj-t span{font-weight:700;} .gn-adj-t em{flex:1; font-style:normal; font-size:.8rem; color:var(--text-dim);}
+.gn-adj-t i{font-style:normal; color:var(--accent); transition:transform 200ms cubic-bezier(.23,1,.32,1);}
+.gn-adj.open .gn-adj-t i{transform:rotate(180deg);}
+.gn-adj .qk-rows{padding-bottom:.6rem;}
