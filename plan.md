@@ -605,3 +605,4 @@ Erst nach den laufenden Features; Alex gibt das Go.
 5. Startseite: Meldung "Offenes Training wartet" (home-open) komplett entfernen (Option A, Überbleibsel der alten Logik) – Alex 26.10. 22:34
 6. Figur-Schritt: Tipp auf "Arme" wählt sofort alle Untergruppen (Bizeps, Trizeps, Unterarme) aus; Untergruppen danach einzeln abwählbar. Gilt genauso für Rücken und Beine (einheitlich) – Alex 26.10. 22:36
 7. Ergebnisseite: Reihe "Neu mischen | Einplanen | Anpassen" nach oben (unter den Hero-Streifen), weil unten zu weit weg; Speichern|Starten bleibt unten; Panels (Einplanen/Anpassen) klappen dort auf – Alex 26.10. 22:39
+8. (FEATURE, kein Kosmetik) Neue Wizard-Seite nach der Figur: spezielle Übungssuche – gezielt Übungen suchen und dem Training hinzufügen. Phase-0-Fragen gestellt, wartet auf Antworten + Go – Alex 26.10. 22:43
