@@ -2424,3 +2424,14 @@ html:has(#content.pl-scroll){overflow:hidden;}
   .inh-t{display:none;}
   .inh-r{padding:.3rem 0;} .inh-r:first-of-type{border-top:0;}
 }
+/* Aufbau: alles sichtbar, nichts unter der Leiste */
+.ga-m{text-transform:none; letter-spacing:0; font-weight:600;}
+.pl-fig .pl-grid.g2 .ga-n{min-height:64px;}
+.ga-o{gap:5px;} .ga-o button{min-height:40px; padding:0 .7rem; font-size:.76rem;}
+.ga-o span{margin-bottom:-1px;}
+.ga-h{gap:.1rem; padding-top:0;} .ga-h b{font-size:1.7rem;}
+.pl.pl-fig .pl-step[data-s="2"]{padding-top:0; gap:.4rem;}
+.pl.pl-fig{gap:.5rem;}
+.ga-h span{display:none;}
+.pl-fig .pl-step[data-s="2"] .qk-rows{margin-top:.2rem; padding-top:.5rem;}
+.ga-n span .ga-m, .ga-n .ga-m{text-transform:none !important; letter-spacing:0 !important; font-size:.74rem;}
