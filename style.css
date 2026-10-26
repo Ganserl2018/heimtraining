@@ -2309,3 +2309,10 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .fg-next{white-space:normal; line-height:1.25; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;}
 .fg-sub{justify-content:flex-start;}
 .fg-sub .fg-c:first-child{margin-left:auto;} .fg-sub .fg-c:last-child{margin-right:auto;}
+.fg-gears{flex:none; display:flex; align-items:center; gap:6px; overflow-x:auto; scrollbar-width:none; padding:1px 0;}
+.fg-gears::-webkit-scrollbar{display:none;}
+.fg-gears span{flex:none; font:700 .68rem system-ui,-apple-system,sans-serif; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim); padding-right:2px;}
+.fg-gear{flex:none; min-height:36px; padding:0 .8rem; border-radius:999px; border:1.5px solid var(--border); background:transparent; color:var(--text-dim); font:600 .8rem system-ui,-apple-system,sans-serif; cursor:pointer;}
+.fg-gear.on{border-color:var(--accent); background:color-mix(in srgb,var(--accent) 18%,transparent); color:var(--accent);}
+.fg-gear:active{transform:scale(.96);}
+.pl.pl-fig .pl-foot{display:flex; flex-direction:column; gap:.5rem;}
