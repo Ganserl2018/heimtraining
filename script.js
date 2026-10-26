@@ -1708,7 +1708,7 @@ function renderWTrain() {
         ${lvMsg ? `<div class="lv-msg">${lvMsg}</div>` : ''}
         <div class="tx-lab">Tage &amp; Uhrzeit</div>
         <div class="tx-days">${WD_KEYS.map(k => `<button class="chip${t.weekdays.includes(k) ? ' active' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>
-        <input type="time" class="w-schedule-time" data-act="wTime" data-id="${t.id}" value="${esc(t.time || '')}" title="Uhrzeit (informativ, kein Cutoff)">
+        <label class="w-time-l"><span>Uhrzeit (optional)</span><input type="time" class="w-schedule-time" data-act="wTime" data-id="${t.id}" value="${esc(t.time || '')}"></label>
         ${miss.length ? `<div class="w-missed">${miss.map(ds => `<span>${WD_LABELS[wdKeyOf(ds)]} verpasst</span><button data-act="wSkip" data-id="${t.id}" data-date="${ds}">Als Ruhetag werten</button>`).join('')}</div>` : ''}
         <button class="ts-del" data-act="wDelete" data-id="${t.id}">Training löschen</button>
       </div></div>

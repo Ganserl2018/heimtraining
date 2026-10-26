@@ -2554,3 +2554,6 @@ body.is-res .topbar h1::after{content:none;}
 .wp-goal-edit .edit-bar{display:flex; gap:.5rem; width:100%}
 
 .gn-act-top{margin:.1rem 0 .35rem}
+
+.w-time-l{display:flex; align-items:center; justify-content:space-between; gap:.6rem; margin-top:.5rem; font-size:.85rem; color:var(--text-dim)}
+.w-time-l .w-schedule-time{min-width:7.5rem; min-height:40px; color:var(--text); text-align:center}
