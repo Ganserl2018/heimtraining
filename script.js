@@ -1166,7 +1166,7 @@ const FG_BACK = ['Rücken', 'm:traps', 'm:middle back', 'm:lats', 'm:lower back'
 function fgFace(item) { if (!genCfg.groups.includes(item)) return; if (FG_BACK.includes(item)) fgTurn(true); else if (FG_FRONT.includes(item)) fgTurn(false); }
 function resetPlan() { // Start gedrückt: Planung komplett zurück in den Ursprung
   const d0 = genCfg.dur; genCfg = newGenCfg(); genCfg.dur = d0; genCfg.groups = []; genCfg.gear = []; genCfg.plAuto = false;
-  genRes = null; plStep = 0; plClassic = false; fgOpen = null; plMsg = '';
+  genRes = null; plStep = 0; plClassic = false; fgOpen = null; plMsg = ''; plFine = false;
   try { localStorage.setItem(GEARKEY, '[]'); } catch (e) {}
   if (fg && fg.ready) { fgTurn(false); fgPaint(); }
 }
@@ -1177,7 +1177,7 @@ function fgTurn(back) {
   (function step(now) { const k = Math.min(1, (now - t0) / 450), e = 1 - Math.pow(1 - k, 3), a = a0 + d * e; cam.position.set(Math.sin(a) * r, y, Math.cos(a) * r); cam.lookAt(0, 0, 0); if (k < 1) requestAnimationFrame(step); })(t0);
 }
 // ---- Planung als Sprung-Wizard: Zeit -> Muskeln (Figur) -> Aufbau (Geräte), je Schritt eine Frage ----
-let fgOpen = null, plStep = 0, plClassic = false, plSeen = false, plSpots = false, plMsg = '';
+let plFine = false, fgOpen = null, plStep = 0, plClassic = false, plSeen = false, plSpots = false, plMsg = '';
 const PL_N = 3, PL_TILES = ['Brust', 'Rücken', 'Schultern', 'm:biceps', 'm:triceps', 'Bauch', 'Beine'];
 function plRail() {
   const G = genCfg.groups, ml = G.map(fgLabel), mtxt = ml.length > 2 ? ml.slice(0, 2).join(' + ') + ' +' + (ml.length - 2) : ml.join(' + ');
@@ -1231,9 +1231,10 @@ function renderStart() {
     const gl = (k, l0) => l0 === 'Kurzhanteln' ? 'Hanteln' : l0 === 'Hantelbank' ? 'Bank' : l0;
     const dots = g => `<i style="background:${FG_COL[(fgChip(g) || [0, 0, 'Arme'])[2]] || '#b8ff3c'}"></i>`;
     const need = GEAR.filter(([k]) => genCfg.gear.includes(k) || gearUse(k) > 0).sort((a, b) => genCfg.gear.includes(b[0]) - genCfg.gear.includes(a[0]));
+    const exFor = k => { const S = genCfg.gear.includes(k) ? genCfg.gear : genCfg.gear.concat(k), seen = new Set(); return genBase(genLevel(), true).filter(e => genCfg.groups.some(g => fgCore(e, g)) && gearOf(e.name).includes(k) && gearOf(e.name).every(x => S.includes(x))).map(e => dn(e.name)).filter(n => !seen.has(n) && seen.add(n)).slice(0, 3).join(' · '); };
     const gearBtns = `<div class="ga-h"><div class="ga-t"><button class="ga-back" data-act="plBack" aria-label="Zurück">‹</button><b>GERÄTE</b></div><span>${genCfg.groups.map(g => `<em>${dots(g)}${esc(fgLabel(g))}</em>`).join('')}</span></div>`
-      + `<div class="pl-grid g2${need.length > 4 || (need.length > 1 && genCfg.groups.length > 2) ? ' dense' : ''}${need.length === 1 ? ' one' : ''}">${need.map(([k, l0]) => { const on = genCfg.gear.includes(k); return `<button class="pl-opt${on ? ' on' : ' ga-off'} ga-n" data-act="genGear" data-v="${k}"><b>${gl(k, l0)}</b><strong class="ga-num">${gearUse(k)}<small>Üb.</small></strong><span>${gearFor(k).slice(0, 3).map(g => `<em class="ga-m">${dots(g)}${esc(fgLabel(g))}</em>`).join('')}${gearFor(k).length > 3 ? `<em class="ga-m">+${gearFor(k).length - 3}</em>` : ''}</span></button>`; }).join('') || '<div class="ga-none">Kein Gerät passt</div>'}</div>`;
-    body = `${un.length || plMsg ? `<div class="pl-sub warn">${un.length ? 'Für ' + esc(un.map(fgLabel).join(', ')) + ' passt kein gewähltes Gerät. Gerät dazuwählen.' : esc(plMsg)}</div>` : ''}${gearBtns}<div class="qk-rows">${seg('Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0)}${seg('Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets)}${seg('Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps)}</div>`;
+      + `<div class="ga-list">${need.map(([k, l0]) => { const on = genCfg.gear.includes(k); return `<button class="ga-r${on ? ' on' : ''}" role="switch" aria-checked="${on}" data-act="genGear" data-v="${k}"><i class="ga-ck"></i><span class="ga-tx"><b>${gl(k, l0)}</b><small>${esc(exFor(k))}</small></span><strong class="ga-num">${gearUse(k)}<small>Üb.</small></strong></button>`; }).join('') || '<div class="ga-none">Kein Gerät passt</div>'}</div>`;
+    body = `${un.length || plMsg ? `<div class="pl-sub warn">${un.length ? 'Für ' + esc(un.map(fgLabel).join(', ')) + ' passt kein gewähltes Gerät. Gerät dazuwählen.' : esc(plMsg)}</div>` : ''}${gearBtns}<div class="ga-fine${plFine ? ' open' : ''}"><button class="ga-ft" data-act="plFine" aria-expanded="${plFine}"><span>Feinschliff</span><em>${[genCfg.count && genCfg.count + ' Üb.', genCfg.minSets && genCfg.minSets + ' Sätze', genCfg.minReps && genCfg.minReps + ' Wdh'].filter(Boolean).join(' · ') || 'Alles automatisch'}</em><i>${plFine ? '▾' : '▴'}</i></button>${plFine ? `<div class="qk-rows">${seg('Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0)}${seg('Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets)}${seg('Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps)}</div>` : ''}</div>`;
     foot = `<button class="qk-go wander${un.length ? ' off' : ''}" data-act="genDo">${SP}TRAINING BAUEN</button>`;
   }
   plMsg = '';
@@ -2243,6 +2244,7 @@ content.addEventListener('click', e => {
       fgFace(g === 'Arme' ? (genCfg.groups.find(m => { const c = fgChip(m); return c && c[2] === 'Arme'; }) || '') : g); break; }
     case 'fgSel': selToggle(btn.dataset.v); fgFace(btn.dataset.v); break;
     case 'fgView': fgTurn(btn.dataset.v === '1'); return;
+    case 'plFine': plFine = !plFine; break;
     case 'genBackWiz': genRes = null; plClassic = false; plStep = 2; view = 'start'; break;
     case 'genBack': view = genFrom || 'start'; genFrom = null; break;
     case 'genPickOpen': genPick = Number(btn.dataset.i); break;

@@ -2458,3 +2458,25 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .ga-off .ga-num{color:var(--text-dim);} .ga-off b{color:var(--text-dim);}
 .ga-off::before{content:"+"; position:absolute; right:.5rem; top:.2rem; color:var(--text-dim); font-weight:800; display:none;}
 .pl-grid.g2.dense .ga-n{min-height:50px;}
+/* === Geräte als Schalter-Zeilen mit Übungsvorschau, Feinschliff eingeklappt === */
+.ga-list{flex:1 1 auto; min-height:0; display:flex; flex-direction:column; gap:5px; overflow-y:auto; scrollbar-width:none;}
+.ga-list::-webkit-scrollbar{display:none;}
+.ga-r{flex:none; display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:.65rem; min-height:56px; padding:.4rem .8rem; text-align:left; border-radius:14px; border:1.5px dashed var(--border); background:transparent; color:var(--text-dim); cursor:pointer; transition:background-color 160ms,border-color 160ms,transform 160ms cubic-bezier(.23,1,.32,1);}
+.ga-r:active{transform:scale(.98);}
+.ga-r.on{border:1.5px solid var(--accent); background:color-mix(in srgb,var(--accent) 12%,#10171a); color:var(--text);}
+.ga-ck{width:24px; height:24px; border-radius:50%; border:2px solid var(--border); position:relative; flex:none;}
+.ga-r.on .ga-ck{background:var(--accent); border-color:var(--accent);}
+.ga-r.on .ga-ck::after{content:""; position:absolute; left:7px; top:3px; width:6px; height:11px; border:solid #0c1411; border-width:0 2.5px 2.5px 0; transform:rotate(45deg);}
+.ga-tx{display:flex; flex-direction:column; min-width:0; gap:1px;}
+.ga-tx b{font:800 1rem/1.15 system-ui,-apple-system,sans-serif;}
+.ga-tx small{font-size:.7rem; color:var(--text-dim); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.ga-r .ga-num{grid-column:auto; grid-row:auto; align-self:center; font:400 1.5rem/1 var(--font-display,'Anton',Impact,sans-serif); color:var(--text-dim); display:flex; flex-direction:row; align-items:baseline; gap:.2rem;}
+.ga-r.on .ga-num{color:var(--accent);}
+.ga-r .ga-num small{font:700 .6rem system-ui,-apple-system,sans-serif; text-transform:uppercase; letter-spacing:.06em; color:var(--text-dim);}
+.ga-fine{flex:none; display:flex; flex-direction:column; gap:.3rem; border-top:1px solid var(--border-soft); padding-top:.3rem;}
+.ga-ft{display:flex; align-items:center; gap:.6rem; min-height:44px; padding:0; background:transparent; border:0; color:var(--text); text-align:left; cursor:pointer;}
+.ga-ft span{font:700 .68rem system-ui,-apple-system,sans-serif; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim);}
+.ga-ft em{flex:1; min-width:0; font-style:normal; font-size:.78rem; color:var(--text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.ga-ft i{font-style:normal; color:var(--accent);}
+.pl-fig .pl-step[data-s="2"]{overflow:hidden;}
+.ga-r{min-height:50px; padding:.25rem .8rem;}
