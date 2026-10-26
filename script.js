@@ -1316,7 +1316,7 @@ function trInfo(t, compact) {
   if (!ex.length) return '';
   const min = Math.max(5, Math.round(sets * 2.5 / 5) * 5);
   const sh = muscleShare(t).filter(([k]) => k !== 'Aufwärmen').slice(0, 4);
-  const bar = sh.length ? `<span class="ti-bar">${sh.map(([k, p]) => `<i data-g="${esc(k)}" style="flex:${p}"></i>`).join('')}</span><span class="ti-leg">${sh.map(([k, p]) => `<span data-g="${esc(k)}"><i></i>${esc(k)} ${p}%</span>`).join('')}</span>` : '';
+  const bar = sh.length ? `<span class="ti-leg">${sh.map(([k, p]) => `<span data-g="${esc(k)}"><i></i>${esc(k)} ${p}%</span>`).join('')}</span><span class="ti-bar">${sh.map(([k, p]) => `<i data-g="${esc(k)}" style="flex:${p}"></i>`).join('')}</span>` : '';
   const gl = [...new Set(ex.flatMap(e => gearOf(e.name)))].map(k => (GEAR.find(g => g[0] === k) || [])[1]).filter(Boolean).map(l => l === 'Kurzhanteln' ? 'Hanteln' : l === 'Hantelbank' ? 'Bank' : l);
   const last = loadHistory().filter(r => r.trainingId === t.id).map(r => r.date).sort().pop();
   let ago = 'noch nie trainiert';
