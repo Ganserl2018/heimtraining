@@ -626,3 +626,5 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - #7 Neu mischen | Einplanen | Anpassen oben unter Kopfzeile ✔ a3b60c5
 - Profil-Fußzeile (Reset/Neu laden) jetzt sichtbar? → mit iPhone-Harness (ZOOM=118 VH=874 ET=59 EB=34 NEWTAB=1) PRÜFEN, noch nicht gemessen
 - NOCH OFFEN (wartet auf Alex): #3 Tipp-Blasen, #4 Geräte-Chips im Training-Detail, #8 Übungssuche-Wizardseite, #9 DE/EN komplett (V5-18)
+
+- 23:30 KORREKTUR: Start-Button-Startseite (renderHome, Sonar-Puls, Halten-Füllen) BLEIBT – Alex: "das geilste". Redirect overview→start zurückgenommen (v=20261028p). #11 ist damit hinfällig; die alte Übersicht (Ring/Balken/Wochentage) war nur im dashMode erreichbar.
