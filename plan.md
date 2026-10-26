@@ -634,3 +634,6 @@ Erst nach den laufenden Features; Alex gibt das Go.
 ### Arbeitsteilung Haiku (Alex-Go 27.10. 00:15)
 - Agent `routine` (Haiku) in `.claude/agents/routine.md`, Regel in CLAUDE.md. Haiku: Speichern, Text-/Farb-Einzeiler, Standard-Tests, Listenpflege, Massen-Inhalte. Sonnet/Hauptmodell: Logik, Layout-Fit, Fehlersuche, neue Features, Gespräch.
 - 27.10. 00:18 Alex: verzwickte Sachen an Opus oder Fable (Agent `model: opus|fable`), Regel in CLAUDE.md.
+
+### Alex' Tagesbilanz 27.10. 00:24 (seine Sicht, "geschafft")
+1. Neue Optik. 2. Funktionierender Startbutton (Halten-Füllen, "Mega"). 3. Trainingserstellprozess fast fertig. 4. Viel Kleinkram beseitigt. 5. Oberfläche nah an fertig.
