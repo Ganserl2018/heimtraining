@@ -599,3 +599,4 @@ Erst nach den laufenden Features; Alex gibt das Go.
 
 ### Kosmetik-Liste (gesammelt, NICHT gebaut)
 1. Ergebnisseite: Hinweis-Zeile "Wischen: → ★ Favorit · ← neue Übung · ⇄ selbst wählen" heller machen (lesbar) – Alex 26.10. 22:23
+2. Trainings-/Woche-Kacheln: rotes "+N"-Badge (tr-more) auf dem Bild entfernen, Übungszahl steht schon in der Zeile (Option B) – Alex 26.10. 22:25
