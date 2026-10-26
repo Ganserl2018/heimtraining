@@ -2271,7 +2271,7 @@ content.addEventListener('click', e => {
       const g = btn.dataset.v, subs = ['Arme', 'Rücken', 'Beine'].includes(g), on = genCfg.groups.some(m => { const c = fgChip(m); return c && c[2] === g; });
       if (!subs) { selToggle(g); fgOpen = null; }
       else if (on && fgOpen === g) { genCfg.groups = genCfg.groups.filter(m => { const c = fgChip(m); return !(c && c[2] === g); }); genCfg.gearTouched = false; genRes = null; fgOpen = null; }
-      else { let ok = true; if (!on) ok = g === 'Arme' ? selToggle(armPick(genCfg.groups) || 'm:biceps') : selToggle(g); if (ok) fgOpen = g; }
+      else { let ok = true; if (!on) if (g === 'Arme') { FG_CHIPS.filter(k => k[2] === 'Arme').forEach(k => { if (!genCfg.groups.includes(k[1])) genCfg.groups.push(k[1]); }); genCfg.gearTouched = false; genCfg.autoAdded = []; genRes = null; } else ok = selToggle(g); if (ok) fgOpen = g; }
       fgFace(g === 'Arme' ? (genCfg.groups.find(m => { const c = fgChip(m); return c && c[2] === 'Arme'; }) || '') : g); break; }
     case 'fgSel': selToggle(btn.dataset.v); fgFace(btn.dataset.v); break;
     case 'fgView': fgTurn(btn.dataset.v === '1'); return;
