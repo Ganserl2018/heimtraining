@@ -54,13 +54,71 @@ for e in pool:
     if m=='quadriceps' and has(n,'sissy','leg extension'): p=['vastus_group','rectus_femoris'];why='Extension → Quadrizeps'
     if m=='calves' and has(n,'seated'): p=['soleus'];why='Sitzend → Schollenmuskel'
     if m=='calves' and has(n,'standing','donkey'): p=['gastrocnemius'];why='Stehend → Zwillingswadenmuskel'
-    s=[x for x in SEC[m] if x not in p]
-    out[e['name']]={'de':names.get(e['name'],''),'muscle':m,'primary':p,'secondary':s,'why':why}
+    if m=='lower back' and has(n,'deadlift') and not has(n,'romanian','stiff'): p=['erector_spinae','glute_max','lateral_hamstrings','medial_hamstrings'];why='Kreuzheben → Rücken + Gesäß + Beinbeuger'
+    s=list(SEC[m]);sw=''
+    TRI=['triceps_long','triceps_lateral','triceps_medial']
+    def S(l,w): 
+        global s,sw
+        s=l;sw=w
+    if m=='chest':
+        if has(n,'fly','flye','crossover','pec deck','cable cross'): S(['anterior_delt'],'Fly')
+        elif has(n,'pullover'): S(['upper_lats','triceps_long','serratus_anterior'],'Pullover')
+        else: S(['anterior_delt']+TRI+(['serratus_anterior'] if has(n,'push-up','pushup','push up') else []),'Drücken: vordere Schulter + Trizeps')
+    elif m=='shoulders':
+        if has(n,'lateral','side raise'): S(['upper_traps','anterior_delt'],'Seitheben')
+        elif has(n,'front raise'): S(['lateral_delt','upper_traps','pec_major_upper'],'Frontheben')
+        elif p==['posterior_delt']: S(['rhomboids','mid_traps','rotator_cuff','triceps_long'],'Hintere Schulter')
+        elif p==['rotator_cuff']: S(['posterior_delt'],'Rotation')
+        elif has(n,'upright','shrug'): S(['upper_traps','biceps','forearm_flexors'],'Aufrechtes Rudern')
+        else: S(TRI+['upper_traps','serratus_anterior'],'Schulterdrücken: Trizeps + Trapez')
+    elif m=='triceps':
+        if has(n,'close-grip','close grip','dip','bench dip','push-up','pushup','diamond'): S(['pec_major_lower','anterior_delt'],'Enge Pressen/Dips')
+        elif has(n,'pushdown','press-down','pressdown','kickback','extension','skull','french'): S(['anconeus' if False else 'forearm_extensors'],'Strecken')
+        else: S(['anterior_delt','pec_major_lower'],'Trizeps allgemein')
+    elif m=='biceps':
+        if has(n,'chin'): S(['upper_lats','lower_lats','rhomboids','forearm_flexors'],'Chin-Up')
+        else: S(['brachioradialis','forearm_flexors'] if 'brachioradialis' not in p else ['forearm_flexors'],'Curl')
+    elif m=='lats':
+        if has(n,'pullover','straight-arm'): S(['triceps_long','pec_major_lower','serratus_anterior'],'Pullover')
+        elif has(n,'row'): S(['biceps','brachialis','posterior_delt','rhomboids','mid_traps','forearm_flexors'],'Rudern')
+        else: S(['biceps','brachialis','teres_major','rhomboids','posterior_delt','forearm_flexors'],'Ziehen von oben')
+    elif m=='middle back':
+        if has(n,'face pull','pull apart','pull-apart','reverse'): S(['posterior_delt','rotator_cuff','upper_traps'],'Face Pull / Reverse')
+        elif has(n,'shrug'): S(['upper_traps','forearm_flexors'],'Shrug')
+        else: S(['upper_lats','lower_lats','biceps','brachialis','posterior_delt','forearm_flexors']+(['erector_spinae'] if has(n,'bent','barbell','t-bar') else []),'Rudern')
+    elif m=='traps':
+        S(['rhomboids','forearm_flexors','lateral_delt'] if has(n,'upright') else ['rhomboids','mid_traps','forearm_flexors'],'Trapez / Shrug')
+    elif m=='quadriceps':
+        if has(n,'extension','sissy'): S([],'Streckung isoliert')
+        elif has(n,'lunge','split squat','step-up','step up'): S(['glute_max','glute_med','adductors','medial_hamstrings','lateral_hamstrings'],'Ausfallschritt')
+        elif has(n,'leg press','hack','machine'): S(['glute_max','adductors','gastrocnemius'],'Beinpresse')
+        elif has(n,'squat','thruster'): S(['glute_max','adductors','erector_spinae','lateral_hamstrings','medial_hamstrings','rectus_abdominis'],'Kniebeuge')
+        else: S(['glute_max','adductors'],'Beine allgemein')
+    elif m=='hamstrings':
+        if has(n,'curl'): S(['gastrocnemius','glute_max'],'Beinbeuger-Curl')
+        else: S(['glute_max','adductors','erector_spinae','forearm_flexors','upper_traps'],'Kreuzheben/Hüftbeugung')
+    elif m=='glutes':
+        if has(n,'hip thrust','bridge'): S(['lateral_hamstrings','medial_hamstrings','adductors','erector_spinae'],'Hip Thrust')
+        elif has(n,'kickback','kick back','abduction'): S(['glute_med','lateral_hamstrings','medial_hamstrings'],'Kickback')
+        else: S(['lateral_hamstrings','medial_hamstrings','vastus_group','adductors'],'Gesäß allgemein')
+    elif m=='lower back':
+        S(['glute_max','lateral_hamstrings','medial_hamstrings','forearm_flexors'] if has(n,'deadlift','good morning') else ['glute_max','lateral_hamstrings','medial_hamstrings'],'Unterer Rücken')
+    elif m=='abdominals':
+        if p==['obliques']: S(['rectus_abdominis','transverse_abdominis','serratus_anterior'],'Seitlicher Bauch')
+        elif has(n,'plank','hollow','dead bug','vacuum','roll','wheel'): S(['glute_max','anterior_delt','serratus_anterior','hip_flexors'],'Core-Stütz')
+        elif has(n,'sit-up','sit up','situp','crunch') and not has(n,'reverse'): S(['hip_flexors','obliques'],'Crunch / Sit-Up')
+        else: S(['transverse_abdominis','obliques'],'Bauch allgemein')
+    elif m=='forearms': S([],'Unterarme')
+    elif m=='calves': S([],'Waden')
+    elif m in ('abductors','adductors'): S(['glute_max'] if m=='abductors' else ['glute_med'],'Hüfte')
+    elif m=='neck': S(['upper_traps'],'Nacken')
+    s=[x for x in s if x not in p]
+    out[e['name']]={'de':names.get(e['name'],''),'muscle':m,'primary':p,'secondary':s,'why':why,'sec_why':sw}
 json.dump(out,open('muscle-map.json','w'),ensure_ascii=False,indent=1)
 # Prüf-Liste nach Gruppe
 by={}
 for k,v in out.items(): by.setdefault(v['muscle'],[]).append((k,v))
-L=['# Muskel-Zuordnung Übungen → 3D-Modell (zum Prüfen)\n','Haupt = leuchtet stark, Neben = grobe Regel pro Muskelgruppe (nicht pro Übung geprüft).\n']
+L=['# Muskel-Zuordnung Übungen → 3D-Modell (zum Prüfen)\n','Haupt = leuchtet stark, Neben = nach Bewegungsmuster der Übung (Drücken, Rudern, Beugen …).\n']
 for m,items in sorted(by.items(),key=lambda x:-len(x[1])):
     L.append(f'\n## {m} ({len(items)})\n')
     for k,v in sorted(items): L.append(f"- {v['de'] or k} ({k}): **{', '.join(v['primary'])}**" + (f" · Neben: {', '.join(v['secondary'])}" if v['secondary'] else '') + (f" — {v['why']}" if not v['why'].startswith('Regel') else ''))
