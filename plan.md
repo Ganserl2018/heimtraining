@@ -598,4 +598,4 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - Neue Phase: App-Kosmetik (nur Kleinigkeiten). Alex sammelt Tipps, Claude sammelt und baut ERST nach seinem Go. Liste: siehe Abschnitt "Kosmetik-Liste" unten (wird laufend ergänzt).
 
 ### Kosmetik-Liste (gesammelt, NICHT gebaut)
-- (noch leer – wartet auf Alex' Tipps)
+1. Ergebnisseite: Hinweis-Zeile "Wischen: → ★ Favorit · ← neue Übung · ⇄ selbst wählen" heller machen (lesbar) – Alex 26.10. 22:23
