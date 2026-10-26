@@ -543,3 +543,4 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - 3 Zeilen mit Chips (Inhalt/Ort noch offen); Ziel: Trainingspakete leichter einstellen und ändern.
 - Zusammenfassung was im Training schon an Muskelfokus/Geräten drin ist, damit tauschen/hinzufügen leichter geht. Muskel-Chips mit Übungsanzahl, Geräte-Chips, fehlende Muskeln grau; Chip antippen = passende Übungen zum Hinzufügen/Tauschen.
 - Offen: wo (Planung / Spezielle Muskeln / Training bearbeiten), welche 3 Zeilen, fest oder aufklappbar.
+- Präzisiert (26.10.): Chips werden aus den Übungen des Trainings abgeleitet. Zeile Geräte = alle Geräte der enthaltenen Übungen (z. B. Langhantel + Bank). Zeile Muskeln = die dabei beanspruchten Muskeln. Dritte Zeile noch offen (Vorschlag: Fokus/Muskelgruppen).
