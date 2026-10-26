@@ -1200,11 +1200,8 @@ function renderStart() {
     const gOn = g => G.some(m => { const c = fgChip(m); return c && c[2] === g; });
     const grp = ['Brust', 'Schultern', 'Arme', 'Bauch', 'Rücken', 'Beine'].map(g => `<button class="fg-g${gOn(g) ? ' on' : ''}${fgOpen === g ? ' open' : ''}" data-g="${g}" data-act="fgGrp" data-v="${g}">${g}</button>`).join('');
     const subs = fgOpen ? FG_CHIPS.filter(c => c[2] === fgOpen).map(c => { const o = onc(c), bl = false; return `<button class="fg-c${o ? ' on' : ''}${bl ? ' none' : ''}" data-g="${c[2]}" data-act="fgSel" data-v="${esc(c[1])}">${SUBL[c[0]] || c[0]}</button>`; }).join('') : '';
-    if (G.length && !genCfg.gearTouched) genCfg.gear = suggestGear();
-    const gearRow = GEAR.map(([k, l0]) => { const l = l0 === 'Kurzhanteln' ? 'Hanteln' : l0 === 'Hantelbank' ? 'Bank' : l0; return `<button class="fg-gear${genCfg.gear.includes(k) ? ' on' : ''}" data-act="genGear" data-v="${k}">${l}</button>`; }).join('');
     body = `<div class="fg"><div class="fg-gs">${grp}</div><div class="fg-sub">${subs}</div><div class="fg-cv"><div class="fg-views"><button data-act="fgView" data-v="0">Vorne</button><button data-act="fgView" data-v="1">Hinten</button></div></div></div>`;
-    const un = G.length ? uncovered() : [];
-    foot = `<div class="fg-gears"><span>Aufbauen</span>${gearRow}</div><button class="fg-next${G.length && !un.length ? '' : ' off'}" data-act="genDo">${plMsg ? esc(plMsg) : !G.length ? 'Tippe eine Gruppe oder die Figur' : un.length ? 'Für ' + esc(un.map(fgLabel).join(', ')) + ' fehlt ein Gerät' : 'TRAINING BAUEN ›'}</button>`;
+    foot = `<button class="fg-next${G.length ? '' : ' off'}" data-act="plNext">${plMsg ? esc(plMsg) : G.length ? 'WEITER ›' : 'Tippe eine Gruppe oder die Figur'}</button>`;
   } else {
     if (!genCfg.groups.length) { plStep = 1; return renderStart(); }
     if (!genCfg.gearTouched) genCfg.gear = suggestGear();
@@ -2214,7 +2211,7 @@ content.addEventListener('click', e => {
       break; }
     case 'fgSel': selToggle(btn.dataset.v); break;
     case 'fgView': fgTurn(btn.dataset.v === '1'); return;
-    case 'genBackWiz': genRes = null; plClassic = false; plStep = 1; view = 'start'; break;
+    case 'genBackWiz': genRes = null; plClassic = false; plStep = 2; view = 'start'; break;
     case 'genBack': view = genFrom || 'start'; genFrom = null; break;
     case 'genPickOpen': genPick = Number(btn.dataset.i); break;
     case 'genPickClose': genPick = -1; break;

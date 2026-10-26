@@ -2316,3 +2316,4 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .fg-gear.on{border-color:var(--accent); background:color-mix(in srgb,var(--accent) 18%,transparent); color:var(--accent);}
 .fg-gear:active{transform:scale(.96);}
 .pl.pl-fig .pl-foot{display:flex; flex-direction:column; gap:.5rem;}
+.pl-chips .pl-chip:first-child{display:none;} .pl-chips .pl-chip:nth-child(2){max-width:100%;}
