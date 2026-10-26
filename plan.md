@@ -628,3 +628,5 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - NOCH OFFEN (wartet auf Alex): #3 Tipp-Blasen, #4 Geräte-Chips im Training-Detail, #8 Übungssuche-Wizardseite, #9 DE/EN komplett (V5-18)
 
 - 23:30 KORREKTUR: Start-Button-Startseite (renderHome, Sonar-Puls, Halten-Füllen) BLEIBT – Alex: "das geilste". Redirect overview→start zurückgenommen (v=20261028p). #11 ist damit hinfällig; die alte Übersicht (Ring/Balken/Wochentage) war nur im dashMode erreichbar.
+
+- Idee (Alex 27.10. 00:09, Screenshots Fitness-Online-App "Klatschender Hampelmann"): Übungsansicht = bewegte 3D-Figur (Start-/Endpose wechseln) mit rot markierten Arbeitsmuskeln (Schultern, Waden) + Wdh/Pause/Sätze-Kreise darunter. WARTELISTE, gehört zu "Figur im Training-Detail/Workout" (eigene 3D-Figur + Muskel-Färbung existiert schon im Wizard). Nicht bauen vor Go.
