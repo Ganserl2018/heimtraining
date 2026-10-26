@@ -12,6 +12,7 @@ Neue Alex-Beschwerde, die schon mal da war → hier als Punkt ergänzen.
 - [ ] Geräte-Seite: 1, 2 und 4 Muskelgruppen – nichts überlappt, Titel + Chips sichtbar, Geräteliste scrollt, Name jeder Zeile einzeilig, TRAINING BAUEN sichtbar über Tab-Leiste.
 - [ ] Geräte: Vorschlag vorgewählt nachvollziehbar, Antippen schaltet um, Zähler (Üb.) plausibel (mehr Geräte → nie weniger Übungen).
 - [ ] Ergebnis: Anzahl Übungen = gewählte Anzahl (ohne Warmups), Hero-Zahlen stimmen, "Anpassen" mischt sofort neu.
+- [ ] "Anpassen": gewählte Sätze/Wdh gelten exakt für alle Übungen (nicht nur als Mindestwert), Auto = Vorschlag; Übungen-Zahl ohne Warmups. (Regression 26.10. 22:00)
 - [ ] Speichern → Training erscheint in Trainings; Planung danach wieder im Ursprung.
 
 ## Layout iPhone (402x874, Zoom 118 %)

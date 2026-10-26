@@ -859,8 +859,8 @@ function genSwap(i) {
   const same = c.filter(e => isCompound(e.name) === isCompound(old.name));
   const e = shuffle(same.length ? same : c)[0];
   const ex = { name: e.name, muscle: e.muscle, gif: e.gif, sets: 3, note: '', unit: defaultUnit(e.name) };
-  const r = suggestEx(ex, lv, genCfg.goal); ex.sets = Math.max(r.sets, genCfg.minSets || 0);
-  const reps = ex.unit === 'sek' ? r.reps : Math.max(r.reps, genCfg.minReps || 0);
+  const r = suggestEx(ex, lv, genCfg.goal); ex.sets = (genCfg.minSets || r.sets);
+  const reps = ex.unit === 'sek' ? r.reps : (genCfg.minReps || r.reps);
   ex.plan = Array.from({ length: ex.sets }, () => ({ w: r.w, r: reps }));
   genRes[i] = ex; genSwapped = i;
 }
@@ -891,8 +891,8 @@ function wSwapEx(t, i) {
 function genPickSet(name) {
   const e = pool.find(x => x.name === name); if (!e || genPick < 0 || !genRes[genPick]) { genPick = -1; return; }
   const lv = genLevel(), ex = { name: e.name, muscle: e.muscle, gif: e.gif, sets: 3, note: '', unit: defaultUnit(e.name) };
-  const r = suggestEx(ex, lv, genCfg.goal); ex.sets = Math.max(r.sets, genCfg.minSets || 0);
-  const reps = ex.unit === 'sek' ? r.reps : Math.max(r.reps, genCfg.minReps || 0);
+  const r = suggestEx(ex, lv, genCfg.goal); ex.sets = (genCfg.minSets || r.sets);
+  const reps = ex.unit === 'sek' ? r.reps : (genCfg.minReps || r.reps);
   ex.plan = Array.from({ length: ex.sets }, () => ({ w: r.w, r: reps }));
   genRes[genPick] = ex; genSwapped = genPick; genPick = -1;
 }
@@ -943,7 +943,7 @@ function generate() {
   }
   picked.sort((a, b) => (isCompound(b.name) - isCompound(a.name)) || ((GRANK[MUSCLE_GROUPS[b.muscle]] || 0) - (GRANK[MUSCLE_GROUPS[a.muscle]] || 0)) || (MORDER.indexOf(a.muscle) - MORDER.indexOf(b.muscle)));
   const exs = picked.map(e => ({ name: e.name, muscle: e.muscle, gif: e.gif, sets: 3, note: '', unit: defaultUnit(e.name) }));
-  exs.forEach(ex => { const r = suggestEx(ex, lv, genCfg.goal); ex.sets = Math.max(r.sets, genCfg.minSets || 0); const reps = ex.unit === 'sek' ? r.reps : Math.max(r.reps, genCfg.minReps || 0); ex.plan = Array.from({ length: ex.sets }, () => ({ w: r.w, r: reps })); });
+  exs.forEach(ex => { const r = suggestEx(ex, lv, genCfg.goal); ex.sets = (genCfg.minSets || r.sets); const reps = ex.unit === 'sek' ? r.reps : (genCfg.minReps || r.reps); ex.plan = Array.from({ length: ex.sets }, () => ({ w: r.w, r: reps })); });
   if (!exs.length) { genRes = []; genJust = true; return; }
   exs.unshift(...warmupsFor(exs));
   try { localStorage.setItem(GENKEY, JSON.stringify(picked.map(e => e.name).concat(last).slice(0, 24))); } catch (e) {}
