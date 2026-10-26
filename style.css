@@ -2338,3 +2338,12 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .pl-grid.g3 .pl-opt{min-height:0; padding:.55rem .3rem; font-size:.95rem;}
 .pl-grid.g3 .pl-opt small{font-size:.66rem;}
 .pl .qk-link{display:none}
+/* Aufbau-Seite: Raum nutzen */
+.pl.pl-fig .pl-step[data-s="2"]{gap:.7rem; padding-top:.3rem;}
+.pl-fig .pl-grid.g3{flex:1; min-height:0; grid-auto-rows:1fr; gap:.55rem;}
+.pl-fig .pl-grid.g3 .pl-opt{height:100%; font-size:1rem;}
+.pl-fig .pl-step[data-s="2"] .qk-rows{flex:none; display:flex; flex-direction:column; gap:.55rem;}
+.pl-fig .pl-step[data-s="2"] .qk-r{display:flex; align-items:center; gap:.6rem;}
+.pl-fig .pl-step[data-s="2"] .qk-r .seg{flex:1;}
+.pl-fig .pl-grid.g3 .pl-opt{font-size:.92rem; hyphens:none; overflow-wrap:normal; padding:.4rem .2rem;}
+.pl-fig .pl-step[data-s="2"] .qk-r span{flex:none; width:5.6rem;}

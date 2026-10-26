@@ -1212,14 +1212,14 @@ function renderStart() {
     const un = uncovered();
     const seg = (l, a, vs, cur) => `<div class="qk-r"><span>${l}</span><div class="seg" style="--n:${vs.length}">${vs.map(v => `<button class="${cur === v ? 'on' : ''}" data-act="${a}" data-v="${v}">${v || 'Auto'}</button>`).join('')}</div></div>`;
     const gearBtns = GEAR.map(([k, l0], i) => { const l = l0 === 'Kurzhanteln' ? 'Hanteln' : l0 === 'Hantelbank' ? 'Bank' : l0, on = genCfg.gear.includes(k), n = on ? gearUse(k) : 0; return `<button class="pl-opt sm${on ? ' on' : ''}" style="--i:${i}" data-act="genGear" data-v="${k}">${l}<small>${on ? n + ' Übungen' : 'dazu'}</small></button>`; }).join('');
-    body = `<h2 class="pl-q">Was baust du auf?</h2><div class="pl-sub${un.length || plMsg ? ' warn' : ''}">${un.length ? 'Für ' + esc(un.map(fgLabel).join(', ')) + ' passt kein gewähltes Gerät. Gerät dazuwählen.' : plMsg ? esc(plMsg) : 'Passend zu deinen Muskeln vorgewählt · abwählen, was du nicht aufbaust'}</div><div class="pl-grid g3">${gearBtns}</div><div class="qk-rows">${seg('Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0)}${seg('Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets)}${seg('Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps)}</div>`;
+    body = `${un.length || plMsg ? `<div class="pl-sub warn">${un.length ? 'Für ' + esc(un.map(fgLabel).join(', ')) + ' passt kein gewähltes Gerät. Gerät dazuwählen.' : esc(plMsg)}</div>` : ''}<div class="pl-grid g3">${gearBtns}</div><div class="qk-rows">${seg('Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0)}${seg('Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets)}${seg('Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps)}</div>`;
     foot = `<button class="qk-go wander${un.length ? ' off' : ''}" data-act="genDo">${SP}TRAINING BAUEN</button>`;
   }
   plMsg = '';
-  content.innerHTML = `<div class="sv"><div class="pl">${plStep === 1 ? '' : plRail()}<div class="pl-step" data-s="${plStep}">${body}</div><div class="pl-foot">${foot}</div>
+  content.innerHTML = `<div class="sv"><div class="pl">${plStep ? '' : plRail()}<div class="pl-step" data-s="${plStep}">${body}</div><div class="pl-foot">${foot}</div>
     ${plStep === 1 ? '' : '<button class="qk-link" data-act="plClassic">Alle Optionen auf einer Seite ›</button>'}</div></div>`;
   content.classList.remove('pl-scroll');
-  content.querySelector('.pl').classList.toggle('pl-fig', plStep === 1);
+  content.querySelector('.pl').classList.toggle('pl-fig', plStep >= 1);
   if (plStep === 1) fgMount();
 }
 function renderStartClassic() {
