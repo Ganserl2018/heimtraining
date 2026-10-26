@@ -1057,17 +1057,19 @@ function selToggle(m) { // Auswahl umschalten; Eltern-Gruppe (Rücken/Beine) und
 }
 const fgCore = (e, g) => g.startsWith('m:') ? e.muscle === g.slice(2) : MUSCLE_GROUPS[e.muscle] === g && (g !== 'Rücken' || isBack(e));
 // Aus den Muskeln abgeleitet: kleinste Geräte-Auswahl, mit der jede Wahl mindestens 3 Übungen hat
-function suggestGear() {
+function suggestGear() { // Aufbau-Vorschlag: wenige Geräte, aber genug Auswahl je Muskel (Paare wie Bank+Hanteln werden mitgedacht)
   const G = genCfg.groups; if (!G.length) return GEAR.map(x => x[0]);
-  const base = genBase(genLevel(), true), need = 3, order = ['body', 'dumbbell', 'barbell', 'bench', 'band', 'cable', 'rig', 'ext'];
+  const base = genBase(genLevel(), true), need = 20, order = ['dumbbell', 'barbell', 'bench', 'band', 'cable', 'rig', 'ext', 'body'];
   const cand = G.map(g => base.filter(e => fgCore(e, g)).map(e => gearOf(e.name)));
   const cnt = (set, i) => cand[i].filter(gs => gs.every(k => set.includes(k))).length;
-  const score = s => cand.reduce((a, c, i) => a + Math.min(need, cnt(s, i)), 0);
-  const set = [];
-  for (let n = 0; n < order.length; n++) {
-    let best = null, bs = score(set);
-    order.forEach(k => { if (set.includes(k)) return; const sc = score(set.concat(k)); if (sc > bs) { bs = sc; best = k; } });
-    if (!best) break; set.push(best);
+  const score = s => cand.reduce((a, c, i) => a + Math.min(need, cnt(s, i)), 0) - (s.includes('body') ? 0 : 0);
+  const val = s => { let v = 0; cand.forEach((c, i) => { const w = c.filter(gs => gs.every(k => s.includes(k))); v += Math.min(need, w.filter(gs => !gs.every(k => k === 'body')).length + w.filter(gs => gs.every(k => k === 'body')).length * 0.5); }); return v; };
+  const set = [], opts = [];
+  order.forEach(a => { opts.push([a]); order.forEach(b => { if (a < b) opts.push([a, b]); }); });
+  for (let n = 0; n < 8; n++) {
+    let best = null, bs = 0; const v0 = val(set);
+    opts.forEach(o => { const add = o.filter(k => !set.includes(k)); if (!add.length) return; const g = (val(set.concat(add)) - v0) / add.length; if (g > bs + 1e-9) { bs = g; best = add; } });
+    if (!best || bs < 1.5) break; best.forEach(k => set.push(k));
     if (cand.every((c, i) => cnt(set, i) >= Math.min(need, c.length))) break;
   }
   return set;
@@ -1223,7 +1225,7 @@ function renderStart() {
     const need = GEAR.filter(([k]) => genCfg.gear.includes(k)), opt = GEAR.filter(([k]) => !genCfg.gear.includes(k));
     const gearBtns = `<div class="ga-h"><div class="ga-t"><button class="ga-back" data-act="plBack" aria-label="Zurück">‹</button><b>AUFBAUEN</b></div><span>für ${genCfg.groups.map(g => `<em>${dots(g)}${esc(fgLabel(g))}</em>`).join('')}</span></div>`
       + `<div class="pl-grid g2${need.length > 4 || (need.length > 1 && genCfg.groups.length > 2) ? ' dense' : ''}${need.length === 1 ? ' one' : ''}">${need.map(([k, l0]) => `<button class="pl-opt on ga-n" data-act="genGear" data-v="${k}"><b>${gl(k, l0)}</b><strong class="ga-num">${gearUse(k)}<small>Üb.</small></strong><span>${gearFor(k).slice(0, 3).map(g => `<em class="ga-m">${dots(g)}${esc(fgLabel(g))}</em>`).join('')}${gearFor(k).length > 3 ? `<em class="ga-m">+${gearFor(k).length - 3}</em>` : ''}</span></button>`).join('') || '<div class="ga-none">Kein Gerät gewählt</div>'}</div>`
-      + (opt.length ? `<div class="ga-o"><span>Optional dazu</span>${opt.map(([k, l0]) => `<button data-act="genGear" data-v="${k}">+ ${gl(k, l0)}</button>`).join('')}</div>` : '');
+      + (opt.length ? `<div class="ga-ow"><span>Optional dazu</span><div class="ga-o">${opt.map(([k, l0]) => `<button data-act="genGear" data-v="${k}">+ ${gl(k, l0)}</button>`).join('')}</div></div>` : '');
     body = `${un.length || plMsg ? `<div class="pl-sub warn">${un.length ? 'Für ' + esc(un.map(fgLabel).join(', ')) + ' passt kein gewähltes Gerät. Gerät dazuwählen.' : esc(plMsg)}</div>` : ''}${gearBtns}<div class="qk-rows">${seg('Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0)}${seg('Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets)}${seg('Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps)}</div>`;
     foot = `<button class="qk-go wander${un.length ? ' off' : ''}" data-act="genDo">${SP}TRAINING BAUEN</button>`;
   }

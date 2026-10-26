@@ -2436,3 +2436,11 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .pl-fig .pl-step[data-s="2"] .qk-rows{margin-top:.2rem; padding-top:.5rem;}
 .ga-n span .ga-m, .ga-n .ga-m{text-transform:none !important; letter-spacing:0 !important; font-size:.74rem;}
 @media (max-width:899px){ #content:has(.pl-fig){padding-bottom:calc(var(--tabh,5rem) + 10px) !important;} }
+/* Optional-Pills: eine wischbare Zeile statt drei */
+.ga-o{flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; touch-action:pan-x; margin-right:-1rem; padding-right:1rem; gap:6px;}
+.ga-o::-webkit-scrollbar{display:none;}
+.ga-o span{position:static; flex:none; width:auto; padding-right:2px; align-self:center;}
+.ga-o button{flex:none; white-space:nowrap;}
+.ga-ow{flex:none; display:flex; flex-direction:column; gap:.25rem; min-width:0;}
+.ga-ow > span{font:700 .68rem system-ui,-apple-system,sans-serif; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
+.ga-o span{display:none;}
