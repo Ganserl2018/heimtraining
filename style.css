@@ -2560,5 +2560,5 @@ body.is-res .topbar h1::after{content:none;}
 
 .ga-c .ga-ic2{font-size:1.45em; line-height:.7; display:inline-block; vertical-align:-.12em}
 
-button.home-brand{background:none; border:0; padding:0; font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent}
+button.home-brand{background:none; border:0; padding:0; margin:0; width:100%; line-height:.92; letter-spacing:normal; text-transform:none; color:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent}
 button.home-brand:active{opacity:.7}
