@@ -2363,3 +2363,48 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .ga-o{flex:none; display:flex; flex-wrap:wrap; align-items:center; gap:6px;}
 .ga-o span{flex:none; width:100%; font:700 .68rem system-ui,-apple-system,sans-serif; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
 .ga-o button{min-height:36px; padding:0 .8rem; border-radius:999px; border:1.5px dashed var(--border); background:transparent; color:var(--text-dim); font:600 .8rem system-ui,-apple-system,sans-serif; cursor:pointer;}
+/* === Optik-Check 27.10.: Aufbau kompakt, Figur frei, 44px-Ziele === */
+.pl-fig .pl-step[data-s="2"]{overflow-y:auto; scrollbar-width:none;}
+.pl-fig .pl-grid.g2{flex:none; min-height:min-content; align-content:start; grid-auto-rows:auto; gap:.5rem;}
+.pl-fig .pl-grid.g2 .ga-n{height:auto; min-height:76px; display:grid; grid-template-columns:1fr auto; grid-template-rows:auto 1fr; align-items:start; justify-items:start; gap:.2rem .5rem; padding:.55rem .95rem .55rem .7rem; text-align:left; animation:gaIn 240ms cubic-bezier(.23,1,.32,1) both; transition:transform 160ms cubic-bezier(.23,1,.32,1);}
+.pl-fig .pl-grid.g2 .ga-n:nth-child(2){animation-delay:40ms} .pl-fig .pl-grid.g2 .ga-n:nth-child(3){animation-delay:80ms} .pl-fig .pl-grid.g2 .ga-n:nth-child(4){animation-delay:120ms}
+.pl-fig .pl-grid.g2 .ga-n:active{transform:scale(.97);}
+.pl-grid.g2.one .ga-n{grid-column:1/-1;}
+.ga-n::after{display:none;}
+.ga-n b{grid-column:1; font:800 1rem/1.15 system-ui,-apple-system,sans-serif; overflow-wrap:anywhere;}
+.ga-num{grid-column:2; grid-row:1/3; align-self:center; font:400 1.9rem/1 var(--font-display,'Anton',Impact,sans-serif); color:var(--accent); display:flex; flex-direction:column; align-items:center;}
+.ga-num small{font:700 .6rem system-ui,-apple-system,sans-serif; letter-spacing:.06em; text-transform:uppercase; color:var(--text-dim);}
+.ga-n span{grid-column:1; flex-wrap:wrap; gap:.2rem .5rem; min-height:0;}
+.ga-m{font-style:normal; font-size:.72rem; color:var(--text-dim); display:inline-flex; align-items:center; gap:.25rem;}
+.ga-m i{width:7px; height:7px; border-radius:50%;}
+.pl-grid.g2.dense .ga-n{min-height:52px; grid-template-rows:auto;} .pl-grid.g2.dense .ga-n span{display:none;} .pl-grid.g2.dense .ga-num{grid-row:1; flex-direction:row; align-items:baseline; gap:.25rem; font-size:1.4rem;}
+.ga-t{display:flex; align-items:center; gap:.2rem; margin-left:-.5rem;}
+.ga-back{width:44px; height:44px; border:0; background:transparent; color:var(--text); font:400 1.9rem/1 system-ui,-apple-system,sans-serif; cursor:pointer;}
+.ga-o button{min-height:44px;}
+.qk-r .seg button{min-height:44px;}
+.fg-c{min-height:44px;} .fg-sub .fg-c{min-height:44px;}
+.fg-views button{min-height:44px;}
+/* Figur frei: kein Kasten */
+.fg-cv{background:none; border:0; border-radius:0; overflow:visible;}
+.fg-views{flex-direction:row; gap:0; border:1px solid var(--border); border-radius:999px; overflow:hidden; background:rgba(14,19,22,.7); top:2px; right:2px; bottom:auto;}
+.fg-views button{border:0; border-radius:0; background:transparent; min-height:44px; padding:0 .8rem;}
+.fg-gs{overflow-x:hidden;}
+.fg-sub{display:grid; grid-template-columns:1fr 1fr; gap:4px; padding-left:0;}
+.fg-sub .fg-c{border:1.5px solid var(--gc); border-left-width:3px; font-size:.7rem; padding:.2rem .3rem; min-width:0;}
+.fg-sub .fg-c i{display:none;}
+.fg-sub .fg-c{animation:gaIn 180ms cubic-bezier(.23,1,.32,1) both;}
+@keyframes gaIn{from{opacity:0; transform:translateY(6px)}to{opacity:1; transform:none}}
+@media (min-width:900px){.sv:has(.pl-fig){max-width:560px; margin-inline:auto;} .fg-cv{min-height:420px;}}
+@media (prefers-reduced-motion:reduce){.ga-n,.fg-sub .fg-c{animation:none !important;}}
+.pl-grid.g2.dense{gap:.4rem;}
+.pl-fig .pl-grid.g2.dense .ga-n{min-height:46px; padding:.3rem .6rem;}
+.pl-grid.g2.dense .ga-n b{font-size:.85rem; hyphens:none; overflow-wrap:normal; white-space:nowrap;}
+.pl-grid.g2.dense .ga-num{font-size:1.15rem;} .pl-grid.g2.dense .ga-num small{font-size:.55rem;}
+.pl-fig .pl-step[data-s="2"]{gap:.45rem;}
+.pl-fig .pl-step[data-s="2"] .qk-rows{gap:.3rem;}
+.fg-sub{grid-template-columns:1fr; gap:3px;}
+.fg-sub .fg-c{font-size:.78rem; hyphens:none; overflow-wrap:normal; padding:.2rem .5rem; min-height:42px;}
+.fg-views{flex-direction:column; border-radius:14px;}
+.fg-views button{padding:0 .55rem; font-size:.7rem; min-height:44px;}
+.fg-views button + button{border-top:1px solid var(--border);}
+.fg-g{height:46px;} .fg-sub .fg-c{min-height:40px;} .fg-sub{gap:2px;}

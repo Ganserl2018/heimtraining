@@ -971,14 +971,14 @@ function genSave(start) {
   if (!genRes || !genRes.length) return;
   const g = genCfg.groups.length ? genCfg.groups : ['Brust'], lv = genLevel();
   const t = { id: 'w' + Date.now(), name: loserName(), exercises: genRes, weekdays: [], since: {}, time: '', level: lv, goal: genCfg.goal, auto: true };
-  weekplan.push(t); saveWeekplan(); genRes = null;
+  weekplan.push(t); saveWeekplan(); genRes = null; { const d0 = genCfg.dur; genCfg = newGenCfg(); genCfg.dur = d0; genCfg.groups = []; plStep = 0; }
   if (start) playStart(t.id); else { trTab = 'act'; view = 'trainings'; }
 }
 const SPK = '<svg class="qk-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.1 6.4 6.4 2.1-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-2.1z"/></svg>';
 function genHero() {
   const ex = genRes || [], sets = ex.reduce((n, e) => n + (e.sets || 0), 0), gs = [...new Set(ex.filter(e => !e.warm).map(e => MUSCLE_GROUPS[e.muscle]).filter(Boolean))];
   const t = (n, l, i) => `<div class="gh-t" style="--i:${i}"><b>${n}</b><em>${l}</em></div>`;
-  return `<div class="gh"><div class="gh-top">Heute: ${gs.map(g => `<span class="gx-t g" data-g="${esc(g)}">${esc(g)}</span>`).join('')}</div><div class="gh-row">${t(ex.length, 'Übungen', 0)}${t(sets, 'Sätze', 1)}${t('~' + genCfg.dur, 'Minuten', 2)}</div></div>`;
+  return `<div class="gh"><div class="gh-top">Heute: ${gs.map(g => `<span class="gx-t g" data-g="${esc(g)}">${esc(g)}</span>`).join('')}</div><div class="gh-row">${t(ex.filter(e => !e.warm).length, 'Übungen', 0)}${t(sets, 'Sätze', 1)}${t('~' + genCfg.dur, 'Minuten', 2)}</div></div>`;
 }
 function renderGen() {
   const lv = genLevel(), p = loadProfile();
@@ -1149,6 +1149,7 @@ function fgMount() {
   if (fg.failed) { box.insertAdjacentHTML('afterbegin', '<div class="fg-msg">Körper konnte nicht geladen werden. Wähl mit den Chips.</div>'); return; }
   if (!fg.ready) { box.insertAdjacentHTML('afterbegin', '<div class="fg-msg">Lade Körper …</div>'); return; }
   box.insertBefore(fg.el, box.firstChild);
+  if (window.ResizeObserver) { if (fg.ro) fg.ro.disconnect(); fg.ro = new ResizeObserver(() => { if (box.clientWidth && box.clientHeight && (Math.abs(box.clientWidth - (fg.bw || 0)) > 1 || Math.abs(box.clientHeight - (fg.bh || 0)) > 1)) { fg.bw = box.clientWidth; fg.bh = box.clientHeight; fgMount(); } }); fg.ro.observe(box); }
   const w = box.clientWidth, h = box.clientHeight;
   if (w && h) {
     fg.r.setSize(w, h, false); fg.cam.aspect = w / h;
@@ -1218,8 +1219,8 @@ function renderStart() {
     const gl = (k, l0) => l0 === 'Kurzhanteln' ? 'Hanteln' : l0 === 'Hantelbank' ? 'Bank' : l0;
     const dots = g => `<i style="background:${FG_COL[(fgChip(g) || [0, 0, 'Arme'])[2]] || '#b8ff3c'}"></i>`;
     const need = GEAR.filter(([k]) => genCfg.gear.includes(k)), opt = GEAR.filter(([k]) => !genCfg.gear.includes(k));
-    const gearBtns = `<div class="ga-h"><b>AUFBAUEN</b><span>für ${genCfg.groups.map(g => `<em>${dots(g)}${esc(fgLabel(g))}</em>`).join('')}</span></div>`
-      + `<div class="pl-grid g2">${need.map(([k, l0]) => `<button class="pl-opt on ga-n" data-act="genGear" data-v="${k}"><b>${gl(k, l0)}</b><small>${gearUse(k)} Übungen</small><span>${gearFor(k).map(g => dots(g)).join('')}</span></button>`).join('') || '<div class="ga-none">Kein Gerät gewählt</div>'}</div>`
+    const gearBtns = `<div class="ga-h"><div class="ga-t"><button class="ga-back" data-act="plBack" aria-label="Zurück">‹</button><b>AUFBAUEN</b></div><span>für ${genCfg.groups.map(g => `<em>${dots(g)}${esc(fgLabel(g))}</em>`).join('')}</span></div>`
+      + `<div class="pl-grid g2${need.length > 4 || (need.length > 1 && genCfg.groups.length > 2) ? ' dense' : ''}${need.length === 1 ? ' one' : ''}">${need.map(([k, l0]) => `<button class="pl-opt on ga-n" data-act="genGear" data-v="${k}"><b>${gl(k, l0)}</b><strong class="ga-num">${gearUse(k)}<small>Üb.</small></strong><span>${gearFor(k).slice(0, 3).map(g => `<em class="ga-m">${dots(g)}${esc(fgLabel(g))}</em>`).join('')}${gearFor(k).length > 3 ? `<em class="ga-m">+${gearFor(k).length - 3}</em>` : ''}</span></button>`).join('') || '<div class="ga-none">Kein Gerät gewählt</div>'}</div>`
       + (opt.length ? `<div class="ga-o"><span>Optional dazu</span>${opt.map(([k, l0]) => `<button data-act="genGear" data-v="${k}">+ ${gl(k, l0)}</button>`).join('')}</div>` : '');
     body = `${un.length || plMsg ? `<div class="pl-sub warn">${un.length ? 'Für ' + esc(un.map(fgLabel).join(', ')) + ' passt kein gewähltes Gerät. Gerät dazuwählen.' : esc(plMsg)}</div>` : ''}${gearBtns}<div class="qk-rows">${seg('Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0)}${seg('Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets)}${seg('Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps)}</div>`;
     foot = `<button class="qk-go wander${un.length ? ' off' : ''}" data-act="genDo">${SP}TRAINING BAUEN</button>`;
@@ -2057,7 +2058,7 @@ content.addEventListener('click', e => {
       if (btn.dataset.day) { day = btn.dataset.day; view = 'day'; }
       else if (btn.dataset.view) {
         // Planung öffnen = frischer Start: nichts gewählt außer Zeit (Geräte -> passende Gruppen entstehen durch Antippen)
-        if (btn.dataset.view === 'start' && view !== 'start') { plStep = 0; genCfg.plAuto = false; plClassic = false; genCfg.gear = []; genCfg.groups = []; try { localStorage.setItem(GEARKEY, '[]'); } catch (e2) {} }
+        if (btn.dataset.view === 'start' && view !== 'start') { plStep = 0; { const d0 = genCfg.dur; genCfg = newGenCfg(); genCfg.dur = d0; } genRes = null; genCfg.plAuto = false; plClassic = false; genCfg.gear = []; genCfg.groups = []; try { localStorage.setItem(GEARKEY, '[]'); } catch (e2) {} }
         view = btn.dataset.view;
       }
       picker = null;
