@@ -1458,6 +1458,18 @@ function txToSheet(t) {
     <div class="to-list">${others.map(w => `<button data-act="txToPick" data-tid="${w.id}"><span>${esc(w.name)}</span><em>${w.exercises.length} Üb.${w.exercises.some(x => x.name === ex.name) ? ' · schon drin' : ''}</em></button>`).join('')}<button class="to-new" data-act="txToPick" data-tid="new">+ Neues Training</button></div>
     <button class="to-x" data-act="txToClose">Abbrechen</button></div>`;
 }
+function wtInhalt(t) {
+  const ex = t.exercises || []; if (!ex.length) return '';
+  const grp = {}; ex.forEach(e => { const k = e.warm ? 'Aufwärmen' : MUSCLE_GROUPS[e.muscle] || MUSCLE_DE[e.muscle] || e.muscle; (grp[k] = grp[k] || []).push(e); });
+  const keys = Object.keys(grp).sort((a, b) => (a === 'Aufwärmen') - (b === 'Aufwärmen') || grp[b].length - grp[a].length);
+  const gl = [...new Set(ex.flatMap(e => gearOf(e.name)))].map(k => (GEAR.find(g => g[0] === k) || [])[1]).filter(Boolean).map(l => l === 'Kurzhanteln' ? 'Hanteln' : l === 'Hantelbank' ? 'Bank' : l);
+  const chips = a => a.map(x => `<em>${esc(x)}</em>`).join('');
+  return `<div class="inh"><div class="inh-t">Inhalt</div>
+    <div class="inh-r"><span>Geräte</span><div class="inh-c">${gl.length ? chips(gl) : '<em>keine</em>'}</div></div>
+    <div class="inh-r"><span>Muskeln</span><div class="inh-c">${keys.filter(k => k !== 'Aufwärmen').map(k => `<em data-g="${esc(k)}"><i></i>${esc(k)} ${grp[k].length}</em>`).join('') || '<em>–</em>'}</div></div>
+    <div class="inh-l">${keys.map(k => `<div class="inh-g"${k === 'Aufwärmen' ? '' : ` data-g="${esc(k)}"`}><b>${esc(k)}</b><span>${grp[k].map(e => esc(dn(e.name))).join(' · ')}</span></div>`).join('')}</div>
+  </div>`;
+}
 function wtHero(t, sets) {
   const min = Math.max(5, Math.round(sets * 2.5 / 5) * 5), tile = (n, l, i) => `<div class="gh-t" style="--i:${i}"><b>${n}</b><em>${l}</em></div>`;
   const sh = muscleShare(t).filter(([k]) => k !== 'Aufwärmen').slice(0, 5);
@@ -1501,7 +1513,7 @@ function renderWTrain() {
   content.innerHTML = `<div class="tsx2">
     ${head}
     ${hintHtml ? `<div class="tx-hint">${hintHtml}</div>` : ''}
-    <section class="tx-list"><div class="tx-rows">${hasEx ? wtHero(t, totalSets) : ''}${t.exercises.map((ex, i) => txRow(t, ex, i)).join('')}<button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button></div></section>
+    <section class="tx-list"><div class="tx-rows">${hasEx ? wtHero(t, totalSets) + wtInhalt(t) : ''}${t.exercises.map((ex, i) => txRow(t, ex, i)).join('')}<button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button></div></section>
     ${ctl}
     ${txTo && txTo.id === t.id ? txToSheet(t) : ''}
   </div>`;

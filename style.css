@@ -2239,3 +2239,15 @@ body.mood-bad{--text:#fff3f1; --text-dim:#ead2ce; --text-faint:#d9b5af;}
 /* Planung Schritt 3 mit Speziellen Muskeln: Seite scrollt */
 body.is-start:not(.is-res) #content.pl-scroll{overflow-y:auto !important; touch-action:pan-y; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;}
 html:has(#content.pl-scroll){overflow:hidden;}
+
+/* Training: Inhaltsübersicht (Bestellbestätigung) */
+.inh{margin:0 0 .8rem; padding:.8rem .9rem; border-radius:20px; background:rgba(255,255,255,.05); border:1px dashed rgba(255,255,255,.22);}
+.inh-t{font-family:Anton,Impact,sans-serif; letter-spacing:.1em; text-transform:uppercase; font-size:.95rem; color:var(--accent); margin-bottom:.5rem;}
+.inh-r{display:grid; grid-template-columns:4.6rem minmax(0,1fr); gap:.5rem; align-items:start; padding:.4rem 0; border-top:1px solid rgba(255,255,255,.1);}
+.inh-r > span{font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim); padding-top:.25rem;}
+.inh-c{display:flex; flex-wrap:wrap; gap:.3rem;}
+.inh-c em{font-style:normal; font-size:.74rem; font-weight:700; padding:.15rem .6rem; border-radius:999px; background:rgba(255,255,255,.09); color:var(--text); display:inline-flex; align-items:center; gap:.35rem;}
+.inh-c em i{width:7px; height:7px; border-radius:50%; background:var(--gc,#b8ff3c);}
+.inh-l{border-top:1px solid rgba(255,255,255,.1); padding-top:.45rem; display:flex; flex-direction:column; gap:.35rem;}
+.inh-g{display:grid; grid-template-columns:4.6rem minmax(0,1fr); gap:.5rem; font-size:.76rem; line-height:1.35;}
+.inh-g b{color:var(--gc,var(--text-dim)); font-weight:800;} .inh-g span{color:var(--text-dim);}
