@@ -983,7 +983,7 @@ function genSave(start) {
   if (!genRes || !genRes.length) return;
   const g = genCfg.groups.length ? genCfg.groups : ['Brust'], lv = genLevel();
   const t = { id: 'w' + Date.now(), name: loserName(), exercises: genRes, weekdays: [], since: {}, time: '', level: lv, goal: genCfg.goal, auto: true };
-  weekplan.push(t); saveWeekplan(); genRes = null; { const d0 = genCfg.dur; genCfg = newGenCfg(); genCfg.dur = d0; genCfg.groups = []; plStep = 0; }
+  weekplan.push(t); saveWeekplan(); genRes = null; fgOpen = null; { const d0 = genCfg.dur; genCfg = newGenCfg(); genCfg.dur = d0; genCfg.groups = []; plStep = 0; }
   if (start) playStart(t.id); else { trTab = 'act'; view = 'trainings'; }
 }
 const SPK = '<svg class="qk-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.1 6.4 6.4 2.1-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-2.1z"/></svg>';
@@ -1219,13 +1219,13 @@ function armPick(G) { // Bizeps/Trizeps im Wechsel: der länger nicht trainierte
 }
 function plJump(n) {
   const el = content.querySelector('.pl-step');
-  const go = () => { plStep = Math.max(0, Math.min(PL_N - 1, n)); render(); };
+  const go = () => { plStep = Math.max(0, Math.min(PL_N - 1, n)); fgOpen = null; render(); };
   if (!el) return go();
   el.classList.add('out'); setTimeout(go, 200);
 }
 function renderStart() {
   if (plClassic) return renderStartClassic();
-  if (window._lv !== 'start' || !plSeen) { plStep = 0; }
+  if (window._lv !== 'start' || !plSeen) { plStep = 0; fgOpen = null; }
   plSeen = true;
   const SP = '<svg class="qk-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.1 6.4 6.4 2.1-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-2.1z"/></svg>';
   let body = '', foot = '';
