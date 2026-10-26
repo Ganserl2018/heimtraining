@@ -2444,3 +2444,11 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .ga-ow{flex:none; display:flex; flex-direction:column; gap:.25rem; min-width:0;}
 .ga-ow > span{font:700 .68rem system-ui,-apple-system,sans-serif; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
 .ga-o span{display:none;}
+/* Trainings-Kopf: schlanker Zahlenstreifen statt dicker Kacheln */
+.ts-strip{display:grid; grid-template-columns:repeat(3,1fr); margin:0 0 .6rem; padding:.45rem 0; border-top:1px solid rgba(184,255,60,.3); border-bottom:1px solid var(--border-soft); background:linear-gradient(180deg,rgba(184,255,60,.07),transparent);}
+.ts-s{display:flex; flex-direction:column; align-items:center; gap:.1rem; position:relative; min-width:0;}
+.ts-s + .ts-s::before{content:""; position:absolute; left:0; top:12%; bottom:12%; width:1px; background:var(--border-soft);}
+.ts-s b{font:400 1.7rem/1 var(--font-display,'Anton',Impact,sans-serif); color:var(--accent); letter-spacing:.02em;}
+.ts-s b small{font-size:.9rem; color:var(--text-dim);}
+.ts-s em{font-style:normal; font:700 .62rem system-ui,-apple-system,sans-serif; letter-spacing:.14em; text-transform:uppercase; color:var(--text-dim); white-space:nowrap;}
+.ts-d{display:flex; gap:3px; margin-top:2px;} .ts-d i{width:6px; height:6px; border-radius:50%; background:var(--border);} .ts-d i.on{background:var(--accent);}
