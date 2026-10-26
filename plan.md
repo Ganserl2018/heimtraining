@@ -569,3 +569,12 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - Offen/QA: iPhone-Harness (ZOOM=118 VH=874 ET=59 EB=34 NEWTAB=1), Checker-Re-Run, designer + design-anti-slop-check noch NICHT gelaufen; Step 3 Chip-Rail gekürzt; w3/w5 prüfen; K2 genOpen aus Trainings/Verlauf testen.
 - Warteliste: muscle-map.json in App (Figur im Training-Detail "Inhalt", mode kraft/stretch/mobility/cardio); feinere Beinmuskeln; Checker W3/W4/W6/W7, Touch-Ziele <44px, Profil-Links, "TAGE GEPLANT"-Umbruch; echte Vorlagen; fehlende Bilder (Bilderlauf); Fokus-Gewichtung.
 - Alex entscheidet allein: 184 Duplikat-Bilder, Stangengewicht, Token V10-03.
+
+## Warteliste Figur-Fähigkeiten (26.10. 18:50, Alex: "Rest merken für später")
+- Figur-Auto-Drehung nach Muskelseite: LIVE (c4773bc). Antippen auf der Figur: existiert bereits.
+- Untergruppe heranzoomen, Rest blasser (Kamera schwenkt auf Partie)
+- "Heute ist dran": lange nicht trainierte Muskeln leuchten, frische gedämpft
+- Figur im Trainings-Detail (Muskelmap nach Satzzahl, muscle-map.json)
+- Figur im Workout: Haupt-/Hilfsmuskeln der aktuellen Übung
+- Verlauf als Heatmap (Woche/Monat)
+- IN ARBEIT (Idee 7): gewähltes Gerät lässt Figur die getroffenen Muskeln leuchten (Ort noch zu klären: Aufbau-Seite)
