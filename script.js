@@ -736,6 +736,17 @@ function presetExercises(p) {
 const GENKEY = 'heimtraining.genlast';
 let genJust = false, genFrom = null;
 const GEAR = [['barbell', 'Langhantel'], ['dumbbell', 'Kurzhanteln'], ['cable', 'Seilzug'], ['band', 'Bänder'], ['rig', 'Klimmzug'], ['ext', 'Extension'], ['bench', 'Hantelbank'], ['body', 'Körper']];
+const GEAR_NAME = { barbell: 'Langhantel + Scheiben', dumbbell: 'Kurzhanteln', cable: 'Seilzug oben', band: 'Türanker-Bänder', rig: 'Klimmzug-Gerüst', ext: 'Hyperextension-Bank', bench: 'Hantelbank', body: 'Nur Körper' };
+const GEAR_SVG = {
+  barbell: '<path d="M2 16h28M7 8v16M11 11v10M25 8v16M21 11v10"/>',
+  dumbbell: '<path d="M10 16h12M6 11v10M10 8v16M26 11v10M22 8v16"/>',
+  bench: '<path d="M3 16h26v4H3zM7 20v7M25 20v7M3 12l7 4"/>',
+  rig: '<path d="M4 5h24M7 5v23M25 5v23M13 5v6M19 5v6M10 13h12"/>',
+  cable: '<circle cx="16" cy="8" r="4"/><path d="M16 4V1M12 8H8v18M20 8v15M18 23h4v5h-4z"/>',
+  band: '<path d="M2 20c3-9 6-9 9 0s6 9 9 0 6-9 10-3"/>',
+  ext: '<path d="M4 25l15-11M15 11l7 6M21 25h8M8 27v-5M26 25V15"/>',
+  body: '<circle cx="16" cy="6" r="3"/><path d="M16 10v10M7 14l9-3 9 3M16 20l-5 9M16 20l5 9"/>'
+};
 const GEARKEY = 'heimtraining.gear2';
 function loadGear() { try { const g = JSON.parse(localStorage.getItem(GEARKEY)); if (Array.isArray(g)) return g; } catch (e) {} return GEAR.map(x => x[0]); }
 function isBack(e) { return e.muscle === 'lats' || e.muscle === 'middle back' || (e.muscle === 'lower back' && gearOf(e.name).includes('ext')); }
@@ -1233,7 +1244,7 @@ function renderStart() {
     const need = GEAR.filter(([k]) => genCfg.gear.includes(k) || gearUse(k) > 0).sort((a, b) => genCfg.gear.includes(b[0]) - genCfg.gear.includes(a[0]));
     const exFor = k => { const S = genCfg.gear.includes(k) ? genCfg.gear : genCfg.gear.concat(k), seen = new Set(); return genBase(genLevel(), true).filter(e => genCfg.groups.some(g => fgCore(e, g)) && gearOf(e.name).includes(k) && gearOf(e.name).every(x => S.includes(x))).map(e => dn(e.name)).filter(n => !seen.has(n) && seen.add(n)).slice(0, 3).join(' · '); };
     const gearBtns = `<div class="ga-h"><div class="ga-t"><button class="ga-back" data-act="plBack" aria-label="Zurück">‹</button><b>GERÄTE</b></div><span>${genCfg.groups.map(g => `<em>${dots(g)}${esc(fgLabel(g))}</em>`).join('')}</span></div>`
-      + `<div class="ga-list">${need.map(([k, l0]) => { const on = genCfg.gear.includes(k); return `<button class="ga-r${on ? ' on' : ''}" role="switch" aria-checked="${on}" data-act="genGear" data-v="${k}"><i class="ga-ck"></i><span class="ga-tx"><b>${gl(k, l0)}</b><small>${esc(exFor(k))}</small></span><strong class="ga-num">${gearUse(k)}<small>Üb.</small></strong></button>`; }).join('') || '<div class="ga-none">Kein Gerät passt</div>'}</div>`;
+      + `<div class="ga-list">${need.map(([k, l0]) => { const on = genCfg.gear.includes(k); return `<button class="ga-r${on ? ' on' : ''}" role="switch" aria-checked="${on}" data-act="genGear" data-v="${k}"><span class="ga-ic"><svg viewBox="0 0 32 32" aria-hidden="true">${GEAR_SVG[k] || ''}</svg></span><span class="ga-tx"><b>${GEAR_NAME[k] || gl(k, l0)}</b><small>${esc(exFor(k))}</small></span><strong class="ga-num">${gearUse(k)}<small>Üb.</small></strong></button>`; }).join('') || '<div class="ga-none">Kein Gerät passt</div>'}</div>`;
     body = `${un.length || plMsg ? `<div class="pl-sub warn">${un.length ? 'Für ' + esc(un.map(fgLabel).join(', ')) + ' passt kein gewähltes Gerät. Gerät dazuwählen.' : esc(plMsg)}</div>` : ''}${gearBtns}<div class="ga-fine${plFine ? ' open' : ''}"><button class="ga-ft" data-act="plFine" aria-expanded="${plFine}"><span>Feinschliff</span><em>${[genCfg.count && genCfg.count + ' Üb.', genCfg.minSets && genCfg.minSets + ' Sätze', genCfg.minReps && genCfg.minReps + ' Wdh'].filter(Boolean).join(' · ') || 'Alles automatisch'}</em><i>${plFine ? '▾' : '▴'}</i></button>${plFine ? `<div class="qk-rows">${seg('Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0)}${seg('Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets)}${seg('Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps)}</div>` : ''}</div>`;
     foot = `<button class="qk-go wander${un.length ? ' off' : ''}" data-act="genDo">${SP}TRAINING BAUEN</button>`;
   }

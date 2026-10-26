@@ -2480,3 +2480,8 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .ga-ft i{font-style:normal; color:var(--accent);}
 .pl-fig .pl-step[data-s="2"]{overflow:hidden;}
 .ga-r{min-height:50px; padding:.25rem .8rem;}
+/* Geräte-Zeilen: Symbol statt Haken */
+.ga-ic{flex:none; width:40px; height:40px; border-radius:12px; display:grid; place-items:center; border:1.5px solid var(--border); color:var(--text-dim); transition:background-color 160ms,color 160ms,border-color 160ms;}
+.ga-ic svg{width:28px; height:28px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;}
+.ga-r.on .ga-ic{background:var(--accent); border-color:var(--accent); color:#0c1411;}
+.ga-r{grid-template-columns:auto minmax(0,1fr) auto;}
