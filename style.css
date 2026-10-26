@@ -2252,3 +2252,5 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .inh-g{display:grid; grid-template-columns:4.6rem minmax(0,1fr); gap:.5rem; font-size:.76rem; line-height:1.35;}
 .inh-g b{color:var(--gc,var(--text-dim)); font-weight:800;} .inh-g span{color:var(--text-dim);}
 .tr-card > .ti-c,.wp-tr > .ti-c{gap:.35rem;}
+/* Schritt 3 mit offenen Spezielle Muskeln: Button steht nach den Muskeln, nicht darüber */
+.pl-scroll .pl-foot{position:static; background:none; margin-top:.2rem;}
