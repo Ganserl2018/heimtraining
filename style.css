@@ -2302,3 +2302,10 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .fg-sub .fg-c.none{opacity:.4; border-style:solid;}
 .fg-views{bottom:auto; top:6px; left:auto; right:6px; transform:none;}
 .fg-views button{min-height:34px; padding:0 .7rem; font-size:.72rem;}
+.fg-sub{position:static; flex:none; height:36px; display:flex; flex-wrap:nowrap; justify-content:center; gap:6px; overflow-x:auto; scrollbar-width:none; z-index:auto;}
+.fg-sub::-webkit-scrollbar{display:none;}
+.fg-sub .fg-c{flex:none; min-height:34px; background:transparent; backdrop-filter:none;}
+.fg-sub .fg-c.on{background:var(--gc);}
+.fg-next{white-space:normal; line-height:1.25; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;}
+.fg-sub{justify-content:flex-start;}
+.fg-sub .fg-c:first-child{margin-left:auto;} .fg-sub .fg-c:last-child{margin-right:auto;}

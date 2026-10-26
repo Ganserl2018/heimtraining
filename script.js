@@ -1196,12 +1196,12 @@ function renderStart() {
     body = `<h2 class="pl-q">Wie lange?</h2><div class="pl-big">${[20, 30, 45, 60].map((v, i) => `<button class="pl-opt${genCfg.dur === v ? ' on' : ''}" style="--i:${i}" data-act="plDur" data-v="${v}"><b>${v}</b><em>Min</em></button>`).join('')}</div>`;
   } else if (plStep === 1) {
     const G = genCfg.groups, onc = c => G.includes(c[1]) || (c[3] && G.includes(c[3]));
-    const SUBL = { 'Rücken ganz': 'Alle', 'Beine ganz': 'Alle', 'Nacken & Trapez': 'Trapez', 'Oberer Rücken': 'Oberer', 'Breiter Rücken': 'Breiter', 'Unterer Rücken': 'Unterer', 'Oberschenkel vorne': 'Schenkel vorn', 'Oberschenkel hinten': 'Schenkel hinten' };
+    const SUBL = { 'Rücken ganz': 'Alle', 'Beine ganz': 'Alle', 'Nacken & Trapez': 'Trapez', 'Oberer Rücken': 'Oberer', 'Breiter Rücken': 'Breiter', 'Unterer Rücken': 'Unterer', 'Oberschenkel vorne': 'Quadrizeps', 'Oberschenkel hinten': 'Beuger' };
     const gOn = g => G.some(m => { const c = fgChip(m); return c && c[2] === g; });
     const grp = ['Brust', 'Schultern', 'Arme', 'Bauch', 'Rücken', 'Beine'].map(g => `<button class="fg-g${gOn(g) ? ' on' : ''}${fgOpen === g ? ' open' : ''}" data-g="${g}" data-act="fgGrp" data-v="${g}">${g}</button>`).join('');
     const subs = fgOpen ? FG_CHIPS.filter(c => c[2] === fgOpen).map(c => { const o = onc(c), bl = false; return `<button class="fg-c${o ? ' on' : ''}${bl ? ' none' : ''}" data-g="${c[2]}" data-act="fgSel" data-v="${esc(c[1])}">${SUBL[c[0]] || c[0]}</button>`; }).join('') : '';
     const need = G.length ? suggestGear().map(k => (GEAR.find(x => x[0] === k) || [0, k])[1]) : [];
-    body = `<div class="fg"><div class="fg-gs">${grp}</div><div class="fg-cv">${subs ? `<div class="fg-sub">${subs}</div>` : ''}<div class="fg-views"><button data-act="fgView" data-v="0">Vorne</button><button data-act="fgView" data-v="1">Hinten</button></div></div></div>`;
+    body = `<div class="fg"><div class="fg-gs">${grp}</div><div class="fg-sub">${subs}</div><div class="fg-cv"><div class="fg-views"><button data-act="fgView" data-v="0">Vorne</button><button data-act="fgView" data-v="1">Hinten</button></div></div></div>`;
     foot = `<button class="fg-next${G.length ? '' : ' off'}" data-act="plNext">${plMsg ? esc(plMsg) : G.length ? '<b>Aufbauen:</b> ' + esc(need.join(' · ') || 'nichts') + ' ›' : 'Tippe eine Gruppe oder die Figur'}</button>`;
   } else {
     if (!genCfg.groups.length) { plStep = 1; return renderStart(); }
