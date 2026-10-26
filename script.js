@@ -1076,6 +1076,10 @@ function uncovered() { // gewählte Muskeln, für die die gewählten Geräte kei
   const base = genBase(genLevel(), true);
   return genCfg.groups.filter(g => !base.some(e => fgCore(e, g) && gearOf(e.name).every(k => genCfg.gear.includes(k))));
 }
+function gearFor(k) { // welche gewählten Muskeln hängen an Gerät k
+  const base = genBase(genLevel(), true);
+  return genCfg.groups.filter(g => base.some(e => fgCore(e, g) && gearOf(e.name).every(x => genCfg.gear.includes(x)) && gearOf(e.name).includes(k)));
+}
 function gearUse(k) { // Übungen zu den gewählten Muskeln, die mit den gewählten Geräten gehen und Gerät k brauchen
   const base = genBase(genLevel(), true);
   return base.filter(e => genCfg.groups.some(g => fgCore(e, g)) && gearOf(e.name).every(x => genCfg.gear.includes(x)) && gearOf(e.name).includes(k)).length;
@@ -1211,8 +1215,13 @@ function renderStart() {
     if (!genCfg.gearTouched) genCfg.gear = suggestGear();
     const un = uncovered();
     const seg = (l, a, vs, cur) => `<div class="qk-r"><span>${l}</span><div class="seg" style="--n:${vs.length}">${vs.map(v => `<button class="${cur === v ? 'on' : ''}" data-act="${a}" data-v="${v}">${v || 'Auto'}</button>`).join('')}</div></div>`;
-    const gearBtns = GEAR.map(([k, l0], i) => { const l = l0 === 'Kurzhanteln' ? 'Hanteln' : l0 === 'Hantelbank' ? 'Bank' : l0, on = genCfg.gear.includes(k), n = on ? gearUse(k) : 0; return `<button class="pl-opt sm${on ? ' on' : ''}" style="--i:${i}" data-act="genGear" data-v="${k}">${l}<small>${on ? n + ' Übungen' : 'dazu'}</small></button>`; }).join('');
-    body = `${un.length || plMsg ? `<div class="pl-sub warn">${un.length ? 'Für ' + esc(un.map(fgLabel).join(', ')) + ' passt kein gewähltes Gerät. Gerät dazuwählen.' : esc(plMsg)}</div>` : ''}<div class="pl-grid g3">${gearBtns}</div><div class="qk-rows">${seg('Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0)}${seg('Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets)}${seg('Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps)}</div>`;
+    const gl = (k, l0) => l0 === 'Kurzhanteln' ? 'Hanteln' : l0 === 'Hantelbank' ? 'Bank' : l0;
+    const dots = g => `<i style="background:${FG_COL[(fgChip(g) || [0, 0, 'Arme'])[2]] || '#b8ff3c'}"></i>`;
+    const need = GEAR.filter(([k]) => genCfg.gear.includes(k)), opt = GEAR.filter(([k]) => !genCfg.gear.includes(k));
+    const gearBtns = `<div class="ga-h"><b>AUFBAUEN</b><span>für ${genCfg.groups.map(g => `<em>${dots(g)}${esc(fgLabel(g))}</em>`).join('')}</span></div>`
+      + `<div class="pl-grid g2">${need.map(([k, l0]) => `<button class="pl-opt on ga-n" data-act="genGear" data-v="${k}"><b>${gl(k, l0)}</b><small>${gearUse(k)} Übungen</small><span>${gearFor(k).map(g => dots(g)).join('')}</span></button>`).join('') || '<div class="ga-none">Kein Gerät gewählt</div>'}</div>`
+      + (opt.length ? `<div class="ga-o"><span>Optional dazu</span>${opt.map(([k, l0]) => `<button data-act="genGear" data-v="${k}">+ ${gl(k, l0)}</button>`).join('')}</div>` : '');
+    body = `${un.length || plMsg ? `<div class="pl-sub warn">${un.length ? 'Für ' + esc(un.map(fgLabel).join(', ')) + ' passt kein gewähltes Gerät. Gerät dazuwählen.' : esc(plMsg)}</div>` : ''}${gearBtns}<div class="qk-rows">${seg('Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0)}${seg('Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets)}${seg('Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps)}</div>`;
     foot = `<button class="qk-go wander${un.length ? ' off' : ''}" data-act="genDo">${SP}TRAINING BAUEN</button>`;
   }
   plMsg = '';
