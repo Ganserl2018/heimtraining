@@ -2317,3 +2317,20 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .fg-gear:active{transform:scale(.96);}
 .pl.pl-fig .pl-foot{display:flex; flex-direction:column; gap:.5rem;}
 .pl-chips .pl-chip:first-child{display:none;} .pl-chips .pl-chip:nth-child(2){max-width:100%;}
+/* v3: Gruppen links als schmale Spalte, Figur groß */
+.fg{flex-direction:row; gap:.5rem;}
+.fg-gs{display:flex; flex-direction:column; justify-content:space-between; gap:6px; width:96px; flex:none; grid-template-columns:none;}
+.fg-g{flex:1; max-height:70px; min-height:44px; padding:0 .2rem; font-size:.8rem;}
+.fg-sub{position:absolute; left:auto; right:6px; top:58px; bottom:auto; height:auto; width:auto; flex-direction:column; align-items:flex-end; overflow:visible; justify-content:flex-start; gap:5px; z-index:2;}
+.fg-sub .fg-c{margin:0 !important; background:rgba(14,19,22,.88); backdrop-filter:blur(6px);}
+.fg-sub .fg-c.on{background:var(--gc);}
+.fg-cv{flex:1; min-width:0;}
+/* v3b: Feinwahl klappt in der Spalte unter der Gruppe auf, Figur bleibt frei */
+.fg-gs{justify-content:flex-start; overflow-y:auto; scrollbar-width:none; touch-action:pan-y; width:104px;}
+.fg-gs::-webkit-scrollbar{display:none;}
+.fg-g{flex:none; height:50px; min-height:44px; max-height:none;}
+.fg-sub{position:static; flex:none; height:auto; width:100%; display:flex; flex-direction:column; align-items:stretch; gap:4px; padding-left:.55rem; overflow:visible;}
+.fg-sub .fg-c{margin:0 !important; min-height:36px; padding:.2rem .5rem; border-radius:10px; text-align:left; justify-content:flex-start; font-size:.78rem; background:transparent; backdrop-filter:none;}
+.fg-sub .fg-c.on{background:var(--gc); color:#0c1411;}
+.fg-views{top:auto; bottom:6px; right:6px; left:auto; flex-direction:column; transform:none; gap:5px;}
+.fg-sub .fg-c{font-size:.72rem; padding:.2rem .4rem;}

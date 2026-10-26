@@ -1106,7 +1106,7 @@ function fgInit() {
       o.material = m; fg.mats.push({ m, node });
     });
     const box = new T.Box3().setFromObject(model), size = box.getSize(new T.Vector3()), c = box.getCenter(new T.Vector3());
-    model.position.sub(c); scene.add(model); fg.model = model;
+    model.position.sub(c); scene.add(model); fg.model = model; fg.size = size;
     fg.dist = (size.y / 2) / Math.tan(T.MathUtils.degToRad(cam.fov / 2)) * 1.12;
     cam.position.set(0, 0, fg.dist); cam.near = fg.dist / 100; cam.far = fg.dist * 20; cam.updateProjectionMatrix();
     ctl.minDistance = ctl.maxDistance = fg.dist; ctl.update();
@@ -1146,7 +1146,11 @@ function fgMount() {
   if (!fg.ready) { box.insertAdjacentHTML('afterbegin', '<div class="fg-msg">Lade Körper …</div>'); return; }
   box.insertBefore(fg.el, box.firstChild);
   const w = box.clientWidth, h = box.clientHeight;
-  if (w && h) { fg.r.setSize(w, h, false); fg.cam.aspect = w / h; fg.cam.updateProjectionMatrix(); }
+  if (w && h) {
+    fg.r.setSize(w, h, false); fg.cam.aspect = w / h;
+    const t = Math.tan(fg.T.MathUtils.degToRad(fg.cam.fov / 2)), d = Math.max(fg.size.y / 2 / t * 1.1, fg.size.x / 2 / (t * fg.cam.aspect) * 1.12);
+    fg.dist = d; fg.ctl.minDistance = fg.ctl.maxDistance = d; fg.cam.position.setLength(d); fg.cam.updateProjectionMatrix(); fg.ctl.update();
+  }
   fgPaint();
 }
 function fgTurn(back) {
@@ -1198,9 +1202,9 @@ function renderStart() {
     const G = genCfg.groups, onc = c => G.includes(c[1]) || (c[3] && G.includes(c[3]));
     const SUBL = { 'Rücken ganz': 'Alle', 'Beine ganz': 'Alle', 'Nacken & Trapez': 'Trapez', 'Oberer Rücken': 'Oberer', 'Breiter Rücken': 'Breiter', 'Unterer Rücken': 'Unterer', 'Oberschenkel vorne': 'Quadrizeps', 'Oberschenkel hinten': 'Beuger' };
     const gOn = g => G.some(m => { const c = fgChip(m); return c && c[2] === g; });
-    const grp = ['Brust', 'Schultern', 'Arme', 'Bauch', 'Rücken', 'Beine'].map(g => `<button class="fg-g${gOn(g) ? ' on' : ''}${fgOpen === g ? ' open' : ''}" data-g="${g}" data-act="fgGrp" data-v="${g}">${g}</button>`).join('');
-    const subs = fgOpen ? FG_CHIPS.filter(c => c[2] === fgOpen).map(c => { const o = onc(c), bl = false; return `<button class="fg-c${o ? ' on' : ''}${bl ? ' none' : ''}" data-g="${c[2]}" data-act="fgSel" data-v="${esc(c[1])}">${SUBL[c[0]] || c[0]}</button>`; }).join('') : '';
-    body = `<div class="fg"><div class="fg-gs">${grp}</div><div class="fg-sub">${subs}</div><div class="fg-cv"><div class="fg-views"><button data-act="fgView" data-v="0">Vorne</button><button data-act="fgView" data-v="1">Hinten</button></div></div></div>`;
+    const subOf = g => FG_CHIPS.filter(c => c[2] === g).map(c => { const o = onc(c); return `<button class="fg-c${o ? ' on' : ''}" data-g="${c[2]}" data-act="fgSel" data-v="${esc(c[1])}">${SUBL[c[0]] || c[0]}</button>`; }).join('');
+    const grp = ['Brust', 'Schultern', 'Arme', 'Bauch', 'Rücken', 'Beine'].map(g => `<button class="fg-g${gOn(g) ? ' on' : ''}${fgOpen === g ? ' open' : ''}" data-g="${g}" data-act="fgGrp" data-v="${g}">${g}</button>` + (fgOpen === g ? `<div class="fg-sub" data-g="${g}">${subOf(g)}</div>` : '')).join('');
+    body = `<div class="fg"><div class="fg-gs">${grp}</div><div class="fg-cv"><div class="fg-views"><button data-act="fgView" data-v="0">Vorne</button><button data-act="fgView" data-v="1">Hinten</button></div></div></div>`;
     foot = `<button class="fg-next${G.length ? '' : ' off'}" data-act="plNext">WEITER ›</button>`;
   } else {
     if (!genCfg.groups.length) { plStep = 1; return renderStart(); }
