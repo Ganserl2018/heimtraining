@@ -762,7 +762,7 @@ function gearOf(name) { // Liste der benötigten Geräte
   if (/bench|incline|decline|lying|preacher|skull|flyes|one-arm dumbbell row|pullover/.test(n) && !/hyperext/.test(n)) r.push('bench');
   return r.length ? r : ['body'];
 }
-function newGenCfg() { return { lv: null, goal: 'aufbau', dur: 30, count: null, groups: [], gear: loadGear(), minSets: 0, minReps: 0 }; }
+function newGenCfg() { return { lv: null, goal: 'aufbau', dur: 30, count: null, groups: [], gear: loadGear(), minSets: 3, minReps: 10 }; }
 let genCfg = newGenCfg(), genRes = null;
 const GRANK = { Beine: 3, Rücken: 3, Brust: 3, Schultern: 2, Arme: 1, Bauch: 0 };
 const MORDER = ['quadriceps', 'hamstrings', 'glutes', 'chest', 'lats', 'middle back', 'lower back', 'shoulders', 'traps', 'biceps', 'triceps', 'forearms', 'calves', 'abdominals'];
