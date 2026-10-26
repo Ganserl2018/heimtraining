@@ -1125,7 +1125,7 @@ function fgInit() {
     const h = ray.intersectObject(fg.model, true).find(x => x.object.userData.node);
     if (!h) return;
     const c = FG_CHIPS.find(k => k[3] && k[4].includes(h.object.userData.node)) || FG_CHIPS.find(k => k[4].includes(h.object.userData.node));
-    if (c) { selToggle(c[1]); render(); }
+    if (c) { if (selToggle(c[1])) fgOpen = ['Arme', 'Rücken', 'Beine'].includes(c[2]) ? c[2] : null; render(); }
   });
   r.setAnimationLoop(() => { if (!fg.el.isConnected) return; ctl.update(); r.render(scene, cam); });
 }
@@ -1157,7 +1157,7 @@ function fgTurn(back) {
   (function step(now) { const k = Math.min(1, (now - t0) / 450), e = 1 - Math.pow(1 - k, 3), a = a0 + d * e; cam.position.set(Math.sin(a) * r, y, Math.cos(a) * r); cam.lookAt(0, 0, 0); if (k < 1) requestAnimationFrame(step); })(t0);
 }
 // ---- Planung als Sprung-Wizard: Zeit -> Muskeln (Figur) -> Aufbau (Geräte), je Schritt eine Frage ----
-let plStep = 0, plClassic = false, plSeen = false, plSpots = false, plMsg = '';
+let fgOpen = null, plStep = 0, plClassic = false, plSeen = false, plSpots = false, plMsg = '';
 const PL_N = 3, PL_TILES = ['Brust', 'Rücken', 'Schultern', 'm:biceps', 'm:triceps', 'Bauch', 'Beine'];
 function plRail() {
   const G = genCfg.groups, ml = G.map(fgLabel), mtxt = ml.length > 2 ? ml.slice(0, 2).join(' + ') + ' +' + (ml.length - 2) : ml.join(' + ');
@@ -1196,13 +1196,14 @@ function renderStart() {
   if (plStep === 0) {
     body = `<h2 class="pl-q">Wie lange?</h2><div class="pl-big">${[20, 30, 45, 60].map((v, i) => `<button class="pl-opt${genCfg.dur === v ? ' on' : ''}" style="--i:${i}" data-act="plDur" data-v="${v}"><b>${v}</b><em>Min</em></button>`).join('')}</div>`;
   } else if (plStep === 1) {
-    const np = nextPlan();
-    if (!genCfg.groups.length && !genCfg.plAuto) { genCfg.groups = np.groups.filter(m => m !== 'Arme'); const ap = np.groups.includes('Arme') ? armPick(genCfg.groups) : null; if (ap) genCfg.groups.push(ap); genCfg.plAuto = true; genCfg.gearTouched = false; }
     const G = genCfg.groups, onc = c => G.includes(c[1]) || (c[3] && G.includes(c[3]));
-    const chips = FG_CHIPS.map(c => { const o = onc(c), bl = !o && grpConflict(c[1], G); return `<button class="fg-c${o ? ' on' : ''}${bl ? ' none' : ''}" data-g="${c[2]}" data-act="fgSel" data-v="${esc(c[1])}"><i></i>${c[0]}</button>`; }).join('');
+    const SUBL = { 'Rücken ganz': 'Alle', 'Beine ganz': 'Alle', 'Nacken & Trapez': 'Trapez', 'Oberer Rücken': 'Oberer', 'Breiter Rücken': 'Breiter', 'Unterer Rücken': 'Unterer', 'Oberschenkel vorne': 'Schenkel vorn', 'Oberschenkel hinten': 'Schenkel hinten' };
+    const gOn = g => G.some(m => { const c = fgChip(m); return c && c[2] === g; });
+    const grp = ['Brust', 'Schultern', 'Arme', 'Bauch', 'Rücken', 'Beine'].map(g => `<button class="fg-g${gOn(g) ? ' on' : ''}${fgOpen === g ? ' open' : ''}" data-g="${g}" data-act="fgGrp" data-v="${g}">${g}</button>`).join('');
+    const subs = fgOpen ? FG_CHIPS.filter(c => c[2] === fgOpen).map(c => { const o = onc(c), bl = !o && grpConflict(c[1], G); return `<button class="fg-c${o ? ' on' : ''}${bl ? ' none' : ''}" data-g="${c[2]}" data-act="fgSel" data-v="${esc(c[1])}">${SUBL[c[0]] || c[0]}</button>`; }).join('') : '';
     const need = G.length ? suggestGear().map(k => (GEAR.find(x => x[0] === k) || [0, k])[1]) : [];
-    body = `<div class="fg"><div class="fg-cols">${chips}</div><div class="fg-cv"><div class="fg-views"><button data-act="fgView" data-v="0">Vorne</button><button data-act="fgView" data-v="1">Hinten</button></div></div></div>`;
-    foot = `<button class="fg-next${G.length ? '' : ' off'}" data-act="plNext">${plMsg ? esc(plMsg) : G.length ? '<b>Aufbauen:</b> ' + esc(need.join(' · ') || 'nichts') + ' ›' : 'Muskeln antippen'}</button>`;
+    body = `<div class="fg"><div class="fg-gs">${grp}</div><div class="fg-cv">${subs ? `<div class="fg-sub">${subs}</div>` : ''}<div class="fg-views"><button data-act="fgView" data-v="0">Vorne</button><button data-act="fgView" data-v="1">Hinten</button></div></div></div>`;
+    foot = `<button class="fg-next${G.length ? '' : ' off'}" data-act="plNext">${plMsg ? esc(plMsg) : G.length ? '<b>Aufbauen:</b> ' + esc(need.join(' · ') || 'nichts') + ' ›' : 'Tippe eine Gruppe oder die Figur'}</button>`;
   } else {
     if (!genCfg.groups.length) { plStep = 1; return renderStart(); }
     if (!genCfg.gearTouched) genCfg.gear = suggestGear();
@@ -2204,6 +2205,12 @@ content.addEventListener('click', e => {
       if (view !== 'weeklist' && view !== 'start') { plStep = 0; plClassic = false; genRes = null; genCfg = newGenCfg(); genCfg.groups = []; genCfg.gear = []; genCfg.plAuto = false; view = 'start'; break; }
       genFrom = view === 'weeklist' ? 'weeklist' : null; genRes = null; if (view !== 'start') genCfg = newGenCfg(); view = 'gen'; break;
     case 'plBack': plJump(plStep - 1); return;
+    case 'fgGrp': {
+      const g = btn.dataset.v, subs = ['Arme', 'Rücken', 'Beine'].includes(g), on = genCfg.groups.some(m => { const c = fgChip(m); return c && c[2] === g; });
+      if (!subs) { selToggle(g); fgOpen = null; }
+      else if (on && fgOpen === g) { genCfg.groups = genCfg.groups.filter(m => { const c = fgChip(m); return !(c && c[2] === g); }); genCfg.gearTouched = false; genRes = null; fgOpen = null; }
+      else { let ok = true; if (!on) ok = g === 'Arme' ? selToggle(armPick(genCfg.groups) || 'm:biceps') : selToggle(g); if (ok) fgOpen = g; }
+      break; }
     case 'fgSel': selToggle(btn.dataset.v); break;
     case 'fgView': fgTurn(btn.dataset.v === '1'); return;
     case 'genBackWiz': genRes = null; plClassic = false; plStep = 2; view = 'start'; break;
