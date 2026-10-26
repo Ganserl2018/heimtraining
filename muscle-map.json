@@ -10,33 +10,36 @@
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Crunch / Sit-Up"
+  "sec_why": "Crunch / Sit-Up",
+  "mode": "kraft"
  },
  "Air Bike": {
   "de": "Air Bike (Fahrrad-Crunch)",
   "muscle": "abdominals",
   "primary": [
+   "obliques",
    "rectus_abdominis"
   ],
   "secondary": [
-   "transverse_abdominis",
-   "obliques"
+   "transverse_abdominis"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "why": "Rotation → schräge Bauchmuskeln",
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Alternate Heel Touchers": {
   "de": "Fersen abwechselnd berühren",
   "muscle": "abdominals",
   "primary": [
+   "obliques",
    "rectus_abdominis"
   ],
   "secondary": [
-   "transverse_abdominis",
-   "obliques"
+   "transverse_abdominis"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "why": "Rotation → schräge Bauchmuskeln",
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Barbell Ab Rollout": {
   "de": "Langhantel-Bauchroller",
@@ -48,10 +51,12 @@
    "glute_max",
    "anterior_delt",
    "serratus_anterior",
-   "hip_flexors"
+   "hip_flexors",
+   "upper_lats"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Core-Stütz"
+  "sec_why": "Core-Stütz",
+  "mode": "kraft"
  },
  "Barbell Ab Rollout - On Knees": {
   "de": "Langhantel-Bauchroller auf Knien",
@@ -63,10 +68,12 @@
    "glute_max",
    "anterior_delt",
    "serratus_anterior",
-   "hip_flexors"
+   "hip_flexors",
+   "upper_lats"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Core-Stütz"
+  "sec_why": "Core-Stütz",
+  "mode": "kraft"
  },
  "Barbell Rollout from Bench": {
   "de": "Langhantel-Rollout von der Bank",
@@ -78,10 +85,12 @@
    "glute_max",
    "anterior_delt",
    "serratus_anterior",
-   "hip_flexors"
+   "hip_flexors",
+   "upper_lats"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Core-Stütz"
+  "sec_why": "Core-Stütz",
+  "mode": "kraft"
  },
  "Barbell Side Bend": {
   "de": "Langhantel-Seitbeuge",
@@ -95,7 +104,8 @@
    "serratus_anterior"
   ],
   "why": "seitlich/Rotation → schräge Bauchmuskeln",
-  "sec_why": "Seitlicher Bauch"
+  "sec_why": "Seitlicher Bauch",
+  "mode": "kraft"
  },
  "Bent-Knee Hip Raise": {
   "de": "Beckenheben mit gebeugten Knien",
@@ -108,7 +118,8 @@
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Bosu Ball Cable Crunch With Side Bends": {
   "de": "Kabel-Crunch mit Bosu und Seitbeuge",
@@ -122,33 +133,38 @@
    "serratus_anterior"
   ],
   "why": "seitlich/Rotation → schräge Bauchmuskeln",
-  "sec_why": "Seitlicher Bauch"
+  "sec_why": "Seitlicher Bauch",
+  "mode": "kraft"
  },
  "Bottoms Up": {
   "de": "Bottoms Up",
   "muscle": "abdominals",
   "primary": [
-   "rectus_abdominis"
+   "rectus_abdominis",
+   "hip_flexors"
   ],
   "secondary": [
    "transverse_abdominis",
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Butt-Ups": {
   "de": "Butt-Ups",
   "muscle": "abdominals",
   "primary": [
-   "rectus_abdominis"
+   "rectus_abdominis",
+   "hip_flexors"
   ],
   "secondary": [
    "transverse_abdominis",
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Cable Crunch": {
   "de": "Kabel-Crunch",
@@ -161,20 +177,22 @@
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Crunch / Sit-Up"
+  "sec_why": "Crunch / Sit-Up",
+  "mode": "kraft"
  },
  "Cable Judo Flip": {
   "de": "Kabelzug-Judo-Flip",
   "muscle": "abdominals",
   "primary": [
+   "obliques",
    "rectus_abdominis"
   ],
   "secondary": [
-   "transverse_abdominis",
-   "obliques"
+   "transverse_abdominis"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "why": "Rotation → schräge Bauchmuskeln",
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Cable Reverse Crunch": {
   "de": "Kabel-Reverse-Crunch",
@@ -188,7 +206,8 @@
    "obliques"
   ],
   "why": "Beinheben → Bauch + Hüftbeuger",
-  "sec_why": "Bauch allgemein"
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Cable Russian Twists": {
   "de": "Kabel-Russian-Twist",
@@ -202,7 +221,8 @@
    "serratus_anterior"
   ],
   "why": "seitlich/Rotation → schräge Bauchmuskeln",
-  "sec_why": "Seitlicher Bauch"
+  "sec_why": "Seitlicher Bauch",
+  "mode": "kraft"
  },
  "Cable Seated Crunch": {
   "de": "Sitzender Kabel-Crunch",
@@ -215,33 +235,37 @@
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Crunch / Sit-Up"
+  "sec_why": "Crunch / Sit-Up",
+  "mode": "kraft"
  },
  "Cocoons": {
   "de": "Cocoons",
   "muscle": "abdominals",
   "primary": [
-   "rectus_abdominis"
+   "rectus_abdominis",
+   "hip_flexors"
   ],
   "secondary": [
    "transverse_abdominis",
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Cross-Body Crunch": {
   "de": "Cross-Body-Crunch",
   "muscle": "abdominals",
   "primary": [
+   "obliques",
    "rectus_abdominis"
   ],
   "secondary": [
-   "hip_flexors",
-   "obliques"
+   "hip_flexors"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Crunch / Sit-Up"
+  "why": "Rotation → schräge Bauchmuskeln",
+  "sec_why": "Crunch / Sit-Up",
+  "mode": "kraft"
  },
  "Crunch - Hands Overhead": {
   "de": "Crunch mit Händen über Kopf",
@@ -254,7 +278,8 @@
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Crunch / Sit-Up"
+  "sec_why": "Crunch / Sit-Up",
+  "mode": "kraft"
  },
  "Crunch - Legs On Exercise Ball": {
   "de": "Crunch mit Beinen auf Gymnastikball",
@@ -267,7 +292,8 @@
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Crunch / Sit-Up"
+  "sec_why": "Crunch / Sit-Up",
+  "mode": "kraft"
  },
  "Crunches": {
   "de": "Crunches",
@@ -280,7 +306,8 @@
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Crunch / Sit-Up"
+  "sec_why": "Crunch / Sit-Up",
+  "mode": "kraft"
  },
  "Dead Bug": {
   "de": "Dead Bug",
@@ -296,7 +323,8 @@
    "hip_flexors"
   ],
   "why": "Stütz/Core → gerader + querer Bauchmuskel",
-  "sec_why": "Core-Stütz"
+  "sec_why": "Core-Stütz",
+  "mode": "kraft"
  },
  "Decline Crunch": {
   "de": "Negativbank-Crunch",
@@ -309,7 +337,8 @@
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Crunch / Sit-Up"
+  "sec_why": "Crunch / Sit-Up",
+  "mode": "kraft"
  },
  "Decline Oblique Crunch": {
   "de": "Negativbank-Schräger-Crunch",
@@ -323,7 +352,8 @@
    "serratus_anterior"
   ],
   "why": "seitlich/Rotation → schräge Bauchmuskeln",
-  "sec_why": "Seitlicher Bauch"
+  "sec_why": "Seitlicher Bauch",
+  "mode": "kraft"
  },
  "Decline Reverse Crunch": {
   "de": "Negativbank-Reverse-Crunch",
@@ -337,7 +367,8 @@
    "obliques"
   ],
   "why": "Beinheben → Bauch + Hüftbeuger",
-  "sec_why": "Bauch allgemein"
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Dumbbell Side Bend": {
   "de": "Kurzhantel-Seitbeuge",
@@ -351,20 +382,22 @@
    "serratus_anterior"
   ],
   "why": "seitlich/Rotation → schräge Bauchmuskeln",
-  "sec_why": "Seitlicher Bauch"
+  "sec_why": "Seitlicher Bauch",
+  "mode": "kraft"
  },
  "Elbow to Knee": {
   "de": "Ellbogen zum Knie",
   "muscle": "abdominals",
   "primary": [
+   "obliques",
    "rectus_abdominis"
   ],
   "secondary": [
-   "transverse_abdominis",
-   "obliques"
+   "transverse_abdominis"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "why": "Rotation → schräge Bauchmuskeln",
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Flat Bench Leg Pull-In": {
   "de": "Beinzug auf der Flachbank",
@@ -378,7 +411,8 @@
    "obliques"
   ],
   "why": "Beinheben → Bauch + Hüftbeuger",
-  "sec_why": "Bauch allgemein"
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Flat Bench Lying Leg Raise": {
   "de": "Beinheben liegend auf der Flachbank",
@@ -392,7 +426,8 @@
    "obliques"
   ],
   "why": "Beinheben → Bauch + Hüftbeuger",
-  "sec_why": "Bauch allgemein"
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Frog Sit-Ups": {
   "de": "Frosch-Sit-ups",
@@ -405,7 +440,8 @@
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Crunch / Sit-Up"
+  "sec_why": "Crunch / Sit-Up",
+  "mode": "kraft"
  },
  "Gorilla Chin/Crunch": {
   "de": "Gorilla-Crunch",
@@ -418,7 +454,8 @@
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Crunch / Sit-Up"
+  "sec_why": "Crunch / Sit-Up",
+  "mode": "kraft"
  },
  "Hanging Leg Raise": {
   "de": "Hängendes Beinheben",
@@ -432,7 +469,8 @@
    "obliques"
   ],
   "why": "Beinheben → Bauch + Hüftbeuger",
-  "sec_why": "Bauch allgemein"
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Hanging Pike": {
   "de": "Hängendes Pike",
@@ -446,20 +484,22 @@
    "obliques"
   ],
   "why": "Beinheben → Bauch + Hüftbeuger",
-  "sec_why": "Bauch allgemein"
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Jackknife Sit-Up": {
   "de": "Jackknife-Sit-up",
   "muscle": "abdominals",
   "primary": [
-   "rectus_abdominis"
+   "rectus_abdominis",
+   "hip_flexors"
   ],
   "secondary": [
-   "hip_flexors",
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Crunch / Sit-Up"
+  "sec_why": "Crunch / Sit-Up",
+  "mode": "kraft"
  },
  "Janda Sit-Up": {
   "de": "Janda-Sit-up",
@@ -472,7 +512,8 @@
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Crunch / Sit-Up"
+  "sec_why": "Crunch / Sit-Up",
+  "mode": "kraft"
  },
  "Kneeling Cable Crunch With Alternating Oblique Twists": {
   "de": "Kniender Kabel-Crunch mit Rumpfdrehung",
@@ -486,20 +527,22 @@
    "serratus_anterior"
   ],
   "why": "seitlich/Rotation → schräge Bauchmuskeln",
-  "sec_why": "Seitlicher Bauch"
+  "sec_why": "Seitlicher Bauch",
+  "mode": "kraft"
  },
  "Landmine 180's": {
   "de": "Landmine-180er",
   "muscle": "abdominals",
   "primary": [
+   "obliques",
    "rectus_abdominis"
   ],
   "secondary": [
-   "transverse_abdominis",
-   "obliques"
+   "transverse_abdominis"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "why": "Rotation → schräge Bauchmuskeln",
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Leg Pull-In": {
   "de": "Beinzug",
@@ -513,7 +556,8 @@
    "obliques"
   ],
   "why": "Beinheben → Bauch + Hüftbeuger",
-  "sec_why": "Bauch allgemein"
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Lower Back Curl": {
   "de": "Lower-Back-Curl",
@@ -526,7 +570,8 @@
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Oblique Crunches": {
   "de": "Schräge Crunches",
@@ -540,7 +585,8 @@
    "serratus_anterior"
   ],
   "why": "seitlich/Rotation → schräge Bauchmuskeln",
-  "sec_why": "Seitlicher Bauch"
+  "sec_why": "Seitlicher Bauch",
+  "mode": "kraft"
  },
  "Oblique Crunches - On The Floor": {
   "de": "Schräge Crunches am Boden",
@@ -554,7 +600,8 @@
    "serratus_anterior"
   ],
   "why": "seitlich/Rotation → schräge Bauchmuskeln",
-  "sec_why": "Seitlicher Bauch"
+  "sec_why": "Seitlicher Bauch",
+  "mode": "kraft"
  },
  "One-Arm High-Pulley Cable Side Bends": {
   "de": "Einarmige Kabel-Seitbeuge (hoch)",
@@ -568,33 +615,36 @@
    "serratus_anterior"
   ],
   "why": "seitlich/Rotation → schräge Bauchmuskeln",
-  "sec_why": "Seitlicher Bauch"
+  "sec_why": "Seitlicher Bauch",
+  "mode": "kraft"
  },
  "Pallof Press": {
   "de": "Pallof Press",
   "muscle": "abdominals",
   "primary": [
-   "rectus_abdominis"
+   "obliques",
+   "transverse_abdominis"
   ],
   "secondary": [
-   "transverse_abdominis",
-   "obliques"
+   "rectus_abdominis"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "why": "Anti-Rotation",
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Pallof Press With Rotation": {
   "de": "Pallof Press mit Rotation",
   "muscle": "abdominals",
   "primary": [
-   "rectus_abdominis"
+   "obliques",
+   "transverse_abdominis"
   ],
   "secondary": [
-   "transverse_abdominis",
-   "obliques"
+   "rectus_abdominis"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "why": "Anti-Rotation",
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Plank": {
   "de": "Unterarmstütz (Plank)",
@@ -607,10 +657,12 @@
    "glute_max",
    "anterior_delt",
    "serratus_anterior",
-   "hip_flexors"
+   "hip_flexors",
+   "obliques"
   ],
   "why": "Stütz/Core → gerader + querer Bauchmuskel",
-  "sec_why": "Core-Stütz"
+  "sec_why": "Core-Stütz",
+  "mode": "kraft"
  },
  "Press Sit-Up": {
   "de": "Press-Sit-up",
@@ -623,7 +675,8 @@
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Crunch / Sit-Up"
+  "sec_why": "Crunch / Sit-Up",
+  "mode": "kraft"
  },
  "Reverse Crunch": {
   "de": "Reverse Crunch",
@@ -637,7 +690,8 @@
    "obliques"
   ],
   "why": "Beinheben → Bauch + Hüftbeuger",
-  "sec_why": "Bauch allgemein"
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Rope Crunch": {
   "de": "Seil-Crunch",
@@ -650,7 +704,8 @@
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Crunch / Sit-Up"
+  "sec_why": "Crunch / Sit-Up",
+  "mode": "kraft"
  },
  "Russian Twist": {
   "de": "Russian Twist",
@@ -664,20 +719,23 @@
    "serratus_anterior"
   ],
   "why": "seitlich/Rotation → schräge Bauchmuskeln",
-  "sec_why": "Seitlicher Bauch"
+  "sec_why": "Seitlicher Bauch",
+  "mode": "kraft"
  },
  "Scissor Kick": {
   "de": "Scherenschlag",
   "muscle": "abdominals",
   "primary": [
-   "rectus_abdominis"
+   "rectus_abdominis",
+   "hip_flexors"
   ],
   "secondary": [
    "transverse_abdominis",
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Seated Barbell Twist": {
   "de": "Sitzende Langhantel-Rumpfdrehung",
@@ -691,7 +749,8 @@
    "serratus_anterior"
   ],
   "why": "seitlich/Rotation → schräge Bauchmuskeln",
-  "sec_why": "Seitlicher Bauch"
+  "sec_why": "Seitlicher Bauch",
+  "mode": "kraft"
  },
  "Seated Flat Bench Leg Pull-In": {
   "de": "Sitzender Beinzug auf der Flachbank",
@@ -705,39 +764,43 @@
    "obliques"
   ],
   "why": "Beinheben → Bauch + Hüftbeuger",
-  "sec_why": "Bauch allgemein"
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Seated Leg Tucks": {
   "de": "Sitzendes Beinanziehen",
   "muscle": "abdominals",
   "primary": [
-   "rectus_abdominis"
+   "rectus_abdominis",
+   "hip_flexors"
   ],
   "secondary": [
    "transverse_abdominis",
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Side Bridge": {
   "de": "Seitstütz",
   "muscle": "abdominals",
   "primary": [
-   "rectus_abdominis"
-  ],
-  "secondary": [
-   "transverse_abdominis",
    "obliques"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "secondary": [
+   "transverse_abdominis"
+  ],
+  "why": "Seitstütz",
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Side Jackknife": {
   "de": "Seitlicher Jackknife",
   "muscle": "abdominals",
   "primary": [
-   "obliques"
+   "obliques",
+   "hip_flexors"
   ],
   "secondary": [
    "rectus_abdominis",
@@ -745,7 +808,8 @@
    "serratus_anterior"
   ],
   "why": "seitlich/Rotation → schräge Bauchmuskeln",
-  "sec_why": "Seitlicher Bauch"
+  "sec_why": "Seitlicher Bauch",
+  "mode": "kraft"
  },
  "Sit-Up": {
   "de": "Sit-up",
@@ -758,46 +822,50 @@
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Crunch / Sit-Up"
+  "sec_why": "Crunch / Sit-Up",
+  "mode": "kraft"
  },
  "Spell Caster": {
   "de": "Spell Caster",
   "muscle": "abdominals",
   "primary": [
+   "obliques",
    "rectus_abdominis"
   ],
   "secondary": [
-   "transverse_abdominis",
-   "obliques"
+   "transverse_abdominis"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "why": "Rotation → schräge Bauchmuskeln",
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Spider Crawl": {
   "de": "Spider Crawl",
   "muscle": "abdominals",
   "primary": [
+   "obliques",
    "rectus_abdominis"
   ],
   "secondary": [
-   "transverse_abdominis",
-   "obliques"
+   "transverse_abdominis"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "why": "Rotation → schräge Bauchmuskeln",
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Standing Cable Lift": {
   "de": "Kabel-Lift im Stand",
   "muscle": "abdominals",
   "primary": [
+   "obliques",
    "rectus_abdominis"
   ],
   "secondary": [
-   "transverse_abdominis",
-   "obliques"
+   "transverse_abdominis"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "why": "Rotation → schräge Bauchmuskeln",
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Standing Cable Wood Chop": {
   "de": "Kabel-Holzhacker im Stand",
@@ -811,7 +879,8 @@
    "serratus_anterior"
   ],
   "why": "seitlich/Rotation → schräge Bauchmuskeln",
-  "sec_why": "Seitlicher Bauch"
+  "sec_why": "Seitlicher Bauch",
+  "mode": "kraft"
  },
  "Standing Rope Crunch": {
   "de": "Stehender Seil-Crunch",
@@ -824,36 +893,33 @@
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Crunch / Sit-Up"
+  "sec_why": "Crunch / Sit-Up",
+  "mode": "kraft"
  },
  "Stomach Vacuum": {
   "de": "Stomach Vacuum",
   "muscle": "abdominals",
   "primary": [
-   "rectus_abdominis",
    "transverse_abdominis"
   ],
-  "secondary": [
-   "glute_max",
-   "anterior_delt",
-   "serratus_anterior",
-   "hip_flexors"
-  ],
-  "why": "Stütz/Core → gerader + querer Bauchmuskel",
-  "sec_why": "Core-Stütz"
+  "secondary": [],
+  "why": "Stomach Vacuum",
+  "sec_why": "Core-Stütz",
+  "mode": "kraft"
  },
  "Toe Touchers": {
   "de": "Zehen berühren",
   "muscle": "abdominals",
   "primary": [
+   "obliques",
    "rectus_abdominis"
   ],
   "secondary": [
-   "transverse_abdominis",
-   "obliques"
+   "transverse_abdominis"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "why": "Rotation → schräge Bauchmuskeln",
+  "sec_why": "Bauch allgemein",
+  "mode": "kraft"
  },
  "Tuck Crunch": {
   "de": "Tuck Crunch",
@@ -866,20 +932,24 @@
    "obliques"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Crunch / Sit-Up"
+  "sec_why": "Crunch / Sit-Up",
+  "mode": "kraft"
  },
  "Wind Sprints": {
   "de": "Sprints",
   "muscle": "abdominals",
   "primary": [
-   "rectus_abdominis"
+   "glute_max",
+   "vastus_group",
+   "rectus_femoris",
+   "gastrocnemius",
+   "soleus",
+   "hip_flexors"
   ],
-  "secondary": [
-   "transverse_abdominis",
-   "obliques"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Bauch allgemein"
+  "secondary": [],
+  "why": "Cardio/Sprung: Beine",
+  "sec_why": "Bauch allgemein",
+  "mode": "cardio"
  },
  "Hip Circles (prone)": {
   "de": "Hüftkreisen (Bauchlage)",
@@ -887,11 +957,10 @@
   "primary": [
    "glute_med"
   ],
-  "secondary": [
-   "glute_max"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Hüfte"
+  "secondary": [],
+  "why": "Mobilisation (kaum Kraft)",
+  "sec_why": "Hüfte",
+  "mode": "mobility"
  },
  "Lying Crossover": {
   "de": "Liegende Überkreuzbewegung",
@@ -903,7 +972,8 @@
    "glute_max"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Hüfte"
+  "sec_why": "Hüfte",
+  "mode": "kraft"
  },
  "Monster Walk": {
   "de": "Monster Walk",
@@ -915,7 +985,8 @@
    "glute_max"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Hüfte"
+  "sec_why": "Hüfte",
+  "mode": "kraft"
  },
  "Standing Hip Circles": {
   "de": "Hüftkreisen im Stand",
@@ -923,11 +994,10 @@
   "primary": [
    "glute_med"
   ],
-  "secondary": [
-   "glute_max"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Hüfte"
+  "secondary": [],
+  "why": "Mobilisation (kaum Kraft)",
+  "sec_why": "Hüfte",
+  "mode": "mobility"
  },
  "Band Hip Adductions": {
   "de": "Adduktion mit Band",
@@ -939,7 +1009,8 @@
    "glute_med"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Hüfte"
+  "sec_why": "Hüfte",
+  "mode": "kraft"
  },
  "Groiners": {
   "de": "Groiners",
@@ -947,35 +1018,36 @@
   "primary": [
    "adductors"
   ],
-  "secondary": [
-   "glute_med"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Hüfte"
+  "secondary": [],
+  "why": "Mobilisation (kaum Kraft)",
+  "sec_why": "Hüfte",
+  "mode": "mobility"
  },
  "Lateral Bound": {
   "de": "Seitlicher Sprung",
   "muscle": "adductors",
   "primary": [
-   "adductors"
+   "glute_max",
+   "vastus_group",
+   "rectus_femoris",
+   "gastrocnemius",
+   "soleus"
   ],
-  "secondary": [
-   "glute_med"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Hüfte"
+  "secondary": [],
+  "why": "Cardio/Sprung: Beine",
+  "sec_why": "Hüfte",
+  "mode": "cardio"
  },
  "Side Leg Raises": {
   "de": "Seitliches Beinheben",
   "muscle": "adductors",
   "primary": [
-   "adductors"
-  ],
-  "secondary": [
    "glute_med"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Hüfte"
+  "secondary": [],
+  "why": "Seitheben Bein → Abduktoren",
+  "sec_why": "Hüfte",
+  "mode": "kraft"
  },
  "Alternate Hammer Curl": {
   "de": "Hammer-Curl im Wechsel",
@@ -989,7 +1061,8 @@
    "forearm_flexors"
   ],
   "why": "Hammer → Brachialis/Brachioradialis",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Alternate Incline Dumbbell Curl": {
   "de": "Schrägbank-Kurzhantel-Curl im Wechsel",
@@ -1003,7 +1076,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Barbell Curl": {
   "de": "Langhantel-Curl",
@@ -1017,7 +1091,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Barbell Curls Lying Against An Incline": {
   "de": "Langhantel-Curl liegend an der Schrägbank",
@@ -1031,7 +1106,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Cable Hammer Curls - Rope Attachment": {
   "de": "Kabel-Hammer-Curl mit Seil",
@@ -1045,7 +1121,8 @@
    "forearm_flexors"
   ],
   "why": "Hammer → Brachialis/Brachioradialis",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Cable Preacher Curl": {
   "de": "Kabel-Preacher-Curl",
@@ -1059,7 +1136,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Close-Grip EZ Bar Curl": {
   "de": "Enger SZ-Stangen-Curl",
@@ -1073,7 +1151,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Close-Grip EZ-Bar Curl with Band": {
   "de": "Enger SZ-Stangen-Curl mit Band",
@@ -1087,7 +1166,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Close-Grip Standing Barbell Curl": {
   "de": "Enger Langhantel-Curl im Stand",
@@ -1101,7 +1181,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Concentration Curls": {
   "de": "Konzentrations-Curl",
@@ -1115,7 +1196,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Cross Body Hammer Curl": {
   "de": "Cross-Body-Hammer-Curl",
@@ -1129,7 +1211,8 @@
    "forearm_flexors"
   ],
   "why": "Hammer → Brachialis/Brachioradialis",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Drag Curl": {
   "de": "Drag Curl",
@@ -1143,7 +1226,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Dumbbell Alternate Bicep Curl": {
   "de": "Kurzhantel-Curl im Wechsel",
@@ -1157,7 +1241,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Dumbbell Bicep Curl": {
   "de": "Kurzhantel-Bizepscurl",
@@ -1171,7 +1256,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Dumbbell Prone Incline Curl": {
   "de": "Kurzhantel-Curl bäuchlings an der Schrägbank",
@@ -1185,7 +1271,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "EZ-Bar Curl": {
   "de": "SZ-Stangen-Curl",
@@ -1199,7 +1286,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Flexor Incline Dumbbell Curls": {
   "de": "Flexor-Schrägbank-Kurzhantel-Curl",
@@ -1213,7 +1301,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Hammer Curls": {
   "de": "Hammer-Curls",
@@ -1227,7 +1316,8 @@
    "forearm_flexors"
   ],
   "why": "Hammer → Brachialis/Brachioradialis",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "High Cable Curls": {
   "de": "Hoher Kabel-Curl",
@@ -1241,7 +1331,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Incline Dumbbell Curl": {
   "de": "Schrägbank-Kurzhantel-Curl",
@@ -1255,7 +1346,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Incline Hammer Curls": {
   "de": "Schrägbank-Hammer-Curl",
@@ -1269,7 +1361,8 @@
    "forearm_flexors"
   ],
   "why": "Hammer → Brachialis/Brachioradialis",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Incline Inner Biceps Curl": {
   "de": "Schrägbank-Curl (innerer Bizeps)",
@@ -1283,7 +1376,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Lying Cable Curl": {
   "de": "Liegender Kabel-Curl",
@@ -1297,7 +1391,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Lying Close-Grip Bar Curl On High Pulley": {
   "de": "Liegender enger Stangen-Curl am hohen Kabel",
@@ -1311,7 +1406,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Lying High Bench Barbell Curl": {
   "de": "Liegender Langhantel-Curl auf hoher Bank",
@@ -1325,7 +1421,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Lying Supine Dumbbell Curl": {
   "de": "Liegender Kurzhantel-Curl (Rückenlage)",
@@ -1339,7 +1436,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "One Arm Dumbbell Preacher Curl": {
   "de": "Einarmiger Kurzhantel-Preacher-Curl",
@@ -1353,7 +1451,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Overhead Cable Curl": {
   "de": "Überkopf-Kabel-Curl",
@@ -1367,7 +1466,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Preacher Curl": {
   "de": "Preacher-Curl",
@@ -1381,7 +1481,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Preacher Hammer Dumbbell Curl": {
   "de": "Preacher-Hammer-Curl mit Kurzhantel",
@@ -1395,49 +1496,53 @@
    "forearm_flexors"
   ],
   "why": "Hammer → Brachialis/Brachioradialis",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Reverse Barbell Curl": {
   "de": "Reverse-Langhantel-Curl",
   "muscle": "biceps",
   "primary": [
-   "biceps",
-   "brachialis"
+   "brachioradialis",
+   "brachialis",
+   "forearm_extensors"
   ],
   "secondary": [
-   "brachioradialis",
-   "forearm_flexors"
+   "biceps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "why": "Reverse-Curl → Unterarm/Brachialis",
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Reverse Barbell Preacher Curls": {
   "de": "Reverse-Langhantel-Preacher-Curl",
   "muscle": "biceps",
   "primary": [
-   "biceps",
-   "brachialis"
+   "brachioradialis",
+   "brachialis",
+   "forearm_extensors"
   ],
   "secondary": [
-   "brachioradialis",
-   "forearm_flexors"
+   "biceps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "why": "Reverse-Curl → Unterarm/Brachialis",
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Reverse Cable Curl": {
   "de": "Reverse-Kabel-Curl",
   "muscle": "biceps",
   "primary": [
-   "biceps",
-   "brachialis"
+   "brachioradialis",
+   "brachialis",
+   "forearm_extensors"
   ],
   "secondary": [
-   "brachioradialis",
-   "forearm_flexors"
+   "biceps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "why": "Reverse-Curl → Unterarm/Brachialis",
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Seated Biceps": {
   "de": "Sitzende Bizepsdehnung",
@@ -1446,12 +1551,10 @@
    "biceps",
    "brachialis"
   ],
-  "secondary": [
-   "brachioradialis",
-   "forearm_flexors"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "secondary": [],
+  "why": "Dehnung: gedehnter Muskel",
+  "sec_why": "Curl",
+  "mode": "stretch"
  },
  "Seated Close-Grip Concentration Barbell Curl": {
   "de": "Sitzender enger Langhantel-Konzentrations-Curl",
@@ -1465,7 +1568,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Seated Dumbbell Curl": {
   "de": "Sitzender Kurzhantel-Curl",
@@ -1479,7 +1583,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Seated Dumbbell Inner Biceps Curl": {
   "de": "Sitzender Kurzhantel-Curl (innerer Bizeps)",
@@ -1493,7 +1598,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Spider Curl": {
   "de": "Spider-Curl",
@@ -1507,7 +1613,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Standing Biceps Cable Curl": {
   "de": "Stehender Kabel-Bizepscurl",
@@ -1521,7 +1628,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Standing Concentration Curl": {
   "de": "Stehender Konzentrations-Curl",
@@ -1535,21 +1643,23 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Standing Dumbbell Reverse Curl": {
   "de": "Stehender Reverse-Curl mit Kurzhanteln",
   "muscle": "biceps",
   "primary": [
-   "biceps",
-   "brachialis"
+   "brachioradialis",
+   "brachialis",
+   "forearm_extensors"
   ],
   "secondary": [
-   "brachioradialis",
-   "forearm_flexors"
+   "biceps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "why": "Reverse-Curl → Unterarm/Brachialis",
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Standing Inner-Biceps Curl": {
   "de": "Stehender Curl (innerer Bizeps)",
@@ -1563,7 +1673,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Standing One-Arm Cable Curl": {
   "de": "Stehender einarmiger Kabel-Curl",
@@ -1577,7 +1688,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Standing One-Arm Dumbbell Curl Over Incline Bench": {
   "de": "Stehender einarmiger Kurzhantel-Curl über Schrägbank",
@@ -1591,7 +1703,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Two-Arm Dumbbell Preacher Curl": {
   "de": "Beidarmiger Kurzhantel-Preacher-Curl",
@@ -1605,7 +1718,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Wide-Grip Standing Barbell Curl": {
   "de": "Langhantel-Curl mit weitem Griff",
@@ -1619,35 +1733,38 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Zottman Curl": {
   "de": "Zottman-Curl",
   "muscle": "biceps",
   "primary": [
-   "biceps",
-   "brachialis"
+   "brachioradialis",
+   "brachialis",
+   "forearm_extensors"
   ],
   "secondary": [
-   "brachioradialis",
-   "forearm_flexors"
+   "biceps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "why": "Reverse-Curl → Unterarm/Brachialis",
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Zottman Preacher Curl": {
   "de": "Zottman-Preacher-Curl",
   "muscle": "biceps",
   "primary": [
-   "biceps",
-   "brachialis"
+   "brachioradialis",
+   "brachialis",
+   "forearm_extensors"
   ],
   "secondary": [
-   "brachioradialis",
-   "forearm_flexors"
+   "biceps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Curl"
+  "why": "Reverse-Curl → Unterarm/Brachialis",
+  "sec_why": "Curl",
+  "mode": "kraft"
  },
  "Barbell Seated Calf Raise": {
   "de": "Sitzendes Langhantel-Wadenheben",
@@ -1657,7 +1774,8 @@
   ],
   "secondary": [],
   "why": "Sitzend → Schollenmuskel",
-  "sec_why": "Waden"
+  "sec_why": "Waden",
+  "mode": "kraft"
  },
  "Calf Raise On A Dumbbell": {
   "de": "Wadenheben auf Kurzhantel",
@@ -1668,7 +1786,8 @@
   ],
   "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Waden"
+  "sec_why": "Waden",
+  "mode": "kraft"
  },
  "Calf Raises - With Bands": {
   "de": "Wadenheben mit Band",
@@ -1679,7 +1798,8 @@
   ],
   "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Waden"
+  "sec_why": "Waden",
+  "mode": "kraft"
  },
  "Dumbbell Seated One-Leg Calf Raise": {
   "de": "Sitzendes einbeiniges Wadenheben mit Kurzhantel",
@@ -1689,7 +1809,8 @@
   ],
   "secondary": [],
   "why": "Sitzend → Schollenmuskel",
-  "sec_why": "Waden"
+  "sec_why": "Waden",
+  "mode": "kraft"
  },
  "Knee Circles": {
   "de": "Kniekreisen",
@@ -1699,8 +1820,9 @@
    "soleus"
   ],
   "secondary": [],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Waden"
+  "why": "Mobilisation (kaum Kraft)",
+  "sec_why": "Waden",
+  "mode": "mobility"
  },
  "Rocking Standing Calf Raise": {
   "de": "Wadenheben (Rocking)",
@@ -1708,9 +1830,12 @@
   "primary": [
    "gastrocnemius"
   ],
-  "secondary": [],
+  "secondary": [
+   "soleus"
+  ],
   "why": "Stehend → Zwillingswadenmuskel",
-  "sec_why": "Waden"
+  "sec_why": "Waden",
+  "mode": "kraft"
  },
  "Standing Barbell Calf Raise": {
   "de": "Stehendes Langhantel-Wadenheben",
@@ -1718,9 +1843,12 @@
   "primary": [
    "gastrocnemius"
   ],
-  "secondary": [],
+  "secondary": [
+   "soleus"
+  ],
   "why": "Stehend → Zwillingswadenmuskel",
-  "sec_why": "Waden"
+  "sec_why": "Waden",
+  "mode": "kraft"
  },
  "Standing Dumbbell Calf Raise": {
   "de": "Stehendes Kurzhantel-Wadenheben",
@@ -1728,9 +1856,12 @@
   "primary": [
    "gastrocnemius"
   ],
-  "secondary": [],
+  "secondary": [
+   "soleus"
+  ],
   "why": "Stehend → Zwillingswadenmuskel",
-  "sec_why": "Waden"
+  "sec_why": "Waden",
+  "mode": "kraft"
  },
  "Around The Worlds": {
   "de": "Around the Worlds",
@@ -1746,7 +1877,8 @@
    "triceps_medial"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Barbell Bench Press - Medium Grip": {
   "de": "Langhantel-Bankdrücken (mittlerer Griff)",
@@ -1762,7 +1894,8 @@
    "triceps_medial"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Barbell Guillotine Bench Press": {
   "de": "Langhantel-Guillotine-Bankdrücken",
@@ -1778,7 +1911,8 @@
    "triceps_medial"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Barbell Incline Bench Press - Medium Grip": {
   "de": "Schrägbankdrücken mit Langhantel",
@@ -1793,7 +1927,8 @@
    "triceps_medial"
   ],
   "why": "Incline → oberer Brustmuskel",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Bench Press - With Bands": {
   "de": "Bankdrücken mit Bändern",
@@ -1809,7 +1944,8 @@
    "triceps_medial"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Bent-Arm Dumbbell Pullover": {
   "de": "Kurzhantel-Pullover mit gebeugten Armen",
@@ -1820,11 +1956,13 @@
   ],
   "secondary": [
    "upper_lats",
+   "teres_major",
    "triceps_long",
    "serratus_anterior"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Pullover"
+  "why": "Pullover",
+  "sec_why": "Pullover",
+  "mode": "kraft"
  },
  "Bodyweight Flyes": {
   "de": "Fliegende mit Körpergewicht",
@@ -1837,7 +1975,8 @@
    "anterior_delt"
   ],
   "why": "Fly → ganze Brust",
-  "sec_why": "Fly"
+  "sec_why": "Fly",
+  "mode": "kraft"
  },
  "Cable Chest Press": {
   "de": "Kabel-Brustpresse",
@@ -1853,7 +1992,8 @@
    "triceps_medial"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Cable Crossover": {
   "de": "Kabelzug-Crossover",
@@ -1866,7 +2006,8 @@
    "anterior_delt"
   ],
   "why": "Fly → ganze Brust",
-  "sec_why": "Fly"
+  "sec_why": "Fly",
+  "mode": "kraft"
  },
  "Cable Iron Cross": {
   "de": "Kabel-Iron-Cross",
@@ -1882,7 +2023,8 @@
    "triceps_medial"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Clock Push-Up": {
   "de": "Clock Push-up",
@@ -1899,7 +2041,8 @@
    "serratus_anterior"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Cross Over - With Bands": {
   "de": "Crossover mit Bändern",
@@ -1915,7 +2058,8 @@
    "triceps_medial"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Decline Barbell Bench Press": {
   "de": "Negativbankdrücken mit Langhantel",
@@ -1930,7 +2074,8 @@
    "triceps_medial"
   ],
   "why": "Decline/Dip → unterer Brustmuskel",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Decline Dumbbell Bench Press": {
   "de": "Negativbankdrücken mit Kurzhanteln",
@@ -1945,7 +2090,8 @@
    "triceps_medial"
   ],
   "why": "Decline/Dip → unterer Brustmuskel",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Decline Dumbbell Flyes": {
   "de": "Negativbank-Kurzhantel-Fliegende",
@@ -1957,7 +2103,8 @@
    "anterior_delt"
   ],
   "why": "Decline/Dip → unterer Brustmuskel",
-  "sec_why": "Fly"
+  "sec_why": "Fly",
+  "mode": "kraft"
  },
  "Dumbbell Bench Press": {
   "de": "Kurzhantel-Bankdrücken",
@@ -1973,7 +2120,8 @@
    "triceps_medial"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Dumbbell Bench Press with Neutral Grip": {
   "de": "Kurzhantel-Bankdrücken (neutraler Griff)",
@@ -1989,7 +2137,8 @@
    "triceps_medial"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Dumbbell Flyes": {
   "de": "Kurzhantel-Fliegende",
@@ -2002,7 +2151,8 @@
    "anterior_delt"
   ],
   "why": "Fly → ganze Brust",
-  "sec_why": "Fly"
+  "sec_why": "Fly",
+  "mode": "kraft"
  },
  "Flat Bench Cable Flyes": {
   "de": "Kabel-Fliegende auf der Flachbank",
@@ -2015,7 +2165,8 @@
    "anterior_delt"
   ],
   "why": "Fly → ganze Brust",
-  "sec_why": "Fly"
+  "sec_why": "Fly",
+  "mode": "kraft"
  },
  "Front Raise And Pullover": {
   "de": "Frontheben und Pullover",
@@ -2026,11 +2177,13 @@
   ],
   "secondary": [
    "upper_lats",
+   "teres_major",
    "triceps_long",
    "serratus_anterior"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Pullover"
+  "why": "Pullover",
+  "sec_why": "Pullover",
+  "mode": "kraft"
  },
  "Hammer Grip Incline DB Bench Press": {
   "de": "Schrägbankdrücken mit Kurzhanteln (Hammergriff)",
@@ -2045,7 +2198,8 @@
    "triceps_medial"
   ],
   "why": "Incline → oberer Brustmuskel",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Incline Cable Chest Press": {
   "de": "Kabel-Brustpresse an der Schrägbank",
@@ -2060,7 +2214,8 @@
    "triceps_medial"
   ],
   "why": "Incline → oberer Brustmuskel",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Incline Cable Flye": {
   "de": "Kabel-Fliegende an der Schrägbank",
@@ -2072,7 +2227,8 @@
    "anterior_delt"
   ],
   "why": "Incline → oberer Brustmuskel",
-  "sec_why": "Fly"
+  "sec_why": "Fly",
+  "mode": "kraft"
  },
  "Incline Dumbbell Bench With Palms Facing In": {
   "de": "Schrägbankdrücken mit Kurzhanteln (Handflächen innen)",
@@ -2087,7 +2243,8 @@
    "triceps_medial"
   ],
   "why": "Incline → oberer Brustmuskel",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Incline Dumbbell Flyes": {
   "de": "Schrägbank-Fliegende",
@@ -2099,7 +2256,8 @@
    "anterior_delt"
   ],
   "why": "Incline → oberer Brustmuskel",
-  "sec_why": "Fly"
+  "sec_why": "Fly",
+  "mode": "kraft"
  },
  "Incline Dumbbell Flyes - With A Twist": {
   "de": "Schrägbank-Fliegende mit Drehung",
@@ -2111,7 +2269,8 @@
    "anterior_delt"
   ],
   "why": "Incline → oberer Brustmuskel",
-  "sec_why": "Fly"
+  "sec_why": "Fly",
+  "mode": "kraft"
  },
  "Incline Dumbbell Press": {
   "de": "Schrägbankdrücken mit Kurzhanteln",
@@ -2126,13 +2285,14 @@
    "triceps_medial"
   ],
   "why": "Incline → oberer Brustmuskel",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Incline Push-Up": {
   "de": "Schräge Liegestütze (Hände erhöht)",
   "muscle": "chest",
   "primary": [
-   "pec_major_upper"
+   "pec_major_lower"
   ],
   "secondary": [
    "anterior_delt",
@@ -2141,14 +2301,15 @@
    "triceps_medial",
    "serratus_anterior"
   ],
-  "why": "Incline → oberer Brustmuskel",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "why": "Incline Push-Up → untere Brust",
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Incline Push-Up Medium": {
   "de": "Schräge Liegestütze (mittel)",
   "muscle": "chest",
   "primary": [
-   "pec_major_upper"
+   "pec_major_lower"
   ],
   "secondary": [
    "anterior_delt",
@@ -2157,14 +2318,15 @@
    "triceps_medial",
    "serratus_anterior"
   ],
-  "why": "Incline → oberer Brustmuskel",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "why": "Incline Push-Up → untere Brust",
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Incline Push-Up Reverse Grip": {
   "de": "Schräge Liegestütze (Untergriff)",
   "muscle": "chest",
   "primary": [
-   "pec_major_upper"
+   "pec_major_lower"
   ],
   "secondary": [
    "anterior_delt",
@@ -2173,14 +2335,15 @@
    "triceps_medial",
    "serratus_anterior"
   ],
-  "why": "Incline → oberer Brustmuskel",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "why": "Incline Push-Up → untere Brust",
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Incline Push-Up Wide": {
   "de": "Schräge Liegestütze (weit)",
   "muscle": "chest",
   "primary": [
-   "pec_major_upper"
+   "pec_major_lower"
   ],
   "secondary": [
    "anterior_delt",
@@ -2189,8 +2352,9 @@
    "triceps_medial",
    "serratus_anterior"
   ],
-  "why": "Incline → oberer Brustmuskel",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "why": "Incline Push-Up → untere Brust",
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Isometric Chest Squeezes": {
   "de": "Isometrisches Brustpressen",
@@ -2206,7 +2370,8 @@
    "triceps_medial"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Isometric Wipers": {
   "de": "Isometrische Wischer",
@@ -2215,14 +2380,10 @@
    "pec_major_upper",
    "pec_major_lower"
   ],
-  "secondary": [
-   "anterior_delt",
-   "triceps_long",
-   "triceps_lateral",
-   "triceps_medial"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "secondary": [],
+  "why": "Mobilisation (kaum Kraft)",
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "mobility"
  },
  "Low Cable Crossover": {
   "de": "Tiefes Kabel-Crossover",
@@ -2235,7 +2396,8 @@
    "anterior_delt"
   ],
   "why": "Fly → ganze Brust",
-  "sec_why": "Fly"
+  "sec_why": "Fly",
+  "mode": "kraft"
  },
  "Neck Press": {
   "de": "Nackendrücken",
@@ -2251,7 +2413,8 @@
    "triceps_medial"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "One Arm Dumbbell Bench Press": {
   "de": "Einarmiges Kurzhantel-Bankdrücken",
@@ -2267,7 +2430,8 @@
    "triceps_medial"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "One-Arm Flat Bench Dumbbell Flye": {
   "de": "Einarmige Kurzhantel-Fliegende auf der Flachbank",
@@ -2280,7 +2444,8 @@
    "anterior_delt"
   ],
   "why": "Fly → ganze Brust",
-  "sec_why": "Fly"
+  "sec_why": "Fly",
+  "mode": "kraft"
  },
  "Plyo Push-up": {
   "de": "Plyometrische Liegestütze",
@@ -2297,7 +2462,8 @@
    "serratus_anterior"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Push Up to Side Plank": {
   "de": "Liegestütz zum Seitstütz",
@@ -2314,7 +2480,8 @@
    "serratus_anterior"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Push-Up Wide": {
   "de": "Weite Liegestütze",
@@ -2331,14 +2498,14 @@
    "serratus_anterior"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Push-Ups With Feet Elevated": {
   "de": "Liegestütze mit erhöhten Füßen",
   "muscle": "chest",
   "primary": [
-   "pec_major_upper",
-   "pec_major_lower"
+   "pec_major_upper"
   ],
   "secondary": [
    "anterior_delt",
@@ -2347,8 +2514,9 @@
    "triceps_medial",
    "serratus_anterior"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "why": "Füße erhöht → obere Brust",
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Pushups": {
   "de": "Liegestütze",
@@ -2365,7 +2533,8 @@
    "serratus_anterior"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Pushups (Close and Wide Hand Positions)": {
   "de": "Liegestütze (eng und weit)",
@@ -2382,7 +2551,8 @@
    "serratus_anterior"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Single-Arm Cable Crossover": {
   "de": "Einarmiges Kabel-Crossover",
@@ -2395,7 +2565,8 @@
    "anterior_delt"
   ],
   "why": "Fly → ganze Brust",
-  "sec_why": "Fly"
+  "sec_why": "Fly",
+  "mode": "kraft"
  },
  "Single-Arm Push-Up": {
   "de": "Einarmiger Liegestütz",
@@ -2412,7 +2583,8 @@
    "serratus_anterior"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Standing Cable Chest Press": {
   "de": "Stehende Kabel-Brustpresse",
@@ -2428,7 +2600,8 @@
    "triceps_medial"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Straight-Arm Dumbbell Pullover": {
   "de": "Kurzhantel-Pullover mit gestreckten Armen",
@@ -2439,11 +2612,13 @@
   ],
   "secondary": [
    "upper_lats",
+   "teres_major",
    "triceps_long",
    "serratus_anterior"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Pullover"
+  "why": "Pullover",
+  "sec_why": "Pullover",
+  "mode": "kraft"
  },
  "Wide-Grip Barbell Bench Press": {
   "de": "Langhantel-Bankdrücken (weiter Griff)",
@@ -2459,7 +2634,8 @@
    "triceps_medial"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Wide-Grip Decline Barbell Bench Press": {
   "de": "Negativbankdrücken mit Langhantel (weiter Griff)",
@@ -2474,7 +2650,8 @@
    "triceps_medial"
   ],
   "why": "Decline/Dip → unterer Brustmuskel",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Wide-Grip Decline Barbell Pullover": {
   "de": "Negativ-Pullover mit Langhantel (weiter Griff)",
@@ -2484,23 +2661,24 @@
   ],
   "secondary": [
    "upper_lats",
+   "teres_major",
    "triceps_long",
    "serratus_anterior"
   ],
-  "why": "Decline/Dip → unterer Brustmuskel",
-  "sec_why": "Pullover"
+  "why": "Pullover",
+  "sec_why": "Pullover",
+  "mode": "kraft"
  },
  "Cable Wrist Curl": {
   "de": "Kabel-Handgelenkcurl",
   "muscle": "forearms",
   "primary": [
-   "forearm_flexors",
-   "forearm_extensors",
-   "brachioradialis"
+   "forearm_flexors"
   ],
   "secondary": [],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterarme"
+  "why": "Handgelenk-Beuger",
+  "sec_why": "Unterarme",
+  "mode": "kraft"
  },
  "Dumbbell Lying Pronation": {
   "de": "Liegende Kurzhantel-Pronation",
@@ -2512,7 +2690,8 @@
   ],
   "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterarme"
+  "sec_why": "Unterarme",
+  "mode": "kraft"
  },
  "Dumbbell Lying Supination": {
   "de": "Liegende Kurzhantel-Supination",
@@ -2524,163 +2703,151 @@
   ],
   "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterarme"
+  "sec_why": "Unterarme",
+  "mode": "kraft"
  },
  "Finger Curls": {
   "de": "Finger-Curls",
   "muscle": "forearms",
   "primary": [
-   "forearm_flexors",
-   "forearm_extensors",
-   "brachioradialis"
+   "forearm_flexors"
   ],
   "secondary": [],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterarme"
+  "why": "Handgelenk-Beuger",
+  "sec_why": "Unterarme",
+  "mode": "kraft"
  },
  "Palms-Down Dumbbell Wrist Curl Over A Bench": {
   "de": "Kurzhantel-Handgelenkcurl (Obergriff) über der Bank",
   "muscle": "forearms",
   "primary": [
-   "forearm_flexors",
-   "forearm_extensors",
-   "brachioradialis"
+   "forearm_extensors"
   ],
   "secondary": [],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterarme"
+  "why": "Handgelenk-Strecker",
+  "sec_why": "Unterarme",
+  "mode": "kraft"
  },
  "Palms-Down Wrist Curl Over A Bench": {
   "de": "Handgelenkcurl (Obergriff) über der Bank",
   "muscle": "forearms",
   "primary": [
-   "forearm_flexors",
-   "forearm_extensors",
-   "brachioradialis"
+   "forearm_extensors"
   ],
   "secondary": [],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterarme"
+  "why": "Handgelenk-Strecker",
+  "sec_why": "Unterarme",
+  "mode": "kraft"
  },
  "Palms-Up Barbell Wrist Curl Over A Bench": {
   "de": "Langhantel-Handgelenkcurl (Untergriff) über der Bank",
   "muscle": "forearms",
   "primary": [
-   "forearm_flexors",
-   "forearm_extensors",
-   "brachioradialis"
+   "forearm_flexors"
   ],
   "secondary": [],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterarme"
+  "why": "Handgelenk-Beuger",
+  "sec_why": "Unterarme",
+  "mode": "kraft"
  },
  "Palms-Up Dumbbell Wrist Curl Over A Bench": {
   "de": "Kurzhantel-Handgelenkcurl (Untergriff) über der Bank",
   "muscle": "forearms",
   "primary": [
-   "forearm_flexors",
-   "forearm_extensors",
-   "brachioradialis"
+   "forearm_flexors"
   ],
   "secondary": [],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterarme"
+  "why": "Handgelenk-Beuger",
+  "sec_why": "Unterarme",
+  "mode": "kraft"
  },
  "Seated Dumbbell Palms-Down Wrist Curl": {
   "de": "Sitzender Kurzhantel-Handgelenkcurl (Obergriff)",
   "muscle": "forearms",
   "primary": [
-   "forearm_flexors",
-   "forearm_extensors",
-   "brachioradialis"
+   "forearm_extensors"
   ],
   "secondary": [],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterarme"
+  "why": "Handgelenk-Strecker",
+  "sec_why": "Unterarme",
+  "mode": "kraft"
  },
  "Seated Dumbbell Palms-Up Wrist Curl": {
   "de": "Sitzender Kurzhantel-Handgelenkcurl (Untergriff)",
   "muscle": "forearms",
   "primary": [
-   "forearm_flexors",
-   "forearm_extensors",
-   "brachioradialis"
+   "forearm_flexors"
   ],
   "secondary": [],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterarme"
+  "why": "Handgelenk-Beuger",
+  "sec_why": "Unterarme",
+  "mode": "kraft"
  },
  "Seated One-Arm Dumbbell Palms-Down Wrist Curl": {
   "de": "Sitzender einarmiger Kurzhantel-Handgelenkcurl (Obergriff)",
   "muscle": "forearms",
   "primary": [
-   "forearm_flexors",
-   "forearm_extensors",
-   "brachioradialis"
+   "forearm_extensors"
   ],
   "secondary": [],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterarme"
+  "why": "Handgelenk-Strecker",
+  "sec_why": "Unterarme",
+  "mode": "kraft"
  },
  "Seated One-Arm Dumbbell Palms-Up Wrist Curl": {
   "de": "Sitzender einarmiger Kurzhantel-Handgelenkcurl (Untergriff)",
   "muscle": "forearms",
   "primary": [
-   "forearm_flexors",
-   "forearm_extensors",
-   "brachioradialis"
+   "forearm_flexors"
   ],
   "secondary": [],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterarme"
+  "why": "Handgelenk-Beuger",
+  "sec_why": "Unterarme",
+  "mode": "kraft"
  },
  "Seated Palm-Up Barbell Wrist Curl": {
   "de": "Sitzender Langhantel-Handgelenkcurl (Untergriff)",
   "muscle": "forearms",
   "primary": [
-   "forearm_flexors",
-   "forearm_extensors",
-   "brachioradialis"
+   "forearm_flexors"
   ],
   "secondary": [],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterarme"
+  "why": "Handgelenk-Beuger",
+  "sec_why": "Unterarme",
+  "mode": "kraft"
  },
  "Seated Palms-Down Barbell Wrist Curl": {
   "de": "Sitzender Langhantel-Handgelenkcurl (Obergriff)",
   "muscle": "forearms",
   "primary": [
-   "forearm_flexors",
-   "forearm_extensors",
-   "brachioradialis"
+   "forearm_extensors"
   ],
   "secondary": [],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterarme"
+  "why": "Handgelenk-Strecker",
+  "sec_why": "Unterarme",
+  "mode": "kraft"
  },
  "Seated Two-Arm Palms-Up Low-Pulley Wrist Curl": {
   "de": "Sitzender beidarmiger Handgelenkcurl am tiefen Kabel",
   "muscle": "forearms",
   "primary": [
-   "forearm_flexors",
-   "forearm_extensors",
-   "brachioradialis"
+   "forearm_flexors"
   ],
   "secondary": [],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterarme"
+  "why": "Handgelenk-Beuger",
+  "sec_why": "Unterarme",
+  "mode": "kraft"
  },
  "Standing Palms-Up Barbell Behind The Back Wrist Curl": {
   "de": "Langhantel-Handgelenkcurl hinter dem Rücken",
   "muscle": "forearms",
   "primary": [
-   "forearm_flexors",
-   "forearm_extensors",
-   "brachioradialis"
+   "forearm_extensors"
   ],
   "secondary": [],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterarme"
+  "why": "Handgelenk-Strecker",
+  "sec_why": "Unterarme",
+  "mode": "kraft"
  },
  "Wrist Circles": {
   "de": "Handgelenkkreisen",
@@ -2691,8 +2858,9 @@
    "brachioradialis"
   ],
   "secondary": [],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterarme"
+  "why": "Mobilisation (kaum Kraft)",
+  "sec_why": "Unterarme",
+  "mode": "mobility"
  },
  "Wrist Rotations with Straight Bar": {
   "de": "Handgelenkrotation mit Stange",
@@ -2704,7 +2872,8 @@
   ],
   "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterarme"
+  "sec_why": "Unterarme",
+  "mode": "kraft"
  },
  "Barbell Glute Bridge": {
   "de": "Langhantel-Glute-Bridge",
@@ -2719,7 +2888,8 @@
    "erector_spinae"
   ],
   "why": "Hüftstrecken → Gesäß",
-  "sec_why": "Hip Thrust"
+  "sec_why": "Hip Thrust",
+  "mode": "kraft"
  },
  "Barbell Hip Thrust": {
   "de": "Langhantel-Hip-Thrust",
@@ -2734,7 +2904,8 @@
    "erector_spinae"
   ],
   "why": "Hüftstrecken → Gesäß",
-  "sec_why": "Hip Thrust"
+  "sec_why": "Hip Thrust",
+  "mode": "kraft"
  },
  "Butt Lift (Bridge)": {
   "de": "Gesäßheben (Bridge)",
@@ -2749,22 +2920,20 @@
    "erector_spinae"
   ],
   "why": "Hüftstrecken → Gesäß",
-  "sec_why": "Hip Thrust"
+  "sec_why": "Hip Thrust",
+  "mode": "kraft"
  },
  "Flutter Kicks": {
   "de": "Flutter Kicks",
   "muscle": "glutes",
   "primary": [
-   "glute_max"
+   "rectus_abdominis",
+   "hip_flexors"
   ],
-  "secondary": [
-   "lateral_hamstrings",
-   "medial_hamstrings",
-   "vastus_group",
-   "adductors"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Gesäß allgemein"
+  "secondary": [],
+  "why": "Flutter Kicks → Bauch",
+  "sec_why": "Gesäß allgemein",
+  "mode": "kraft"
  },
  "Glute Kickback": {
   "de": "Glute Kickback",
@@ -2778,7 +2947,8 @@
    "medial_hamstrings"
   ],
   "why": "Hüftstrecken → Gesäß",
-  "sec_why": "Kickback"
+  "sec_why": "Kickback",
+  "mode": "kraft"
  },
  "Hip Extension with Bands": {
   "de": "Hüftstreckung mit Bändern",
@@ -2793,7 +2963,8 @@
    "adductors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Gesäß allgemein"
+  "sec_why": "Gesäß allgemein",
+  "mode": "kraft"
  },
  "Hip Lift with Band": {
   "de": "Hüftheben mit Band",
@@ -2808,37 +2979,40 @@
    "adductors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Gesäß allgemein"
+  "sec_why": "Gesäß allgemein",
+  "mode": "kraft"
  },
  "Kneeling Jump Squat": {
   "de": "Kniender Strecksprung",
   "muscle": "glutes",
   "primary": [
-   "glute_max"
+   "glute_max",
+   "vastus_group"
   ],
   "secondary": [
    "lateral_hamstrings",
    "medial_hamstrings",
-   "vastus_group",
    "adductors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Gesäß allgemein"
+  "sec_why": "Gesäß allgemein",
+  "mode": "kraft"
  },
  "Kneeling Squat": {
   "de": "Kniende Kniebeuge",
   "muscle": "glutes",
   "primary": [
-   "glute_max"
+   "glute_max",
+   "vastus_group"
   ],
   "secondary": [
    "lateral_hamstrings",
    "medial_hamstrings",
-   "vastus_group",
    "adductors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Gesäß allgemein"
+  "sec_why": "Gesäß allgemein",
+  "mode": "kraft"
  },
  "Leg Lift": {
   "de": "Beinheben",
@@ -2853,7 +3027,8 @@
    "adductors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Gesäß allgemein"
+  "sec_why": "Gesäß allgemein",
+  "mode": "kraft"
  },
  "Lying Glute": {
   "de": "Liegende Gesäßdehnung",
@@ -2861,14 +3036,10 @@
   "primary": [
    "glute_max"
   ],
-  "secondary": [
-   "lateral_hamstrings",
-   "medial_hamstrings",
-   "vastus_group",
-   "adductors"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Gesäß allgemein"
+  "secondary": [],
+  "why": "Dehnung: gedehnter Muskel",
+  "sec_why": "Gesäß allgemein",
+  "mode": "stretch"
  },
  "One-Legged Cable Kickback": {
   "de": "Einbeiniger Kabel-Kickback",
@@ -2882,22 +3053,25 @@
    "medial_hamstrings"
   ],
   "why": "Hüftstrecken → Gesäß",
-  "sec_why": "Kickback"
+  "sec_why": "Kickback",
+  "mode": "kraft"
  },
  "Pull Through": {
   "de": "Pull Through",
   "muscle": "glutes",
   "primary": [
-   "glute_max"
-  ],
-  "secondary": [
+   "glute_max",
    "lateral_hamstrings",
    "medial_hamstrings",
+   "erector_spinae"
+  ],
+  "secondary": [
    "vastus_group",
    "adductors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Gesäß allgemein"
+  "sec_why": "Gesäß allgemein",
+  "mode": "kraft"
  },
  "Seated Glute": {
   "de": "Sitzende Gesäßdehnung",
@@ -2905,14 +3079,10 @@
   "primary": [
    "glute_max"
   ],
-  "secondary": [
-   "lateral_hamstrings",
-   "medial_hamstrings",
-   "vastus_group",
-   "adductors"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Gesäß allgemein"
+  "secondary": [],
+  "why": "Dehnung: gedehnter Muskel",
+  "sec_why": "Gesäß allgemein",
+  "mode": "stretch"
  },
  "Single Leg Glute Bridge": {
   "de": "Einbeinige Glute Bridge",
@@ -2927,22 +3097,24 @@
    "erector_spinae"
   ],
   "why": "Hüftstrecken → Gesäß",
-  "sec_why": "Hip Thrust"
+  "sec_why": "Hip Thrust",
+  "mode": "kraft"
  },
  "Step-up with Knee Raise": {
   "de": "Step-up mit Kniehub",
   "muscle": "glutes",
   "primary": [
-   "glute_max"
+   "glute_max",
+   "vastus_group"
   ],
   "secondary": [
    "lateral_hamstrings",
    "medial_hamstrings",
-   "vastus_group",
    "adductors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Gesäß allgemein"
+  "sec_why": "Gesäß allgemein",
+  "mode": "kraft"
  },
  "90/90 Hamstring": {
   "de": "Hamstring-Dehnung 90/90",
@@ -2951,107 +3123,115 @@
    "lateral_hamstrings",
    "medial_hamstrings"
   ],
-  "secondary": [
-   "glute_max",
-   "adductors",
-   "erector_spinae",
-   "forearm_flexors",
-   "upper_traps"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "secondary": [],
+  "why": "Dehnung: gedehnter Muskel",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "stretch"
  },
  "Band Good Morning": {
   "de": "Good Morning mit Band",
   "muscle": "hamstrings",
   "primary": [
    "lateral_hamstrings",
-   "medial_hamstrings"
+   "medial_hamstrings",
+   "glute_max",
+   "erector_spinae"
   ],
   "secondary": [
-   "glute_max",
    "adductors",
-   "erector_spinae",
    "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "why": "Hüftbeugen",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Band Good Morning (Pull Through)": {
   "de": "Good Morning mit Band (Pull Through)",
   "muscle": "hamstrings",
   "primary": [
    "lateral_hamstrings",
-   "medial_hamstrings"
+   "medial_hamstrings",
+   "glute_max",
+   "erector_spinae"
   ],
   "secondary": [
-   "glute_max",
    "adductors",
-   "erector_spinae",
    "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "why": "Hüftbeugen",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Clean": {
   "de": "Umsetzen (Clean)",
   "muscle": "hamstrings",
   "primary": [
-   "lateral_hamstrings",
-   "medial_hamstrings"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors",
+   "vastus_group",
    "erector_spinae",
-   "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "secondary": [
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
+  ],
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Clean Deadlift": {
   "de": "Clean-Kreuzheben",
   "muscle": "hamstrings",
   "primary": [
-   "lateral_hamstrings",
-   "medial_hamstrings"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors",
+   "vastus_group",
    "erector_spinae",
-   "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "secondary": [
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
+  ],
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Dumbbell Clean": {
   "de": "Kurzhantel-Clean",
   "muscle": "hamstrings",
   "primary": [
-   "lateral_hamstrings",
-   "medial_hamstrings"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors",
+   "vastus_group",
    "erector_spinae",
-   "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "secondary": [
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
+  ],
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Front Leg Raises": {
   "de": "Beinheben nach vorn",
   "muscle": "hamstrings",
   "primary": [
-   "lateral_hamstrings",
-   "medial_hamstrings"
+   "hip_flexors"
   ],
   "secondary": [
    "glute_max",
@@ -3060,93 +3240,105 @@
    "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "why": "Beinheben vorne",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Good Morning": {
   "de": "Good Morning",
   "muscle": "hamstrings",
   "primary": [
    "lateral_hamstrings",
-   "medial_hamstrings"
+   "medial_hamstrings",
+   "glute_max",
+   "erector_spinae"
   ],
   "secondary": [
-   "glute_max",
    "adductors",
-   "erector_spinae",
    "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "why": "Hüftbeugen",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Good Morning off Pins": {
   "de": "Good Morning von den Pins",
   "muscle": "hamstrings",
   "primary": [
    "lateral_hamstrings",
-   "medial_hamstrings"
+   "medial_hamstrings",
+   "glute_max",
+   "erector_spinae"
   ],
   "secondary": [
-   "glute_max",
    "adductors",
-   "erector_spinae",
    "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "why": "Hüftbeugen",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Hang Snatch": {
   "de": "Hang Snatch",
   "muscle": "hamstrings",
   "primary": [
-   "lateral_hamstrings",
-   "medial_hamstrings"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors",
+   "vastus_group",
    "erector_spinae",
-   "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "secondary": [
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
+  ],
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Hang Snatch - Below Knees": {
   "de": "Hang Snatch (unter den Knien)",
   "muscle": "hamstrings",
   "primary": [
-   "lateral_hamstrings",
-   "medial_hamstrings"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors",
+   "vastus_group",
    "erector_spinae",
-   "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "secondary": [
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
+  ],
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Hanging Bar Good Morning": {
   "de": "Good Morning an der Klimmzugstange",
   "muscle": "hamstrings",
   "primary": [
    "lateral_hamstrings",
-   "medial_hamstrings"
+   "medial_hamstrings",
+   "glute_max",
+   "erector_spinae"
   ],
   "secondary": [
-   "glute_max",
    "adductors",
-   "erector_spinae",
    "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "why": "Hüftbeugen",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Inchworm": {
   "de": "Inchworm",
@@ -3155,49 +3347,47 @@
    "lateral_hamstrings",
    "medial_hamstrings"
   ],
-  "secondary": [
-   "glute_max",
-   "adductors",
-   "erector_spinae",
-   "forearm_flexors",
-   "upper_traps"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "secondary": [],
+  "why": "Mobilisation (kaum Kraft)",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "mobility"
  },
  "Knee Tuck Jump": {
   "de": "Knie-Anhock-Sprung",
   "muscle": "hamstrings",
   "primary": [
-   "lateral_hamstrings",
-   "medial_hamstrings"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors",
-   "erector_spinae",
-   "forearm_flexors",
-   "upper_traps"
+   "vastus_group",
+   "rectus_femoris",
+   "gastrocnemius",
+   "soleus",
+   "hip_flexors"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "secondary": [],
+  "why": "Cardio/Sprung: Beine",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "cardio"
  },
  "Muscle Snatch": {
   "de": "Muscle Snatch",
   "muscle": "hamstrings",
   "primary": [
-   "lateral_hamstrings",
-   "medial_hamstrings"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors",
+   "vastus_group",
    "erector_spinae",
-   "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "secondary": [
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
+  ],
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Natural Glute Ham Raise": {
   "de": "Glute-Ham-Raise (natürlich)",
@@ -3211,282 +3401,320 @@
    "adductors",
    "erector_spinae",
    "forearm_flexors",
-   "upper_traps"
+   "upper_traps",
+   "gastrocnemius"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Power Clean": {
   "de": "Power Clean",
   "muscle": "hamstrings",
   "primary": [
-   "lateral_hamstrings",
-   "medial_hamstrings"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors",
+   "vastus_group",
    "erector_spinae",
-   "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "secondary": [
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
+  ],
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Power Clean from Blocks": {
   "de": "Power Clean von Blöcken",
   "muscle": "hamstrings",
   "primary": [
-   "lateral_hamstrings",
-   "medial_hamstrings"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors",
+   "vastus_group",
    "erector_spinae",
-   "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "secondary": [
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
+  ],
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Power Snatch": {
   "de": "Power Snatch",
   "muscle": "hamstrings",
   "primary": [
-   "lateral_hamstrings",
-   "medial_hamstrings"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors",
+   "vastus_group",
    "erector_spinae",
-   "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "secondary": [
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
+  ],
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Reverse Band Sumo Deadlift": {
   "de": "Reverse-Band-Sumo-Kreuzheben",
   "muscle": "hamstrings",
   "primary": [
+   "vastus_group",
+   "adductors",
+   "glute_max",
    "lateral_hamstrings",
    "medial_hamstrings"
   ],
   "secondary": [
-   "glute_max",
-   "adductors",
    "erector_spinae",
    "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "why": "Sumo-Kreuzheben",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Romanian Deadlift": {
   "de": "Rumänisches Kreuzheben",
   "muscle": "hamstrings",
   "primary": [
    "lateral_hamstrings",
-   "medial_hamstrings"
+   "medial_hamstrings",
+   "glute_max",
+   "erector_spinae"
   ],
   "secondary": [
-   "glute_max",
    "adductors",
-   "erector_spinae",
    "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "why": "Hüftbeugen",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Romanian Deadlift from Deficit": {
   "de": "Rumänisches Kreuzheben vom Podest",
   "muscle": "hamstrings",
   "primary": [
    "lateral_hamstrings",
-   "medial_hamstrings"
+   "medial_hamstrings",
+   "glute_max",
+   "erector_spinae"
   ],
   "secondary": [
-   "glute_max",
    "adductors",
-   "erector_spinae",
    "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "why": "Hüftbeugen",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Snatch Deadlift": {
   "de": "Snatch-Kreuzheben",
   "muscle": "hamstrings",
   "primary": [
-   "lateral_hamstrings",
-   "medial_hamstrings"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors",
+   "vastus_group",
    "erector_spinae",
-   "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "secondary": [
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
+  ],
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Snatch Pull": {
   "de": "Snatch Pull",
   "muscle": "hamstrings",
   "primary": [
-   "lateral_hamstrings",
-   "medial_hamstrings"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors",
+   "vastus_group",
    "erector_spinae",
-   "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "secondary": [
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
+  ],
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Split Snatch": {
   "de": "Split Snatch",
   "muscle": "hamstrings",
   "primary": [
-   "lateral_hamstrings",
-   "medial_hamstrings"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors",
+   "vastus_group",
    "erector_spinae",
-   "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "secondary": [
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
+  ],
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Stiff-Legged Barbell Deadlift": {
   "de": "Kreuzheben mit gestreckten Beinen (Langhantel)",
   "muscle": "hamstrings",
   "primary": [
    "lateral_hamstrings",
-   "medial_hamstrings"
+   "medial_hamstrings",
+   "glute_max",
+   "erector_spinae"
   ],
   "secondary": [
-   "glute_max",
    "adductors",
-   "erector_spinae",
    "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "why": "Hüftbeugen",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Stiff-Legged Dumbbell Deadlift": {
   "de": "Kreuzheben mit gestreckten Beinen (Kurzhanteln)",
   "muscle": "hamstrings",
   "primary": [
    "lateral_hamstrings",
-   "medial_hamstrings"
+   "medial_hamstrings",
+   "glute_max",
+   "erector_spinae"
   ],
   "secondary": [
-   "glute_max",
    "adductors",
-   "erector_spinae",
    "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "why": "Hüftbeugen",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Sumo Deadlift": {
   "de": "Sumo-Kreuzheben",
   "muscle": "hamstrings",
   "primary": [
+   "vastus_group",
+   "adductors",
+   "glute_max",
    "lateral_hamstrings",
    "medial_hamstrings"
   ],
   "secondary": [
-   "glute_max",
-   "adductors",
    "erector_spinae",
    "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "why": "Sumo-Kreuzheben",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Sumo Deadlift with Bands": {
   "de": "Sumo-Kreuzheben mit Bändern",
   "muscle": "hamstrings",
   "primary": [
+   "vastus_group",
+   "adductors",
+   "glute_max",
    "lateral_hamstrings",
    "medial_hamstrings"
   ],
   "secondary": [
-   "glute_max",
-   "adductors",
    "erector_spinae",
    "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "why": "Sumo-Kreuzheben",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Sumo Deadlift with Chains": {
   "de": "Sumo-Kreuzheben mit Ketten",
   "muscle": "hamstrings",
   "primary": [
+   "vastus_group",
+   "adductors",
+   "glute_max",
    "lateral_hamstrings",
    "medial_hamstrings"
   ],
   "secondary": [
-   "glute_max",
-   "adductors",
    "erector_spinae",
    "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "why": "Sumo-Kreuzheben",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Vertical Swing": {
   "de": "Vertikaler Swing",
   "muscle": "hamstrings",
   "primary": [
-   "lateral_hamstrings",
-   "medial_hamstrings"
+   "glute_max"
   ],
   "secondary": [
-   "glute_max",
    "adductors",
    "erector_spinae",
    "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "why": "Swing",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Wide Stance Stiff Legs": {
   "de": "Kreuzheben mit gestreckten Beinen (weiter Stand)",
   "muscle": "hamstrings",
   "primary": [
    "lateral_hamstrings",
-   "medial_hamstrings"
+   "medial_hamstrings",
+   "glute_max",
+   "erector_spinae"
   ],
   "secondary": [
-   "glute_max",
    "adductors",
-   "erector_spinae",
    "forearm_flexors",
    "upper_traps"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "why": "Hüftbeugen",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "kraft"
  },
  "Bent-Arm Barbell Pullover": {
   "de": "Langhantel-Pullover mit gebeugten Armen",
@@ -3501,43 +3729,41 @@
    "serratus_anterior"
   ],
   "why": "Pullover → oberer Lat + Teres",
-  "sec_why": "Pullover"
+  "sec_why": "Pullover",
+  "mode": "kraft"
  },
  "Cable Incline Pushdown": {
   "de": "Kabel-Schrägdrücken nach unten",
   "muscle": "lats",
   "primary": [
    "upper_lats",
-   "lower_lats"
+   "teres_major"
   ],
   "secondary": [
-   "biceps",
-   "brachialis",
-   "teres_major",
-   "rhomboids",
-   "posterior_delt",
-   "forearm_flexors"
+   "triceps_long"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Ziehen von oben"
+  "why": "Gestreckte Arme ziehen",
+  "sec_why": "Ziehen von oben",
+  "mode": "kraft"
  },
  "Chin-Up": {
   "de": "Klimmzug im Untergriff (Chin-up)",
   "muscle": "lats",
   "primary": [
    "upper_lats",
-   "lower_lats"
+   "lower_lats",
+   "biceps",
+   "brachialis"
   ],
   "secondary": [
-   "biceps",
-   "brachialis",
    "teres_major",
    "rhomboids",
    "posterior_delt",
    "forearm_flexors"
   ],
   "why": "Klimmzug/Latzug → breiter Rücken",
-  "sec_why": "Ziehen von oben"
+  "sec_why": "Ziehen von oben",
+  "mode": "kraft"
  },
  "Close-Grip Front Lat Pulldown": {
   "de": "Latziehen enger Griff",
@@ -3552,10 +3778,12 @@
    "teres_major",
    "rhomboids",
    "posterior_delt",
-   "forearm_flexors"
+   "forearm_flexors",
+   "lower_traps"
   ],
   "why": "Klimmzug/Latzug → breiter Rücken",
-  "sec_why": "Ziehen von oben"
+  "sec_why": "Ziehen von oben",
+  "mode": "kraft"
  },
  "Elevated Cable Rows": {
   "de": "Erhöhtes Kabelrudern",
@@ -3573,7 +3801,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Rudern"
+  "sec_why": "Rudern",
+  "mode": "kraft"
  },
  "Full Range-Of-Motion Lat Pulldown": {
   "de": "Latziehen mit vollem Bewegungsradius",
@@ -3588,10 +3817,12 @@
    "teres_major",
    "rhomboids",
    "posterior_delt",
-   "forearm_flexors"
+   "forearm_flexors",
+   "lower_traps"
   ],
   "why": "Klimmzug/Latzug → breiter Rücken",
-  "sec_why": "Ziehen von oben"
+  "sec_why": "Ziehen von oben",
+  "mode": "kraft"
  },
  "Kneeling High Pulley Row": {
   "de": "Kniendes Rudern am hohen Kabel",
@@ -3609,7 +3840,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Rudern"
+  "sec_why": "Rudern",
+  "mode": "kraft"
  },
  "Kneeling Single-Arm High Pulley Row": {
   "de": "Kniendes einarmiges Rudern am hohen Kabel",
@@ -3627,7 +3859,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Rudern"
+  "sec_why": "Rudern",
+  "mode": "kraft"
  },
  "One Arm Lat Pulldown": {
   "de": "Einarmiges Latziehen",
@@ -3642,10 +3875,12 @@
    "teres_major",
    "rhomboids",
    "posterior_delt",
-   "forearm_flexors"
+   "forearm_flexors",
+   "lower_traps"
   ],
   "why": "Klimmzug/Latzug → breiter Rücken",
-  "sec_why": "Ziehen von oben"
+  "sec_why": "Ziehen von oben",
+  "mode": "kraft"
  },
  "Pullups": {
   "de": "Klimmzüge",
@@ -3660,10 +3895,12 @@
    "teres_major",
    "rhomboids",
    "posterior_delt",
-   "forearm_flexors"
+   "forearm_flexors",
+   "lower_traps"
   ],
   "why": "Klimmzug/Latzug → breiter Rücken",
-  "sec_why": "Ziehen von oben"
+  "sec_why": "Ziehen von oben",
+  "mode": "kraft"
  },
  "Rope Straight-Arm Pulldown": {
   "de": "Seil-Armzug mit gestreckten Armen",
@@ -3678,7 +3915,8 @@
    "serratus_anterior"
   ],
   "why": "Pullover → oberer Lat + Teres",
-  "sec_why": "Pullover"
+  "sec_why": "Pullover",
+  "mode": "kraft"
  },
  "Shotgun Row": {
   "de": "Shotgun Row",
@@ -3696,7 +3934,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Rudern"
+  "sec_why": "Rudern",
+  "mode": "kraft"
  },
  "Straight-Arm Pulldown": {
   "de": "Armzug mit gestreckten Armen am Kabel",
@@ -3711,7 +3950,8 @@
    "serratus_anterior"
   ],
   "why": "Pullover → oberer Lat + Teres",
-  "sec_why": "Pullover"
+  "sec_why": "Pullover",
+  "mode": "kraft"
  },
  "Underhand Cable Pulldowns": {
   "de": "Kabelziehen im Untergriff",
@@ -3726,10 +3966,12 @@
    "teres_major",
    "rhomboids",
    "posterior_delt",
-   "forearm_flexors"
+   "forearm_flexors",
+   "lower_traps"
   ],
   "why": "Klimmzug/Latzug → breiter Rücken",
-  "sec_why": "Ziehen von oben"
+  "sec_why": "Ziehen von oben",
+  "mode": "kraft"
  },
  "V-Bar Pulldown": {
   "de": "Latziehen mit V-Griff",
@@ -3744,10 +3986,12 @@
    "teres_major",
    "rhomboids",
    "posterior_delt",
-   "forearm_flexors"
+   "forearm_flexors",
+   "lower_traps"
   ],
   "why": "Klimmzug/Latzug → breiter Rücken",
-  "sec_why": "Ziehen von oben"
+  "sec_why": "Ziehen von oben",
+  "mode": "kraft"
  },
  "V-Bar Pullup": {
   "de": "Klimmzug mit V-Griff",
@@ -3762,10 +4006,12 @@
    "teres_major",
    "rhomboids",
    "posterior_delt",
-   "forearm_flexors"
+   "forearm_flexors",
+   "lower_traps"
   ],
   "why": "Klimmzug/Latzug → breiter Rücken",
-  "sec_why": "Ziehen von oben"
+  "sec_why": "Ziehen von oben",
+  "mode": "kraft"
  },
  "Wide-Grip Lat Pulldown": {
   "de": "Latziehen weiter Griff",
@@ -3780,10 +4026,12 @@
    "teres_major",
    "rhomboids",
    "posterior_delt",
-   "forearm_flexors"
+   "forearm_flexors",
+   "lower_traps"
   ],
   "why": "Klimmzug/Latzug → breiter Rücken",
-  "sec_why": "Ziehen von oben"
+  "sec_why": "Ziehen von oben",
+  "mode": "kraft"
  },
  "Wide-Grip Pulldown Behind The Neck": {
   "de": "Latziehen weiter Griff hinter den Nacken",
@@ -3798,10 +4046,12 @@
    "teres_major",
    "rhomboids",
    "posterior_delt",
-   "forearm_flexors"
+   "forearm_flexors",
+   "lower_traps"
   ],
   "why": "Klimmzug/Latzug → breiter Rücken",
-  "sec_why": "Ziehen von oben"
+  "sec_why": "Ziehen von oben",
+  "mode": "kraft"
  },
  "Wide-Grip Rear Pull-Up": {
   "de": "Klimmzug weiter Griff (zum Nacken)",
@@ -3816,10 +4066,12 @@
    "teres_major",
    "rhomboids",
    "posterior_delt",
-   "forearm_flexors"
+   "forearm_flexors",
+   "lower_traps"
   ],
   "why": "Klimmzug/Latzug → breiter Rücken",
-  "sec_why": "Ziehen von oben"
+  "sec_why": "Ziehen von oben",
+  "mode": "kraft"
  },
  "Barbell Deadlift": {
   "de": "Langhantel-Kreuzheben",
@@ -3831,10 +4083,14 @@
    "medial_hamstrings"
   ],
   "secondary": [
+   "upper_traps",
+   "upper_lats",
+   "vastus_group",
    "forearm_flexors"
   ],
-  "why": "Kreuzheben → Rücken + Gesäß + Beinbeuger",
-  "sec_why": "Unterer Rücken"
+  "why": "Kreuzheben",
+  "sec_why": "Unterer Rücken",
+  "mode": "kraft"
  },
  "Deadlift with Bands": {
   "de": "Kreuzheben mit Bändern",
@@ -3846,10 +4102,14 @@
    "medial_hamstrings"
   ],
   "secondary": [
+   "upper_traps",
+   "upper_lats",
+   "vastus_group",
    "forearm_flexors"
   ],
-  "why": "Kreuzheben → Rücken + Gesäß + Beinbeuger",
-  "sec_why": "Unterer Rücken"
+  "why": "Kreuzheben",
+  "sec_why": "Unterer Rücken",
+  "mode": "kraft"
  },
  "Deadlift with Chains": {
   "de": "Kreuzheben mit Ketten",
@@ -3861,10 +4121,14 @@
    "medial_hamstrings"
   ],
   "secondary": [
+   "upper_traps",
+   "upper_lats",
+   "vastus_group",
    "forearm_flexors"
   ],
-  "why": "Kreuzheben → Rücken + Gesäß + Beinbeuger",
-  "sec_why": "Unterer Rücken"
+  "why": "Kreuzheben",
+  "sec_why": "Unterer Rücken",
+  "mode": "kraft"
  },
  "Deficit Deadlift": {
   "de": "Kreuzheben vom Podest",
@@ -3876,10 +4140,14 @@
    "medial_hamstrings"
   ],
   "secondary": [
+   "upper_traps",
+   "upper_lats",
+   "vastus_group",
    "forearm_flexors"
   ],
-  "why": "Kreuzheben → Rücken + Gesäß + Beinbeuger",
-  "sec_why": "Unterer Rücken"
+  "why": "Kreuzheben",
+  "sec_why": "Unterer Rücken",
+  "mode": "kraft"
  },
  "Hyperextensions With No Hyperextension Bench": {
   "de": "Hyperextensions mit Bank",
@@ -3893,35 +4161,46 @@
    "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterer Rücken"
+  "sec_why": "Unterer Rücken",
+  "mode": "kraft"
  },
  "Rack Pull with Bands": {
   "de": "Rack Pull mit Bändern",
   "muscle": "lower back",
   "primary": [
-   "erector_spinae"
-  ],
-  "secondary": [
+   "erector_spinae",
    "glute_max",
    "lateral_hamstrings",
    "medial_hamstrings"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterer Rücken"
+  "secondary": [
+   "upper_traps",
+   "upper_lats",
+   "vastus_group",
+   "forearm_flexors"
+  ],
+  "why": "Kreuzheben",
+  "sec_why": "Unterer Rücken",
+  "mode": "kraft"
  },
  "Rack Pulls": {
   "de": "Rack Pulls",
   "muscle": "lower back",
   "primary": [
-   "erector_spinae"
-  ],
-  "secondary": [
+   "erector_spinae",
    "glute_max",
    "lateral_hamstrings",
    "medial_hamstrings"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterer Rücken"
+  "secondary": [
+   "upper_traps",
+   "upper_lats",
+   "vastus_group",
+   "forearm_flexors"
+  ],
+  "why": "Kreuzheben",
+  "sec_why": "Unterer Rücken",
+  "mode": "kraft"
  },
  "Reverse Band Deadlift": {
   "de": "Reverse-Band-Kreuzheben",
@@ -3933,10 +4212,14 @@
    "medial_hamstrings"
   ],
   "secondary": [
+   "upper_traps",
+   "upper_lats",
+   "vastus_group",
    "forearm_flexors"
   ],
-  "why": "Kreuzheben → Rücken + Gesäß + Beinbeuger",
-  "sec_why": "Unterer Rücken"
+  "why": "Kreuzheben",
+  "sec_why": "Unterer Rücken",
+  "mode": "kraft"
  },
  "Seated Good Mornings": {
   "de": "Sitzende Good Mornings",
@@ -3951,7 +4234,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterer Rücken"
+  "sec_why": "Unterer Rücken",
+  "mode": "kraft"
  },
  "Stiff Leg Barbell Good Morning": {
   "de": "Good Morning mit gestreckten Beinen (Langhantel)",
@@ -3966,7 +4250,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterer Rücken"
+  "sec_why": "Unterer Rücken",
+  "mode": "kraft"
  },
  "Superman": {
   "de": "Superman",
@@ -3980,7 +4265,8 @@
    "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Unterer Rücken"
+  "sec_why": "Unterer Rücken",
+  "mode": "kraft"
  },
  "Bent Over Barbell Row": {
   "de": "Langhantel-Rudern vorgebeugt",
@@ -4000,7 +4286,8 @@
    "erector_spinae"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Rudern"
+  "sec_why": "Rudern",
+  "mode": "kraft"
  },
  "Bent Over One-Arm Long Bar Row": {
   "de": "Einarmiges Rudern mit Langstange vorgebeugt",
@@ -4020,7 +4307,8 @@
    "erector_spinae"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Rudern"
+  "sec_why": "Rudern",
+  "mode": "kraft"
  },
  "Bent Over Two-Arm Long Bar Row": {
   "de": "Beidarmiges Rudern mit Langstange vorgebeugt",
@@ -4040,7 +4328,8 @@
    "erector_spinae"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Rudern"
+  "sec_why": "Rudern",
+  "mode": "kraft"
  },
  "Bent Over Two-Dumbbell Row": {
   "de": "Rudern mit zwei Kurzhanteln vorgebeugt",
@@ -4060,7 +4349,8 @@
    "erector_spinae"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Rudern"
+  "sec_why": "Rudern",
+  "mode": "kraft"
  },
  "Bent Over Two-Dumbbell Row With Palms In": {
   "de": "Rudern mit zwei Kurzhanteln (Handflächen innen)",
@@ -4080,7 +4370,8 @@
    "erector_spinae"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Rudern"
+  "sec_why": "Rudern",
+  "mode": "kraft"
  },
  "Dumbbell Incline Row": {
   "de": "Kurzhantel-Rudern an der Schrägbank",
@@ -4099,7 +4390,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Rudern"
+  "sec_why": "Rudern",
+  "mode": "kraft"
  },
  "Incline Bench Pull": {
   "de": "Zug an der Schrägbank",
@@ -4118,7 +4410,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Rudern"
+  "sec_why": "Rudern",
+  "mode": "kraft"
  },
  "Lying Cambered Barbell Row": {
   "de": "Liegendes Rudern mit Cambered-Stange",
@@ -4138,7 +4431,8 @@
    "erector_spinae"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Rudern"
+  "sec_why": "Rudern",
+  "mode": "kraft"
  },
  "Middle Back Shrug": {
   "de": "Schulterblatt-Zug (mittlerer Rücken)",
@@ -4153,7 +4447,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Shrug"
+  "sec_why": "Shrug",
+  "mode": "kraft"
  },
  "One-Arm Dumbbell Row": {
   "de": "Einarmiges Kurzhantel-Rudern",
@@ -4172,7 +4467,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Rudern"
+  "sec_why": "Rudern",
+  "mode": "kraft"
  },
  "One-Arm Long Bar Row": {
   "de": "Einarmiges Rudern mit Langstange",
@@ -4191,7 +4487,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Rudern"
+  "sec_why": "Rudern",
+  "mode": "kraft"
  },
  "Reverse Grip Bent-Over Rows": {
   "de": "Langhantel-Rudern im Untergriff",
@@ -4202,12 +4499,15 @@
    "teres_major"
   ],
   "secondary": [
-   "posterior_delt",
-   "rotator_cuff",
-   "upper_traps"
+   "upper_lats",
+   "lower_lats",
+   "biceps",
+   "brachialis",
+   "forearm_flexors"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Face Pull / Reverse"
+  "why": "Rudern Untergriff",
+  "sec_why": "Face Pull / Reverse",
+  "mode": "kraft"
  },
  "Seated Cable Rows": {
   "de": "Sitzendes Kabelrudern",
@@ -4226,7 +4526,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Rudern"
+  "sec_why": "Rudern",
+  "mode": "kraft"
  },
  "Seated One-arm Cable Pulley Rows": {
   "de": "Sitzendes einarmiges Kabelrudern",
@@ -4245,7 +4546,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Rudern"
+  "sec_why": "Rudern",
+  "mode": "kraft"
  },
  "Straight Bar Bench Mid Rows": {
   "de": "Rudern auf der Bank (gerade Stange)",
@@ -4264,7 +4566,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Rudern"
+  "sec_why": "Rudern",
+  "mode": "kraft"
  },
  "T-Bar Row with Handle": {
   "de": "T-Bar-Rudern mit Griff",
@@ -4284,7 +4587,8 @@
    "erector_spinae"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Rudern"
+  "sec_why": "Rudern",
+  "mode": "kraft"
  },
  "Isometric Neck Exercise - Front And Back": {
   "de": "Isometrische Nackenübung (vorn und hinten)",
@@ -4297,7 +4601,8 @@
    "upper_traps"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Nacken"
+  "sec_why": "Nacken",
+  "mode": "kraft"
  },
  "Isometric Neck Exercise - Sides": {
   "de": "Isometrische Nackenübung (seitlich)",
@@ -4310,7 +4615,8 @@
    "upper_traps"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Nacken"
+  "sec_why": "Nacken",
+  "mode": "kraft"
  },
  "All Fours Quad Stretch": {
   "de": "Quadrizeps-Dehnung im Vierfüßlerstand",
@@ -4319,12 +4625,10 @@
    "vastus_group",
    "rectus_femoris"
   ],
-  "secondary": [
-   "glute_max",
-   "adductors"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "secondary": [],
+  "why": "Dehnung: gedehnter Muskel",
+  "sec_why": "Beine allgemein",
+  "mode": "stretch"
  },
  "Barbell Full Squat": {
   "de": "Tiefe Langhantel-Kniebeuge",
@@ -4338,11 +4642,11 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Barbell Hack Squat": {
   "de": "Langhantel-Hackenkniebeuge",
@@ -4357,7 +4661,8 @@
    "gastrocnemius"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beinpresse"
+  "sec_why": "Beinpresse",
+  "mode": "kraft"
  },
  "Barbell Lunge": {
   "de": "Langhantel-Ausfallschritt",
@@ -4374,7 +4679,8 @@
    "lateral_hamstrings"
   ],
   "why": "Ausfallschritt → Quadrizeps + Gesäß",
-  "sec_why": "Ausfallschritt"
+  "sec_why": "Ausfallschritt",
+  "mode": "kraft"
  },
  "Barbell Side Split Squat": {
   "de": "Langhantel-Seiten-Split-Kniebeuge",
@@ -4391,7 +4697,8 @@
    "lateral_hamstrings"
   ],
   "why": "Ausfallschritt → Quadrizeps + Gesäß",
-  "sec_why": "Ausfallschritt"
+  "sec_why": "Ausfallschritt",
+  "mode": "kraft"
  },
  "Barbell Squat": {
   "de": "Langhantel-Kniebeuge",
@@ -4405,11 +4712,11 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Barbell Squat To A Bench": {
   "de": "Langhantel-Kniebeuge auf Bank",
@@ -4423,11 +4730,11 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Barbell Step Ups": {
   "de": "Langhantel-Step-ups",
@@ -4444,7 +4751,8 @@
    "lateral_hamstrings"
   ],
   "why": "Ausfallschritt → Quadrizeps + Gesäß",
-  "sec_why": "Ausfallschritt"
+  "sec_why": "Ausfallschritt",
+  "mode": "kraft"
  },
  "Barbell Walking Lunge": {
   "de": "Langhantel-Ausfallschritte (gehend)",
@@ -4461,21 +4769,23 @@
    "lateral_hamstrings"
   ],
   "why": "Ausfallschritt → Quadrizeps + Gesäß",
-  "sec_why": "Ausfallschritt"
+  "sec_why": "Ausfallschritt",
+  "mode": "kraft"
  },
  "Bench Jump": {
   "de": "Bank-Sprung",
   "muscle": "quadriceps",
   "primary": [
-   "vastus_group",
-   "rectus_femoris"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors"
+   "vastus_group",
+   "rectus_femoris",
+   "gastrocnemius",
+   "soleus"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "secondary": [],
+  "why": "Cardio/Sprung: Beine",
+  "sec_why": "Beine allgemein",
+  "mode": "cardio"
  },
  "Bodyweight Squat": {
   "de": "Kniebeuge mit Körpergewicht",
@@ -4489,11 +4799,11 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Box Squat": {
   "de": "Box-Kniebeuge",
@@ -4507,11 +4817,11 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Box Squat with Bands": {
   "de": "Box-Kniebeuge mit Bändern",
@@ -4525,11 +4835,11 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Box Squat with Chains": {
   "de": "Box-Kniebeuge mit Ketten",
@@ -4543,81 +4853,96 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Cable Deadlifts": {
   "de": "Kabel-Kreuzheben",
   "muscle": "quadriceps",
   "primary": [
-   "vastus_group",
-   "rectus_femoris"
+   "glute_max",
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "erector_spinae"
   ],
   "secondary": [
-   "glute_max",
    "adductors"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "why": "Hüftstrecken",
+  "sec_why": "Beine allgemein",
+  "mode": "kraft"
  },
  "Cable Hip Adduction": {
   "de": "Kabel-Hüftadduktion",
   "muscle": "quadriceps",
   "primary": [
-   "vastus_group",
-   "rectus_femoris"
-  ],
-  "secondary": [
-   "glute_max",
    "adductors"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "secondary": [
+   "glute_max"
+  ],
+  "why": "Adduktion",
+  "sec_why": "Beine allgemein",
+  "mode": "kraft"
  },
  "Clean Pull": {
   "de": "Clean Pull",
   "muscle": "quadriceps",
   "primary": [
+   "glute_max",
    "vastus_group",
-   "rectus_femoris"
+   "erector_spinae",
+   "upper_traps"
   ],
   "secondary": [
-   "glute_max",
-   "adductors"
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Beine allgemein",
+  "mode": "kraft"
  },
  "Clean from Blocks": {
   "de": "Clean von Blöcken",
   "muscle": "quadriceps",
   "primary": [
+   "glute_max",
    "vastus_group",
-   "rectus_femoris"
+   "erector_spinae",
+   "upper_traps"
   ],
   "secondary": [
-   "glute_max",
-   "adductors"
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Beine allgemein",
+  "mode": "kraft"
  },
  "Double Leg Butt Kick": {
   "de": "Fersen-zum-Po-Kick (beidbeinig)",
   "muscle": "quadriceps",
   "primary": [
-   "vastus_group",
-   "rectus_femoris"
-  ],
-  "secondary": [
+   "lateral_hamstrings",
+   "medial_hamstrings",
    "glute_max",
-   "adductors"
+   "gastrocnemius"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "secondary": [],
+  "why": "Cardio/Sprung: Beine",
+  "sec_why": "Beine allgemein",
+  "mode": "cardio"
  },
  "Dumbbell Lunges": {
   "de": "Kurzhantel-Ausfallschritte",
@@ -4634,7 +4959,8 @@
    "lateral_hamstrings"
   ],
   "why": "Ausfallschritt → Quadrizeps + Gesäß",
-  "sec_why": "Ausfallschritt"
+  "sec_why": "Ausfallschritt",
+  "mode": "kraft"
  },
  "Dumbbell Rear Lunge": {
   "de": "Kurzhantel-Ausfallschritt rückwärts",
@@ -4651,7 +4977,8 @@
    "lateral_hamstrings"
   ],
   "why": "Ausfallschritt → Quadrizeps + Gesäß",
-  "sec_why": "Ausfallschritt"
+  "sec_why": "Ausfallschritt",
+  "mode": "kraft"
  },
  "Dumbbell Seated Box Jump": {
   "de": "Kurzhantel-Box-Sprung aus dem Sitzen",
@@ -4662,10 +4989,13 @@
   ],
   "secondary": [
    "glute_max",
-   "adductors"
+   "adductors",
+   "gastrocnemius",
+   "soleus"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "sec_why": "Beine allgemein",
+  "mode": "kraft"
  },
  "Dumbbell Squat": {
   "de": "Kurzhantel-Kniebeuge",
@@ -4679,11 +5009,11 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Dumbbell Squat To A Bench": {
   "de": "Kurzhantel-Kniebeuge auf Bank",
@@ -4697,11 +5027,11 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Dumbbell Step Ups": {
   "de": "Kurzhantel-Step-ups",
@@ -4718,7 +5048,8 @@
    "lateral_hamstrings"
   ],
   "why": "Ausfallschritt → Quadrizeps + Gesäß",
-  "sec_why": "Ausfallschritt"
+  "sec_why": "Ausfallschritt",
+  "mode": "kraft"
  },
  "Elevated Back Lunge": {
   "de": "Erhöhter Ausfallschritt rückwärts",
@@ -4735,21 +5066,24 @@
    "lateral_hamstrings"
   ],
   "why": "Ausfallschritt → Quadrizeps + Gesäß",
-  "sec_why": "Ausfallschritt"
+  "sec_why": "Ausfallschritt",
+  "mode": "kraft"
  },
  "Fast Skipping": {
   "de": "Schnelles Skipping",
   "muscle": "quadriceps",
   "primary": [
-   "vastus_group",
-   "rectus_femoris"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors"
+   "vastus_group",
+   "rectus_femoris",
+   "gastrocnemius",
+   "soleus",
+   "hip_flexors"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "secondary": [],
+  "why": "Cardio/Sprung: Beine",
+  "sec_why": "Beine allgemein",
+  "mode": "cardio"
  },
  "Frankenstein Squat": {
   "de": "Frankenstein-Kniebeuge",
@@ -4763,11 +5097,11 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Freehand Jump Squat": {
   "de": "Sprung-Kniebeuge (ohne Gewicht)",
@@ -4782,10 +5116,12 @@
    "erector_spinae",
    "lateral_hamstrings",
    "medial_hamstrings",
-   "rectus_abdominis"
+   "gastrocnemius",
+   "soleus"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Front Barbell Squat": {
   "de": "Frontkniebeuge mit Langhantel",
@@ -4799,11 +5135,11 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Front Barbell Squat To A Bench": {
   "de": "Frontkniebeuge auf Bank",
@@ -4817,85 +5153,109 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Front Squat (Clean Grip)": {
   "de": "Frontkniebeuge (Clean-Griff)",
   "muscle": "quadriceps",
   "primary": [
+   "glute_max",
    "vastus_group",
-   "rectus_femoris"
+   "erector_spinae",
+   "upper_traps"
   ],
   "secondary": [
-   "glute_max",
-   "adductors",
-   "erector_spinae",
    "lateral_hamstrings",
    "medial_hamstrings",
-   "rectus_abdominis"
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Hang Clean": {
   "de": "Hang Clean",
   "muscle": "quadriceps",
   "primary": [
+   "glute_max",
    "vastus_group",
-   "rectus_femoris"
+   "erector_spinae",
+   "upper_traps"
   ],
   "secondary": [
-   "glute_max",
-   "adductors"
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Beine allgemein",
+  "mode": "kraft"
  },
  "Hang Clean - Below the Knees": {
   "de": "Hang Clean (unter den Knien)",
   "muscle": "quadriceps",
   "primary": [
+   "glute_max",
    "vastus_group",
-   "rectus_femoris"
+   "erector_spinae",
+   "upper_traps"
   ],
   "secondary": [
-   "glute_max",
-   "adductors"
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Beine allgemein",
+  "mode": "kraft"
  },
  "Heaving Snatch Balance": {
   "de": "Heaving Snatch Balance",
   "muscle": "quadriceps",
   "primary": [
+   "glute_max",
    "vastus_group",
-   "rectus_femoris"
+   "erector_spinae",
+   "upper_traps"
   ],
   "secondary": [
-   "glute_max",
-   "adductors"
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Beine allgemein",
+  "mode": "kraft"
  },
  "Hip Flexion with Band": {
   "de": "Hüftbeugung mit Band",
   "muscle": "quadriceps",
   "primary": [
-   "vastus_group",
-   "rectus_femoris"
+   "hip_flexors"
   ],
   "secondary": [
    "glute_max",
    "adductors"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "why": "Hüftbeugen",
+  "sec_why": "Beine allgemein",
+  "mode": "kraft"
  },
  "Jefferson Squats": {
   "de": "Jefferson-Kniebeuge",
@@ -4909,29 +5269,33 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Jerk Dip Squat": {
   "de": "Jerk-Dip-Kniebeuge",
   "muscle": "quadriceps",
   "primary": [
+   "glute_max",
    "vastus_group",
-   "rectus_femoris"
+   "erector_spinae",
+   "upper_traps",
+   "anterior_delt"
   ],
   "secondary": [
-   "glute_max",
-   "adductors",
-   "erector_spinae",
    "lateral_hamstrings",
    "medial_hamstrings",
-   "rectus_abdominis"
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Lying Prone Quadriceps": {
   "de": "Quadrizeps-Dehnung in Bauchlage",
@@ -4940,12 +5304,10 @@
    "vastus_group",
    "rectus_femoris"
   ],
-  "secondary": [
-   "glute_max",
-   "adductors"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "secondary": [],
+  "why": "Dehnung: gedehnter Muskel",
+  "sec_why": "Beine allgemein",
+  "mode": "stretch"
  },
  "Narrow Stance Squats": {
   "de": "Kniebeuge mit engem Stand",
@@ -4959,11 +5321,11 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Olympic Squat": {
   "de": "Olympische Kniebeuge",
@@ -4977,11 +5339,11 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "One Leg Barbell Squat": {
   "de": "Einbeinige Langhantel-Kniebeuge",
@@ -4995,25 +5357,27 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "One-Arm Side Deadlift": {
   "de": "Einarmiges seitliches Kreuzheben",
   "muscle": "quadriceps",
   "primary": [
-   "vastus_group",
-   "rectus_femoris"
+   "glute_max",
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "erector_spinae"
   ],
   "secondary": [
-   "glute_max",
    "adductors"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "why": "Hüftstrecken",
+  "sec_why": "Beine allgemein",
+  "mode": "kraft"
  },
  "Overhead Squat": {
   "de": "Überkopf-Kniebeuge",
@@ -5031,7 +5395,8 @@
    "rectus_abdominis"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Plie Dumbbell Squat": {
   "de": "Plié-Kniebeuge mit Kurzhantel",
@@ -5045,53 +5410,69 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Power Jerk": {
   "de": "Power Jerk",
   "muscle": "quadriceps",
   "primary": [
+   "glute_max",
    "vastus_group",
-   "rectus_femoris"
+   "erector_spinae",
+   "upper_traps",
+   "anterior_delt"
   ],
   "secondary": [
-   "glute_max",
-   "adductors"
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Beine allgemein",
+  "mode": "kraft"
  },
  "Power Snatch from Blocks": {
   "de": "Power Snatch von Blöcken",
   "muscle": "quadriceps",
   "primary": [
+   "glute_max",
    "vastus_group",
-   "rectus_femoris"
+   "erector_spinae",
+   "upper_traps"
   ],
   "secondary": [
-   "glute_max",
-   "adductors"
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Beine allgemein",
+  "mode": "kraft"
  },
  "Rear Leg Raises": {
   "de": "Beinheben nach hinten",
   "muscle": "quadriceps",
   "primary": [
-   "vastus_group",
-   "rectus_femoris"
+   "glute_max",
+   "lateral_hamstrings",
+   "medial_hamstrings"
   ],
   "secondary": [
-   "glute_max",
    "adductors"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "why": "Beinheben hinten",
+  "sec_why": "Beine allgemein",
+  "mode": "kraft"
  },
  "Reverse Band Box Squat": {
   "de": "Reverse-Band-Box-Kniebeuge",
@@ -5105,11 +5486,11 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Reverse Band Power Squat": {
   "de": "Reverse-Band-Power-Kniebeuge",
@@ -5123,95 +5504,118 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Rocket Jump": {
   "de": "Raketensprung",
   "muscle": "quadriceps",
   "primary": [
-   "vastus_group",
-   "rectus_femoris"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors"
+   "vastus_group",
+   "rectus_femoris",
+   "gastrocnemius",
+   "soleus"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "secondary": [],
+  "why": "Cardio/Sprung: Beine",
+  "sec_why": "Beine allgemein",
+  "mode": "cardio"
  },
  "Scissors Jump": {
   "de": "Scherensprung",
   "muscle": "quadriceps",
   "primary": [
-   "vastus_group",
-   "rectus_femoris"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors"
+   "vastus_group",
+   "rectus_femoris",
+   "gastrocnemius",
+   "soleus"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "secondary": [],
+  "why": "Cardio/Sprung: Beine",
+  "sec_why": "Beine allgemein",
+  "mode": "cardio"
  },
  "Single Leg Butt Kick": {
   "de": "Fersen-zum-Po-Kick (einbeinig)",
   "muscle": "quadriceps",
   "primary": [
-   "vastus_group",
-   "rectus_femoris"
-  ],
-  "secondary": [
+   "lateral_hamstrings",
+   "medial_hamstrings",
    "glute_max",
-   "adductors"
+   "gastrocnemius"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "secondary": [],
+  "why": "Cardio/Sprung: Beine",
+  "sec_why": "Beine allgemein",
+  "mode": "cardio"
  },
  "Snatch": {
   "de": "Reißen (Snatch)",
   "muscle": "quadriceps",
   "primary": [
+   "glute_max",
    "vastus_group",
-   "rectus_femoris"
+   "erector_spinae",
+   "upper_traps"
   ],
   "secondary": [
-   "glute_max",
-   "adductors"
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Beine allgemein",
+  "mode": "kraft"
  },
  "Snatch Balance": {
   "de": "Snatch Balance",
   "muscle": "quadriceps",
   "primary": [
+   "glute_max",
    "vastus_group",
-   "rectus_femoris"
+   "erector_spinae",
+   "upper_traps"
   ],
   "secondary": [
-   "glute_max",
-   "adductors"
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Beine allgemein",
+  "mode": "kraft"
  },
  "Snatch from Blocks": {
   "de": "Snatch von Blöcken",
   "muscle": "quadriceps",
   "primary": [
+   "glute_max",
    "vastus_group",
-   "rectus_femoris"
+   "erector_spinae",
+   "upper_traps"
   ],
   "secondary": [
-   "glute_max",
-   "adductors"
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Beine allgemein",
+  "mode": "kraft"
  },
  "Speed Box Squat": {
   "de": "Speed-Box-Kniebeuge",
@@ -5225,11 +5629,11 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Speed Squats": {
   "de": "Speed-Kniebeugen",
@@ -5243,53 +5647,69 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Split Clean": {
   "de": "Split Clean",
   "muscle": "quadriceps",
   "primary": [
+   "glute_max",
    "vastus_group",
-   "rectus_femoris"
+   "erector_spinae",
+   "upper_traps"
   ],
   "secondary": [
-   "glute_max",
-   "adductors"
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Beine allgemein",
+  "mode": "kraft"
  },
  "Split Jerk": {
   "de": "Split Jerk",
   "muscle": "quadriceps",
   "primary": [
+   "glute_max",
    "vastus_group",
-   "rectus_femoris"
+   "erector_spinae",
+   "upper_traps",
+   "anterior_delt"
   ],
   "secondary": [
-   "glute_max",
-   "adductors"
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Beine allgemein",
+  "mode": "kraft"
  },
  "Split Jump": {
   "de": "Split-Sprung",
   "muscle": "quadriceps",
   "primary": [
-   "vastus_group",
-   "rectus_femoris"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors"
+   "vastus_group",
+   "rectus_femoris",
+   "gastrocnemius",
+   "soleus"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "secondary": [],
+  "why": "Cardio/Sprung: Beine",
+  "sec_why": "Beine allgemein",
+  "mode": "cardio"
  },
  "Split Squat with Dumbbells": {
   "de": "Split-Kniebeuge mit Kurzhanteln",
@@ -5306,25 +5726,30 @@
    "lateral_hamstrings"
   ],
   "why": "Ausfallschritt → Quadrizeps + Gesäß",
-  "sec_why": "Ausfallschritt"
+  "sec_why": "Ausfallschritt",
+  "mode": "kraft"
  },
  "Squat Jerk": {
   "de": "Squat Jerk",
   "muscle": "quadriceps",
   "primary": [
+   "glute_max",
    "vastus_group",
-   "rectus_femoris"
+   "erector_spinae",
+   "upper_traps",
+   "anterior_delt"
   ],
   "secondary": [
-   "glute_max",
-   "adductors",
-   "erector_spinae",
    "lateral_hamstrings",
    "medial_hamstrings",
-   "rectus_abdominis"
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Squat with Bands": {
   "de": "Kniebeuge mit Bändern",
@@ -5338,11 +5763,11 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Squat with Chains": {
   "de": "Kniebeuge mit Ketten",
@@ -5356,11 +5781,11 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Squat with Plate Movers": {
   "de": "Kniebeuge mit Plate Movers",
@@ -5374,11 +5799,11 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Squats - With Bands": {
   "de": "Kniebeugen mit Bändern",
@@ -5392,39 +5817,41 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Standing Long Jump": {
   "de": "Standweitsprung",
   "muscle": "quadriceps",
   "primary": [
-   "vastus_group",
-   "rectus_femoris"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors"
+   "vastus_group",
+   "rectus_femoris",
+   "gastrocnemius",
+   "soleus"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "secondary": [],
+  "why": "Cardio/Sprung: Beine",
+  "sec_why": "Beine allgemein",
+  "mode": "cardio"
  },
  "Star Jump": {
   "de": "Hampelmann-Sprung (Star Jump)",
   "muscle": "quadriceps",
   "primary": [
-   "vastus_group",
-   "rectus_femoris"
-  ],
-  "secondary": [
    "glute_max",
-   "adductors"
+   "vastus_group",
+   "rectus_femoris",
+   "gastrocnemius",
+   "soleus"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Beine allgemein"
+  "secondary": [],
+  "why": "Cardio/Sprung: Beine",
+  "sec_why": "Beine allgemein",
+  "mode": "cardio"
  },
  "Weighted Jump Squat": {
   "de": "Sprung-Kniebeuge mit Gewicht",
@@ -5439,10 +5866,12 @@
    "erector_spinae",
    "lateral_hamstrings",
    "medial_hamstrings",
-   "rectus_abdominis"
+   "gastrocnemius",
+   "soleus"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Weighted Sissy Squat": {
   "de": "Sissy-Kniebeuge mit Gewicht",
@@ -5453,7 +5882,8 @@
   ],
   "secondary": [],
   "why": "Extension → Quadrizeps",
-  "sec_why": "Streckung isoliert"
+  "sec_why": "Streckung isoliert",
+  "mode": "kraft"
  },
  "Wide Stance Barbell Squat": {
   "de": "Langhantel-Kniebeuge mit weitem Stand",
@@ -5467,11 +5897,11 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Zercher Squats": {
   "de": "Zercher-Kniebeuge",
@@ -5485,11 +5915,11 @@
    "adductors",
    "erector_spinae",
    "lateral_hamstrings",
-   "medial_hamstrings",
-   "rectus_abdominis"
+   "medial_hamstrings"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kniebeuge"
+  "sec_why": "Kniebeuge",
+  "mode": "kraft"
  },
  "Alternating Cable Shoulder Press": {
   "de": "Kabel-Schulterdrücken im Wechsel",
@@ -5503,27 +5933,27 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Alternating Deltoid Raise": {
   "de": "Schulterheben im Wechsel",
   "muscle": "shoulders",
   "primary": [
-   "anterior_delt",
-   "lateral_delt"
+   "anterior_delt"
   ],
   "secondary": [
-   "triceps_long",
-   "triceps_lateral",
-   "triceps_medial",
+   "lateral_delt",
    "upper_traps",
-   "serratus_anterior"
+   "pec_major_upper"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "why": "Frontheben",
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Anti-Gravity Press": {
   "de": "Anti-Gravity Press",
@@ -5537,10 +5967,12 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Arnold Dumbbell Press": {
   "de": "Arnold Press",
@@ -5554,10 +5986,12 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Back Flyes - With Bands": {
   "de": "Reverse Flyes mit Bändern",
@@ -5572,7 +6006,8 @@
    "triceps_long"
   ],
   "why": "Rear/Face Pull → hintere Schulter",
-  "sec_why": "Hintere Schulter"
+  "sec_why": "Hintere Schulter",
+  "mode": "kraft"
  },
  "Band Pull Apart": {
   "de": "Band Pull Apart",
@@ -5587,7 +6022,8 @@
    "triceps_long"
   ],
   "why": "Rear/Face Pull → hintere Schulter",
-  "sec_why": "Hintere Schulter"
+  "sec_why": "Hintere Schulter",
+  "mode": "kraft"
  },
  "Barbell Incline Shoulder Raise": {
   "de": "Langhantel-Schrägbank-Schulterheben",
@@ -5604,7 +6040,8 @@
    "serratus_anterior"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Barbell Rear Delt Row": {
   "de": "Langhantel-Rudern für hintere Schulter",
@@ -5618,8 +6055,9 @@
    "rotator_cuff",
    "triceps_long"
   ],
-  "why": "Rear/Face Pull → hintere Schulter",
-  "sec_why": "Hintere Schulter"
+  "why": "Hintere Schulter",
+  "sec_why": "Hintere Schulter",
+  "mode": "kraft"
  },
  "Barbell Shoulder Press": {
   "de": "Langhantel-Schulterdrücken",
@@ -5633,10 +6071,12 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Bent Over Dumbbell Rear Delt Raise With Head On Bench": {
   "de": "Hintere Schulter vorgebeugt (Kopf auf Bank)",
@@ -5650,21 +6090,25 @@
    "rotator_cuff",
    "triceps_long"
   ],
-  "why": "Rear/Face Pull → hintere Schulter",
-  "sec_why": "Hintere Schulter"
+  "why": "Hintere Schulter",
+  "sec_why": "Hintere Schulter",
+  "mode": "kraft"
  },
  "Bent Over Low-Pulley Side Lateral": {
   "de": "Seitheben vorgebeugt am tiefen Kabel",
   "muscle": "shoulders",
   "primary": [
-   "lateral_delt"
+   "posterior_delt"
   ],
   "secondary": [
-   "upper_traps",
-   "anterior_delt"
+   "rhomboids",
+   "mid_traps",
+   "rotator_cuff",
+   "triceps_long"
   ],
-  "why": "Seitheben → seitliche Schulter",
-  "sec_why": "Seitheben"
+  "why": "Hintere Schulter",
+  "sec_why": "Seitheben",
+  "mode": "kraft"
  },
  "Bradford/Rocky Presses": {
   "de": "Bradford-Press",
@@ -5678,10 +6122,12 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Cable Internal Rotation": {
   "de": "Innenrotation am Kabel",
@@ -5693,7 +6139,8 @@
    "posterior_delt"
   ],
   "why": "Rotation → Rotatorenmanschette",
-  "sec_why": "Rotation"
+  "sec_why": "Rotation",
+  "mode": "kraft"
  },
  "Cable Rear Delt Fly": {
   "de": "Kabel-Reverse-Fly",
@@ -5707,8 +6154,9 @@
    "rotator_cuff",
    "triceps_long"
   ],
-  "why": "Rear/Face Pull → hintere Schulter",
-  "sec_why": "Hintere Schulter"
+  "why": "Hintere Schulter",
+  "sec_why": "Hintere Schulter",
+  "mode": "kraft"
  },
  "Cable Rope Rear-Delt Rows": {
   "de": "Seil-Rudern für hintere Schulter",
@@ -5722,8 +6170,9 @@
    "rotator_cuff",
    "triceps_long"
   ],
-  "why": "Rear/Face Pull → hintere Schulter",
-  "sec_why": "Hintere Schulter"
+  "why": "Hintere Schulter",
+  "sec_why": "Hintere Schulter",
+  "mode": "kraft"
  },
  "Cable Seated Lateral Raise": {
   "de": "Sitzendes Kabel-Seitheben",
@@ -5736,7 +6185,8 @@
    "anterior_delt"
   ],
   "why": "Seitheben → seitliche Schulter",
-  "sec_why": "Seitheben"
+  "sec_why": "Seitheben",
+  "mode": "kraft"
  },
  "Cable Shoulder Press": {
   "de": "Kabel-Schulterdrücken",
@@ -5750,10 +6200,12 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Car Drivers": {
   "de": "Car Drivers",
@@ -5770,41 +6222,52 @@
    "serratus_anterior"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Clean and Jerk": {
   "de": "Umsetzen und Stoßen",
   "muscle": "shoulders",
   "primary": [
-   "anterior_delt",
-   "lateral_delt"
+   "glute_max",
+   "vastus_group",
+   "erector_spinae",
+   "upper_traps",
+   "anterior_delt"
   ],
   "secondary": [
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
    "triceps_long",
    "triceps_lateral",
-   "triceps_medial",
-   "upper_traps",
-   "serratus_anterior"
+   "triceps_medial"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Clean and Press": {
   "de": "Umsetzen und Drücken",
   "muscle": "shoulders",
   "primary": [
-   "anterior_delt",
-   "lateral_delt"
+   "glute_max",
+   "vastus_group",
+   "erector_spinae",
+   "upper_traps",
+   "anterior_delt"
   ],
   "secondary": [
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
    "triceps_long",
    "triceps_lateral",
-   "triceps_medial",
-   "upper_traps",
-   "serratus_anterior"
+   "triceps_medial"
   ],
-  "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Cuban Press": {
   "de": "Cuban Press",
@@ -5816,7 +6279,8 @@
    "posterior_delt"
   ],
   "why": "Rotation → Rotatorenmanschette",
-  "sec_why": "Rotation"
+  "sec_why": "Rotation",
+  "mode": "kraft"
  },
  "Dumbbell Incline Shoulder Raise": {
   "de": "Kurzhantel-Schrägbank-Schulterheben",
@@ -5833,33 +6297,40 @@
    "serratus_anterior"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Dumbbell Lying One-Arm Rear Lateral Raise": {
   "de": "Einarmiges Reverse-Heben liegend",
   "muscle": "shoulders",
   "primary": [
-   "lateral_delt"
+   "posterior_delt"
   ],
   "secondary": [
-   "upper_traps",
-   "anterior_delt"
+   "rhomboids",
+   "mid_traps",
+   "rotator_cuff",
+   "triceps_long"
   ],
-  "why": "Seitheben → seitliche Schulter",
-  "sec_why": "Seitheben"
+  "why": "Hintere Schulter",
+  "sec_why": "Seitheben",
+  "mode": "kraft"
  },
  "Dumbbell Lying Rear Lateral Raise": {
   "de": "Reverse-Heben liegend",
   "muscle": "shoulders",
   "primary": [
-   "lateral_delt"
+   "posterior_delt"
   ],
   "secondary": [
-   "upper_traps",
-   "anterior_delt"
+   "rhomboids",
+   "mid_traps",
+   "rotator_cuff",
+   "triceps_long"
   ],
-  "why": "Seitheben → seitliche Schulter",
-  "sec_why": "Seitheben"
+  "why": "Hintere Schulter",
+  "sec_why": "Seitheben",
+  "mode": "kraft"
  },
  "Dumbbell One-Arm Shoulder Press": {
   "de": "Einarmiges Kurzhantel-Schulterdrücken",
@@ -5873,41 +6344,43 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Dumbbell One-Arm Upright Row": {
   "de": "Einarmiges Kurzhantel-Aufrechtrudern",
   "muscle": "shoulders",
   "primary": [
-   "lateral_delt"
+   "lateral_delt",
+   "upper_traps"
   ],
   "secondary": [
-   "upper_traps",
    "biceps",
-   "forearm_flexors"
+   "forearm_flexors",
+   "rhomboids"
   ],
-  "why": "Seitheben → seitliche Schulter",
-  "sec_why": "Aufrechtes Rudern"
+  "why": "Aufrechtes Rudern",
+  "sec_why": "Aufrechtes Rudern",
+  "mode": "kraft"
  },
  "Dumbbell Raise": {
   "de": "Kurzhantel-Heben",
   "muscle": "shoulders",
   "primary": [
-   "anterior_delt",
-   "lateral_delt"
+   "anterior_delt"
   ],
   "secondary": [
-   "triceps_long",
-   "triceps_lateral",
-   "triceps_medial",
+   "lateral_delt",
    "upper_traps",
-   "serratus_anterior"
+   "pec_major_upper"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "why": "Frontheben",
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Dumbbell Scaption": {
   "de": "Scaption mit Kurzhanteln",
@@ -5924,7 +6397,8 @@
    "serratus_anterior"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Dumbbell Shoulder Press": {
   "de": "Kurzhantel-Schulterdrücken",
@@ -5938,10 +6412,12 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "External Rotation": {
   "de": "Außenrotation",
@@ -5953,7 +6429,8 @@
    "posterior_delt"
   ],
   "why": "Rotation → Rotatorenmanschette",
-  "sec_why": "Rotation"
+  "sec_why": "Rotation",
+  "mode": "kraft"
  },
  "External Rotation with Band": {
   "de": "Außenrotation mit Band",
@@ -5965,7 +6442,8 @@
    "posterior_delt"
   ],
   "why": "Rotation → Rotatorenmanschette",
-  "sec_why": "Rotation"
+  "sec_why": "Rotation",
+  "mode": "kraft"
  },
  "External Rotation with Cable": {
   "de": "Außenrotation am Kabel",
@@ -5977,7 +6455,8 @@
    "posterior_delt"
   ],
   "why": "Rotation → Rotatorenmanschette",
-  "sec_why": "Rotation"
+  "sec_why": "Rotation",
+  "mode": "kraft"
  },
  "Face Pull": {
   "de": "Face Pull",
@@ -5992,75 +6471,68 @@
    "triceps_long"
   ],
   "why": "Rear/Face Pull → hintere Schulter",
-  "sec_why": "Hintere Schulter"
+  "sec_why": "Hintere Schulter",
+  "mode": "kraft"
  },
  "Front Cable Raise": {
   "de": "Kabel-Frontheben",
   "muscle": "shoulders",
   "primary": [
-   "anterior_delt",
-   "lateral_delt"
+   "anterior_delt"
   ],
   "secondary": [
-   "triceps_long",
-   "triceps_lateral",
-   "triceps_medial",
+   "lateral_delt",
    "upper_traps",
-   "serratus_anterior"
+   "pec_major_upper"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "why": "Frontheben",
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Front Dumbbell Raise": {
   "de": "Kurzhantel-Frontheben",
   "muscle": "shoulders",
   "primary": [
-   "anterior_delt",
-   "lateral_delt"
+   "anterior_delt"
   ],
   "secondary": [
-   "triceps_long",
-   "triceps_lateral",
-   "triceps_medial",
+   "lateral_delt",
    "upper_traps",
-   "serratus_anterior"
+   "pec_major_upper"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "why": "Frontheben",
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Front Incline Dumbbell Raise": {
   "de": "Frontheben an der Schrägbank",
   "muscle": "shoulders",
   "primary": [
-   "anterior_delt",
-   "lateral_delt"
+   "anterior_delt"
   ],
   "secondary": [
-   "triceps_long",
-   "triceps_lateral",
-   "triceps_medial",
+   "lateral_delt",
    "upper_traps",
-   "serratus_anterior"
+   "pec_major_upper"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "why": "Frontheben",
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Front Two-Dumbbell Raise": {
   "de": "Frontheben mit zwei Kurzhanteln",
   "muscle": "shoulders",
   "primary": [
-   "anterior_delt",
-   "lateral_delt"
+   "anterior_delt"
   ],
   "secondary": [
-   "triceps_long",
-   "triceps_lateral",
-   "triceps_medial",
+   "lateral_delt",
    "upper_traps",
-   "serratus_anterior"
+   "pec_major_upper"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "why": "Frontheben",
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Handstand Push-Ups": {
   "de": "Handstand-Liegestütze",
@@ -6077,7 +6549,8 @@
    "serratus_anterior"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Internal Rotation with Band": {
   "de": "Innenrotation mit Band",
@@ -6089,7 +6562,8 @@
    "posterior_delt"
   ],
   "why": "Rotation → Rotatorenmanschette",
-  "sec_why": "Rotation"
+  "sec_why": "Rotation",
+  "mode": "kraft"
  },
  "Iron Cross": {
   "de": "Iron Cross",
@@ -6106,24 +6580,30 @@
    "serratus_anterior"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Jerk Balance": {
   "de": "Jerk Balance",
   "muscle": "shoulders",
   "primary": [
-   "anterior_delt",
-   "lateral_delt"
+   "glute_max",
+   "vastus_group",
+   "erector_spinae",
+   "upper_traps",
+   "anterior_delt"
   ],
   "secondary": [
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
    "triceps_long",
    "triceps_lateral",
-   "triceps_medial",
-   "upper_traps",
-   "serratus_anterior"
+   "triceps_medial"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Landmine Linear Jammer": {
   "de": "Landmine-Jammer",
@@ -6140,7 +6620,8 @@
    "serratus_anterior"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Lateral Raise - With Bands": {
   "de": "Seitheben mit Bändern",
@@ -6153,24 +6634,25 @@
    "anterior_delt"
   ],
   "why": "Seitheben → seitliche Schulter",
-  "sec_why": "Seitheben"
+  "sec_why": "Seitheben",
+  "mode": "kraft"
  },
  "Low Pulley Row To Neck": {
   "de": "Rudern zum Nacken am tiefen Kabel",
   "muscle": "shoulders",
   "primary": [
-   "anterior_delt",
-   "lateral_delt"
+   "posterior_delt",
+   "upper_traps",
+   "mid_traps"
   ],
   "secondary": [
-   "triceps_long",
-   "triceps_lateral",
-   "triceps_medial",
-   "upper_traps",
-   "serratus_anterior"
+   "rhomboids",
+   "rotator_cuff",
+   "triceps_long"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "why": "Hintere Schulter",
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Lying One-Arm Lateral Raise": {
   "de": "Einarmiges Seitheben liegend",
@@ -6183,7 +6665,8 @@
    "anterior_delt"
   ],
   "why": "Seitheben → seitliche Schulter",
-  "sec_why": "Seitheben"
+  "sec_why": "Seitheben",
+  "mode": "kraft"
  },
  "Lying Rear Delt Raise": {
   "de": "Hintere Schulter liegend",
@@ -6197,8 +6680,9 @@
    "rotator_cuff",
    "triceps_long"
   ],
-  "why": "Rear/Face Pull → hintere Schulter",
-  "sec_why": "Hintere Schulter"
+  "why": "Hintere Schulter",
+  "sec_why": "Hintere Schulter",
+  "mode": "kraft"
  },
  "One-Arm Incline Lateral Raise": {
   "de": "Einarmiges Seitheben an der Schrägbank",
@@ -6211,7 +6695,8 @@
    "anterior_delt"
   ],
   "why": "Seitheben → seitliche Schulter",
-  "sec_why": "Seitheben"
+  "sec_why": "Seitheben",
+  "mode": "kraft"
  },
  "One-Arm Side Laterals": {
   "de": "Einarmiges Seitheben",
@@ -6224,7 +6709,8 @@
    "anterior_delt"
   ],
   "why": "Seitheben → seitliche Schulter",
-  "sec_why": "Seitheben"
+  "sec_why": "Seitheben",
+  "mode": "kraft"
  },
  "Power Partials": {
   "de": "Power Partials",
@@ -6241,41 +6727,52 @@
    "serratus_anterior"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Push Press": {
   "de": "Push Press",
   "muscle": "shoulders",
   "primary": [
-   "anterior_delt",
-   "lateral_delt"
+   "glute_max",
+   "vastus_group",
+   "erector_spinae",
+   "upper_traps",
+   "anterior_delt"
   ],
   "secondary": [
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
    "triceps_long",
    "triceps_lateral",
-   "triceps_medial",
-   "upper_traps",
-   "serratus_anterior"
+   "triceps_medial"
   ],
-  "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Push Press - Behind the Neck": {
   "de": "Push Press hinter dem Nacken",
   "muscle": "shoulders",
   "primary": [
-   "anterior_delt",
-   "lateral_delt"
+   "glute_max",
+   "vastus_group",
+   "erector_spinae",
+   "upper_traps",
+   "anterior_delt"
   ],
   "secondary": [
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
    "triceps_long",
    "triceps_lateral",
-   "triceps_medial",
-   "upper_traps",
-   "serratus_anterior"
+   "triceps_medial"
   ],
-  "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Rack Delivery": {
   "de": "Rack Delivery",
@@ -6292,7 +6789,8 @@
    "serratus_anterior"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Reverse Flyes": {
   "de": "Reverse Flyes",
@@ -6307,7 +6805,8 @@
    "triceps_long"
   ],
   "why": "Rear/Face Pull → hintere Schulter",
-  "sec_why": "Hintere Schulter"
+  "sec_why": "Hintere Schulter",
+  "mode": "kraft"
  },
  "Reverse Flyes With External Rotation": {
   "de": "Reverse Flyes mit Außenrotation",
@@ -6322,7 +6821,8 @@
    "triceps_long"
   ],
   "why": "Rear/Face Pull → hintere Schulter",
-  "sec_why": "Hintere Schulter"
+  "sec_why": "Hintere Schulter",
+  "mode": "kraft"
  },
  "Seated Barbell Military Press": {
   "de": "Sitzendes Langhantel-Military-Press",
@@ -6336,10 +6836,12 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Seated Bent-Over Rear Delt Raise": {
   "de": "Sitzendes vorgebeugtes Reverse-Heben",
@@ -6353,8 +6855,9 @@
    "rotator_cuff",
    "triceps_long"
   ],
-  "why": "Rear/Face Pull → hintere Schulter",
-  "sec_why": "Hintere Schulter"
+  "why": "Hintere Schulter",
+  "sec_why": "Hintere Schulter",
+  "mode": "kraft"
  },
  "Seated Cable Shoulder Press": {
   "de": "Sitzendes Kabel-Schulterdrücken",
@@ -6368,10 +6871,12 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Seated Dumbbell Press": {
   "de": "Sitzendes Kurzhantel-Schulterdrücken",
@@ -6385,27 +6890,23 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Seated Front Deltoid": {
   "de": "Vordere-Schulter-Dehnung (sitzend)",
   "muscle": "shoulders",
   "primary": [
-   "anterior_delt",
-   "lateral_delt"
+   "anterior_delt"
   ],
-  "secondary": [
-   "triceps_long",
-   "triceps_lateral",
-   "triceps_medial",
-   "upper_traps",
-   "serratus_anterior"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "secondary": [],
+  "why": "Dehnung: gedehnter Muskel",
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "stretch"
  },
  "Seated Side Lateral Raise": {
   "de": "Sitzendes Seitheben",
@@ -6418,7 +6919,8 @@
    "anterior_delt"
   ],
   "why": "Seitheben → seitliche Schulter",
-  "sec_why": "Seitheben"
+  "sec_why": "Seitheben",
+  "mode": "kraft"
  },
  "See-Saw Press (Alternating Side Press)": {
   "de": "See-Saw-Press (Wechsel)",
@@ -6432,10 +6934,12 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Shoulder Press - With Bands": {
   "de": "Schulterdrücken mit Bändern",
@@ -6449,10 +6953,12 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Side Lateral Raise": {
   "de": "Seitheben",
@@ -6465,7 +6971,8 @@
    "anterior_delt"
   ],
   "why": "Seitheben → seitliche Schulter",
-  "sec_why": "Seitheben"
+  "sec_why": "Seitheben",
+  "mode": "kraft"
  },
  "Side Laterals to Front Raise": {
   "de": "Seitheben zu Frontheben",
@@ -6478,24 +6985,23 @@
    "anterior_delt"
   ],
   "why": "Seitheben → seitliche Schulter",
-  "sec_why": "Seitheben"
+  "sec_why": "Seitheben",
+  "mode": "kraft"
  },
  "Single Dumbbell Raise": {
   "de": "Einzelhantel-Heben",
   "muscle": "shoulders",
   "primary": [
-   "anterior_delt",
-   "lateral_delt"
+   "anterior_delt"
   ],
   "secondary": [
-   "triceps_long",
-   "triceps_lateral",
-   "triceps_medial",
+   "lateral_delt",
    "upper_traps",
-   "serratus_anterior"
+   "pec_major_upper"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "why": "Frontheben",
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Single-Arm Linear Jammer": {
   "de": "Einarmiger Landmine-Jammer",
@@ -6512,7 +7018,8 @@
    "serratus_anterior"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Smith Incline Shoulder Raise": {
   "de": "Smith-Schrägbank-Schulterheben",
@@ -6529,7 +7036,8 @@
    "serratus_anterior"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Standing Alternating Dumbbell Press": {
   "de": "Stehendes Kurzhantel-Drücken im Wechsel",
@@ -6543,10 +7051,12 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Standing Barbell Press Behind Neck": {
   "de": "Stehendes Nackendrücken mit Langhantel",
@@ -6560,10 +7070,12 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Standing Bradford Press": {
   "de": "Stehender Bradford-Press",
@@ -6577,10 +7089,12 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Standing Dumbbell Press": {
   "de": "Stehendes Kurzhantel-Schulterdrücken",
@@ -6594,44 +7108,42 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Standing Dumbbell Straight-Arm Front Delt Raise Above Head": {
   "de": "Stehendes Frontheben über Kopf (Kurzhanteln)",
   "muscle": "shoulders",
   "primary": [
-   "anterior_delt",
-   "lateral_delt"
+   "anterior_delt"
   ],
   "secondary": [
-   "triceps_long",
-   "triceps_lateral",
-   "triceps_medial",
+   "lateral_delt",
    "upper_traps",
-   "serratus_anterior"
+   "pec_major_upper"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "why": "Frontheben",
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Standing Front Barbell Raise Over Head": {
   "de": "Stehendes Langhantel-Frontheben über Kopf",
   "muscle": "shoulders",
   "primary": [
-   "anterior_delt",
-   "lateral_delt"
+   "anterior_delt"
   ],
   "secondary": [
-   "triceps_long",
-   "triceps_lateral",
-   "triceps_medial",
+   "lateral_delt",
    "upper_traps",
-   "serratus_anterior"
+   "pec_major_upper"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "why": "Frontheben",
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Standing Low-Pulley Deltoid Raise": {
   "de": "Stehendes Schulterheben am tiefen Kabel",
@@ -6648,7 +7160,8 @@
    "serratus_anterior"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Standing Military Press": {
   "de": "Stehendes Military Press",
@@ -6662,10 +7175,12 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Standing Palm-In One-Arm Dumbbell Press": {
   "de": "Stehendes einarmiges Kurzhantel-Drücken (Handfläche innen)",
@@ -6679,10 +7194,12 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Standing Palms-In Dumbbell Press": {
   "de": "Stehendes Kurzhantel-Drücken (Handflächen innen)",
@@ -6696,41 +7213,43 @@
    "triceps_lateral",
    "triceps_medial",
    "upper_traps",
-   "serratus_anterior"
+   "serratus_anterior",
+   "pec_major_upper"
   ],
   "why": "Pressen → vordere + seitliche Schulter",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Straight Raises on Incline Bench": {
   "de": "Gerades Heben an der Schrägbank",
   "muscle": "shoulders",
   "primary": [
-   "anterior_delt",
-   "lateral_delt"
+   "anterior_delt"
   ],
   "secondary": [
-   "triceps_long",
-   "triceps_lateral",
-   "triceps_medial",
+   "lateral_delt",
    "upper_traps",
-   "serratus_anterior"
+   "pec_major_upper"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "why": "Frontheben",
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "kraft"
  },
  "Upright Barbell Row": {
   "de": "Langhantel-Aufrechtrudern",
   "muscle": "shoulders",
   "primary": [
-   "lateral_delt"
+   "lateral_delt",
+   "upper_traps"
   ],
   "secondary": [
-   "upper_traps",
    "biceps",
-   "forearm_flexors"
+   "forearm_flexors",
+   "rhomboids"
   ],
-  "why": "Seitheben → seitliche Schulter",
-  "sec_why": "Aufrechtes Rudern"
+  "why": "Aufrechtes Rudern",
+  "sec_why": "Aufrechtes Rudern",
+  "mode": "kraft"
  },
  "Barbell Shrug": {
   "de": "Langhantel-Shrugs",
@@ -6744,7 +7263,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trapez / Shrug"
+  "sec_why": "Trapez / Shrug",
+  "mode": "kraft"
  },
  "Barbell Shrug Behind The Back": {
   "de": "Langhantel-Shrugs hinter dem Rücken",
@@ -6758,7 +7278,8 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trapez / Shrug"
+  "sec_why": "Trapez / Shrug",
+  "mode": "kraft"
  },
  "Cable Shrugs": {
   "de": "Kabel-Shrugs",
@@ -6772,21 +7293,29 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trapez / Shrug"
+  "sec_why": "Trapez / Shrug",
+  "mode": "kraft"
  },
  "Clean Shrug": {
   "de": "Clean Shrug",
   "muscle": "traps",
   "primary": [
+   "glute_max",
+   "vastus_group",
+   "erector_spinae",
    "upper_traps"
   ],
   "secondary": [
-   "rhomboids",
-   "mid_traps",
-   "forearm_flexors"
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trapez / Shrug"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Trapez / Shrug",
+  "mode": "kraft"
  },
  "Dumbbell Shrug": {
   "de": "Kurzhantel-Shrugs",
@@ -6800,63 +7329,77 @@
    "forearm_flexors"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trapez / Shrug"
+  "sec_why": "Trapez / Shrug",
+  "mode": "kraft"
  },
  "Snatch Shrug": {
   "de": "Snatch Shrug",
   "muscle": "traps",
   "primary": [
+   "glute_max",
+   "vastus_group",
+   "erector_spinae",
    "upper_traps"
   ],
   "secondary": [
-   "rhomboids",
-   "mid_traps",
-   "forearm_flexors"
+   "lateral_hamstrings",
+   "medial_hamstrings",
+   "forearm_flexors",
+   "triceps_long",
+   "triceps_lateral",
+   "triceps_medial"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trapez / Shrug"
+  "why": "Olympisch: Ganzkörper-Zug",
+  "sec_why": "Trapez / Shrug",
+  "mode": "kraft"
  },
  "Standing Dumbbell Upright Row": {
   "de": "Kurzhantel-Aufrechtrudern",
   "muscle": "traps",
   "primary": [
-   "upper_traps"
+   "upper_traps",
+   "lateral_delt"
   ],
   "secondary": [
    "rhomboids",
    "forearm_flexors",
-   "lateral_delt"
+   "biceps"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trapez / Shrug"
+  "sec_why": "Trapez / Shrug",
+  "mode": "kraft"
  },
  "Upright Cable Row": {
   "de": "Kabel-Aufrechtrudern",
   "muscle": "traps",
   "primary": [
-   "upper_traps"
+   "upper_traps",
+   "lateral_delt"
   ],
   "secondary": [
    "rhomboids",
    "forearm_flexors",
-   "lateral_delt"
+   "biceps"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trapez / Shrug"
+  "sec_why": "Trapez / Shrug",
+  "mode": "kraft"
  },
  "Upright Row - With Bands": {
   "de": "Aufrechtrudern mit Bändern",
   "muscle": "traps",
   "primary": [
-   "upper_traps"
+   "upper_traps",
+   "lateral_delt"
   ],
   "secondary": [
    "rhomboids",
    "forearm_flexors",
-   "lateral_delt"
+   "biceps"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trapez / Shrug"
+  "sec_why": "Trapez / Shrug",
+  "mode": "kraft"
  },
  "Band Skull Crusher": {
   "de": "Skull Crusher mit Band",
@@ -6869,8 +7412,9 @@
   "secondary": [
    "forearm_extensors"
   ],
-  "why": "Trizeps (Overhead betont langen Kopf)",
-  "sec_why": "Strecken"
+  "why": "Trizeps (langer Kopf betont)",
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Bench Dips": {
   "de": "Bankdrücken-Dips (Bench Dips)",
@@ -6885,7 +7429,8 @@
    "anterior_delt"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Enge Pressen/Dips"
+  "sec_why": "Enge Pressen/Dips",
+  "mode": "kraft"
  },
  "Bench Press - Powerlifting": {
   "de": "Bankdrücken (Powerlifting)",
@@ -6896,11 +7441,13 @@
    "triceps_medial"
   ],
   "secondary": [
-   "anterior_delt",
-   "pec_major_lower"
+   "pec_major_upper",
+   "pec_major_lower",
+   "anterior_delt"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trizeps allgemein"
+  "sec_why": "Trizeps allgemein",
+  "mode": "kraft"
  },
  "Bench Press with Chains": {
   "de": "Bankdrücken mit Ketten",
@@ -6915,7 +7462,8 @@
    "pec_major_lower"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trizeps allgemein"
+  "sec_why": "Trizeps allgemein",
+  "mode": "kraft"
  },
  "Board Press": {
   "de": "Board Press",
@@ -6926,11 +7474,13 @@
    "triceps_medial"
   ],
   "secondary": [
-   "anterior_delt",
-   "pec_major_lower"
+   "pec_major_upper",
+   "pec_major_lower",
+   "anterior_delt"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trizeps allgemein"
+  "sec_why": "Trizeps allgemein",
+  "mode": "kraft"
  },
  "Body Tricep Press": {
   "de": "Körper-Trizepsdrücken",
@@ -6945,7 +7495,8 @@
    "pec_major_lower"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trizeps allgemein"
+  "sec_why": "Trizeps allgemein",
+  "mode": "kraft"
  },
  "Body-Up": {
   "de": "Body-Up",
@@ -6960,7 +7511,8 @@
    "pec_major_lower"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trizeps allgemein"
+  "sec_why": "Trizeps allgemein",
+  "mode": "kraft"
  },
  "Cable Incline Triceps Extension": {
   "de": "Kabel-Trizepsstrecken an der Schrägbank",
@@ -6970,11 +7522,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "secondary": [],
+  "why": "Trizeps (langer Kopf betont)",
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Cable Lying Triceps Extension": {
   "de": "Kabel-Trizepsstrecken liegend",
@@ -6984,11 +7535,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Trizeps (Overhead betont langen Kopf)",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Cable One Arm Tricep Extension": {
   "de": "Einarmiges Kabel-Trizepsstrecken",
@@ -6998,11 +7548,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Cable Rope Overhead Triceps Extension": {
   "de": "Kabel-Trizepsstrecken über Kopf (Seil)",
@@ -7012,11 +7561,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
-  "why": "Trizeps (Overhead betont langen Kopf)",
-  "sec_why": "Strecken"
+  "secondary": [],
+  "why": "Trizeps (langer Kopf betont)",
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Close-Grip Barbell Bench Press": {
   "de": "Enges Langhantel-Bankdrücken",
@@ -7027,11 +7575,13 @@
    "triceps_medial"
   ],
   "secondary": [
+   "pec_major_upper",
    "pec_major_lower",
    "anterior_delt"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Enge Pressen/Dips"
+  "sec_why": "Enge Pressen/Dips",
+  "mode": "kraft"
  },
  "Close-Grip Dumbbell Press": {
   "de": "Enges Kurzhantel-Drücken",
@@ -7042,11 +7592,13 @@
    "triceps_medial"
   ],
   "secondary": [
+   "pec_major_upper",
    "pec_major_lower",
    "anterior_delt"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Enge Pressen/Dips"
+  "sec_why": "Enge Pressen/Dips",
+  "mode": "kraft"
  },
  "Close-Grip EZ-Bar Press": {
   "de": "Enges SZ-Stangen-Drücken",
@@ -7057,11 +7609,13 @@
    "triceps_medial"
   ],
   "secondary": [
+   "pec_major_upper",
    "pec_major_lower",
    "anterior_delt"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Enge Pressen/Dips"
+  "sec_why": "Enge Pressen/Dips",
+  "mode": "kraft"
  },
  "Close-Grip Push-Up off of a Dumbbell": {
   "de": "Enge Liegestütze auf Kurzhantel",
@@ -7072,11 +7626,13 @@
    "triceps_medial"
   ],
   "secondary": [
+   "pec_major_upper",
    "pec_major_lower",
    "anterior_delt"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Enge Pressen/Dips"
+  "sec_why": "Enge Pressen/Dips",
+  "mode": "kraft"
  },
  "Decline Close-Grip Bench To Skull Crusher": {
   "de": "Enges Negativbankdrücken zu Skull Crusher",
@@ -7087,11 +7643,13 @@
    "triceps_medial"
   ],
   "secondary": [
+   "pec_major_upper",
    "pec_major_lower",
    "anterior_delt"
   ],
-  "why": "Trizeps (Overhead betont langen Kopf)",
-  "sec_why": "Enge Pressen/Dips"
+  "why": "Trizeps (langer Kopf betont)",
+  "sec_why": "Enge Pressen/Dips",
+  "mode": "kraft"
  },
  "Decline Dumbbell Triceps Extension": {
   "de": "Negativbank-Kurzhantel-Trizepsstrecken",
@@ -7101,11 +7659,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Decline EZ Bar Triceps Extension": {
   "de": "Negativbank-SZ-Stangen-Trizepsstrecken",
@@ -7115,11 +7672,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Dips - Triceps Version": {
   "de": "Dips (Trizeps)",
@@ -7134,7 +7690,8 @@
    "anterior_delt"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Enge Pressen/Dips"
+  "sec_why": "Enge Pressen/Dips",
+  "mode": "kraft"
  },
  "Dumbbell Floor Press": {
   "de": "Kurzhantel-Floor-Press",
@@ -7145,11 +7702,13 @@
    "triceps_medial"
   ],
   "secondary": [
-   "anterior_delt",
-   "pec_major_lower"
+   "pec_major_upper",
+   "pec_major_lower",
+   "anterior_delt"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trizeps allgemein"
+  "sec_why": "Trizeps allgemein",
+  "mode": "kraft"
  },
  "Dumbbell One-Arm Triceps Extension": {
   "de": "Einarmiges Kurzhantel-Trizepsstrecken",
@@ -7159,11 +7718,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Dumbbell Tricep Extension -Pronated Grip": {
   "de": "Kurzhantel-Trizepsstrecken (Obergriff)",
@@ -7173,11 +7731,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "EZ-Bar Skullcrusher": {
   "de": "SZ-Stangen-Skull-Crusher",
@@ -7190,8 +7747,9 @@
   "secondary": [
    "forearm_extensors"
   ],
-  "why": "Trizeps (Overhead betont langen Kopf)",
-  "sec_why": "Strecken"
+  "why": "Trizeps (langer Kopf betont)",
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Floor Press": {
   "de": "Floor Press",
@@ -7202,11 +7760,13 @@
    "triceps_medial"
   ],
   "secondary": [
-   "anterior_delt",
-   "pec_major_lower"
+   "pec_major_upper",
+   "pec_major_lower",
+   "anterior_delt"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trizeps allgemein"
+  "sec_why": "Trizeps allgemein",
+  "mode": "kraft"
  },
  "Floor Press with Chains": {
   "de": "Floor Press mit Ketten",
@@ -7217,11 +7777,13 @@
    "triceps_medial"
   ],
   "secondary": [
-   "anterior_delt",
-   "pec_major_lower"
+   "pec_major_upper",
+   "pec_major_lower",
+   "anterior_delt"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trizeps allgemein"
+  "sec_why": "Trizeps allgemein",
+  "mode": "kraft"
  },
  "Incline Barbell Triceps Extension": {
   "de": "Schrägbank-Langhantel-Trizepsstrecken",
@@ -7231,11 +7793,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "secondary": [],
+  "why": "Trizeps (langer Kopf betont)",
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Incline Push-Up Close-Grip": {
   "de": "Schräge enge Liegestütze",
@@ -7246,11 +7807,13 @@
    "triceps_medial"
   ],
   "secondary": [
+   "pec_major_upper",
    "pec_major_lower",
    "anterior_delt"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Enge Pressen/Dips"
+  "why": "Trizeps (langer Kopf betont)",
+  "sec_why": "Enge Pressen/Dips",
+  "mode": "kraft"
  },
  "JM Press": {
   "de": "JM Press",
@@ -7261,11 +7824,13 @@
    "triceps_medial"
   ],
   "secondary": [
-   "anterior_delt",
-   "pec_major_lower"
+   "pec_major_upper",
+   "pec_major_lower",
+   "anterior_delt"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trizeps allgemein"
+  "sec_why": "Trizeps allgemein",
+  "mode": "kraft"
  },
  "Kneeling Cable Triceps Extension": {
   "de": "Kniendes Kabel-Trizepsstrecken",
@@ -7275,11 +7840,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Low Cable Triceps Extension": {
   "de": "Trizepsstrecken am tiefen Kabel",
@@ -7289,11 +7853,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Lying Close-Grip Barbell Triceps Extension Behind The Head": {
   "de": "Liegendes enges Langhantel-Trizepsstrecken hinter den Kopf",
@@ -7304,11 +7867,13 @@
    "triceps_medial"
   ],
   "secondary": [
+   "pec_major_upper",
    "pec_major_lower",
    "anterior_delt"
   ],
   "why": "Trizeps (Overhead betont langen Kopf)",
-  "sec_why": "Enge Pressen/Dips"
+  "sec_why": "Enge Pressen/Dips",
+  "mode": "kraft"
  },
  "Lying Close-Grip Barbell Triceps Press To Chin": {
   "de": "Liegendes enges Langhantel-Trizepsdrücken zum Kinn",
@@ -7319,11 +7884,13 @@
    "triceps_medial"
   ],
   "secondary": [
+   "pec_major_upper",
    "pec_major_lower",
    "anterior_delt"
   ],
   "why": "Trizeps (Overhead betont langen Kopf)",
-  "sec_why": "Enge Pressen/Dips"
+  "sec_why": "Enge Pressen/Dips",
+  "mode": "kraft"
  },
  "Lying Dumbbell Tricep Extension": {
   "de": "Liegendes Kurzhantel-Trizepsstrecken",
@@ -7333,11 +7900,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Trizeps (Overhead betont langen Kopf)",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Lying Triceps Press": {
   "de": "Liegendes Trizepsdrücken",
@@ -7352,7 +7918,8 @@
    "pec_major_lower"
   ],
   "why": "Trizeps (Overhead betont langen Kopf)",
-  "sec_why": "Trizeps allgemein"
+  "sec_why": "Trizeps allgemein",
+  "mode": "kraft"
  },
  "One Arm Floor Press": {
   "de": "Einarmiger Floor Press",
@@ -7363,11 +7930,13 @@
    "triceps_medial"
   ],
   "secondary": [
-   "anterior_delt",
-   "pec_major_lower"
+   "pec_major_upper",
+   "pec_major_lower",
+   "anterior_delt"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trizeps allgemein"
+  "sec_why": "Trizeps allgemein",
+  "mode": "kraft"
  },
  "One Arm Pronated Dumbbell Triceps Extension": {
   "de": "Einarmiges Kurzhantel-Trizepsstrecken (Obergriff)",
@@ -7377,11 +7946,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "One Arm Supinated Dumbbell Triceps Extension": {
   "de": "Einarmiges Kurzhantel-Trizepsstrecken (Untergriff)",
@@ -7391,11 +7959,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Overhead Triceps": {
   "de": "Trizepsstrecken über Kopf",
@@ -7409,8 +7976,9 @@
    "anterior_delt",
    "pec_major_lower"
   ],
-  "why": "Trizeps (Overhead betont langen Kopf)",
-  "sec_why": "Trizeps allgemein"
+  "why": "Trizeps (langer Kopf betont)",
+  "sec_why": "Trizeps allgemein",
+  "mode": "kraft"
  },
  "Pin Presses": {
   "de": "Pin Presses",
@@ -7421,11 +7989,13 @@
    "triceps_medial"
   ],
   "secondary": [
-   "anterior_delt",
-   "pec_major_lower"
+   "pec_major_upper",
+   "pec_major_lower",
+   "anterior_delt"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trizeps allgemein"
+  "sec_why": "Trizeps allgemein",
+  "mode": "kraft"
  },
  "Push-Ups - Close Triceps Position": {
   "de": "Enge Liegestütze (Trizeps)",
@@ -7440,7 +8010,8 @@
    "anterior_delt"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Enge Pressen/Dips"
+  "sec_why": "Enge Pressen/Dips",
+  "mode": "kraft"
  },
  "Reverse Band Bench Press": {
   "de": "Reverse-Band-Bankdrücken",
@@ -7455,7 +8026,8 @@
    "pec_major_lower"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trizeps allgemein"
+  "sec_why": "Trizeps allgemein",
+  "mode": "kraft"
  },
  "Reverse Grip Triceps Pushdown": {
   "de": "Trizepsdrücken im Untergriff",
@@ -7465,11 +8037,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Reverse Triceps Bench Press": {
   "de": "Reverse-Trizeps-Bankdrücken",
@@ -7484,7 +8055,8 @@
    "pec_major_lower"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trizeps allgemein"
+  "sec_why": "Trizeps allgemein",
+  "mode": "kraft"
  },
  "Seated Bent-Over One-Arm Dumbbell Triceps Extension": {
   "de": "Sitzendes einarmiges Trizeps-Kickback-Strecken (vorgebeugt)",
@@ -7494,11 +8066,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Seated Bent-Over Two-Arm Dumbbell Triceps Extension": {
   "de": "Sitzendes beidarmiges Trizepsstrecken (vorgebeugt)",
@@ -7508,11 +8079,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Seated Triceps Press": {
   "de": "Sitzendes Trizepsdrücken",
@@ -7527,7 +8097,8 @@
    "pec_major_lower"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trizeps allgemein"
+  "sec_why": "Trizeps allgemein",
+  "mode": "kraft"
  },
  "Speed Band Overhead Triceps": {
   "de": "Speed-Band-Trizepsstrecken über Kopf",
@@ -7541,8 +8112,9 @@
    "anterior_delt",
    "pec_major_lower"
   ],
-  "why": "Trizeps (Overhead betont langen Kopf)",
-  "sec_why": "Trizeps allgemein"
+  "why": "Trizeps (langer Kopf betont)",
+  "sec_why": "Trizeps allgemein",
+  "mode": "kraft"
  },
  "Standing Bent-Over One-Arm Dumbbell Triceps Extension": {
   "de": "Einarmiges Trizepsstrecken vorgebeugt (stehend)",
@@ -7552,11 +8124,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Standing Bent-Over Two-Arm Dumbbell Triceps Extension": {
   "de": "Beidarmiges Trizepsstrecken vorgebeugt (stehend)",
@@ -7566,11 +8137,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Standing Dumbbell Triceps Extension": {
   "de": "Stehendes Kurzhantel-Trizepsstrecken",
@@ -7580,11 +8150,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Standing Low-Pulley One-Arm Triceps Extension": {
   "de": "Stehendes einarmiges Trizepsstrecken am tiefen Kabel",
@@ -7594,11 +8163,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Standing One-Arm Dumbbell Triceps Extension": {
   "de": "Stehendes einarmiges Kurzhantel-Trizepsstrecken",
@@ -7608,11 +8176,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Standing Overhead Barbell Triceps Extension": {
   "de": "Stehendes Langhantel-Trizepsstrecken über Kopf",
@@ -7622,11 +8189,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
-  "why": "Trizeps (Overhead betont langen Kopf)",
-  "sec_why": "Strecken"
+  "secondary": [],
+  "why": "Trizeps (langer Kopf betont)",
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Standing Towel Triceps Extension": {
   "de": "Stehendes Trizepsstrecken mit Handtuch",
@@ -7636,11 +8202,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Tate Press": {
   "de": "Tate Press",
@@ -7655,7 +8220,8 @@
    "pec_major_lower"
   ],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trizeps allgemein"
+  "sec_why": "Trizeps allgemein",
+  "mode": "kraft"
  },
  "Tricep Dumbbell Kickback": {
   "de": "Kurzhantel-Kickback",
@@ -7665,11 +8231,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Triceps Overhead Extension with Rope": {
   "de": "Trizepsstrecken über Kopf mit Seil",
@@ -7679,11 +8244,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
-  "why": "Trizeps (Overhead betont langen Kopf)",
-  "sec_why": "Strecken"
+  "secondary": [],
+  "why": "Trizeps (langer Kopf betont)",
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Triceps Pushdown": {
   "de": "Trizepsdrücken am Kabel",
@@ -7693,11 +8257,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Triceps Pushdown - Rope Attachment": {
   "de": "Trizepsdrücken am Kabel (Seil)",
@@ -7707,11 +8270,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Triceps Pushdown - V-Bar Attachment": {
   "de": "Trizepsdrücken am Kabel (V-Griff)",
@@ -7721,11 +8283,10 @@
    "triceps_lateral",
    "triceps_medial"
   ],
-  "secondary": [
-   "forearm_extensors"
-  ],
+  "secondary": [],
   "why": "Regel nach Muskelgruppe",
-  "sec_why": "Strecken"
+  "sec_why": "Strecken",
+  "mode": "kraft"
  },
  "Arm Circles": {
   "de": "Armkreisen",
@@ -7734,15 +8295,10 @@
    "anterior_delt",
    "lateral_delt"
   ],
-  "secondary": [
-   "triceps_long",
-   "triceps_lateral",
-   "triceps_medial",
-   "upper_traps",
-   "serratus_anterior"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Schulterdrücken: Trizeps + Trapez"
+  "secondary": [],
+  "why": "Mobilisation (kaum Kraft)",
+  "sec_why": "Schulterdrücken: Trizeps + Trapez",
+  "mode": "mobility"
  },
  "Arm Swings (Chest Opener)": {
   "de": "Armschwingen (Brust öffnen)",
@@ -7751,31 +8307,23 @@
    "pec_major_upper",
    "pec_major_lower"
   ],
-  "secondary": [
-   "anterior_delt",
-   "triceps_long",
-   "triceps_lateral",
-   "triceps_medial"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "secondary": [],
+  "why": "Mobilisation (kaum Kraft)",
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "mobility"
  },
  "Scapular Push-Up": {
   "de": "Schulterblatt-Liegestütz",
   "muscle": "chest",
   "primary": [
-   "pec_major_upper",
-   "pec_major_lower"
-  ],
-  "secondary": [
-   "anterior_delt",
-   "triceps_long",
-   "triceps_lateral",
-   "triceps_medial",
    "serratus_anterior"
   ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Drücken: vordere Schulter + Trizeps"
+  "secondary": [
+   "pec_major_lower"
+  ],
+  "why": "Scapular Push-Up",
+  "sec_why": "Drücken: vordere Schulter + Trizeps",
+  "mode": "kraft"
  },
  "Cat-Cow": {
   "de": "Katze-Kuh",
@@ -7785,16 +8333,10 @@
    "mid_traps",
    "teres_major"
   ],
-  "secondary": [
-   "upper_lats",
-   "lower_lats",
-   "biceps",
-   "brachialis",
-   "posterior_delt",
-   "forearm_flexors"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Rudern"
+  "secondary": [],
+  "why": "Mobilisation (kaum Kraft)",
+  "sec_why": "Rudern",
+  "mode": "mobility"
  },
  "Open Book": {
   "de": "Open Book (Brustwirbelsäule)",
@@ -7803,16 +8345,10 @@
    "upper_lats",
    "lower_lats"
   ],
-  "secondary": [
-   "biceps",
-   "brachialis",
-   "teres_major",
-   "rhomboids",
-   "posterior_delt",
-   "forearm_flexors"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Ziehen von oben"
+  "secondary": [],
+  "why": "Mobilisation (kaum Kraft)",
+  "sec_why": "Ziehen von oben",
+  "mode": "mobility"
  },
  "Shoulder Rolls": {
   "de": "Schulterkreisen",
@@ -7820,13 +8356,10 @@
   "primary": [
    "upper_traps"
   ],
-  "secondary": [
-   "rhomboids",
-   "mid_traps",
-   "forearm_flexors"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Trapez / Shrug"
+  "secondary": [],
+  "why": "Mobilisation (kaum Kraft)",
+  "sec_why": "Trapez / Shrug",
+  "mode": "mobility"
  },
  "Leg Swings": {
   "de": "Beinschwingen",
@@ -7835,15 +8368,10 @@
    "lateral_hamstrings",
    "medial_hamstrings"
   ],
-  "secondary": [
-   "glute_max",
-   "adductors",
-   "erector_spinae",
-   "forearm_flexors",
-   "upper_traps"
-  ],
-  "why": "Regel nach Muskelgruppe",
-  "sec_why": "Kreuzheben/Hüftbeugung"
+  "secondary": [],
+  "why": "Mobilisation (kaum Kraft)",
+  "sec_why": "Kreuzheben/Hüftbeugung",
+  "mode": "mobility"
  },
  "Glute Bridge (Warm-Up)": {
   "de": "Glute Bridge (leicht)",
@@ -7858,6 +8386,7 @@
    "erector_spinae"
   ],
   "why": "Hüftstrecken → Gesäß",
-  "sec_why": "Hip Thrust"
+  "sec_why": "Hip Thrust",
+  "mode": "kraft"
  }
 }
