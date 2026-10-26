@@ -260,7 +260,6 @@ function mountGenPick() { // Direktauswahl liegt am body (über Kopfzeile + Tab-
 }
 function render() { renderView(); mountDetail(); mountPresetSheet(); mountGenPick(); fitTabH(); }
 function renderView() {
-  if (view === 'overview' && !dashMode) view = 'start';
   content.toggleAttribute('data-enter', view !== window._lv); window._lv = view;
   content.classList.remove('pl-scroll');
   document.body.classList.toggle('playing', view === 'play');
