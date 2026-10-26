@@ -2254,3 +2254,32 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .tr-card > .ti-c,.wp-tr > .ti-c{gap:.35rem;}
 /* Schritt 3 mit offenen Spezielle Muskeln: Button steht nach den Muskeln, nicht darüber */
 .pl-scroll .pl-foot{position:static; background:none; margin-top:.2rem;}
+/* Planung: Figur-Schritt (Muskeln zuerst, Geräte folgen) */
+.pl-lead{display:flex; align-items:center; gap:.5rem;}
+.pl-back{min-height:44px; padding:0 .7rem 0 .1rem; background:none; border:0; color:var(--accent); font:700 .95rem system-ui,-apple-system,sans-serif; cursor:pointer;}
+.pl.pl-fig{height:100%; padding-bottom:.4rem; gap:.4rem;}
+.pl.pl-fig .pl-step{flex:1; min-height:0; display:flex; flex-direction:column;}
+.pl.pl-fig .pl-q{font-size:1.7rem; margin:.1rem 0 .1rem;}
+.pl.pl-fig .pl-foot{position:static; margin:0; padding:0;}
+.fg{flex:1; min-height:0; display:flex; gap:.5rem; margin-top:.35rem;}
+.fg-cols{width:132px; flex:none; display:flex; flex-direction:column; gap:5px; overflow-y:auto; touch-action:pan-y; scrollbar-width:none; padding:2px; overscroll-behavior:contain;}
+.fg-cols::-webkit-scrollbar{display:none;}
+.fg-c{flex:none; display:flex; align-items:center; gap:.45rem; text-align:left; min-height:44px; padding:.4rem .5rem; border-radius:12px; border:1.5px solid var(--gc,var(--border)); background:var(--panel); color:var(--text); font:600 .82rem/1.15 system-ui,-apple-system,sans-serif; cursor:pointer; transition:background-color .16s var(--ease-out), color .16s var(--ease-out), transform .16s var(--ease-out);}
+.fg-c i{flex:none; width:9px; height:9px; border-radius:50%; background:var(--gc);}
+.fg-c.on{background:var(--gc); color:#0c1411;} .fg-c.on i{background:#0c1411;}
+.fg-c.none{opacity:.38; border-style:dashed;}
+.fg-c:active{transform:scale(.97);}
+.fg-cv{position:relative; flex:1; min-width:0; border-radius:16px; overflow:hidden; background:radial-gradient(120% 90% at 50% 35%,#1b242a,#0b1013); border:1px solid var(--border-soft);}
+.fg-cv canvas{display:block; width:100%; height:100%; touch-action:none; outline:none;}
+.fg-views{position:absolute; left:50%; bottom:6px; transform:translateX(-50%); display:flex; gap:6px; z-index:2;}
+.fg-views button{min-height:36px; padding:0 .85rem; border-radius:999px; border:1px solid var(--border); background:rgba(23,30,34,.85); color:var(--text); font:600 .78rem system-ui,-apple-system,sans-serif; cursor:pointer;}
+.fg-msg{position:absolute; inset:0; display:grid; place-items:center; padding:1rem; text-align:center; color:var(--text-dim); font-size:.85rem;}
+.fg-need{flex:none; min-height:1.3rem; padding:.1rem .15rem; font-size:.85rem; color:var(--text-dim);} .fg-need b{color:var(--accent);}
+.gn-back{display:block; min-height:44px; padding:0 .2rem; background:none; border:0; color:var(--accent); font:700 .95rem system-ui,-apple-system,sans-serif; cursor:pointer;}
+.qk-go.off{opacity:.45;}
+.sv:has(.pl-fig){height:100%; min-height:0;}
+.fg-cv canvas{position:absolute; inset:0;}
+.fg-c{font-size:.78rem; overflow-wrap:anywhere; hyphens:auto;}
+.pl-back{white-space:nowrap; flex:none;}
+.pl-lead{flex:none; min-width:0;}
+.pl-chips .pl-chip{flex:0 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis;}

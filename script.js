@@ -983,7 +983,7 @@ function genHero() {
 function renderGen() {
   const lv = genLevel(), p = loadProfile();
   const pill = (act, v, l, on) => `<button class="lv-p${on ? ' on' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
-  const res = genRes && !genRes.length ? `<div class="gn-res"><div class="lv-note">Mit diesen Geräten und diesem Fokus finde ich keine Übungen. Mehr Geräte oder anderen Fokus wählen.</div></div>` : genRes ? `<div class="gn-res">${genHero()}${genNote ? `<div class="lv-note">${esc(genNote)}</div>` : ''}${genRes.map((e, i) => `<div class="gn-sw" data-gsw="${i}"><div class="gn-sw-bg"><span>★ Favorit</span><span>Neue Übung ↻</span></div><div class="gn-ex exinfo${i === genSwapped ? ' gn-new' : ''}${e.warm ? ' warm' : ''}" data-g="${esc(MUSCLE_GROUPS[e.muscle] || '')}" style="--i:${i}" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+  const res = genRes && !genRes.length ? `<div class="gn-res"><button class="gn-back" data-act="genBackWiz">‹ Zurück zur Auswahl</button><div class="lv-note">Mit diesen Geräten und diesem Fokus finde ich keine Übungen. Mehr Geräte oder anderen Fokus wählen.</div></div>` : genRes ? `<div class="gn-res"><button class="gn-back" data-act="genBackWiz">‹ Zurück zur Auswahl</button>${genHero()}${genNote ? `<div class="lv-note">${esc(genNote)}</div>` : ''}${genRes.map((e, i) => `<div class="gn-sw" data-gsw="${i}"><div class="gn-sw-bg"><span>★ Favorit</span><span>Neue Übung ↻</span></div><div class="gn-ex exinfo${i === genSwapped ? ' gn-new' : ''}${e.warm ? ' warm' : ''}" data-g="${esc(MUSCLE_GROUPS[e.muscle] || '')}" style="--i:${i}" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
       <div class="gx"><b>${loadFavs().includes(e.name) ? '★ ' : ''}${esc(dn(e.name))}</b><div class="gx-m">${e.warm ? '<span class="gx-t warm">Aufwärmen</span>' : ''}<span class="gx-t g">${esc(MUSCLE_DE[e.muscle] || e.muscle)}</span><span class="gx-t">${e.sets} × ${e.plan[0].r} ${e.unit === 'sek' ? 'Sek' : 'Wdh'}</span>${e.plan[0].w != null && e.unit === 'kg' ? `<span class="gx-t w">${e.up ? '↑ ' : 'ca. '}${e.plan[0].w} kg</span>` : ''}</div></div><button class="gn-pk" data-act="genPickOpen" data-i="${i}" aria-label="Übung wählen">⇄</button></div></div>`).join('')}
       <div class="lv-note">Rechts wischen = ★ Favorit, links = neue Übung, ⇄ = selbst wählen. Vorschlag mit ca.-Werten. Technik vor Gewicht, bei Schmerzen abbrechen.${!p.weight && genRes.some(e => e.unit === 'kg') ? ' Gewicht im Profil eintragen, dann kommen auch kg-Vorschläge.' : ''}</div>
       <div class="gn-btns"><button class="ts-save" data-act="genSave">✓ SPEICHERN</button><button class="pl-next ts-go" data-act="genGo">▶ SPEICHERN &amp; STARTEN</button><button class="ts-add" data-act="genDo">⟳ Neu mischen</button></div></div>` : '';
@@ -1022,22 +1022,157 @@ function builderHtml(full) {
       <div class="qk-rows${genCfg.groups.length ? '' : ' dim'}">${segRow('Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0, v => v || 'Auto')}${segRow('Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets, v => v || 'Auto')}${segRow('Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps, v => v || 'Auto')}</div>`;
   return h;
 }
-// ---- Planung als Sprung-Wizard: Zeit -> Geräte -> Fokus, je Schritt eine Frage ----
+// ---- 3D-Körper für die Planung: Muskeln antippen statt Kacheln (Modell: vendor/, CC BY-SA 4.0, siehe vendor/CREDITS-muscle-model.txt) ----
+const FG_COL = { Brust: '#ff5d73', Schultern: '#c58bff', Arme: '#ffd34d', Rücken: '#4dd2ff', Bauch: '#5dffb0', Beine: '#ff9f43' };
+// [Label, Auswahl-Eintrag, Gruppe, Eltern-Gruppe, Modell-Regionen]
+const FG_CHIPS = [
+  ['Brustmuskeln', 'Brust', 'Brust', '', ['pec_major_upper', 'pec_major_lower', 'serratus_anterior']],
+  ['Schultern', 'Schultern', 'Schultern', '', ['anterior_delt', 'lateral_delt', 'posterior_delt', 'rotator_cuff']],
+  ['Bizeps', 'm:biceps', 'Arme', '', ['biceps', 'brachialis']],
+  ['Trizeps', 'm:triceps', 'Arme', '', ['triceps_long', 'triceps_lateral', 'triceps_medial']],
+  ['Unterarme', 'm:forearms', 'Arme', '', ['brachioradialis', 'forearm_flexors', 'forearm_extensors']],
+  ['Bauchmuskeln', 'Bauch', 'Bauch', '', ['rectus_abdominis', 'obliques', 'transverse_abdominis']],
+  ['Rücken ganz', 'Rücken', 'Rücken', '', []],
+  ['Nacken & Trapez', 'm:traps', 'Rücken', 'Rücken', ['upper_traps', 'mid_traps', 'lower_traps', 'neck_extensors', 'neck_flexors']],
+  ['Oberer Rücken', 'm:middle back', 'Rücken', 'Rücken', ['rhomboids', 'teres_major']],
+  ['Breiter Rücken', 'm:lats', 'Rücken', 'Rücken', ['upper_lats', 'lower_lats']],
+  ['Unterer Rücken', 'm:lower back', 'Rücken', 'Rücken', ['erector_spinae']],
+  ['Beine ganz', 'Beine', 'Beine', '', ['adductors']],
+  ['Gesäß', 'm:glutes', 'Beine', 'Beine', ['glute_max', 'glute_med', 'hip_rotators']],
+  ['Oberschenkel vorne', 'm:quadriceps', 'Beine', 'Beine', ['vastus_group', 'rectus_femoris', 'hip_flexors']],
+  ['Oberschenkel hinten', 'm:hamstrings', 'Beine', 'Beine', ['lateral_hamstrings', 'medial_hamstrings']],
+  ['Waden', 'm:calves', 'Beine', 'Beine', ['gastrocnemius', 'soleus', 'tibialis_anterior', 'fibularis']]
+];
+const fgChip = m => FG_CHIPS.find(c => c[1] === m);
+const fgLabel = m => { const c = fgChip(m); return c ? c[0] : (MUSCLE_DE[m.replace('m:', '')] || m); };
+function fgNodes(c) { // alle Modell-Regionen eines Chips (Gruppen-Chips = ihre Kinder + eigene)
+  return c[4].concat(FG_CHIPS.filter(k => k[3] === c[1]).flatMap(k => k[4]));
+}
+function selToggle(m) { // Auswahl umschalten; Eltern-Gruppe (Rücken/Beine) und Teile schließen sich aus
+  const G = genCfg.groups, c = fgChip(m), par = c ? c[3] : '';
+  if (!G.includes(m) && !(par && G.includes(par)) && grpConflict(m, G)) { plMsg = 'Geht nicht mit ' + fgLabel(grpConflict(m, G)) + ' (Drücken/Ziehen getrennt). Erst abwählen.'; return false; }
+  if (par && G.includes(par)) { G.splice(G.indexOf(par), 1); FG_CHIPS.filter(k => k[3] === par && k[1] !== m).forEach(k => G.push(k[1])); }
+  else if (G.includes(m)) G.splice(G.indexOf(m), 1);
+  else { if (!par) FG_CHIPS.filter(k => k[3] === m).forEach(k => { const i = G.indexOf(k[1]); if (i >= 0) G.splice(i, 1); }); G.push(m); }
+  genCfg.gearTouched = false; genCfg.autoAdded = []; genRes = null; return true;
+}
+const fgCore = (e, g) => g.startsWith('m:') ? e.muscle === g.slice(2) : MUSCLE_GROUPS[e.muscle] === g && (g !== 'Rücken' || isBack(e));
+// Aus den Muskeln abgeleitet: kleinste Geräte-Auswahl, mit der jede Wahl mindestens 3 Übungen hat
+function suggestGear() {
+  const G = genCfg.groups; if (!G.length) return GEAR.map(x => x[0]);
+  const base = genBase(genLevel(), true), need = 3, order = ['body', 'dumbbell', 'barbell', 'bench', 'band', 'cable', 'rig', 'ext'];
+  const cand = G.map(g => base.filter(e => fgCore(e, g)).map(e => gearOf(e.name)));
+  const cnt = (set, i) => cand[i].filter(gs => gs.every(k => set.includes(k))).length;
+  const score = s => cand.reduce((a, c, i) => a + Math.min(need, cnt(s, i)), 0);
+  const set = [];
+  for (let n = 0; n < order.length; n++) {
+    let best = null, bs = score(set);
+    order.forEach(k => { if (set.includes(k)) return; const sc = score(set.concat(k)); if (sc > bs) { bs = sc; best = k; } });
+    if (!best) break; set.push(best);
+    if (cand.every((c, i) => cnt(set, i) >= Math.min(need, c.length))) break;
+  }
+  return set;
+}
+function uncovered() { // gewählte Muskeln, für die die gewählten Geräte keine Übung hergeben
+  const base = genBase(genLevel(), true);
+  return genCfg.groups.filter(g => !base.some(e => fgCore(e, g) && gearOf(e.name).every(k => genCfg.gear.includes(k))));
+}
+function gearUse(k) { // Übungen zu den gewählten Muskeln, die mit den gewählten Geräten gehen und Gerät k brauchen
+  const base = genBase(genLevel(), true);
+  return base.filter(e => genCfg.groups.some(g => fgCore(e, g)) && gearOf(e.name).every(x => genCfg.gear.includes(x)) && gearOf(e.name).includes(k)).length;
+}
+let fg = null;
+function fgLoad() {
+  if (fg) return;
+  fg = { ready: false, failed: false, mats: [] };
+  const load = src => new Promise((ok, no) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+  load('vendor/three.min.js').then(() => load('vendor/OrbitControls.js')).then(() => load('vendor/GLTFLoader.js')).then(fgInit).catch(() => { fg.failed = true; fgMount(); });
+}
+function fgInit() {
+  const T = window.THREE, r = new T.WebGLRenderer({ antialias: true, alpha: true });
+  r.setPixelRatio(Math.min(devicePixelRatio, 2)); r.outputEncoding = T.sRGBEncoding;
+  const scene = new T.Scene(), cam = new T.PerspectiveCamera(32, 1, 0.05, 100);
+  scene.add(new T.AmbientLight(0xffffff, 0.35));
+  [[0xfff2e6, 1.35, 3, 5, 4], [0xbfd4ff, 0.4, -4, 2, 2], [0xffffff, 0.55, 0, 3, -5]].forEach(([c, i, x, y, z]) => { const l = new T.DirectionalLight(c, i); l.position.set(x, y, z); scene.add(l); });
+  const ctl = new T.OrbitControls(cam, r.domElement); ctl.enableDamping = true; ctl.dampingFactor = 0.08; ctl.enablePan = false;
+  Object.assign(fg, { T, r, scene, cam, ctl, el: r.domElement });
+  const REG = new Set(FG_CHIPS.flatMap(c => c[4]));
+  new T.GLTFLoader().load('vendor/muscle-model.glb', g => {
+    const model = g.scene;
+    model.traverse(o => {
+      if (!o.isMesh) return;
+      let n = o, node = null; while (n && !node) { if (REG.has(n.name)) node = n.name; n = n.parent; }
+      o.userData.node = node;
+      const m = new T.MeshStandardMaterial({ color: 0x9ea5a2, roughness: 0.62, metalness: 0, side: T.DoubleSide });
+      o.material = m; fg.mats.push({ m, node });
+    });
+    const box = new T.Box3().setFromObject(model), size = box.getSize(new T.Vector3()), c = box.getCenter(new T.Vector3());
+    model.position.sub(c); scene.add(model); fg.model = model;
+    fg.dist = (size.y / 2) / Math.tan(T.MathUtils.degToRad(cam.fov / 2)) * 1.25;
+    cam.position.set(0, 0, fg.dist); cam.near = fg.dist / 100; cam.far = fg.dist * 20; cam.updateProjectionMatrix();
+    ctl.minDistance = fg.dist * 0.3; ctl.maxDistance = fg.dist * 1.6; ctl.update();
+    fg.ready = true; fgMount();
+  }, undefined, () => { fg.failed = true; fgMount(); });
+  const ray = new T.Raycaster(), pt = new T.Vector2(); let down = null;
+  r.domElement.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY, t: Date.now() }; });
+  r.domElement.addEventListener('pointerup', e => {
+    if (!down || !fg.model) return;
+    const moved = Math.hypot(e.clientX - down.x, e.clientY - down.y), dt = Date.now() - down.t; down = null;
+    if (moved > 6 || dt > 400) return;
+    const b = r.domElement.getBoundingClientRect();
+    pt.set(((e.clientX - b.left) / b.width) * 2 - 1, -((e.clientY - b.top) / b.height) * 2 + 1);
+    ray.setFromCamera(pt, cam);
+    const h = ray.intersectObject(fg.model, true).find(x => x.object.userData.node);
+    if (!h) return;
+    const c = FG_CHIPS.find(k => k[3] && k[4].includes(h.object.userData.node)) || FG_CHIPS.find(k => k[4].includes(h.object.userData.node));
+    if (c) { selToggle(c[1]); render(); }
+  });
+  r.setAnimationLoop(() => { if (!fg.el.isConnected) return; ctl.update(); r.render(scene, cam); });
+}
+function fgPaint() {
+  if (!fg || !fg.ready) return;
+  const T = fg.T, G = genCfg.groups, on = {};
+  FG_CHIPS.forEach(c => { if (G.includes(c[1]) || (c[3] && G.includes(c[3]))) fgNodes(c).forEach(n => { on[n] = FG_COL[c[2]]; }); });
+  const any = Object.keys(on).length > 0;
+  fg.mats.forEach(({ m, node }) => {
+    if (node && on[node]) { m.color.set(on[node]).multiplyScalar(0.55); m.emissive.set(on[node]); m.emissiveIntensity = 0.45; }
+    else { m.color.set(any ? (node ? 0x4b5250 : 0x3a403e) : (node ? 0x9ea5a2 : 0x7f8683)); m.emissive.setHex(0); }
+  });
+}
+function fgMount() {
+  const box = content.querySelector('.fg-cv'); if (!box) return;
+  fgLoad();
+  const old = box.querySelector('.fg-msg'); if (old) old.remove();
+  if (fg.failed) { box.insertAdjacentHTML('afterbegin', '<div class="fg-msg">Körper konnte nicht geladen werden. Wähl mit den Chips.</div>'); return; }
+  if (!fg.ready) { box.insertAdjacentHTML('afterbegin', '<div class="fg-msg">Lade Körper …</div>'); return; }
+  box.insertBefore(fg.el, box.firstChild);
+  const w = box.clientWidth, h = box.clientHeight;
+  if (w && h) { fg.r.setSize(w, h, false); fg.cam.aspect = w / h; fg.cam.updateProjectionMatrix(); }
+  fgPaint();
+}
+function fgTurn(back) {
+  if (!fg || !fg.ready) return;
+  const cam = fg.cam, p = cam.position.clone(), y = p.y, r = Math.hypot(p.x, p.z), a0 = Math.atan2(p.x, p.z), az = back ? Math.PI : 0;
+  let d = az - a0; d = Math.atan2(Math.sin(d), Math.cos(d)); const t0 = performance.now();
+  (function step(now) { const k = Math.min(1, (now - t0) / 450), e = 1 - Math.pow(1 - k, 3), a = a0 + d * e; cam.position.set(Math.sin(a) * r, y, Math.cos(a) * r); cam.lookAt(0, 0, 0); if (k < 1) requestAnimationFrame(step); })(t0);
+}
+// ---- Planung als Sprung-Wizard: Zeit -> Muskeln (Figur) -> Aufbau (Geräte), je Schritt eine Frage ----
 let plStep = 0, plClassic = false, plSeen = false, plSpots = false, plMsg = '';
 const PL_N = 3, PL_TILES = ['Brust', 'Rücken', 'Schultern', 'm:biceps', 'm:triceps', 'Bauch', 'Beine'];
 function plRail() {
-  const gl = GEAR.filter(([k]) => genCfg.gear.includes(k)).map(([, l]) => l === 'Kurzhanteln' ? 'Hanteln' : l === 'Hantelbank' ? 'Bank' : l);
-  const ans = [plStep > 0 ? genCfg.dur + ' Min' : '', plStep > 1 ? (gl.length ? (gl.length > 2 ? gl.slice(0, 2).join(' + ') + ' +' + (gl.length - 2) : gl.join(' + ')) : 'alle Geräte') : ''];
-  return `<div class="pl-rail"><div class="pl-dots">${Array.from({ length: PL_N }, (_, i) => `<i class="${i < plStep ? 'done' : i === plStep ? 'cur' : ''}"></i>`).join('')}</div>
+  const G = genCfg.groups, ml = G.map(fgLabel), mtxt = ml.length > 2 ? ml.slice(0, 2).join(' + ') + ' +' + (ml.length - 2) : ml.join(' + ');
+  const ans = [plStep > 0 ? genCfg.dur + ' Min' : '', plStep > 1 ? (mtxt || 'Muskeln') : ''];
+  return `<div class="pl-rail"><div class="pl-lead">${plStep > 0 ? '<button class="pl-back" data-act="plBack" aria-label="Zurück">‹ Zurück</button>' : ''}<div class="pl-dots">${Array.from({ length: PL_N }, (_, i) => `<i class="${i < plStep ? 'done' : i === plStep ? 'cur' : ''}"></i>`).join('')}</div></div>
     <div class="pl-chips">${ans.map((a, i) => a ? `<button class="pl-chip" data-act="plTo" data-v="${i}">${esc(a)}</button>` : '').join('')}</div></div>`;
 }
 // Push/Pull-Trennung (Quelle: Fitness First Split-Training): Trizeps nur mit Brust/Schultern, Bizeps nur mit Rücken; Bizeps/Trizeps nie zusammen
 function grpConflict(m, G) {
-  const has = x => G.includes(x);
-  if (m === 'm:biceps') return has('m:triceps') ? 'Trizeps' : has('Brust') ? 'Brust' : has('Schultern') ? 'Schultern' : '';
-  if (m === 'm:triceps') return has('m:biceps') ? 'Bizeps' : has('Rücken') ? 'Rücken' : '';
-  if (m === 'Brust' || m === 'Schultern') return has('m:biceps') ? 'Bizeps' : '';
-  if (m === 'Rücken') return has('m:triceps') ? 'Trizeps' : '';
+  const PUSH = ['Brust', 'Schultern'], PULL = ['Rücken', 'm:traps', 'm:lats', 'm:middle back', 'm:lower back'];
+  const find = l => G.find(x => l.includes(x)) || '';
+  if (m === 'm:biceps') return G.includes('m:triceps') ? 'm:triceps' : find(PUSH);
+  if (m === 'm:triceps') return G.includes('m:biceps') ? 'm:biceps' : find(PULL);
+  if (PUSH.includes(m)) return G.includes('m:biceps') ? 'm:biceps' : '';
+  if (PULL.includes(m)) return G.includes('m:triceps') ? 'm:triceps' : '';
   return '';
 }
 function armPick(G) { // Bizeps/Trizeps im Wechsel: der länger nicht trainierte kommt dran
@@ -1061,22 +1196,29 @@ function renderStart() {
   if (plStep === 0) {
     body = `<h2 class="pl-q">Wie lange?</h2><div class="pl-big">${[20, 30, 45, 60].map((v, i) => `<button class="pl-opt${genCfg.dur === v ? ' on' : ''}" style="--i:${i}" data-act="plDur" data-v="${v}"><b>${v}</b><em>Min</em></button>`).join('')}</div>`;
   } else if (plStep === 1) {
-    const gearBtns = GEAR.map(([k, l0], i) => { const l = l0 === 'Kurzhanteln' ? 'Hanteln' : l0 === 'Hantelbank' ? 'Bank' : l0; return `<button class="pl-opt sm${genCfg.gear.includes(k) ? ' on' : ''}" style="--i:${i}" data-act="genGear" data-v="${k}">${l}</button>`; }).join('');
-    body = `<h2 class="pl-q">Was baust du auf?</h2><div class="pl-grid">${gearBtns}</div><div class="pl-sub">${genCfg.gear.length ? '' : 'Nichts gewählt = alle Geräte'}</div>`;
+    const np = nextPlan();
+    if (!genCfg.groups.length && !genCfg.plAuto) { genCfg.groups = np.groups.filter(m => m !== 'Arme'); const ap = np.groups.includes('Arme') ? armPick(genCfg.groups) : null; if (ap) genCfg.groups.push(ap); genCfg.plAuto = true; genCfg.gearTouched = false; }
+    const G = genCfg.groups, onc = c => G.includes(c[1]) || (c[3] && G.includes(c[3]));
+    const chips = FG_CHIPS.map(c => { const o = onc(c), bl = !o && grpConflict(c[1], G); return `<button class="fg-c${o ? ' on' : ''}${bl ? ' none' : ''}" data-g="${c[2]}" data-act="fgSel" data-v="${esc(c[1])}"><i></i>${c[0]}</button>`; }).join('');
+    const need = G.length ? suggestGear().map(k => (GEAR.find(x => x[0] === k) || [0, k])[1]) : [];
+    body = `<h2 class="pl-q">Was ist dran?</h2><div class="pl-sub${plMsg ? ' warn' : ''}">${plMsg ? esc(plMsg) : 'Tipp Muskeln an der Figur oder in der Liste · Drehen mit dem Finger'}</div>
+      <div class="fg"><div class="fg-cols">${chips}</div><div class="fg-cv"><div class="fg-views"><button data-act="fgView" data-v="0">Vorne</button><button data-act="fgView" data-v="1">Hinten</button></div></div></div>
+      <div class="fg-need">${G.length ? '<b>Aufbauen:</b> ' + esc(need.join(' · ') || 'nichts') : 'Noch nichts gewählt'}</div>`;
     foot = `<button class="qk-go" data-act="plNext">WEITER ›</button>`;
   } else {
-    const np = nextPlan(), gcn = groupCounts();
-    if (!genCfg.groups.some(m => !m.startsWith('m:')) && !genCfg.plAuto) { genCfg.groups = np.groups.filter(m => m !== 'Arme' && (!genCfg.gear.length || gcn[m])); if (np.groups.includes('Arme')) { const ap = armPick(genCfg.groups); if (ap) genCfg.groups.push(ap); } genCfg.plAuto = true; }
-    const ago = g => { const t = np.note.match(new RegExp(g + ' ([^,.]+)')); return t ? t[1] : ''; };
-    body = `<h2 class="pl-q">Was ist dran?</h2><div class="pl-sub${plMsg ? ' warn' : ''}">${plMsg ? esc(plMsg) : 'Vorgewählt: am längsten nicht trainiert · graue Kacheln tippen erklärt, warum'}</div><div class="pl-grid g3">${PL_TILES.map((m, i) => { const sp = m.startsWith('m:'), lb = sp ? (MUSCLE_DE[m.slice(2)] || m) : m, on = grpOn(m) || genCfg.groups.includes(m), blocked = !on && grpConflict(m, genCfg.groups), none = !sp && genCfg.gear.length && !gcn[m]; return `<button class="pl-opt sm${on ? ' on' : ''}${(none || blocked) && !on ? ' none' : ''}" style="--i:${i}" data-act="genGrp" data-v="${m}">${lb}<small>${blocked ? 'nicht mit ' + esc(blocked) : sp ? '' : esc(ago(m))}</small></button>`; }).join('')}</div>
-      <button class="pl-more${plSpots || genCfg.groups.some(m => m.startsWith('m:')) ? ' open' : ''}" data-act="plSpots">${genCfg.groups.some(m => m.startsWith('m:')) ? '✓ Spezielle Muskeln' : '+ Spezielle Muskeln'}<small>${genCfg.groups.filter(m => m.startsWith('m:')).length ? genCfg.groups.filter(m => m.startsWith('m:')).map(m => MUSCLE_DE[m.slice(2)] || m.slice(2)).join(', ') : 'z. B. Nacken, Waden, Unterer Rücken'}</small></button>
-      ${plSpots || genCfg.groups.some(m => m.startsWith('m:')) ? `<div class="pl-grid g3 spots">${SPOTS.filter(m => m !== 'biceps' && m !== 'triceps').map((m, i) => `<button class="pl-opt sm${genCfg.groups.includes('m:' + m) ? ' on' : ''}" style="--i:${i}" data-act="genGrp" data-v="m:${m}">${MUSCLE_DE[m] || m}</button>`).join('')}</div>` : ''}${prevHtml()}`;
-    foot = `<button class="qk-go wander" data-act="genDo">${SP}TRAINING BAUEN</button>`;
+    if (!genCfg.groups.length) { plStep = 1; return renderStart(); }
+    if (!genCfg.gearTouched) genCfg.gear = suggestGear();
+    const un = uncovered();
+    const gearBtns = GEAR.map(([k, l0], i) => { const l = l0 === 'Kurzhanteln' ? 'Hanteln' : l0 === 'Hantelbank' ? 'Bank' : l0, on = genCfg.gear.includes(k), n = on ? gearUse(k) : 0; return `<button class="pl-opt sm${on ? ' on' : ''}" style="--i:${i}" data-act="genGear" data-v="${k}">${l}<small>${on ? n + ' Übungen' : 'dazu'}</small></button>`; }).join('');
+    body = `<h2 class="pl-q">Was baust du auf?</h2><div class="pl-sub${un.length || plMsg ? ' warn' : ''}">${un.length ? 'Für ' + esc(un.map(fgLabel).join(', ')) + ' passt kein gewähltes Gerät. Gerät dazuwählen.' : plMsg ? esc(plMsg) : 'Passend zu deinen Muskeln vorgewählt · abwählen, was du nicht aufbaust'}</div><div class="pl-grid">${gearBtns}</div>${prevHtml()}`;
+    foot = `<button class="qk-go wander${un.length ? ' off' : ''}" data-act="genDo">${SP}TRAINING BAUEN</button>`;
   }
   plMsg = '';
   content.innerHTML = `<div class="sv"><div class="pl">${plRail()}<div class="pl-step" data-s="${plStep}">${body}</div><div class="pl-foot">${foot}</div>
     <button class="qk-link" data-act="plClassic">Alle Optionen auf einer Seite ›</button></div></div>`;
-  content.classList.toggle('pl-scroll', plStep === 2 && !!(plSpots || genCfg.groups.some(m => m.startsWith('m:'))));
+  content.classList.remove('pl-scroll');
+  content.querySelector('.pl').classList.toggle('pl-fig', plStep === 1);
+  if (plStep === 1) fgMount();
 }
 function renderStartClassic() {
   // Planung: eine Frage – "Was trainiere ich jetzt?". Gespeicherte Trainings = 1 Tipp bis ins Workout, darunter der Schnell-Bauer.
@@ -1089,6 +1231,7 @@ function renderStartClassic() {
   const SP = '<svg class="qk-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.1 6.4 6.4 2.1-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-2.1z"/></svg>';
   content.innerHTML = `<div class="sv">
     <div class="qk">
+      <button class="gn-back" data-act="plClassic">‹ Zurück zum Assistenten</button>
       ${builderHtml(false)}
       <button class="qk-next" data-act="genNext"><b>➜ NÄCHSTES TRAINING</b><em>${esc(nextPlan().label)} · ${esc(nextPlan().info)}</em></button>
       <button class="qk-go wander${genCfg.groups.length ? '' : ' surp'}" data-act="genDo">${SP}${genCfg.groups.length ? 'TRAINING BAUEN' : 'ÜBERRASCH MICH'}</button>
@@ -2059,7 +2202,13 @@ content.addEventListener('click', e => {
     case 'profGender': { const p = loadProfile(); p.gender = btn.dataset.v; saveProfile(p); break; }
     case 'profLevel': { const p = loadProfile(); p.level = Number(btn.dataset.v); saveProfile(p); break; }
     case 'lvlUp': { const p = loadProfile(); p.level = Number(btn.dataset.lv); saveProfile(p); break; }
-    case 'genOpen': genFrom = view === 'weeklist' ? 'weeklist' : null; genRes = null; if (view !== 'start') genCfg = newGenCfg(); view = 'gen'; break;
+    case 'genOpen':
+      if (view !== 'weeklist' && view !== 'start') { plStep = 0; plClassic = false; genRes = null; genCfg = newGenCfg(); genCfg.groups = []; genCfg.gear = []; genCfg.plAuto = false; view = 'start'; break; }
+      genFrom = view === 'weeklist' ? 'weeklist' : null; genRes = null; if (view !== 'start') genCfg = newGenCfg(); view = 'gen'; break;
+    case 'plBack': plJump(plStep - 1); return;
+    case 'fgSel': selToggle(btn.dataset.v); break;
+    case 'fgView': fgTurn(btn.dataset.v === '1'); return;
+    case 'genBackWiz': genRes = null; plClassic = false; plStep = 2; view = 'start'; break;
     case 'genBack': view = genFrom || 'start'; genFrom = null; break;
     case 'genPickOpen': genPick = Number(btn.dataset.i); break;
     case 'genPickClose': genPick = -1; break;
@@ -2069,24 +2218,27 @@ content.addEventListener('click', e => {
     case 'genCnt': genCfg.count = Number(btn.dataset.v) || null; genRes = null; break;
     case 'plDur': { genCfg.dur = Number(btn.dataset.v); genRes = null; btn.classList.add('picked'); btn.parentNode.classList.add('chosen'); try { navigator.vibrate && navigator.vibrate(15); } catch (x) {}
       setTimeout(() => plJump(1), 420); return; }
-    case 'plNext': plJump(plStep + 1); return;
+    case 'plNext': if (plStep === 1 && !genCfg.groups.length) { plMsg = 'Tipp mindestens einen Muskel an.'; break; } plJump(plStep + 1); return;
     case 'plTo': plJump(Number(btn.dataset.v)); return;
     case 'plSpots': plSpots = !plSpots; break;
     case 'plClassic': plClassic = !plClassic; break;
     case 'genDur': genCfg.dur = Number(btn.dataset.v); genRes = null; break;
-    case 'genGrp': { // Reihenfolge Zeit -> Geräte -> Muskeln: Muskeln nur wählbar, wenn ein gewähltes Gerät Übungen dafür hat
+    case 'genGrp': { // Planung: Muskeln zuerst (Figur), Geräte folgen daraus; Classic/Einstellungen behalten die alte Logik
       const m = btn.dataset.v, G = genCfg.groups;
-      if (!G.includes(m) && grpConflict(m, G)) { const c = grpConflict(m, G); plMsg = 'Geht nicht mit ' + c + ' (Push/Pull getrennt). Erst ' + c + ' abwählen.'; break; } // Push/Pull-Trennung
+      if (!plClassic && view === 'start') { selToggle(m); break; }
+      if (!G.includes(m) && grpConflict(m, G)) { const c = fgLabel(grpConflict(m, G)); plMsg = 'Geht nicht mit ' + c + ' (Push/Pull getrennt). Erst ' + c + ' abwählen.'; break; } // Push/Pull-Trennung
       if (!m.startsWith('m:') && view === 'start') { const gcn = groupCounts(); if (!genCfg.gear.length || !gcn[m]) { plMsg = genCfg.gear.length ? 'Dafür gibt es mit deinen Geräten keine Übung. Geh zurück (Chip oben) und wähl ein Gerät dazu.' : 'Wähl zuerst Geräte (Schritt 2), dann passen die Muskeln.'; break; } }
       const i = G.indexOf(m); if (i >= 0) G.splice(i, 1); else G.push(m);
       genCfg.autoAdded = []; autoGear(); genRes = null; break; }
-    case 'genGear': { const k = btn.dataset.v, g = loadGear(), i = g.indexOf(k); if (i >= 0) g.splice(i, 1); else g.push(k); genCfg.gear = g; try { localStorage.setItem(GEARKEY, JSON.stringify(g)); } catch (e2) {}
+    case 'genGear': { if (!plClassic && view === 'start') { const k2 = btn.dataset.v, g2 = genCfg.gear.slice(), i2 = g2.indexOf(k2); if (i2 >= 0) g2.splice(i2, 1); else g2.push(k2); genCfg.gear = g2; genCfg.gearTouched = true; genRes = null; break; }
+      const k = btn.dataset.v, g = loadGear(), i = g.indexOf(k); if (i >= 0) g.splice(i, 1); else g.push(k); genCfg.gear = g; try { localStorage.setItem(GEARKEY, JSON.stringify(g)); } catch (e2) {}
       if (view === 'start') { const gcn = g.length ? groupCounts() : {}; genCfg.groups = genCfg.groups.filter(m => m.startsWith('m:') || gcn[m]); } // Muskeln ohne Übung für die gewählten Geräte fallen raus
       genCfg.autoAdded = []; autoGear(); genRes = null; break; }
     case 'genMinS': genCfg.minSets = Number(btn.dataset.v); genRes = null; break;
     case 'genMinR': genCfg.minReps = Number(btn.dataset.v); genRes = null; break;
     case 'dash': dashMode = true; view = 'overview'; break;
-    case 'genDo': if (!genCfg.gear.length) genCfg.gear = GEAR.map(x => x[0]); if (!genCfg.groups.length) { const gcn = groupCounts(); genCfg.groups = shuffle(MUSCLE_GROUP_LIST.filter(m => gcn[m])).slice(0, 2 + Math.floor(Math.random() * 2)); } autoGear(); if (view === 'start') { genFrom = null; view = 'gen'; } generate(); break;
+    case 'genDo': if (view === 'start' && !plClassic) { const un = uncovered(); if (un.length) { plMsg = 'Für ' + un.map(fgLabel).join(', ') + ' passt kein gewähltes Gerät. Gerät dazuwählen.'; break; } }
+      if (!genCfg.gear.length) genCfg.gear = GEAR.map(x => x[0]); if (!genCfg.groups.length) { const gcn = groupCounts(); genCfg.groups = shuffle(MUSCLE_GROUP_LIST.filter(m => gcn[m])).slice(0, 2 + Math.floor(Math.random() * 2)); } autoGear(); if (view === 'start') { genFrom = null; view = 'gen'; } generate(); break;
     case 'genNext': { const np = nextPlan(); genCfg.groups = np.groups.slice(); if (!genCfg.gear.length) genCfg.gear = GEAR.map(x => x[0]); autoGear(); genFrom = null; if (view === 'start') view = 'gen'; generate(); if (genRes && genRes.length) { applyProgression(genRes); genNote = np.note; } break; }
     case 'genSurprise': { const gl = shuffle(MUSCLE_GROUP_LIST).slice(0, 2 + Math.floor(Math.random() * 2)); genCfg.groups = gl; generate(); break; }
     case 'genSave': genSave(false); break;

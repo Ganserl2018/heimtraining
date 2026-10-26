@@ -1,0 +1,5 @@
+muscle-model.glb: adaptiert aus Z-Anatomy (Gauthier Kervyn) auf Basis von BodyParts3D (Kousaku Okubo, DBCLS).
+Aufbereitet von kalibismail/gymmetry-muscle-model, Lizenz CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).
+Quelle: https://github.com/kalibismail/gymmetry-muscle-model
+Z-Anatomy: https://github.com/Z-Anatomy/Models-of-human-anatomy
+BodyParts3D: CC BY-SA 2.1 Japan. Weitergabe nur mit diesen Hinweisen und unter derselben Lizenz.
