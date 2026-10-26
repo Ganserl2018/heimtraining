@@ -630,3 +630,6 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - 23:30 KORREKTUR: Start-Button-Startseite (renderHome, Sonar-Puls, Halten-Füllen) BLEIBT – Alex: "das geilste". Redirect overview→start zurückgenommen (v=20261028p). #11 ist damit hinfällig; die alte Übersicht (Ring/Balken/Wochentage) war nur im dashMode erreichbar.
 
 - Idee (Alex 27.10. 00:09, Screenshots Fitness-Online-App "Klatschender Hampelmann"): Übungsansicht = bewegte 3D-Figur (Start-/Endpose wechseln) mit rot markierten Arbeitsmuskeln (Schultern, Waden) + Wdh/Pause/Sätze-Kreise darunter. WARTELISTE, gehört zu "Figur im Training-Detail/Workout" (eigene 3D-Figur + Muskel-Färbung existiert schon im Wizard). Nicht bauen vor Go.
+
+### Arbeitsteilung Haiku (Alex-Go 27.10. 00:15)
+- Agent `routine` (Haiku) in `.claude/agents/routine.md`, Regel in CLAUDE.md. Haiku: Speichern, Text-/Farb-Einzeiler, Standard-Tests, Listenpflege, Massen-Inhalte. Sonnet/Hauptmodell: Logik, Layout-Fit, Fehlersuche, neue Features, Gespräch.
