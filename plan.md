@@ -545,3 +545,9 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - Offen: wo (Planung / Spezielle Muskeln / Training bearbeiten), welche 3 Zeilen, fest oder aufklappbar.
 - Präzisiert (26.10.): Chips werden aus den Übungen des Trainings abgeleitet. Zeile Geräte = alle Geräte der enthaltenen Übungen (z. B. Langhantel + Bank). Zeile Muskeln = die dabei beanspruchten Muskeln. Dritte Zeile noch offen (Vorschlag: Fokus/Muskelgruppen).
 - Klargestellt (26.10.): Ziel ist eine reine Inhaltsübersicht je Training, wie Bestellbestätigung/Inhaltsverzeichnis: was ist schon drin (Geräte, Muskeln, Übungen), damit Alex tauschen/hinzufügen kann. Kein Fokus-System (später), nur Hauptmuskel je Übung.
+
+## Idee (26.10., Phase 0, NICHT bauen bis Go): "Baukasten-Seite" – alles anklicken, Claude baut das Training
+- Eine Seite, auf der man anklickt: Geräte + Muskelgruppen (grob = oberflächlicher Fokus) + einzelne Muskeln (fein). Daraus wird das Training zusammengestellt.
+- Live-Anzeige sofort sichtbar, welche Muskeln und Geräte trainiert werden: Leiste mit Chips UND Körper-Grafik (Alex: "Beides").
+- Offen: Verhältnis zum Planungs-Wizard (ersetzt/zusätzlich/nur Fokus-Teil) – Alex prüft; Was nach dem Zusammenstellen passiert – offen; Dauer nicht Teil der Seite.
+- Hinweis: Körper-Grafik braucht eine Figur-Vorlage mit Muskelzonen (SVG), Muster aus SPOTS/MUSCLE_GROUPS; Mitbeanspruchte Muskeln gibt es in den Daten nicht (nur Hauptmuskel je Übung).
