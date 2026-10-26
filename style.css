@@ -2564,3 +2564,5 @@ button.home-brand{background:none; border:0; padding:0; margin:0; width:100%; li
 button.home-brand:active{opacity:.7}
 
 .gn-res .gn-ex:not(.warm) .pv-n{display:none}
+
+.gn-res .gn-ex.warm .pv-n{display:none}
