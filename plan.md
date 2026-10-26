@@ -577,4 +577,4 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - Figur im Trainings-Detail (Muskelmap nach Satzzahl, muscle-map.json)
 - Figur im Workout: Haupt-/Hilfsmuskeln der aktuellen Übung
 - Verlauf als Heatmap (Woche/Monat)
-- IN ARBEIT (Idee 7): gewähltes Gerät lässt Figur die getroffenen Muskeln leuchten (Ort noch zu klären: Aufbau-Seite)
+- Gerät lässt Figur die getroffenen Muskeln leuchten (Idee 7): GESTOPPT 26.10., Alex: verlaufen uns, nicht bauen bis er es ansagt
