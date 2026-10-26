@@ -455,7 +455,7 @@ let dashMode = false;
 function renderHome() {
   document.body.classList.remove('mood-bad');
   const t = today(), open = weekplan.find(w => startOf(w.id, t) && !loadHistory().some(r => r.trainingId === w.id && r.date === t));
-  content.innerHTML = `<div class="home"><div class="home-brand"><b class="hb-home">HOME</b><b class="hb-main">FORCE</b></div><button class="home-btn" data-act="goto" data-view="start" aria-label="Start">
+  content.innerHTML = `<div class="home"><button class="home-brand" data-act="goto" data-view="weeklist" aria-label="Zur Woche"><b class="hb-home">HOME</b><b class="hb-main">FORCE</b></button><button class="home-btn" data-act="goto" data-view="start" aria-label="Start">
     <span class="home-ring"></span><span class="home-ring r2"></span><span class="home-ring r3"></span><svg class="home-pg" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="57"/></svg><span class="home-core"><i class="home-fill"></i>
     <svg viewBox="0 0 24 24" class="home-db" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>
     <b>START</b></span></button>${open ? '<div class="home-open">Offenes Training wartet</div>' : ''}</div>`;
