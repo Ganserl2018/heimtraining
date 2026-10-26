@@ -2533,7 +2533,7 @@ document.getElementById('tvIconBtn').addEventListener('click', () => {
 
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    picker = null;
+    picker = null; dashMode = false;
     if (tab.dataset.view === 'overview' || tab.dataset.view === 'start') resetPlan();
     view = tab.dataset.view;
     render();
