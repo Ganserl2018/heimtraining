@@ -551,3 +551,8 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - Live-Anzeige sofort sichtbar, welche Muskeln und Geräte trainiert werden: Leiste mit Chips UND Körper-Grafik (Alex: "Beides").
 - Offen: Verhältnis zum Planungs-Wizard (ersetzt/zusätzlich/nur Fokus-Teil) – Alex prüft; Was nach dem Zusammenstellen passiert – offen; Dauer nicht Teil der Seite.
 - Hinweis: Körper-Grafik braucht eine Figur-Vorlage mit Muskelzonen (SVG), Muster aus SPOTS/MUSCLE_GROUPS; Mitbeanspruchte Muskeln gibt es in den Daten nicht (nur Hauptmuskel je Übung).
+
+## Baukasten-Figur (26.10., Vorschau fertig, wartet auf Go)
+- Vorschau-Artefakt: https://claude.ai/artifact/Bfqf1m5dSD7uyKpLhxW92B (Foto-Figuren vorne/hinten, weißer Grund, Muskeln per Wasserscheide entlang Sehnenlinien, Chips: Körperteile, Gruppen, Geräte).
+- Quellen: Figuren freigestellt (front.png/back.png), Zonen via seg.py (Scratchpad) – bei Einbau in die App ins Repo legen.
+- Offen: Beine feiner (Vastus/Sartorius), Brust/Bauch-Streifen an Mittellinie, Verhältnis zum Wizard, Ergebnisfluss.
