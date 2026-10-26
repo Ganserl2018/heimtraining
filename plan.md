@@ -544,3 +544,4 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - Zusammenfassung was im Training schon an Muskelfokus/Geräten drin ist, damit tauschen/hinzufügen leichter geht. Muskel-Chips mit Übungsanzahl, Geräte-Chips, fehlende Muskeln grau; Chip antippen = passende Übungen zum Hinzufügen/Tauschen.
 - Offen: wo (Planung / Spezielle Muskeln / Training bearbeiten), welche 3 Zeilen, fest oder aufklappbar.
 - Präzisiert (26.10.): Chips werden aus den Übungen des Trainings abgeleitet. Zeile Geräte = alle Geräte der enthaltenen Übungen (z. B. Langhantel + Bank). Zeile Muskeln = die dabei beanspruchten Muskeln. Dritte Zeile noch offen (Vorschlag: Fokus/Muskelgruppen).
+- Klargestellt (26.10.): Ziel ist eine reine Inhaltsübersicht je Training, wie Bestellbestätigung/Inhaltsverzeichnis: was ist schon drin (Geräte, Muskeln, Übungen), damit Alex tauschen/hinzufügen kann. Kein Fokus-System (später), nur Hauptmuskel je Übung.
