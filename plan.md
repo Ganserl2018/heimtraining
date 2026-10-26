@@ -562,3 +562,10 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - Entscheidung: 3D-Figur statt Foto-Figur; Layout: Figur + schmale Chip-Spalte daneben (links/rechts noch offen), Tippen auf Figur = Körperteil wählen, Buttons Vorne/Hinten.
 - Erster Einbau: Planung Schritt 3 ("Was ist dran?"), danach Training-Detail "Inhalt".
 - Vorher nötig: Muskel-Zuordnung pro Übung auf Muskel-Ebene (Liste zum Prüfen für Alex); Push/Pull-Sperren als grau auf Figur; glb + three.js lokal ins Repo (offline), nur auf der Seite laden.
+
+## Wizard-Umbau mit 3D-Figur (26.10., gebaut, live v=20261026m, Alex schaut an → Details)
+- Reihenfolge: 1 Zeit (20/30/45/60, Tipp → weiter) · 2 "Was ist dran?" 3D-Figur + Körperteil-Chips (links), Vorne/Hinten, Zeile "Aufbauen: …", Push/Pull-gesperrte Chips grau · 3 "Was baust du auf?" Geräte aus Muskeln abgeleitet (suggestGear), abwählbar, Warnung wenn Muskel ohne Übung · 4 Ergebnis (Neu mischen, Speichern, Speichern & Starten, Zurück zum Wizard). START bleibt Halten+Füllen.
+- Technik: vendor/ (three r147, OrbitControls, GLTFLoader, muscle-model.glb, CREDITS CC BY-SA 4.0), Lazy-Load nur Figur-Schritt; Layout `.sv:has(.pl-fig){height:100%}`, Canvas absolut.
+- Offen/QA: iPhone-Harness (ZOOM=118 VH=874 ET=59 EB=34 NEWTAB=1), Checker-Re-Run, designer + design-anti-slop-check noch NICHT gelaufen; Step 3 Chip-Rail gekürzt; w3/w5 prüfen; K2 genOpen aus Trainings/Verlauf testen.
+- Warteliste: muscle-map.json in App (Figur im Training-Detail "Inhalt", mode kraft/stretch/mobility/cardio); feinere Beinmuskeln; Checker W3/W4/W6/W7, Touch-Ziele <44px, Profil-Links, "TAGE GEPLANT"-Umbruch; echte Vorlagen; fehlende Bilder (Bilderlauf); Fokus-Gewichtung.
+- Alex entscheidet allein: 184 Duplikat-Bilder, Stangengewicht, Token V10-03.
