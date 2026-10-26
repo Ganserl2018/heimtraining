@@ -1466,7 +1466,7 @@ function wtInhalt(t) {
   const chips = a => a.map(x => `<em>${esc(x)}</em>`).join('');
   return `<div class="inh"><div class="inh-t">Inhalt</div>
     <div class="inh-r"><span>Geräte</span><div class="inh-c">${gl.length ? chips(gl) : '<em>keine</em>'}</div></div>
-    <div class="inh-r"><span>Muskeln</span><div class="inh-c">${keys.filter(k => k !== 'Aufwärmen').map(k => `<em data-g="${esc(k)}"><i></i>${esc(k)} ${grp[k].length}</em>`).join('') || '<em>–</em>'}</div></div>
+    <div class="inh-r"><span>Muskeln</span><div class="inh-c">${muscleShare(t).filter(([k]) => k !== 'Aufwärmen').map(([k, p]) => `<em data-g="${esc(k)}"><i></i>${esc(k)} ${p}%</em>`).join('') || '<em>–</em>'}</div></div>
     <div class="inh-l">${keys.map(k => `<div class="inh-g"${k === 'Aufwärmen' ? '' : ` data-g="${esc(k)}"`}><b>${esc(k)}</b><span>${grp[k].map(e => esc(dn(e.name))).join(' · ')}</span></div>`).join('')}</div>
   </div>`;
 }
@@ -1474,7 +1474,7 @@ function wtHero(t, sets) {
   const min = Math.max(5, Math.round(sets * 2.5 / 5) * 5), tile = (n, l, i) => `<div class="gh-t" style="--i:${i}"><b>${n}</b><em>${l}</em></div>`;
   const sh = muscleShare(t).filter(([k]) => k !== 'Aufwärmen').slice(0, 5);
   const bar = sh.length ? `<span class="ti-bar">${sh.map(([k, p]) => `<i data-g="${esc(k)}" style="flex:${p}"></i>`).join('')}</span><span class="ti-leg">${sh.map(([k, p]) => `<span data-g="${esc(k)}"><i></i>${esc(k)} ${p}%</span>`).join('')}</span>` : '';
-  return `<div class="gh th-hero"><div class="gh-row">${tile(t.exercises.length, 'Übungen', 0)}${tile(sets, 'Sätze', 1)}${tile('~' + min, 'Minuten', 2)}</div>${bar ? `<div class="ti ti-c th-mix">${bar}</div>` : ''}</div>`;
+  return `<div class="gh th-hero"><div class="gh-row">${tile(t.exercises.length, 'Übungen', 0)}${tile(sets, 'Sätze', 1)}${tile('~' + min, 'Minuten', 2)}</div></div>`;
 }
 function renderWTrain() {
   const t = trainingById(wId);
