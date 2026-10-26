@@ -2334,3 +2334,7 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .fg-sub .fg-c.on{background:var(--gc); color:#0c1411;}
 .fg-views{top:auto; bottom:6px; right:6px; left:auto; flex-direction:column; transform:none; gap:5px;}
 .fg-sub .fg-c{font-size:.72rem; padding:.2rem .4rem;}
+.pl-grid.g3{grid-template-columns:repeat(3,1fr); gap:.5rem;}
+.pl-grid.g3 .pl-opt{min-height:0; padding:.55rem .3rem; font-size:.95rem;}
+.pl-grid.g3 .pl-opt small{font-size:.66rem;}
+.pl .qk-link{display:none}
