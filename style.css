@@ -2435,3 +2435,4 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .ga-h span{display:none;}
 .pl-fig .pl-step[data-s="2"] .qk-rows{margin-top:.2rem; padding-top:.5rem;}
 .ga-n span .ga-m, .ga-n .ga-m{text-transform:none !important; letter-spacing:0 !important; font-size:.74rem;}
+@media (max-width:899px){ #content:has(.pl-fig){padding-bottom:calc(var(--tabh,5rem) + 10px) !important;} }
