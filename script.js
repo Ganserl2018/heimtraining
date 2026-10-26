@@ -1158,6 +1158,8 @@ function fgMount() {
   }
   fgPaint();
 }
+const FG_BACK = ['Rücken', 'm:traps', 'm:middle back', 'm:lats', 'm:lower back', 'm:glutes', 'm:hamstrings', 'm:calves', 'm:triceps'], FG_FRONT = ['Brust', 'Bauch', 'm:biceps', 'm:forearms', 'm:quadriceps', 'Beine'];
+function fgFace(item) { if (!genCfg.groups.includes(item)) return; if (FG_BACK.includes(item)) fgTurn(true); else if (FG_FRONT.includes(item)) fgTurn(false); }
 function fgTurn(back) {
   if (!fg || !fg.ready) return;
   const cam = fg.cam, p = cam.position.clone(), y = p.y, r = Math.hypot(p.x, p.z), a0 = Math.atan2(p.x, p.z), az = back ? Math.PI : 0;
@@ -2223,8 +2225,8 @@ content.addEventListener('click', e => {
       if (!subs) { selToggle(g); fgOpen = null; }
       else if (on && fgOpen === g) { genCfg.groups = genCfg.groups.filter(m => { const c = fgChip(m); return !(c && c[2] === g); }); genCfg.gearTouched = false; genRes = null; fgOpen = null; }
       else { let ok = true; if (!on) ok = g === 'Arme' ? selToggle(armPick(genCfg.groups) || 'm:biceps') : selToggle(g); if (ok) fgOpen = g; }
-      break; }
-    case 'fgSel': selToggle(btn.dataset.v); break;
+      fgFace(g === 'Arme' ? (genCfg.groups.find(m => { const c = fgChip(m); return c && c[2] === 'Arme'; }) || '') : g); break; }
+    case 'fgSel': selToggle(btn.dataset.v); fgFace(btn.dataset.v); break;
     case 'fgView': fgTurn(btn.dataset.v === '1'); return;
     case 'genBackWiz': genRes = null; plClassic = false; plStep = 2; view = 'start'; break;
     case 'genBack': view = genFrom || 'start'; genFrom = null; break;
