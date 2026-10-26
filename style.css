@@ -2566,3 +2566,6 @@ button.home-brand:active{opacity:.7}
 .gn-res .gn-ex:not(.warm) .pv-n{display:none}
 
 .gn-res .gn-ex.warm .pv-n{display:none}
+/* Ergebnisseite: nichts abschneiden (Alex 27.10.) – Name bis 2 Zeilen, Chips dürfen umbrechen */
+.gn-res .gx b{-webkit-line-clamp:2}
+.gn-res .gx-m{flex-wrap:wrap; overflow:visible}
