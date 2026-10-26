@@ -2552,3 +2552,5 @@ body.is-res .topbar h1::after{content:none;}
 .wp-goal-edit input,.wp-goal-edit select{background:var(--bg); color:var(--text); border:1px solid var(--border); border-radius:10px; padding:.3rem .4rem; width:3.4rem; font-size:1rem}
 .wp-goal-edit select{width:auto}
 .wp-goal-edit .edit-bar{display:flex; gap:.5rem; width:100%}
+
+.gn-act-top{margin:.1rem 0 .35rem}
