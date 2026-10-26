@@ -538,3 +538,8 @@ Erst nach den laufenden Features; Alex gibt das Go.
 ## Woche: Vorlagen (25.10.)
 - Muskel-Vorlagen (Rücken/Brust/…/Push/Pull/Beine) aus Wochenseite entfernt: Woche zeigt nur "Meine Trainings".
 - Warteliste: echte Vorlagen = komplette Trainingspläne (Phase 0 gemeinsam: welcher Plan, Level, Tage/Woche) – Alex legt Plan noch fest.
+
+## Idee (26.10., wartet auf Alex' Go, Ort offen): Chip-Zeilen zum Einstellen/Ändern von Trainingspaketen
+- 3 Zeilen mit Chips (Inhalt/Ort noch offen); Ziel: Trainingspakete leichter einstellen und ändern.
+- Zusammenfassung was im Training schon an Muskelfokus/Geräten drin ist, damit tauschen/hinzufügen leichter geht. Muskel-Chips mit Übungsanzahl, Geräte-Chips, fehlende Muskeln grau; Chip antippen = passende Übungen zum Hinzufügen/Tauschen.
+- Offen: wo (Planung / Spezielle Muskeln / Training bearbeiten), welche 3 Zeilen, fest oder aufklappbar.
