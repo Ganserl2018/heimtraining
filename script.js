@@ -2221,7 +2221,7 @@ content.addEventListener('click', e => {
     case 'genCnt': genCfg.count = Number(btn.dataset.v) || null; genRes = null; break;
     case 'plDur': { genCfg.dur = Number(btn.dataset.v); genRes = null; btn.classList.add('picked'); btn.parentNode.classList.add('chosen'); try { navigator.vibrate && navigator.vibrate(15); } catch (x) {}
       setTimeout(() => plJump(1), 420); return; }
-    case 'plNext': if (plStep === 1 && !genCfg.groups.length) { plMsg = 'Tipp mindestens einen Muskel an.'; break; } plJump(plStep + 1); return;
+    case 'plNext': if (plStep === 1 && !genCfg.groups.length) break; plJump(plStep + 1); return;
     case 'plTo': plJump(Number(btn.dataset.v)); return;
     case 'plSpots': plSpots = !plSpots; break;
     case 'plClassic': plClassic = !plClassic; break;
