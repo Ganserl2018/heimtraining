@@ -556,3 +556,9 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - Vorschau-Artefakt: https://claude.ai/artifact/Bfqf1m5dSD7uyKpLhxW92B (Foto-Figuren vorne/hinten, weißer Grund, Muskeln per Wasserscheide entlang Sehnenlinien, Chips: Körperteile, Gruppen, Geräte).
 - Quellen: Figuren freigestellt (front.png/back.png), Zonen via seg.py (Scratchpad) – bei Einbau in die App ins Repo legen.
 - Offen: Beine feiner (Vastus/Sartorius), Brust/Bauch-Streifen an Mittellinie, Verhältnis zum Wizard, Ergebnisfluss.
+
+## 3D-Körper (26.10., Vorschau abgenommen, Einbau wartet auf Go)
+- Vorschau: https://claude.ai/artifact/Nbb596BRAVPQPcuGZkwgNM (three.js 0.147, muscle-model.glb aus gymmetry-muscle-model / Z-Anatomy, CC BY-SA 4.0 → CREDITS im Repo mitführen).
+- Entscheidung: 3D-Figur statt Foto-Figur; Layout: Figur + schmale Chip-Spalte daneben (links/rechts noch offen), Tippen auf Figur = Körperteil wählen, Buttons Vorne/Hinten.
+- Erster Einbau: Planung Schritt 3 ("Was ist dran?"), danach Training-Detail "Inhalt".
+- Vorher nötig: Muskel-Zuordnung pro Übung auf Muskel-Ebene (Liste zum Prüfen für Alex); Push/Pull-Sperren als grau auf Figur; glb + three.js lokal ins Repo (offline), nur auf der Seite laden.
