@@ -2452,3 +2452,9 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .ts-s b small{font-size:.9rem; color:var(--text-dim);}
 .ts-s em{font-style:normal; font:700 .62rem system-ui,-apple-system,sans-serif; letter-spacing:.14em; text-transform:uppercase; color:var(--text-dim); white-space:nowrap;}
 .ts-d{display:flex; gap:3px; margin-top:2px;} .ts-d i{width:6px; height:6px; border-radius:50%; background:var(--border);} .ts-d i.on{background:var(--accent);}
+/* Geräte-Seite: alle passenden Geräte, an = hell, aus = gedämpft */
+.ga-h span{display:flex;} .ga-h span{font-size:.8rem;}
+.pl-fig .pl-grid.g2 .ga-n.ga-off{border:1.5px dashed var(--border); background:transparent; box-shadow:none; opacity:.62;}
+.ga-off .ga-num{color:var(--text-dim);} .ga-off b{color:var(--text-dim);}
+.ga-off::before{content:"+"; position:absolute; right:.5rem; top:.2rem; color:var(--text-dim); font-weight:800; display:none;}
+.pl-grid.g2.dense .ga-n{min-height:50px;}
