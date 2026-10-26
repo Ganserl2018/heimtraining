@@ -1201,7 +1201,7 @@ function renderStart() {
     const grp = ['Brust', 'Schultern', 'Arme', 'Bauch', 'Rücken', 'Beine'].map(g => `<button class="fg-g${gOn(g) ? ' on' : ''}${fgOpen === g ? ' open' : ''}" data-g="${g}" data-act="fgGrp" data-v="${g}">${g}</button>`).join('');
     const subs = fgOpen ? FG_CHIPS.filter(c => c[2] === fgOpen).map(c => { const o = onc(c), bl = false; return `<button class="fg-c${o ? ' on' : ''}${bl ? ' none' : ''}" data-g="${c[2]}" data-act="fgSel" data-v="${esc(c[1])}">${SUBL[c[0]] || c[0]}</button>`; }).join('') : '';
     body = `<div class="fg"><div class="fg-gs">${grp}</div><div class="fg-sub">${subs}</div><div class="fg-cv"><div class="fg-views"><button data-act="fgView" data-v="0">Vorne</button><button data-act="fgView" data-v="1">Hinten</button></div></div></div>`;
-    foot = `<button class="fg-next${G.length ? '' : ' off'}" data-act="plNext">${plMsg ? esc(plMsg) : G.length ? 'WEITER ›' : 'Tippe eine Gruppe oder die Figur'}</button>`;
+    foot = `<button class="fg-next${G.length ? '' : ' off'}" data-act="plNext">WEITER ›</button>`;
   } else {
     if (!genCfg.groups.length) { plStep = 1; return renderStart(); }
     if (!genCfg.gearTouched) genCfg.gear = suggestGear();
