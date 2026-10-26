@@ -1094,7 +1094,7 @@ function fgInit() {
   const scene = new T.Scene(), cam = new T.PerspectiveCamera(32, 1, 0.05, 100);
   scene.add(new T.AmbientLight(0xffffff, 0.35));
   [[0xfff2e6, 1.35, 3, 5, 4], [0xbfd4ff, 0.4, -4, 2, 2], [0xffffff, 0.55, 0, 3, -5]].forEach(([c, i, x, y, z]) => { const l = new T.DirectionalLight(c, i); l.position.set(x, y, z); scene.add(l); });
-  const ctl = new T.OrbitControls(cam, r.domElement); ctl.enableDamping = true; ctl.dampingFactor = 0.08; ctl.enablePan = false;
+  const ctl = new T.OrbitControls(cam, r.domElement); ctl.enableDamping = true; ctl.dampingFactor = 0.08; ctl.enablePan = false; ctl.enableZoom = false; ctl.minPolarAngle = ctl.maxPolarAngle = Math.PI / 2;
   Object.assign(fg, { T, r, scene, cam, ctl, el: r.domElement });
   const REG = new Set(FG_CHIPS.flatMap(c => c[4]));
   new T.GLTFLoader().load('vendor/muscle-model.glb', g => {
@@ -1108,9 +1108,9 @@ function fgInit() {
     });
     const box = new T.Box3().setFromObject(model), size = box.getSize(new T.Vector3()), c = box.getCenter(new T.Vector3());
     model.position.sub(c); scene.add(model); fg.model = model;
-    fg.dist = (size.y / 2) / Math.tan(T.MathUtils.degToRad(cam.fov / 2)) * 1.25;
+    fg.dist = (size.y / 2) / Math.tan(T.MathUtils.degToRad(cam.fov / 2)) * 1.12;
     cam.position.set(0, 0, fg.dist); cam.near = fg.dist / 100; cam.far = fg.dist * 20; cam.updateProjectionMatrix();
-    ctl.minDistance = fg.dist * 0.3; ctl.maxDistance = fg.dist * 1.6; ctl.update();
+    ctl.minDistance = ctl.maxDistance = fg.dist; ctl.update();
     fg.ready = true; fgMount();
   }, undefined, () => { fg.failed = true; fgMount(); });
   const ray = new T.Raycaster(), pt = new T.Vector2(); let down = null;
@@ -1215,7 +1215,7 @@ function renderStart() {
   }
   plMsg = '';
   content.innerHTML = `<div class="sv"><div class="pl">${plRail()}<div class="pl-step" data-s="${plStep}">${body}</div><div class="pl-foot">${foot}</div>
-    <button class="qk-link" data-act="plClassic">Alle Optionen auf einer Seite ›</button></div></div>`;
+    ${plStep === 1 ? '' : '<button class="qk-link" data-act="plClassic">Alle Optionen auf einer Seite ›</button>'}</div></div>`;
   content.classList.remove('pl-scroll');
   content.querySelector('.pl').classList.toggle('pl-fig', plStep === 1);
   if (plStep === 1) fgMount();

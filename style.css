@@ -2283,3 +2283,4 @@ html:has(#content.pl-scroll){overflow:hidden;}
 .pl-back{white-space:nowrap; flex:none;}
 .pl-lead{flex:none; min-width:0;}
 .pl-chips .pl-chip{flex:0 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis;}
+.pl.pl-fig .qk-link{display:none}
