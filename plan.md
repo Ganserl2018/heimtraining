@@ -614,3 +614,4 @@ Erst nach den laufenden Features; Alex gibt das Go.
 11. OFFEN (Alex überlegt, 23:07): Startseite – Rolle unklar (Ring/Monatsbalken/Countdown/Wochentage doppeln Woche+Profil). Optionen: A abspecken, B abschaffen (Woche = Start). Keine Entscheidung, nichts bauen.
     Alex 23:08: "Start Workout" entfällt (Wizard-Ergebnis hat Starten). Damit bleibt auf Start fast nichts → Entscheidung A/B hängt davon ab.
     Alex 23:09: Woche-Seite wird NICHT die Startseite (B abgelehnt). Start bleibt eigene Seite, Inhalt offen.
+    KORREKTUR 23:11: Der "Start Workout"-Button auf der Übersicht ist der EINSTIEG in den Wizard (view=start), nicht das Ende. "Start-Seite" für Alex = Wizard-Start. Offen/Vorschlag: Tab "Start" öffnet direkt den Wizard, Übersichtsseite entfällt (Monatsziel→Woche, Streak→Profil).
