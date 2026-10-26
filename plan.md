@@ -578,3 +578,9 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - Figur im Workout: Haupt-/Hilfsmuskeln der aktuellen Übung
 - Verlauf als Heatmap (Woche/Monat)
 - Gerät lässt Figur die getroffenen Muskeln leuchten (Idee 7): GESTOPPT 26.10., Alex: verlaufen uns, nicht bauen bis er es ansagt
+
+## Stand 26.10. 20:05 – Wizard-Optik + Geräte-Logik (v=20261027t, 9b3ec78)
+- Wizard 3 Schritte: Zeit → Figur (6 Gruppen, Untergruppen-Accordion, Auto-Drehung vorne/hinten) → GERÄTE (Schalter-Zeilen mit Übungsvorschau, Feinschliff eingeklappt) → TRAINING BAUEN.
+- suggestGear: ~20 Übungen/Muskel, Paare (Bank+Hanteln), Körper halb. Start-Tab = resetPlan().
+- Optik-Check erledigt (QA-Bericht qa-wizard-bericht-2026-10-27.md). Trainings-Hero = Zahlenstreifen, Training-Detail kompakter.
+- Warteliste: Figur-Fähigkeiten (siehe oben), Gerät→Figur GESTOPPT, Übungskarten verdichten, GIFs cat_cow/scapular_push_up, Checker-Re-Run.
