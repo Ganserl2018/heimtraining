@@ -637,3 +637,4 @@ Erst nach den laufenden Features; Alex gibt das Go.
 
 ### Alex' Tagesbilanz 27.10. 00:24 (seine Sicht, "geschafft")
 1. Neue Optik. 2. Funktionierender Startbutton (Halten-Füllen, "Mega"). 3. Trainingserstellprozess fast fertig. 4. Viel Kleinkram beseitigt. 5. Oberfläche nah an fertig.
+- Entscheid Alex 27.10. 00:26: Stangengewicht = 6 kg (festgelegt). 184 Duplikat-Bilder: später.
