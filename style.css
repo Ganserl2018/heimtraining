@@ -2574,3 +2574,5 @@ button.home-brand:active{opacity:.7}
 
 .lv-ic{font-style:normal; color:var(--text); font-size:1.2em; font-weight:700; line-height:1}
 .lv-ic.lv-sw{font-size:1.6em; line-height:.6; vertical-align:-.1em}
+.gn-act-top .ga-c{display:flex; align-items:center; justify-content:center; gap:.35rem}
+.ga-c .ga-ic2{font-size:2em; line-height:1; display:grid; place-items:center; vertical-align:baseline; transform:translateY(-.04em)}
