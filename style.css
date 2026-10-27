@@ -2579,3 +2579,12 @@ button.home-brand:active{opacity:.7}
 .gn-act-top .ga-c{display:flex; align-items:center; justify-content:center; gap:.4rem; line-height:1}
 .ga-c .ga-ic2{font-style:normal; width:20px; height:20px; flex:none; display:block; transform:none; font-size:1em; line-height:1}
 .ga-c .ga-ic2 svg{width:20px; height:20px; display:block; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+.gn-res .gh.gh-s.th-hero{display:block; padding:.6rem; margin:0 0 .7rem; border-radius:22px}
+.gn-res .gh.gh-s.th-hero .gh-top{margin:0 0 .5rem}
+.gn-res .gh.gh-s.th-hero .gh-t{padding:.4rem 0} .gn-res .gh.gh-s.th-hero .gh-t b{font-size:1.6rem}
+.gn-adj,.gn-pan,.gn-pan .qk-rows,.gn-pan .qk-r,.gn-pan .seg{max-width:100%; min-width:0; box-sizing:border-box}
+.gn-pan .qk-r{overflow:hidden}
+.gn-act-sub{grid-template-columns:repeat(3,minmax(0,1fr)); gap:.3rem}
+.gn-act-top .ga-c{gap:.25rem; padding:0 .15rem; font-size:.78rem; min-width:0}
+.ga-c .ga-ic2,.ga-c .ga-ic2 svg{width:18px; height:18px}
+.gn-res .gh-row{grid-template-columns:repeat(3,minmax(0,1fr))}
