@@ -1904,14 +1904,14 @@ const DT_DAYS = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Sam
 function dtIdx(n) { const i = DT_DAYS.findIndex(d => n === d + 'straining'); return i < 0 ? 7 : i; }
 function dtShort(n) { const i = dtIdx(n); return i < 7 ? DT_DAYS[i] : n; }
 function dtBadge(n) { const i = dtIdx(n); return i < 7 ? DT_DAYS[i].slice(0, 2) : '+'; }
-function dtDays(t) { return WD_KEYS.filter(k => (t.weekdays || []).includes(k)).map(k => WD_LABELS[k]).join(' · '); }
 function dtDayList() { return weekplan.map((t, k) => [t, k]).sort((a, b) => dtIdx(a[0].name) - dtIdx(b[0].name) || a[1] - b[1]).map(x => x[0]); }
 function detailSheetHtml(ex) {
   const w = WCLASS[ex.muscle] || ['im Zielmuskel', 'Muskelaufbau', 'maximale Kraft'];
   const sec = secondaries(ex);
   const add = view !== 'play' && view !== 'tv' ? `<div class="dt-sec">Zu Training hinzufügen</div>
-    <div class="dt-add">${dtDayList().map(t => { const has = t.exercises.some(e => e.name === ex.name);
-      return `<button class="dt-chip${has ? ' on' : ''}" data-act="browseAdd" data-id="${t.id}"><span class="dt-chip-b">${dtIdx(t.name) < 7 || !dtDays(t) ? dtBadge(t.name) : dtDays(t).slice(0, 2)}</span><span class="dt-chip-t"><b>${esc(dtShort(t.name))}</b><small>${has ? '✓ Hinzugefügt' : (dtIdx(t.name) < 7 ? 'Training' : 'Eigenes Training')}${dtDays(t) && dtIdx(t.name) >= 7 ? ' · ' + dtDays(t) : ''}</small></span></button>`; }).join('')}<button class="dt-chip" data-act="browseAddNew"><span class="dt-chip-b">+</span><span class="dt-chip-t"><b>Neues Training</b><small>mit dieser Übung</small></span></button></div>` : '';
+    <div class="dt-add">${WD_KEYS.map((k, i) => { const t = weekplan.find(w => (w.weekdays || []).includes(k)) || weekplan.find(w => w.name === DT_DAYS[i] + 'straining'), has = !!t && t.exercises.some(e => e.name === ex.name);
+      return `<button class="dt-chip${has ? ' on' : ''}" data-act="${t ? 'browseAdd' : 'browseAddDay'}" data-id="${t ? t.id : ''}" data-day="${k}"><span class="dt-chip-b">${WD_LABELS[k]}</span><span class="dt-chip-t"><b>${DT_DAYS[i]}</b><small>${has ? '✓ Hinzugefügt' : (t ? esc(t.name) : 'Neues Training')}</small></span></button>`; }).join('')}${dtDayList().filter(t => !(t.weekdays || []).length && dtIdx(t.name) >= 7).map(t => { const has = t.exercises.some(e => e.name === ex.name);
+      return `<button class="dt-chip${has ? ' on' : ''}" data-act="browseAdd" data-id="${t.id}"><span class="dt-chip-b">+</span><span class="dt-chip-t"><b>${esc(t.name)}</b><small>${has ? '✓ Hinzugefügt' : 'Ohne Tag'}</small></span></button>`; }).join('')}<button class="dt-chip" data-act="browseAddNew"><span class="dt-chip-b">+</span><span class="dt-chip-t"><b>Neues Training</b><small>mit dieser Übung</small></span></button></div>` : '';
   return `<div class="goal-sheet dt-bg" data-act="browseClose"><div class="dt-sheet">
     <button class="dt-x" data-act="browseClose" aria-label="Schließen">✕</button>
     <div class="dt-hero"><img src="${esc(imgOf(ex))}" alt="" onerror="this.style.visibility='hidden'"></div>
@@ -2350,6 +2350,10 @@ content.addEventListener('click', e => {
     case 'browseAddNew': {
       const ex = pool[browseSel]; if (!ex) break;
       weekplan.push({ id: 'w' + Date.now(), name: loserName(), exercises: [{ name: ex.name, muscle: ex.muscle, gif: ex.gif, sets: 3, note: '', unit: defaultUnit(ex.name) }], weekdays: [], since: {}, time: '' }); saveWeekplan(); break;
+    }
+    case 'browseAddDay': {
+      const ex = pool[browseSel], k = btn.dataset.day; if (!ex || !WD_KEYS.includes(k)) break;
+      weekplan.push({ id: 'w' + Date.now(), name: loserName(), exercises: [{ name: ex.name, muscle: ex.muscle, gif: ex.gif, sets: 3, note: '', unit: defaultUnit(ex.name) }], weekdays: [k], since: { [k]: today() }, time: '' }); saveWeekplan(); break;
     }
     case 'browseAdd': {
       const t = trainingById(btn.dataset.id), ex = pool[browseSel];
