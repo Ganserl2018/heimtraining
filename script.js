@@ -1677,10 +1677,10 @@ function wtInhalt(t) {
   </div>`;
 }
 function wtHero(t, sets) {
-  const min = Math.max(5, Math.round(sets * 2.5 / 5) * 5), tile = (n, l, i) => `<div class="gh-t" style="--i:${i}"><b>${n}</b><em>${l}</em></div>`;
+  const min = Math.max(5, Math.round(sets * 2.5 / 5) * 5), tile = (n, l) => `<div class="ts-s"><b>${n}</b><em>${l}</em></div>`;
   const sh = muscleShare(t).filter(([k]) => k !== 'Aufwärmen').slice(0, 5);
   const bar = sh.length ? `<span class="ti-bar">${sh.map(([k, p]) => `<i data-g="${esc(k)}" style="flex:${p}"></i>`).join('')}</span><span class="ti-leg">${sh.map(([k, p]) => `<span data-g="${esc(k)}"><i></i>${esc(k)} ${p}%</span>`).join('')}</span>` : '';
-  return `<div class="gh th-hero"><div class="gh-row">${tile(t.exercises.length, 'Übungen', 0)}${tile(sets, 'Sätze', 1)}${tile('~' + min, 'Minuten', 2)}</div></div>`;
+  return `<div class="ts-strip">${tile(t.exercises.length, 'Übungen')}${tile(sets, 'Sätze')}${tile('~' + min, 'Minuten')}</div>`;
 }
 function renderWTrain() {
   const t = trainingById(wId);
@@ -1761,7 +1761,7 @@ function renderTrainings() {
     return trTab === 'arch' ? c : `<div class="wp-sw tr-sw" data-sw="${t.id}"><div class="wp-sw-bg"><span class="a">📥 Archiv</span><span class="d">Löschen 🗑</span></div>${c}</div>`;
   };
   const days = new Set(); act.forEach(w => (w.weekdays || []).forEach(d => days.add(d))); const exN = act.reduce((n, w) => n + w.exercises.length, 0);
-  const heroFav = trTab === 'fav' ? `<div class="gh tr-hero"><div class="gh-row" style="grid-template-columns:repeat(2,1fr)"><div class="gh-t" style="--i:0"><b>${favEx.length}</b><em>Lieblingsübungen</em></div><div class="gh-t" style="--i:1"><b>${favs.length}</b><em>Lieblingstrainings</em></div></div></div>` : '';
+  const heroFav = trTab === 'fav' ? `<div class="ts-strip" style="grid-template-columns:repeat(2,1fr)"><div class="ts-s"><b>${favEx.length}</b><em>Lieblingsübungen</em></div><div class="ts-s"><b>${favs.length}</b><em>Lieblingstrainings</em></div></div>` : '';
   const st = (n, l, x) => `<div class="ts-s"><b>${n}</b><em>${l}</em>${x || ''}</div>`;
   const dots7 = `<span class="ts-d">${WD_KEYS.map(k => `<i${days.has(k) ? ' class="on"' : ''}></i>`).join('')}</span>`;
   const hero = heroFav || (trTab === 'act' ? `<div class="ts-strip">${st(act.length, 'Trainings')}${st(days.size + '<small>/7</small>', 'Tage', dots7)}${st(exN, 'Übungen')}</div>` : '');
