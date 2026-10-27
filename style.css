@@ -2588,3 +2588,4 @@ button.home-brand:active{opacity:.7}
 .ga-c .ga-ic2,.ga-c .ga-ic2 svg{width:18px; height:18px}
 .gn-res .gh-row{grid-template-columns:repeat(3,minmax(0,1fr))}
 .gn:has(.gn-res){padding-left:0; padding-right:0}
+.th-hero{background:none; border-color:transparent; box-shadow:none;}
