@@ -996,8 +996,8 @@ function genActHtml() {
 function genActMain() { return `<div class="gn-act"><div class="gn-act-main"><button class="ga-b ga-save" data-act="genSave">✓ Speichern</button><button class="ga-b ga-start" data-act="genGo">▶ Starten</button></div></div>`; }
 function genHero() {
   const ex = genRes || [], main = ex.filter(e => !e.warm), sets = ex.reduce((n, e) => n + (e.sets || 0), 0), gs = [...new Set(main.map(e => MUSCLE_GROUPS[e.muscle]).filter(Boolean))];
-  const tile = (n, l, i) => `<div class="gh-t" style="--i:${i}"><b>${n}</b><em>${l}</em></div>`;
-  return `<div class="gn-top"><button class="gn-back" data-act="genBackWiz" aria-label="Zurück zur Auswahl">‹</button>${gs.map(g => `<span class="gx-t g" data-g="${esc(g)}">${esc(g)}</span>`).join('')}</div><div class="gh th-hero"><div class="gh-row">${tile(main.length, 'Übungen', 0)}${tile(sets, 'Sätze', 1)}${tile('~' + genCfg.dur, 'Minuten', 2)}</div></div>`;
+  const tile = (n, l) => `<div class="ts-s"><b>${n}</b><em>${l}</em></div>`;
+  return `<div class="gn-top"><button class="gn-back" data-act="genBackWiz" aria-label="Zurück zur Auswahl">‹</button>${gs.map(g => `<span class="gx-t g" data-g="${esc(g)}">${esc(g)}</span>`).join('')}</div><div class="ts-strip">${tile(main.length, 'Übungen')}${tile(sets, 'Sätze')}${tile('~' + genCfg.dur, 'Minuten')}</div>`;
 }
 function renderGen() {
   const lv = genLevel(), p = loadProfile();
