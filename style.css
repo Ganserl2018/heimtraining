@@ -2571,3 +2571,6 @@ button.home-brand:active{opacity:.7}
 .gn-res .gx-m{flex-wrap:wrap; overflow:visible}
 
 .gn-res .lv-one{white-space:nowrap; overflow:hidden; font-size:.72rem; margin:.3rem 0 .1rem}
+
+.lv-ic{font-style:normal; color:var(--text); font-size:1.2em; font-weight:700; line-height:1}
+.lv-ic.lv-sw{font-size:1.6em; line-height:.6; vertical-align:-.1em}
