@@ -2576,3 +2576,6 @@ button.home-brand:active{opacity:.7}
 .lv-ic.lv-sw{font-size:1.6em; line-height:.6; vertical-align:-.1em}
 .gn-act-top .ga-c{display:flex; align-items:center; justify-content:center; gap:.35rem}
 .ga-c .ga-ic2{font-size:2em; line-height:1; display:grid; place-items:center; vertical-align:baseline; transform:translateY(-.1em)}
+.gn-act-top .ga-c{display:flex; align-items:center; justify-content:center; gap:.4rem; line-height:1}
+.ga-c .ga-ic2{font-style:normal; width:20px; height:20px; flex:none; display:block; transform:none; font-size:1em; line-height:1}
+.ga-c .ga-ic2 svg{width:20px; height:20px; display:block; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
