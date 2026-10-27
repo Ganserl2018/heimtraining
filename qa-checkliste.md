@@ -38,3 +38,4 @@ Neue Alex-Beschwerde, die schon mal da war → hier als Punkt ergänzen.
 
 ## Vergleich mit Referenz-Seite (Alex 27.10.)
 - [ ] Sagt Alex "genauso wie Seite X": ZUERST beide Elemente per Playwright vergleichen (computed style: Breite, Höhe, Padding, Border, Schriftgröße), bevor geändert wird. Gilt z. B. für Heros mit Zahlen (Kacheln Übungen/Sätze/Minuten wie Trainingsseite).
+- "Trainingsseite" = Reiter **Trainings** (Übersicht, Zahlen-Streifen `.ts-strip`), NICHT das Training-Detail. Bei "wie Seite X": erst die Seite am Reiter-/Seitentitel eindeutig bestimmen, dann messen. Vorfall 27.10. 00:36–02:15: falsche Seite (Detail, `.th-hero`) verglichen, 5 Commits Umweg. Zahlen-Heros überall = `.ts-strip`.
