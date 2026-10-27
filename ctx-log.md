@@ -4,3 +4,4 @@ Pro Block eine Zeile anhängen: Zeit | MB seit letzter Kompression (tools/ctx-ch
 - 27.10. 00:58 | 0.59 MB | 7619026 B | Block: Abschneiden-Fix
 - 27.10. 01:06 | 0.68 MB | 7708656 B | Block: Wischen-Zeile
 0.53 MB seit letzter Kompression (16add7bd-0e79-58e0-9eeb-5a1cf70dc7a3.jsonl)
+1.48 MB seit letzter Kompression (16add7bd-0e79-58e0-9eeb-5a1cf70dc7a3.jsonl)
