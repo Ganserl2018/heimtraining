@@ -35,3 +35,6 @@ Neue Alex-Beschwerde, die schon mal da war → hier als Punkt ergänzen.
 - HOME FORCE tippen → Woche-Seite (ohne Wizard).
 - Alex' Lieblingselemente nie entfernen oder ersetzen, auch nicht "zum Aufräumen" (Start-Button, Halten-Füllen, Neon-Look).
 - Vor "Entfernen/Abschaffen": nur bauen, wenn Alex es ausdrücklich so gesagt hat; bei Unklarheit nachfragen, was GENAU gemeint ist (Seite vs. Button).
+
+## Vergleich mit Referenz-Seite (Alex 27.10.)
+- [ ] Sagt Alex "genauso wie Seite X": ZUERST beide Elemente per Playwright vergleichen (computed style: Breite, Höhe, Padding, Border, Schriftgröße), bevor geändert wird. Gilt z. B. für Heros mit Zahlen (Kacheln Übungen/Sätze/Minuten wie Trainingsseite).

@@ -640,3 +640,12 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - Entscheid Alex 27.10. 00:26: Stangengewicht = 6 kg (festgelegt). 184 Duplikat-Bilder: später.
 - Token V10-03: allein nicht lösbar (iOS-Kurzbefehl muss auf Alex' iPhone angepasst werden) → Alex 27.10.: Freitag 30.10. 22:00 (Limit-Reset). Erinnerung gesetzt.
 - Hero Ergebnis = Kacheln wie Training-Detail (th-hero); Alex: alle Heros mit Zahlen so. Offen: andere Heros prüfen
+
+## Stand 27.10. 01:45 – Ergebnis-Hero = Trainingsseite (v=20261029j, b601164)
+- Ergebnisseite: Zeile Neu mischen | Anpassen | Einplanen mit gleichen SVG-Symbolen (Zahnrad/Kreispfeil/Kalender, 18px, mittig, passt in 402px/118%).
+- Ergebnis-Hero identisch zu Trainingsseite (th-hero, Kacheln Übungen/Sätze/Minuten, Breite 367px, Rahmen wie dort). Zurück-Pfeil + Muskel-Chips als Zeile .gn-top darüber.
+- Commits: 89ec3b5, 3a07e04, b601164.
+- Alex: "alle Heros mit Zahlen so" -> Offen: andere Heros mit Zahlen angleichen.
+- Lehre: Wenn Alex "genauso wie Seite X" sagt, ZUERST beide Elemente per Playwright (computed style: Breite, Höhe, Padding, Border, Schriftgröße) vergleichen statt raten. Hat drei Runden gekostet.
+- Offen/Warteliste: andere Heros angleichen, Profil-Fußzeile iPhone-Fit messen, Geräte-Chips im Training-Detail, Übungssuche (#8), UI-Übersetzung DE/EN (#9), bewegte Muskel-Figur, Checker-Lauf.
+- Termine: Token V10-03 Freitag 30.10. 22:00. 184 Duplikat-Bilder: Alex entscheidet.
