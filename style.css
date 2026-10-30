@@ -2588,3 +2588,7 @@ button.home-brand:active{opacity:.7}
 .ga-c .ga-ic2,.ga-c .ga-ic2 svg{width:18px; height:18px}
 .gn-res .gh-row{grid-template-columns:repeat(3,minmax(0,1fr))}
 .gn:has(.gn-res){padding-left:0; padding-right:0}
+
+.w-time-sel{display:flex; align-items:center; gap:.35rem}
+.w-time-sel b{color:var(--text-dim)}
+.w-time-sel select.w-schedule-time{min-width:4.2rem; min-height:44px; text-align:center; text-align-last:center; color:var(--text); font-size:1rem}

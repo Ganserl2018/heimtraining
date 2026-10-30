@@ -1708,7 +1708,7 @@ function renderWTrain() {
         ${lvMsg ? `<div class="lv-msg">${lvMsg}</div>` : ''}
         <div class="tx-lab">Tage &amp; Uhrzeit</div>
         <div class="tx-days">${WD_KEYS.map(k => `<button class="chip${t.weekdays.includes(k) ? ' active' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>
-        <label class="w-time-l"><span>Uhrzeit (optional)</span><input type="time" class="w-schedule-time" data-act="wTime" data-id="${t.id}" value="${esc(t.time || '')}"></label>
+        <div class="w-time-l"><span>Uhrzeit (optional)</span><span class="w-time-sel">${(() => { const [th, tm] = /^\d\d:\d\d$/.test(t.time || '') ? t.time.split(':') : ['', '']; const mins = ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55']; if (tm && !mins.includes(tm)) mins.push(tm), mins.sort(); return `<select class="w-schedule-time" data-act="wTimeSel" data-part="h" data-id="${t.id}" aria-label="Stunde"><option value="">--</option>${Array.from({ length: 24 }, (_, h) => String(h).padStart(2, '0')).map(h => `<option${h === th ? ' selected' : ''}>${h}</option>`).join('')}</select><b>:</b><select class="w-schedule-time" data-act="wTimeSel" data-part="m" data-id="${t.id}" aria-label="Minute">${mins.map(m => `<option${m === tm ? ' selected' : ''}>${m}</option>`).join('')}</select>`; })()}</span></div>
         ${miss.length ? `<div class="w-missed">${miss.map(ds => `<span>${WD_LABELS[wdKeyOf(ds)]} verpasst</span><button data-act="wSkip" data-id="${t.id}" data-date="${ds}">Als Ruhetag werten</button>`).join('')}</div>` : ''}
         <button class="ts-del" data-act="wDelete" data-id="${t.id}">Training löschen</button>
       </div></div>
@@ -2435,6 +2435,15 @@ content.addEventListener('click', e => {
 });
 
 content.addEventListener('change', e => {
+  const ts = e.target.closest('[data-act="wTimeSel"]');
+  if (ts) {
+    const box = ts.closest('.w-time-sel'), h = box.querySelector('[data-part="h"]').value, m = box.querySelector('[data-part="m"]').value;
+    const t = trainingById(ts.dataset.id); t.time = h ? h + ':' + m : '';
+    saveWeekplan();
+    const sp = document.querySelector('.tx-sum span');
+    if (sp) sp.textContent = (WD_KEYS.filter(k => t.weekdays.includes(k)).map(k => WD_LABELS[k]).join(' ') || 'Tage wählen') + (t.time ? ' · ' + t.time : '') + ' · ' + (t.level != null ? LEVELS[t.level][1] : 'Level');
+    return;
+  }
   const u = e.target.closest('[data-act="wUnit"]');
   if (!u) return;
   trainingById(u.dataset.id).exercises[Number(u.dataset.i)].unit = u.value;
