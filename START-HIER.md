@@ -27,7 +27,7 @@ Alex will NICHTS erklären müssen. Alles hier lesen, dann direkt weiterbauen. A
 3. Alex fragen, welcher Block als Nächstes: Geräte-Chips im Training-Detail aus gewählten Geräten · Übungssuche-Wizardseite · UI Deutsch/English · bewegte Muskel-Figur (billig: GIF + rot markierte Muskeln, oder voller Rig – Alex hat nicht gewählt) · Checker-Lauf mit neuer qa-checkliste.
 
 ## Termine / Entscheidungen
-- Token V10-03 (Health-Sync-Token öffentlich): Fr 30.10. 22:00, Erinnerung gesetzt; Alex muss iOS-Kurzbefehl anpassen.
-- Wochenlimit-Reset jeden Freitag 22:00 Berlin. Auditor wöchentlich So 20:17 (Cloud-Task).
+- Token V10-03 (Health-Sync-Token öffentlich): Fr 30.10. 21:00, Erinnerung gesetzt; Alex muss iOS-Kurzbefehl anpassen.
+- Wochenlimit-Reset jeden Freitag 21:00 Berlin (Alex 30.10.: jetzt 21:00 statt 22:00; Sammler liest ihn live). Auditor wöchentlich So 20:17 (Cloud-Task).
 - Stangengewicht 6 kg (entschieden). 184 Duplikat-Bilder: Alex entscheidet später. Bilder später.
 - Neuer Chat: Alex sagt nur „start“ o. ä.; Claude liest diese Datei, holt Zugriffe still, nennt Stand + nächsten Schritt in 2 Sätzen.

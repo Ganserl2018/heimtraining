@@ -638,7 +638,7 @@ Erst nach den laufenden Features; Alex gibt das Go.
 ### Alex' Tagesbilanz 27.10. 00:24 (seine Sicht, "geschafft")
 1. Neue Optik. 2. Funktionierender Startbutton (Halten-Füllen, "Mega"). 3. Trainingserstellprozess fast fertig. 4. Viel Kleinkram beseitigt. 5. Oberfläche nah an fertig.
 - Entscheid Alex 27.10. 00:26: Stangengewicht = 6 kg (festgelegt). 184 Duplikat-Bilder: später.
-- Token V10-03: allein nicht lösbar (iOS-Kurzbefehl muss auf Alex' iPhone angepasst werden) → Alex 27.10.: Freitag 30.10. 22:00 (Limit-Reset). Erinnerung gesetzt.
+- Token V10-03: allein nicht lösbar (iOS-Kurzbefehl muss auf Alex' iPhone angepasst werden) → Alex 27.10.: Freitag 30.10. (Limit-Reset, am 30.10. von 22:00 auf 21:00 korrigiert). Erinnerung gesetzt.
 - Hero Ergebnis = Kacheln wie Training-Detail (th-hero); Alex: alle Heros mit Zahlen so. Offen: andere Heros prüfen
 
 ## Stand 27.10. 01:45 – Ergebnis-Hero = Trainingsseite (v=20261029j, b601164)
@@ -648,4 +648,5 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - Alex: "alle Heros mit Zahlen so" -> Offen: andere Heros mit Zahlen angleichen.
 - Lehre: Wenn Alex "genauso wie Seite X" sagt, ZUERST beide Elemente per Playwright (computed style: Breite, Höhe, Padding, Border, Schriftgröße) vergleichen statt raten. Hat drei Runden gekostet.
 - Offen/Warteliste: andere Heros angleichen, Profil-Fußzeile iPhone-Fit messen, Geräte-Chips im Training-Detail, Übungssuche (#8), UI-Übersetzung DE/EN (#9), bewegte Muskel-Figur, Checker-Lauf.
-- Termine: Token V10-03 Freitag 30.10. 22:00. 184 Duplikat-Bilder: Alex entscheidet.
+- Termine: Token V10-03 Freitag 30.10. 21:00 (korrigiert von 22:00). 184 Duplikat-Bilder: Alex entscheidet.
+- 30.10. 19:58 Korrektur: Wochenlimit-Reset ist jetzt Freitag 21:00 Berlin (nicht mehr 22:00; Alex-Meldung, Sammler-Messung Woche-Reset 19:59:59Z bestätigt es). Token-V10-03-Erinnerung auf 21:00 verschoben.
