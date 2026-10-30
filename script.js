@@ -2010,7 +2010,6 @@ function renderTV() {
 // Health-Sync: absolvierte Einheit fire-and-forget an die API-Brücke (→ iOS-Kurzbefehl → Apple Health).
 // Alle Übungen des Tages werden gesendet, auch unangerührte (setsDone: 0) – so ist der Plan komplett sichtbar.
 const API = 'https://heimtraining-api.alexanderulbrich.workers.dev/session';
-const TOKEN = 'ZWdwoYaX8GNC3f5yD9wBs0oY5_wYhS7p';
 function buildSessionRecord(arr) {
   const d = prog().done[day];
   if (!d || !Object.keys(d).length) return null;
@@ -2024,7 +2023,7 @@ const SQKEY = 'heimtraining.syncqueue';
 function loadQ() { try { return JSON.parse(localStorage.getItem(SQKEY)) || []; } catch (e) { return []; } }
 function saveQ(q) { try { localStorage.setItem(SQKEY, JSON.stringify(q.slice(-50))); } catch (e) {} }
 function sendOne(body) {
-  return fetch(API, { method: 'POST', headers: { Authorization: 'Bearer ' + TOKEN, 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+  return fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
     .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); });
 }
 function syncSession(body) { sendOne(body).catch(() => saveQ(loadQ().concat([body]))); }

@@ -650,3 +650,4 @@ Erst nach den laufenden Features; Alex gibt das Go.
 - Offen/Warteliste: andere Heros angleichen, Profil-Fußzeile iPhone-Fit messen, Geräte-Chips im Training-Detail, Übungssuche (#8), UI-Übersetzung DE/EN (#9), bewegte Muskel-Figur, Checker-Lauf.
 - Termine: Token V10-03 Freitag 30.10. 21:00 (korrigiert von 22:00). 184 Duplikat-Bilder: Alex entscheidet.
 - 30.10. 19:58 Korrektur: Wochenlimit-Reset ist jetzt Freitag 21:00 Berlin (nicht mehr 22:00; Alex-Meldung, Sammler-Messung Woche-Reset 19:59:59Z bestätigt es). Token-V10-03-Erinnerung auf 21:00 verschoben.
+- 30.10. V10-03: Token aus script.js entfernt (App sendet ohne Token, Worker prüft Origin + Größe + Rate + Form); GET nur mit neuem Secret (nicht im Repo). Worker-Code fertig (worker/index.js), DEPLOY + neues Secret + Kurzbefehl-Token = Alex (wrangler-Login nur auf seinem Mac). Bis dahin landen Syncs in der Warteschlange (max. 50). Alter Token steht noch in der Git-Historie → nach Rotation wertlos.
