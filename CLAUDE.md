@@ -26,3 +26,4 @@
 - **Nichts darf durch Kompression verloren gehen:** Entscheidungen von Alex sofort in plan.md (nicht erst bei "Speichern"), Chat-Archiv + Vault-Nachtrag spätestens am Ende jedes Blocks. Dann ist die Kompression harmlos.
 - **Keine Screenshots (Alex 27.10. 00:57):** Screenshots blähen den Verlauf auf (0.17→0.59 MB in ~40 Min.). Schickt Alex trotzdem eins (versehentlich), am Ende der Antwort EINE Erinnerung: "📷 Kein Screenshot nötig, beschreib es in Worten." Alex beschreibt Probleme in Worten; ich lese eigene Test-Screenshots nur, wenn unbedingt nötig, und messe lieber per DOM/Playwright-Werte (Maße, Overflow, Texte).
 
+- **Laufende Übergabe (Alex 30.10.):** Nach JEDEM fertigen Block `START-HIER.md` (Repo + Vault) mit aktuellem Stand + nächsten Schritten überschreiben/aktualisieren und pushen, nicht erst bei "Speichern". Grund: Schlägt das Limit abrupt zu, übernimmt der nächste Chat an derselben Stelle mit demselben Wissen.
