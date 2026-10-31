@@ -584,19 +584,32 @@ function renderOverview() {
   const gzSegs = gzN ? Array.from({ length: gzN }, (_, k) => `<span class="gz-seg${k < gzDone ? ' on' : k === gzDone ? ' next' : ''}" style="--k:${k}"><i></i></span>`).join('') : `<span class="gz-seg gz-wide on"><i style="--p:${gzDone / Math.max(goal.target, 1)}"></i></span>`;
   const gzPer = [[7, 'Woche'], [30, 'Monat'], [365, 'Jahr']].map(([v, l]) => `<button class="${goal.periodDays === v ? 'on' : ''}" data-act="gPer" data-v="${v}">${l}</button>`).join('');
   const gzReached = goalCount >= goal.target;
+  const hDates = [...new Set(h.map(r => r.date))].sort();
+  let gzBest = 0, gzRun = 0, gzPrev = null;
+  hDates.forEach(d => { gzRun = gzPrev && addDays(gzPrev, 1) === d ? gzRun + 1 : 1; gzPrev = d; if (gzRun > gzBest) gzBest = gzRun; });
+  gzBest = Math.max(gzBest, streak);
+  const gzSets = h.reduce((n, r) => n + (r.totalSetsDone || 0), 0);
+  const gzWeek = weekDates.map(ds => {
+    const did = h.some(r => r.date === ds), miss = !did && ds < t && scheduled.some(w => trainingStatusForDate(w, ds) === 'verpasst'), plan = scheduled.some(w => (w.weekdays || []).includes(wdKeyOf(ds)));
+    return `<span class="gz-d${did ? ' did' : miss ? ' miss' : ''}${ds === t ? ' now' : ''}${plan && !did && !miss ? ' plan' : ''}"><i>${did ? '✓' : miss ? '!' : ''}</i><em>${WD_LABELS[wdKeyOf(ds)]}</em></span>`;
+  }).join('');
+  const gzSparks = Array.from({ length: 7 }, (_, k) => `<s style="--x:${[-34, -18, -6, 6, 18, 30, 0][k]}px; --d:${(k * 0.37).toFixed(2)}s; --h:${70 + (k % 3) * 18}px"></s>`).join('');
   const gzBlock = `<div class="gz${gzAnim ? ' gz-anim' : ''}${goalOpen ? ' gz-open' : ''}">
-      <div class="gz-hero${gzReached ? ' gz-reached' : ''}${goalCount ? '' : ' gz-zero'}">
+      <div class="gz-hero gz-top${streak ? '' : ' gz-off'}">
+        <div class="gz-fire"><span class="gz-glow"></span><div class="gz-sp">${gzSparks}</div><i class="gz-flame" aria-hidden="true">🔥</i></div>
+        <b class="gz-big"><span class="gz-n" data-to="${streak}">${streak}</span></b>
+        <small class="gz-lab">Tag${streak === 1 ? '' : 'e'} in Folge${hasMissedThisWeek ? ' · kritisch' : ''}</small>
+        <p class="gz-rec">Rekord ${gzBest} Tag${gzBest === 1 ? '' : 'e'}</p>
+      </div>
+      <div class="gz-week">${gzWeek}</div>
+      <div class="gz-card gz-goal${gzReached ? ' gz-reached' : ''}${goalCount ? '' : ' gz-zero'}">
         <div class="gz-chips">${gzPer}</div>
-        <small class="gz-lab">${periodLabel}</small>
-        <b class="gz-num"><span class="gz-n" data-to="${goalCount}">${goalCount}</span><span class="gz-of">/${goal.target}${gzReached ? ' ✓' : ''}</span></b>
+        <div class="gz-gl"><small class="gz-lab">${periodLabel}</small><b class="gz-num"><span class="gz-n" data-to="${goalCount}">${goalCount}</span><span class="gz-of">/${goal.target}${gzReached ? ' ✓' : ''}</span></b></div>
         <div class="gz-segs">${gzSegs}</div>
-        <p class="gz-hint">${goalCount ? '&nbsp;' : 'Dein erstes Training zählt.'}</p>
       </div>
-      <div class="gz-tiles">
-        <div class="gz-t gz-streak${streak ? '' : ' gz-off'}"><i class="gz-flame" aria-hidden="true">🔥</i><b>${streak}</b><em>Tag${streak === 1 ? '' : 'e'} in Folge${hasMissedThisWeek ? ' · kritisch' : ''}</em></div>
-        <div class="gz-t"><b>${left}</b><em>${left ? `Noch von ${tgt} ${lg.per === 'month' ? 'im Monat' : 'im Jahr'}` : 'Ziel geschafft'}</em></div>
+      <div class="gz-stats">
+        <div><b>${h.length}</b><em>Trainings</em></div><div><b>${gzSets}</b><em>Sätze</em></div><div><b>${left}</b><em>${left ? `Noch bis ${tgt}` : 'Geschafft'}</em><span class="gz-mini"><i style="--p:${Math.min(1, nDone / tgt)}"></i></span></div>
       </div>
-      <div class="gz-year"><i style="--p:${Math.min(1, nDone / tgt)}"></i></div>
     </div>`;
   content.innerHTML = `
     <div class="overview overview-lab ${mood}">
