@@ -1609,7 +1609,7 @@ function suggestEx(ex, lv, goal) { // lv 0/1/2 → {sets, reps, w|null}
   let reps = comp ? 10 : 12;
   if (goal === 'kraft') reps = comp ? (lv === 0 ? 8 : 5) : 10; else if (goal === 'def') reps = comp ? 14 : 17; else if (u === 'wdh') reps = lv === 0 ? 10 : 12;
   if (u !== 'kg') return { sets, reps, w: null };
-  const prof = loadProfile(), bw = prof.weight;
+  const prof = loadProfile(), bw = prof.weight || 75;
   const t = swType(ex);
   if (!t) return { sets, reps, w: null };
   const isLH = /LH$/.test(t), isKH = /KH$/.test(t), bar = prof.bar || 10;
@@ -1624,8 +1624,8 @@ function suggestEx(ex, lv, goal) { // lv 0/1/2 → {sets, reps, w|null}
   }
   const hw = histWeight(ex.name, step); // Verlauf schlägt Formel
   if (hw != null) { w = hw; if (isLH) w = Math.min(w, bar + PLATES_TOTAL); }
-  if (w == null) return { sets, reps, w: null, noBw: true };
-  return { sets, reps, w };
+  if (w == null) return { sets, reps, w: null };
+  return { sets, reps, w, noBw: !prof.weight };
 }
 function histWeight(name, step) {
   const h = histOf(name); if (!h.length) return null;
@@ -2272,7 +2272,7 @@ content.addEventListener('click', e => {
       if (genRes && genRes.length) { t.exercises = genRes; saveWeekplan(); }
       genRes = null; genCfg = newGenCfg(); break;
     }
-    case 'wLevel': { const t = trainingById(btn.dataset.id); const miss = applyLevel(t, Number(btn.dataset.lv)); lvMsg = miss ? 'Trage dein Gewicht im Profil ein, dann fülle ich auch die kg vor.' : ''; break; }
+    case 'wLevel': { const t = trainingById(btn.dataset.id); const miss = applyLevel(t, Number(btn.dataset.lv)); lvMsg = miss ? 'Ungefähre kg (ohne dein Gewicht, 75 kg angenommen). Trage es im Profil ein für genaue Werte.' : ''; break; }
     case 'profLang': { const p = loadProfile(); p.lang = btn.dataset.v; saveProfile(p); break; }
     case 'profGender': { const p = loadProfile(); p.gender = btn.dataset.v; saveProfile(p); break; }
     case 'profLevel': { const p = loadProfile(); p.level = Number(btn.dataset.v); saveProfile(p); break; }
