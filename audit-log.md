@@ -21,3 +21,15 @@ Einstufung: A angewiesen · B abgeleitet/im Rahmen · C eigenmächtig. Zuletzt g
 Prüfung 27.10. 01:50: 0 C-Funde. Alle Commits tragen Auftrag-Zeile. Lieblingselemente vorhanden: Startbutton + Halten-Füllen (.home-btn.hold in style.css), Sonar-Ringe. Hinweis: style.css-Kopfkommentar sagt "statt Neon" (Altlast, Look in qa-checkliste als Neon geführt, nicht verändert).
 
 Regel ab jetzt: jeder Commit-Body enthält `Auftrag: "<Alex-Zitat>"` oder `Auftrag: eigenständig`.
+
+## Prüfung 31.10.2026 abends (Auditor, bd09b90..c854ca9, Session 01Sttn3rWJAykZSyYgfakDNz)
+| Datum | Hash | Stufe | Was | Wirkung für Alex | Status |
+|---|---|---|---|---|---|
+| 31.10. | d18ad3a, 81131c9 | A | Woche-Kacheln/Ruhe-Schrift heller, Dim-Schrift überall heller (Zitate im Commit) | wie verlangt | offen, abnehmen |
+| 31.10. | e129f02 | B | Übungszeile neu (Sätze × Wdh · kg, Beschriftung). Zusätzlich: Auswahlmenü "Eintragen als" durch Segment Gewicht/Körper/Zeit ersetzt (Ersetzung, nicht wörtlich verlangt, aber im Rahmen von "Ja mach mal") | Art-Wahl ist jetzt Segment statt Dropdown | offen, abnehmen; Rückbau e129f02 |
+| 31.10. | 084464b, aea017c | A | Touch-Ziele mind. 44 px ("Ja Go") | Tippflächen höher, Look gleich | offen |
+| 31.10. | e3764f5 | A | Woche-Ziel › zur Ziele-Seite, Zurück landet in Woche | wie verlangt (✎ wurde zu ›) | offen |
+| 31.10. | 0fdcc59 | A | Ziele-Seite kompakter, Link nicht mehr verdeckt | wie verlangt | offen |
+| 31.10. | a8b7d15, 6b812b6, 6b19ca2, c854ca9 | B | Speichern: plan.md + START-HIER | keine UI | Standard |
+
+Prüfung 31.10.: 0 C-Funde, alle 11 Commits mit Auftrag-Zeile. Startbutton/Halten-Füllen unberührt (kein Diff an .home-btn/hold, `.home-btn.hold` in style.css vorhanden). Neon-Look nicht angefasst.
