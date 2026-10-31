@@ -718,3 +718,6 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 ## PIN raus, Health-Button-Idee (31.10. 16:30, ?v=20261031zn)
 - PIN für Profile entfernt (Alex "Ja"): Button + Abfrage weg (ead41c0).
 - Idee Alex: Button, der den Kurzbefehl auslöst (shortcuts://run-shortcut?name=…&input=text&text=<Profil-Code>) → ein gemeinsamer Kurzbefehl für alle, nimmt Code als Eingabe. Offen: Name von Alex' Kurzbefehl + Platz des Buttons (Vorschlag: nach "Training beenden" und Verlauf-Detail "In Health speichern"). Nur Übergang bis App Store.
+
+## Kurzbefehl "Heimtraining Sync" anpassen (31.10. 18:00, laufend mit Alex)
+- Alex' Kurzbefehl hat noch feste Werte (30 Min, 400 kcal, Strecke 10 km → Health-Highlight "10 Kilometer"). Schritte (einzeln mit Alex): Aktionen "Wert für durationMin" + "Wert für calories" per Duplizieren ergänzt (erledigt); offen: Dauer ← durationMin (Variable auswählen), Kalorien ← calories, Strecke leeren, URL mit Sync-Code (Profil → ⇄ → Sync-Adresse kopieren). Danach Health-Button + Kurzbefehl-Name/iCloud-Link für den Sohn. Text "10 Kilometer" ist von Apple, nicht änderbar.

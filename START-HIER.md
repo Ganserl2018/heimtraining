@@ -1,4 +1,4 @@
-# START-HIER – Übergabe für den nächsten Chat (Stand 31.10.2026 16:30)
+# START-HIER – Übergabe für den nächsten Chat (Stand 31.10.2026 18:00)
 
 Alex will NICHTS erklären müssen. Alles hier lesen, dann direkt weiterbauen. Antworten deutsch, sehr kurz (CLAUDE.md).
 
@@ -36,6 +36,9 @@ Alex will NICHTS erklären müssen. Alles hier lesen, dann direkt weiterbauen. A
 
 ## Neu 16:30
 - PIN raus. Health-Button-Idee (shortcuts://-Link mit Profil-Code): wartet auf Kurzbefehl-Name + Platz.
+
+## Neu 18:00
+- Kurzbefehl-Umbau mit Alex läuft (siehe plan.md letzter Block): Dauer/Kalorien aus durationMin/calories, Strecke leeren, URL mit Code. Danach Health-Button.
 
 ## Nächste 3 Schritte (nur nach Alex' Go, nichts vorpreschen)
 1. Andere Heros mit Zahlen an die Trainingsseite angleichen („alle Heros mit Zahlen so“).
