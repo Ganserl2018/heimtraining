@@ -748,3 +748,9 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 ## Nachtrag 31.10. 23:55 (Auto-Speicherung)
 - Alex "Hmm Logik?" (Ziele-Panel zeigte 0/144 pro Monat + Countdown-Block): Ziel hat jetzt pro Zeitraum eigene Zahl (Standard Woche 3 / Monat 12 / Jahr 156, `targets`-Map), alter Fehlwert wird auf Standard gesetzt, Countdown-Block aus Ziel-Panel entfernt (03d09f8, v=20261031zv). Alex-Go erhalten.
 - Offen/wartet auf Go: Health-Button, Mini-Schrift, Glow/Dashed/Bounce.
+
+## Nachtrag 1.11. 00:25 (Auto-Speicherung)
+- Ziele-Seite: 3 Kacheln (Trainings/Sätze/Noch bis) oben im Profil-Stil, auch bei offenem Panel (883f5b0, v=…zw). Alex: "die Zahlen gehören wie auf allen anderen Seiten nach oben".
+- Profil-Button "falsche Bilder kopieren" und Detail-Knopf "Bild falsch" entfernt (5764c79, 94d10b1), Alex: neue Bilder kommen.
+- Player-Seite "hat keinen wumms": Alex schickte Cyber-HUD-Vorlage. Schritt 1 gebaut (2cbc0f0, v=20261031zz): grün getöntes Foto + Raster, Sechseck-Bild, Sechseck-Haken, Ring um Name/Timer, grüner Titel/Fortschritt/Pillen. Designer-Check läuft.
+- Wartet auf Go: Player Schritt 2 (Eck-Panels Wdh/Satz, Mini-Graph, Detail-Panel unten, Satz-fertig-Effekt), Health-Button, Mini-Schrift, Glow/Dashed/Bounce Ziele-Seite.
