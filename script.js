@@ -124,7 +124,13 @@ function saveProfile(p) { try { LS.setItem(PROKEY, JSON.stringify(p)); } catch (
 
 // V6-03: Ziel-Leiste v1 – frei definierbares Ziel (Zahl Trainings + Zeitraum in Tagen).
 const GOALKEY = 'heimtraining.goal';
-function loadGoal() { try { return JSON.parse(LS.getItem(GOALKEY)) || { target: 3, periodDays: 7 }; } catch (e) { return { target: 3, periodDays: 7 }; } }
+function loadGoal() {
+  let g; try { g = JSON.parse(LS.getItem(GOALKEY)); } catch (e) {}
+  if (!g) return { target: 3, periodDays: 7 };
+  const max = { 7: 14, 30: 62 }[g.periodDays]; // alter Mitnahme-Fehler (144 pro Monat) -> Standard
+  if (max && g.target > max && !g.targets) g.target = ({ 7: 3, 30: 12 })[g.periodDays];
+  return g;
+}
 function saveGoal(g) { try { LS.setItem(GOALKEY, JSON.stringify(g)); } catch (e) {} }
 let goalEditing = false, goalOpen = false, gzFresh = false;
 // V6-04: Langzeit-Leiste (Trainings pro Jahr/Monat ODER Kraft-Ziel einer Übung)
@@ -487,8 +493,6 @@ function goalPanel(goal, lg) {
   const lm = lg.per === 'month';
   return `<div class="gn-pan goal-pan">
     <div class="gp-row"><span>Trainings pro ${pl || per + ' Tage'}</span>${step('gStep', goal.target, 1)}</div>
-    <div class="gp-row"><span>Countdown pro ${lm ? 'Monat' : 'Jahr'}</span>${step('lStep', lg.target || 156, lm ? 1 : 5)}</div>
-    ${chips('lPer', [['month', 'Monat'], ['year', 'Jahr']], lm ? 'month' : 'year')}
   </div>`;
 }
 function renderOverview() {
@@ -2465,8 +2469,8 @@ content.addEventListener('click', e => {
     }
     case 'pfOpen': pfOverlay(true); return;
     case 'goalEdit': goalOpen = !goalOpen; break;
-    case 'gStep': { const g = loadGoal(); g.target = Math.max(1, (g.target || 1) + Number(btn.dataset.v)); saveGoal(g); break; }
-    case 'gPer': { const g = loadGoal(); g.periodDays = Number(btn.dataset.v); saveGoal(g); break; }
+    case 'gStep': { const g = loadGoal(); g.target = Math.max(1, (g.target || 1) + Number(btn.dataset.v)); (g.targets = g.targets || {})[g.periodDays] = g.target; saveGoal(g); break; }
+    case 'gPer': { const g = loadGoal(), np = Number(btn.dataset.v); g.targets = g.targets || {}; g.targets[g.periodDays] = g.target; g.periodDays = np; g.target = g.targets[np] || ({ 7: 3, 30: 12, 365: 156 })[np] || g.target; saveGoal(g); break; }
     case 'lStep': { const l = loadLong(); l.type = 'count'; l.target = Math.max(1, (l.target || 156) + Number(btn.dataset.v)); saveLong(l); break; }
     case 'lPer': { const l = loadLong(); l.type = 'count'; if (l.per !== btn.dataset.v) { l.per = btn.dataset.v; l.target = l.per === 'month' ? (l.target > 31 ? 12 : l.target) : (l.target <= 31 ? 156 : l.target); } saveLong(l); break; }
     case 'goalEditFromProfile': goalOpen = true; dashMode = true; gzFresh = true; view = 'overview'; break;
