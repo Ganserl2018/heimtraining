@@ -1508,7 +1508,7 @@ function goalStripHtml() {
     </div>` : '';
   return `<div class="pp-goal wp-goal">
       <div class="pg-txt"><small>ZIEL</small><span class="pg-n"><b>${gDone}</b><i>/${goal.target}</i></span><span class="pg-p">Trainings · ${goal.periodDays === 7 ? 'diese Woche' : 'letzte ' + goal.periodDays + ' Tage'}</span></div>
-      <button class="pg-edit" data-act="goalEdit" aria-label="Ziel anpassen">✎</button>
+      <button class="pg-edit" data-act="dash" aria-label="Ziele &amp; Streak öffnen">›</button>
       <div class="pg-bar"><i style="width:${gPct}%"></i></div>
     </div>${form}`;
 }
@@ -1671,7 +1671,7 @@ function applyLevel(t, lv) {
     ex.sets = r.sets; ex.plan = Array.from({ length: r.sets }, () => ({ w: r.w, r: r.reps })); });
   t.level = lv; saveWeekplan(); return miss;
 }
-let lvMsg = '', ctlOpen = false;
+let lvMsg = '', ctlOpen = false, dashBackTo = 'history';
 function txRow(t, ex, i) {
   const u = ex.unit || 'kg', n = ex.sets || 3, plan = ex.plan || [];
   const at = (k, f) => (plan[k] || {})[f] ?? null;
@@ -2360,8 +2360,8 @@ content.addEventListener('click', e => {
       genCfg.autoAdded = []; autoGear(); genRes = null; break; }
     case 'genMinS': { const had = !!genRes; genCfg.minSets = Number(btn.dataset.v); genRes = null; if (had) generate(); break; }
     case 'genMinR': { const had = !!genRes; genCfg.minReps = Number(btn.dataset.v); genRes = null; if (had) generate(); break; }
-    case 'dash': dashMode = true; gzFresh = true; view = 'overview'; break;
-    case 'dashBack': dashMode = false; view = 'history'; break;
+    case 'dash': dashBackTo = view === 'weeklist' ? 'weeklist' : 'history'; dashMode = true; gzFresh = true; view = 'overview'; break;
+    case 'dashBack': dashMode = false; view = dashBackTo; dashBackTo = 'history'; break;
     case 'genDo': if (view === 'start' && !plClassic) { if (!genCfg.groups.length) { plMsg = 'Erst Muskeln wählen.'; break; } const un = uncovered(); if (un.length) { plMsg = 'Für ' + un.map(fgLabel).join(', ') + ' passt kein gewähltes Gerät. Gerät dazuwählen.'; break; } }
       if (!genCfg.gear.length) genCfg.gear = GEAR.map(x => x[0]); if (!genCfg.groups.length) { const gcn = groupCounts(); genCfg.groups = shuffle(MUSCLE_GROUP_LIST.filter(m => gcn[m])).slice(0, 2 + Math.floor(Math.random() * 2)); } autoGear(); if (view === 'start') { genFrom = null; view = 'gen'; } generate(); break;
     case 'genNext': { const np = nextPlan(); genCfg.groups = np.groups.slice(); if (!genCfg.gear.length) genCfg.gear = GEAR.map(x => x[0]); autoGear(); genFrom = null; if (view === 'start') view = 'gen'; generate(); if (genRes && genRes.length) { applyProgression(genRes); genNote = np.note; } break; }
