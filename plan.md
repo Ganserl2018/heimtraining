@@ -721,3 +721,6 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 
 ## Kurzbefehl "Heimtraining Sync" anpassen (31.10. 18:00, laufend mit Alex)
 - Alex' Kurzbefehl hat noch feste Werte (30 Min, 400 kcal, Strecke 10 km → Health-Highlight "10 Kilometer"). Schritte (einzeln mit Alex): Aktionen "Wert für durationMin" + "Wert für calories" per Duplizieren ergänzt (erledigt); offen: Dauer ← durationMin (Variable auswählen), Kalorien ← calories, Strecke leeren, URL mit Sync-Code (Profil → ⇄ → Sync-Adresse kopieren). Danach Health-Button + Kurzbefehl-Name/iCloud-Link für den Sohn. Text "10 Kilometer" ist von Apple, nicht änderbar.
+
+## Kurzbefehl-Stand 31.10. 18:35
+- Alex' Kurzbefehl "Heimtraining Sync": durationMin/calories-Aktionen ergänzt, Dauer + Kalorien mit Variablen verknüpft (Wörterbuchwert unter der jeweiligen Karte), Strecke = 0. Test-Lauf steht aus (Health prüfen: Minuten/kcal, keine Strecke). Danach: URL mit Kurzbefehl-Eingabe + Health-Button + iCloud-Link für den Sohn.
