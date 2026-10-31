@@ -1720,7 +1720,7 @@ function renderWTrain() {
   const lvNow = t.level != null ? LEVELS[t.level][1] : 'Level';
   const ctl = hasEx ? `<aside class="tx-ctl${ctlOpen ? ' open' : ''}${ctlSec ? ' sec-' + ctlSec : ''}">
       <div class="tx-sheet"><div class="tx-sheet-in">
-        <div class="tx-s tx-s-lv"><div class="tx-lab">Vorlage nach Level</div>
+        <div class="tx-s tx-s-lv"><div class="tx-lab">Level</div>
         <div class="pp-seg">${LEVELS.map(([k, l], x) => `<button class="${t.level === x ? 'on' : ''}" data-act="wLevel" data-id="${t.id}" data-lv="${x}">${l}</button>`).join('')}</div>
         ${lvMsg ? `<div class="lv-msg">${lvMsg}</div>` : ''}
         <button class="ts-del" data-act="wDelete" data-id="${t.id}">Training löschen</button></div>
