@@ -33,3 +33,14 @@ Regel ab jetzt: jeder Commit-Body enthält `Auftrag: "<Alex-Zitat>"` oder `Auftr
 | 31.10. | a8b7d15, 6b812b6, 6b19ca2, c854ca9 | B | Speichern: plan.md + START-HIER | keine UI | Standard |
 
 Prüfung 31.10.: 0 C-Funde, alle 11 Commits mit Auftrag-Zeile. Startbutton/Halten-Füllen unberührt (kein Diff an .home-btn/hold, `.home-btn.hold` in style.css vorhanden). Neon-Look nicht angefasst.
+
+## Prüfung 1.11.2026 (Auditor, 9204603..d2556d5, Session 01Sttn3rWJAykZSyYgfakDNz)
+| Datum | Hash | Stufe | Was | Wirkung für Alex | Status |
+|---|---|---|---|---|---|
+| 31.10. | 03d09f8 | A | Ziel pro Zeitraum eigene Zahl, Countdown-Block raus ("Go") | Countdown im Ziel-Panel weg (so besprochen) | offen, abnehmen |
+| 31.10. | 883f5b0, 8bb7b45, b618c85, bcc8dc5, 10428c5 | A | Ziele-Seite: Kacheln oben, Hero/Titel, "Ziel anpassen" als Glow-Button, Wochentage-Reihe entfernt (Zitate im Transkript verifiziert) | wie verlangt | offen, abnehmen |
+| 31.10. | 5764c79, 94d10b1 | A | Buttons "falsche Bilder kopieren" und "Bild falsch" entfernt (ausdrücklich verlangt) | Beide Buttons weg | offen |
+| 31.10. | 2cbc0f0, 0f3e942 | A/B | Player Neon-HUD Schritt 1 ("Ok mach 1.") + Designer-Nachbesserung (44px, Lesbarkeit, Sechseck-Proportionen) | Player grün getönt, Sechseck-Optik | offen, abnehmen |
+| 31.10.-1.11. | f0c8f54, 8538c38, 88a04ff, d2556d5 | B | Speichern/Auto-Speicherung: plan.md + START-HIER | keine UI | Standard |
+
+Prüfung 1.11.: 13 Commits, A=9 (Gruppen), B=4, C=0. Alle mit Auftrag-Zeile. Startbutton/Halten-Füllen unberührt (kein Diff an .home-btn/hold, `.home-btn.hold` in style.css vorhanden). Neon-Look nicht abgeschwächt, Player erhielt zusätzlich Neon-HUD. Hinweis: Ersetzungen 31.10. (e129f02 Segment statt Dropdown, fbc897e SVG-Symbole) weiter nicht abgenommen.
