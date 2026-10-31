@@ -4,7 +4,7 @@ Alex will NICHTS erklären müssen. Alles hier lesen, dann direkt weiterbauen. A
 
 ## Zuerst (ohne Rückfrage, still)
 1. Mac-Ordner `/Users/user/Claude` verbinden (Remote-Devices-Bridge: `mcp__remote-devices__*`; Vault liegt unter `~/mnt/Claude/Obsidian-Vault/Projects/Privat/Heimtraining/`). Wenn Bridge fehlt: nur melden, mit Cloud-Teil weiterarbeiten.
-2. Repo: `/home/claude/heimtraining` (falls fehlt: Repo per add_repo holen). Push auf `main` → https://heimtraining.pages.dev. Aktuell `?v=20261031zz`.
+2. Repo: `/home/claude/heimtraining` (falls fehlt: Repo per add_repo holen). Push auf `main` → https://heimtraining.pages.dev. Aktuell `?v=20261101e`.
 3. Lesen: `CLAUDE.md`, `plan.md` (letzter Block), `qa-checkliste.md`, `audit-log.md`, letzter Nachtrag in `session-uebergabe-2026-10-04.md` (Vault).
 4. Straße (immer mit url republishen): https://claude.ai/artifact/33Pz2wW3JRTVER4UhY8wWT, Quelle `strasse.html` im Scratchpad (falls weg: per Artifact read holen).
 5. Memory: `/projects/01a0def4-e132-726b-8e41-b13f0f0e0473/areas/heimtraining-app.md` (Alex-Aussagen chronologisch).
@@ -87,3 +87,6 @@ Alex will NICHTS erklären müssen. Alles hier lesen, dann direkt weiterbauen. A
 
 ## Neu 1.11. 00:25
 - Ziele-Seite Kacheln oben; Bild-falsch-Knöpfe entfernt; Player Neon-HUD Schritt 1 live (2cbc0f0). Nächstes (Go nötig): Player Schritt 2 (Eck-Panels, Graph, Detail-Panel, Satz-fertig-Effekt). Designer-Ergebnis zu V38 abwarten/prüfen.
+
+## Neu 1.11. 00:55
+- Ziele-Seite: Hero wie alle Seiten + Glow-Button 'Ziel anpassen' (v=20261101e). Player HUD Schritt 1 nachgebessert. Offen (Go): Player Schritt 2, Health-Button, Mini-Schrift, Glow/Dashed/Bounce.

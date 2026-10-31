@@ -754,3 +754,8 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 - Profil-Button "falsche Bilder kopieren" und Detail-Knopf "Bild falsch" entfernt (5764c79, 94d10b1), Alex: neue Bilder kommen.
 - Player-Seite "hat keinen wumms": Alex schickte Cyber-HUD-Vorlage. Schritt 1 gebaut (2cbc0f0, v=20261031zz): grün getöntes Foto + Raster, Sechseck-Bild, Sechseck-Haken, Ring um Name/Timer, grüner Titel/Fortschritt/Pillen. Designer-Check läuft.
 - Wartet auf Go: Player Schritt 2 (Eck-Panels Wdh/Satz, Mini-Graph, Detail-Panel unten, Satz-fertig-Effekt), Health-Button, Mini-Schrift, Glow/Dashed/Bounce Ziele-Seite.
+
+## Nachtrag 1.11. 00:55 (Auto-Speicherung)
+- Player Neon-HUD Schritt 1 nachgebessert (0f3e942, Designer-Funde: Touch-Ziele 44px, Lesbarkeit, Farben über --accent, Sechseck-Proportionen). Schritt 2 wartet auf Go.
+- Ziele-Seite: gleicher Hero wie alle Hauptseiten (Titel "Ziele", Untertitel "Hier kannst du deine Ziele definieren", body.is-dash), Zurück darunter (8bb7b45, b618c85); "Ziel anpassen" direkt unter Karte und als umrandeter Glow-Button (bcc8dc5, v=20261101e). Alex-Zitate: "Alle Seiten haben den selben Hero…", "Ziele anpassen gefällt mir nicht … umkreisenden".
+- Ziel hat eigene Zahl pro Zeitraum (03d09f8). Offen (Go nötig): Player Schritt 2, Health-Button, Mini-Schrift, Glow/Dashed/Bounce.
