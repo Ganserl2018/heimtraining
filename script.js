@@ -599,6 +599,9 @@ function renderOverview() {
   }).join('');
   const gzSparks = Array.from({ length: 7 }, (_, k) => `<s style="--x:${[-34, -18, -6, 6, 18, 30, 0][k]}px; --d:${(k * 0.37).toFixed(2)}s; --h:${70 + (k % 3) * 18}px"></s>`).join('');
   const gzBlock = `<div class="gz${gzAnim ? ' gz-anim' : ''}${goalOpen ? ' gz-open' : ''}">
+      <div class="gz-stats">
+        <div><b>${h.length}</b><em>Trainings</em></div><div><b>${gzSets}</b><em>Sätze</em></div><div><b>${left}</b><em>${left ? `Noch bis ${tgt}` : 'Geschafft'}</em><span class="gz-mini"><i style="--p:${Math.min(1, nDone / tgt)}"></i></span></div>
+      </div>
       <div class="gz-hero gz-top${streak ? '' : ' gz-off'}">
         <div class="gz-fire"><span class="gz-glow"></span><div class="gz-sp">${gzSparks}</div><i class="gz-flame" aria-hidden="true">🔥</i></div>
         <b class="gz-big"><span class="gz-n" data-to="${streak}">${streak}</span></b>
@@ -610,9 +613,6 @@ function renderOverview() {
         <div class="gz-chips">${gzPer}</div>
         <div class="gz-gl"><small class="gz-lab">${periodLabel}</small><b class="gz-num"><span class="gz-n" data-to="${goalCount}">${goalCount}</span><span class="gz-of">/${goal.target}${gzReached ? ' ✓' : ''}</span></b></div>
         <div class="gz-segs">${gzSegs}</div>
-      </div>
-      <div class="gz-stats">
-        <div><b>${h.length}</b><em>Trainings</em></div><div><b>${gzSets}</b><em>Sätze</em></div><div><b>${left}</b><em>${left ? `Noch bis ${tgt}` : 'Geschafft'}</em><span class="gz-mini"><i style="--p:${Math.min(1, nDone / tgt)}"></i></span></div>
       </div>
     </div>`;
   content.innerHTML = `

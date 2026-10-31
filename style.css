@@ -2748,3 +2748,8 @@ button.tx-nm{min-height:44px;}
 .gz-seg{height:26px;} .gz-wide{height:16px;}
 .gz-stats>div{padding:.4rem .3rem;} .gz-stats b{font-size:1.5rem;}
 .gz-mini{margin-top:.1rem;}
+/* V37 Ziele-Seite: 3 Kacheln oben im Stil der anderen Seiten (Profil/Verlauf), auch bei offenem Panel sichtbar (Alex 31.10.) */
+.gz-stats>div{background:var(--panel); border:1px solid var(--border-soft); padding:.5rem .3rem;}
+.gz-stats b{font-size:1.9rem; line-height:1.1; color:var(--accent); font-variant-numeric:tabular-nums;}
+.gz-stats em{font-size:.64rem; letter-spacing:.08em; color:var(--text-dim);}
+.gz-open .gz-stats{display:grid;}
