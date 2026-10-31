@@ -2060,7 +2060,7 @@ content.addEventListener('click', e => {
     case 'tvNext': tvIndex++; break;
     case 'tvBack': view = tvReturn ? tvReturn.view : 'overview'; if (tvReturn && tvReturn.day) day = tvReturn.day; if (tvReturn && tvReturn.wId) wId = tvReturn.wId; tvReturn = null; break;
     case 'goto':
-      dashMode = false;
+      dashMode = false; resetUi();
       if (btn.dataset.day) { day = btn.dataset.day; view = 'day'; }
       else if (btn.dataset.view) {
         // Planung öffnen = frischer Start: nichts gewählt außer Zeit (Geräte -> passende Gruppen entstehen durch Antippen)
@@ -2516,9 +2516,15 @@ document.getElementById('tvIconBtn').addEventListener('click', () => {
   render();
 });
 
+// Seitenwechsel = Standardzustand: offene Panels, Sheets, Filter und Unter-Tabs der Seiten springen zurück
+function resetUi() {
+  ctlOpen = false; ctlSec = ''; lvMsg = ''; gnAdj = false; genPin = null; genPinTime = ''; archOpen = false; wpSheet = null; txTo = null; txOpen = null;
+  trTab = 'act'; filterMuscle = filterEquip = filterMus = filterCat = filterSplit = null; filterFav = false; browseQ = ''; browseSel = null; filterOpen = false; browsePage = 0;
+  psSheet = null; renameId = null; addingTraining = false; fgOpen = null; histDetailIdx = null; goalEditing = false; longEditing = false; longDraftType = null; genPick = -1;
+}
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    picker = null; dashMode = false;
+    picker = null; dashMode = false; resetUi();
     if (tab.dataset.view === 'overview' || tab.dataset.view === 'start') resetPlan();
     view = tab.dataset.view;
     render();
