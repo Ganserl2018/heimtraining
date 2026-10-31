@@ -5,7 +5,7 @@ const PF_GLOBAL = [PF_REG, PF_ACT, 'heimtraining.badimg'];
 const LS = (() => {
   const raw = window.localStorage;
   const rd = k => { try { return raw.getItem(k); } catch (e) { return null; } };
-  const reg = () => { try { const r = JSON.parse(rd(PF_REG)); if (Array.isArray(r) && r.length) return r; } catch (e) {} return [{ id: 'main', sync: true }]; };
+  const reg = () => { try { const r = JSON.parse(rd(PF_REG)); if (Array.isArray(r) && r.length) return r; } catch (e) {} return [{ id: 'main' }]; };
   const saveReg = r => { try { raw.setItem(PF_REG, JSON.stringify(r)); } catch (e) {} };
   let act = rd(PF_ACT) || 'main';
   if (!reg().some(p => p.id === act)) act = 'main';
@@ -17,11 +17,12 @@ const LS = (() => {
     getItem: k => raw.getItem(map(k)), setItem: (k, v) => raw.setItem(map(k), v), removeItem: k => raw.removeItem(map(k)),
     get act() { return act; }, reg,
     cur: () => reg().find(p => p.id === act) || { id: act },
-    sync: () => { const p = reg().find(x => x.id === act); return !!(p && p.sync); },
+    sync: () => true,
+    code: () => { const r = reg(); let p = r.find(x => x.id === act); if (!p) { p = { id: act }; r.push(p); } if (!p.code) { const a = new Uint8Array(16); crypto.getRandomValues(a); p.code = Array.from(a, x => x.toString(16).padStart(2, '0')).join(''); saveReg(r); } return p.code; },
     name: id => { let n = ''; try { n = (JSON.parse(rd(id === 'main' ? 'heimtraining.profile' : pre(id) + 'profile')) || {}).name || ''; } catch (e) {} return n.trim() || (id === 'main' ? 'Ich' : 'Profil ' + id); },
     keys: () => allKeys().filter(k => k && k.startsWith('heimtraining.') && !PF_GLOBAL.includes(k) && (act === 'main' ? !other(k) : k.startsWith(pre(act)))).map(k => act === 'main' ? k : 'heimtraining.' + k.slice(pre(act).length)),
     use: id => { try { raw.setItem(PF_ACT, id); } catch (e) {} },
-    add: name => { const r = reg(); if (!r.some(p => p.id === 'main')) r.unshift({ id: 'main', sync: true }); const id = String(Math.max(0, ...r.map(p => Number(p.id) || 0)) + 1); r.push({ id, sync: false }); saveReg(r); try { raw.setItem(pre(id) + 'profile', JSON.stringify({ name })); } catch (e) {} return id; },
+    add: name => { const r = reg(); if (!r.some(p => p.id === 'main')) r.unshift({ id: 'main' }); const id = String(Math.max(0, ...r.map(p => Number(p.id) || 0)) + 1); r.push({ id }); saveReg(r); try { raw.setItem(pre(id) + 'profile', JSON.stringify({ name })); } catch (e) {} return id; },
     del: id => { if (id === 'main') return; allKeys().filter(k => k && k.startsWith(pre(id))).forEach(k => raw.removeItem(k)); saveReg(reg().filter(p => p.id !== id)); if (act === id) { act = 'main'; try { raw.setItem(PF_ACT, 'main'); } catch (e) {} } },
     setPin: pin => { const r = reg(); const p = r.find(x => x.id === act); if (p) { if (pin) p.pin = pin; else delete p.pin; saveReg(r); } }
   };
@@ -1997,7 +1998,7 @@ function renderTV() {
 
 // Health-Sync: absolvierte Einheit fire-and-forget an die API-Brücke (→ iOS-Kurzbefehl → Apple Health).
 // Alle Übungen des Tages werden gesendet, auch unangerührte (setsDone: 0) – so ist der Plan komplett sichtbar.
-const API = 'https://heimtraining-api.alexanderulbrich.workers.dev/session';
+const API = 'https://heimtraining-api.alexanderulbrich.workers.dev/session/';
 function buildSessionRecord(arr) {
   const d = prog().done[day];
   if (!d || !Object.keys(d).length) return null;
@@ -2011,7 +2012,7 @@ const SQKEY = 'heimtraining.syncqueue';
 function loadQ() { try { return JSON.parse(LS.getItem(SQKEY)) || []; } catch (e) { return []; } }
 function saveQ(q) { try { LS.setItem(SQKEY, JSON.stringify(q.slice(-50))); } catch (e) {} }
 function sendOne(body) {
-  return fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+  return fetch(API + LS.code(), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
     .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); });
 }
 function syncSession(body) { if (!LS.sync()) return; sendOne(body).catch(() => saveQ(loadQ().concat([body]))); }
@@ -2704,7 +2705,7 @@ function pfOverlay(manage) {
     let h;
     if (m === 'list') {
       h = `<div class="who-t">WER TRAINIERT?</div><div class="who-list">${reg.map(p => { const n = LS.name(p.id); return `<button class="who-c${p.id === LS.act ? ' on' : ''}" data-id="${p.id}"><span class="who-av">${esc(n.charAt(0).toUpperCase())}</span><b>${esc(n)}</b>${p.pin ? '<i>🔒</i>' : ''}</button>`; }).join('')}<button class="who-c who-new" data-w="new"><span class="who-av">+</span><b>Neues Profil</b></button></div>` +
-        (manage ? `<div class="who-links"><button data-w="setpin">PIN ${cur.pin ? 'ändern' : 'setzen'}: ${esc(nm)}</button>${LS.act !== 'main' ? '<button data-w="del">Profil löschen</button>' : ''}<button data-w="close">Schließen</button></div>` : '');
+        (manage ? `<div class="who-links"><button data-w="copysync">Sync-Adresse kopieren</button><button data-w="setpin">PIN ${cur.pin ? 'ändern' : 'setzen'}: ${esc(nm)}</button>${LS.act !== 'main' ? '<button data-w="del">Profil löschen</button>' : ''}<button data-w="close">Schließen</button></div>` : '');
     } else if (m === 'pin') h = `<div class="who-t">${esc(LS.name(pid))}</div><div class="who-q">PIN eingeben</div><input id="who-in" type="password" inputmode="numeric" maxlength="4" autocomplete="off"><div class="who-err">${err}</div><div class="who-row"><button data-w="back">Zurück</button><button class="who-ok" data-w="pinok">OK</button></div>`;
     else if (m === 'new') h = `<div class="who-t">NEUES PROFIL</div><div class="who-q">Name</div><input id="who-in" maxlength="24" autocomplete="off"><div class="who-row"><button data-w="back">Zurück</button><button class="who-ok" data-w="newok">Anlegen</button></div>`;
     else if (m === 'setpin') h = `<div class="who-t">PIN · ${esc(nm)}</div><div class="who-q">4 Ziffern, leer = ohne PIN</div><input id="who-in" type="password" inputmode="numeric" maxlength="4" autocomplete="off"><div class="who-err">${err}</div><div class="who-row"><button data-w="back">Zurück</button><button class="who-ok" data-w="pinsave">Speichern</button></div>`;
@@ -2720,6 +2721,7 @@ function pfOverlay(manage) {
       case 'new': m = 'new'; break;
       case 'back': m = 'list'; err = ''; break;
       case 'close': el.remove(); return;
+      case 'copysync': { try { navigator.clipboard.writeText(API + LS.code()).catch(() => {}); } catch (e2) {} b.textContent = 'Kopiert ✓'; return; }
       case 'setpin': m = 'setpin'; err = ''; break;
       case 'del': m = 'del'; break;
       case 'pinok': { const p = LS.reg().find(x => x.id === pid); if (p && p.pin === v.trim()) { done(pid); return; } err = 'Falsche PIN'; break; }
