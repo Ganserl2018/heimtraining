@@ -730,3 +730,8 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 - Dim-Schrift überall heller (V33, v=20261031zp, 81131c9): --text-dim/--text-faint/--lab-dim angehoben, gz-rec/gz-of/pp-reset Deckkraft. Auftrag Alex.
 - Designer-Befund: Touch-Ziele <44 px + Mini-Schrift warten auf Go; Glow-Stapel, Dashed-Rahmen, gzPop-Bounce später nach Go; Politur (Radien, Farben, Abstände, .hist-dash :active) Warteliste.
 - Weiß/Grün/Rot Schema: Woche-Kacheln haben Grün (belegt) + Rot (verpasst) bereits; "nicht belegt" bleibt abgedunkelt-hell, Alex hat Weiß dort nicht bestätigt.
+
+## Nachtrag 31.10. 21:50
+- Übungszeile neu (V34, e129f02): beschriftete Felder SÄTZE × WDH · KG, Art als Segment Gewicht/Körper/Zeit, Kurzinfo einzeilig. Auftrag Alex ("Zahlengeflecht").
+- Touch-Ziele ≥44 px (V35, 084464b + aea017c, v=20261031zs): Panels, Chips, Übungszeile, Kopfzeile; Zurück/▲▼✕ per größerer Tippfläche. Auftrag "Ja Go".
+- Offen: Mini-Schrift (Befund 2), Glow/Dashed/Bounce (3–5) warten auf Go; Health-Button wartet auf Go.

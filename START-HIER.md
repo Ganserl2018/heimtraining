@@ -65,3 +65,8 @@ Alex will NICHTS erklären müssen. Alles hier lesen, dann direkt weiterbauen. A
 - Kurzbefehl 'Heimtraining Sync' läuft (Test ok). Health-Button wartet auf Alex' Go (kein iCloud-Link).
 - Wartet auf Go: Touch-Ziele 44 px, Mini-Schrift, Glow/Dashed/Bounce. Ziele-Seite Feedback später.
 - Regel: nichts bauen ohne Alex' Go (außer Schrift/Farbe/Text).
+
+
+## Stand 31.10. 21:50
+- Live v=20261031zs. Neu seit 22:15: Übungszeile (Sätze × Wdh · kg, Segment Gewicht/Körper/Zeit), Touch-Ziele ≥44 px.
+- Wartet auf Go: Mini-Schrift, Glow/Dashed/Bounce, Health-Button.
