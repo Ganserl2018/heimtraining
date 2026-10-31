@@ -2727,3 +2727,12 @@ body.mood-bad{--text-dim:#f2dcd8; --text-faint:#e2c3be;}
 .te-u button.on{background:var(--accent); color:var(--on-accent,#0c0f0e);}
 .tx-row:not(.open) .te-u{display:none;}
 .tx-nm em{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+/* V35 Touch-Ziele mind. 44 px (Größe unverändert im Look, nur höher / größere Tippfläche) */
+.ga-c,.gn-pan .chip,.gn-pan .seg button,.gz-chips button,.goal-pan .seg button,.te-u button{min-height:44px;}
+.tx-row .xc-step button{width:44px; height:44px; min-width:44px; min-height:44px;}
+.tx-row .tx-ed .xc-f input{min-height:44px; height:44px;}
+.gn-res .gh-top .gn-back,.gn-top .gn-back,.tx-back{position:relative;}
+.gn-res .gh-top .gn-back::after,.gn-top .gn-back::after,.tx-back::after{content:""; position:absolute; inset:-8px -6px;}
+.tx-nm,.tx-to{min-height:44px;}
+.tx-row .ts-mv button,.tx-row .tx-rm{position:relative;}
+.tx-row .ts-mv button::after,.tx-row .tx-rm::after{content:""; position:absolute; inset:-5px -2px;}
