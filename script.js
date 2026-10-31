@@ -1679,21 +1679,22 @@ function txRow(t, ex, i) {
   const split = u !== 'none' && !uniform;
   const rl = u === 'sek' ? 'Sek' : 'Wdh';
   const da = `data-id="${t.id}" data-i="${i}"`;
-  const sel = `<select class="xc-unit" data-act="wUnit" ${da} aria-label="Eintragen als">${Object.entries({ kg: 'kg · Wdh', wdh: 'Wdh', sek: 'Sek' }).map(([v, l]) => `<option value="${v}"${u === v ? ' selected' : ''}>${l}</option>`).join('')}</select>`;
+  const sel = `<div class="te-u" role="group" aria-label="Eintragen als">${[['kg', 'Gewicht'], ['wdh', 'Körper'], ['sek', 'Zeit']].map(([v, l]) => `<button type="button" class="${u === v ? 'on' : ''}" data-act="wUnitSet" ${da} data-u="${v}">${l}</button>`).join('')}</div>`;
   const fld = (act, f, k, val) => `<label class="xc-f"><input type="number" inputmode="${f === 'w' ? 'decimal' : 'numeric'}" value="${val ?? ''}" placeholder="${f === 'w' ? 'kg' : rl}" data-act="${act}" ${da}${k === null ? '' : ` data-k="${k}"`} data-f="${f}" aria-label="${f === 'w' ? 'kg' : rl}"><span>${f === 'w' ? 'kg' : rl}</span></label>`;
-  const step = `<div class="xc-step"><button data-act="wSetsAdj" ${da} data-d="-1" aria-label="Ein Satz weniger">–</button><b>${n}</b><button data-act="wSetsAdj" ${da} data-d="1" aria-label="Ein Satz mehr">+</button></div><span class="xc-x">×</span>`;
-  const vals = split ? `<button class="xc-same" data-act="wSame" ${da}>Sätze angleichen</button>` : `${u === 'kg' ? fld('wPlanAll', 'w', null, at(0, 'w')) : ''}${fld('wPlanAll', 'r', null, at(0, 'r'))}`;
+  const lab = (t, inner) => `<div class="te-c"><i>${t}</i>${inner}</div>`;
+  const step = `<div class="te-c te-s"><i>Sätze</i><div class="xc-step"><button data-act="wSetsAdj" ${da} data-d="-1" aria-label="Ein Satz weniger">–</button><b>${n}</b><button data-act="wSetsAdj" ${da} data-d="1" aria-label="Ein Satz mehr">+</button></div></div><span class="xc-x">×</span>`;
+  const vals = split ? `<button class="xc-same" data-act="wSame" ${da}>Sätze angleichen</button>` : `${lab(rl, fld('wPlanAll', 'r', null, at(0, 'r')))}${u === 'kg' ? '<span class="xc-x">·</span>' + lab('kg', fld('wPlanAll', 'w', null, at(0, 'w'))) : ''}`;
   const pills = split ? `<div class="xc-pills">${Array.from({ length: n }, (_, k) => `<div class="xc-pill"><b>${k + 1}</b>${u === 'kg' ? fld('wPlan', 'w', k, at(k, 'w')) : ''}${fld('wPlan', 'r', k, at(k, 'r'))}</div>`).join('')}</div>` : '';
   const chips = split ? '' : `${u === 'kg' ? qchips('w', `[data-act=wPlanAll][data-f=w]`) : ''}${qchips('r', `[data-act=wPlanAll][data-f=r]`)}`;
   const last = i === t.exercises.length - 1;
   const key = t.id + '|' + i, open = txOpen === key;
-  const sumTxt = u === 'none' ? n + ' Sätze' : n + ' × ' + (uniform ? (at(0, 'r') ?? '–') + ' ' + rl : 'variiert') + (u === 'kg' && at(0, 'w') != null ? ' · ' + (uniform ? at(0, 'w') : 'ab ' + at(0, 'w')) + ' kg' : '');
+  const sumTxt = u === 'none' ? n + ' Sätze' : n + ' × ' + (uniform ? (at(0, 'r') ?? '–') + (u === 'kg' ? '' : ' ' + rl) : 'variiert') + (u === 'kg' && at(0, 'w') != null ? ' · ' + (uniform ? at(0, 'w') : 'ab ' + at(0, 'w')) + ' kg' : '');
   return `<div class="tx-sw" data-tsw="${t.id}|${i}"><div class="gn-sw-bg"><span>★ Favorit</span><span>Neue Übung ↻</span></div><div class="tx-row ts-set xc${open ? ' open' : ''}"${ex.warm ? '' : ` data-g="${esc(MUSCLE_GROUPS[ex.muscle] || '')}"`} style="--i:${Math.min(i, 10)}">
     <button class="tx-th" data-act="exInfo" data-name="${esc(ex.name)}" aria-label="Übungsdaten"><img src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"></button>
     <button class="tx-nm" data-act="txToggle" data-key="${esc(key)}"><b>${esc(dn(ex.name))}</b><em>${ex.warm ? '🔥 Aufwärmen · ' : ''}${esc(MUSCLE_DE[ex.muscle] || ex.muscle)} · ${sumTxt}</em><i class="tx-ch">${open ? '▴' : '▾'}</i></button>
     <span class="ts-mv"><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="-1" aria-label="Nach oben"${i === 0 ? ' disabled' : ''}>▲</button><button data-act="wMoveEx" data-id="${t.id}" data-i="${i}" data-d="1" aria-label="Nach unten"${last ? ' disabled' : ''}>▼</button></span>
     <button class="tx-rm" data-act="wRemoveEx" data-id="${t.id}" data-i="${i}" aria-label="Übung entfernen">✕</button>
-    <div class="tx-ed">${step}${vals}${sel}</div>${chips}${pills}
+    <div class="tx-ed">${step}${vals}</div>${sel}${chips}${pills}
     ${open ? `<button class="tx-to" data-act="txTo" data-id="${t.id}" data-i="${i}">↪ In anderes Training</button>` : ''}
   </div></div>`;
 }

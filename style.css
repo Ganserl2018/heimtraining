@@ -2715,3 +2715,15 @@ body.mood-bad{--text-dim:#f2dcd8; --text-faint:#e2c3be;}
 .overview-lab{--lab-dim:#d0dad5;}
 .overview-lab.mood-bad{--lab-dim:#e2c3be;}
 .gz-rec{opacity:.95;} .gz-of{opacity:.9;} .pp-foot .pp-reset{opacity:.95;}
+/* V34 Übungszeile: beschriftete Felder Sätze × Wdh · kg, Art als Segment */
+.tx-ed{align-items:flex-end;}
+.te-c{display:flex; flex-direction:column; gap:.2rem; min-width:0; flex:1 1 0;}
+.te-c.te-s{flex:none;}
+.te-c>i{font-style:normal; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; color:var(--text-dim); text-align:center;}
+.tx-ed .xc-x{padding-bottom:.6rem;}
+.tx-ed .xc-f{max-width:none;}
+.te-u{grid-column:1/-1; display:grid; grid-template-columns:repeat(3,1fr); gap:.2rem; background:var(--bg); border-radius:12px; padding:.2rem;}
+.te-u button{min-height:40px; border:0; border-radius:10px; background:none; color:var(--text-dim); font-weight:700; font-size:.8rem;}
+.te-u button.on{background:var(--accent); color:var(--on-accent,#0c0f0e);}
+.tx-row:not(.open) .te-u{display:none;}
+.tx-nm em{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
