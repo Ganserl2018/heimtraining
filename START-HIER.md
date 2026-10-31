@@ -1,10 +1,10 @@
-# START-HIER – Übergabe für den nächsten Chat (Stand 27.10.2026 01:50)
+# START-HIER – Übergabe für den nächsten Chat (Stand 31.10.2026 12:15)
 
 Alex will NICHTS erklären müssen. Alles hier lesen, dann direkt weiterbauen. Antworten deutsch, sehr kurz (CLAUDE.md).
 
 ## Zuerst (ohne Rückfrage, still)
 1. Mac-Ordner `/Users/user/Claude` verbinden (Remote-Devices-Bridge: `mcp__remote-devices__*`; Vault liegt unter `~/mnt/Claude/Obsidian-Vault/Projects/Privat/Heimtraining/`). Wenn Bridge fehlt: nur melden, mit Cloud-Teil weiterarbeiten.
-2. Repo: `/home/claude/heimtraining` (falls fehlt: Repo per add_repo holen). Push auf `main` → https://heimtraining.pages.dev. Aktuell `?v=20261029j`.
+2. Repo: `/home/claude/heimtraining` (falls fehlt: Repo per add_repo holen). Push auf `main` → https://heimtraining.pages.dev. Aktuell `?v=20261031v`.
 3. Lesen: `CLAUDE.md`, `plan.md` (letzter Block), `qa-checkliste.md`, `audit-log.md`, letzter Nachtrag in `session-uebergabe-2026-10-04.md` (Vault).
 4. Straße (immer mit url republishen): https://claude.ai/artifact/33Pz2wW3JRTVER4UhY8wWT, Quelle `strasse.html` im Scratchpad (falls weg: per Artifact read holen).
 5. Memory: `/projects/01a0def4-e132-726b-8e41-b13f0f0e0473/areas/heimtraining-app.md` (Alex-Aussagen chronologisch).
@@ -33,3 +33,5 @@ Alex will NICHTS erklären müssen. Alles hier lesen, dann direkt weiterbauen. A
 - Neuer Chat: Alex sagt nur „start“ o. ä.; Claude liest diese Datei, holt Zugriffe still, nennt Stand + nächsten Schritt in 2 Sätzen.
 
 - Stand 31.10. 02:10: Archiv-Code + 9 tote Funktionen raus; Security-Header + interne Dateien 404 (808f3a5). Offen: Token rotieren (Alex, Mac-Einzeiler), Worker-Schreibschutz (Warteliste), 'Zu Training hinzufügen' (Alex 1 Satz), Seite-für-Seite-Logik-Durchgang mit Alex.
+
+- Stand 31.10. 12:15 (Details: Nachtrag in plan.md): Woche-Uhrzeit (Auswahl 00/15/30/45, nur Anzeige), Archiv raus, Figur dreht sich, Geräte-Kachel + Aktionszeile + Gruppen auf Ergebnis- UND Trainingsseite, Seitenwechsel = Standardzustand + nach oben. Live ?v=20261031v. NÄCHSTES: Seite-für-Seite-Logik Punkt 2 (Woche/Status/Beenden); Uhrzeit-Logik wartet auf Alex-Go. Regel Alex: nur tun was er sagt, nichts dazudichten.
