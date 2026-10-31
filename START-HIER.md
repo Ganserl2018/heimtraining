@@ -4,7 +4,7 @@ Alex will NICHTS erklären müssen. Alles hier lesen, dann direkt weiterbauen. A
 
 ## Zuerst (ohne Rückfrage, still)
 1. Mac-Ordner `/Users/user/Claude` verbinden (Remote-Devices-Bridge: `mcp__remote-devices__*`; Vault liegt unter `~/mnt/Claude/Obsidian-Vault/Projects/Privat/Heimtraining/`). Wenn Bridge fehlt: nur melden, mit Cloud-Teil weiterarbeiten.
-2. Repo: `/home/claude/heimtraining` (falls fehlt: Repo per add_repo holen). Push auf `main` → https://heimtraining.pages.dev. Aktuell `?v=20261031zn`.
+2. Repo: `/home/claude/heimtraining` (falls fehlt: Repo per add_repo holen). Push auf `main` → https://heimtraining.pages.dev. Aktuell `?v=20261031zv`.
 3. Lesen: `CLAUDE.md`, `plan.md` (letzter Block), `qa-checkliste.md`, `audit-log.md`, letzter Nachtrag in `session-uebergabe-2026-10-04.md` (Vault).
 4. Straße (immer mit url republishen): https://claude.ai/artifact/33Pz2wW3JRTVER4UhY8wWT, Quelle `strasse.html` im Scratchpad (falls weg: per Artifact read holen).
 5. Memory: `/projects/01a0def4-e132-726b-8e41-b13f0f0e0473/areas/heimtraining-app.md` (Alex-Aussagen chronologisch).
@@ -81,3 +81,6 @@ Alex will NICHTS erklären müssen. Alles hier lesen, dann direkt weiterbauen. A
 - Live v=20261031zu (0fdcc59). Ziele-Seite kompakt (Link war verdeckt). Straße V31 aktuell.
 - Frage an Alex: Ziel pro Zeitraum eigene Zahl? Wartet auf Go: Health-Button, Mini-Schrift, Glow/Dashed/Bounce.
 - Test-Hinweis: Fit-Messung immer ALLE Elemente inkl. Link prüfen (lastBottom aller Buttons), Tab-Leiste real ~769 px.
+
+## Neu 31.10. 23:55
+- Ziel pro Zeitraum eigene Zahl (3/12/156), Countdown-Block aus Ziel-Panel raus (03d09f8). Offen (wartet auf Go): Health-Button (Kurzbefehl "Heimtraining Sync"), Mini-Schrift, Glow/Dashed/Bounce auf Ziele-Seite; Übungszeile-Segment Gewicht/Körper/Zeit braucht Alex' Abnahme.

@@ -744,3 +744,7 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 - Offene Frage an Alex: Ziel pro Zeitraum (3/Woche, 12/Monat, 156/Jahr) statt einer Zahl; bei Jahr steht 0/3.
 - Wartet auf Go: Health-Button, Mini-Schrift, Glow/Dashed/Bounce. Ziele-Seite Feedback später.
 - Straße V31 (Seite für Seite II) angelegt, republished mit url.
+
+## Nachtrag 31.10. 23:55 (Auto-Speicherung)
+- Alex "Hmm Logik?" (Ziele-Panel zeigte 0/144 pro Monat + Countdown-Block): Ziel hat jetzt pro Zeitraum eigene Zahl (Standard Woche 3 / Monat 12 / Jahr 156, `targets`-Map), alter Fehlwert wird auf Standard gesetzt, Countdown-Block aus Ziel-Panel entfernt (03d09f8, v=20261031zv). Alex-Go erhalten.
+- Offen/wartet auf Go: Health-Button, Mini-Schrift, Glow/Dashed/Bounce.
