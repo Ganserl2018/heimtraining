@@ -570,25 +570,11 @@ function renderOverview() {
 
   content.innerHTML = `
     <div class="overview overview-lab ${mood}">
-      <div class="lab-head">
-        <div class="lab-brand">
-          <img class="lab-logo" src="logo.svg" alt="" width="46" height="46">
-          <div>
-            <div class="lab-head-title">HOME FORCE</div>
-            <div class="lab-chip"><i></i>${moodTitle}</div>
-          </div>
-        </div>
-        <button class="lab-badge" data-act="goto" data-view="profile" aria-label="Profil">${(loadProfile().name || '').trim().charAt(0).toUpperCase() || '◉'}</button>
-      </div>
+      <div class="tx-head"><button class="tx-back" data-act="dashBack">‹ Zurück</button><h2><span class="nm-t">Ziele &amp; Streak</span></h2></div>
       ${ringBlock}
       <button class="lab-goal-link" data-act="goalEdit">Ziel anpassen</button>
       ${barsBlock}
       <div class="lab-streak">STREAK: ${streak} TAG${streak === 1 ? '' : 'E'}${hasMissedThisWeek ? ' (KRITISCH)' : ''} 🔥</div>
-      <button class="lab-start${hasMissedThisWeek ? ' lab-start-broken' : ''}" ${startAttr}>
-        <svg class="lab-start-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span>${startLabel}<small>${quick ? btnSub : ''}</small></span>
-      </button>
-      <div class="lab-section">WOCHENTAGE · BELEGUNG</div>
-      <div class="lab-week">${wdOrder}</div>
     </div>${goalEditing ? goalBlock : ''}${longEditing ? longBlock : ''}`;
 }
 
@@ -2343,6 +2329,7 @@ content.addEventListener('click', e => {
     case 'genMinS': { const had = !!genRes; genCfg.minSets = Number(btn.dataset.v); genRes = null; if (had) generate(); break; }
     case 'genMinR': { const had = !!genRes; genCfg.minReps = Number(btn.dataset.v); genRes = null; if (had) generate(); break; }
     case 'dash': dashMode = true; view = 'overview'; break;
+    case 'dashBack': dashMode = false; view = 'history'; break;
     case 'genDo': if (view === 'start' && !plClassic) { if (!genCfg.groups.length) { plMsg = 'Erst Muskeln wählen.'; break; } const un = uncovered(); if (un.length) { plMsg = 'Für ' + un.map(fgLabel).join(', ') + ' passt kein gewähltes Gerät. Gerät dazuwählen.'; break; } }
       if (!genCfg.gear.length) genCfg.gear = GEAR.map(x => x[0]); if (!genCfg.groups.length) { const gcn = groupCounts(); genCfg.groups = shuffle(MUSCLE_GROUP_LIST.filter(m => gcn[m])).slice(0, 2 + Math.floor(Math.random() * 2)); } autoGear(); if (view === 'start') { genFrom = null; view = 'gen'; } generate(); break;
     case 'genNext': { const np = nextPlan(); genCfg.groups = np.groups.slice(); if (!genCfg.gear.length) genCfg.gear = GEAR.map(x => x[0]); autoGear(); genFrom = null; if (view === 'start') view = 'gen'; generate(); if (genRes && genRes.length) { applyProgression(genRes); genNote = np.note; } break; }
