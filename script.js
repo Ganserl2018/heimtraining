@@ -1891,7 +1891,6 @@ function renderProfile() {
       </div>
       <div class="pp-foot pp-t" style="--i:8">
       <button class="pp-reset" data-act="appReload">↻ Neu laden · ${((document.querySelector('script[src^="script.js"]') || {}).src || '').split('v=')[1] || ''}</button>
-      ${loadBad().length ? `<button class="pp-reset" data-act="badCopy">⚑ ${loadBad().length} falsche Bilder kopieren</button>` : ''}
       </div>
     </div>`;
 }
