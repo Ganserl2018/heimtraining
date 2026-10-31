@@ -31,3 +31,5 @@ Alex will NICHTS erklären müssen. Alles hier lesen, dann direkt weiterbauen. A
 - Wochenlimit-Reset jeden Freitag 21:00 Berlin (Alex 30.10.: jetzt 21:00 statt 22:00; Sammler liest ihn live). Auditor wöchentlich So 20:17 (Cloud-Task).
 - Stangengewicht 6 kg (entschieden). 184 Duplikat-Bilder: Alex entscheidet später. Bilder später.
 - Neuer Chat: Alex sagt nur „start“ o. ä.; Claude liest diese Datei, holt Zugriffe still, nennt Stand + nächsten Schritt in 2 Sätzen.
+
+- Stand 31.10. 02:10: Archiv-Code + 9 tote Funktionen raus; Security-Header + interne Dateien 404 (808f3a5). Offen: Token rotieren (Alex, Mac-Einzeiler), Worker-Schreibschutz (Warteliste), 'Zu Training hinzufügen' (Alex 1 Satz), Seite-für-Seite-Logik-Durchgang mit Alex.
