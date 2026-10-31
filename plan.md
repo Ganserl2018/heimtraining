@@ -699,3 +699,9 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 
 ## Training: Panels oben (31.10. 14:45, ?v=20261031zc)
 - Anpassen = Übungen (3-8, entfernt letzte / ergänzt passende zu den Muskeln), Sätze, Wdh; Level raus (Profil-Level gilt). Einplanen = Tage, Uhrzeit, verpasste Tage. Beide klappen oben unter den Buttons auf (wtPanHtml). "Training löschen" unten in der Liste. Test Playwright grün, kein iPhone-Test.
+
+## Training/Verlauf/Ziele (31.10. 14:55, ?v=20261031zh)
+- Training: Anpassen/Einplanen exakt wie Ergebnisseite (Panel im gn-act oben, Liste ausgeblendet solange offen, Auto-Stufe, Jede-Woche-Button); Level raus; Anzahl Übungen per wtSetCount.
+- Verlauf: Hero = ts-strip (Trainings / Tage Streak / Sätze), "Ziele & Streak ›" darunter.
+- Ziele & Streak (altes dashMode-Overview): Kopf "‹ Zurück | Ziele & Streak", ohne Brand-Kopf/Start-Button/Wochentage-Belegung; Ziel anpassen = ein Panel (goalPanel): Stepper + Chips Woche/Monat/Jahr, Countdown Monat/Jahr, wirkt sofort.
+- Offen: iPhone-Test aller Punkte; Verlauf Einträge/Detail noch nicht besprochen.
