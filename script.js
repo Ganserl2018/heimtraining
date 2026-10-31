@@ -608,7 +608,6 @@ function renderOverview() {
         <small class="gz-lab">Tag${streak === 1 ? '' : 'e'} in Folge${hasMissedThisWeek ? ' · kritisch' : ''}</small>
         <p class="gz-rec">Rekord ${gzBest} Tag${gzBest === 1 ? '' : 'e'}</p>
       </div>
-      <div class="gz-week">${gzWeek}</div>
       <div class="gz-card gz-goal${gzReached ? ' gz-reached' : ''}${goalCount ? '' : ' gz-zero'}">
         <div class="gz-chips">${gzPer}</div>
         <div class="gz-gl"><small class="gz-lab">${periodLabel}</small><b class="gz-num"><span class="gz-n" data-to="${goalCount}">${goalCount}</span><span class="gz-of">/${goal.target}${gzReached ? ' ✓' : ''}</span></b></div>
