@@ -705,3 +705,9 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 - Verlauf: Hero = ts-strip (Trainings / Tage Streak / Sätze), "Ziele & Streak ›" darunter.
 - Ziele & Streak (altes dashMode-Overview): Kopf "‹ Zurück | Ziele & Streak", ohne Brand-Kopf/Start-Button/Wochentage-Belegung; Ziel anpassen = ein Panel (goalPanel): Stepper + Chips Woche/Monat/Jahr, Countdown Monat/Jahr, wirkt sofort.
 - Offen: iPhone-Test aller Punkte; Verlauf Einträge/Detail noch nicht besprochen.
+
+## Ziele-Seite B+, Tag-Auswahl, Neu-Button weg (31.10. 15:25, ?v=20261031zl)
+- Ziele & Streak: Konzept B+ (Flammen-Hero mit Funken, Rekord, Wochenleiste, Wochenziel-Karte mit Segmenten/Chips, Stats Trainings/Sätze/Countdown); Ziel-Panel mit Stepper. Alex wollte mehr Wumms/Infos (A war zu wenig) – Rückmeldung zu B+ offen.
+- Tag-Auswahl-Chips immer weiß (Rot nur "verpasst"; Grund: mood-bad färbt Accent rot).
+- "+ Neu" auf Trainings entfernt; Woche "Neu planen"/Desktop-Sidebar öffnen Generator (Tag vorbelegt via genPin); Umbenennen = Feld + ✓, speichert beim Verlassen.
+- Offen: iPhone-Test, Anti-Slop/designer über Ziele-Seite + Profil-Overlay.
