@@ -841,7 +841,11 @@ function genSwap(i) {
   genRes[i] = ex; genSwapped = i;
 }
 let genSwapped = -1, genPick = -1;
-let gnAdj = false, genPin = null;
+let gnAdj = false, genPin = null, genPinTime = '';
+function timeSelHtml(time, act) {
+  const [th, tm] = /^\d\d:\d\d$/.test(time || '') ? time.split(':') : ['', ''], mins = ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'];
+  return `<div class="w-time-l"><span>Uhrzeit (optional)</span><span class="w-time-sel"><select class="w-schedule-time" data-act="${act}" data-part="h" aria-label="Stunde"><option value="">--</option>${Array.from({ length: 24 }, (_, h) => String(h).padStart(2, '0')).map(h => `<option${h === th ? ' selected' : ''}>${h}</option>`).join('')}</select><b>:</b><select class="w-schedule-time" data-act="${act}" data-part="m" aria-label="Minute">${mins.map(m => `<option${m === tm ? ' selected' : ''}>${m}</option>`).join('')}</select></span></div>`;
+}
 const FAVKEY = 'heimtraining.favs';
 function loadFavs() { try { const f = JSON.parse(localStorage.getItem(FAVKEY)); if (Array.isArray(f)) return f; } catch (e) {} return []; }
 function genFav(i) { const e = genRes && genRes[i]; if (!e) return; const f = loadFavs(), k = f.indexOf(e.name); if (k >= 0) f.splice(k, 1); else f.push(e.name); try { localStorage.setItem(FAVKEY, JSON.stringify(f)); } catch (x) {} }
@@ -972,14 +976,14 @@ function applyProgression(exs) {
 function genSave(start, days) {
   if (!genRes || !genRes.length) return;
   const g = genCfg.groups.length ? genCfg.groups : ['Brust'], lv = genLevel();
-  const t = { id: 'w' + Date.now(), name: loserName(), exercises: genRes, weekdays: days || [], since: Object.fromEntries((days || []).map(k => [k, today()])), time: '', level: lv, goal: genCfg.goal, auto: true };
+  const t = { id: 'w' + Date.now(), name: loserName(), exercises: genRes, weekdays: days || [], since: Object.fromEntries((days || []).map(k => [k, today()])), time: days ? genPinTime : '', level: lv, goal: genCfg.goal, auto: true };
   weekplan.push(t); saveWeekplan(); genRes = null; fgOpen = null; { const d0 = genCfg.dur; genCfg = newGenCfg(); genCfg.dur = d0; genCfg.groups = []; plStep = 0; }
-  genPin = null; if (start) playStart(t.id); else if (days) { view = 'weeklist'; } else { trTab = 'act'; view = 'trainings'; }
+  genPin = null; genPinTime = ''; if (start) playStart(t.id); else if (days) { view = 'weeklist'; } else { trTab = 'act'; view = 'trainings'; }
 }
 const SPK = '<svg class="qk-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.1 6.4 6.4 2.1-6.4 2.1L12 19.5l-2.1-6.4L3.5 11l6.4-2.1z"/></svg>';
 function genActHtml() {
   const seg = (l, a, vs, cur) => `<div class="qk-r"><span>${l}</span><div class="seg" style="--n:${vs.length}">${vs.map(v => `<button class="${cur === v ? 'on' : ''}" data-act="${a}" data-v="${v}">${v || 'Auto'}</button>`).join('')}</div></div>`;
-  const pan = genPin ? `<div class="gn-pan"><div class="tx-days">${WD_KEYS.map(k => `<button class="chip${genPin.includes(k) ? ' active' : ''}" data-act="genPinD" data-v="${k}">${WD_LABELS[k]}</button>`).join('')}</div><button class="ga-b ga-start" data-act="genPinOk"${genPin.length ? '' : ' disabled'}>${genPin.length ? '✓ Jede Woche ' + WD_KEYS.filter(k => genPin.includes(k)).map(k => WD_LABELS[k]).join(' ') : 'Tage antippen'}</button></div>`
+  const pan = genPin ? `<div class="gn-pan"><div class="tx-days">${WD_KEYS.map(k => `<button class="chip${genPin.includes(k) ? ' active' : ''}" data-act="genPinD" data-v="${k}">${WD_LABELS[k]}</button>`).join('')}</div>${timeSelHtml(genPinTime, 'genPinT')}<button class="ga-b ga-start" data-act="genPinOk"${genPin.length ? '' : ' disabled'}>${genPin.length ? '✓ Jede Woche ' + WD_KEYS.filter(k => genPin.includes(k)).map(k => WD_LABELS[k]).join(' ') + (genPinTime ? ' · ' + genPinTime : '') : 'Tage antippen'}</button></div>`
     : gnAdj ? `<div class="gn-pan"><div class="qk-rows">${seg('Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0)}${seg('Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets)}${seg('Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps)}</div></div>` : '';
   return `<div class="gn-act gn-act-top"><div class="gn-act-sub"><button class="ga-c${gnAdj ? ' on' : ''}" data-act="gnAdj"><i class="ga-ic2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg></i>Anpassen</button><button class="ga-c" data-act="genDo"><i class="ga-ic2"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.5-5.8"/><path d="M20 4v5h-5"/></svg></i>Neu mischen</button><button class="ga-c${genPin ? ' on' : ''}" data-act="genPin"><i class="ga-ic2"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></i>Einplanen</button></div>${pan}</div>`;
 }
@@ -2258,7 +2262,7 @@ content.addEventListener('click', e => {
     case 'genNext': { const np = nextPlan(); genCfg.groups = np.groups.slice(); if (!genCfg.gear.length) genCfg.gear = GEAR.map(x => x[0]); autoGear(); genFrom = null; if (view === 'start') view = 'gen'; generate(); if (genRes && genRes.length) { applyProgression(genRes); genNote = np.note; } break; }
     case 'genSurprise': { const gl = shuffle(MUSCLE_GROUP_LIST).slice(0, 2 + Math.floor(Math.random() * 2)); genCfg.groups = gl; generate(); break; }
     case 'genSave': genSave(false); break;
-    case 'genPin': genPin = genPin ? null : []; gnAdj = false; break;
+    case 'genPin': genPin = genPin ? null : []; genPinTime = ''; gnAdj = false; break;
     case 'genPinD': if (genPin) { const k = btn.dataset.v; genPin = genPin.includes(k) ? genPin.filter(x => x !== k) : [...genPin, k]; } break;
     case 'genPinOk': if (genPin && genPin.length) genSave(false, WD_KEYS.filter(k => genPin.includes(k))); break;
     case 'genGo': genSave(true); break;
@@ -2382,6 +2386,14 @@ content.addEventListener('click', e => {
 });
 
 content.addEventListener('change', e => {
+  const gt = e.target.closest('[data-act="genPinT"]');
+  if (gt) {
+    const box = gt.closest('.w-time-sel'), h = box.querySelector('[data-part="h"]').value, m = box.querySelector('[data-part="m"]').value;
+    genPinTime = h ? h + ':' + m : '';
+    const ok = document.querySelector('[data-act="genPinOk"]');
+    if (ok && genPin && genPin.length) ok.textContent = '✓ Jede Woche ' + WD_KEYS.filter(k => genPin.includes(k)).map(k => WD_LABELS[k]).join(' ') + (genPinTime ? ' · ' + genPinTime : '');
+    return;
+  }
   const ts = e.target.closest('[data-act="wTimeSel"]');
   if (ts) {
     const box = ts.closest('.w-time-sel'), h = box.querySelector('[data-part="h"]').value, m = box.querySelector('[data-part="m"]').value;
