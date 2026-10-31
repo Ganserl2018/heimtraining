@@ -2698,3 +2698,6 @@ button.home-open{background:none; border:0; min-height:44px; padding:.4rem 1rem;
 @keyframes gzBreath{0%,100%{opacity:.5; transform:scale(.95);} 50%{opacity:.9; transform:scale(1.08);}}
 @keyframes gzSpark{0%{transform:translateY(0) scale(1); opacity:0;} 15%{opacity:.9;} 100%{transform:translateY(calc(var(--h) * -1)) scale(.3); opacity:0;}}
 @keyframes gzSweep{to{transform:translateX(420%);}}
+/* V31 Tag-Auswahl immer weiß (Rot nur für "verpasst") */
+.tr-days button.on,.mood-bad .tr-days button.on{--accent:#f4f6f5; --on-accent:#0c0f0e; color:#0c0f0e;}
+.tx-days .chip.active,.mood-bad .tx-days .chip.active,.gn-pan .tx-days .chip.active{background:#f4f6f5; border-color:#f4f6f5; color:#0c0f0e;}
