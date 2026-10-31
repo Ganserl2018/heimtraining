@@ -2631,3 +2631,48 @@ button.home-open{background:none; border:0; min-height:44px; padding:.4rem 1rem;
 .gp-step b{min-width:2.4rem; text-align:center; font:400 1.6rem/1 var(--font-display,'Anton',Impact,sans-serif); color:var(--accent);}
 .gp-step button{width:44px; height:44px; border-radius:12px; border:1px solid var(--border); background:var(--panel); color:var(--text); font-size:1.3rem;}
 .goal-pan .seg button{min-height:40px;}
+
+/* V31 Ziele-Seite "Tank" */
+.gz{display:flex; flex-direction:column; gap:.8rem; width:100%;}
+.gz-hero{position:relative; overflow:hidden; display:flex; flex-direction:column; align-items:center; gap:.5rem; padding:.9rem .9rem 1rem; border-radius:22px; border:1.5px solid color-mix(in srgb,var(--lab-acc) 45%,transparent); background:linear-gradient(160deg,color-mix(in srgb,var(--lab-acc) 16%,transparent),rgba(0,0,0,.25) 65%); box-shadow:0 0 28px color-mix(in srgb,var(--lab-acc) 14%,transparent); user-select:none; -webkit-user-select:none; touch-action:manipulation;}
+.gz-hero::before{content:""; position:absolute; inset:0; background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--lab-acc) 30%,transparent)); transform:scaleX(0); transform-origin:left; pointer-events:none; transition:transform .25s cubic-bezier(.23,1,.32,1);}
+.gz-hero.hold::before{transform:scaleX(1); transition:transform .8s cubic-bezier(.23,1,.32,1);}
+.gz-hero>*{position:relative;}
+.gz-chips{display:grid; grid-template-columns:repeat(3,1fr); gap:.3rem; width:100%;}
+.gz-chips button{min-height:40px; border-radius:12px; border:1px solid rgba(255,255,255,.1); background:rgba(0,0,0,.3); color:var(--lab-dim); font-size:.8rem; font-weight:700; transition:transform .15s cubic-bezier(.23,1,.32,1);}
+.gz-chips button:active{transform:scale(.97);}
+.gz-chips button.on{border-color:var(--lab-acc); color:var(--lab-acc); background:color-mix(in srgb,var(--lab-acc) 12%,transparent);}
+.gz-lab{font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:var(--lab-dim); margin-top:.2rem;}
+.gz-num{font:400 5.2rem/1 Anton,Impact,'Arial Narrow',sans-serif; color:var(--lab-acc); text-shadow:0 0 24px var(--lab-glow); font-variant-numeric:tabular-nums;}
+.gz-of{font-size:2.6rem; color:#e6ece8; opacity:.75; text-shadow:none;}
+.gz-zero .gz-num{opacity:.45;}
+.gz-segs{display:flex; gap:.45rem; width:100%;}
+.gz-seg{flex:1; height:54px; border-radius:14px; border:1.5px dashed rgba(255,255,255,.22); overflow:hidden; position:relative;}
+.gz-seg i{position:absolute; inset:0; background:var(--lab-acc); box-shadow:0 0 18px var(--lab-glow); transform:scaleX(0); transform-origin:left;}
+.gz-seg.on{border:1.5px solid var(--lab-acc);} .gz-seg.on i{transform:scaleX(1);}
+.gz-wide{height:22px;} .gz-seg.gz-wide.on i{transform:scaleX(var(--p));}
+.gz-hint{margin:0; min-height:1.2em; font-size:.8rem; color:var(--lab-dim);}
+.gz-tiles{display:grid; grid-template-columns:1fr 1fr; gap:.6rem;}
+.gz-t{display:flex; flex-direction:column; align-items:center; gap:.15rem; padding:.8rem .5rem; border-radius:18px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.04);}
+.gz-t b{font:400 3rem/1 Anton,Impact,'Arial Narrow',sans-serif; color:var(--lab-acc); text-shadow:0 0 16px var(--lab-glow);}
+.gz-t em{font-style:normal; font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--lab-dim); text-align:center;}
+.gz-flame{font-style:normal; font-size:1.5rem; line-height:1; display:inline-block;}
+.gz-off .gz-flame{filter:grayscale(1); opacity:.5;} .gz-off b{opacity:.5;}
+.gz-year{height:10px; border-radius:99px; background:rgba(255,255,255,.08); overflow:hidden;}
+.gz-year i{display:block; height:100%; background:var(--lab-acc); box-shadow:0 0 10px var(--lab-glow); transform:scaleX(var(--p)); transform-origin:left;}
+@media (prefers-reduced-motion:no-preference){
+  .gz-anim .gz-hero{animation:ghIn .55s cubic-bezier(.23,1,.32,1) backwards;}
+  .gz-anim .gz-t{animation:gzUp .5s cubic-bezier(.23,1,.32,1) backwards;} .gz-anim .gz-t:nth-child(2){animation-delay:.08s;}
+  .gz-anim .gz-seg.on i{animation:gzFill .6s cubic-bezier(.23,1,.32,1) backwards; animation-delay:calc(.25s + var(--k,0) * .12s);}
+  .gz-anim .gz-year i{animation:gzFill .8s cubic-bezier(.23,1,.32,1) .4s backwards;}
+  .gz-seg.next i{animation:gzPulse 2s ease-in-out infinite; transform:scaleX(1); opacity:.12;}
+  .gz-streak:not(.gz-off) .gz-flame{animation:gzFlame 1.6s ease-in-out infinite;}
+  .gz-reached::after{content:""; position:absolute; top:0; bottom:0; left:-40%; width:40%; background:linear-gradient(100deg,transparent,rgba(255,255,255,.22),transparent); transform:translateX(0); animation:gzSweep .9s cubic-bezier(.23,1,.32,1) .5s 1 both; pointer-events:none;}
+  .gz-reached{box-shadow:0 0 40px var(--lab-glow);}
+}
+@keyframes gzFill{from{transform:scaleX(0);}}
+@keyframes gzUp{from{transform:translateY(16px); opacity:0;}}
+@keyframes gzPulse{0%,100%{opacity:.08;} 50%{opacity:.3;}}
+@keyframes gzFlame{0%,100%{transform:scale(1);} 50%{transform:scale(1.1);}}
+@keyframes gzSweep{to{transform:translateX(420%);}}
+.gz-open .gz-tiles,.gz-open .gz-year{display:none;}

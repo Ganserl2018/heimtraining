@@ -126,7 +126,7 @@ function saveProfile(p) { try { LS.setItem(PROKEY, JSON.stringify(p)); } catch (
 const GOALKEY = 'heimtraining.goal';
 function loadGoal() { try { return JSON.parse(LS.getItem(GOALKEY)) || { target: 3, periodDays: 7 }; } catch (e) { return { target: 3, periodDays: 7 }; } }
 function saveGoal(g) { try { LS.setItem(GOALKEY, JSON.stringify(g)); } catch (e) {} }
-let goalEditing = false, goalOpen = false;
+let goalEditing = false, goalOpen = false, gzFresh = false;
 // V6-04: Langzeit-Leiste (Trainings pro Jahr/Monat ODER Kraft-Ziel einer Übung)
 const LGKEY = 'heimtraining.longgoal2';
 let longEditing = false, longDraftType = null;
@@ -487,7 +487,6 @@ function goalPanel(goal, lg) {
   const lm = lg.per === 'month';
   return `<div class="gn-pan goal-pan">
     <div class="gp-row"><span>Trainings pro ${pl || per + ' Tage'}</span>${step('gStep', goal.target, 1)}</div>
-    ${chips('gPer', [[7, 'Woche'], [30, 'Monat'], [365, 'Jahr']], per)}
     <div class="gp-row"><span>Countdown pro ${lm ? 'Monat' : 'Jahr'}</span>${step('lStep', lg.target || 156, lm ? 1 : 5)}</div>
     ${chips('lPer', [['month', 'Monat'], ['year', 'Jahr']], lm ? 'month' : 'year')}
   </div>`;
@@ -580,14 +579,31 @@ function renderOverview() {
     return `<button class="lab-day${worst ? ' lab-' + worst + ' lab-belegt' : ' lab-frei'}${worst && worst !== 'verpasst' ? (hasEx ? ' lab-ex' : ' lab-leer') : ''}${ds === t ? ' lab-heute' : ''}" ${act}><b>${WD_LABELS[wdKeyOf(ds)]}</b><span>${sub}</span><small class="lab-occ">${items.length ? items.map(x => esc(x.w.name)).join(' · ') : 'frei'}</small></button>`;
   }).join('');
 
+  const gzAnim = gzFresh; gzFresh = false;
+  const gzN = goal.target <= 10 ? goal.target : 0, gzDone = Math.min(goalCount, goal.target);
+  const gzSegs = gzN ? Array.from({ length: gzN }, (_, k) => `<span class="gz-seg${k < gzDone ? ' on' : k === gzDone ? ' next' : ''}" style="--k:${k}"><i></i></span>`).join('') : `<span class="gz-seg gz-wide on"><i style="--p:${gzDone / Math.max(goal.target, 1)}"></i></span>`;
+  const gzPer = [[7, 'Woche'], [30, 'Monat'], [365, 'Jahr']].map(([v, l]) => `<button class="${goal.periodDays === v ? 'on' : ''}" data-act="gPer" data-v="${v}">${l}</button>`).join('');
+  const gzReached = goalCount >= goal.target;
+  const gzBlock = `<div class="gz${gzAnim ? ' gz-anim' : ''}${goalOpen ? ' gz-open' : ''}">
+      <div class="gz-hero${gzReached ? ' gz-reached' : ''}${goalCount ? '' : ' gz-zero'}">
+        <div class="gz-chips">${gzPer}</div>
+        <small class="gz-lab">${periodLabel}</small>
+        <b class="gz-num"><span class="gz-n" data-to="${goalCount}">${goalCount}</span><span class="gz-of">/${goal.target}${gzReached ? ' ✓' : ''}</span></b>
+        <div class="gz-segs">${gzSegs}</div>
+        <p class="gz-hint">${goalCount ? '&nbsp;' : 'Dein erstes Training zählt.'}</p>
+      </div>
+      <div class="gz-tiles">
+        <div class="gz-t gz-streak${streak ? '' : ' gz-off'}"><i class="gz-flame" aria-hidden="true">🔥</i><b>${streak}</b><em>Tag${streak === 1 ? '' : 'e'} in Folge${hasMissedThisWeek ? ' · kritisch' : ''}</em></div>
+        <div class="gz-t"><b>${left}</b><em>${left ? `Noch von ${tgt} ${lg.per === 'month' ? 'im Monat' : 'im Jahr'}` : 'Ziel geschafft'}</em></div>
+      </div>
+      <div class="gz-year"><i style="--p:${Math.min(1, nDone / tgt)}"></i></div>
+    </div>`;
   content.innerHTML = `
     <div class="overview overview-lab ${mood}">
       <div class="tx-head"><button class="tx-back" data-act="dashBack">‹ Zurück</button><h2><span class="nm-t">Ziele &amp; Streak</span></h2></div>
-      ${ringBlock}
+      ${gzBlock}
       <button class="lab-goal-link" data-act="goalEdit">${goalOpen ? 'Fertig' : 'Ziel anpassen'}</button>
       ${goalOpen ? goalPanel(goal, lg) : ''}
-      ${barsBlock}
-      <div class="lab-streak">STREAK: ${streak} TAG${streak === 1 ? '' : 'E'}${hasMissedThisWeek ? ' (KRITISCH)' : ''} 🔥</div>
     </div>${goalEditing ? goalBlock : ''}${longEditing ? longBlock : ''}`;
 }
 
@@ -2341,7 +2357,7 @@ content.addEventListener('click', e => {
       genCfg.autoAdded = []; autoGear(); genRes = null; break; }
     case 'genMinS': { const had = !!genRes; genCfg.minSets = Number(btn.dataset.v); genRes = null; if (had) generate(); break; }
     case 'genMinR': { const had = !!genRes; genCfg.minReps = Number(btn.dataset.v); genRes = null; if (had) generate(); break; }
-    case 'dash': dashMode = true; view = 'overview'; break;
+    case 'dash': dashMode = true; gzFresh = true; view = 'overview'; break;
     case 'dashBack': dashMode = false; view = 'history'; break;
     case 'genDo': if (view === 'start' && !plClassic) { if (!genCfg.groups.length) { plMsg = 'Erst Muskeln wählen.'; break; } const un = uncovered(); if (un.length) { plMsg = 'Für ' + un.map(fgLabel).join(', ') + ' passt kein gewähltes Gerät. Gerät dazuwählen.'; break; } }
       if (!genCfg.gear.length) genCfg.gear = GEAR.map(x => x[0]); if (!genCfg.groups.length) { const gcn = groupCounts(); genCfg.groups = shuffle(MUSCLE_GROUP_LIST.filter(m => gcn[m])).slice(0, 2 + Math.floor(Math.random() * 2)); } autoGear(); if (view === 'start') { genFrom = null; view = 'gen'; } generate(); break;
@@ -2450,7 +2466,7 @@ content.addEventListener('click', e => {
     case 'gPer': { const g = loadGoal(); g.periodDays = Number(btn.dataset.v); saveGoal(g); break; }
     case 'lStep': { const l = loadLong(); l.type = 'count'; l.target = Math.max(1, (l.target || 156) + Number(btn.dataset.v)); saveLong(l); break; }
     case 'lPer': { const l = loadLong(); l.type = 'count'; if (l.per !== btn.dataset.v) { l.per = btn.dataset.v; l.target = l.per === 'month' ? (l.target > 31 ? 12 : l.target) : (l.target <= 31 ? 156 : l.target); } saveLong(l); break; }
-    case 'goalEditFromProfile': goalOpen = true; dashMode = true; view = 'overview'; break;
+    case 'goalEditFromProfile': goalOpen = true; dashMode = true; gzFresh = true; view = 'overview'; break;
     case 'goalSave': {
       const target = Math.max(1, Number(document.getElementById('goal-target')?.value) || 1);
       const mult = { tage: 1, wochen: 7, monate: 30, jahre: 365 }[document.getElementById('goal-unit')?.value] || 1;
@@ -2780,3 +2796,17 @@ function pfOverlay(manage) {
   draw();
 }
 try { if (LS.reg().length > 1 && !sessionStorage.getItem('pf.ok')) pfOverlay(false); } catch (e) {}
+
+// Ziele-Seite: Zahl hochzählen (nur beim Öffnen) + Halten-Effekt auf der Hero-Karte
+(function () {
+  const run = () => document.querySelectorAll('.gz-anim .gz-n').forEach(el => {
+    if (el.dataset.run) return; el.dataset.run = 1;
+    const to = Number(el.dataset.to) || 0; if (!to || matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    const t0 = performance.now(), d = 600; el.textContent = 0;
+    const f = now => { const k = Math.min(1, (now - t0) / d); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(f); }; requestAnimationFrame(f);
+  });
+  new MutationObserver(run).observe(document.getElementById('content') || document.body, { childList: true, subtree: true });
+  const hold = (on, e) => { const h = e.target.closest && e.target.closest('.gz-hero'); if (on && h && !e.target.closest('button')) h.classList.add('hold'); else document.querySelectorAll('.gz-hero.hold').forEach(x => x.classList.remove('hold')); };
+  document.addEventListener('pointerdown', e => hold(true, e));
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => document.addEventListener(ev, e => hold(false, e)));
+})();
