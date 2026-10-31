@@ -126,7 +126,7 @@ function saveProfile(p) { try { LS.setItem(PROKEY, JSON.stringify(p)); } catch (
 const GOALKEY = 'heimtraining.goal';
 function loadGoal() { try { return JSON.parse(LS.getItem(GOALKEY)) || { target: 3, periodDays: 7 }; } catch (e) { return { target: 3, periodDays: 7 }; } }
 function saveGoal(g) { try { LS.setItem(GOALKEY, JSON.stringify(g)); } catch (e) {} }
-let goalEditing = false;
+let goalEditing = false, goalOpen = false;
 // V6-04: Langzeit-Leiste (Trainings pro Jahr/Monat ODER Kraft-Ziel einer Übung)
 const LGKEY = 'heimtraining.longgoal2';
 let longEditing = false, longDraftType = null;
@@ -480,6 +480,18 @@ function renderHome() {
     <svg viewBox="0 0 24 24" class="home-db" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>
     <b>START</b></span></button>${open ? `<button class="home-open" data-act="quickStart" data-id="${open.id}">Training läuft · Weiter</button>` : ''}</div>`;
 }
+function goalPanel(goal, lg) {
+  const per = goal.periodDays, pl = per === 7 ? 'Woche' : per === 30 ? 'Monat' : per === 365 ? 'Jahr' : null;
+  const chips = (act, opts, cur) => `<div class="seg" style="--n:${opts.length}">${opts.map(([v, l]) => `<button class="${cur === v ? 'on' : ''}" data-act="${act}" data-v="${v}">${l}</button>`).join('')}</div>`;
+  const step = (act, n, d) => `<div class="gp-step"><button data-act="${act}" data-v="-${d}" aria-label="weniger">−</button><b>${n}</b><button data-act="${act}" data-v="${d}" aria-label="mehr">+</button></div>`;
+  const lm = lg.per === 'month';
+  return `<div class="gn-pan goal-pan">
+    <div class="gp-row"><span>Trainings pro ${pl || per + ' Tage'}</span>${step('gStep', goal.target, 1)}</div>
+    ${chips('gPer', [[7, 'Woche'], [30, 'Monat'], [365, 'Jahr']], per)}
+    <div class="gp-row"><span>Countdown pro ${lm ? 'Monat' : 'Jahr'}</span>${step('lStep', lg.target || 156, lm ? 1 : 5)}</div>
+    ${chips('lPer', [['month', 'Monat'], ['year', 'Jahr']], lm ? 'month' : 'year')}
+  </div>`;
+}
 function renderOverview() {
   if (!dashMode) return renderHome();
   const t = today();
@@ -522,7 +534,7 @@ function renderOverview() {
   const nDone = h.filter(r => r.date >= since2 && r.date <= t).length, tgt = Math.max(lg.target || 156, 1), left = Math.max(0, tgt - nDone);
   const lgTitle = 'COUNTDOWN ' + (lg.per === 'month' ? 'MONAT' : yr), lgLabel = left ? `NOCH ${left} VON ${tgt}` : 'ZIEL GESCHAFFT 🔥', lgPct = left / tgt;
   const bar = (title, label, pct, act) => `<${act ? 'button data-act="' + act + '"' : 'div'} class="lab-bar"><div class="lab-bar-top"><span>${esc(title)}</span><b>${esc(label)}</b></div><div class="lab-bar-track"><i style="width:${Math.round(Math.max(0, Math.min(1, pct)) * 100)}%"></i></div></${act ? 'button' : 'div'}>`;
-  const barsBlock = `<div class="lab-bars">${bar(goal.periodDays <= 10 ? 'DIESE WOCHE' : goal.periodDays <= 45 ? 'DIESER MONAT' : goal.periodDays <= 135 ? 'DIESES QUARTAL' : goal.periodDays <= 270 ? 'DIESES HALBJAHR' : 'DIESES JAHR', goalCount + ' / ' + goal.target, goalCount / Math.max(goal.target, 1))}${bar(lgTitle, lgLabel, lgPct, 'longEdit')}</div>`;
+  const barsBlock = `<div class="lab-bars">${bar(goal.periodDays <= 10 ? 'DIESE WOCHE' : goal.periodDays <= 45 ? 'DIESER MONAT' : goal.periodDays <= 135 ? 'DIESES QUARTAL' : goal.periodDays <= 270 ? 'DIESES HALBJAHR' : 'DIESES JAHR', goalCount + ' / ' + goal.target, goalCount / Math.max(goal.target, 1))}${bar(lgTitle, lgLabel, lgPct, 'goalEdit')}</div>`;
   const exNames = [...new Set([...h.flatMap(r => r.exercises.map(e => e.name)), ...weekplan.flatMap(w => w.exercises.map(e => e.name))])];
   const dt = longDraftType || lg.type;
   const longBlock = `<div class="goal-sheet"><div class="goal-edit">
@@ -572,7 +584,8 @@ function renderOverview() {
     <div class="overview overview-lab ${mood}">
       <div class="tx-head"><button class="tx-back" data-act="dashBack">‹ Zurück</button><h2><span class="nm-t">Ziele &amp; Streak</span></h2></div>
       ${ringBlock}
-      <button class="lab-goal-link" data-act="goalEdit">Ziel anpassen</button>
+      <button class="lab-goal-link" data-act="goalEdit">${goalOpen ? 'Fertig' : 'Ziel anpassen'}</button>
+      ${goalOpen ? goalPanel(goal, lg) : ''}
       ${barsBlock}
       <div class="lab-streak">STREAK: ${streak} TAG${streak === 1 ? '' : 'E'}${hasMissedThisWeek ? ' (KRITISCH)' : ''} 🔥</div>
     </div>${goalEditing ? goalBlock : ''}${longEditing ? longBlock : ''}`;
@@ -2432,8 +2445,12 @@ content.addEventListener('click', e => {
       return;
     }
     case 'pfOpen': pfOverlay(true); return;
-    case 'goalEdit': goalEditing = true; break;
-    case 'goalEditFromProfile': goalEditing = true; view = 'overview'; break;
+    case 'goalEdit': goalOpen = !goalOpen; break;
+    case 'gStep': { const g = loadGoal(); g.target = Math.max(1, (g.target || 1) + Number(btn.dataset.v)); saveGoal(g); break; }
+    case 'gPer': { const g = loadGoal(); g.periodDays = Number(btn.dataset.v); saveGoal(g); break; }
+    case 'lStep': { const l = loadLong(); l.type = 'count'; l.target = Math.max(1, (l.target || 156) + Number(btn.dataset.v)); saveLong(l); break; }
+    case 'lPer': { const l = loadLong(); l.type = 'count'; if (l.per !== btn.dataset.v) { l.per = btn.dataset.v; l.target = l.per === 'month' ? (l.target > 31 ? 12 : l.target) : (l.target <= 31 ? 156 : l.target); } saveLong(l); break; }
+    case 'goalEditFromProfile': goalOpen = true; dashMode = true; view = 'overview'; break;
     case 'goalSave': {
       const target = Math.max(1, Number(document.getElementById('goal-target')?.value) || 1);
       const mult = { tage: 1, wochen: 7, monate: 30, jahre: 365 }[document.getElementById('goal-unit')?.value] || 1;
@@ -2580,7 +2597,7 @@ function resetUi() {
   content.scrollTop = 0;
   ctlOpen = false; ctlSec = ''; lvMsg = ''; gnAdj = false; genPin = null; genPinTime = ''; archOpen = false; wpSheet = null; txTo = null; txOpen = null;
   trTab = 'act'; filterMuscle = filterEquip = filterMus = filterCat = filterSplit = null; filterFav = false; browseQ = ''; browseSel = null; filterOpen = false; browsePage = 0;
-  psSheet = null; renameId = null; addingTraining = false; fgOpen = null; histDetailIdx = null; goalEditing = false; longEditing = false; longDraftType = null; genPick = -1;
+  psSheet = null; renameId = null; addingTraining = false; fgOpen = null; histDetailIdx = null; goalEditing = false; goalOpen = false; longEditing = false; longDraftType = null; genPick = -1;
 }
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
