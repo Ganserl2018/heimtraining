@@ -1765,13 +1765,14 @@ body.is-start:not(.is-res), body.is-start:not(.is-res) #content{overflow:hidden 
 body.is-start:not(.is-res) button{touch-action:manipulation;}
 /* V21d Hero-Titel auf allen Hauptseiten, TV weg */
 .tv-icon-btn{display:none !important;}
-:is(body[data-view=history],body[data-view=weeklist],body[data-view=allex],body[data-view=profile],body[data-view=trainings]) .topbar{padding-top:.6rem; padding-bottom:.4rem; border-bottom:0 !important; background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 10%,transparent),transparent) !important;}
-:is(body[data-view=history],body[data-view=weeklist],body[data-view=allex],body[data-view=profile],body[data-view=trainings]) .topbar h1{font-family:Anton,Impact,'Arial Narrow',sans-serif !important; font-weight:400; font-size:2.2rem !important; line-height:1; letter-spacing:.04em !important; text-transform:uppercase; color:var(--accent) !important; text-shadow:0 0 16px color-mix(in srgb,var(--accent) 40%,transparent); transform:skewX(-6deg); transform-origin:left;}
-:is(body[data-view=history],body[data-view=weeklist],body[data-view=allex],body[data-view=profile],body[data-view=trainings]) .topbar h1::after{display:block; margin:.2rem 0 0 2px; font-family:system-ui,-apple-system,sans-serif; font-size:.82rem; font-weight:500; letter-spacing:.02em; text-transform:none; color:color-mix(in srgb,var(--text) 75%,transparent); text-shadow:none; transform:skewX(6deg); transform-origin:left;}
+:is(body[data-view=history],body[data-view=weeklist],body[data-view=allex],body[data-view=profile],body[data-view=trainings],body.is-dash) .topbar{padding-top:.6rem; padding-bottom:.4rem; border-bottom:0 !important; background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 10%,transparent),transparent) !important;}
+:is(body[data-view=history],body[data-view=weeklist],body[data-view=allex],body[data-view=profile],body[data-view=trainings],body.is-dash) .topbar h1{font-family:Anton,Impact,'Arial Narrow',sans-serif !important; font-weight:400; font-size:2.2rem !important; line-height:1; letter-spacing:.04em !important; text-transform:uppercase; color:var(--accent) !important; text-shadow:0 0 16px color-mix(in srgb,var(--accent) 40%,transparent); transform:skewX(-6deg); transform-origin:left;}
+:is(body[data-view=history],body[data-view=weeklist],body[data-view=allex],body[data-view=profile],body[data-view=trainings],body.is-dash) .topbar h1::after{display:block; margin:.2rem 0 0 2px; font-family:system-ui,-apple-system,sans-serif; font-size:.82rem; font-weight:500; letter-spacing:.02em; text-transform:none; color:color-mix(in srgb,var(--text) 75%,transparent); text-shadow:none; transform:skewX(6deg); transform-origin:left;}
 body[data-view=history] .topbar h1::after{content:'Dein Fortschritt';}
 body[data-view=weeklist] .topbar h1::after{content:'Deine Trainings';}
 body[data-view=allex] .topbar h1::after{content:'Finde deine Übung';}
 body[data-view=profile] .topbar h1::after{content:'Du und deine Werte';}
+body.is-dash .topbar h1::after{content:'Dein Streak und deine Ziele';}
 /* V21e Wochenplan: Wochentage stark */
 .wp-day b{font-family:Anton,Impact,'Arial Narrow',sans-serif; font-weight:400; font-size:1.3rem; letter-spacing:.04em; line-height:1.1; color:var(--text);}
 .wp-day span{font-size:.64rem; letter-spacing:.02em;}
@@ -2786,3 +2787,9 @@ button.tx-nm{min-height:44px;}
 .pf-restbtns{height:44px;} .pf-restbtns button{min-height:44px;}
 .pf-core::before{background:rgba(0,0,0,.4);}
 .pf-lab{color:#fff;}
+/* V39 Ziele-Seite bekommt denselben Hero-Titel wie alle Hauptseiten (Alex 31.10. 23:35) */
+body.is-dash:has(.overview-lab) .topbar{position:static; top:auto; right:auto;}
+body.is-dash:has(.overview-lab) .topbar h1{display:block;}
+body.is-dash:has(.overview-lab) .topbar{padding-left:1.1rem; padding-right:1.1rem;}
+.overview-lab .tx-head{padding:0 0 .1rem;}
+.gz-fire{height:60px;} .gz-flame{font-size:3rem;} .gz-big{font-size:4rem;} .gz-glow{height:110px;}

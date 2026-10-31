@@ -298,13 +298,13 @@ function renderView() {
   content.toggleAttribute('data-enter', view !== window._lv); window._lv = view;
   content.classList.remove('pl-scroll');
   document.body.classList.toggle('playing', view === 'play');
-  document.body.classList.toggle('is-home', view === 'overview' && !dashMode);
+  document.body.classList.toggle('is-home', view === 'overview' && !dashMode); document.body.classList.toggle('is-dash', view === 'overview' && dashMode);
   document.body.classList.toggle('is-start', view === 'start' || view === 'gen'); document.body.dataset.view = view; document.body.classList.toggle('is-gen', view === 'gen'); document.body.classList.toggle('is-res', view === 'gen' && !!genRes);
   weekplan.forEach(x => { if (x.draft && (x.exercises || []).length && !(view === 'wtrain' && wId === x.id)) delete x.draft; });
   if (weekplan.some(x => x.draft && !(view === 'wtrain' && wId === x.id) && view !== 'picker' && !picker)) weekplan = weekplan.filter(x => !x.draft || (view === 'wtrain' && wId === x.id));
   applyMood();
   const titles = { overview: 'Home Force', history: 'Verlauf', histdetail: 'Verlauf', weeklist: 'Woche', trainings: 'Trainings', start: 'Planung', gen: genRes ? 'Dein Training' : 'Einstellungen', play: 'Workout', preview: 'Training', summary: 'Geschafft', allex: 'Alle Übungen', profile: 'Profil', tv: 'TV-Ansicht', day: DAY_LABELS[day] || 'Training' };
-  document.querySelector('.topbar h1').textContent = view === 'wtrain' ? ((trainingById(wId) || {}).name || 'Training') : (titles[view] || 'Home Force');
+  document.querySelector('.topbar h1').textContent = view === 'overview' && dashMode ? 'Ziele & Streak' : view === 'wtrain' ? ((trainingById(wId) || {}).name || 'Training') : (titles[view] || 'Home Force');
   syncTabActive();
   { const pn = (loadProfile().name || '').trim(), bad = document.body.classList.contains('mood-bad');
     const a = document.getElementById('side-av'), n = document.getElementById('side-nm'), m = document.getElementById('side-mood');
@@ -617,7 +617,7 @@ function renderOverview() {
     </div>`;
   content.innerHTML = `
     <div class="overview overview-lab ${mood}">
-      <div class="tx-head"><button class="tx-back" data-act="dashBack">‹ Zurück</button><h2><span class="nm-t">Ziele &amp; Streak</span></h2></div>
+      <div class="tx-head"><button class="tx-back" data-act="dashBack">‹ Zurück</button></div>
       ${gzBlock}
       <button class="lab-goal-link" data-act="goalEdit">${goalOpen ? 'Fertig' : 'Ziel anpassen'}</button>
       ${goalOpen ? goalPanel(goal, lg) : ''}
