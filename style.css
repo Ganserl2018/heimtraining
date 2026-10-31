@@ -2736,3 +2736,4 @@ body.mood-bad{--text-dim:#f2dcd8; --text-faint:#e2c3be;}
 .tx-nm,.tx-to{min-height:44px;}
 .tx-row .ts-mv button,.tx-row .tx-rm{position:relative;}
 .tx-row .ts-mv button::after,.tx-row .tx-rm::after{content:""; position:absolute; inset:-5px -2px;}
+button.tx-nm{min-height:44px;}
