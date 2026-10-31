@@ -714,3 +714,7 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 
 ## Tipps raus (31.10. 15:58, ?v=20261031zm)
 - Anwendungs-Tipps (TIPP-Boxen im Training) entfernt, "Hinweise zurücksetzen" im Profil weg. Offen: Wisch-/Einzel-Hinweiszeilen (lv-note) auf Ergebnisseite – Alex-Antwort ausstehend.
+
+## PIN raus, Health-Button-Idee (31.10. 16:30, ?v=20261031zn)
+- PIN für Profile entfernt (Alex "Ja"): Button + Abfrage weg (ead41c0).
+- Idee Alex: Button, der den Kurzbefehl auslöst (shortcuts://run-shortcut?name=…&input=text&text=<Profil-Code>) → ein gemeinsamer Kurzbefehl für alle, nimmt Code als Eingabe. Offen: Name von Alex' Kurzbefehl + Platz des Buttons (Vorschlag: nach "Training beenden" und Verlauf-Detail "In Health speichern"). Nur Übergang bis App Store.
