@@ -254,7 +254,7 @@ function renderWeekplanBlock() {
       </div>
       ${sub}
     </div>`;
-  }).join('') + `<button class="tab" data-act="wNewTraining">+ Neues Training</button>`;
+  }).join('') + `<button class="tab" data-act="genOpen">✦ Jetzt trainieren</button>`;
 }
 
 function currentList() {
@@ -1043,6 +1043,10 @@ function genActHtml() {
     : gnAdj ? `<div class="gn-pan"><div class="qk-rows">${seg('Übungen', 'genCnt', [0, 3, 4, 5, 6, 8], genCfg.count || 0)}${seg('Sätze', 'genMinS', [0, 3, 4, 5], genCfg.minSets)}${seg('Wdh', 'genMinR', [0, 8, 10, 12, 15], genCfg.minReps)}</div><div class="lv-note lv-one">Jede Übung lässt sich auch einzeln einstellen.</div></div>` : '';
   return `<div class="gn-act gn-act-top"><div class="gn-act-sub"><button class="ga-c${gnAdj ? ' on' : ''}" data-act="gnAdj"><i class="ga-ic2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg></i>Anpassen</button><button class="ga-c" data-act="genDo"><i class="ga-ic2"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.5-5.8"/><path d="M20 4v5h-5"/></svg></i>Neu mischen</button><button class="ga-c${genPin ? ' on' : ''}" data-act="genPin"><i class="ga-ic2"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></i>Einplanen</button></div>${pan}</div>`;
 }
+function genOpenGo() {
+  if (view !== 'weeklist' && view !== 'start') { plStep = 0; plClassic = false; genRes = null; genCfg = newGenCfg(); genCfg.groups = []; genCfg.gear = []; genCfg.plAuto = false; view = 'start'; return; }
+  genFrom = view === 'weeklist' ? 'weeklist' : null; genRes = null; if (view !== 'start') genCfg = newGenCfg(); view = 'gen';
+}
 function genActMain() { return `<div class="gn-act"><div class="gn-act-main"><button class="ga-b ga-save" data-act="genSave">✓ Speichern</button><button class="ga-b ga-start" data-act="genGo">▶ Starten</button></div></div>`; }
 function genHero() {
   const ex = genRes || [], main = ex.filter(e => !e.warm), sets = ex.reduce((n, e) => n + (e.sets || 0), 0), gs = [...new Set(main.map(e => MUSCLE_GROUPS[e.muscle]).filter(Boolean))];
@@ -1773,7 +1777,7 @@ function renderWTrain() {
     : step === 2 ? hint('ex', 2, 'Hier fügst du Übungen hinzu: auf „+ Übung“ tippen, suchen und antippen. Du kannst mehrere nacheinander wählen.')
     : hasEx && !hasDays ? hint('days', 4, 'Tage festlegen: Tippe die Wochentage an, an denen du dieses Training machst.') : '';
   const head = renameId === t.id
-    ? `<div class="tx-head"><input id="rename-input" placeholder="Name des Trainings…" value="${esc(t.name)}"><div class="tx-hbtns"><button data-act="wRenameSave" data-id="${t.id}">Speichern</button><button data-act="wRenameCancel" data-id="${t.id}">Abbrechen</button></div></div>`
+    ? `<div class="tx-head"><input id="rename-input" placeholder="Name des Trainings…" value="${esc(t.name)}"><div class="tx-hbtns"><button data-act="wRenameSave" data-id="${t.id}" aria-label="Fertig">✓</button></div></div>`
     : `<div class="tx-head"><button class="tx-back" data-act="wBack">‹ Zurück</button><h2 class="nm-edit" data-act="wRename" data-id="${t.id}"><span class="nm-t">${esc(t.name)}</span><i class="nm-pen" aria-hidden="true">✎</i></h2><button class="tx-fav${t.fav ? ' on' : ''}" data-act="trFav" data-id="${t.id}" aria-label="Favorit">${t.fav ? '★' : '☆'}</button></div>`;
   const dayLbl = hasDays ? WD_KEYS.filter(k => t.weekdays.includes(k)).map(k => WD_LABELS[k]).join(' ') : 'Tage wählen';
   const lvNow = t.level != null ? LEVELS[t.level][1] : 'Level';
@@ -1834,7 +1838,7 @@ function renderTrainings() {
   content.innerHTML = `<div class="tr">${hero}
     <div class="tr-seg"><button class="${trTab === 'act' ? 'on' : ''}" data-act="trTab" data-v="act">Aktiv <em>${act.length}</em></button><button class="${trTab === 'fav' ? 'on' : ''}" data-act="trTab" data-v="fav">★ Favoriten <em>${favs.length + favEx.length}</em></button></div>
     <div class="tr-list">${trTab === 'fav' && favEx.length ? `<div class="tr-fx">${favEx.map(e => `<button class="tr-fxr" data-g="${esc(MUSCLE_GROUPS[e.muscle] || '')}" style="--i:${favEx.indexOf(e)}" data-act="exInfo" data-name="${esc(e.name)}"><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><span><b>${esc(dn(e.name))}</b><em><i class="gx-t g" data-g="${esc(MUSCLE_GROUPS[e.muscle] || '')}">${esc(MUSCLE_DE[e.muscle] || e.muscle)}</i></em></span><u class="tr-star">★</u></button>`).join('')}</div>` : ''}${list.length ? list.map(card).join('') : `<p class="tr-empty">${trTab === 'arch' ? 'Archiv ist leer.' : trTab === 'fav' ? (favEx.length ? '' : 'Noch keine Favoriten. Tippe ☆ bei einer Übung oder einem Training.') : 'Noch keine Trainings.'}</p>`}</div>
-    <div class="tr-act"><button class="tr-new" data-act="wNewTraining">+ Neu</button><button class="tr-gen" data-act="genOpen">✦ JETZT TRAINIEREN</button></div>
+    <div class="tr-act"><button class="tr-gen" data-act="genOpen">✦ JETZT TRAINIEREN</button></div>
   </div>`;
 }
 
@@ -2254,25 +2258,12 @@ content.addEventListener('click', e => {
       weekplan.push(t); saveWeekplan(); psSheet = null; wId = t.id; view = 'wtrain'; break;
     }
     case 'wOpen2': wFrom = view === 'trainings' ? 'trainings' : null; wId = btn.dataset.id; view = 'wtrain'; break;
-    case 'wDayNew': {
-      // Ruhetag angetippt → neues Tagestraining für diesen Wochentag anlegen und direkt öffnen
-      const wd = btn.dataset.wd;
-      const FULL = { mon: 'Montag', tue: 'Dienstag', wed: 'Mittwoch', thu: 'Donnerstag', fri: 'Freitag', sat: 'Samstag', sun: 'Sonntag' };
-      const nm = FULL[wd] + 'straining'; // vorhandene Standard-Trainings Montagstraining … Sonntagstraining
-      const existing = weekplan.find(w => w.name === nm);
-      if (existing) {
-        if (!existing.weekdays.length && btn.dataset.date >= today()) { existing.weekdays = [wd]; existing.since[wd] = today(); saveWeekplan(); }
-        wId = existing.id; view = 'wtrain'; picker = null; break;
-      }
-      const t = { id: 'w' + Date.now(), name: loserName(), exercises: [], weekdays: btn.dataset.date >= today() ? [wd] : [], since: btn.dataset.date >= today() ? { [wd]: today() } : {}, time: '' }; // vergangene Tage nicht einplanen (sonst sofort "verpasst")
-      weekplan.push(t); saveWeekplan();
-      wId = t.id; view = 'wtrain'; picker = null; break;
-    }
+    case 'wDayNew': { const wd = btn.dataset.wd, fut = btn.dataset.date >= today(); genOpenGo(); genPin = fut ? [wd] : null; genPinTime = ''; break; }
     case 'wBack': { const d = trainingById(btn.dataset.id || wId); if (d && d.draft) weekplan = weekplan.filter(x => x !== d); view = wFrom === 'trainings' ? 'trainings' : 'weeklist'; wFrom = null; picker = null; break; }
     case 'wpDay': wpSheet = { wd: btn.dataset.wd, date: btn.dataset.date }; break;
     case 'wpClose': if (e.target.closest('.wps') && !btn.matches('.ov-btn,.wps-x')) return; wpSheet = null; break;
     case 'wpAssign': { const t = trainingById(btn.dataset.id), wd = wpSheet && wpSheet.wd; if (t && wd) { if (!t.weekdays.includes(wd)) t.weekdays.push(wd); t.since = t.since || {}; t.since[wd] = wpSheet.date >= today() ? today() : wpSheet.date; saveWeekplan(); } wpSheet = null; break; }
-    case 'wpNew': { const wd = wpSheet && wpSheet.wd, date = wpSheet && wpSheet.date; wpSheet = null; btn.dataset.wd = wd; btn.dataset.date = date; return (function () { const t = { id: 'w' + Date.now(), name: loserName(), exercises: [], weekdays: date >= today() ? [wd] : [], since: date >= today() ? { [wd]: today() } : {}, time: '' }; weekplan.push(t); saveWeekplan(); wId = t.id; view = 'wtrain'; picker = null; render(); })(); }
+    case 'wpNew': { const wd = wpSheet && wpSheet.wd, date = wpSheet && wpSheet.date; wpSheet = null; genOpenGo(); genPin = wd && date >= today() ? [wd] : null; genPinTime = ''; break; }
     case 'wNewTraining': newDraft(); break;
     case 'wNewTrainingCancel': addingTraining = false; break;
     case 'wNewTrainingSave': {
@@ -2328,9 +2319,7 @@ content.addEventListener('click', e => {
     case 'profGender': { const p = loadProfile(); p.gender = btn.dataset.v; saveProfile(p); break; }
     case 'profLevel': { const p = loadProfile(); p.level = Number(btn.dataset.v); saveProfile(p); break; }
     case 'lvlUp': { const p = loadProfile(); p.level = Number(btn.dataset.lv); saveProfile(p); break; }
-    case 'genOpen':
-      if (view !== 'weeklist' && view !== 'start') { plStep = 0; plClassic = false; genRes = null; genCfg = newGenCfg(); genCfg.groups = []; genCfg.gear = []; genCfg.plAuto = false; view = 'start'; break; }
-      genFrom = view === 'weeklist' ? 'weeklist' : null; genRes = null; if (view !== 'start') genCfg = newGenCfg(); view = 'gen'; break;
+    case 'genOpen': genOpenGo(); break;
     case 'plBack': plJump(plStep - 1); return;
     case 'fgGrp': {
       const g = btn.dataset.v, subs = ['Arme', 'Rücken', 'Beine'].includes(g), on = genCfg.groups.some(m => { const c = fgChip(m); return c && c[2] === g; });
@@ -2823,3 +2812,11 @@ try { if (LS.reg().length > 1 && !sessionStorage.getItem('pf.ok')) pfOverlay(fal
   document.addEventListener('pointerdown', e => hold(true, e));
   ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => document.addEventListener(ev, e => hold(false, e)));
 })();
+
+// Namen ändern: speichert beim Verlassen des Feldes (leer = alter Name bleibt)
+content.addEventListener('focusout', e => {
+  if (!e.target || e.target.id !== 'rename-input' || !renameId) return;
+  const t = trainingById(renameId), name = (e.target.value || '').trim();
+  if (t && name) { t.name = name; delete t.draft; saveWeekplan(); }
+  renameId = null; setTimeout(render, 0);
+});

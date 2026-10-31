@@ -1799,7 +1799,7 @@ body[data-view=trainings] .topbar h1::after{content:'Deine fertigen Trainings';}
 .tr-go{flex:none; width:48px; height:48px; border-radius:50%; border:0; background:var(--accent); color:var(--on-accent,#0b1204); display:grid; place-items:center; box-shadow:0 0 16px color-mix(in srgb,var(--accent) 50%,transparent);}
 .tr-go svg{width:22px; height:22px; fill:currentColor;} .tr-go.ghost{background:none; border:1px solid var(--border); color:var(--text); box-shadow:none; font-size:1.2rem;}
 .tr-empty{margin:auto; color:var(--text-dim);}
-.tr-act{flex:none; display:grid; grid-template-columns:1fr 2fr; gap:8px;}
+.tr-act{flex:none; display:grid; grid-template-columns:1fr; gap:8px;}
 .tr-new,.tr-gen{min-height:48px; border-radius:16px; font-family:Anton,Impact,'Arial Narrow',sans-serif; font-size:1.05rem; letter-spacing:.06em; text-transform:uppercase;}
 .tr-new{background:none; border:1px dashed var(--border); color:var(--text);}
 .tr-gen{border:0; background:var(--accent); color:var(--on-accent,#0b1204); box-shadow:0 0 18px color-mix(in srgb,var(--accent) 45%,transparent);}
