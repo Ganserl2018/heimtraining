@@ -2737,3 +2737,14 @@ body.mood-bad{--text-dim:#f2dcd8; --text-faint:#e2c3be;}
 .tx-row .ts-mv button,.tx-row .tx-rm{position:relative;}
 .tx-row .ts-mv button::after,.tx-row .tx-rm::after{content:""; position:absolute; inset:-5px -2px;}
 button.tx-nm{min-height:44px;}
+/* V36 Ziele-Seite passt über die Tab-Leiste (iPhone, Alex 31.10.: "Ziel anpassen" war verdeckt) */
+.gz{gap:.5rem;}
+.gz-fire{height:70px;} .gz-flame{font-size:3.4rem;} .gz-glow{width:190px; height:130px; margin-left:-95px;} .gz-sp{bottom:28px;}
+.gz-big{font-size:4.4rem;}
+.gz-hero{padding:.2rem .5rem .1rem;}
+.gz-d i{max-width:36px;}
+.gz-card{gap:.4rem; padding:.65rem;}
+.gz-num{font-size:2.4rem;} .gz-of{font-size:1.4rem;}
+.gz-seg{height:26px;} .gz-wide{height:16px;}
+.gz-stats>div{padding:.4rem .3rem;} .gz-stats b{font-size:1.5rem;}
+.gz-mini{margin-top:.1rem;}
