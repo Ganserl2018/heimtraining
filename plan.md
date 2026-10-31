@@ -759,3 +759,9 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 - Player Neon-HUD Schritt 1 nachgebessert (0f3e942, Designer-Funde: Touch-Ziele 44px, Lesbarkeit, Farben über --accent, Sechseck-Proportionen). Schritt 2 wartet auf Go.
 - Ziele-Seite: gleicher Hero wie alle Hauptseiten (Titel "Ziele", Untertitel "Hier kannst du deine Ziele definieren", body.is-dash), Zurück darunter (8bb7b45, b618c85); "Ziel anpassen" direkt unter Karte und als umrandeter Glow-Button (bcc8dc5, v=20261101e). Alex-Zitate: "Alle Seiten haben den selben Hero…", "Ziele anpassen gefällt mir nicht … umkreisenden".
 - Ziel hat eigene Zahl pro Zeitraum (03d09f8). Offen (Go nötig): Player Schritt 2, Health-Button, Mini-Schrift, Glow/Dashed/Bounce.
+
+## Nachtrag 1.11. 00:25 (Speichern, Alex "Kurze Pause speichern bitte")
+- Ziele-Seite: Wochentage-Reihe entfernt, alles hochgezogen (10428c5, v=20261101f). Alex meldete vorher "Button ist unter dem Menü"; im Test nicht reproduzierbar (Link 635, Panel 546 vs Tab ca. 769), Alex soll neu laden/melden ob offen oder geschlossen.
+- Alex-Wunsch: Streak-Zahl statt Flamme im Stil "12" aus Chrom + grüner Flüssigkeit mit Spritzern (Vorlage vom 1.11. 00:14). Empfehlung: Ziffern 0-9 als KI-Bilder (Prompt von mir) + App setzt Zahl zusammen; Füllstand = Streak/Rekord. Alternative Code-Look. Wartet auf Alex' Wahl (Go).
+- Offen (Go): Player Schritt 2, Streak-Zahl, Health-Button, Mini-Schrift, Glow/Dashed/Bounce.
+- Straße V32-L…P ergänzt, V32-I done, republished mit url.
