@@ -1690,6 +1690,40 @@ function wtInhalt(t) {
 }
 function wtActHtml() { return `<div class="gn-act gn-act-top"><div class="gn-act-sub"><button class="ga-c${ctlOpen && ctlSec === 'lv' ? ' on' : ''}" data-act="wtAdj"><i class="ga-ic2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg></i>Anpassen</button><button class="ga-c" data-act="wtMix"><i class="ga-ic2"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.5-5.8"/><path d="M20 4v5h-5"/></svg></i>Neu mischen</button><button class="ga-c${ctlOpen && ctlSec === 'days' ? ' on' : ''}" data-act="wtPlan"><i class="ga-ic2"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></i>Einplanen</button></div></div>`; }
 let ctlSec = '';
+
+function wtMain(t) { return t.exercises.filter(e => !e.warm && !isWarmName(e.name)); }
+function wtPanHtml(t, miss) {
+  if (ctlSec === 'days') {
+    return `<div class="gn-pan"><div class="tx-days">${WD_KEYS.map(k => `<button class="chip${t.weekdays.includes(k) ? ' active' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>${timeSelHtml(t.time, 'wTimeSel').replace(/data-act="wTimeSel"/g, 'data-act="wTimeSel" data-id="' + t.id + '"')}${miss.length ? `<div class="w-missed">${miss.map(ds => `<span>${WD_LABELS[wdKeyOf(ds)]} verpasst</span><button data-act="wSkip" data-id="${t.id}" data-date="${ds}">Als Ruhetag werten</button>`).join('')}</div>` : ''}</div>`;
+  }
+  const m = wtMain(t), same = f => { const v = m.map(f); return v.length && v.every(x => x === v[0]) ? v[0] : null; };
+  const cur = { n: m.length, s: same(e => e.sets || 3), r: same(e => (e.plan && e.plan[0] ? e.plan[0].r : null)) };
+  const seg = (l, a, vs, c) => `<div class="qk-r"><span>${l}</span><div class="seg" style="--n:${vs.length}">${vs.map(v => `<button class="${c === v ? 'on' : ''}" data-act="${a}" data-id="${t.id}" data-v="${v}">${v}</button>`).join('')}</div></div>`;
+  return `<div class="gn-pan"><div class="qk-rows">${seg('Übungen', 'wtCnt', [3, 4, 5, 6, 8], cur.n)}${seg('Sätze', 'wtSets', [3, 4, 5], cur.s)}${seg('Wdh', 'wtReps', [8, 10, 12, 15], cur.r)}</div></div>`;
+}
+function wtSetCount(t, n) {
+  const main = wtMain(t);
+  while (wtMain(t).length > n) { let k = -1; t.exercises.forEach((e, i) => { if (!e.warm && !isWarmName(e.name)) k = i; }); t.exercises.splice(k, 1); }
+  if (main.length < n) {
+    const keep = genCfg.gear; genCfg.gear = loadGear();
+    const lv = genLevel(), base = genBase(lv); genCfg.gear = keep;
+    const grps = [...new Set(main.map(e => MUSCLE_GROUPS[e.muscle]).filter(Boolean))];
+    let gi = 0, guard = 0;
+    while (wtMain(t).length < n && grps.length && guard++ < 30) {
+      const grp = grps[gi++ % grps.length], inList = t.exercises.map(x => x.name);
+      const c = shuffle(base.filter(e => MUSCLE_GROUPS[e.muscle] === grp && !inList.includes(e.name) && (grp !== 'Rücken' || isBack(e))));
+      if (!c.length) continue;
+      const e = c[0], ex = { name: e.name, muscle: e.muscle, gif: e.gif, sets: main[0] ? (main[0].sets || 3) : 3, note: '', unit: defaultUnit(e.name) };
+      const r = suggestEx(ex, lv, t.goal), reps = main[0] && main[0].plan && main[0].plan[0] ? main[0].plan[0].r : r.reps;
+      ex.plan = Array.from({ length: ex.sets }, () => ({ w: r.w, r: ex.unit === 'sek' ? r.reps : reps }));
+      let at = -1; t.exercises.forEach((x, i) => { if (!x.warm && !isWarmName(x.name)) at = i; });
+      t.exercises.splice(at + 1, 0, ex);
+    }
+  }
+  saveWeekplan();
+}
+function wtSetSets(t, v) { wtMain(t).forEach(e => { const p = e.plan || []; e.sets = v; e.plan = Array.from({ length: v }, (_, k) => p[k] ? p[k] : { w: p.length ? p[p.length - 1].w : null, r: p.length ? p[p.length - 1].r : 10 }); }); saveWeekplan(); }
+function wtSetReps(t, v) { wtMain(t).forEach(e => { if (e.unit !== 'sek') (e.plan || []).forEach(p => { p.r = v; }); }); saveWeekplan(); }
 function wtChips(t) {
   const gs = [...new Set(t.exercises.filter(e => !e.warm && !isWarmName(e.name)).map(e => MUSCLE_GROUPS[e.muscle]).filter(Boolean))];
   return gs.length ? `<div class="gn-top">${gs.map(g => `<span class="gx-t g" data-g="${esc(g)}">${esc(g)}</span>`).join('')}</div>` : '';
@@ -1718,24 +1752,13 @@ function renderWTrain() {
     : `<div class="tx-head"><button class="tx-back" data-act="wBack">‹ Zurück</button><h2 class="nm-edit" data-act="wRename" data-id="${t.id}"><span class="nm-t">${esc(t.name)}</span><i class="nm-pen" aria-hidden="true">✎</i></h2><button class="tx-fav${t.fav ? ' on' : ''}" data-act="trFav" data-id="${t.id}" aria-label="Favorit">${t.fav ? '★' : '☆'}</button></div>`;
   const dayLbl = hasDays ? WD_KEYS.filter(k => t.weekdays.includes(k)).map(k => WD_LABELS[k]).join(' ') : 'Tage wählen';
   const lvNow = t.level != null ? LEVELS[t.level][1] : 'Level';
-  const ctl = hasEx ? `<aside class="tx-ctl${ctlOpen ? ' open' : ''}${ctlSec ? ' sec-' + ctlSec : ''}">
-      <div class="tx-sheet"><div class="tx-sheet-in">
-        <div class="tx-s tx-s-lv"><div class="tx-lab">Level</div>
-        <div class="pp-seg">${LEVELS.map(([k, l], x) => `<button class="${t.level === x ? 'on' : ''}" data-act="wLevel" data-id="${t.id}" data-lv="${x}">${l}</button>`).join('')}</div>
-        ${lvMsg ? `<div class="lv-msg">${lvMsg}</div>` : ''}
-        <button class="ts-del" data-act="wDelete" data-id="${t.id}">Training löschen</button></div>
-        <div class="tx-s tx-s-days"><div class="tx-lab">Tage &amp; Uhrzeit</div>
-        <div class="tx-days">${WD_KEYS.map(k => `<button class="chip${t.weekdays.includes(k) ? ' active' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>
-        <div class="w-time-l"><span>Uhrzeit (optional)</span><span class="w-time-sel">${(() => { const [th, tm] = /^\d\d:\d\d$/.test(t.time || '') ? t.time.split(':') : ['', '']; const mins = ['00', '15', '30', '45']; return `<select class="w-schedule-time" data-act="wTimeSel" data-part="h" data-id="${t.id}" aria-label="Stunde"><option value="">--</option>${Array.from({ length: 24 }, (_, h) => String(h).padStart(2, '0')).map(h => `<option${h === th ? ' selected' : ''}>${h}</option>`).join('')}</select><b>:</b><select class="w-schedule-time" data-act="wTimeSel" data-part="m" data-id="${t.id}" aria-label="Minute">${mins.map(m => `<option${m === tm ? ' selected' : ''}>${m}</option>`).join('')}</select>`; })()}</span></div>
-        ${miss.length ? `<div class="w-missed">${miss.map(ds => `<span>${WD_LABELS[wdKeyOf(ds)]} verpasst</span><button data-act="wSkip" data-id="${t.id}" data-date="${ds}">Als Ruhetag werten</button>`).join('')}</div>` : ''}
-        </div>
-      </div></div>
+  const ctl = hasEx ? `<aside class="tx-ctl open">
       <div class="tx-go"><button class="ts-save" data-act="wSavePack">✓ SPEICHERN</button><button class="pl-next ts-go${ready ? ' rdy' : ''}" data-act="${started ? 'quickStart' : 'wStart'}" data-id="${t.id}">${started ? '▶ FORTSETZEN' : '▶ STARTEN'}</button></div>
     </aside>` : `<aside class="tx-ctl"><button class="ts-del" data-act="wDelete" data-id="${t.id}">Training löschen</button></aside>`;
   content.innerHTML = `<div class="tsx2">
     ${head}
     ${hintHtml ? `<div class="tx-hint">${hintHtml}</div>` : ''}
-    <section class="tx-list"><div class="tx-rows">${hasEx ? wtChips(t) + wtHero(t, totalSets) + wtActHtml() : ''}${(() => { const isW = e => !!(e.warm || isWarmName(e.name)), anyW = t.exercises.some(isW); return t.exercises.map((ex, i) => (anyW && (i === 0 || isW(ex) !== isW(t.exercises[i - 1])) ? `<div class="gn-wh">${isW(ex) ? 'Aufwärmen' : 'Training'}</div>` : '') + txRow(t, ex, i)).join(''); })()}<button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button></div></section>
+    <section class="tx-list"><div class="tx-rows">${hasEx ? wtChips(t) + wtHero(t, totalSets) + wtActHtml() + (ctlOpen ? wtPanHtml(t, miss) : '') : ''}${(() => { const isW = e => !!(e.warm || isWarmName(e.name)), anyW = t.exercises.some(isW); return t.exercises.map((ex, i) => (anyW && (i === 0 || isW(ex) !== isW(t.exercises[i - 1])) ? `<div class="gn-wh">${isW(ex) ? 'Aufwärmen' : 'Training'}</div>` : '') + txRow(t, ex, i)).join(''); })()}<button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button>${hasEx ? `<button class="ts-del" data-act="wDelete" data-id="${t.id}">Training löschen</button>` : ''}</div></section>
     ${ctl}
     ${txTo && txTo.id === t.id ? txToSheet(t) : ''}
   </div>`;
@@ -2263,7 +2286,10 @@ content.addEventListener('click', e => {
       t.exercises.splice(Number(btn.dataset.i), 1); saveWeekplan(); break;
     }
     case 'ctlToggle': ctlOpen = !ctlOpen; break;
-    case 'wtAdj': case 'wtPlan': { const sec = btn.dataset.act === 'wtAdj' ? 'lv' : 'days'; if (ctlOpen && ctlSec === sec) ctlOpen = false; else { ctlOpen = true; ctlSec = sec; setTimeout(() => { const labs = [...document.querySelectorAll('.tx-sheet .tx-lab')], l = labs[sec === 'lv' ? 0 : 1]; if (l) l.scrollIntoView({ block: 'nearest' }); }, 300); } break; }
+    case 'wtAdj': case 'wtPlan': { const sec = btn.dataset.act === 'wtAdj' ? 'lv' : 'days'; if (ctlOpen && ctlSec === sec) ctlOpen = false; else { ctlOpen = true; ctlSec = sec; } break; }
+    case 'wtCnt': wtSetCount(trainingById(btn.dataset.id), Number(btn.dataset.v)); break;
+    case 'wtSets': wtSetSets(trainingById(btn.dataset.id), Number(btn.dataset.v)); break;
+    case 'wtReps': wtSetReps(trainingById(btn.dataset.id), Number(btn.dataset.v)); break;
     case 'wtMix': {
       const t = trainingById(wId); if (!t) break;
       const main = t.exercises.filter(e => !e.warm && !isWarmName(e.name)), gr = [...new Set(main.map(e => MUSCLE_GROUPS[e.muscle]).filter(g => g && g !== 'Sonstiges'))];
