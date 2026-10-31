@@ -1,10 +1,10 @@
-# START-HIER – Übergabe für den nächsten Chat (Stand 31.10.2026 12:15)
+# START-HIER – Übergabe für den nächsten Chat (Stand 31.10.2026 13:35)
 
 Alex will NICHTS erklären müssen. Alles hier lesen, dann direkt weiterbauen. Antworten deutsch, sehr kurz (CLAUDE.md).
 
 ## Zuerst (ohne Rückfrage, still)
 1. Mac-Ordner `/Users/user/Claude` verbinden (Remote-Devices-Bridge: `mcp__remote-devices__*`; Vault liegt unter `~/mnt/Claude/Obsidian-Vault/Projects/Privat/Heimtraining/`). Wenn Bridge fehlt: nur melden, mit Cloud-Teil weiterarbeiten.
-2. Repo: `/home/claude/heimtraining` (falls fehlt: Repo per add_repo holen). Push auf `main` → https://heimtraining.pages.dev. Aktuell `?v=20261031v`.
+2. Repo: `/home/claude/heimtraining` (falls fehlt: Repo per add_repo holen). Push auf `main` → https://heimtraining.pages.dev. Aktuell `?v=20261031zb`.
 3. Lesen: `CLAUDE.md`, `plan.md` (letzter Block), `qa-checkliste.md`, `audit-log.md`, letzter Nachtrag in `session-uebergabe-2026-10-04.md` (Vault).
 4. Straße (immer mit url republishen): https://claude.ai/artifact/33Pz2wW3JRTVER4UhY8wWT, Quelle `strasse.html` im Scratchpad (falls weg: per Artifact read holen).
 5. Memory: `/projects/01a0def4-e132-726b-8e41-b13f0f0e0473/areas/heimtraining-app.md` (Alex-Aussagen chronologisch).
@@ -20,6 +20,10 @@ Alex will NICHTS erklären müssen. Alles hier lesen, dann direkt weiterbauen. A
 ## Stand
 - Fertig heute: neue Optik, Startbutton (Halten-und-Füllen, NIE entfernen), Wizard Zeit → Figur/Muskeln → Geräte → TRAINING BAUEN → Ergebnis, Ergebnis-Hero = Trainingsseite (Kacheln), Aktionszeile mit SVG-Symbolen, Kosmetik-Liste, Auditor + Chat-Archiv + Haiku-Routine.
 - Alex-Regel neu: „genauso wie Seite X“ → erst beide per Playwright (computed style) messen, nicht raten.
+
+## Neu 31.10. 13:35
+- V29 Profile + V30 Status-Logik live (Rollback 5ed8eac). Training: Anpassen (Level+Löschen) und Einplanen (Tage/Uhrzeit) getrennt; Label "Level"; Level setzt kg auch ohne Profilgewicht (75 kg angenommen), keine Rückfrage.
+- Offen: Alex' Startseiten-Frage (welcher Block weg?), iPhone-Test V30 + Trennung, Anti-Slop/designer über Profil-Overlay.
 
 ## Nächste 3 Schritte (nur nach Alex' Go, nichts vorpreschen)
 1. Andere Heros mit Zahlen an die Trainingsseite angleichen („alle Heros mit Zahlen so“).

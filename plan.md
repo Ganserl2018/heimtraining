@@ -690,3 +690,9 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 - Start: "Training läuft · Weiter" (Button, quickStart). Woche: Kachel-Symbol ✓ ½ ▶ ⚠, bei mehreren Trainings "x/y"; Tipp auf fertigen Tag öffnet Verlauf-Eintrag, sonst Training. Status-Text auf Karten nur bei Heute/Läuft.
 - Nicht geändert: Optik von verpasst/erledigt/geplant, Uhrzeit (nur Anzeige), Beenden mit 0 Sätzen (Rückfrage wie bisher).
 - Test (Playwright, Szenarien erledigt/½/verpasst/läuft/1-von-2/Auto-Beenden/Verlauf öffnen) grün. Noch nicht geprüft: iPhone-Fit Woche mit neuen Symbolen, Trainings-Seite Anzeige.
+
+## Training: Anpassen/Einplanen getrennt + Level (31.10. 13:35, ?v=20261031zb)
+- Alex: "Anpassen und einplanen gleich das verwirrt, mach es getrennt wie immer" → Anpassen-Panel = Level + Training löschen; Einplanen-Panel = Tage, Uhrzeit, verpasste Tage (Klassen .tx-s-lv / .tx-s-days, ctlSec).
+- Label "Vorlage nach Level" → "Level" (Alex: Ja).
+- Level überschreibt Sätze/Wdh/kg aller Übungen (applyLevel). Alex: keine Rückfrage davor; ohne Profilgewicht trotzdem ungefähre kg (75 kg angenommen, Hinweis im Panel).
+- Noch offen: Alex-Frage "die Seite willst du nicht loswerden" (Startseite, Block unklar) – Rückfrage gestellt; nicht getestet auf iPhone.
