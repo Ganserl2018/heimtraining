@@ -2592,3 +2592,25 @@ button.home-brand:active{opacity:.7}
 .w-time-sel{display:flex; align-items:center; gap:.35rem}
 .w-time-sel b{color:var(--text-dim)}
 .w-time-sel select.w-schedule-time{min-width:4.2rem; min-height:44px; text-align:center; text-align-last:center; color:var(--text); font-size:1rem}
+
+/* V29 Profile */
+.pp-sw{flex:none; width:44px; height:44px; border-radius:50%; border:1px solid var(--border-soft); background:var(--panel-2); color:var(--accent); font-size:1.2rem; transition:transform .16s ease-out;}
+.pp-sw:active{transform:scale(.94);}
+#who{position:fixed; inset:0; z-index:9999; background:var(--bg); display:flex; align-items:center; justify-content:center; padding:calc(env(safe-area-inset-top,0px) + 1rem) 1.1rem calc(env(safe-area-inset-bottom,0px) + 1rem); animation:whoIn .2s ease-out;}
+@keyframes whoIn{from{opacity:0}to{opacity:1}}
+.who-in{width:100%; max-width:420px; display:flex; flex-direction:column; gap:1rem;}
+.who-t{font-family:Anton,Impact,'Arial Narrow',sans-serif; font-size:2rem; letter-spacing:.04em; text-align:center;}
+.who-q{color:var(--text-dim); text-align:center; font-size:.95rem;}
+.who-list{display:flex; flex-direction:column; gap:.6rem;}
+.who-c{display:flex; align-items:center; gap:.9rem; min-height:64px; padding:.6rem .9rem; border-radius:16px; border:1px solid var(--border-soft); background:var(--panel); color:var(--text); font-size:1.1rem; text-align:left; transition:transform .16s ease-out;}
+.who-c:active{transform:scale(.97);}
+.who-c.on{border-color:var(--accent);}
+.who-c b{flex:1; font-weight:600;}
+.who-av{width:44px; height:44px; border-radius:50%; display:grid; place-items:center; background:var(--accent); color:var(--on-accent); font-family:Anton,Impact,sans-serif; font-size:1.4rem; flex:none;}
+.who-new .who-av{background:transparent; border:1px dashed var(--accent); color:var(--accent);}
+.who-links{display:flex; flex-wrap:wrap; gap:0 1rem; justify-content:center;}
+.who-links button{background:none; border:0; color:var(--text-dim); text-decoration:underline; text-underline-offset:3px; min-height:44px; font-size:.85rem;}
+.who-in input{width:100%; min-height:52px; text-align:center; font-size:1.4rem; border-radius:14px; border:1px solid var(--border); background:var(--panel); color:var(--text); letter-spacing:.2em;}
+.who-err{min-height:1.2rem; color:var(--bad); text-align:center; font-size:.85rem;}
+.who-row{display:flex; gap:.6rem;} .who-row button{flex:1; min-height:52px; border-radius:14px; border:1px solid var(--border); background:var(--panel); color:var(--text); font-size:1rem; font-weight:600;}
+.who-row .who-ok{background:var(--accent); color:var(--on-accent); border-color:var(--accent);} .who-row .who-bad{background:var(--bad); border-color:var(--bad); color:#fff;}

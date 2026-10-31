@@ -666,3 +666,11 @@ Gebaut (alle live, je Commit mit Auftrag):
 - Seitenwechsel = Standardzustand (resetUi: Panels, Sheets, Filter, Unter-Tabs) 1ed4282; jeder Seitenwechsel scrollt nach oben 99d9075.
 Offen/entschieden: Uhrzeit-Logik (soll sie etwas bewirken? sortieren, offen/verpasst ab Uhrzeit) wartet auf Alex-Go; Trainingsseite-Hero ist jetzt gleich Ergebnis-Hero; "Zu Training hinzufügen" (Alex 1 Satz); 184 Duplikat-Bilder (Alex); Token V10-03 siehe 02:10-Block. Nächstes: Punkt 2 Woche/Status/Beenden-Logik mit Alex.
 - 31.10. 12:23 Alex: V23-A Sonar-Puls START = erledigt ("das geilste"). Idee Warteliste (V5-21): Puls + Auffüll-Effekt zusammen noch cooler pulsieren lassen; Details offen, NICHT bauen vor Go.
+
+## V29 Profile (31.10. 12:50, live ?v=20261031w) – Alex: "Ja mach das"
+- Lokale Profile ohne Login. Erstes Profil 'main' nutzt die alten localStorage-Schlüssel (keine Migration), weitere heimtraining.u<Nr>.<name>. Shim `LS` oben in script.js ersetzt alle localStorage-Zugriffe. Global nur: heimtraining.profiles, activeProfile, badimg.
+- "Wer trainiert?" beim App-Start ab 2 Profilen (sessionStorage pf.ok); ⇄-Knopf im Profil-Hero öffnet Verwaltung: Neues Profil, PIN (4 Ziffern, nur Kinder-Sperre, im Klartext gespeichert), Profil löschen (nicht main).
+- Health-Sync + Sync-Warteschlange nur für Profile mit sync:true (main). Backup Export/Import = aktives Profil.
+- Namen: Profilname = Feld "Dein Name" im Profil. Test grün (Playwright: anlegen, Daten getrennt, PIN, löschen, main unverändert, Profil-Seite 402x874 118% ohne Scroll).
+- App-Store-Pfad (Alex-Frage 12:31): Stufe 2 = iCloud/CloudKit + Sign in with Apple, Stufe 3 = eigenes Backend nur bei Bedarf. Vorher klären: native Hülle (Capacitor), Datenschutz, Kinder <16, CC-BY-SA der Muskel-Figur.
+- Offen: design-anti-slop-check + Designer-Agent über Auswahl-Overlay; Jugend-Startgewichte vorsichtiger (Alex-Entscheid offen); Level/Startgewicht pro Profil läuft schon über Profil-Daten.

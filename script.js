@@ -1,3 +1,31 @@
+// Profile (V29): 'main' nutzt die alten Schlüssel (keine Migration), weitere Profile heimtraining.u<Nr>.<Name>.
+// Gemeinsam bleiben nur Profil-Liste, aktives Profil und gemeldete falsche Bilder.
+const PF_REG = 'heimtraining.profiles', PF_ACT = 'heimtraining.activeProfile';
+const PF_GLOBAL = [PF_REG, PF_ACT, 'heimtraining.badimg'];
+const LS = (() => {
+  const raw = window.localStorage;
+  const rd = k => { try { return raw.getItem(k); } catch (e) { return null; } };
+  const reg = () => { try { const r = JSON.parse(rd(PF_REG)); if (Array.isArray(r) && r.length) return r; } catch (e) {} return [{ id: 'main', sync: true }]; };
+  const saveReg = r => { try { raw.setItem(PF_REG, JSON.stringify(r)); } catch (e) {} };
+  let act = rd(PF_ACT) || 'main';
+  if (!reg().some(p => p.id === act)) act = 'main';
+  const pre = id => id === 'main' ? '' : 'heimtraining.u' + id + '.';
+  const map = k => (act === 'main' || PF_GLOBAL.includes(k) || !k.startsWith('heimtraining.')) ? k : pre(act) + k.slice(13);
+  const other = k => /^heimtraining\.u\d+\./.test(k);
+  const allKeys = () => { const o = []; for (let i = 0; i < raw.length; i++) o.push(raw.key(i)); return o; };
+  return {
+    getItem: k => raw.getItem(map(k)), setItem: (k, v) => raw.setItem(map(k), v), removeItem: k => raw.removeItem(map(k)),
+    get act() { return act; }, reg,
+    cur: () => reg().find(p => p.id === act) || { id: act },
+    sync: () => { const p = reg().find(x => x.id === act); return !!(p && p.sync); },
+    name: id => { let n = ''; try { n = (JSON.parse(rd(id === 'main' ? 'heimtraining.profile' : pre(id) + 'profile')) || {}).name || ''; } catch (e) {} return n.trim() || (id === 'main' ? 'Ich' : 'Profil ' + id); },
+    keys: () => allKeys().filter(k => k && k.startsWith('heimtraining.') && !PF_GLOBAL.includes(k) && (act === 'main' ? !other(k) : k.startsWith(pre(act)))).map(k => act === 'main' ? k : 'heimtraining.' + k.slice(pre(act).length)),
+    use: id => { try { raw.setItem(PF_ACT, id); } catch (e) {} },
+    add: name => { const r = reg(); if (!r.some(p => p.id === 'main')) r.unshift({ id: 'main', sync: true }); const id = String(Math.max(0, ...r.map(p => Number(p.id) || 0)) + 1); r.push({ id, sync: false }); saveReg(r); try { raw.setItem(pre(id) + 'profile', JSON.stringify({ name })); } catch (e) {} return id; },
+    del: id => { if (id === 'main') return; allKeys().filter(k => k && k.startsWith(pre(id))).forEach(k => raw.removeItem(k)); saveReg(reg().filter(p => p.id !== id)); if (act === id) { act = 'main'; try { raw.setItem(PF_ACT, 'main'); } catch (e) {} } },
+    setPin: pin => { const r = reg(); const p = r.find(x => x.id === act); if (p) { if (pin) p.pin = pin; else delete p.pin; saveReg(r); } }
+  };
+})();
 const tabs = document.querySelectorAll('.tab');
 const content = document.getElementById('content');
 const KEY = 'heimtraining.overrides';
@@ -38,13 +66,13 @@ const WEIGHT_WORDS = ['barbell', 'dumbbell', 'cable', 'smith', 'ez bar', 'ez-bar
 function defaultUnit(name) { const n = (name || '').toLowerCase(); if (/plank|hold|stretch|hang|isometric/.test(n)) return 'sek'; if (/\bband/.test(n) || /with bands/.test(n)) return 'wdh'; return WEIGHT_WORDS.some(w => n.includes(w)) ? 'kg' : 'wdh'; }
 function loadWeekplan() {
   try {
-    const raw = JSON.parse(localStorage.getItem(WKEY));
-    if (Array.isArray(raw) && raw.length) { const fixed = localStorage.getItem('heimtraining.unitfix1'); raw.forEach(t => (t.exercises || []).forEach(e => { if (e.unit === 'none') e.unit = 'wdh'; else if (!e.unit) e.unit = defaultUnit(e.name); else if (!fixed && e.unit === 'kg' && defaultUnit(e.name) !== 'kg') e.unit = defaultUnit(e.name); })); try { localStorage.setItem('heimtraining.unitfix1', '1'); } catch (e) {} return raw; }
+    const raw = JSON.parse(LS.getItem(WKEY));
+    if (Array.isArray(raw) && raw.length) { const fixed = LS.getItem('heimtraining.unitfix1'); raw.forEach(t => (t.exercises || []).forEach(e => { if (e.unit === 'none') e.unit = 'wdh'; else if (!e.unit) e.unit = defaultUnit(e.name); else if (!fixed && e.unit === 'kg' && defaultUnit(e.name) !== 'kg') e.unit = defaultUnit(e.name); })); try { LS.setItem('heimtraining.unitfix1', '1'); } catch (e) {} return raw; }
   } catch (e) {}
   return WEEKDAY_SEED.map(([id, name]) => ({ id, name, exercises: [] }));
 }
 let wpSheet = null;
-function saveWeekplan() { try { localStorage.setItem(WKEY, JSON.stringify(weekplan)); } catch (e) {} }
+function saveWeekplan() { try { LS.setItem(WKEY, JSON.stringify(weekplan)); } catch (e) {} }
 weekplan = loadWeekplan().filter(x => !x.draft || (x.exercises || []).length); weekplan.forEach(x => { if ((x.exercises || []).length) delete x.draft; });
 // V6-01: fehlende Felder bei alten/bestehenden Trainings nachrüsten (weekdays/time optional, leer = kein Zeitplan)
 weekplan.forEach(t => { if (!Array.isArray(t.exercises)) t.exercises = []; if (!Array.isArray(t.weekdays)) t.weekdays = []; if (typeof t.time !== 'string') t.time = ''; else if (/^\d\d:\d\d$/.test(t.time)) t.time = t.time.slice(0, 3) + ['00', '15', '30', '45'][Math.floor(Number(t.time.slice(3)) / 15)]; if (!t.since || typeof t.since !== 'object') t.since = {}; });
@@ -61,8 +89,8 @@ const addDays = (dateStr, n) => { const d = new Date(dateStr + 'T00:00:00'); d.s
 // V8-02: persistenter Start-Log (im Gegensatz zu WPKEY NICHT täglich zurückgesetzt) – Basis
 // für V6-05 Status "unvollständig" (auch rückwirkend) und für die Trainingsdauer (V8-03).
 const SLKEY = 'heimtraining.trainingStarts';
-function loadStarts() { try { return JSON.parse(localStorage.getItem(SLKEY)) || []; } catch (e) { return []; } }
-function saveStarts(s) { try { localStorage.setItem(SLKEY, JSON.stringify(s.slice(-500))); } catch (e) {} }
+function loadStarts() { try { return JSON.parse(LS.getItem(SLKEY)) || []; } catch (e) { return []; } }
+function saveStarts(s) { try { LS.setItem(SLKEY, JSON.stringify(s.slice(-500))); } catch (e) {} }
 function startOf(trainingId, dateStr) { return loadStarts().find(s => s.trainingId === trainingId && s.date === dateStr); }
 function pushStart(trainingId) {
   const s = loadStarts();
@@ -90,28 +118,28 @@ const STATUS_LABEL = { erledigt: 'Erledigt', unvollständig: 'Unvollständig', v
 
 // V7-01: Profil (Basis für Kalorienberechnung, V8-03).
 const PROKEY = 'heimtraining.profile';
-function loadProfile() { try { return JSON.parse(localStorage.getItem(PROKEY)) || {}; } catch (e) { return {}; } }
-function saveProfile(p) { try { localStorage.setItem(PROKEY, JSON.stringify(p)); } catch (e) {} }
+function loadProfile() { try { return JSON.parse(LS.getItem(PROKEY)) || {}; } catch (e) { return {}; } }
+function saveProfile(p) { try { LS.setItem(PROKEY, JSON.stringify(p)); } catch (e) {} }
 
 // V6-03: Ziel-Leiste v1 – frei definierbares Ziel (Zahl Trainings + Zeitraum in Tagen).
 const GOALKEY = 'heimtraining.goal';
-function loadGoal() { try { return JSON.parse(localStorage.getItem(GOALKEY)) || { target: 3, periodDays: 7 }; } catch (e) { return { target: 3, periodDays: 7 }; } }
-function saveGoal(g) { try { localStorage.setItem(GOALKEY, JSON.stringify(g)); } catch (e) {} }
+function loadGoal() { try { return JSON.parse(LS.getItem(GOALKEY)) || { target: 3, periodDays: 7 }; } catch (e) { return { target: 3, periodDays: 7 }; } }
+function saveGoal(g) { try { LS.setItem(GOALKEY, JSON.stringify(g)); } catch (e) {} }
 let goalEditing = false;
 // V6-04: Langzeit-Leiste (Trainings pro Jahr/Monat ODER Kraft-Ziel einer Übung)
 const LGKEY = 'heimtraining.longgoal2';
 let longEditing = false, longDraftType = null;
-function loadLong() { try { return JSON.parse(localStorage.getItem(LGKEY)) || { type: 'count', target: 156, per: 'year' }; } catch (e) { return { type: 'count', target: 156, per: 'year' }; } }
-function saveLong(g) { try { localStorage.setItem(LGKEY, JSON.stringify(g)); } catch (e) {} }
+function loadLong() { try { return JSON.parse(LS.getItem(LGKEY)) || { type: 'count', target: 156, per: 'year' }; } catch (e) { return { type: 'count', target: 156, per: 'year' }; } }
+function saveLong(g) { try { LS.setItem(LGKEY, JSON.stringify(g)); } catch (e) {} }
 function wProgRaw() {
   let wp = null;
-  try { wp = JSON.parse(localStorage.getItem(WPKEY)); } catch (e) {}
+  try { wp = JSON.parse(LS.getItem(WPKEY)); } catch (e) {}
   if (!wp || wp.date !== today() || typeof wp.done !== 'object' || !wp.done) wp = { date: today(), done: {} };
   return wp;
 }
-function saveWProg(wp) { try { localStorage.setItem(WPKEY, JSON.stringify(wp)); } catch (e) {} }
+function saveWProg(wp) { try { LS.setItem(WPKEY, JSON.stringify(wp)); } catch (e) {} }
 
-try { overrides = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { overrides = {}; }
+try { overrides = JSON.parse(LS.getItem(KEY)) || {}; } catch (e) { overrides = {}; }
 
 // Abhak-State: an das lokale Datum gebunden – an einem neuen Tag startet alles leer.
 const today = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
@@ -120,17 +148,17 @@ const today = () => { const d = new Date(); return d.getFullYear() + '-' + Strin
 weekplan.forEach(t => { if (!t.since || typeof t.since !== 'object') t.since = {}; t.weekdays.forEach(k => { if (!t.since[k]) t.since[k] = today(); }); });
 let progress = null;
 function prog() {
-  if (!progress) { try { progress = JSON.parse(localStorage.getItem(PKEY)); } catch (e) { progress = null; } }
+  if (!progress) { try { progress = JSON.parse(LS.getItem(PKEY)); } catch (e) { progress = null; } }
   if (!progress || progress.date !== today() || typeof progress.done !== 'object' || !progress.done) progress = { date: today(), done: {} };
   return progress;
 }
-function saveProg() { try { localStorage.setItem(PKEY, JSON.stringify(progress)); } catch (e) {} }
+function saveProg() { try { LS.setItem(PKEY, JSON.stringify(progress)); } catch (e) {} }
 const setsOf = name => { const d = prog().done[day]; return (d && Array.isArray(d[name])) ? d[name] : []; };
 
 let anleitungen = {};
 let namesDe = {}; // names_de.json: englischer Schlüsselname -> deutsche Anzeige
 const BADKEY = 'heimtraining.badimg';
-function loadBad() { try { return JSON.parse(localStorage.getItem(BADKEY)) || []; } catch (e) { return []; } }
+function loadBad() { try { return JSON.parse(LS.getItem(BADKEY)) || []; } catch (e) { return []; } }
 const dn = n => (loadProfile().lang === 'en' ? n : (namesDe[n] || n));
 let gearFix = {}; // gearfix.json: Name -> {s:'ok'|'no', g:[Geräte]} (Alex' Heim-Gym, fest)
 let metByName = {}; // V8-01/03: name -> MET-Wert
@@ -144,7 +172,7 @@ Promise.all([
 ]).then(([b, p, met, gf, nd, an]) => {
   base = b; pool = p; gearFix = gf; namesDe = nd; anleitungen = an;
   met.forEach(m => { metByName[m.name] = m.met; });
-  try { if (!localStorage.getItem('heimtraining.warmmig1')) { weekplan.forEach(t => { if (t.exercises && t.exercises.length && !t.exercises.some(e => e.warm)) t.exercises.unshift(...warmupsFor(t.exercises)); }); saveWeekplan(); localStorage.setItem('heimtraining.warmmig1', '1'); } } catch (e) {}
+  try { if (!LS.getItem('heimtraining.warmmig1')) { weekplan.forEach(t => { if (t.exercises && t.exercises.length && !t.exercises.some(e => e.warm)) t.exercises.unshift(...warmupsFor(t.exercises)); }); saveWeekplan(); LS.setItem('heimtraining.warmmig1', '1'); } } catch (e) {}
   render();
 }).catch(err => { content.innerHTML = `<p class="error">Fehler beim Laden: ${err}</p>`; });
 
@@ -170,14 +198,14 @@ const list = () => overrides[day] || base[day] || [];
 
 function save(arr) {
   overrides[day] = arr;
-  try { localStorage.setItem(KEY, JSON.stringify(overrides)); } catch (e) {}
+  try { LS.setItem(KEY, JSON.stringify(overrides)); } catch (e) {}
 }
 
-function loadHistory() { try { return JSON.parse(localStorage.getItem(HKEY)) || []; } catch (e) { return []; } }
+function loadHistory() { try { return JSON.parse(LS.getItem(HKEY)) || []; } catch (e) { return []; } }
 function pushHistory(rec) {
   const h = loadHistory();
   h.unshift(rec);
-  try { localStorage.setItem(HKEY, JSON.stringify(h.slice(0, 1000))); } catch (e) {}
+  try { LS.setItem(HKEY, JSON.stringify(h.slice(0, 1000))); } catch (e) {}
 }
 
 function syncTabActive() {
@@ -737,7 +765,7 @@ const GEAR_SVG = {
   body: '<circle cx="16" cy="6" r="3"/><path d="M16 10v10M7 14l9-3 9 3M16 20l-5 9M16 20l5 9"/>'
 };
 const GEARKEY = 'heimtraining.gear2';
-function loadGear() { try { const g = JSON.parse(localStorage.getItem(GEARKEY)); if (Array.isArray(g)) return g; } catch (e) {} return GEAR.map(x => x[0]); }
+function loadGear() { try { const g = JSON.parse(LS.getItem(GEARKEY)); if (Array.isArray(g)) return g; } catch (e) {} return GEAR.map(x => x[0]); }
 function isBack(e) { return e.muscle === 'lats' || e.muscle === 'middle back' || (e.muscle === 'lower back' && gearOf(e.name).includes('ext')); }
 function gearOf(name) { // Liste der benötigten Geräte
   if (gearFix[name]) return gearFix[name].g;
@@ -821,7 +849,7 @@ function autoGear() {
     c.forEach(e => { const g = gearOf(e.name), miss = g.filter(k => !cur.includes(k)); if (g.some(k => cur.includes(k)) && (!best || miss.length < best.length)) best = miss; });
     if (best && best.length) { best.forEach(k => { cur.push(k); added.push(k); }); }
   });
-  if (added.length) { genCfg.gear = genCfg.gear.slice(); try { localStorage.setItem(GEARKEY, JSON.stringify(genCfg.gear)); } catch (e2) {} }
+  if (added.length) { genCfg.gear = genCfg.gear.slice(); try { LS.setItem(GEARKEY, JSON.stringify(genCfg.gear)); } catch (e2) {} }
   genCfg.autoAdded = added; return added;
 }
 // Wisch-Tausch: Übung i raus, passende neue (gleiche Gruppe, Geräte ok, nicht schon drin) rückt nach
@@ -848,9 +876,9 @@ function timeSelHtml(time, act) {
   return `<div class="w-time-l"><span>Uhrzeit (optional)</span><span class="w-time-sel"><select class="w-schedule-time" data-act="${act}" data-part="h" aria-label="Stunde"><option value="">--</option>${Array.from({ length: 24 }, (_, h) => String(h).padStart(2, '0')).map(h => `<option${h === th ? ' selected' : ''}>${h}</option>`).join('')}</select><b>:</b><select class="w-schedule-time" data-act="${act}" data-part="m" aria-label="Minute">${mins.map(m => `<option${m === tm ? ' selected' : ''}>${m}</option>`).join('')}</select></span></div>`;
 }
 const FAVKEY = 'heimtraining.favs';
-function loadFavs() { try { const f = JSON.parse(localStorage.getItem(FAVKEY)); if (Array.isArray(f)) return f; } catch (e) {} return []; }
-function genFav(i) { const e = genRes && genRes[i]; if (!e) return; const f = loadFavs(), k = f.indexOf(e.name); if (k >= 0) f.splice(k, 1); else f.push(e.name); try { localStorage.setItem(FAVKEY, JSON.stringify(f)); } catch (x) {} }
-function wFavEx(t, i) { const e = t && t.exercises[i]; if (!e) return; const f = loadFavs(), k = f.indexOf(e.name); if (k >= 0) f.splice(k, 1); else f.push(e.name); try { localStorage.setItem(FAVKEY, JSON.stringify(f)); } catch (e2) {} }
+function loadFavs() { try { const f = JSON.parse(LS.getItem(FAVKEY)); if (Array.isArray(f)) return f; } catch (e) {} return []; }
+function genFav(i) { const e = genRes && genRes[i]; if (!e) return; const f = loadFavs(), k = f.indexOf(e.name); if (k >= 0) f.splice(k, 1); else f.push(e.name); try { LS.setItem(FAVKEY, JSON.stringify(f)); } catch (x) {} }
+function wFavEx(t, i) { const e = t && t.exercises[i]; if (!e) return; const f = loadFavs(), k = f.indexOf(e.name); if (k >= 0) f.splice(k, 1); else f.push(e.name); try { LS.setItem(FAVKEY, JSON.stringify(f)); } catch (e2) {} }
 // Wisch-Tausch im gespeicherten Training: gleiche Muskelgruppe, deine Geräte, nicht schon drin
 function wSwapEx(t, i) {
   const old = t && t.exercises[i]; if (!old) return;
@@ -886,7 +914,7 @@ let genNote = '';
 function generate() {
   genNote = '';
   const lv = genLevel(), g = genCfg.groups.length ? genCfg.groups : ['Brust'];
-  let last = []; try { last = JSON.parse(localStorage.getItem(GENKEY)) || []; } catch (e) {}
+  let last = []; try { last = JSON.parse(LS.getItem(GENKEY)) || []; } catch (e) {}
   const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine/i;
   const hard = /deadlift|rack pull|clean|snatch|jerk|weighted|good morning|behind (the )?neck|guillotine|zercher|jefferson|overhead squat|olympic|sissy|muscle.up|atlas|pistol|single-arm push/i;
   const base = genBase(lv);
@@ -941,7 +969,7 @@ function generate() {
   exs.forEach(ex => { const r = suggestEx(ex, lv, genCfg.goal); ex.sets = (genCfg.minSets || r.sets); const reps = ex.unit === 'sek' ? r.reps : (genCfg.minReps || r.reps); ex.plan = Array.from({ length: ex.sets }, () => ({ w: r.w, r: reps })); });
   if (!exs.length) { genRes = []; genJust = true; return; }
   exs.unshift(...warmupsFor(exs));
-  try { localStorage.setItem(GENKEY, JSON.stringify(picked.map(e => e.name).concat(last).slice(0, 24))); } catch (e) {}
+  try { LS.setItem(GENKEY, JSON.stringify(picked.map(e => e.name).concat(last).slice(0, 24))); } catch (e) {}
   genRes = exs; genJust = true; genSwapped = -1;
 }
 // ---- Nächstes Training berechnen: Drücken / Ziehen / Beine rotieren, Pause je Muster + einfache Steigerung ----
@@ -1015,7 +1043,7 @@ function renderGen() {
 function prevHtml() {
   const gr = genCfg.groups.filter(m => !m.startsWith('m:')); if (!gr.length || !genCfg.gear.length) return '';
   const lv = genLevel(), list = genBase(lv).filter(e => gr.some(g => MUSCLE_GROUPS[e.muscle] === g && (g !== 'Rücken' || isBack(e))));
-  if (!list.length) { try { const k = 'heimtraining.gaps', o = JSON.parse(localStorage.getItem(k)) || {}; o[gr.join('+') + ' | ' + genCfg.gear.join('+')] = 1; localStorage.setItem(k, JSON.stringify(o)); } catch (e) {} return '<div class="qk-prev none">Dafür gibt es noch keine Übung – kommt beim nächsten Bilder-Durchlauf dazu.</div>'; }
+  if (!list.length) { try { const k = 'heimtraining.gaps', o = JSON.parse(LS.getItem(k)) || {}; o[gr.join('+') + ' | ' + genCfg.gear.join('+')] = 1; LS.setItem(k, JSON.stringify(o)); } catch (e) {} return '<div class="qk-prev none">Dafür gibt es noch keine Übung – kommt beim nächsten Bilder-Durchlauf dazu.</div>'; }
   const nm = list.slice(0, 3).map(e => esc(dn(e.name))).join(', ');
   return `<div class="qk-prev"><b>${list.length} Übungen</b> passen · ${nm} …</div>`;
 }
@@ -1177,7 +1205,7 @@ function fgFace(item) { if (!genCfg.groups.includes(item)) return; if (FG_BACK.i
 function resetPlan() { // Start gedrückt: Planung komplett zurück in den Ursprung
   const d0 = genCfg.dur; genCfg = newGenCfg(); genCfg.dur = d0; genCfg.groups = []; genCfg.gear = []; genCfg.plAuto = false;
   genRes = null; plStep = 0; plClassic = false; fgOpen = null; plMsg = ''; plFine = false;
-  try { localStorage.setItem(GEARKEY, '[]'); } catch (e) {}
+  try { LS.setItem(GEARKEY, '[]'); } catch (e) {}
   if (fg && fg.ready) { fgTurn(false); fgPaint(); }
 }
 function fgTurn(back) {
@@ -1414,8 +1442,8 @@ function renderPreview() {
 
 // Trainingshelper: Hinweise über den Funktionen, in Reihenfolge, einzeln wegklickbar
 const HELPKEY = 'heimtraining.helper2';
-function helperDone() { try { return JSON.parse(localStorage.getItem(HELPKEY)) || []; } catch (e) { return []; } }
-function helperHide(id) { const d = helperDone(); if (!d.includes(id)) d.push(id); try { localStorage.setItem(HELPKEY, JSON.stringify(d)); } catch (e) {} }
+function helperDone() { try { return JSON.parse(LS.getItem(HELPKEY)) || []; } catch (e) { return []; } }
+function helperHide(id) { const d = helperDone(); if (!d.includes(id)) d.push(id); try { LS.setItem(HELPKEY, JSON.stringify(d)); } catch (e) {} }
 function hint(id, step, text) {
   if (helperDone().includes(id)) return '';
   return `<div class="hh"><div class="hh-top"><b>TIPP</b><button data-act="hintOk" data-id="${id}">Verstanden</button></div><p>${text}</p></div>`;
@@ -1761,6 +1789,7 @@ function renderProfile() {
           <input class="pp-name" placeholder="Dein Name" maxlength="24" data-act="profileField" data-field="name" value="${esc(p.name || '')}">
           <div class="pp-chips"><span class="lab-chip"><i></i>${since ? 'DABEI SEIT ' + esc(since.toUpperCase()) : 'NEU DABEI'}</span><span class="lab-chip pp-lv">${esc(LEVELS[p.level == null ? 0 : p.level][1].toUpperCase())}</span></div>
         </div>
+        <button class="pp-sw" data-act="pfOpen" aria-label="Profil wechseln">⇄</button>
       </div>
       <div class="pp-stats pp-t" style="--i:1">
         <div><b>${h.length}</b><span>Trainings</span></div>
@@ -1979,15 +2008,15 @@ function buildSessionRecord(arr) {
 }
 // Offline-Fall: fehlgeschlagene Syncs landen in einer Warteschlange und werden beim nächsten Öffnen erneut gesendet.
 const SQKEY = 'heimtraining.syncqueue';
-function loadQ() { try { return JSON.parse(localStorage.getItem(SQKEY)) || []; } catch (e) { return []; } }
-function saveQ(q) { try { localStorage.setItem(SQKEY, JSON.stringify(q.slice(-50))); } catch (e) {} }
+function loadQ() { try { return JSON.parse(LS.getItem(SQKEY)) || []; } catch (e) { return []; } }
+function saveQ(q) { try { LS.setItem(SQKEY, JSON.stringify(q.slice(-50))); } catch (e) {} }
 function sendOne(body) {
   return fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
     .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); });
 }
-function syncSession(body) { sendOne(body).catch(() => saveQ(loadQ().concat([body]))); }
+function syncSession(body) { if (!LS.sync()) return; sendOne(body).catch(() => saveQ(loadQ().concat([body]))); }
 function flushQ() {
-  const q = loadQ(); if (!q.length || !navigator.onLine) return;
+  const q = loadQ(); if (!q.length || !navigator.onLine || !LS.sync()) return;
   saveQ([]); q.forEach(b => sendOne(b).catch(() => saveQ(loadQ().concat([b]))));
 }
 flushQ();
@@ -2001,7 +2030,7 @@ content.addEventListener('click', e => {
   const xrRefresh = () => { browseLimit = BPAGE; if (view === 'allex') { browsePage = 0; render(); content.scrollTop = 0; } else renderResults(document.getElementById('q').value); };
   if (btn.dataset.act === 'bMore') { browseLimit += BPAGE; renderResults(document.getElementById('q').value); return; }
   if (btn.dataset.act === 'fFav') { filterFav = true; xrRefresh(); return; }
-  if (btn.dataset.act === 'exFav') { const f = loadFavs(), k = f.indexOf(btn.dataset.name); if (k >= 0) f.splice(k, 1); else f.push(btn.dataset.name); try { localStorage.setItem(FAVKEY, JSON.stringify(f)); } catch (e2) {} const on = k < 0; btn.classList.toggle('on', on); btn.textContent = on ? '★' : '☆'; return; }
+  if (btn.dataset.act === 'exFav') { const f = loadFavs(), k = f.indexOf(btn.dataset.name); if (k >= 0) f.splice(k, 1); else f.push(btn.dataset.name); try { LS.setItem(FAVKEY, JSON.stringify(f)); } catch (e2) {} const on = k < 0; btn.classList.toggle('on', on); btn.textContent = on ? '★' : '☆'; return; }
   if (btn.dataset.act === 'fSplit') { filterSplit = btn.dataset.v; xrRefresh(); return; }
   if (btn.dataset.act === 'fMuscle') {
     filterSplit = null; filterFav = false;
@@ -2075,7 +2104,7 @@ content.addEventListener('click', e => {
     case 'reset':
       if (!confirm('Tag auf Standard zurücksetzen?')) return;
       delete overrides[day];
-      try { localStorage.setItem(KEY, JSON.stringify(overrides)); } catch (e2) {}
+      try { LS.setItem(KEY, JSON.stringify(overrides)); } catch (e2) {}
       break;
     case 'pick': {
       const p = pool[Number(btn.dataset.p)];
@@ -2147,7 +2176,7 @@ content.addEventListener('click', e => {
     }
     case 'wUnitSet': trainingById(btn.dataset.id).exercises[Number(btn.dataset.i)].unit = btn.dataset.u; saveWeekplan(); break;
     case 'hintOk': helperHide(btn.dataset.id); break;
-    case 'helperReset': try { localStorage.removeItem(HELPKEY); } catch (e) {} break;
+    case 'helperReset': try { LS.removeItem(HELPKEY); } catch (e) {} break;
     case 'wpPreset': { const p = PRESETS.find(x => x.key === btn.dataset.key); if (!p) break; const ex = weekplan.find(w => w.presetKey === p.key); if (ex) { wId = ex.id; view = 'wtrain'; break; } psSheet = { key: p.key, sel: new Set() }; psPick(8); break; }
     case 'psClose': psSheet = null; break;
     case 'psCount': psPick(Number(btn.dataset.v) || 999); break;
@@ -2266,7 +2295,7 @@ content.addEventListener('click', e => {
       const i = G.indexOf(m); if (i >= 0) G.splice(i, 1); else G.push(m);
       genCfg.autoAdded = []; autoGear(); genRes = null; break; }
     case 'genGear': { if (!plClassic && view === 'start') { const k2 = btn.dataset.v, g2 = genCfg.gear.slice(), i2 = g2.indexOf(k2); if (i2 >= 0) g2.splice(i2, 1); else g2.push(k2); genCfg.gear = g2; genCfg.gearTouched = true; genRes = null; break; }
-      const k = btn.dataset.v, g = loadGear(), i = g.indexOf(k); if (i >= 0) g.splice(i, 1); else g.push(k); genCfg.gear = g; try { localStorage.setItem(GEARKEY, JSON.stringify(g)); } catch (e2) {}
+      const k = btn.dataset.v, g = loadGear(), i = g.indexOf(k); if (i >= 0) g.splice(i, 1); else g.push(k); genCfg.gear = g; try { LS.setItem(GEARKEY, JSON.stringify(g)); } catch (e2) {}
       if (view === 'start') { const gcn = g.length ? groupCounts() : {}; genCfg.groups = genCfg.groups.filter(m => m.startsWith('m:') || gcn[m]); } // Muskeln ohne Übung für die gewählten Geräte fallen raus
       genCfg.autoAdded = []; autoGear(); genRes = null; break; }
     case 'genMinS': { const had = !!genRes; genCfg.minSets = Number(btn.dataset.v); genRes = null; if (had) generate(); break; }
@@ -2311,7 +2340,7 @@ content.addEventListener('click', e => {
     case 'exInfo': { const k = pool.findIndex(x => x.name === btn.dataset.name); if (k >= 0) browseSel = k; break; }
     case 'txToggle': txOpen = txOpen === btn.dataset.key ? null : btn.dataset.key; break;
     case 'browsePick': browseSel = Number(btn.dataset.p); break;
-    case 'badImg': { const l = loadBad(), n = btn.dataset.name, k = l.indexOf(n); if (k >= 0) l.splice(k, 1); else l.push(n); try { localStorage.setItem(BADKEY, JSON.stringify(l)); } catch (e) {} break; }
+    case 'badImg': { const l = loadBad(), n = btn.dataset.name, k = l.indexOf(n); if (k >= 0) l.splice(k, 1); else l.push(n); try { LS.setItem(BADKEY, JSON.stringify(l)); } catch (e) {} break; }
     case 'badCopy': { const t = loadBad().join('\n'); try { navigator.clipboard.writeText(t); btn.textContent = '✓ Kopiert'; } catch (e) { prompt('Liste:', t); } return; }
     case 'browseClose': browseSel = null; break;
     case 'browseAddNew': {
@@ -2351,11 +2380,11 @@ content.addEventListener('click', e => {
     case 'histDelete': {
       if (!confirm('Verlaufseintrag löschen?')) return;
       const h = loadHistory(); h.splice(histDetailIdx, 1);
-      try { localStorage.setItem(HKEY, JSON.stringify(h)); } catch (e2) {}
+      try { LS.setItem(HKEY, JSON.stringify(h)); } catch (e2) {}
       view = 'history'; break;
     }
     case 'backupExport': {
-      const o = {}; for (let n = 0; n < localStorage.length; n++) { const k = localStorage.key(n); if (k && k.startsWith('heimtraining.')) o[k] = localStorage.getItem(k); }
+      const o = {}; LS.keys().forEach(k => { o[k] = LS.getItem(k); });
       const txt = JSON.stringify(o); const ta = document.getElementById('backup-text'); ta.classList.add('show'); ta.value = txt; ta.select();
       try { navigator.clipboard.writeText(txt); } catch (e2) {}
       return;
@@ -2368,11 +2397,12 @@ content.addEventListener('click', e => {
         const keys = Object.keys(o).filter(k => k.startsWith('heimtraining.'));
         if (!keys.length) throw new Error('leer');
         if (!confirm(`${keys.length} Datensätze wiederherstellen? Aktuelle Daten werden überschrieben.`)) return;
-        keys.forEach(k => localStorage.setItem(k, o[k]));
+        keys.forEach(k => LS.setItem(k, o[k]));
         location.reload();
       } catch (e2) { alert('Kein gültiges Backup.'); }
       return;
     }
+    case 'pfOpen': pfOverlay(true); return;
     case 'goalEdit': goalEditing = true; break;
     case 'goalEditFromProfile': goalEditing = true; view = 'overview'; break;
     case 'goalSave': {
@@ -2662,3 +2692,44 @@ document.addEventListener('pointerdown', e => {
 document.addEventListener('selectstart', e => { if (!(e.target.closest && e.target.closest('input,textarea,[contenteditable="true"]'))) e.preventDefault(); });
 
 content.addEventListener('click', e => { if (wpSheet && e.target.classList && e.target.classList.contains('goal-sheet')) { wpSheet = null; render(); } });
+
+// Profil-Auswahl (V29): "Wer trainiert?" beim App-Start (ab 2 Profilen) und per ⇄ im Profil (dort auch neu/PIN/löschen)
+function pfOverlay(manage) {
+  const old = document.getElementById('who'); if (old) old.remove();
+  const el = document.createElement('div'); el.id = 'who'; document.body.appendChild(el);
+  let m = 'list', pid = null, err = '';
+  const done = id => { try { sessionStorage.setItem('pf.ok', '1'); } catch (e) {} if (id === LS.act) { el.remove(); return; } LS.use(id); location.reload(); };
+  const draw = () => {
+    const reg = LS.reg(), cur = LS.cur(), nm = LS.name(LS.act);
+    let h;
+    if (m === 'list') {
+      h = `<div class="who-t">WER TRAINIERT?</div><div class="who-list">${reg.map(p => { const n = LS.name(p.id); return `<button class="who-c${p.id === LS.act ? ' on' : ''}" data-id="${p.id}"><span class="who-av">${esc(n.charAt(0).toUpperCase())}</span><b>${esc(n)}</b>${p.pin ? '<i>🔒</i>' : ''}</button>`; }).join('')}<button class="who-c who-new" data-w="new"><span class="who-av">+</span><b>Neues Profil</b></button></div>` +
+        (manage ? `<div class="who-links"><button data-w="setpin">PIN ${cur.pin ? 'ändern' : 'setzen'}: ${esc(nm)}</button>${LS.act !== 'main' ? '<button data-w="del">Profil löschen</button>' : ''}<button data-w="close">Schließen</button></div>` : '');
+    } else if (m === 'pin') h = `<div class="who-t">${esc(LS.name(pid))}</div><div class="who-q">PIN eingeben</div><input id="who-in" type="password" inputmode="numeric" maxlength="4" autocomplete="off"><div class="who-err">${err}</div><div class="who-row"><button data-w="back">Zurück</button><button class="who-ok" data-w="pinok">OK</button></div>`;
+    else if (m === 'new') h = `<div class="who-t">NEUES PROFIL</div><div class="who-q">Name</div><input id="who-in" maxlength="24" autocomplete="off"><div class="who-row"><button data-w="back">Zurück</button><button class="who-ok" data-w="newok">Anlegen</button></div>`;
+    else if (m === 'setpin') h = `<div class="who-t">PIN · ${esc(nm)}</div><div class="who-q">4 Ziffern, leer = ohne PIN</div><input id="who-in" type="password" inputmode="numeric" maxlength="4" autocomplete="off"><div class="who-err">${err}</div><div class="who-row"><button data-w="back">Zurück</button><button class="who-ok" data-w="pinsave">Speichern</button></div>`;
+    else if (m === 'del') h = `<div class="who-t">LÖSCHEN?</div><div class="who-q">${esc(nm)} und alle Daten dieses Profils werden gelöscht.</div><div class="who-row"><button data-w="back">Abbrechen</button><button class="who-ok who-bad" data-w="delok">Löschen</button></div>`;
+    el.innerHTML = `<div class="who-in">${h}</div>`;
+    const i = document.getElementById('who-in'); if (i) i.focus();
+  };
+  el.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    const v = (document.getElementById('who-in') || {}).value || '';
+    if (b.dataset.id) { const p = LS.reg().find(x => x.id === b.dataset.id); if (p && p.pin && p.id !== LS.act) { m = 'pin'; pid = p.id; err = ''; draw(); } else done(b.dataset.id); return; }
+    switch (b.dataset.w) {
+      case 'new': m = 'new'; break;
+      case 'back': m = 'list'; err = ''; break;
+      case 'close': el.remove(); return;
+      case 'setpin': m = 'setpin'; err = ''; break;
+      case 'del': m = 'del'; break;
+      case 'pinok': { const p = LS.reg().find(x => x.id === pid); if (p && p.pin === v.trim()) { done(pid); return; } err = 'Falsche PIN'; break; }
+      case 'newok': { const n = v.trim(); if (!n) return; const id = LS.add(n); done(id); return; }
+      case 'pinsave': { const p = v.trim(); if (p && !/^\d{4}$/.test(p)) { err = 'Genau 4 Ziffern'; break; } LS.setPin(p); m = 'list'; break; }
+      case 'delok': { const gone = LS.act; LS.del(gone); try { sessionStorage.removeItem('pf.ok'); } catch (e) {} location.reload(); return; }
+      default: return;
+    }
+    draw();
+  });
+  draw();
+}
+try { if (LS.reg().length > 1 && !sessionStorage.getItem('pf.ok')) pfOverlay(false); } catch (e) {}
