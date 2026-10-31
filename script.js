@@ -645,12 +645,9 @@ function renderHistory() {
       ${r.note ? `<div class="hv-note">${esc(r.note)}</div>` : ''}
     </div>`;
   }).join('');
-  content.innerHTML = `<div class="hv">${dashBtn}
-    <div class="hv-week">
-      <div><b>${wk.length}</b><span>Trainings diese Woche</span></div>
-      <div><b>${histStreak(h)}</b><span>Tage Streak</span></div>
-      <div><b>${wkSets}</b><span>Sätze diese Woche</span></div>
-    </div>
+  const st = (n, l) => `<div class="ts-s"><b>${n}</b><em>${l}</em></div>`;
+  content.innerHTML = `<div class="hv"><div class="ts-strip">${st(wk.length, 'Trainings')}${st(histStreak(h), 'Tage Streak')}${st(wkSets, 'Sätze')}</div>
+    ${dashBtn}
     <div class="hv-list">${cards}</div>
   </div>`;
 }
