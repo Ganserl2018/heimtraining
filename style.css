@@ -1772,7 +1772,7 @@ body[data-view=history] .topbar h1::after{content:'Dein Fortschritt';}
 body[data-view=weeklist] .topbar h1::after{content:'Deine Trainings';}
 body[data-view=allex] .topbar h1::after{content:'Finde deine Übung';}
 body[data-view=profile] .topbar h1::after{content:'Du und deine Werte';}
-body.is-dash .topbar h1::after{content:'Dein Streak und deine Ziele';}
+body.is-dash .topbar h1::after{content:'Hier kannst du deine Ziele definieren';}
 /* V21e Wochenplan: Wochentage stark */
 .wp-day b{font-family:Anton,Impact,'Arial Narrow',sans-serif; font-weight:400; font-size:1.3rem; letter-spacing:.04em; line-height:1.1; color:var(--text);}
 .wp-day span{font-size:.64rem; letter-spacing:.02em;}
@@ -2793,3 +2793,5 @@ body.is-dash:has(.overview-lab) .topbar h1{display:block;}
 body.is-dash:has(.overview-lab) .topbar{padding-left:1.1rem; padding-right:1.1rem;}
 .overview-lab .tx-head{padding:0 0 .1rem;}
 .gz-fire{height:60px;} .gz-flame{font-size:3rem;} .gz-big{font-size:4rem;} .gz-glow{height:110px;}
+body.is-dash .overview-lab{justify-content:flex-start; gap:.8rem; padding-top:.6rem;}
+body.is-dash .overview-lab .lab-goal-link{margin-top:-.2rem;}
