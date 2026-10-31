@@ -75,3 +75,9 @@ Alex will NICHTS erklären müssen. Alles hier lesen, dann direkt weiterbauen. A
 ## Stand 31.10. 22:20
 - Live v=20261031zt. Neu: Woche-Ziel-Block → Ziele-Seite (›), Zurück nach Woche.
 - Wartet auf Go: Mini-Schrift, Glow/Dashed/Bounce, Health-Button.
+
+
+## Stand 31.10. 22:50 (Speichern)
+- Live v=20261031zu (0fdcc59). Ziele-Seite kompakt (Link war verdeckt). Straße V31 aktuell.
+- Frage an Alex: Ziel pro Zeitraum eigene Zahl? Wartet auf Go: Health-Button, Mini-Schrift, Glow/Dashed/Bounce.
+- Test-Hinweis: Fit-Messung immer ALLE Elemente inkl. Link prüfen (lastBottom aller Buttons), Tab-Leiste real ~769 px.

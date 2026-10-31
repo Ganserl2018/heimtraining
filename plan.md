@@ -738,3 +738,9 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 
 ## Nachtrag 31.10. 22:20
 - Woche: Ziel-Block hat › statt ✎ und öffnet Ziele-&-Streak (e3764f5, v=20261031zt); Zurück von dort landet wieder in Woche (dashBackTo). Auftrag Alex.
+
+## Nachtrag 31.10. 22:50 (Speichern)
+- Ziele-Seite auf iPhone: "Ziel anpassen" war hinter der Tab-Leiste verdeckt → kompakter (0fdcc59, v=20261031zu). Eigene Messung vorher war falsch (Leaf-Messung übersah Link).
+- Offene Frage an Alex: Ziel pro Zeitraum (3/Woche, 12/Monat, 156/Jahr) statt einer Zahl; bei Jahr steht 0/3.
+- Wartet auf Go: Health-Button, Mini-Schrift, Glow/Dashed/Bounce. Ziele-Seite Feedback später.
+- Straße V31 (Seite für Seite II) angelegt, republished mit url.
