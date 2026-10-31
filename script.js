@@ -973,7 +973,7 @@ function genActMain() { return `<div class="gn-act"><div class="gn-act-main"><bu
 function genHero() {
   const ex = genRes || [], main = ex.filter(e => !e.warm), sets = ex.reduce((n, e) => n + (e.sets || 0), 0), gs = [...new Set(main.map(e => MUSCLE_GROUPS[e.muscle]).filter(Boolean))];
   const tile = (n, l) => `<div class="ts-s"><b>${n}</b><em>${l}</em></div>`;
-  return `<div class="gn-top"><button class="gn-back" data-act="genBackWiz" aria-label="Zurück zur Auswahl">‹</button>${gs.map(g => `<span class="gx-t g" data-g="${esc(g)}">${esc(g)}</span>`).join('')}</div><div class="ts-strip" style="grid-template-columns:repeat(4,1fr)">${tile(main.length, 'Übungen')}${tile(new Set(main.flatMap(e => gearOf(e.name)).filter(k => k !== 'body')).size, 'Geräte')}${tile(sets, 'Sätze')}${tile('~' + genCfg.dur, 'Minuten')}</div>`;
+  return `<div class="gn-top"><button class="gn-back" data-act="genBackWiz" aria-label="Zurück zur Auswahl">‹</button>${gs.map(g => `<span class="gx-t g" data-g="${esc(g)}">${esc(g)}</span>`).join('')}</div><div class="ts-strip" style="grid-template-columns:repeat(4,1fr)">${tile(main.length, 'Übungen')}${tile(genCfg.gear.filter(k => k !== 'body').length, 'Geräte')}${tile(sets, 'Sätze')}${tile('~' + genCfg.dur, 'Minuten')}</div>`;
 }
 function renderGen() {
   const lv = genLevel(), p = loadProfile();
