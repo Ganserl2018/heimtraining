@@ -105,17 +105,17 @@ function pushStart(trainingId) {
 function trainingStatusForDate(t, dateStr) {
   if (!t.weekdays || !t.weekdays.length || !t.weekdays.includes(wdKeyOf(dateStr))) return null;
   if (!t.exercises || !t.exercises.length) return 'vorher'; // leeres Training: Hantel gedimmt, zählt nie als verpasst/offen
-  const done = loadHistory().some(r => r.trainingId === t.id && r.date === dateStr);
-  if (done) return 'erledigt';
+  const rec = loadHistory().find(r => r.trainingId === t.id && r.date === dateStr);
+  if (rec) return rec.totalSetsPlanned > 0 && rec.totalSetsDone >= rec.totalSetsPlanned ? 'erledigt' : 'unvollständig'; // beendet: alle Sätze = erledigt, sonst unvollständig (zählt trotzdem)
   if ((t.skipped || []).includes(dateStr)) return 'vorher'; // als Ruhetag gewertet
   if (t.since && t.since[wdKeyOf(dateStr)] && dateStr < t.since[wdKeyOf(dateStr)]) return 'vorher'; // eingeplant, aber vor Planstart: zählt nicht als verpasst
   const started = !!startOf(t.id, dateStr);
   const t0 = today();
   if (dateStr > t0) return 'geplant';
-  if (dateStr === t0) return started ? 'unvollständig' : 'offen';
-  return started ? 'unvollständig' : 'verpasst';
+  if (dateStr === t0) return started ? 'läuft' : 'offen';
+  return 'verpasst'; // vergangener Tag ohne beendetes Training (angefangen ohne Sätze zählt nicht)
 }
-const STATUS_LABEL = { erledigt: 'Erledigt', unvollständig: 'Unvollständig', verpasst: 'Verpasst', offen: 'Heute', geplant: 'Geplant' };
+const STATUS_LABEL = { erledigt: 'Erledigt', unvollständig: 'Unvollständig', verpasst: 'Verpasst', offen: 'Heute', geplant: 'Geplant', läuft: 'Läuft' };
 
 // V7-01: Profil (Basis für Kalorienberechnung, V8-03).
 const PROKEY = 'heimtraining.profile';
@@ -287,6 +287,7 @@ function mountGenPick() { // Direktauswahl liegt am body (über Kopfzeile + Tab-
 }
 function render() { renderView(); mountDetail(); mountPresetSheet(); mountGenPick(); fitTabH(); }
 function renderView() {
+  autoFinishStale();
   if (view !== window._lv) content.scrollTop = 0;
   content.toggleAttribute('data-enter', view !== window._lv); window._lv = view;
   content.classList.remove('pl-scroll');
@@ -477,7 +478,7 @@ function renderHome() {
   content.innerHTML = `<div class="home"><button class="home-brand" data-act="goto" data-view="weeklist" aria-label="Zur Woche"><b class="hb-home">HOME</b><b class="hb-main">FORCE</b></button><button class="home-btn" data-act="goto" data-view="start" aria-label="Start">
     <span class="home-ring"></span><span class="home-ring r2"></span><span class="home-ring r3"></span><svg class="home-pg" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="57"/></svg><span class="home-core"><i class="home-fill"></i>
     <svg viewBox="0 0 24 24" class="home-db" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>
-    <b>START</b></span></button>${open ? '<div class="home-open">Offenes Training wartet</div>' : ''}</div>`;
+    <b>START</b></span></button>${open ? `<button class="home-open" data-act="quickStart" data-id="${open.id}">Training läuft · Weiter</button>` : ''}</div>`;
 }
 function renderOverview() {
   if (!dashMode) return renderHome();
@@ -1303,21 +1304,21 @@ function renderStartClassic() {
 }
 
 // Training beenden (Wochenplan-Ansicht und Player): Verlaufseintrag, Sync, Fortschritt zurücksetzen. Auch unvollständig erlaubt.
-function finishTraining(t) {
-  const wp = wProgRaw(), dOf = wp.done[t.id] || {};
+function finishTraining(t, auto) {
+  const wp = auto ? auto.wp : wProgRaw(), dOf = wp.done[t.id] || {}, dateStr = auto ? auto.date : today();
   const exercises = t.exercises.map(ex => {
     const sets = dOf[ex.name] || [];
     return { name: ex.name, muscle: ex.muscle, warm: !!ex.warm, setsDone: sets.filter(s => s && s.done).length, setsTotal: ex.sets || 3,
       unit: ex.unit || 'kg', weights: (ex.unit || 'kg') === 'none' ? [] : sets.map(s => s && s.weight != null ? s.weight : null) };
   });
   const doneTotal = exercises.reduce((s2, x) => s2 + x.setsDone, 0);
-  if (!doneTotal && !confirm('Kein Satz abgehakt – trotzdem als Training zählen?')) return null;
+  if (!auto && !doneTotal && !confirm('Kein Satz abgehakt – trotzdem als Training zählen?')) return null;
   const note = (wp.sessionNote || {})[t.id] || '';
-  const startRec = startOf(t.id, today());
+  const startRec = startOf(t.id, dateStr);
   const rawMin = startRec ? Math.max(1, Math.round((Date.now() - new Date(startRec.startedAt)) / 60000)) : null;
   const durationMin = rawMin == null ? null : Math.min(rawMin, doneTotal * 4 + 10); // vergessenes Beenden nicht ewig mitzählen
   const calories = computeCalories(exercises, durationMin);
-  const rec = { date: today(), day: t.name, trainingId: t.id, exercises,
+  const rec = { date: dateStr, day: t.name, trainingId: t.id, exercises,
     totalSetsDone: doneTotal, totalSetsPlanned: exercises.reduce((s, x) => s + x.setsTotal, 0),
     finishedAt: new Date().toISOString(), durationMin, calories, note };
   syncSession(rec); pushHistory(rec);
@@ -1325,6 +1326,19 @@ function finishTraining(t) {
   if (wp.sessionNote) delete wp.sessionNote[t.id];
   saveWProg(wp);
   return rec;
+}
+
+// Über Mitternacht: ein gestartetes, nicht beendetes Training mit Sätzen wird automatisch als (unvollständig) beendet.
+let _afd = '';
+function autoFinishStale() {
+  const t0 = today(); if (_afd === t0) return; _afd = t0;
+  let raw = null; try { raw = JSON.parse(LS.getItem(WPKEY)); } catch (e) {}
+  if (!raw || !raw.date || raw.date >= t0 || !raw.done) return;
+  const hist = loadHistory();
+  Object.keys(raw.done).forEach(id => {
+    const t = trainingById(id); if (!t || hist.some(r => r.trainingId === id && r.date === raw.date) || !startOf(id, raw.date)) return;
+    if (Object.values(raw.done[id] || {}).some(a => (a || []).some(x => x && x.done))) finishTraining(t, { wp: raw, date: raw.date });
+  });
 }
 
 // ---- Workout-Player: eine Übung pro Bildschirm, Sätze vorausgefüllt, Pausen-Timer ----
@@ -1478,18 +1492,21 @@ function renderWeeklist() {
   const dayTiles = WD_KEYS.map((k, i) => {
     const ds = addDays(ws, i);
     const items = weekplan.map(w => ({ w, status: trainingStatusForDate(w, ds) })).filter(x => x.status);
-    const worst = ['verpasst', 'unvollständig', 'offen', 'geplant', 'vorher', 'erledigt'].find(st => items.some(x => x.status === st)) || null;
+    const worst = ['verpasst', 'läuft', 'unvollständig', 'offen', 'geplant', 'vorher', 'erledigt'].find(st => items.some(x => x.status === st)) || null;
     const n = items.reduce((sum, x) => sum + x.w.exercises.length, 0);
-    const target = (items.find(x => x.status !== 'erledigt') || items[0] || {}).w;
-    const act = target ? `data-act="wOpen2" data-id="${target.id}"` : `data-act="wpDay" data-wd="${k}" data-date="${ds}"`;
-    return `<div class="wp-cell"><button class="wp-day${worst ? ' wp-' + worst : ' wp-aus'}${worst && worst !== 'verpasst' ? (n ? ' wp-ex' : ' wp-leer') : ''}${ds === t0 ? ' wp-heute' : ''}" ${act}><b>${WD_LABELS[k]}</b>${worst ? DB : '<em>+</em>'}<span>${worst ? (n ? n + ' Üb.' : 'leer') : 'Ruhe'}</span></button>${target ? `<button class="wp-x" data-act="wUnsched" data-id="${target.id}" data-wd="${k}" aria-label="Aus Plan entfernen">×</button>` : ''}</div>`;
+    const openIt = items.find(x => x.status !== 'erledigt' && x.status !== 'unvollständig'), target = (openIt || {}).w;
+    const hIdx = !openIt && items.length ? loadHistory().findIndex(r => r.date === ds && items.some(x => x.w.id === r.trainingId)) : -1;
+    const act = target ? `data-act="wOpen2" data-id="${target.id}"` : hIdx >= 0 ? `data-act="histOpen" data-idx="${hIdx}"` : `data-act="wpDay" data-wd="${k}" data-date="${ds}"`;
+    const fin = items.filter(x => x.status === 'erledigt' || x.status === 'unvollständig').length, one = items.length === 1 ? items[0].status : null;
+    const subT = !worst ? 'Ruhe' : items.length > 1 ? fin + '/' + items.length : one === 'erledigt' ? '✓' : one === 'unvollständig' ? '½' : one === 'läuft' ? '▶' : one === 'verpasst' ? '⚠' : n ? n + ' Üb.' : 'leer';
+    return `<div class="wp-cell"><button class="wp-day${worst ? ' wp-' + worst : ' wp-aus'}${worst && worst !== 'verpasst' ? (n ? ' wp-ex' : ' wp-leer') : ''}${ds === t0 ? ' wp-heute' : ''}" ${act}><b>${WD_LABELS[k]}</b>${worst ? DB : '<em>+</em>'}<span>${subT}</span></button>${target ? `<button class="wp-x" data-act="wUnsched" data-id="${target.id}" data-wd="${k}" aria-label="Aus Plan entfernen">×</button>` : ''}</div>`;
   }).join('');
   const customCards = custom.map(t => {
     const th = t.exercises.slice(0, 1).map(ex => `<img src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`).join('') + (t.exercises.length > 1 ? `<i class="tr-more">+${t.exercises.length - 1}</i>` : '');
     const st = trainingStatusForDate(t, t0), gTop = (muscleShare(t)[0] || [''])[0];
     return `<div class="wp-sw" data-sw="${t.id}"><div class="wp-sw-bg"><span class="a"></span><span class="d">Löschen 🗑</span></div><div class="wp-card wp-tr" data-g="${esc(gTop)}" data-act="wOpen2" data-id="${t.id}">
       <div class="tr-th">${th || DB}</div>
-      <div class="wp-card-body"><div class="wp-card-name nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></div><div class="wp-card-meta">${meta(t)}${st ? ' · ' + STATUS_LABEL[st] : ''}</div></div>
+      <div class="wp-card-body"><div class="wp-card-name nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></div><div class="wp-card-meta">${meta(t)}${st === 'offen' || st === 'läuft' ? ' · ' + STATUS_LABEL[st] : ''}</div></div>
       <span class="wp-chev">›</span>
       ${trInfo(t, true)}
       <div class="tr-days">${WD_KEYS.map(k => `<button class="${(t.weekdays || []).includes(k) ? 'on' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>
@@ -1757,7 +1774,7 @@ function renderTrainings() {
     const go = trTab === 'arch' ? `<button class="tr-go ghost" data-act="wRestore" data-id="${t.id}">↩</button>` : `<button class="tr-go" data-act="quickStart" data-id="${t.id}" aria-label="Starten"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>`;
     const del = `<button class="tr-del" data-act="trDel" data-id="${t.id}" aria-label="Training löschen"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button>`;
     const strip = true ? '' : `<div class="tr-days">${WD_KEYS.map(k => `<button class="${(t.weekdays || []).includes(k) ? 'on' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>`;
-    const c = `<div class="tr-card pp-t" data-g="${esc(gTop)}" style="--i:${Math.max(0, list.indexOf(t))}" ${trTab === 'arch' ? '' : `data-act="wOpen2" data-id="${t.id}"`}><div class="tr-th">${th || ''}</div>${trTab === 'arch' ? '' : `<button class="tr-fav${t.fav ? ' on' : ''}" data-act="trFav" data-id="${t.id}" aria-label="Favorit">${t.fav ? '★' : '☆'}</button>`}<div class="tr-b"><b>${esc(t.name)}</b><span>${trTab === 'arch' ? meta : t.exercises.length + ' Übung' + (t.exercises.length === 1 ? '' : 'en')}</span>${st ? `<i class="tr-st tr-${st}">${STATUS_LABEL[st]}</i>` : ''}</div>${del}${go}${trTab === 'arch' ? '' : trInfo(t, true)}${strip}</div>`;
+    const c = `<div class="tr-card pp-t" data-g="${esc(gTop)}" style="--i:${Math.max(0, list.indexOf(t))}" ${trTab === 'arch' ? '' : `data-act="wOpen2" data-id="${t.id}"`}><div class="tr-th">${th || ''}</div>${trTab === 'arch' ? '' : `<button class="tr-fav${t.fav ? ' on' : ''}" data-act="trFav" data-id="${t.id}" aria-label="Favorit">${t.fav ? '★' : '☆'}</button>`}<div class="tr-b"><b>${esc(t.name)}</b><span>${trTab === 'arch' ? meta : t.exercises.length + ' Übung' + (t.exercises.length === 1 ? '' : 'en')}</span>${st === 'offen' || st === 'läuft' ? `<i class="tr-st tr-${st}">${STATUS_LABEL[st]}</i>` : ''}</div>${del}${go}${trTab === 'arch' ? '' : trInfo(t, true)}${strip}</div>`;
     return trTab === 'arch' ? c : `<div class="wp-sw tr-sw" data-sw="${t.id}"><div class="wp-sw-bg"><span class="a"></span><span class="d">Löschen 🗑</span></div>${c}</div>`;
   };
   const days = new Set(); act.forEach(w => (w.weekdays || []).forEach(d => days.add(d))); const exN = act.reduce((n, w) => n + w.exercises.length, 0);

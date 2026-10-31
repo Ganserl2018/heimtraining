@@ -2614,3 +2614,8 @@ button.home-brand:active{opacity:.7}
 .who-err{min-height:1.2rem; color:var(--bad); text-align:center; font-size:.85rem;}
 .who-row{display:flex; gap:.6rem;} .who-row button{flex:1; min-height:52px; border-radius:14px; border:1px solid var(--border); background:var(--panel); color:var(--text); font-size:1rem; font-weight:600;}
 .who-row .who-ok{background:var(--accent); color:var(--on-accent); border-color:var(--accent);} .who-row .who-bad{background:var(--bad); border-color:var(--bad); color:#fff;}
+
+/* V30 Status: Läuft */
+.wp-läuft{border-color:var(--accent) !important; box-shadow:0 0 8px var(--lab-glow);} .wp-läuft .lab-db{color:var(--accent);}
+.tr-läuft{color:var(--accent);}
+button.home-open{background:none; border:0; min-height:44px; padding:.4rem 1rem; font-weight:700; text-decoration:underline; text-underline-offset:3px;}

@@ -682,3 +682,11 @@ Offen/entschieden: Uhrzeit-Logik (soll sie etwas bewirken? sortieren, offen/verp
 ## Status-Logik Seite für Seite (31.10. 12:52, Alex: "Seite für Seite, sonst verlaufe ich mich")
 Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training) · Verpasst (neutral). Läuft über Mitternacht → automatisch Unvollständig. Beenden mit 0 Sätzen → Rückfrage, zählt nicht. Uhrzeit nur Anzeige. Offen: Schwelle (1 Satz zählt vs. ab Hälfte).
 1. Start ✔ (Alex 12:52): bleibt rein; nur Hinweis "Training läuft · Weiter" (statt "Offenes Training wartet"), Tipp springt ins Training; sonst nichts. NOCH NICHT GEBAUT.
+
+## V30 Status-Logik gebaut (31.10. 13:25, ?v=20261031y) – Alex: "deine Version komplett bauen, testen, sonst zurückbauen"
+- Rücksprung: Tag `pre-status-logic` (5ed8eac) bzw. `git revert` der V30-Commits.
+- trainingStatusForDate: beendet mit allen Sätzen = erledigt, beendet mit weniger = unvollständig (zählt für Ziel/Streak), heute gestartet = läuft, sonst offen/geplant/verpasst. Vergangen + nur gestartet ohne beendet = verpasst.
+- Über Mitternacht: autoFinishStale() beendet gestartetes Training mit ≥1 Satz automatisch (unvollständig), Fortschritt vom Vortag.
+- Start: "Training läuft · Weiter" (Button, quickStart). Woche: Kachel-Symbol ✓ ½ ▶ ⚠, bei mehreren Trainings "x/y"; Tipp auf fertigen Tag öffnet Verlauf-Eintrag, sonst Training. Status-Text auf Karten nur bei Heute/Läuft.
+- Nicht geändert: Optik von verpasst/erledigt/geplant, Uhrzeit (nur Anzeige), Beenden mit 0 Sätzen (Rückfrage wie bisher).
+- Test (Playwright, Szenarien erledigt/½/verpasst/läuft/1-von-2/Auto-Beenden/Verlauf öffnen) grün. Noch nicht geprüft: iPhone-Fit Woche mit neuen Symbolen, Trainings-Seite Anzeige.
