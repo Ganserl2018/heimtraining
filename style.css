@@ -2619,3 +2619,7 @@ button.home-brand:active{opacity:.7}
 .wp-läuft{border-color:var(--accent) !important; box-shadow:0 0 8px var(--lab-glow);} .wp-läuft .lab-db{color:var(--accent);}
 .tr-läuft{color:var(--accent);}
 button.home-open{background:none; border:0; min-height:44px; padding:.4rem 1rem; font-weight:700; text-decoration:underline; text-underline-offset:3px;}
+
+/* V30 Anpassen und Einplanen getrennt */
+.tx-s{display:flex; flex-direction:column; gap:.4rem;}
+.tx-ctl.sec-lv .tx-s-days,.tx-ctl.sec-days .tx-s-lv{display:none;}

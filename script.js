@@ -1718,16 +1718,17 @@ function renderWTrain() {
     : `<div class="tx-head"><button class="tx-back" data-act="wBack">‹ Zurück</button><h2 class="nm-edit" data-act="wRename" data-id="${t.id}"><span class="nm-t">${esc(t.name)}</span><i class="nm-pen" aria-hidden="true">✎</i></h2><button class="tx-fav${t.fav ? ' on' : ''}" data-act="trFav" data-id="${t.id}" aria-label="Favorit">${t.fav ? '★' : '☆'}</button></div>`;
   const dayLbl = hasDays ? WD_KEYS.filter(k => t.weekdays.includes(k)).map(k => WD_LABELS[k]).join(' ') : 'Tage wählen';
   const lvNow = t.level != null ? LEVELS[t.level][1] : 'Level';
-  const ctl = hasEx ? `<aside class="tx-ctl${ctlOpen ? ' open' : ''}">
+  const ctl = hasEx ? `<aside class="tx-ctl${ctlOpen ? ' open' : ''}${ctlSec ? ' sec-' + ctlSec : ''}">
       <div class="tx-sheet"><div class="tx-sheet-in">
-        <div class="tx-lab">Vorlage nach Level</div>
+        <div class="tx-s tx-s-lv"><div class="tx-lab">Vorlage nach Level</div>
         <div class="pp-seg">${LEVELS.map(([k, l], x) => `<button class="${t.level === x ? 'on' : ''}" data-act="wLevel" data-id="${t.id}" data-lv="${x}">${l}</button>`).join('')}</div>
         ${lvMsg ? `<div class="lv-msg">${lvMsg}</div>` : ''}
-        <div class="tx-lab">Tage &amp; Uhrzeit</div>
+        <button class="ts-del" data-act="wDelete" data-id="${t.id}">Training löschen</button></div>
+        <div class="tx-s tx-s-days"><div class="tx-lab">Tage &amp; Uhrzeit</div>
         <div class="tx-days">${WD_KEYS.map(k => `<button class="chip${t.weekdays.includes(k) ? ' active' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>
         <div class="w-time-l"><span>Uhrzeit (optional)</span><span class="w-time-sel">${(() => { const [th, tm] = /^\d\d:\d\d$/.test(t.time || '') ? t.time.split(':') : ['', '']; const mins = ['00', '15', '30', '45']; return `<select class="w-schedule-time" data-act="wTimeSel" data-part="h" data-id="${t.id}" aria-label="Stunde"><option value="">--</option>${Array.from({ length: 24 }, (_, h) => String(h).padStart(2, '0')).map(h => `<option${h === th ? ' selected' : ''}>${h}</option>`).join('')}</select><b>:</b><select class="w-schedule-time" data-act="wTimeSel" data-part="m" data-id="${t.id}" aria-label="Minute">${mins.map(m => `<option${m === tm ? ' selected' : ''}>${m}</option>`).join('')}</select>`; })()}</span></div>
         ${miss.length ? `<div class="w-missed">${miss.map(ds => `<span>${WD_LABELS[wdKeyOf(ds)]} verpasst</span><button data-act="wSkip" data-id="${t.id}" data-date="${ds}">Als Ruhetag werten</button>`).join('')}</div>` : ''}
-        <button class="ts-del" data-act="wDelete" data-id="${t.id}">Training löschen</button>
+        </div>
       </div></div>
       <div class="tx-go"><button class="ts-save" data-act="wSavePack">✓ SPEICHERN</button><button class="pl-next ts-go${ready ? ' rdy' : ''}" data-act="${started ? 'quickStart' : 'wStart'}" data-id="${t.id}">${started ? '▶ FORTSETZEN' : '▶ STARTEN'}</button></div>
     </aside>` : `<aside class="tx-ctl"><button class="ts-del" data-act="wDelete" data-id="${t.id}">Training löschen</button></aside>`;
