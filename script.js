@@ -1641,6 +1641,10 @@ function wtInhalt(t) {
     <div class="inh-r"><span>Muskeln</span><div class="inh-c">${muscleShare(t).filter(([k]) => k !== 'Aufwärmen').map(([k, p]) => `<em data-g="${esc(k)}"><i></i>${esc(k)} ${p}%</em>`).join('') || '<em>–</em>'}</div></div>
   </div>`;
 }
+function wtChips(t) {
+  const gs = [...new Set(t.exercises.filter(e => !e.warm && !isWarmName(e.name)).map(e => MUSCLE_GROUPS[e.muscle]).filter(Boolean))];
+  return gs.length ? `<div class="gn-top">${gs.map(g => `<span class="gx-t g" data-g="${esc(g)}">${esc(g)}</span>`).join('')}</div>` : '';
+}
 function wtHero(t, sets) {
   const min = Math.max(5, Math.round(sets * 2.5 / 5) * 5), tile = (n, l) => `<div class="ts-s"><b>${n}</b><em>${l}</em></div>`;
   const sh = muscleShare(t).filter(([k]) => k !== 'Aufwärmen').slice(0, 5);
@@ -1682,7 +1686,7 @@ function renderWTrain() {
   content.innerHTML = `<div class="tsx2">
     ${head}
     ${hintHtml ? `<div class="tx-hint">${hintHtml}</div>` : ''}
-    <section class="tx-list"><div class="tx-rows">${hasEx ? wtHero(t, totalSets) + wtInhalt(t) : ''}${t.exercises.map((ex, i) => txRow(t, ex, i)).join('')}<button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button></div></section>
+    <section class="tx-list"><div class="tx-rows">${hasEx ? wtChips(t) + wtHero(t, totalSets) : ''}${(() => { const isW = e => !!(e.warm || isWarmName(e.name)), anyW = t.exercises.some(isW); return t.exercises.map((ex, i) => (anyW && (i === 0 || isW(ex) !== isW(t.exercises[i - 1])) ? `<div class="gn-wh">${isW(ex) ? 'Aufwärmen' : 'Training'}</div>` : '') + txRow(t, ex, i)).join(''); })()}<button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button></div></section>
     ${ctl}
     ${txTo && txTo.id === t.id ? txToSheet(t) : ''}
   </div>`;
