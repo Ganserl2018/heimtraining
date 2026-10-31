@@ -47,7 +47,7 @@ let wpSheet = null;
 function saveWeekplan() { try { localStorage.setItem(WKEY, JSON.stringify(weekplan)); } catch (e) {} }
 weekplan = loadWeekplan().filter(x => !x.draft || (x.exercises || []).length); weekplan.forEach(x => { if ((x.exercises || []).length) delete x.draft; });
 // V6-01: fehlende Felder bei alten/bestehenden Trainings nachrüsten (weekdays/time optional, leer = kein Zeitplan)
-weekplan.forEach(t => { if (!Array.isArray(t.exercises)) t.exercises = []; if (!Array.isArray(t.weekdays)) t.weekdays = []; if (typeof t.time !== 'string') t.time = ''; if (!t.since || typeof t.since !== 'object') t.since = {}; });
+weekplan.forEach(t => { if (!Array.isArray(t.exercises)) t.exercises = []; if (!Array.isArray(t.weekdays)) t.weekdays = []; if (typeof t.time !== 'string') t.time = ''; else if (/^\d\d:\d\d$/.test(t.time)) t.time = t.time.slice(0, 3) + ['00', '15', '30', '45'][Math.floor(Number(t.time.slice(3)) / 15)]; if (!t.since || typeof t.since !== 'object') t.since = {}; });
 const trainingById = id => weekplan.find(t => t.id === id);
 
 const UNITS = { kg: ['kg', 'kg'], sek: ['Sek', 's'], wdh: ['Wdh', 'Wdh'], none: ['ohne', ''] };
@@ -258,6 +258,7 @@ function mountGenPick() { // Direktauswahl liegt am body (über Kopfzeile + Tab-
 }
 function render() { renderView(); mountDetail(); mountPresetSheet(); mountGenPick(); fitTabH(); }
 function renderView() {
+  if (view !== window._lv) content.scrollTop = 0;
   content.toggleAttribute('data-enter', view !== window._lv); window._lv = view;
   content.classList.remove('pl-scroll');
   document.body.classList.toggle('playing', view === 'play');
@@ -843,7 +844,7 @@ function genSwap(i) {
 let genSwapped = -1, genPick = -1;
 let gnAdj = false, genPin = null, genPinTime = '';
 function timeSelHtml(time, act) {
-  const [th, tm] = /^\d\d:\d\d$/.test(time || '') ? time.split(':') : ['', ''], mins = ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'];
+  const [th, tm] = /^\d\d:\d\d$/.test(time || '') ? time.split(':') : ['', ''], mins = ['00', '15', '30', '45'];
   return `<div class="w-time-l"><span>Uhrzeit (optional)</span><span class="w-time-sel"><select class="w-schedule-time" data-act="${act}" data-part="h" aria-label="Stunde"><option value="">--</option>${Array.from({ length: 24 }, (_, h) => String(h).padStart(2, '0')).map(h => `<option${h === th ? ' selected' : ''}>${h}</option>`).join('')}</select><b>:</b><select class="w-schedule-time" data-act="${act}" data-part="m" aria-label="Minute">${mins.map(m => `<option${m === tm ? ' selected' : ''}>${m}</option>`).join('')}</select></span></div>`;
 }
 const FAVKEY = 'heimtraining.favs';
@@ -1656,7 +1657,7 @@ function wtHero(t, sets) {
 function renderWTrain() {
   const t = trainingById(wId);
   if (!t) { view = 'overview'; return renderOverview(); }
-  const prevScroll = content.querySelector('.tx-rows') ? content.querySelector('.tx-rows').scrollTop : 0;
+  const prevScroll = content.querySelector('.tx-rows') && window._lw === wId ? content.querySelector('.tx-rows').scrollTop : 0; window._lw = wId;
   const step = helperStep(t);
   const started = startOf(t.id, today());
   const hasEx = t.exercises.length > 0, hasDays = t.weekdays && t.weekdays.length > 0;
@@ -1678,7 +1679,7 @@ function renderWTrain() {
         ${lvMsg ? `<div class="lv-msg">${lvMsg}</div>` : ''}
         <div class="tx-lab">Tage &amp; Uhrzeit</div>
         <div class="tx-days">${WD_KEYS.map(k => `<button class="chip${t.weekdays.includes(k) ? ' active' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>
-        <div class="w-time-l"><span>Uhrzeit (optional)</span><span class="w-time-sel">${(() => { const [th, tm] = /^\d\d:\d\d$/.test(t.time || '') ? t.time.split(':') : ['', '']; const mins = ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55']; if (tm && !mins.includes(tm)) mins.push(tm), mins.sort(); return `<select class="w-schedule-time" data-act="wTimeSel" data-part="h" data-id="${t.id}" aria-label="Stunde"><option value="">--</option>${Array.from({ length: 24 }, (_, h) => String(h).padStart(2, '0')).map(h => `<option${h === th ? ' selected' : ''}>${h}</option>`).join('')}</select><b>:</b><select class="w-schedule-time" data-act="wTimeSel" data-part="m" data-id="${t.id}" aria-label="Minute">${mins.map(m => `<option${m === tm ? ' selected' : ''}>${m}</option>`).join('')}</select>`; })()}</span></div>
+        <div class="w-time-l"><span>Uhrzeit (optional)</span><span class="w-time-sel">${(() => { const [th, tm] = /^\d\d:\d\d$/.test(t.time || '') ? t.time.split(':') : ['', '']; const mins = ['00', '15', '30', '45']; return `<select class="w-schedule-time" data-act="wTimeSel" data-part="h" data-id="${t.id}" aria-label="Stunde"><option value="">--</option>${Array.from({ length: 24 }, (_, h) => String(h).padStart(2, '0')).map(h => `<option${h === th ? ' selected' : ''}>${h}</option>`).join('')}</select><b>:</b><select class="w-schedule-time" data-act="wTimeSel" data-part="m" data-id="${t.id}" aria-label="Minute">${mins.map(m => `<option${m === tm ? ' selected' : ''}>${m}</option>`).join('')}</select>`; })()}</span></div>
         ${miss.length ? `<div class="w-missed">${miss.map(ds => `<span>${WD_LABELS[wdKeyOf(ds)]} verpasst</span><button data-act="wSkip" data-id="${t.id}" data-date="${ds}">Als Ruhetag werten</button>`).join('')}</div>` : ''}
         <button class="ts-del" data-act="wDelete" data-id="${t.id}">Training löschen</button>
       </div></div>
@@ -2517,6 +2518,7 @@ document.getElementById('tvIconBtn').addEventListener('click', () => {
 
 // Seitenwechsel = Standardzustand: offene Panels, Sheets, Filter und Unter-Tabs der Seiten springen zurück
 function resetUi() {
+  content.scrollTop = 0;
   ctlOpen = false; ctlSec = ''; lvMsg = ''; gnAdj = false; genPin = null; genPinTime = ''; archOpen = false; wpSheet = null; txTo = null; txOpen = null;
   trTab = 'act'; filterMuscle = filterEquip = filterMus = filterCat = filterSplit = null; filterFav = false; browseQ = ''; browseSel = null; filterOpen = false; browsePage = 0;
   psSheet = null; renameId = null; addingTraining = false; fgOpen = null; histDetailIdx = null; goalEditing = false; longEditing = false; longDraftType = null; genPick = -1;
