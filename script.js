@@ -1124,7 +1124,7 @@ function fgInit() {
     const c = FG_CHIPS.find(k => k[3] && k[4].includes(h.object.userData.node)) || FG_CHIPS.find(k => k[4].includes(h.object.userData.node));
     if (c) { if (selToggle(c[1])) fgOpen = ['Arme', 'Rücken', 'Beine'].includes(c[2]) ? c[2] : null; render(); }
   });
-  ctl.autoRotateSpeed = 2.5;
+  ctl.autoRotateSpeed = 3.5;
   r.setAnimationLoop(() => { if (!fg.el.isConnected) return; ctl.autoRotate = genCfg.groups.length === 0; ctl.update(); r.render(scene, cam); });
 }
 function fgPaint() {
