@@ -1641,6 +1641,8 @@ function wtInhalt(t) {
     <div class="inh-r"><span>Muskeln</span><div class="inh-c">${muscleShare(t).filter(([k]) => k !== 'Aufwärmen').map(([k, p]) => `<em data-g="${esc(k)}"><i></i>${esc(k)} ${p}%</em>`).join('') || '<em>–</em>'}</div></div>
   </div>`;
 }
+function wtActHtml() { return `<div class="gn-act gn-act-top"><div class="gn-act-sub"><button class="ga-c${ctlOpen && ctlSec === 'lv' ? ' on' : ''}" data-act="wtAdj"><i class="ga-ic2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg></i>Anpassen</button><button class="ga-c" data-act="wtMix"><i class="ga-ic2"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.5-5.8"/><path d="M20 4v5h-5"/></svg></i>Neu mischen</button><button class="ga-c${ctlOpen && ctlSec === 'days' ? ' on' : ''}" data-act="wtPlan"><i class="ga-ic2"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></i>Einplanen</button></div></div>`; }
+let ctlSec = '';
 function wtChips(t) {
   const gs = [...new Set(t.exercises.filter(e => !e.warm && !isWarmName(e.name)).map(e => MUSCLE_GROUPS[e.muscle]).filter(Boolean))];
   return gs.length ? `<div class="gn-top">${gs.map(g => `<span class="gx-t g" data-g="${esc(g)}">${esc(g)}</span>`).join('')}</div>` : '';
@@ -1686,7 +1688,7 @@ function renderWTrain() {
   content.innerHTML = `<div class="tsx2">
     ${head}
     ${hintHtml ? `<div class="tx-hint">${hintHtml}</div>` : ''}
-    <section class="tx-list"><div class="tx-rows">${hasEx ? wtChips(t) + wtHero(t, totalSets) : ''}${(() => { const isW = e => !!(e.warm || isWarmName(e.name)), anyW = t.exercises.some(isW); return t.exercises.map((ex, i) => (anyW && (i === 0 || isW(ex) !== isW(t.exercises[i - 1])) ? `<div class="gn-wh">${isW(ex) ? 'Aufwärmen' : 'Training'}</div>` : '') + txRow(t, ex, i)).join(''); })()}<button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button></div></section>
+    <section class="tx-list"><div class="tx-rows">${hasEx ? wtChips(t) + wtHero(t, totalSets) + wtActHtml() : ''}${(() => { const isW = e => !!(e.warm || isWarmName(e.name)), anyW = t.exercises.some(isW); return t.exercises.map((ex, i) => (anyW && (i === 0 || isW(ex) !== isW(t.exercises[i - 1])) ? `<div class="gn-wh">${isW(ex) ? 'Aufwärmen' : 'Training'}</div>` : '') + txRow(t, ex, i)).join(''); })()}<button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button></div></section>
     ${ctl}
     ${txTo && txTo.id === t.id ? txToSheet(t) : ''}
   </div>`;
@@ -2213,6 +2215,15 @@ content.addEventListener('click', e => {
       t.exercises.splice(Number(btn.dataset.i), 1); saveWeekplan(); break;
     }
     case 'ctlToggle': ctlOpen = !ctlOpen; break;
+    case 'wtAdj': case 'wtPlan': { const sec = btn.dataset.act === 'wtAdj' ? 'lv' : 'days'; if (ctlOpen && ctlSec === sec) ctlOpen = false; else { ctlOpen = true; ctlSec = sec; setTimeout(() => { const labs = [...document.querySelectorAll('.tx-sheet .tx-lab')], l = labs[sec === 'lv' ? 0 : 1]; if (l) l.scrollIntoView({ block: 'nearest' }); }, 300); } break; }
+    case 'wtMix': {
+      const t = trainingById(wId); if (!t) break;
+      const main = t.exercises.filter(e => !e.warm && !isWarmName(e.name)), gr = [...new Set(main.map(e => MUSCLE_GROUPS[e.muscle]).filter(g => g && g !== 'Sonstiges'))];
+      if (!gr.length || !confirm('Neue Übungen zu denselben Muskeln? Gewichte und Notizen dieses Trainings gehen verloren.')) break;
+      genCfg = newGenCfg(); genCfg.groups = gr; genCfg.count = main.length; genCfg.lv = t.level != null ? t.level : null; generate();
+      if (genRes && genRes.length) { t.exercises = genRes; saveWeekplan(); }
+      genRes = null; genCfg = newGenCfg(); break;
+    }
     case 'wLevel': { const t = trainingById(btn.dataset.id); const miss = applyLevel(t, Number(btn.dataset.lv)); lvMsg = miss ? 'Trage dein Gewicht im Profil ein, dann fülle ich auch die kg vor.' : ''; break; }
     case 'profLang': { const p = loadProfile(); p.lang = btn.dataset.v; saveProfile(p); break; }
     case 'profGender': { const p = loadProfile(); p.gender = btn.dataset.v; saveProfile(p); break; }
