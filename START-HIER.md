@@ -58,3 +58,10 @@ Alex will NICHTS erklären müssen. Alles hier lesen, dann direkt weiterbauen. A
 - Stand 31.10. 12:50: V29 Profile live (?v=20261031x, c9bb92a + Folgecommits): lokale Profile (LS-Shim, 'main' = alte Schlüssel), "Wer trainiert?" ab 2 Profilen, ⇄ im Profil (neu/PIN/löschen/Sync-Adresse kopieren). Health-Sync je Profil per eigenem 32-Zeichen-Code (Worker /session/<code>, Bearer weg) = nur Übergang; im App Store HealthKit direkt, Kurzbefehl entfällt (Alex). Sohn ist 30 → keine Kinder-Regeln. Uhrzeit bleibt nur Anzeige (erledigt). OFFEN: Anti-Slop-Check + Designer über Profil-Auswahl-Overlay; Woche/Status + Beenden-Logik (wartet auf Alex-Go); Puls+Füll-Effekt START besser (Warteliste V5-21); App-Store-Pfad V5-22 (Capacitor, HealthKit).
 
 - Stand 31.10. 13:25: V30 Status-Logik live (?v=20261031y, 96dd7e8; Rücksprung 5ed8eac): Erledigt/Unvollständig (zählt)/Läuft/Verpasst, Auto-Beenden über Mitternacht, Woche-Kachel ✓ ½ ▶ ⚠ (x/y bei mehreren), Start-Hinweis "Training läuft · Weiter". Alex testet am iPhone. OFFEN: iPhone-Fit Woche, Trainings-Seite prüfen; Label "Vorlage nach Level" → "Level" (Alex-Frage 13:17, wartet auf Go); Anti-Slop-Check Profil-Overlay; Beenden/Verlauf-Seite der Status-Runde noch nicht besprochen.
+
+
+## Stand 31.10. 22:15
+- Live v=20261031zp. Heute: Training Anpassen/Einplanen, Verlauf-Hero, Ziele-Seite B+, weiße Tage-Chips, Neu/Tipps/PIN raus, Woche-Kacheln + Dim-Schrift heller.
+- Kurzbefehl 'Heimtraining Sync' läuft (Test ok). Health-Button wartet auf Alex' Go (kein iCloud-Link).
+- Wartet auf Go: Touch-Ziele 44 px, Mini-Schrift, Glow/Dashed/Bounce. Ziele-Seite Feedback später.
+- Regel: nichts bauen ohne Alex' Go (außer Schrift/Farbe/Text).

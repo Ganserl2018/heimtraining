@@ -724,3 +724,9 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 
 ## Kurzbefehl-Stand 31.10. 18:35
 - Alex' Kurzbefehl "Heimtraining Sync": durationMin/calories-Aktionen ergänzt, Dauer + Kalorien mit Variablen verknüpft (Wörterbuchwert unter der jeweiligen Karte), Strecke = 0. Test-Lauf steht aus (Health prüfen: Minuten/kcal, keine Strecke). Danach: URL mit Kurzbefehl-Eingabe + Health-Button + iCloud-Link für den Sohn.
+
+## Nachtrag 31.10. 22:15
+- Woche-Kacheln (V32, v=20261031zo, d18ad3a): Ruhe-Schrift heller, Status-Farben kräftiger (geplant/offen Glow, erledigt Grün, verpasst Rot-Glow). Auftrag Alex.
+- Dim-Schrift überall heller (V33, v=20261031zp, 81131c9): --text-dim/--text-faint/--lab-dim angehoben, gz-rec/gz-of/pp-reset Deckkraft. Auftrag Alex.
+- Designer-Befund: Touch-Ziele <44 px + Mini-Schrift warten auf Go; Glow-Stapel, Dashed-Rahmen, gzPop-Bounce später nach Go; Politur (Radien, Farben, Abstände, .hist-dash :active) Warteliste.
+- Weiß/Grün/Rot Schema: Woche-Kacheln haben Grün (belegt) + Rot (verpasst) bereits; "nicht belegt" bleibt abgedunkelt-hell, Alex hat Weiß dort nicht bestätigt.
