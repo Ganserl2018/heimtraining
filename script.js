@@ -1645,7 +1645,7 @@ function wtHero(t, sets) {
   const min = Math.max(5, Math.round(sets * 2.5 / 5) * 5), tile = (n, l) => `<div class="ts-s"><b>${n}</b><em>${l}</em></div>`;
   const sh = muscleShare(t).filter(([k]) => k !== 'Aufwärmen').slice(0, 5);
   const bar = sh.length ? `<span class="ti-bar">${sh.map(([k, p]) => `<i data-g="${esc(k)}" style="flex:${p}"></i>`).join('')}</span><span class="ti-leg">${sh.map(([k, p]) => `<span data-g="${esc(k)}"><i></i>${esc(k)} ${p}%</span>`).join('')}</span>` : '';
-  return `<div class="ts-strip">${tile(t.exercises.length, 'Übungen')}${tile(sets, 'Sätze')}${tile('~' + min, 'Minuten')}</div>`;
+  return `<div class="ts-strip" style="grid-template-columns:repeat(4,1fr)">${tile(t.exercises.length, 'Übungen')}${tile(new Set(t.exercises.filter(e => !e.warm).flatMap(e => gearOf(e.name)).filter(k => k !== 'body')).size, 'Geräte')}${tile(sets, 'Sätze')}${tile('~' + min, 'Minuten')}</div>`;
 }
 function renderWTrain() {
   const t = trainingById(wId);
