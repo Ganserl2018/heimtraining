@@ -1672,7 +1672,6 @@ function renderWTrain() {
   const dayLbl = hasDays ? WD_KEYS.filter(k => t.weekdays.includes(k)).map(k => WD_LABELS[k]).join(' ') : 'Tage wählen';
   const lvNow = t.level != null ? LEVELS[t.level][1] : 'Level';
   const ctl = hasEx ? `<aside class="tx-ctl${ctlOpen ? ' open' : ''}">
-      <button class="tx-sum${hasDays ? '' : ' need'}" data-act="ctlToggle"><span>${esc(dayLbl)}${t.time ? ' · ' + esc(t.time) : ''} · ${esc(lvNow)}</span><i>${ctlOpen ? '▾' : '▴'}</i></button>
       <div class="tx-sheet"><div class="tx-sheet-in">
         <div class="tx-lab">Vorlage nach Level</div>
         <div class="pp-seg">${LEVELS.map(([k, l], x) => `<button class="${t.level === x ? 'on' : ''}" data-act="wLevel" data-id="${t.id}" data-lv="${x}">${l}</button>`).join('')}</div>
