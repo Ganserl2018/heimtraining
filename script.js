@@ -2768,7 +2768,7 @@ function pfOverlay(manage) {
     let h;
     if (m === 'list') {
       h = `<div class="who-t">WER TRAINIERT?</div><div class="who-list">${reg.map(p => { const n = LS.name(p.id); return `<button class="who-c${p.id === LS.act ? ' on' : ''}" data-id="${p.id}"><span class="who-av">${esc(n.charAt(0).toUpperCase())}</span><b>${esc(n)}</b>${p.pin ? '<i>🔒</i>' : ''}</button>`; }).join('')}<button class="who-c who-new" data-w="new"><span class="who-av">+</span><b>Neues Profil</b></button></div>` +
-        (manage ? `<div class="who-links"><button data-w="copysync">Sync-Adresse kopieren</button><button data-w="setpin">PIN ${cur.pin ? 'ändern' : 'setzen'}: ${esc(nm)}</button>${LS.act !== 'main' ? '<button data-w="del">Profil löschen</button>' : ''}<button data-w="close">Schließen</button></div>` : '');
+        (manage ? `<div class="who-links"><button data-w="copysync">Sync-Adresse kopieren</button>${LS.act !== 'main' ? '<button data-w="del">Profil löschen</button>' : ''}<button data-w="close">Schließen</button></div>` : '');
     } else if (m === 'pin') h = `<div class="who-t">${esc(LS.name(pid))}</div><div class="who-q">PIN eingeben</div><input id="who-in" type="password" inputmode="numeric" maxlength="4" autocomplete="off"><div class="who-err">${err}</div><div class="who-row"><button data-w="back">Zurück</button><button class="who-ok" data-w="pinok">OK</button></div>`;
     else if (m === 'new') h = `<div class="who-t">NEUES PROFIL</div><div class="who-q">Name</div><input id="who-in" maxlength="24" autocomplete="off"><div class="who-row"><button data-w="back">Zurück</button><button class="who-ok" data-w="newok">Anlegen</button></div>`;
     else if (m === 'setpin') h = `<div class="who-t">PIN · ${esc(nm)}</div><div class="who-q">4 Ziffern, leer = ohne PIN</div><input id="who-in" type="password" inputmode="numeric" maxlength="4" autocomplete="off"><div class="who-err">${err}</div><div class="who-row"><button data-w="back">Zurück</button><button class="who-ok" data-w="pinsave">Speichern</button></div>`;
@@ -2779,7 +2779,7 @@ function pfOverlay(manage) {
   el.addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b) return;
     const v = (document.getElementById('who-in') || {}).value || '';
-    if (b.dataset.id) { const p = LS.reg().find(x => x.id === b.dataset.id); if (p && p.pin && p.id !== LS.act) { m = 'pin'; pid = p.id; err = ''; draw(); } else done(b.dataset.id); return; }
+    if (b.dataset.id) { const p = LS.reg().find(x => x.id === b.dataset.id); done(b.dataset.id); return; }
     switch (b.dataset.w) {
       case 'new': m = 'new'; break;
       case 'back': m = 'list'; err = ''; break;
