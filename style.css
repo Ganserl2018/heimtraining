@@ -2753,3 +2753,31 @@ button.tx-nm{min-height:44px;}
 .gz-stats b{font-size:1.9rem; line-height:1.1; color:var(--accent); font-variant-numeric:tabular-nums;}
 .gz-stats em{font-size:.64rem; letter-spacing:.08em; color:var(--text-dim);}
 .gz-open .gz-stats{display:grid;}
+/* V38 Player Neon-HUD Schritt 1 (Alex 31.10. 23:20, Vorlage Cyber-HUD): Foto grün getönt, Sechseck-Bild + Sechseck-Haken, Ring um Name/Timer, Titel/Fortschritt grün */
+.pf-bg::before{content:""; position:absolute; inset:0; background:#14d24a; mix-blend-mode:color; opacity:.7; pointer-events:none;}
+.pf-bg::after{content:""; position:absolute; inset:0; pointer-events:none; opacity:.5;
+  background:repeating-linear-gradient(0deg,rgba(120,255,160,.07) 0 1px,transparent 1px 3px),
+  linear-gradient(90deg,rgba(120,255,160,.09) 1px,transparent 1px) 0 0/44px 44px,
+  linear-gradient(0deg,rgba(120,255,160,.09) 1px,transparent 1px) 0 0/44px 44px;}
+.pf-title{color:var(--accent); text-shadow:0 0 14px color-mix(in srgb,var(--accent) 70%,transparent);}
+.pf-prog{color:var(--accent);}
+.pf-back{background:rgba(6,30,12,.7); border:1.5px solid var(--accent); color:var(--accent); box-shadow:0 0 16px color-mix(in srgb,var(--accent) 45%,transparent);}
+.pf-dots button{background:rgba(160,255,190,.22);}
+.pf-dots .part{background:color-mix(in srgb,var(--accent) 55%,transparent);}
+.pf-dots .ok{background:var(--accent); box-shadow:0 0 8px var(--accent);}
+.pf-dots .cur{outline:2px solid var(--accent); box-shadow:0 0 10px var(--accent);}
+.pf-gif{width:118px; height:118px; border:0; border-radius:0; background:none; box-shadow:none; overflow:visible; filter:drop-shadow(0 0 10px color-mix(in srgb,var(--accent) 65%,transparent)); top:calc(env(safe-area-inset-top) + 92px);}
+.pf-hex{position:absolute; inset:0; background:var(--accent); clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);}
+.pf-hex img{position:absolute; inset:3px; width:calc(100% - 6px); height:calc(100% - 6px); clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%); background:#000;}
+.pf-core{position:relative; display:flex; flex-direction:column; align-items:center; width:100%;}
+.pf-core::before{content:""; position:absolute; inset:-30px 5% -12px; border-radius:50%; border:2px solid var(--accent); box-shadow:0 0 18px color-mix(in srgb,var(--accent) 60%,transparent),inset 0 0 22px color-mix(in srgb,var(--accent) 35%,transparent); pointer-events:none;}
+.pf-core::after{content:""; position:absolute; inset:-38px 2% -20px; border-radius:50%; border:1px solid color-mix(in srgb,var(--accent) 45%,transparent); pointer-events:none;}
+.pf-time{text-shadow:0 0 18px color-mix(in srgb,var(--accent) 55%,transparent),0 2px 14px rgba(0,0,0,.6);}
+.pf-pill{background:rgba(4,24,10,.62); border:1px solid color-mix(in srgb,var(--accent) 50%,transparent); box-shadow:inset 0 0 14px color-mix(in srgb,var(--accent) 18%,transparent);}
+.pf-pill small{color:var(--accent);}
+.pf-main{position:relative; width:104px; height:104px; background:none; border-radius:0; box-shadow:none; filter:drop-shadow(0 0 12px color-mix(in srgb,var(--accent) 75%,transparent)); transition:transform .16s cubic-bezier(.23,1,.32,1);}
+.pf-main::before,.pf-main::after{content:""; position:absolute; clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);}
+.pf-main::before{inset:0; background:var(--accent);}
+.pf-main::after{inset:5px; background:linear-gradient(160deg,#d6ff7a,var(--accent) 55%,#5fc21c);}
+.pf-main span{position:relative; z-index:1;}
+.pf-mainlab{color:var(--accent);}

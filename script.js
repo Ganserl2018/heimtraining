@@ -1410,7 +1410,7 @@ function renderPlay() {
   const mainLab = !exDone ? 'Satz fertig' : isLast ? 'Training beenden' : 'Nächste Übung';
   content.innerHTML = `<div class="pf">
     <div class="pf-bg"></div>
-    <div class="pf-gif"><img src="${esc(imgOf(ex))}" alt="" onerror="this.style.visibility='hidden'"></div>
+    <div class="pf-gif"><div class="pf-hex"><img src="${esc(imgOf(ex))}" alt="" onerror="this.style.visibility='hidden'"></div></div>
     <div class="pf-shade"></div>
     <div class="pf-top">
       <button class="pf-back" data-act="playExit" aria-label="Zurück">‹</button>
@@ -1419,9 +1419,9 @@ function renderPlay() {
     </div>
     <div class="pf-dots">${t.exercises.map((e, i) => `<button class="${i === playIdx ? 'cur' : ''}${doneN(e) >= (e.sets || 3) ? ' ok' : doneN(e) ? ' part' : ''}" data-act="playGo" data-i="${i}" aria-label="Übung ${i + 1}"></button>`).join('')}</div>
     <div class="pf-bottom">
-      <div class="pf-ex exinfo" data-act="exInfo" data-name="${esc(ex.name)}">${esc(dn(ex.name))}<small>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}${goal}</small></div>
+      <div class="pf-core"><div class="pf-ex exinfo" data-act="exInfo" data-name="${esc(ex.name)}">${esc(dn(ex.name))}<small>${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}${goal}</small></div>
       <div class="pf-lab" id="pf-lab">${restEnd > Date.now() ? 'PAUSE' : 'WORKOUT'}</div>
-      <div class="pf-time" id="pf-time">0:00</div>
+      <div class="pf-time" id="pf-time">0:00</div></div>
       <div class="pf-restbtns${restEnd > Date.now() ? '' : ' off'}" id="rest"><button data-act="restAdd">+15 s</button><button data-act="restSkip">Skip</button></div>
       <div class="pf-pills">
         <button class="pf-pill" data-act="playOpen" data-focus="1"><small>${vLab}</small><b>${val != null ? val + (UNITS[unit][1] ? ' ' + UNITS[unit][1] : '') : '–'}</b></button>
