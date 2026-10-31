@@ -917,6 +917,20 @@ function generate() {
     const rest = gs.map(grp => shuffle(base.filter(e => coreOf(grp)(e) && !picked.includes(e))));
     for (let k = 0; picked.length < n && rest.some(r => r.length); k++) { const r = rest[k % rest.length]; const e = r.shift(); if (e && !picked.includes(e)) picked.push(e); }
   }
+  { // Jedes angeklickte Gerät soll mindestens in einer Übung vorkommen (soweit Platz und passende Übungen da sind)
+    const coreG = grp => e => grp.startsWith('m:') ? e.muscle === grp.slice(2) : MUSCLE_GROUPS[e.muscle] === grp && (grp !== 'Rücken' || (isBack(e) && !/pushdown/i.test(e.name)));
+    const want = genCfg.gear.filter(k => k !== 'body' && k !== 'kb'), use = k => picked.filter(e => gearOf(e.name).includes(k)).length;
+    want.forEach(k => {
+      if (use(k)) return;
+      gs.some(grp => {
+        const cg = coreG(grp), cand = shuffle(base.filter(e => cg(e) && !picked.includes(e) && gearOf(e.name).includes(k)));
+        const victim = picked.find(p => cg(p) && gearOf(p.name).every(x => !want.includes(x) || use(x) > 1));
+        if (!cand.length || !victim) return false;
+        picked[picked.indexOf(victim)] = cand.find(e => isCompound(e.name) === isCompound(victim.name)) || cand[0];
+        return true;
+      });
+    });
+  }
   picked.sort((a, b) => (isCompound(b.name) - isCompound(a.name)) || ((GRANK[MUSCLE_GROUPS[b.muscle]] || 0) - (GRANK[MUSCLE_GROUPS[a.muscle]] || 0)) || (MORDER.indexOf(a.muscle) - MORDER.indexOf(b.muscle)));
   const exs = picked.map(e => ({ name: e.name, muscle: e.muscle, gif: e.gif, sets: 3, note: '', unit: defaultUnit(e.name) }));
   exs.forEach(ex => { const r = suggestEx(ex, lv, genCfg.goal); ex.sets = (genCfg.minSets || r.sets); const reps = ex.unit === 'sek' ? r.reps : (genCfg.minReps || r.reps); ex.plan = Array.from({ length: ex.sets }, () => ({ w: r.w, r: reps })); });
