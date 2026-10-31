@@ -43,9 +43,7 @@ function loadWeekplan() {
   } catch (e) {}
   return WEEKDAY_SEED.map(([id, name]) => ({ id, name, exercises: [] }));
 }
-const ARKEY = 'heimtraining.archive'; let archOpen = false; let wpSheet = null;
-function loadArchive() { try { const r = JSON.parse(localStorage.getItem(ARKEY)); return Array.isArray(r) ? r : []; } catch (e) { return []; } }
-function saveArchive(a) { try { localStorage.setItem(ARKEY, JSON.stringify(a)); } catch (e) {} }
+let wpSheet = null;
 function saveWeekplan() { try { localStorage.setItem(WKEY, JSON.stringify(weekplan)); } catch (e) {} }
 weekplan = loadWeekplan().filter(x => !x.draft || (x.exercises || []).length); weekplan.forEach(x => { if ((x.exercises || []).length) delete x.draft; });
 // V6-01: fehlende Felder bei alten/bestehenden Trainings nachrüsten (weekdays/time optional, leer = kein Zeitplan)
@@ -1481,8 +1479,6 @@ function renderWeeklist() {
       <div class="tr-days">${WD_KEYS.map(k => `<button class="${(t.weekdays || []).includes(k) ? 'on' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>
     </div></div>`;
   }).join('');
-  const arch = loadArchive();
-  const archBlock = '';
   content.innerHTML = `
     <div class="wp">
       ${goalStripHtml()}
@@ -1490,7 +1486,6 @@ function renderWeeklist() {
       <div class="wp-days">${dayTiles}</div>
       <div class="wp-sec">MEINE TRAININGS</div>
       ${customCards || '<p class="xr-hint">Noch keins. Starte ein Training auf Start und speichere es, dann taucht es hier auf.</p>'}
-      ${archBlock}
     </div>`;
   if (wpSheet) {
     const wd = wpSheet.wd;
@@ -1504,7 +1499,7 @@ function renderWeeklist() {
 
 // V2-09: Trainings-Detail – Übungen mit Video(GIF)/Erklärung, editierbare Sätze + Gewicht, Notizen.
 function loserName() {
-  const used = new Set([...weekplan, ...loadArchive()].map(w => w.name));
+  const used = new Set(weekplan.map(w => w.name));
   for (let i = 1; i <= 100; i++) if (!used.has('Loser ' + i)) return 'Loser ' + i;
   return 'Loser ' + (100 + weekplan.length);
 }
@@ -1743,11 +1738,11 @@ function levelSuggestion() {
 // V22: Trainings-Seite – alle fertigen Trainings übersichtlich, Start mit einem Tipp
 let trTab = 'act', wFrom = null;
 function renderTrainings() {
-  const t0 = today(), arch = loadArchive();
+  const t0 = today();
   const dayNames = WD_KEYS.map(k => ({ mon: 'Montag', tue: 'Dienstag', wed: 'Mittwoch', thu: 'Donnerstag', fri: 'Freitag', sat: 'Samstag', sun: 'Sonntag' }[k] + 'straining'));
   const act = weekplan.filter(w => !w.draft && (!dayNames.includes(w.name) || w.exercises.length));
   const favEx = loadFavs().map(n => pool.find(e => e.name === n)).filter(Boolean);
-  const favs = act.filter(w => w.fav), list = trTab === 'arch' ? arch : trTab === 'fav' ? favs : act;
+  const favs = act.filter(w => w.fav), list = trTab === 'fav' ? favs : act;
   const card = t => {
     const th = t.exercises.slice(0, 1).map(ex => `<img src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`).join('') + (t.exercises.length > 1 ? `<i class="tr-more">+${t.exercises.length - 1}</i>` : '');
     const gTop = (muscleShare(t)[0] || [''])[0];
@@ -2368,13 +2363,11 @@ content.addEventListener('click', e => {
     }
     case 'trTab': trTab = btn.dataset.v; break;
     case 'trFav': { const t = trainingById(btn.dataset.id); if (t) { t.fav = !t.fav; if (t.draft && t.exercises.length) delete t.draft; saveWeekplan(); } break; }
-    case 'archToggle': archOpen = !archOpen; break;
-    case 'wRestore': { const ar = loadArchive(), t = ar.find(x => x.id === btn.dataset.id); if (t) { saveArchive(ar.filter(x => x.id !== t.id)); weekplan.push(t); saveWeekplan(); } break; }
     case 'trDel': {
       // Zwei-Tipp-Löschen: 1. Tipp = rot "Löschen?", 2. Tipp (innerhalb 3 s) = weg. Verlauf bleibt.
       if (!btn.classList.contains('arm')) { btn.classList.add('arm'); btn.dataset.t = setTimeout(() => btn.classList.remove('arm'), 3000); return; }
       clearTimeout(Number(btn.dataset.t)); const id = btn.dataset.id;
-      if (trTab === 'arch') saveArchive(loadArchive().filter(x => x.id !== id)); else { weekplan = weekplan.filter(w => w.id !== id); saveWeekplan(); }
+      weekplan = weekplan.filter(w => w.id !== id); saveWeekplan();
       break;
     }
     case 'wDelete': {
