@@ -1980,7 +1980,6 @@ function detailSheetHtml(ex) {
     <div class="dt-hero"><img src="${esc(imgOf(ex))}" alt="" onerror="this.style.visibility='hidden'"></div>
     <div class="dt-body">
       <div class="dt-nr"><h2 class="dt-name">${esc(dn(ex.name))}</h2><button class="dt-fav${loadFavs().includes(ex.name) ? ' on' : ''}" data-act="exFav" data-name="${esc(ex.name)}" aria-label="Favorit">${loadFavs().includes(ex.name) ? '★' : '☆'}</button></div>
-      <button class="dt-bad${loadBad().includes(ex.name) ? ' on' : ''}" data-act="badImg" data-name="${esc(ex.name)}">${loadBad().includes(ex.name) ? '✓ Bild als falsch markiert' : '⚑ Bild falsch'}</button>
       <div class="dt-tags"><span class="dt-tag on">${esc(MUSCLE_DE[ex.muscle] || ex.muscle)}</span>${MUSCLE_GROUPS[ex.muscle] && MUSCLE_GROUPS[ex.muscle] !== (MUSCLE_DE[ex.muscle] || ex.muscle) ? `<span class="dt-tag">${MUSCLE_GROUPS[ex.muscle]}</span>` : ''}<span class="dt-tag">${equipLabel(ex.name)}</span></div>
       ${sec.length ? `<div class="dt-secm">Zusätzlich: ${sec.join(', ')}</div>` : ''}
       <div class="dt-how">
