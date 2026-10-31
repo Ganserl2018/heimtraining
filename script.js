@@ -1758,7 +1758,7 @@ function renderWTrain() {
   content.innerHTML = `<div class="tsx2">
     ${head}
     ${hintHtml ? `<div class="tx-hint">${hintHtml}</div>` : ''}
-    <section class="tx-list"><div class="tx-rows">${hasEx ? wtChips(t) + wtHero(t, totalSets) + wtActHtml(t, miss) : ''}${(() => { const isW = e => !!(e.warm || isWarmName(e.name)), anyW = t.exercises.some(isW); return t.exercises.map((ex, i) => (anyW && (i === 0 || isW(ex) !== isW(t.exercises[i - 1])) ? `<div class="gn-wh">${isW(ex) ? 'Aufwärmen' : 'Training'}</div>` : '') + txRow(t, ex, i)).join(''); })()}<button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button>${hasEx ? `<button class="ts-del" data-act="wDelete" data-id="${t.id}">Training löschen</button>` : ''}</div></section>
+    <section class="tx-list"><div class="tx-rows">${hasEx ? wtChips(t) + wtHero(t, totalSets) + wtActHtml(t, miss) : ''}${ctlOpen ? '' : `${(() => { const isW = e => !!(e.warm || isWarmName(e.name)), anyW = t.exercises.some(isW); return t.exercises.map((ex, i) => (anyW && (i === 0 || isW(ex) !== isW(t.exercises[i - 1])) ? `<div class="gn-wh">${isW(ex) ? 'Aufwärmen' : 'Training'}</div>` : '') + txRow(t, ex, i)).join(''); })()}<button class="ts-add" data-act="wAddEx" data-id="${t.id}">+ Übung hinzufügen</button>${hasEx ? `<button class="ts-del" data-act="wDelete" data-id="${t.id}">Training löschen</button>` : ''}`}</div></section>
     ${ctl}
     ${txTo && txTo.id === t.id ? txToSheet(t) : ''}
   </div>`;
