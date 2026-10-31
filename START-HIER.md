@@ -70,3 +70,8 @@ Alex will NICHTS erklären müssen. Alles hier lesen, dann direkt weiterbauen. A
 ## Stand 31.10. 21:50
 - Live v=20261031zs. Neu seit 22:15: Übungszeile (Sätze × Wdh · kg, Segment Gewicht/Körper/Zeit), Touch-Ziele ≥44 px.
 - Wartet auf Go: Mini-Schrift, Glow/Dashed/Bounce, Health-Button.
+
+
+## Stand 31.10. 22:20
+- Live v=20261031zt. Neu: Woche-Ziel-Block → Ziele-Seite (›), Zurück nach Woche.
+- Wartet auf Go: Mini-Schrift, Glow/Dashed/Bounce, Health-Button.

@@ -735,3 +735,6 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 - Übungszeile neu (V34, e129f02): beschriftete Felder SÄTZE × WDH · KG, Art als Segment Gewicht/Körper/Zeit, Kurzinfo einzeilig. Auftrag Alex ("Zahlengeflecht").
 - Touch-Ziele ≥44 px (V35, 084464b + aea017c, v=20261031zs): Panels, Chips, Übungszeile, Kopfzeile; Zurück/▲▼✕ per größerer Tippfläche. Auftrag "Ja Go".
 - Offen: Mini-Schrift (Befund 2), Glow/Dashed/Bounce (3–5) warten auf Go; Health-Button wartet auf Go.
+
+## Nachtrag 31.10. 22:20
+- Woche: Ziel-Block hat › statt ✎ und öffnet Ziele-&-Streak (e3764f5, v=20261031zt); Zurück von dort landet wieder in Woche (dashBackTo). Auftrag Alex.
