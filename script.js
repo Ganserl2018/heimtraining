@@ -1473,7 +1473,7 @@ function renderWeeklist() {
   const customCards = custom.map(t => {
     const th = t.exercises.slice(0, 1).map(ex => `<img src="${esc(imgOf(ex))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`).join('') + (t.exercises.length > 1 ? `<i class="tr-more">+${t.exercises.length - 1}</i>` : '');
     const st = trainingStatusForDate(t, t0), gTop = (muscleShare(t)[0] || [''])[0];
-    return `<div class="wp-sw" data-sw="${t.id}"><div class="wp-sw-bg"><span class="a">📥 Archiv</span><span class="d">Löschen 🗑</span></div><div class="wp-card wp-tr" data-g="${esc(gTop)}" data-act="wOpen2" data-id="${t.id}">
+    return `<div class="wp-sw" data-sw="${t.id}"><div class="wp-sw-bg"><span class="a"></span><span class="d">Löschen 🗑</span></div><div class="wp-card wp-tr" data-g="${esc(gTop)}" data-act="wOpen2" data-id="${t.id}">
       <div class="tr-th">${th || DB}</div>
       <div class="wp-card-body"><div class="wp-card-name nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></div><div class="wp-card-meta">${meta(t)}${st ? ' · ' + STATUS_LABEL[st] : ''}</div></div>
       <span class="wp-chev">›</span>
@@ -1482,7 +1482,7 @@ function renderWeeklist() {
     </div></div>`;
   }).join('');
   const arch = loadArchive();
-  const archBlock = arch.length ? `<button class="wp-arch-h" data-act="archToggle">ARCHIV (${arch.length}) ${archOpen ? '▾' : '▸'}</button>${archOpen ? arch.map(t => `<div class="wp-card wp-arch"><div class="wp-card-body"><div class="wp-card-name nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></div><div class="wp-card-meta">${t.exercises.length} Übungen</div></div><button data-act="wRestore" data-id="${t.id}">Zurückholen</button></div>`).join('') : ''}` : '';
+  const archBlock = '';
   content.innerHTML = `
     <div class="wp">
       ${goalStripHtml()}
@@ -1758,7 +1758,7 @@ function renderTrainings() {
     const del = `<button class="tr-del" data-act="trDel" data-id="${t.id}" aria-label="Training löschen"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button>`;
     const strip = true ? '' : `<div class="tr-days">${WD_KEYS.map(k => `<button class="${(t.weekdays || []).includes(k) ? 'on' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>`;
     const c = `<div class="tr-card pp-t" data-g="${esc(gTop)}" style="--i:${Math.max(0, list.indexOf(t))}" ${trTab === 'arch' ? '' : `data-act="wOpen2" data-id="${t.id}"`}><div class="tr-th">${th || ''}</div>${trTab === 'arch' ? '' : `<button class="tr-fav${t.fav ? ' on' : ''}" data-act="trFav" data-id="${t.id}" aria-label="Favorit">${t.fav ? '★' : '☆'}</button>`}<div class="tr-b"><b>${esc(t.name)}</b><span>${trTab === 'arch' ? meta : t.exercises.length + ' Übung' + (t.exercises.length === 1 ? '' : 'en')}</span>${st ? `<i class="tr-st tr-${st}">${STATUS_LABEL[st]}</i>` : ''}</div>${del}${go}${trTab === 'arch' ? '' : trInfo(t, true)}${strip}</div>`;
-    return trTab === 'arch' ? c : `<div class="wp-sw tr-sw" data-sw="${t.id}"><div class="wp-sw-bg"><span class="a">📥 Archiv</span><span class="d">Löschen 🗑</span></div>${c}</div>`;
+    return trTab === 'arch' ? c : `<div class="wp-sw tr-sw" data-sw="${t.id}"><div class="wp-sw-bg"><span class="a"></span><span class="d">Löschen 🗑</span></div>${c}</div>`;
   };
   const days = new Set(); act.forEach(w => (w.weekdays || []).forEach(d => days.add(d))); const exN = act.reduce((n, w) => n + w.exercises.length, 0);
   const heroFav = trTab === 'fav' ? `<div class="ts-strip" style="grid-template-columns:repeat(2,1fr)"><div class="ts-s"><b>${favEx.length}</b><em>Lieblingsübungen</em></div><div class="ts-s"><b>${favs.length}</b><em>Lieblingstrainings</em></div></div>` : '';
@@ -1766,7 +1766,7 @@ function renderTrainings() {
   const dots7 = `<span class="ts-d">${WD_KEYS.map(k => `<i${days.has(k) ? ' class="on"' : ''}></i>`).join('')}</span>`;
   const hero = heroFav || (trTab === 'act' ? `<div class="ts-strip">${st(act.length, 'Trainings')}${st(days.size + '<small>/7</small>', 'Tage', dots7)}${st(exN, 'Übungen')}</div>` : '');
   content.innerHTML = `<div class="tr">${hero}
-    <div class="tr-seg"><button class="${trTab === 'act' ? 'on' : ''}" data-act="trTab" data-v="act">Aktiv <em>${act.length}</em></button><button class="${trTab === 'fav' ? 'on' : ''}" data-act="trTab" data-v="fav">★ Favoriten <em>${favs.length + favEx.length}</em></button><button class="${trTab === 'arch' ? 'on' : ''}" data-act="trTab" data-v="arch">Archiv <em>${arch.length}</em></button></div>
+    <div class="tr-seg"><button class="${trTab === 'act' ? 'on' : ''}" data-act="trTab" data-v="act">Aktiv <em>${act.length}</em></button><button class="${trTab === 'fav' ? 'on' : ''}" data-act="trTab" data-v="fav">★ Favoriten <em>${favs.length + favEx.length}</em></button></div>
     <div class="tr-list">${trTab === 'fav' && favEx.length ? `<div class="tr-fx">${favEx.map(e => `<button class="tr-fxr" data-g="${esc(MUSCLE_GROUPS[e.muscle] || '')}" style="--i:${favEx.indexOf(e)}" data-act="exInfo" data-name="${esc(e.name)}"><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><span><b>${esc(dn(e.name))}</b><em><i class="gx-t g" data-g="${esc(MUSCLE_GROUPS[e.muscle] || '')}">${esc(MUSCLE_DE[e.muscle] || e.muscle)}</i></em></span><u class="tr-star">★</u></button>`).join('')}</div>` : ''}${list.length ? list.map(card).join('') : `<p class="tr-empty">${trTab === 'arch' ? 'Archiv ist leer.' : trTab === 'fav' ? (favEx.length ? '' : 'Noch keine Favoriten. Tippe ☆ bei einer Übung oder einem Training.') : 'Noch keine Trainings.'}</p>`}</div>
     <div class="tr-act"><button class="tr-new" data-act="wNewTraining">+ Neu</button><button class="tr-gen" data-act="genOpen">✦ JETZT TRAINIEREN</button></div>
   </div>`;
@@ -2605,7 +2605,7 @@ content.addEventListener('touchend', () => {
   setTimeout(() => {
     const t = weekplan.find(x => x.id === id);
     if (!t) { render(); return; }
-    if (dx > 0) { const ar = loadArchive(); ar.push(t); saveArchive(ar); weekplan = weekplan.filter(x => x.id !== id); saveWeekplan(); }
+    if (dx > 0) { /* Archiv entfernt */ }
     else if (confirm(`Training „${t.name}“ löschen? (Verlauf bleibt erhalten)`)) { weekplan = weekplan.filter(x => x.id !== id); saveWeekplan(); }
     render();
   }, 180);
