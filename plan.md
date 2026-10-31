@@ -711,3 +711,6 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 - Tag-Auswahl-Chips immer weiß (Rot nur "verpasst"; Grund: mood-bad färbt Accent rot).
 - "+ Neu" auf Trainings entfernt; Woche "Neu planen"/Desktop-Sidebar öffnen Generator (Tag vorbelegt via genPin); Umbenennen = Feld + ✓, speichert beim Verlassen.
 - Offen: iPhone-Test, Anti-Slop/designer über Ziele-Seite + Profil-Overlay.
+
+## Tipps raus (31.10. 15:58, ?v=20261031zm)
+- Anwendungs-Tipps (TIPP-Boxen im Training) entfernt, "Hinweise zurücksetzen" im Profil weg. Offen: Wisch-/Einzel-Hinweiszeilen (lv-note) auf Ergebnisseite – Alex-Antwort ausstehend.
