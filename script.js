@@ -1489,6 +1489,7 @@ const HELPKEY = 'heimtraining.helper2';
 function helperDone() { try { return JSON.parse(LS.getItem(HELPKEY)) || []; } catch (e) { return []; } }
 function helperHide(id) { const d = helperDone(); if (!d.includes(id)) d.push(id); try { LS.setItem(HELPKEY, JSON.stringify(d)); } catch (e) {} }
 function hint(id, step, text) {
+  return ''; // Anwendungs-Tipps aus (Alex 31.10.)
   if (helperDone().includes(id)) return '';
   return `<div class="hh"><div class="hh-top"><b>TIPP</b><button data-act="hintOk" data-id="${id}">Verstanden</button></div><p>${text}</p></div>`;
 }
@@ -1884,7 +1885,6 @@ function renderProfile() {
         </div>
       </div>
       <div class="pp-foot pp-t" style="--i:8">
-      <button class="pp-reset" data-act="helperReset">Hinweise zurücksetzen</button>
       <button class="pp-reset" data-act="appReload">↻ Neu laden · ${((document.querySelector('script[src^="script.js"]') || {}).src || '').split('v=')[1] || ''}</button>
       ${loadBad().length ? `<button class="pp-reset" data-act="badCopy">⚑ ${loadBad().length} falsche Bilder kopieren</button>` : ''}
       </div>
