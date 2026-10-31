@@ -696,3 +696,6 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 - Label "Vorlage nach Level" → "Level" (Alex: Ja).
 - Level überschreibt Sätze/Wdh/kg aller Übungen (applyLevel). Alex: keine Rückfrage davor; ohne Profilgewicht trotzdem ungefähre kg (75 kg angenommen, Hinweis im Panel).
 - Noch offen: Alex-Frage "die Seite willst du nicht loswerden" (Startseite, Block unklar) – Rückfrage gestellt; nicht getestet auf iPhone.
+
+## Training: Panels oben (31.10. 14:45, ?v=20261031zc)
+- Anpassen = Übungen (3-8, entfernt letzte / ergänzt passende zu den Muskeln), Sätze, Wdh; Level raus (Profil-Level gilt). Einplanen = Tage, Uhrzeit, verpasste Tage. Beide klappen oben unter den Buttons auf (wtPanHtml). "Training löschen" unten in der Liste. Test Playwright grün, kein iPhone-Test.
