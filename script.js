@@ -335,15 +335,6 @@ function matchesEquip(name, key) {
 }
 const CAT_LIST = [['warmup', '🔥 Aufwärmen']];
 const MUSCLE_DE = { chest: 'Brust', shoulders: 'Schultern', triceps: 'Trizeps', biceps: 'Bizeps', quadriceps: 'Quadrizeps', hamstrings: 'Beinbeuger', glutes: 'Gesäß', calves: 'Waden', abdominals: 'Bauch', lats: 'Latissimus', 'middle back': 'Mittl. Rücken', 'lower back': 'Unt. Rücken', traps: 'Trapez', forearms: 'Unterarme', abductors: 'Abduktoren', adductors: 'Adduktoren', neck: 'Nacken' };
-function renderFilterChips() {
-  const m = MUSCLE_GROUP_LIST.map(g =>
-    `<button class="chip${filterMuscle === g ? ' active' : ''}" data-act="fMuscle" data-v="${g}">${g}</button>`).join('');
-  const eq = EQUIP_LIST.map(([k, label]) =>
-    `<button class="chip${filterEquip === k ? ' active' : ''}" data-act="fEquip" data-v="${k}">${label}</button>`).join('');
-  const cat = CAT_LIST.map(([k, label]) =>
-    `<button class="chip${filterCat === k ? ' active' : ''}" data-act="fCat" data-v="${k}">${label}</button>`).join('');
-  return `<div class="filter-chips">${cat}${m}</div><div class="filter-chips">${eq}</div>`;
-}
 
 function renderPicker() {
   browseLimit = BPAGE;
@@ -686,7 +677,6 @@ const PRESETS = [
   { key: 'biceps', grp: 'musc', name: 'Bizeps', ex: ['Barbell Curl', 'Alternate Hammer Curl', 'Cable Preacher Curl', 'Alternate Incline Dumbbell Curl'] },
   { key: 'core', grp: 'core', name: 'Core', ex: ['Cable Crunch', 'Hanging Leg Raise', 'Plank', 'Crunches'] },
 ];
-function presetThumb(p) { const e = presetExercises(p)[0]; return e ? `<img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.remove()">` : ''; }
 
 // Vorlagen-Auswahl: ALLE Übungen der Muskelgruppe, Anzahl wählen oder einzeln abhaken
 let psSheet = null; // { key, sel:Set(index) }
@@ -810,18 +800,6 @@ function groupCounts() {
     if (sel.length && !gearOf(e.name).some(k => sel.includes(k))) return;
     const g = MUSCLE_GROUPS[e.muscle];
     out[g] = (out[g] || 0) + 1;
-  });
-  return out;
-}
-function gearCounts() {
-  const g = genCfg.groups, lv = genLevel(), out = {};
-  const bad = /machine|lever|smith|sled|bosu|ball|medicine|chain|stability|sandbag|tire|log |axle|atlas|stretch|rotation|jump|kneeling|plyo|jefferson|zercher|guillotine/i;
-  const hard = /deadlift|rack pull|clean|snatch|jerk|weighted|good morning|behind (the )?neck|guillotine|zercher|jefferson|overhead squat|olympic|sissy|muscle.up|atlas|pistol|single-arm push/i;
-  const core = (e, grp) => grp.startsWith('m:') ? e.muscle === grp.slice(2) : MUSCLE_GROUPS[e.muscle] === grp && (grp !== 'Rücken' || isBack(e));
-  pool.forEach(e => {
-    if (bad.test(e.name) || (gearFix[e.name] && gearFix[e.name].s === 'no') || !MUSCLE_GROUPS[e.muscle] || (lv === 0 && hard.test(e.name))) return;
-    if (!g.some(x => core(e, x))) return;
-    gearOf(e.name).forEach(k => { out[k] = (out[k] || 0) + 1; });
   });
   return out;
 }
@@ -1095,11 +1073,6 @@ function uncovered() { // gewählte Muskeln, für die die gewählten Geräte kei
   const base = genBase(genLevel(), true);
   return genCfg.groups.filter(g => !base.some(e => fgCore(e, g) && gearOf(e.name).every(k => genCfg.gear.includes(k))));
 }
-function gearFor(k) { // welche gewählten Muskeln hängen an Gerät k
-  const base = genBase(genLevel(), true);
-  const S = genCfg.gear.includes(k) ? genCfg.gear : genCfg.gear.concat(k);
-  return genCfg.groups.filter(g => base.some(e => fgCore(e, g) && gearOf(e.name).every(x => S.includes(x)) && gearOf(e.name).includes(k)));
-}
 function gearUse(k) { // Übungen zu den gewählten Muskeln, die mit den gewählten Geräten gehen und Gerät k brauchen
   const base = genBase(genLevel(), true);
   const S = genCfg.gear.includes(k) ? genCfg.gear : genCfg.gear.concat(k);
@@ -1211,12 +1184,6 @@ function grpConflict(m, G) {
   if (PUSH.includes(m)) return G.includes('m:biceps') ? 'm:biceps' : '';
   if (PULL.includes(m)) return G.includes('m:triceps') ? 'm:triceps' : '';
   return '';
-}
-function armPick(G) { // Bizeps/Trizeps im Wechsel: der länger nicht trainierte kommt dran
-  const last = {}; loadHistory().forEach(r => (r.exercises || []).forEach(e => { if ((e.setsDone > 0) && !e.warm && (e.muscle === 'biceps' || e.muscle === 'triceps') && (!last[e.muscle] || r.date > last[e.muscle])) last[e.muscle] = r.date; }));
-  const push = G.includes('Brust') || G.includes('Schultern'), pull = G.includes('Rücken');
-  if (push && pull) return null; if (push) return 'm:triceps'; if (pull) return 'm:biceps';
-  return (last.biceps || '') <= (last.triceps || '') ? 'm:biceps' : 'm:triceps';
 }
 function plJump(n) {
   const el = content.querySelector('.pl-step');
@@ -1608,22 +1575,6 @@ function applyLevel(t, lv) {
     ex.sets = r.sets; ex.plan = Array.from({ length: r.sets }, () => ({ w: r.w, r: r.reps })); });
   t.level = lv; saveWeekplan(); return miss;
 }
-function exCard(t, ex, i) {
-  const u = ex.unit || 'kg', n = ex.sets || 3, plan = ex.plan || [];
-  const at = (k, f) => (plan[k] || {})[f] ?? null;
-  const uniform = Array.from({ length: n }, (_, k) => k).every(k => at(k, 'w') === at(0, 'w') && at(k, 'r') === at(0, 'r'));
-  const split = u !== 'none' && !uniform; // nur bei bereits unterschiedlichen Werten (alte Daten)
-  const rl = u === 'sek' ? 'Sek' : 'Wdh';
-  const da = `data-id="${t.id}" data-i="${i}"`;
-  const sel = `<select class="xc-unit" data-act="wUnit" ${da} aria-label="Eintragen als">${Object.entries({ kg: 'kg · Wdh', wdh: 'Wdh', sek: 'Sek' }).map(([v, l]) => `<option value="${v}"${u === v ? ' selected' : ''}>${l}</option>`).join('')}</select>`;
-  const fld = (act, f, k, val) => `<label class="xc-f"><input type="number" inputmode="${f === 'w' ? 'decimal' : 'numeric'}" value="${val ?? ''}" placeholder="${f === 'w' ? 'kg' : rl}" data-act="${act}" ${da}${k === null ? '' : ` data-k="${k}"`} data-f="${f}" aria-label="${f === 'w' ? 'kg' : rl}"><span>${f === 'w' ? 'kg' : rl}</span></label>`;
-  let rowB = `<div class="xc-step"><button data-act="wSetsAdj" ${da} data-d="-1" aria-label="Ein Satz weniger">–</button><b>${n}</b><button data-act="wSetsAdj" ${da} data-d="1" aria-label="Ein Satz mehr">+</button></div><span class="xc-x">×</span>`;
-  if (split) rowB += `<button class="xc-same" data-act="wSame" ${da}>Sätze angleichen</button>`;
-  else rowB += `${u === 'kg' ? fld('wPlanAll', 'w', null, at(0, 'w')) : ''}${fld('wPlanAll', 'r', null, at(0, 'r'))}`;
-  const pills = split ? `<div class="xc-pills">${Array.from({ length: n }, (_, k) => `<div class="xc-pill"><b>${k + 1}</b>${u === 'kg' ? fld('wPlan', 'w', k, at(k, 'w')) : ''}${fld('wPlan', 'r', k, at(k, 'r'))}</div>`).join('')}</div>` : '';
-  const chips = split ? '' : `${u === 'kg' ? qchips('w', `[data-act=wPlanAll][data-f=w]`) : ''}${qchips('r', `[data-act=wPlanAll][data-f=r]`)}`;
-  return `<div class="ts-set xc"><div class="xc-top"><span class="xc-n">${esc(dn(ex.name))}</span>${sel}</div><div class="xc-row">${rowB}</div>${chips}${pills}</div>`;
-}
 let lvMsg = '', ctlOpen = false;
 function txRow(t, ex, i) {
   const u = ex.unit || 'kg', n = ex.sets || 3, plan = ex.plan || [];
@@ -1866,16 +1817,6 @@ const WCLASS = {
   abdominals: ['im Bauchbereich', 'einen definierteren Bauch', 'maximale Bauchdefinition'],
   forearms: ['an den Unterarmen', 'kräftigere Unterarme', 'maximale Griffkraft und Unterarmmasse']
 };
-function wclassHtml(e) {
-  const w = WCLASS[e.muscle] || ['im Zielmuskel', 'Muskelaufbau', 'maximale Kraft'];
-  const sec = secondaries(e);
-  const row = (t, a, b) => `<div class="xr-wc"><b>${t}</b><span>${a} ${b}</span></div>`;
-  return `${sec.length ? `<div class="xr-sec">Zusätzlich beansprucht: ${sec.join(', ')}</div>` : ''}
-    <div class="ov-card-title">Gewichtsklassen</div>
-    ${row('Leicht', 'Geringer Aufwand bei minimalem Verletzungsrisiko.', `Optisch: Straffung, Definition und bessere Haltung ${w[0]}.`)}
-    ${row('Moderat', 'Mittlerer, kontrollierter Aufwand.', `Optisch: effektiver Muskelaufbau (Hypertrophie) für ${w[1]}.`)}
-    ${row('Schwer', 'Hoher Aufwand, Fokus auf strikte Technik.', `Optisch: ${w[2]}, massives Volumen und sichtbarer Kraftzuwachs.`)}`;
-}
 function xrTile(i, act) {
   const e = pool[i];
   return `<button class="xr-tile" data-act="${act}" data-p="${i}">
@@ -1897,8 +1838,6 @@ const XR_SEARCH_ICO = '<svg class="xr-ico" viewBox="0 0 24 24" aria-hidden="true
 function equipLabel(name) { const f = EQUIP_LIST.find(([k]) => k !== 'none' && matchesEquip(name, k)); return f ? f[1] : 'Ohne Geräte'; }
 const DT_DAYS = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
 function dtIdx(n) { const i = DT_DAYS.findIndex(d => n === d + 'straining'); return i < 0 ? 7 : i; }
-function dtShort(n) { const i = dtIdx(n); return i < 7 ? DT_DAYS[i] : n; }
-function dtBadge(n) { const i = dtIdx(n); return i < 7 ? DT_DAYS[i].slice(0, 2) : '+'; }
 function dtDayList() { return weekplan.map((t, k) => [t, k]).sort((a, b) => dtIdx(a[0].name) - dtIdx(b[0].name) || a[1] - b[1]).map(x => x[0]); }
 function detailSheetHtml(ex) {
   const w = WCLASS[ex.muscle] || ['im Zielmuskel', 'Muskelaufbau', 'maximale Kraft'];
