@@ -44,3 +44,6 @@ Prüfung 31.10.: 0 C-Funde, alle 11 Commits mit Auftrag-Zeile. Startbutton/Halte
 | 31.10.-1.11. | f0c8f54, 8538c38, 88a04ff, d2556d5 | B | Speichern/Auto-Speicherung: plan.md + START-HIER | keine UI | Standard |
 
 Prüfung 1.11.: 13 Commits, A=9 (Gruppen), B=4, C=0. Alle mit Auftrag-Zeile. Startbutton/Halten-Füllen unberührt (kein Diff an .home-btn/hold, `.home-btn.hold` in style.css vorhanden). Neon-Look nicht abgeschwächt, Player erhielt zusätzlich Neon-HUD. Hinweis: Ersetzungen 31.10. (e129f02 Segment statt Dropdown, fbc897e SVG-Symbole) weiter nicht abgenommen.
+
+## Prüfung 1.11.2026 (zweiter Lauf, wöchentlich, 4b839f6)
+Keine neuen Commits seit Prüfung 1.11. (nur der Audit-Commit 4b839f6 selbst, nur audit-log.md). A=0, B=0, C=0. Startbutton/Halten-Füllen vorhanden (`.home-btn.hold` in style.css). Offen weiterhin: Abnahme von e129f02 (Segment statt Dropdown) und fbc897e (SVG-Symbole).
