@@ -603,8 +603,7 @@ function renderOverview() {
         <div><b>${h.length}</b><em>Trainings</em></div><div><b>${gzSets}</b><em>Sätze</em></div><div><b>${left}</b><em>${left ? `Noch bis ${tgt}` : 'Geschafft'}</em><span class="gz-mini"><i style="--p:${Math.min(1, nDone / tgt)}"></i></span></div>
       </div>
       <div class="gz-hero gz-top${streak ? '' : ' gz-off'}">
-        <div class="gz-fire"><span class="gz-glow"></span><div class="gz-sp">${gzSparks}</div><i class="gz-flame" aria-hidden="true">🔥</i></div>
-        <b class="gz-big"><span class="gz-n" data-to="${streak}">${streak}</span></b>
+        <div class="gz-fire gz-digits" role="img" aria-label="${streak} Tage in Folge"><span class="gz-glow"></span>${[...String(streak)].map(c => /[1-8]/.test(c) ? `<img class="gz-dg" src="img/streak/d${c}.webp" alt="" draggable="false">` : `<b class="gz-dg gz-dt" aria-hidden="true">${c}</b>`).join('')}</div>
         <small class="gz-lab">Tag${streak === 1 ? '' : 'e'} in Folge${hasMissedThisWeek ? ' · kritisch' : ''}</small>
         <p class="gz-rec">Rekord ${gzBest} Tag${gzBest === 1 ? '' : 'e'}</p>
       </div>
