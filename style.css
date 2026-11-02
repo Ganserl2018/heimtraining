@@ -2799,9 +2799,9 @@ body.is-dash .overview-lab .lab-goal-link{margin-top:-.2rem;}
 body.is-dash .overview-lab .lab-goal-link{align-self:stretch; margin-top:0; min-height:48px; padding:.7rem; border-radius:14px; border:1px solid var(--accent); background:color-mix(in srgb,var(--accent) 10%,transparent); color:var(--accent); font-size:.9rem; font-weight:700; text-decoration:none; box-shadow:0 0 14px color-mix(in srgb,var(--accent) 30%,transparent);}
 
 /* V41 Streak-Zahl als 3D-Chrom-Ziffern statt Flamme (Alex 3.11. "lass uns benutzen was wir haben"); 0/9 vorerst Textersatz */
-.gz-digits{height:auto; align-items:center; margin:-.2rem 0 -.3rem;}
-.gz-digits .gz-glow{bottom:auto; top:50%; margin-top:-55px; height:110px;}
-.gz-dg{position:relative; display:block; height:128px; width:auto; margin-inline:-13px; pointer-events:none; -webkit-user-drag:none;}
-.gz-dt{width:auto; margin-inline:0 0; padding:0 .4rem; font:400 8.2rem/128px Anton,Impact,'Arial Narrow',sans-serif; color:var(--lab-acc); text-shadow:0 0 26px var(--lab-glow);}
+.gz-digits{height:auto; align-items:center; margin:-.4rem 0 -.6rem;}
+.gz-digits .gz-glow{bottom:auto; top:50%; margin-top:-75px; height:150px; width:300px; margin-left:-150px;}
+.gz-dg{position:relative; display:block; height:176px; width:auto; margin-inline:-18px; pointer-events:none; -webkit-user-drag:none;}
+.gz-dt{width:auto; margin-inline:0 0; padding:0 .4rem; font:400 11.2rem/176px Anton,Impact,'Arial Narrow',sans-serif; color:var(--lab-acc); text-shadow:0 0 26px var(--lab-glow);}
 .gz-off .gz-dg{opacity:.45; filter:grayscale(1);}
 @media (prefers-reduced-motion:no-preference){ .gz-hero.hold .gz-digits{transform:scale(1.06); transition:transform .5s cubic-bezier(.23,1,.32,1);} .gz-digits{transition:transform .3s cubic-bezier(.23,1,.32,1);} }
