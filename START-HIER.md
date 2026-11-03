@@ -99,3 +99,6 @@ Wizard-Schritt "Figur" = Three.js (`vendor/three.min.js`, `OrbitControls.js`, `G
 
 ## Stand 3.11. 02:00: Streak 3D-Ziffern live (v=20261103d)
 `streak3d.js` + `vendor/streak-glyphs.js` (Anton-Ziffern via fontTools/shapely, Wand 0.04): Three.js-Canvas im `.gz-digits` (Ziele-Seite), Metallrahmen + Glas + Flüssigkeit (Shader, Level = Streak/Rekord, Wellen, Tropfen), OrbitControls autoRotate 6.5 wie die Figur. Ohne WebGL bleiben die Bilder `img/streak/d1-8.webp`. Offen: Alex-Urteil zur Optik; Füll-Logik (Streak/Rekord) unbestätigt; Designer-Check nicht gelaufen; Startseite-Variante offen.
+
+## 3.11. 01:50: Ziffern-Feinschliff (v=20261103e)
+Wand dünn (0.024), Rahmenfarbe dunkles Metall (0x8d9692, roughness .27), Füllstand = Streak/10 (1 = 10 %, ab 10 voll; vorher Streak/Rekord). Alex hat die 3D-Zahl abgenommen ("sehr gut gemacht").

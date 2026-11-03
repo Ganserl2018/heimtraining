@@ -41,7 +41,7 @@
     const key = new T.DirectionalLight(0xffffff, 1.1); key.position.set(2, 3, 4); cam.add(key);
     const ctl = new T.OrbitControls(cam, cv); ctl.enableDamping = true; ctl.dampingFactor = 0.08; ctl.enablePan = false; ctl.enableZoom = false;
     ctl.minPolarAngle = ctl.maxPolarAngle = Math.PI / 2; ctl.autoRotate = !matchMedia('(prefers-reduced-motion:reduce)').matches; ctl.autoRotateSpeed = 6.5;
-    const frameM = new T.MeshStandardMaterial({ color: 0xe4eae6, metalness: 1, roughness: 0.14, envMapIntensity: 1.9 });
+    const frameM = new T.MeshStandardMaterial({ color: 0x8d9692, metalness: 1, roughness: 0.27, envMapIntensity: 1.7 });
     const glassM = new T.MeshPhysicalMaterial({ color: 0x9fb8ae, metalness: 0, roughness: 0.04, transparent: true, opacity: 0.09, envMapIntensity: 1.4, depthWrite: false });
     const liqU = { uLevel: { value: -1 }, uTime: { value: 0 }, uOn: { value: 1 } };
     const liqM = new T.ShaderMaterial({ uniforms: liqU, vertexShader: LIQ_V, fragmentShader: LIQ_F, transparent: true, depthWrite: false, side: T.DoubleSide });
@@ -79,7 +79,7 @@
     const W = Math.max(0.3, x - GAP), off = -W / 2; S.spans = [];
     items.forEach(([ch, px, x0, x1]) => {
       const d = new T.Group(); d.position.x = px + off;
-      const fr = new T.Mesh(geo(ch, 'frame', D, 0.014), S.frameM), li = new T.Mesh(geo(ch, 'inner', D - 0.07, 0), S.liqM), gl = new T.Mesh(geo(ch, 'inner', D - 0.035, 0), S.glassM);
+      const fr = new T.Mesh(geo(ch, 'frame', D, 0.008), S.frameM), li = new T.Mesh(geo(ch, 'inner', D - 0.07, 0), S.liqM), gl = new T.Mesh(geo(ch, 'inner', D - 0.035, 0), S.glassM);
       li.renderOrder = 1; gl.renderOrder = 2; d.add(fr, li, gl); grp.add(d);
       S.spans.push([x0 + off + 0.06, x1 + off - 0.06]);
     });
@@ -99,7 +99,7 @@
       const n = el.dataset.n || '0', fill = Math.max(0, Math.min(1, Number(el.dataset.fill) || 0));
       S.el = el; el.appendChild(S.cv);
       if (S.n !== n) build(n);
-      S.target = Number(n) > 0 ? 0.08 + 0.8 * fill : -1;
+      S.target = Number(n) > 0 ? (fill >= 1 ? 1.03 : fill) : -1;
       if (S.level < -0.5 || matchMedia('(prefers-reduced-motion:reduce)').matches) S.level = Number(n) > 0 ? (matchMedia('(prefers-reduced-motion:reduce)').matches ? S.target : 0.0) : -1;
       S.liqU.uOn.value = Number(n) > 0 ? 1 : 0;
       size(el); el.classList.add('is3d');
