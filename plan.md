@@ -765,3 +765,5 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 - Alex-Wunsch: Streak-Zahl statt Flamme im Stil "12" aus Chrom + grüner Flüssigkeit mit Spritzern (Vorlage vom 1.11. 00:14). Empfehlung: Ziffern 0-9 als KI-Bilder (Prompt von mir) + App setzt Zahl zusammen; Füllstand = Streak/Rekord. Alternative Code-Look. Wartet auf Alex' Wahl (Go).
 - Offen (Go): Player Schritt 2, Streak-Zahl, Health-Button, Mini-Schrift, Glow/Dashed/Bounce.
 - Straße V32-L…P ergänzt, V32-I done, republished mit url.
+
+- 3.11. Bestand-Hinweis: drehbarer 3D-Körper = Wizard Figur-Schritt (Three.js, vendor/). Streak-Zahl als drehende 3D-Ziffern in Arbeit (Go 3.11. 01:18).

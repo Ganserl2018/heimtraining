@@ -603,7 +603,7 @@ function renderOverview() {
         <div><b>${h.length}</b><em>Trainings</em></div><div><b>${gzSets}</b><em>Sätze</em></div><div><b>${left}</b><em>${left ? `Noch bis ${tgt}` : 'Geschafft'}</em><span class="gz-mini"><i style="--p:${Math.min(1, nDone / tgt)}"></i></span></div>
       </div>
       <div class="gz-hero gz-top${streak ? '' : ' gz-off'}">
-        <div class="gz-fire gz-digits" role="img" aria-label="${streak} Tage in Folge"><span class="gz-glow"></span>${[...String(streak)].map(c => /[1-8]/.test(c) ? `<img class="gz-dg" src="img/streak/d${c}.webp" alt="" draggable="false">` : `<b class="gz-dg gz-dt" aria-hidden="true">${c}</b>`).join('')}</div>
+        <div class="gz-fire gz-digits" role="img" aria-label="${streak} Tage in Folge" data-n="${streak}" data-fill="${streak ? Math.min(1, streak / Math.max(gzBest, 1)).toFixed(3) : 0}"><span class="gz-glow"></span>${[...String(streak)].map(c => /[1-8]/.test(c) ? `<img class="gz-dg" src="img/streak/d${c}.webp" alt="" draggable="false">` : `<b class="gz-dg gz-dt" aria-hidden="true">${c}</b>`).join('')}</div>
         <small class="gz-lab">Tag${streak === 1 ? '' : 'e'} in Folge${hasMissedThisWeek ? ' · kritisch' : ''}</small>
         <p class="gz-rec">Rekord ${gzBest} Tag${gzBest === 1 ? '' : 'e'}</p>
       </div>
@@ -1162,7 +1162,7 @@ let fg = null;
 function fgLoad() {
   if (fg) return;
   fg = { ready: false, failed: false, mats: [] };
-  const load = src => new Promise((ok, no) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+  const load = src => (src.endsWith('three.min.js') && window.THREE) ? Promise.resolve() : new Promise((ok, no) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
   load('vendor/three.min.js').then(() => load('vendor/OrbitControls.js')).then(() => load('vendor/GLTFLoader.js')).then(fgInit).catch(() => { fg.failed = true; fgMount(); });
 }
 function fgInit() {

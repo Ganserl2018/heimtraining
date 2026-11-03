@@ -93,3 +93,9 @@ Alex will NICHTS erklären müssen. Alles hier lesen, dann direkt weiterbauen. A
 
 ## Neu 1.11. 00:25 (Speichern)
 - Ziele-Seite ohne Wochentage (10428c5, v=20261101f). Alex-Wunsch Streak-Zahl statt Flamme (Chrom/grüne Flüssigkeit): wartet auf Wahl KI-Bilder 0-9 (Empfehlung) vs Code-Look. Offen (Go): Player Schritt 2, Health-Button, Mini-Schrift, Glow/Dashed/Bounce. Straße V32-L…P aktuell.
+
+## Bestand: drehender 3D-Körper (3.11.)
+Wizard-Schritt "Figur" = Three.js (`vendor/three.min.js`, `OrbitControls.js`, `GLTFLoader.js`, `muscle-model.glb`; Code `fgInit` in script.js). Nicht neu erfinden, wiederverwenden. Streak-Zahl wird als drehende 3D-Ziffern gebaut (Alex-Go 3.11. 01:18, Datei `streak3d.js`).
+
+## Stand 3.11. 02:00: Streak 3D-Ziffern live (v=20261103d)
+`streak3d.js` + `vendor/streak-glyphs.js` (Anton-Ziffern via fontTools/shapely, Wand 0.04): Three.js-Canvas im `.gz-digits` (Ziele-Seite), Metallrahmen + Glas + Flüssigkeit (Shader, Level = Streak/Rekord, Wellen, Tropfen), OrbitControls autoRotate 6.5 wie die Figur. Ohne WebGL bleiben die Bilder `img/streak/d1-8.webp`. Offen: Alex-Urteil zur Optik; Füll-Logik (Streak/Rekord) unbestätigt; Designer-Check nicht gelaufen; Startseite-Variante offen.

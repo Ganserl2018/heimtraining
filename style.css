@@ -2805,3 +2805,10 @@ body.is-dash .overview-lab .lab-goal-link{align-self:stretch; margin-top:0; min-
 .gz-dt{width:auto; margin-inline:0 0; padding:0 .4rem; font:400 11.2rem/176px Anton,Impact,'Arial Narrow',sans-serif; color:var(--lab-acc); text-shadow:0 0 26px var(--lab-glow); mix-blend-mode:normal;}
 .gz-off .gz-dg{opacity:.45; filter:grayscale(1);}
 @media (prefers-reduced-motion:no-preference){ .gz-hero.hold .gz-digits{transform:scale(1.06); transition:transform .5s cubic-bezier(.23,1,.32,1);} .gz-digits{transition:transform .3s cubic-bezier(.23,1,.32,1);} }
+
+/* V42 drehende 3D-Streak-Ziffern (Canvas ersetzt die Bilder, sobald WebGL bereit ist) */
+.gz-digits canvas{position:absolute; inset:0; width:100%; height:176px; display:block; touch-action:none; cursor:grab; z-index:1;}
+.gz-digits.is3d{min-height:176px;}
+.gz-digits.is3d .gz-dg{visibility:hidden;}
+.gz-digits.is3d::before{content:""; position:absolute; left:50%; bottom:6px; width:200px; height:90px; margin-left:-100px; background:radial-gradient(closest-side,color-mix(in srgb,var(--lab-acc) 30%,transparent),transparent); pointer-events:none;}
+.gz-off .gz-digits.is3d::before{opacity:.15;}
