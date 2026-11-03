@@ -465,16 +465,21 @@ const itemsFor = d => overrides[d] || base[d] || [];
 // Lokal rechnen wie today()/addDays().
 const mondayOf = dateStr => { const d = new Date(dateStr + 'T00:00:00'); const wd = (d.getDay() + 6) % 7; d.setDate(d.getDate() - wd); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
 
-// V9-01: Streak – Anzahl aufeinanderfolgender Tage (bis heute/gestern zurück) mit
-// mind. 1 abgeschlossenem Training. Bricht ab, sobald ein Tag fehlt.
+// Streak = Trainings in Folge nach Plan (Alex 3.11.): Ruhetage ohne Plan brechen nicht, ein verpasstes geplantes
+// Training bricht, jedes beendete Training zaehlt +1 (auch spontan). Ohne Plan mit Wochentagen: Tage in Folge wie frueher.
 function computeStreak(h) {
-  const trainedDates = new Set(h.map(r => r.date));
-  let streak = 0;
-  let cursor = today();
-  // Heute noch nicht trainiert zählt nicht als Bruch – Streak darf bei gestern weiterlaufen.
-  if (!trainedDates.has(cursor)) cursor = addDays(cursor, -1);
-  while (trainedDates.has(cursor)) { streak++; cursor = addDays(cursor, -1); }
-  return streak;
+  if (!h.length) return 0;
+  const per = {}; h.forEach(r => { per[r.date] = (per[r.date] || 0) + 1; });
+  const sched = weekplan.filter(w => w.weekdays && w.weekdays.length && (w.exercises || []).length);
+  const t0 = today(); let cur = t0, n = 0;
+  if (!sched.length) { if (!per[cur]) cur = addDays(cur, -1); while (per[cur]) { n++; cur = addDays(cur, -1); } return n; }
+  const first = h.reduce((m, r) => r.date < m ? r.date : m, h[0].date);
+  for (let i = 0; i < 800 && cur >= first; i++, cur = addDays(cur, -1)) {
+    if (per[cur]) { n += per[cur]; continue; }
+    if (cur === t0) continue; // heute noch offen
+    if (sched.some(w => trainingStatusForDate(w, cur) === 'verpasst')) break;
+  }
+  return n;
 }
 
 let dashMode = false;
@@ -603,9 +608,9 @@ function renderOverview() {
         <div><b>${h.length}</b><em>Trainings</em></div><div><b>${gzSets}</b><em>Sätze</em></div><div><b>${left}</b><em>${left ? `Noch bis ${tgt}` : 'Geschafft'}</em><span class="gz-mini"><i style="--p:${Math.min(1, nDone / tgt)}"></i></span></div>
       </div>
       <div class="gz-hero gz-top${streak ? '' : ' gz-off'}">
-        <div class="gz-fire gz-digits" role="img" aria-label="${streak} Tage in Folge" data-n="${streak}" data-fill="${streak ? Math.min(1, streak / 10).toFixed(3) : 0}"><span class="gz-glow"></span>${[...String(streak)].map(c => /[1-8]/.test(c) ? `<img class="gz-dg" src="img/streak/d${c}.webp" alt="" draggable="false">` : `<b class="gz-dg gz-dt" aria-hidden="true">${c}</b>`).join('')}</div>
-        <small class="gz-lab">Tag${streak === 1 ? '' : 'e'} in Folge${hasMissedThisWeek ? ' · kritisch' : ''}</small>
-        <p class="gz-rec">Rekord ${gzBest} Tag${gzBest === 1 ? '' : 'e'}</p>
+        <div class="gz-fire gz-digits" role="img" aria-label="${streak} Trainings in Folge" data-n="${streak}" data-fill="${streak ? Math.min(1, streak / 10).toFixed(3) : 0}"><span class="gz-glow"></span>${[...String(streak)].map(c => /[1-8]/.test(c) ? `<img class="gz-dg" src="img/streak/d${c}.webp" alt="" draggable="false">` : `<b class="gz-dg gz-dt" aria-hidden="true">${c}</b>`).join('')}</div>
+        <small class="gz-lab">Training${streak === 1 ? '' : 's'} in Folge${hasMissedThisWeek ? ' · kritisch' : ''}</small>
+        <p class="gz-rec">Rekord ${gzBest} Training${gzBest === 1 ? '' : 's'}</p>
       </div>
       <div class="gz-card gz-goal${gzReached ? ' gz-reached' : ''}${goalCount ? '' : ' gz-zero'}">
         <div class="gz-chips">${gzPer}</div>
@@ -637,12 +642,7 @@ const gifOf = name => (pool.find(e => e.name === name) || {}).gif || '';
 const hvPhoto = name => { const g = gifOf(name); return g ? `<img src="${esc(imgOf({ gif: g }))}" alt="" loading="lazy" onerror="this.remove()">` : ''; };
 const isoDay = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
 function weekStart(ds) { const d = new Date(ds + 'T00:00:00'); d.setDate(d.getDate() - ((d.getDay() + 6) % 7)); return isoDay(d); }
-function histStreak(h) {
-  const days = new Set(h.map(r => r.date)); let d = new Date();
-  if (!days.has(isoDay(d))) d.setDate(d.getDate() - 1);
-  let n = 0; while (days.has(isoDay(d))) { n++; d.setDate(d.getDate() - 1); }
-  return n;
-}
+function histStreak(h) { return computeStreak(h); }
 function histGroup(ds) {
   const ws = weekStart(ds), cur = weekStart(isoDay(new Date()));
   if (ws === cur) return 'Diese Woche';
@@ -676,7 +676,7 @@ function renderHistory() {
     </div>`;
   }).join('');
   const st = (n, l) => `<div class="ts-s"><b>${n}</b><em>${l}</em></div>`;
-  content.innerHTML = `<div class="hv"><div class="ts-strip">${st(wk.length, 'Trainings')}${st(histStreak(h), 'Tage Streak')}${st(wkSets, 'Sätze')}</div>
+  content.innerHTML = `<div class="hv"><div class="ts-strip">${st(wk.length, 'Trainings')}${st(histStreak(h), 'In Folge')}${st(wkSets, 'Sätze')}</div>
     ${dashBtn}
     <div class="hv-list">${cards}</div>
   </div>`;

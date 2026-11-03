@@ -102,3 +102,6 @@ Wizard-Schritt "Figur" = Three.js (`vendor/three.min.js`, `OrbitControls.js`, `G
 
 ## 3.11. 01:50: Ziffern-Feinschliff (v=20261103e)
 Wand dünn (0.024), Rahmenfarbe dunkles Metall (0x8d9692, roughness .27), Füllstand = Streak/10 (1 = 10 %, ab 10 voll; vorher Streak/Rekord). Alex hat die 3D-Zahl abgenommen ("sehr gut gemacht").
+
+## 3.11. 02:10: Streak-Logik = Trainings in Folge nach Plan (v=20261103f)
+`computeStreak`: Ruhetage ohne Plan brechen nicht, verpasstes geplantes Training bricht, jedes beendete Training +1 (auch spontan, auch mehrere pro Tag); ohne Plan-Wochentage alte Tage-Logik. Labels: "Trainings in Folge", "Rekord N Trainings", Verlauf-Kachel "In Folge". Unit-Test /tmp/qa/sk.js (6 Fälle ok). Gespeicherter Rekord stammt noch aus der Tage-Logik.
