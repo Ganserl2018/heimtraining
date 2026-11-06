@@ -1071,11 +1071,15 @@ function genHero() {
   const tile = (n, l) => `<div class="ts-s"><b>${n}</b><em>${l}</em></div>`;
   return `<div class="gn-top"><button class="gn-back" data-act="genBackWiz" aria-label="Zurück zur Auswahl">‹</button>${gs.map(g => `<span class="gx-t g" data-g="${esc(g)}">${esc(g)}</span>`).join('')}</div><div class="ts-strip" style="grid-template-columns:repeat(4,1fr)">${tile(main.length, 'Übungen')}${tile(genCfg.gear.filter(k => k !== 'body').length, 'Geräte')}${tile(sets, 'Sätze')}${tile('~' + genCfg.dur, 'Minuten')}</div>`;
 }
+function gxEd(e, i) {
+  const sek = e.unit === 'sek', st = (act, d, l) => `<button data-act="${act}" data-i="${i}" data-d="${d}" aria-label="${l}">${d < 0 ? '–' : '+'}</button>`;
+  return `<div class="gx-ed"><span class="gx-ct">${st('genSetsAdj', -1, 'Ein Satz weniger')}<span class="gx-n"><b>${e.sets}</b><small>Sätze</small></span>${st('genSetsAdj', 1, 'Ein Satz mehr')}</span><span class="gx-ct">${st('genRepsAdj', -1, 'Weniger')}<span class="gx-n"><b>${e.plan[0].r}</b><small>${sek ? 'Sek' : 'Wdh'}</small></span>${st('genRepsAdj', 1, 'Mehr')}</span>${genRes.length > 1 ? `<button class="gx-rm" data-act="genRemove" data-i="${i}" aria-label="Übung entfernen">✕</button>` : ''}</div>`;
+}
 function renderGen() {
   const lv = genLevel(), p = loadProfile();
   const pill = (act, v, l, on) => `<button class="lv-p${on ? ' on' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
   const res = genRes && !genRes.length ? `<div class="gn-res"><button class="gn-back" data-act="genBackWiz">‹ Zurück zur Auswahl</button><div class="lv-note">Mit diesen Geräten und diesem Fokus finde ich keine Übungen. Mehr Geräte oder anderen Fokus wählen.</div></div>` : genRes ? `<div class="gn-res">${genHero()}${genActHtml()}${genNote ? `<div class="lv-note">${esc(genNote)}</div>` : ''}${(gnAdj || genPin) ? '' : genRes.map((e, i) => (genRes.some(x => x.warm) && (i === 0 || secOf(e) !== secOf(genRes[i - 1])) ? `<div class="gn-wh">${SEC_LBL[secOf(e)]}</div>` : '') + `<div class="gn-sw" data-gsw="${i}"><div class="gn-sw-bg"><span>★ Favorit</span><span>Neue Übung ↻</span></div><div class="gn-ex exinfo${i === genSwapped ? ' gn-new' : ''}${e.warm ? ' warm' : ''}" data-g="${esc(MUSCLE_GROUPS[e.muscle] || '')}" style="--i:${i}" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
-      <div class="gx"><b>${loadFavs().includes(e.name) ? '★ ' : ''}${esc(dn(e.name))}</b><div class="gx-m">${e.bal ? '<span class="gx-t warm">Gleichgewicht</span>' : e.warm ? '<span class="gx-t warm">Aufwärmen</span>' : ''}<span class="gx-t g">${esc(MUSCLE_DE[e.muscle] || e.muscle)}</span><span class="gx-t gx-st"><button data-act="genSetsAdj" data-i="${i}" data-d="-1" aria-label="Ein Satz weniger">–</button>${e.sets}<button data-act="genSetsAdj" data-i="${i}" data-d="1" aria-label="Ein Satz mehr">+</button> × ${e.plan[0].r} ${e.unit === 'sek' ? 'Sek' : 'Wdh'}</span>${e.plan[0].w != null && e.unit === 'kg' ? `<span class="gx-t w">${e.up ? '↑ ' : 'ca. '}${e.plan[0].w} kg</span>` : ''}</div></div><button class="gn-pk" data-act="genPickOpen" data-i="${i}" aria-label="Übung wählen">⇄</button></div></div>`).join('')}
+      <div class="gx"><b>${loadFavs().includes(e.name) ? '★ ' : ''}${esc(dn(e.name))}</b><div class="gx-m">${e.bal ? '<span class="gx-t warm">Gleichgewicht</span>' : e.warm ? '<span class="gx-t warm">Aufwärmen</span>' : ''}<span class="gx-t g">${esc(MUSCLE_DE[e.muscle] || e.muscle)}</span>${e.plan[0].w != null && e.unit === 'kg' ? `<span class="gx-t w">${e.up ? '↑ ' : 'ca. '}${e.plan[0].w} kg</span>` : ''}</div>${gxEd(e, i)}</div><button class="gn-pk" data-act="genPickOpen" data-i="${i}" aria-label="Übung wählen">⇄</button></div></div>`).join('')}
       ${(gnAdj || genPin) ? '' : `<div class="lv-note lv-one">Wischen: <i class="lv-ic">→</i> <i class="lv-ic">★</i> Favorit · <i class="lv-ic">←</i> zufällig · <i class="lv-ic lv-sw">⇄</i> wählen</div>${!p.weight && genRes.some(e => e.unit === 'kg') ? '<div class="lv-note lv-one">Gewicht im Profil = kg-Vorschläge</div>' : ''}`}
       ${genActMain()}</div>` : '';
   const scrollRes = genJust; genJust = false;
@@ -1449,12 +1453,14 @@ function renderPlay() {
       <button class="pf-sheet-grip" data-act="playClose" aria-label="Schließen"><i></i></button>
       <div class="pf-sheet-in">
         <div class="pf-sh-t">${esc(dn(ex.name))}</div>
-        <div class="pf-chips">${Array.from({ length: n }, (_, k) => `<button class="pl-chip${(sets[k] || {}).done ? ' done' : ''}${k === cur ? ' cur' : ''}" data-act="playSel" data-k="${k}" aria-label="Satz ${k + 1}">${(sets[k] || {}).done ? '✓' : k + 1}</button>`).join('')}</div>
+        <div class="pf-chiprow"><div class="pf-chips">${Array.from({ length: n }, (_, k) => `<button class="pl-chip${(sets[k] || {}).done ? ' done' : ''}${k === cur ? ' cur' : ''}" data-act="playSel" data-k="${k}" aria-label="Satz ${k + 1}">${(sets[k] || {}).done ? '✓' : k + 1}</button>`).join('')}</div><div class="xc-step pf-sets" role="group" aria-label="Anzahl Sätze"><button data-act="playSetsAdj" data-d="-1" aria-label="Ein Satz weniger">–</button><b>${n}</b><button data-act="playSetsAdj" data-d="1" aria-label="Ein Satz mehr">+</button></div></div>
         ${unit === 'none' ? '' : `<label class="pl-now-in"><input id="pf-in" type="number" inputmode="decimal" data-act="wWeight" data-id="${t.id}" data-i="${playIdx}" data-k="${cur}" value="${curS.weight ?? ''}" placeholder="${curPh ?? (curP.r != null && unit !== 'kg' ? curP.r : '–')}"><span>${UNITS[unit][1] || ''}</span></label>${qchips(unit === 'kg' ? 'w' : 'r', '#pf-in')}`}
         ${curS.done ? `<button class="pf-sh-btn ghost" data-act="playSet" data-k="${cur}">✓ Erledigt – zurücknehmen</button>` : ''}
         <div class="pf-sh-row"><button class="pf-sh-btn ghost" data-act="playPrev"${playIdx === 0 ? ' disabled' : ''}>‹ Zurück</button><button class="pf-sh-btn ghost" data-act="playNext"${isLast ? ' disabled' : ''}>Weiter ›</button></div>
         <button class="pf-sh-btn" data-act="playFinish">${totalDone >= totalAll ? 'Training beenden' : `Beenden · ${totalAll - totalDone} von ${totalAll} Sätzen offen`}</button>
-        <div class="pf-sh-row"><button class="pf-sh-btn ghost sm" data-act="playEdit">⚙ Sätze ändern</button><button class="pf-sh-btn ghost sm del" data-act="playDelete">🗑 Löschen</button></div>
+        <input class="pf-note" type="text" maxlength="200" placeholder="Notiz zur Übung" value="${esc(ex.note || '')}" data-act="wExNote" data-id="${t.id}" data-i="${playIdx}" aria-label="Notiz zur Übung">
+        <input class="pf-note" type="text" maxlength="300" placeholder="Notiz zum Training" value="${esc(((wProgRaw().sessionNote || {})[t.id]) || '')}" data-act="wSessionNote" data-id="${t.id}" aria-label="Notiz zum Training">
+        <div class="pf-sh-row one"><button class="pf-sh-btn ghost sm del" data-act="playDelete">🗑 Training löschen</button></div>
       </div>
     </div>
   </div>`;
@@ -1900,7 +1906,7 @@ function renderProfile() {
         <div class="pp-seg">${LEVELS.map(([k, l], x) => `<button class="${(p.level == null ? 0 : p.level) === x ? 'on' : ''}" data-act="profLevel" data-v="${x}">${l}</button>`).join('')}</div>
         <div class="pp-duo">
         <div class="pp-seg pp-gen">${[['m', 'Mann'], ['w', 'Frau']].map(([k, l]) => `<button class="${(p.gender || 'm') === k ? 'on' : ''}" data-act="profGender" data-v="${k}">${l}</button>`).join('')}</div>
-        <div class="pp-seg pp-lang">${[['de', 'DE'], ['en', 'EN']].map(([k, l]) => `<button class="${(p.lang || 'de') === k ? 'on' : ''}" data-act="profLang" data-v="${k}">${l}</button>`).join('')}</div>
+        
         </div>
       </div>
       <div class="pp-foot pp-t" style="--i:8">
@@ -1986,8 +1992,10 @@ function detailSheetHtml(ex) {
   const w = WCLASS[ex.muscle] || ['im Zielmuskel', 'Muskelaufbau', 'maximale Kraft'];
   const sec = secondaries(ex);
   const add = view !== 'play' && view !== 'tv' ? `<div class="dt-sec">Zu Training hinzufügen</div>
-    <div class="dt-add">${WD_KEYS.map((k, i) => { const t = weekplan.find(w => (w.weekdays || []).includes(k)) || weekplan.find(w => w.name === DT_DAYS[i] + 'straining'), has = !!t && t.exercises.some(e => e.name === ex.name);
-      return `<button class="dt-chip${has ? ' on' : ''}" data-act="${t ? 'browseAdd' : 'browseAddDay'}" data-id="${t ? t.id : ''}" data-day="${k}"><span class="dt-chip-b">${WD_LABELS[k]}</span><span class="dt-chip-t"><b>${DT_DAYS[i]}</b><small>${has ? '✓ Hinzugefügt' : (t ? esc(t.name) : 'Neues Training')}</small></span></button>`; }).join('')}${dtDayList().filter(t => !(t.weekdays || []).length && dtIdx(t.name) >= 7).map(t => { const has = t.exercises.some(e => e.name === ex.name);
+    <div class="dt-add">${WD_KEYS.map((k, i) => { const ts = weekplan.filter(w => (w.weekdays || []).includes(k)); if (!ts.length) { const t0 = weekplan.find(w => w.name === DT_DAYS[i] + 'straining'); ts.push(...(t0 ? [t0] : [])); }
+      if (!ts.length) return `<button class="dt-chip" data-act="browseAddDay" data-id="" data-day="${k}"><span class="dt-chip-b">${WD_LABELS[k]}</span><span class="dt-chip-t"><b>${DT_DAYS[i]}</b><small>Neues Training</small></span></button>`;
+      return ts.map(t => { const has = t.exercises.some(e => e.name === ex.name);
+        return `<button class="dt-chip${has ? ' on' : ''}" data-act="browseAdd" data-id="${t.id}" data-day="${k}"><span class="dt-chip-b">${WD_LABELS[k]}</span><span class="dt-chip-t"><b>${DT_DAYS[i]}</b><small>${has ? '✓ Hinzugefügt' : esc(t.name)}</small></span></button>`; }).join(''); }).join('')}${dtDayList().filter(t => !(t.weekdays || []).length && dtIdx(t.name) >= 7).map(t => { const has = t.exercises.some(e => e.name === ex.name);
       return `<button class="dt-chip${has ? ' on' : ''}" data-act="browseAdd" data-id="${t.id}"><span class="dt-chip-b">+</span><span class="dt-chip-t"><b>${esc(t.name)}</b><small>${has ? '✓ Hinzugefügt' : 'Ohne Tag'}</small></span></button>`; }).join('')}<button class="dt-chip" data-act="browseAddNew"><span class="dt-chip-b">+</span><span class="dt-chip-t"><b>Neues Training</b><small>mit dieser Übung</small></span></button></div>` : '';
   return `<div class="goal-sheet dt-bg" data-act="browseClose"><div class="dt-sheet">
     <button class="dt-x" data-act="browseClose" aria-label="Schließen">✕</button>
@@ -2355,6 +2363,18 @@ content.addEventListener('click', e => {
       const next = ex.sets + Number(btn.dataset.d); if (next < 1 || next > 10) return;
       if (next > ex.sets) ex.plan[next - 1] = { ...ex.plan[next - 2] }; else ex.plan.length = next;
       ex.sets = next; break;
+    }
+    case 'genRepsAdj': {
+      const ex = genRes && genRes[Number(btn.dataset.i)]; if (!ex) return;
+      const st = ex.unit === 'sek' ? 5 : 1, next = ex.plan[0].r + Number(btn.dataset.d) * st; if (next < 1 || next > 120) return;
+      ex.plan.forEach(p => { p.r = next; }); break;
+    }
+    case 'genRemove': { if (!genRes || genRes.length < 2) return; genRes.splice(Number(btn.dataset.i), 1); genSwapped = -1; break; }
+    case 'playSetsAdj': {
+      const ex = trainingById(playTid).exercises[playIdx], next = (ex.sets || 3) + Number(btn.dataset.d);
+      if (next < 1 || next > 10) return;
+      ex.plan = ex.plan || []; if (next > ex.sets) ex.plan[next - 1] = { ...(ex.plan[next - 2] || {}) }; else ex.plan.length = Math.min(ex.plan.length, next);
+      ex.sets = next; saveWeekplan(); break;
     }
     case 'genPickOpen': genPick = Number(btn.dataset.i); break;
     case 'genPickClose': genPick = -1; break;

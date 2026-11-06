@@ -108,3 +108,7 @@ Wand dünn (0.024), Rahmenfarbe dunkles Metall (0x8d9692, roughness .27), Fülls
 
 ## Stand 6.11. – Gleichgewicht eingebaut (v=20261106a)
 Reiter "Balance" in Übungen + 1-2 Balance-Übungen im Aufwärmblock beim Training erstellen. Offen: 8 Bilder (neue_uebungen.json, bild "offen"), Alex prüft live am iPhone.
+
+## 6.11. abends – Prüfer-Funde (Versprechen = Funktion), Commit folgt
+- Ergebnisliste: Sätze ±, Wdh/Sek ± und ✕ pro Übung (gxEd). Player-Sheet: Sätze ± neben Satz-Chips, Notiz zur Übung + zum Training, "Training löschen". Übung-Detail: je Training ein Chip pro Tag. DE/EN-Umschalter entfernt (übersetzte nur Übungsnamen).
+- Offen (C): Verlauf-Einträge nicht korrigierbar, Wdh bei kg-Übungen im Player nicht erfassbar, Wisch-Hinweis in wtrain, Level pro Training, Wisch rechts auf Trainingskarten ohne Wirkung. Bericht: qa-versprechen-bericht-2026-11-06.md

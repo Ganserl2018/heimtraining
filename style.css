@@ -2830,3 +2830,294 @@ body.is-dash .overview-lab .lab-goal-link{align-self:stretch; margin-top:0; min-
 /* V45: Sätze direkt in der Ergebnisliste */
 .gx-st{display:inline-flex; align-items:center; gap:.3rem; padding:.05rem .3rem;}
 .gx-st button{width:28px; height:28px; border-radius:50%; border:0; background:rgba(255,255,255,.14); color:var(--accent); font-size:1rem; font-weight:800; line-height:1; cursor:pointer; padding:0;}
+/* V45b: Einstellungen pro Übung (Ergebnisliste), Player-Sheet */
+.pp-duo{grid-template-columns:1fr}
+.gx-ed{display:flex; align-items:center; gap:.5rem; margin-top:.4rem; min-width:0}
+.gx-ct{flex:none; display:inline-flex; align-items:center; gap:.1rem; background:rgba(255,255,255,.06); border-radius:999px; padding:.12rem}
+.gx-n{display:flex; flex-direction:column; align-items:center; min-width:2.1rem; line-height:1}
+.gx-n b{font-family:Anton,sans-serif; font-weight:400; font-size:1rem; margin:0; display:block}
+.gx-n small{font-size:.54rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; opacity:.55; margin-top:.12rem}
+.gx-ct button{flex:none; width:28px; height:28px; border-radius:50%; border:0; background:rgba(255,255,255,.12); color:var(--accent); font-size:1rem; font-weight:800; line-height:1; padding:0; cursor:pointer; transition:transform .12s ease-out, background-color .12s ease-out}
+.gx-ct button:active,.gx-rm:active{transform:scale(.92); background:rgba(255,255,255,.2)}
+.gx-rm{position:absolute; top:.3rem; right:.5rem; width:26px; height:26px; border-radius:50%; border:0; background:transparent; color:rgba(255,255,255,.4); font-size:.8rem; padding:0; cursor:pointer}
+.gn-res .gx-m{flex-wrap:wrap; overflow:visible}
+
+.gn-res .lv-one{white-space:nowrap; overflow:hidden; font-size:.72rem; margin:.3rem 0 .1rem}
+
+.lv-ic{font-style:normal; color:var(--text); font-size:1.2em; font-weight:700; line-height:1}
+.lv-ic.lv-sw{font-size:1.6em; line-height:.6; vertical-align:-.1em}
+.gn-act-top .ga-c{display:flex; align-items:center; justify-content:center; gap:.35rem}
+.ga-c .ga-ic2{font-size:2em; line-height:1; display:grid; place-items:center; vertical-align:baseline; transform:translateY(-.1em)}
+.gn-act-top .ga-c{display:flex; align-items:center; justify-content:center; gap:.4rem; line-height:1}
+.ga-c .ga-ic2{font-style:normal; width:20px; height:20px; flex:none; display:block; transform:none; font-size:1em; line-height:1}
+.ga-c .ga-ic2 svg{width:20px; height:20px; display:block; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+.gn-top{display:flex; flex-wrap:wrap; align-items:center; gap:.3rem; margin:0 0 .4rem; font-family:Anton,Impact,sans-serif; letter-spacing:.06em; font-size:.95rem}
+.gn-top .gn-back{flex:none; min-width:32px; min-height:32px; margin:0 .2rem 0 -.2rem; padding:0; font-size:1.6rem; line-height:1; color:var(--accent); background:none; border:0}
+.gn-adj,.gn-pan,.gn-pan .qk-rows,.gn-pan .qk-r,.gn-pan .seg{max-width:100%; min-width:0; box-sizing:border-box}
+.gn-pan .qk-r{overflow:hidden}
+.gn-act-sub{grid-template-columns:repeat(3,minmax(0,1fr)); gap:.3rem}
+.gn-act-top .ga-c{gap:.25rem; padding:0 .15rem; font-size:.78rem; min-width:0}
+.ga-c .ga-ic2,.ga-c .ga-ic2 svg{width:18px; height:18px}
+.gn-res .gh-row{grid-template-columns:repeat(3,minmax(0,1fr))}
+.gn:has(.gn-res){padding-left:0; padding-right:0}
+
+.w-time-sel{display:flex; align-items:center; gap:.35rem}
+.w-time-sel b{color:var(--text-dim)}
+.w-time-sel select.w-schedule-time{min-width:4.2rem; min-height:44px; text-align:center; text-align-last:center; color:var(--text); font-size:1rem}
+
+/* V29 Profile */
+.pp-sw{flex:none; width:44px; height:44px; border-radius:50%; border:1px solid var(--border-soft); background:var(--panel-2); color:var(--accent); font-size:1.2rem; transition:transform .16s ease-out;}
+.pp-sw:active{transform:scale(.94);}
+#who{position:fixed; inset:0; z-index:9999; background:var(--bg); display:flex; align-items:center; justify-content:center; padding:calc(env(safe-area-inset-top,0px) + 1rem) 1.1rem calc(env(safe-area-inset-bottom,0px) + 1rem); animation:whoIn .2s ease-out;}
+@keyframes whoIn{from{opacity:0}to{opacity:1}}
+.who-in{width:100%; max-width:420px; display:flex; flex-direction:column; gap:1rem;}
+.who-t{font-family:Anton,Impact,'Arial Narrow',sans-serif; font-size:2rem; letter-spacing:.04em; text-align:center;}
+.who-q{color:var(--text-dim); text-align:center; font-size:.95rem;}
+.who-list{display:flex; flex-direction:column; gap:.6rem;}
+.who-c{display:flex; align-items:center; gap:.9rem; min-height:64px; padding:.6rem .9rem; border-radius:16px; border:1px solid var(--border-soft); background:var(--panel); color:var(--text); font-size:1.1rem; text-align:left; transition:transform .16s ease-out;}
+.who-c:active{transform:scale(.97);}
+.who-c.on{border-color:var(--accent);}
+.who-c b{flex:1; font-weight:600;}
+.who-av{width:44px; height:44px; border-radius:50%; display:grid; place-items:center; background:var(--accent); color:var(--on-accent); font-family:Anton,Impact,sans-serif; font-size:1.4rem; flex:none;}
+.who-new .who-av{background:transparent; border:1px dashed var(--accent); color:var(--accent);}
+.who-links{display:flex; flex-wrap:wrap; gap:0 1rem; justify-content:center;}
+.who-links button{background:none; border:0; color:var(--text-dim); text-decoration:underline; text-underline-offset:3px; min-height:44px; font-size:.85rem;}
+.who-in input{width:100%; min-height:52px; text-align:center; font-size:1.4rem; border-radius:14px; border:1px solid var(--border); background:var(--panel); color:var(--text); letter-spacing:.2em;}
+.who-err{min-height:1.2rem; color:var(--bad); text-align:center; font-size:.85rem;}
+.who-row{display:flex; gap:.6rem;} .who-row button{flex:1; min-height:52px; border-radius:14px; border:1px solid var(--border); background:var(--panel); color:var(--text); font-size:1rem; font-weight:600;}
+.who-row .who-ok{background:var(--accent); color:var(--on-accent); border-color:var(--accent);} .who-row .who-bad{background:var(--bad); border-color:var(--bad); color:#fff;}
+
+/* V30 Status: Läuft */
+.wp-läuft{border-color:var(--accent) !important; box-shadow:0 0 8px var(--lab-glow);} .wp-läuft .lab-db{color:var(--accent);}
+.tr-läuft{color:var(--accent);}
+button.home-open{background:none; border:0; min-height:44px; padding:.4rem 1rem; font-weight:700; text-decoration:underline; text-underline-offset:3px;}
+
+/* V30 Anpassen und Einplanen getrennt */
+.tx-s{display:flex; flex-direction:column; gap:.4rem;}
+.tx-ctl.sec-lv .tx-s-days,.tx-ctl.sec-days .tx-s-lv{display:none;}
+
+/* V30 Ziel-Panel */
+.goal-pan .gp-row{display:flex; align-items:center; justify-content:space-between; gap:.6rem;}
+.goal-pan .gp-row span{font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; color:var(--text-dim);}
+.gp-step{display:flex; align-items:center; gap:.5rem;}
+.gp-step b{min-width:2.4rem; text-align:center; font:400 1.6rem/1 var(--font-display,'Anton',Impact,sans-serif); color:var(--accent);}
+.gp-step button{width:44px; height:44px; border-radius:12px; border:1px solid var(--border); background:var(--panel); color:var(--text); font-size:1.3rem;}
+.goal-pan .seg button{min-height:40px;}
+
+/* V31 Ziele-Seite "Flamme + Info" */
+.gz{display:flex; flex-direction:column; gap:.7rem; width:100%;}
+.gz-hero{position:relative; overflow:hidden; display:flex; flex-direction:column; align-items:center; gap:.1rem; padding:.4rem .5rem .3rem; user-select:none; -webkit-user-select:none; touch-action:manipulation;}
+.gz-fire{position:relative; width:100%; height:100px; display:flex; align-items:flex-end; justify-content:center;}
+.gz-glow{position:absolute; left:50%; bottom:-10px; width:230px; height:170px; margin-left:-115px; background:radial-gradient(closest-side,color-mix(in srgb,var(--lab-acc) 55%,transparent),transparent); opacity:.7; transform-origin:50% 100%;}
+.gz-flame{position:relative; font-style:normal; font-size:4.8rem; line-height:1; display:inline-block; transform-origin:50% 90%; filter:drop-shadow(0 0 18px var(--lab-glow));}
+.gz-sp{position:absolute; left:50%; bottom:40px; width:0; height:0;}
+.gz-sp s{position:absolute; left:var(--x); bottom:0; width:5px; height:5px; border-radius:50%; background:var(--lab-acc); box-shadow:0 0 8px var(--lab-acc); opacity:0;}
+.gz-big{font:400 6.4rem/.9 Anton,Impact,'Arial Narrow',sans-serif; color:var(--lab-acc); text-shadow:0 0 30px var(--lab-glow); font-variant-numeric:tabular-nums;}
+.gz-lab{font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--lab-dim);}
+.gz-rec{margin:.15rem 0 0; font-size:.76rem; font-weight:700; letter-spacing:.08em; color:#e6ece8; opacity:.8;}
+.gz-off .gz-flame{filter:grayscale(1); opacity:.45;} .gz-off .gz-glow{opacity:.12;} .gz-off .gz-big{opacity:.45;}
+.gz-week{display:grid; grid-template-columns:repeat(7,1fr); gap:.3rem;}
+.gz-d{display:flex; flex-direction:column; align-items:center; gap:.25rem;}
+.gz-d i{display:grid; place-items:center; width:100%; max-width:42px; aspect-ratio:1; border-radius:50%; border:1.5px dashed rgba(255,255,255,.18); font-style:normal; font-weight:800; font-size:.95rem; color:#0c0f0e;}
+.gz-d em{font-style:normal; font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; color:var(--lab-dim);}
+.gz-d.plan i{border-style:solid; border-color:rgba(255,255,255,.35);}
+.gz-d.did i{background:var(--lab-acc); border:0; box-shadow:0 0 14px var(--lab-glow);}
+.gz-d.miss i{border:1.5px solid #e8301f; color:#e8301f; background:rgba(232,48,31,.12);}
+.gz-d.now em{color:var(--lab-acc);} .gz-d.now i{box-shadow:0 0 0 3px color-mix(in srgb,var(--lab-acc) 35%,transparent);}
+.gz-card{position:relative; overflow:hidden; display:flex; flex-direction:column; gap:.55rem; padding:.8rem; border-radius:22px; border:1.5px solid color-mix(in srgb,var(--lab-acc) 40%,transparent); background:linear-gradient(160deg,color-mix(in srgb,var(--lab-acc) 14%,transparent),rgba(0,0,0,.25) 65%);}
+.gz-chips{display:grid; grid-template-columns:repeat(3,1fr); gap:.3rem;}
+.gz-chips button{min-height:38px; border-radius:12px; border:1px solid rgba(255,255,255,.1); background:rgba(0,0,0,.3); color:var(--lab-dim); font-size:.78rem; font-weight:700; transition:transform .15s cubic-bezier(.23,1,.32,1);}
+.gz-chips button:active{transform:scale(.97);}
+.gz-chips button.on{border-color:var(--lab-acc); color:var(--lab-acc); background:color-mix(in srgb,var(--lab-acc) 12%,transparent);}
+.gz-gl{display:flex; align-items:baseline; justify-content:space-between; gap:.6rem;}
+.gz-num{font:400 3rem/1 Anton,Impact,'Arial Narrow',sans-serif; color:var(--lab-acc); text-shadow:0 0 18px var(--lab-glow); font-variant-numeric:tabular-nums;}
+.gz-of{font-size:1.7rem; color:#e6ece8; opacity:.75; text-shadow:none;}
+.gz-zero .gz-num{opacity:.45;}
+.gz-segs{display:flex; gap:.4rem;}
+.gz-seg{flex:1; height:34px; border-radius:11px; border:1.5px dashed rgba(255,255,255,.22); overflow:hidden; position:relative;}
+.gz-seg i{position:absolute; inset:0; background:var(--lab-acc); box-shadow:0 0 14px var(--lab-glow); transform:scaleX(0); transform-origin:left;}
+.gz-seg.on{border:1.5px solid var(--lab-acc);} .gz-seg.on i{transform:scaleX(1);}
+.gz-wide{height:18px;} .gz-seg.gz-wide.on i{transform:scaleX(var(--p));}
+.gz-stats{display:grid; grid-template-columns:repeat(3,1fr); gap:.5rem;}
+.gz-stats>div{display:flex; flex-direction:column; align-items:center; gap:.1rem; padding:.55rem .3rem; border-radius:16px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.04);}
+.gz-stats b{font:400 1.8rem/1 Anton,Impact,'Arial Narrow',sans-serif; color:var(--lab-acc);}
+.gz-stats em{font-style:normal; font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:var(--lab-dim); text-align:center;}
+.gz-mini{width:70%; height:5px; margin-top:.2rem; border-radius:99px; background:rgba(255,255,255,.1); overflow:hidden;}
+.gz-mini i{display:block; height:100%; background:var(--lab-acc); transform:scaleX(var(--p)); transform-origin:left;}
+.overview-lab .gz ~ .lab-goal-link{margin-top:0;}
+.gz-open .gz-hero,.gz-open .gz-week,.gz-open .gz-stats{display:none;}
+.gz-hero::before{content:""; position:absolute; inset:0; background:radial-gradient(closest-side at 50% 60%,color-mix(in srgb,var(--lab-acc) 35%,transparent),transparent); opacity:0; pointer-events:none; transition:opacity .25s cubic-bezier(.23,1,.32,1);}
+.gz-hero.hold::before{opacity:1; transition-duration:.6s;}
+.gz-hero>*{position:relative;}
+@media (prefers-reduced-motion:no-preference){
+  .gz-glow{animation:gzBreath 3s ease-in-out infinite;}
+  .gz-top:not(.gz-off) .gz-flame{animation:gzFlame 1.8s ease-in-out infinite;}
+  .gz-top:not(.gz-off) .gz-sp s{animation:gzSpark 2.6s cubic-bezier(.23,1,.32,1) infinite; animation-delay:var(--d);}
+  .gz-hero.hold .gz-flame{transform:scale(1.25); transition:transform .5s cubic-bezier(.23,1,.32,1);}
+  .gz-anim .gz-top{animation:ghIn .55s cubic-bezier(.23,1,.32,1) backwards;}
+  .gz-anim .gz-d{animation:gzPop .4s cubic-bezier(.34,1.56,.64,1) backwards;} .gz-anim .gz-d:nth-child(2){animation-delay:.05s} .gz-anim .gz-d:nth-child(3){animation-delay:.1s} .gz-anim .gz-d:nth-child(4){animation-delay:.15s} .gz-anim .gz-d:nth-child(5){animation-delay:.2s} .gz-anim .gz-d:nth-child(6){animation-delay:.25s} .gz-anim .gz-d:nth-child(7){animation-delay:.3s}
+  .gz-anim .gz-card,.gz-anim .gz-stats>div{animation:gzUp .5s cubic-bezier(.23,1,.32,1) .25s backwards;}
+  .gz-anim .gz-seg.on i{animation:gzFill .6s cubic-bezier(.23,1,.32,1) backwards; animation-delay:calc(.5s + var(--k,0) * .12s);}
+  .gz-anim .gz-mini i{animation:gzFill .8s cubic-bezier(.23,1,.32,1) .6s backwards;}
+  .gz-seg.next i{animation:gzPulse 2s ease-in-out infinite; transform:scaleX(1); opacity:.12;}
+  .gz-reached::after{content:""; position:absolute; top:0; bottom:0; left:-40%; width:40%; background:linear-gradient(100deg,transparent,rgba(255,255,255,.22),transparent); animation:gzSweep .9s cubic-bezier(.23,1,.32,1) .6s 1 both; pointer-events:none;}
+}
+@keyframes gzFill{from{transform:scaleX(0);}}
+@keyframes gzUp{from{transform:translateY(16px); opacity:0;}}
+@keyframes gzPop{from{transform:scale(.6); opacity:0;}}
+@keyframes gzPulse{0%,100%{opacity:.08;} 50%{opacity:.3;}}
+@keyframes gzFlame{0%,100%{transform:scale(1);} 50%{transform:scale(1.07);}}
+@keyframes gzBreath{0%,100%{opacity:.5; transform:scale(.95);} 50%{opacity:.9; transform:scale(1.08);}}
+@keyframes gzSpark{0%{transform:translateY(0) scale(1); opacity:0;} 15%{opacity:.9;} 100%{transform:translateY(calc(var(--h) * -1)) scale(.3); opacity:0;}}
+@keyframes gzSweep{to{transform:translateX(420%);}}
+/* V31 Tag-Auswahl immer weiß (Rot nur für "verpasst") */
+.tr-days button.on,.mood-bad .tr-days button.on{--accent:#f4f6f5; --on-accent:#0c0f0e; color:#0c0f0e;}
+.tx-days .chip.active,.mood-bad .tx-days .chip.active,.gn-pan .tx-days .chip.active{background:#f4f6f5; border-color:#f4f6f5; color:#0c0f0e;}
+/* V32 Woche-Kacheln: Ruhe/leer heller lesbar, Status-Farben kräftiger */
+.wp-day.wp-aus,.wp-day.wp-leer{opacity:1; border-color:rgba(255,255,255,.2);}
+.wp-day.wp-aus span,.wp-day.wp-leer span,.wp-day.wp-aus em,.wp-day.wp-leer em{color:#c8d2cd;}
+.wp-day.wp-aus b,.wp-day.wp-leer b{color:#f4f6f5;}
+.wp-geplant,.wp-offen{box-shadow:0 0 14px rgba(168,240,58,.6) !important;}
+.wp-erledigt{background:color-mix(in srgb,var(--accent) 34%,var(--panel-2)) !important; box-shadow:0 0 12px rgba(168,240,58,.4);}
+.wp-verpasst{border-color:#ff4a36 !important; box-shadow:0 0 14px rgba(255,74,54,.6);}
+/* V33 Dim-Schrift überall heller (Alex 31.10.) */
+:root,body{--text-dim:#e8efeb; --text-faint:#d3dcd7;}
+body.mood-good,body:not(.mood-bad){--text-dim:#e8efeb; --text-faint:#d3dcd7;}
+body.mood-bad{--text-dim:#f2dcd8; --text-faint:#e2c3be;}
+.overview-lab{--lab-dim:#d0dad5;}
+.overview-lab.mood-bad{--lab-dim:#e2c3be;}
+.gz-rec{opacity:.95;} .gz-of{opacity:.9;} .pp-foot .pp-reset{opacity:.95;}
+/* V34 Übungszeile: beschriftete Felder Sätze × Wdh · kg, Art als Segment */
+.tx-ed{align-items:flex-end;}
+.te-c{display:flex; flex-direction:column; gap:.2rem; min-width:0; flex:1 1 0;}
+.te-c.te-s{flex:none;}
+.te-c>i{font-style:normal; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; color:var(--text-dim); text-align:center;}
+.tx-ed .xc-x{padding-bottom:.6rem;}
+.tx-ed .xc-f{max-width:none;}
+.te-u{grid-column:1/-1; display:grid; grid-template-columns:repeat(3,1fr); gap:.2rem; background:var(--bg); border-radius:12px; padding:.2rem;}
+.te-u button{min-height:40px; border:0; border-radius:10px; background:none; color:var(--text-dim); font-weight:700; font-size:.8rem;}
+.te-u button.on{background:var(--accent); color:var(--on-accent,#0c0f0e);}
+.tx-row:not(.open) .te-u{display:none;}
+.tx-nm em{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+/* V35 Touch-Ziele mind. 44 px (Größe unverändert im Look, nur höher / größere Tippfläche) */
+.ga-c,.gn-pan .chip,.gn-pan .seg button,.gz-chips button,.goal-pan .seg button,.te-u button{min-height:44px;}
+.tx-row .xc-step button{width:44px; height:44px; min-width:44px; min-height:44px;}
+.tx-row .tx-ed .xc-f input{min-height:44px; height:44px;}
+.gn-res .gh-top .gn-back,.gn-top .gn-back,.tx-back{position:relative;}
+.gn-res .gh-top .gn-back::after,.gn-top .gn-back::after,.tx-back::after{content:""; position:absolute; inset:-8px -6px;}
+.tx-nm,.tx-to{min-height:44px;}
+.tx-row .ts-mv button,.tx-row .tx-rm{position:relative;}
+.tx-row .ts-mv button::after,.tx-row .tx-rm::after{content:""; position:absolute; inset:-5px -2px;}
+button.tx-nm{min-height:44px;}
+/* V36 Ziele-Seite passt über die Tab-Leiste (iPhone, Alex 31.10.: "Ziel anpassen" war verdeckt) */
+.gz{gap:.5rem;}
+.gz-fire{height:70px;} .gz-flame{font-size:3.4rem;} .gz-glow{width:190px; height:130px; margin-left:-95px;} .gz-sp{bottom:28px;}
+.gz-big{font-size:4.4rem;}
+.gz-hero{padding:.2rem .5rem .1rem;}
+.gz-d i{max-width:36px;}
+.gz-card{gap:.4rem; padding:.65rem;}
+.gz-num{font-size:2.4rem;} .gz-of{font-size:1.4rem;}
+.gz-seg{height:26px;} .gz-wide{height:16px;}
+.gz-stats>div{padding:.4rem .3rem;} .gz-stats b{font-size:1.5rem;}
+.gz-mini{margin-top:.1rem;}
+/* V37 Ziele-Seite: 3 Kacheln oben im Stil der anderen Seiten (Profil/Verlauf), auch bei offenem Panel sichtbar (Alex 31.10.) */
+.gz-stats>div{background:var(--panel); border:1px solid var(--border-soft); padding:.5rem .3rem;}
+.gz-stats b{font-size:1.9rem; line-height:1.1; color:var(--accent); font-variant-numeric:tabular-nums;}
+.gz-stats em{font-size:.64rem; letter-spacing:.08em; color:var(--text-dim);}
+.gz-open .gz-stats{display:grid;}
+/* V38 Player Neon-HUD Schritt 1 (Alex 31.10. 23:20, Vorlage Cyber-HUD): Foto grün getönt, Sechseck-Bild + Sechseck-Haken, Ring um Name/Timer, Titel/Fortschritt grün */
+.pf-bg::before{content:""; position:absolute; inset:0; background:var(--accent); mix-blend-mode:color; opacity:.7; pointer-events:none;}
+.pf-bg::after{content:""; position:absolute; inset:0; pointer-events:none; opacity:.5;
+  background:repeating-linear-gradient(0deg,color-mix(in srgb,var(--accent) 10%,transparent) 0 1px,transparent 1px 3px),
+  linear-gradient(90deg,color-mix(in srgb,var(--accent) 13%,transparent) 1px,transparent 1px) 0 0/44px 44px,
+  linear-gradient(0deg,color-mix(in srgb,var(--accent) 13%,transparent) 1px,transparent 1px) 0 0/44px 44px;}
+.pf-title{color:var(--accent); text-shadow:0 0 14px color-mix(in srgb,var(--accent) 70%,transparent);}
+.pf-prog{color:var(--accent);}
+.pf-back{background:color-mix(in srgb,color-mix(in srgb,var(--accent) 10%,#000) 70%,transparent); backdrop-filter:none; border:1.5px solid var(--accent); color:var(--accent); box-shadow:0 0 16px color-mix(in srgb,var(--accent) 45%,transparent);}
+.pf-dots button{background:color-mix(in srgb,var(--accent) 22%,rgba(255,255,255,.12));}
+.pf-dots .part{background:color-mix(in srgb,var(--accent) 55%,transparent);}
+.pf-dots .ok{background:var(--accent); box-shadow:0 0 8px var(--accent);}
+.pf-dots .cur{outline:2px solid var(--accent); box-shadow:0 0 10px var(--accent);}
+.pf-gif{width:102px; height:118px; border:0; border-radius:0; background:none; box-shadow:none; overflow:visible; filter:drop-shadow(0 0 10px color-mix(in srgb,var(--accent) 65%,transparent)); top:calc(env(safe-area-inset-top) + 92px);}
+.pf-hex{position:absolute; inset:0; background:var(--accent); clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);}
+.pf-hex img{position:absolute; inset:3px; width:calc(100% - 6px); height:calc(100% - 6px); clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%); background:#000;}
+.pf-core{position:relative; display:flex; flex-direction:column; align-items:center; width:100%;}
+.pf-core::before{content:""; position:absolute; inset:-30px 5% -12px; border-radius:50%; border:2px solid var(--accent); box-shadow:0 0 18px color-mix(in srgb,var(--accent) 60%,transparent),inset 0 0 22px color-mix(in srgb,var(--accent) 35%,transparent); pointer-events:none;}
+.pf-core::after{content:""; position:absolute; inset:-38px 2% -20px; border-radius:50%; border:1px solid color-mix(in srgb,var(--accent) 45%,transparent); pointer-events:none;}
+.pf-time{text-shadow:0 0 18px color-mix(in srgb,var(--accent) 55%,transparent),0 2px 14px rgba(0,0,0,.6);}
+.pf-pill{background:color-mix(in srgb,color-mix(in srgb,var(--accent) 8%,#000) 66%,transparent); backdrop-filter:none; border:1px solid color-mix(in srgb,var(--accent) 50%,transparent); box-shadow:inset 0 0 14px color-mix(in srgb,var(--accent) 18%,transparent);}
+.pf-pill small{color:var(--accent);}
+.pf-main{position:relative; width:90px; height:104px; will-change:transform; background:none; border-radius:0; box-shadow:none; filter:drop-shadow(0 0 12px color-mix(in srgb,var(--accent) 75%,transparent)); transition:transform .16s cubic-bezier(.23,1,.32,1);}
+.pf-main::before,.pf-main::after{content:""; position:absolute; clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);}
+.pf-main::before{inset:0; background:var(--accent);}
+.pf-main::after{inset:5px; background:linear-gradient(160deg,color-mix(in srgb,var(--accent),#fff 45%),var(--accent) 55%,color-mix(in srgb,var(--accent),#000 30%));}
+.pf-main span{position:relative; z-index:1;}
+.pf-mainlab{color:var(--accent);}
+/* V38b Designer-Funde: Touch-Ziele, Lesbarkeit */
+.pf-dots button{position:relative;} .pf-dots button::after{content:""; position:absolute; inset:-20px 0;}
+.pf-restbtns{height:44px;} .pf-restbtns button{min-height:44px;}
+.pf-core::before{background:rgba(0,0,0,.4);}
+.pf-lab{color:#fff;}
+/* V39 Ziele-Seite bekommt denselben Hero-Titel wie alle Hauptseiten (Alex 31.10. 23:35) */
+body.is-dash:has(.overview-lab) .topbar{position:static; top:auto; right:auto;}
+body.is-dash:has(.overview-lab) .topbar h1{display:block;}
+body.is-dash:has(.overview-lab) .topbar{padding-left:1.1rem; padding-right:1.1rem;}
+.overview-lab .tx-head{padding:0 0 .1rem;}
+.gz-fire{height:60px;} .gz-flame{font-size:3rem;} .gz-big{font-size:4rem;} .gz-glow{height:110px;}
+body.is-dash .overview-lab{justify-content:flex-start; gap:.8rem; padding-top:.6rem;}
+body.is-dash .overview-lab .lab-goal-link{margin-top:-.2rem;}
+/* V40 "Ziel anpassen" als umrandeter Button (Alex 31.10. 23:50), Stil wie Verlauf "Ziele & Streak ›" */
+body.is-dash .overview-lab .lab-goal-link{align-self:stretch; margin-top:0; min-height:48px; padding:.7rem; border-radius:14px; border:1px solid var(--accent); background:color-mix(in srgb,var(--accent) 10%,transparent); color:var(--accent); font-size:.9rem; font-weight:700; text-decoration:none; box-shadow:0 0 14px color-mix(in srgb,var(--accent) 30%,transparent);}
+
+/* V41 Streak-Zahl als 3D-Chrom-Ziffern statt Flamme (Alex 3.11. "lass uns benutzen was wir haben"); 0/9 vorerst Textersatz */
+.gz-digits{height:auto; align-items:center; margin:-.4rem 0 -.6rem;}
+.gz-digits .gz-glow{display:none; bottom:auto; top:50%; margin-top:-75px; height:150px; width:300px; margin-left:-150px;}
+.gz-dg{position:relative; display:block; height:176px; width:auto; margin-inline:-18px; pointer-events:none; -webkit-mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent),linear-gradient(180deg,transparent,#000 10%,#000 90%,transparent); -webkit-mask-composite:source-in; mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent),linear-gradient(180deg,transparent,#000 10%,#000 90%,transparent); mask-composite:intersect; -webkit-user-drag:none;}
+.gz-dt{width:auto; margin-inline:0 0; padding:0 .4rem; font:400 11.2rem/176px Anton,Impact,'Arial Narrow',sans-serif; color:var(--lab-acc); text-shadow:0 0 26px var(--lab-glow); mix-blend-mode:normal;}
+.gz-off .gz-dg{opacity:.45; filter:grayscale(1);}
+@media (prefers-reduced-motion:no-preference){ .gz-hero.hold .gz-digits{transform:scale(1.06); transition:transform .5s cubic-bezier(.23,1,.32,1);} .gz-digits{transition:transform .3s cubic-bezier(.23,1,.32,1);} }
+
+/* V42 drehende 3D-Streak-Ziffern (Canvas ersetzt die Bilder, sobald WebGL bereit ist) */
+.gz-digits canvas{position:absolute; inset:0; width:100%; height:176px; display:block; touch-action:none; cursor:grab; z-index:1;}
+.gz-digits.is3d{min-height:176px;}
+.gz-digits.is3d .gz-dg{visibility:hidden;}
+.gz-digits.is3d::before{content:""; position:absolute; left:50%; bottom:6px; width:200px; height:90px; margin-left:-100px; background:radial-gradient(closest-side,color-mix(in srgb,var(--lab-acc) 30%,transparent),transparent); pointer-events:none;}
+.gz-off .gz-digits.is3d::before{opacity:.15;}
+
+/* V43: Übungen-Startseite, 4 Kacheln in der Split-Reihe (Warmup / Balance / Push / Pull) */
+.wv-grid.xr-split{grid-template-columns:repeat(4,minmax(0,1fr));}
+.xr-split .wv-name{font-size:.78rem;}
+
+/* V44: Desktop (>=900px) – ruhiger Rahmen: Inhalt mittig, max. 1120px; Startseite mit Menü; Wizard und Übungs-Kacheln nicht überdimensioniert */
+@media (min-width:900px){
+  :where(#content > *){width:100%; max-width:1120px; margin-inline:auto;}
+  body.is-home .tabbar{display:flex !important;}
+  .home{padding-bottom:1.5rem;}
+  .pl{width:100%; max-width:560px;}
+  .wv-grid.xr-landing, .wv-grid.xr-split{grid-template-columns:repeat(7,minmax(0,1fr));}
+  .xr-landing .wv-tile[data-g] .wv-name{font-size:1.05rem;}
+  .em-st .qk-go{width:100%; max-width:420px;}
+}
+/* V45: Sätze direkt in der Ergebnisliste */
+.gx-st{display:inline-flex; align-items:center; gap:.3rem; padding:.05rem .3rem;}
+.gx-st button{width:28px; height:28px; border-radius:50%; border:0; background:rgba(255,255,255,.14); color:var(--accent); font-size:1rem; font-weight:800; line-height:1; cursor:pointer; padding:0;}
+/* V45b: Einstellungen pro Übung (Ergebnisliste), Player-Sheet */
+.pp-duo{grid-template-columns:1fr}
+.gx-ed{display:flex; align-items:center; gap:.5rem; margin-top:.4rem; min-width:0}
+.gx-ct{display:inline-flex; align-items:center; gap:.2rem; background:rgba(255,255,255,.06); border-radius:999px; padding:.15rem .25rem .15rem .6rem; min-width:0}
+.gx-ct em{font-style:normal; font-size:.68rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; opacity:.6; margin-right:.15rem}
+.gx-ct b{display:inline-block; min-width:1.5rem; text-align:center; font-family:Anton,sans-serif; font-weight:400; font-size:1rem; margin:0}
+.gx-ct button,.gx-rm{width:30px; height:30px; border-radius:50%; border:0; background:rgba(255,255,255,.12); color:var(--accent); font-size:1.05rem; font-weight:800; line-height:1; padding:0; cursor:pointer; transition:transform .12s ease-out, background-color .12s ease-out}
+.gx-ct button:active,.gx-rm:active{transform:scale(.92); background:rgba(255,255,255,.2)}
+.gx-rm{margin-left:auto; background:transparent; color:rgba(255,255,255,.45); font-size:.85rem}
+.gn-res .gx-m{flex-wrap:wrap; overflow:visible}
+.pf-sh-sets{display:flex; align-items:center; justify-content:space-between; padding:.2rem .2rem .2rem .9rem; border-radius:14px; background:rgba(255,255,255,.06)}
+.pf-sh-sets em{font-style:normal; font-weight:700; color:var(--text-dim)}
+.pf-sh-sets .xc-step b{font-family:Anton,sans-serif; font-weight:400; font-size:1.3rem}
+.pf-note{width:100%; box-sizing:border-box; min-height:46px; padding:0 .9rem; border-radius:14px; border:1px solid var(--border); background:var(--bg); color:var(--text); font:inherit; font-size:.9rem}
+.pf-note:focus{outline:none; border-color:var(--accent)}
+.pf-chiprow{display:flex; align-items:center; justify-content:space-between; gap:.6rem}
+.pf-chiprow .pf-chips{flex:1; min-width:0}
+.pf-sets{flex:none} .pf-sets button{width:36px; height:36px} .pf-sets b{font-family:Anton,sans-serif; font-weight:400; font-size:1.15rem; min-width:1.6rem}
+.pf-sh-row.one{grid-template-columns:1fr} .pf-note{min-height:42px}
+.pf-sets button:active{transform:scale(.94)}

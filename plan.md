@@ -772,3 +772,7 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 - 8 Übungen in pool.json (category `balance`): Tandem Stand/Walk, Single Leg Stand (+Leg Raise, Toe Stand, Star Reach, Eyes Closed, on Pillow). Level 0/1/2 steuert Auswahl (BAL in script.js).
 - Übungen-Startseite: Kachel "Balance" (filterSplit `bal`), Filter-Chip "Gleichgewicht". Training erstellen/Preset: `balFor()` hängt 1 (≤4 Hauptübungen) bzw. 2 Übungen nach dem Aufwärmen an, flag `warm+bal`, Tausch über warmAlt.
 - OFFEN: Bilder fehlen (8 Einträge in neue_uebungen.json, bild "offen"; Kacheln zeigen bis dahin kein Foto).
+
+## 6.11. abends – Prüfer-Funde (Versprechen = Funktion), Commit folgt
+- Ergebnisliste: Sätze ±, Wdh/Sek ± und ✕ pro Übung (gxEd). Player-Sheet: Sätze ± neben Satz-Chips, Notiz zur Übung + zum Training, "Training löschen". Übung-Detail: je Training ein Chip pro Tag. DE/EN-Umschalter entfernt (übersetzte nur Übungsnamen).
+- Offen (C): Verlauf-Einträge nicht korrigierbar, Wdh bei kg-Übungen im Player nicht erfassbar, Wisch-Hinweis in wtrain, Level pro Training, Wisch rechts auf Trainingskarten ohne Wirkung. Bericht: qa-versprechen-bericht-2026-11-06.md
