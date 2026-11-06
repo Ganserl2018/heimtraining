@@ -1080,9 +1080,9 @@ function gxEd(e, i) {
 function renderGen() {
   const lv = genLevel(), p = loadProfile();
   const pill = (act, v, l, on) => `<button class="lv-p${on ? ' on' : ''}" data-act="${act}" data-v="${v}">${l}</button>`;
-  const res = genRes && !genRes.length ? `<div class="gn-res"><button class="gn-back" data-act="genBackWiz">‹ Zurück zur Auswahl</button><div class="lv-note">Mit diesen Geräten und diesem Fokus finde ich keine Übungen. Mehr Geräte oder anderen Fokus wählen.</div></div>` : genRes ? `<div class="gn-res">${genHero()}${genActHtml()}${genNote ? `<div class="lv-note">${esc(genNote)}</div>` : ''}${(gnAdj || genPin) ? '' : genRes.map((e, i) => (genRes.some(x => x.warm) && (i === 0 || secOf(e) !== secOf(genRes[i - 1])) ? `<div class="gn-wh">${SEC_LBL[secOf(e)]}</div>` : '') + `<div class="gn-sw" data-gsw="${i}"><div class="gn-sw-bg"><span>★ Favorit</span><span>Neue Übung ↻</span></div><div class="gn-ex exinfo${i === genSwapped ? ' gn-new' : ''}${e.warm ? ' warm' : ''}" data-g="${esc(MUSCLE_GROUPS[e.muscle] || '')}" style="--i:${i}" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+  const res = genRes && !genRes.length ? `<div class="gn-res"><button class="gn-back" data-act="genBackWiz">‹ Zurück zur Auswahl</button><div class="lv-note">Mit diesen Geräten und diesem Fokus finde ich keine Übungen. Mehr Geräte oder anderen Fokus wählen.</div></div>` : genRes ? `<div class="gn-res">${genHero()}${genActHtml()}${genNote ? `<div class="lv-note">${esc(genNote)}</div>` : ''}${(gnAdj || genPin) ? '' : genRes.map((e, i) => (genRes.some(x => x.warm) && (i === 0 || secOf(e) !== secOf(genRes[i - 1])) ? `<div class="gn-wh">${SEC_LBL[secOf(e)]}</div>` : '') + `<div class="gn-sw" data-gsw="${i}"><div class="gn-sw-bg"><span>★ Favorit</span><span>Neue Übung ↻</span><span class="gn-del">✕ Entfernen</span></div><div class="gn-ex exinfo${i === genSwapped ? ' gn-new' : ''}${e.warm ? ' warm' : ''}" data-g="${esc(MUSCLE_GROUPS[e.muscle] || '')}" style="--i:${i}" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span><img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
       <div class="gx"><b>${loadFavs().includes(e.name) ? '★ ' : ''}${esc(dn(e.name))}</b><div class="gx-m">${e.bal ? '<span class="gx-t warm">Gleichgewicht</span>' : e.warm ? '<span class="gx-t warm">Aufwärmen</span>' : ''}<span class="gx-t g">${esc(MUSCLE_DE[e.muscle] || e.muscle)}</span>${e.plan[0].w != null && e.unit === 'kg' ? `<span class="gx-t w">${e.up ? '↑ ' : 'ca. '}${e.plan[0].w} kg</span>` : ''}</div>${gxEd(e, i)}</div><button class="gn-pk" data-act="genPickOpen" data-i="${i}" aria-label="Übung wählen">⇄</button></div></div>`).join('')}
-      ${(gnAdj || genPin) ? '' : `<div class="lv-note lv-one">Wischen: <i class="lv-ic">→</i> <i class="lv-ic">★</i> Favorit · <i class="lv-ic">←</i> zufällig · <i class="lv-ic lv-sw">⇄</i> wählen</div>${!p.weight && genRes.some(e => e.unit === 'kg') ? '<div class="lv-note lv-one">Gewicht im Profil = kg-Vorschläge</div>' : ''}`}
+      ${(gnAdj || genPin) ? '' : `<div class="lv-note lv-one">Wischen: <i class="lv-ic">→</i> <i class="lv-ic">★</i> Favorit · <i class="lv-ic">←</i> zufällig · <i class="lv-ic">←←</i> entfernen · <i class="lv-ic lv-sw">⇄</i> wählen</div>${!p.weight && genRes.some(e => e.unit === 'kg') ? '<div class="lv-note lv-one">Gewicht im Profil = kg-Vorschläge</div>' : ''}`}
       ${genActMain()}</div>` : '';
   const scrollRes = genJust; genJust = false;
   content.innerHTML = `<div class="gn">
@@ -2739,7 +2739,7 @@ content.addEventListener('touchmove', e => {
   if (!_gs) return;
   const dx = e.touches[0].clientX - _gs.x, dy = e.touches[0].clientY - _gs.y;
   if (!_gs.lock) { if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy) * 1.5) _gs.lock = 'h'; else if (Math.abs(dy) > 8) { _gs = null; return; } else return; }
-  e.preventDefault(); _gs.dx = dx; _gs.card.style.transition = 'none'; _gs.card.style.transform = `translateX(${dx}px)`; _gs.w.dataset.dir = dx > 0 ? 'r' : 'l';
+  e.preventDefault(); _gs.dx = dx; { const del = !_gs.w.dataset.tsw && genRes && genRes.length > 1 && dx < -_gs.w.offsetWidth * 0.62; if (del) _gs.w.dataset.del = '1'; else delete _gs.w.dataset.del; } _gs.card.style.transition = 'none'; _gs.card.style.transform = `translateX(${dx}px)`; _gs.w.dataset.dir = dx > 0 ? 'r' : 'l';
 }, { passive: false });
 content.addEventListener('touchend', () => {
   if (!_gs) return;
@@ -2747,9 +2747,10 @@ content.addEventListener('touchend', () => {
   if (lock !== 'h') return;
   _swDone = Date.now();
   card.style.transition = 'transform .18s';
+  const del = w.dataset.del === '1'; delete w.dataset.del;
   if (Math.abs(dx) < Math.min(90, w.offsetWidth * 0.25)) { card.style.transform = ''; return; }
   card.style.transform = dx > 0 ? '' : 'translateX(-110%)';
-  setTimeout(() => { if (w.dataset.tsw) { const [tid, ti] = w.dataset.tsw.split('|'); if (dx > 0) wFavEx(trainingById(tid), Number(ti)); else wSwapEx(trainingById(tid), Number(ti)); } else if (dx > 0) genFav(Number(w.dataset.gsw)); else genSwap(Number(w.dataset.gsw)); render(); }, 170);
+  setTimeout(() => { if (del) { genRes.splice(Number(w.dataset.gsw), 1); genSwapped = -1; } else if (w.dataset.tsw) { const [tid, ti] = w.dataset.tsw.split('|'); if (dx > 0) wFavEx(trainingById(tid), Number(ti)); else wSwapEx(trainingById(tid), Number(ti)); } else if (dx > 0) genFav(Number(w.dataset.gsw)); else genSwap(Number(w.dataset.gsw)); render(); }, 170);
 });
 // START = Halten (0,9 s) mit Ring; kurzes Tippen startet nicht
 (function () {

@@ -3132,3 +3132,11 @@ body.is-dash .overview-lab .lab-goal-link{align-self:stretch; margin-top:0; min-
 .gx-n{min-width:1.7rem}
 .gx-ct button{width:26px; height:26px}
 .gx-rm{display:none}
+/* V45e: langes Links-Wischen = Entfernen */
+.gn-del{position:absolute; right:1rem}
+.gn-sw .gn-sw-bg .gn-del{opacity:0}
+.gn-sw[data-dir=l] .gn-sw-bg span:nth-child(2){opacity:1}
+.gn-sw[data-dir=l] .gn-sw-bg span.gn-del{opacity:0}
+.gn-sw[data-del] .gn-sw-bg{background:#b3261e}
+.gn-sw[data-del][data-dir=l] .gn-sw-bg span:nth-child(2){opacity:0}
+.gn-sw[data-del][data-dir=l] .gn-sw-bg span.gn-del{opacity:1}
