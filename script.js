@@ -1075,7 +1075,7 @@ function genHero() {
 }
 function gxEd(e, i) {
   const sek = e.unit === 'sek', st = (act, d, l) => `<button data-act="${act}" data-i="${i}" data-d="${d}" aria-label="${l}">${d < 0 ? '–' : '+'}</button>`;
-  return `<div class="gx-ed"><span class="gx-ct">${st('genSetsAdj', -1, 'Ein Satz weniger')}<span class="gx-n"><b>${e.sets}</b><small>Sätze</small></span>${st('genSetsAdj', 1, 'Ein Satz mehr')}</span><span class="gx-ct">${st('genRepsAdj', -1, 'Weniger')}<span class="gx-n"><b>${e.plan[0].r}</b><small>${sek ? 'Sek' : 'Wdh'}</small></span>${st('genRepsAdj', 1, 'Mehr')}</span>${genRes.length > 1 ? `<button class="gx-rm" data-act="genRemove" data-i="${i}" aria-label="Übung entfernen">✕</button>` : ''}</div>`;
+  return `<div class="gx-ed"><span class="gx-ct">${st('genSetsAdj', -1, 'Ein Satz weniger')}<span class="gx-n"><b>${e.sets}</b><small>Sätze</small></span>${st('genSetsAdj', 1, 'Ein Satz mehr')}</span><span class="gx-ct">${st('genRepsAdj', -1, 'Weniger')}<span class="gx-n"><b>${e.plan[0].r}</b><small>${sek ? 'Sek' : 'Wdh'}</small></span>${st('genRepsAdj', 1, 'Mehr')}</span></div>`;
 }
 function renderGen() {
   const lv = genLevel(), p = loadProfile();
@@ -2371,7 +2371,6 @@ content.addEventListener('click', e => {
       const st = ex.unit === 'sek' ? 5 : 1, next = ex.plan[0].r + Number(btn.dataset.d) * st; if (next < 1 || next > 120) return;
       ex.plan.forEach(p => { p.r = next; }); break;
     }
-    case 'genRemove': { if (!genRes || genRes.length < 2) return; genRes.splice(Number(btn.dataset.i), 1); genSwapped = -1; break; }
     case 'playSetsAdj': {
       const ex = trainingById(playTid).exercises[playIdx], next = (ex.sets || 3) + Number(btn.dataset.d);
       if (next < 1 || next > 10) return;

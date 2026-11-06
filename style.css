@@ -3127,3 +3127,8 @@ body.is-dash .overview-lab .lab-goal-link{align-self:stretch; margin-top:0; min-
 .gx-rm::after{inset:-9px}
 .gn-res > .gn-act:last-child{position:sticky; bottom:0; z-index:5; margin:.4rem -.2rem 0; padding:.9rem .2rem .5rem; background:linear-gradient(180deg,transparent 0,var(--bg,#0f1417) 38%)}
 .gn-wh{margin-top:1rem}
+/* V45d: Steuerung kompakter, nie unter das Tausch-Icon */
+.gx-ed{flex-wrap:wrap; gap:.3rem; max-width:100%}
+.gx-n{min-width:1.7rem}
+.gx-ct button{width:26px; height:26px}
+.gx-rm{display:none}
