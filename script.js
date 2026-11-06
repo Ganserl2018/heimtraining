@@ -1462,7 +1462,7 @@ function renderPlay() {
         <button class="pf-sh-btn" data-act="playFinish">${totalDone >= totalAll ? 'Training beenden' : `Beenden · ${totalAll - totalDone} von ${totalAll} Sätzen offen`}</button>
         <input class="pf-note" type="text" maxlength="200" placeholder="Notiz zur Übung" value="${esc(ex.note || '')}" data-act="wExNote" data-id="${t.id}" data-i="${playIdx}" aria-label="Notiz zur Übung">
         <input class="pf-note" type="text" maxlength="300" placeholder="Notiz zum Training" value="${esc(((wProgRaw().sessionNote || {})[t.id]) || '')}" data-act="wSessionNote" data-id="${t.id}" aria-label="Notiz zum Training">
-        <div class="pf-sh-row one"><button class="pf-sh-btn ghost sm del" data-act="playDelete">🗑 Training löschen</button></div>
+        <div class="pf-sh-row"><button class="pf-sh-btn ghost sm" data-act="playEdit">✎ Bearbeiten</button><button class="pf-sh-btn ghost sm del" data-act="playDelete">🗑 Training löschen</button></div>
       </div>
     </div>
   </div>`;
