@@ -1235,8 +1235,9 @@ function fgPaint() {
   FG_CHIPS.forEach(c => { if (G.includes(c[1]) || (c[3] && G.includes(c[3]))) fgNodes(c).forEach(n => { on[n] = FG_COL[c[2]]; }); });
   const any = Object.keys(on).length > 0;
   fg.mats.forEach(({ m, node }) => {
-    if (node && on[node]) { m.color.set(on[node]).multiplyScalar(0.55); m.emissive.set(on[node]); m.emissiveIntensity = 0.45; }
-    else { m.color.set(any ? (node ? 0x4b5250 : 0x3a403e) : (node ? 0x9ea5a2 : 0x7f8683)); m.emissive.setHex(0); }
+    const lin = (hex, k = 1) => new T.Color(hex).convertSRGBToLinear().multiplyScalar(k);
+    if (node && on[node]) { m.color.copy(lin(on[node], 0.9)); m.emissive.copy(lin(on[node], 1)); m.emissiveIntensity = 0.32; m.roughness = 0.42; }
+    else { m.color.copy(lin(any ? (node ? 0x474f4c : 0x353b39) : (node ? 0x9ea5a2 : 0x7f8683))); m.emissive.setHex(0); m.roughness = 0.62; }
   });
 }
 function fgMount() {
