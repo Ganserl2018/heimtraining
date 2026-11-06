@@ -1153,7 +1153,7 @@ body:has(.overview-lab) .lab-head-title{font-family:Anton,Impact,'Arial Narrow',
   .tx-row{grid-template-areas:"th nm ed mv rm"; } .tx-th{grid-area:th;} .tx-nm{grid-area:nm;} .tx-ed{grid-area:ed;} .ts-mv{grid-area:mv;} .tx-rm{grid-area:rm;}
   .tx-go{order:-1; margin:0 0 .6rem;}
 }
-@media (min-width:1500px){ .tx-rows{grid-template-columns:1fr 1fr;} .tx-rows .ts-add{grid-column:1/-1;} .tx-row{grid-template-areas:"th nm mv rm" "ed ed ed ed"; grid-template-columns:48px minmax(0,1fr) auto auto;} .tx-ed{grid-row:auto;} .tx-ed .xc-f{flex:1; max-width:none;} }
+/* V44: 2-Spalten-Liste ab 1500px entfernt (Abschnitts-Überschriften und Zeilen gerieten durcheinander) */
 #content:has(.tsx2){display:flex; flex-direction:column;}
 .tsx2{flex:1; min-height:0; height:auto;}
 .tx-row .ts-mv{display:flex; gap:.25rem;} .tx-row .ts-mv button,.tx-row .tx-rm{width:34px; height:34px; min-width:34px; min-height:34px; padding:0; font-size:.8rem;}
@@ -2816,3 +2816,14 @@ body.is-dash .overview-lab .lab-goal-link{align-self:stretch; margin-top:0; min-
 /* V43: Übungen-Startseite, 4 Kacheln in der Split-Reihe (Warmup / Balance / Push / Pull) */
 .wv-grid.xr-split{grid-template-columns:repeat(4,minmax(0,1fr));}
 .xr-split .wv-name{font-size:.78rem;}
+
+/* V44: Desktop (>=900px) – ruhiger Rahmen: Inhalt mittig, max. 1120px; Startseite mit Menü; Wizard und Übungs-Kacheln nicht überdimensioniert */
+@media (min-width:900px){
+  :where(#content > *){width:100%; max-width:1120px; margin-inline:auto;}
+  body.is-home .tabbar{display:flex !important;}
+  .home{padding-bottom:1.5rem;}
+  .pl{width:100%; max-width:560px;}
+  .wv-grid.xr-landing, .wv-grid.xr-split{grid-template-columns:repeat(7,minmax(0,1fr));}
+  .xr-landing .wv-tile[data-g] .wv-name{font-size:1.05rem;}
+  .em-st .qk-go{width:100%; max-width:420px;}
+}
