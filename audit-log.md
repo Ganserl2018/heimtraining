@@ -47,3 +47,20 @@ Prüfung 1.11.: 13 Commits, A=9 (Gruppen), B=4, C=0. Alle mit Auftrag-Zeile. Sta
 
 ## Prüfung 1.11.2026 (zweiter Lauf, wöchentlich, 4b839f6)
 Keine neuen Commits seit Prüfung 1.11. (nur der Audit-Commit 4b839f6 selbst, nur audit-log.md). A=0, B=0, C=0. Startbutton/Halten-Füllen vorhanden (`.home-btn.hold` in style.css). Offen weiterhin: Abnahme von e129f02 (Segment statt Dropdown) und fbc897e (SVG-Symbole).
+
+## Prüfung 6.11.2026 (Auditor bei "Speichern", 4b839f6..93de2e0, Session 01Sttn3rWJAykZSyYgfakDNz)
+| Datum | Hash | Stufe | Was | Wirkung für Alex | Status |
+|---|---|---|---|---|---|
+| 6.11. | 59cf877 | C | DE/EN-Umschalter im Profil entfernt (ersatzlos, Alex nicht gefragt; Commit nennt nur "bring das in ordnung") | Profil hat keine Sprachwahl mehr; Seite nur Deutsch | offen; Rückbau: `git revert`-Teil in 59cf877 (profLang-Zeile in script.js) |
+| 6.11. | 59cf877 | C (leicht) | Player: Button "⚙ Sätze ändern" entfernt (ersetzt durch Sätze direkt im Player, "Löschen" jetzt "Training löschen") | Player-Leiste anders; Weg in den Trainings-Editor fehlt (playEdit-Case in e878f54 entfernt) | offen; prüfen ob Alex den Editor-Zugang braucht |
+| 6.11. | 489e285 | B/C (leicht) | Hinweis bei fehlender Muskelgruppe (genNote), gn-wh Abstand, sticky Aktionsleiste, Hero-Zahlen vereinheitlicht (Prüfer-Funde, "bring das in ordnung auf gutaussehende weise") | genNote und Gruppenabstand eigenständig; Hero-Zahlen/sticky Leiste optisch geändert | offen, abnehmen |
+| 6.11. | e878f54 | A | Sätze pro Übung in Ergebnisliste ("alles hören"), Prüfer-Regel | wie verlangt | offen |
+| 6.11. | a1568ac | A | Balance-Reiter, 8 Übungen, 1-2 im Aufwärmblock (Bilder offen) | wie verlangt | offen |
+| 6.11. | f3e0c50 | A | Überschrift Gleichgewicht zwischen Aufwärmen/Training | wie verlangt | offen |
+| 6.11. | 5bb8f39 | A | Desktop >=900px: Rahmen 1120px, Startseite mit Menü, 7 Kacheln/Reihe. Entfernt: 2-Spalten-Liste ab 1500px (Begründung: kaputtes Layout) | nur PC-Ansicht; Handy unverändert | offen, abnehmen |
+| 6.11. | 3752a0b | A | og-image + OG-Tags | Logo in Link-Vorschau | offen |
+| 6.11. | 30e8838, e31a5e6, 93de2e0 | A/B | Prüfberichte, Speichern | keine UI | Standard |
+| 3.11. | 1a5e73b, de6e197, 134d81c, 422d442, 9543047 | A | Streak: Flamme -> 3D-Ziffern/Glas (Zitate im Commit; Flamme ersetzt, aber auf Wunsch) | Streak sieht neu aus; 0/9 anfangs Text | offen, abnehmen (bisher nie geprüft) |
+| 3.11. | f05d1ae, 828e041 | A | Streak = Trainings in Folge; Code-Kopie-Tool | wie verlangt | offen |
+
+Prüfung 6.11.: 18 Commits (inkl. nicht zuvor geprüfter 3.11.). A=14, B=3, C=2 (+1 leicht). Alle mit Auftrag-Zeile. Startbutton/Halten-Füllen vorhanden (7x `.home-btn.hold`-Treffer in style.css, kein Diff). Neon-Look nicht abgeschwächt. Weiter nicht abgenommen: e129f02, fbc897e.
