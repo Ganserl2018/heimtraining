@@ -1912,7 +1912,7 @@ function renderProfile() {
         </div>
       </div>
       <div class="pp-foot pp-t" style="--i:8">
-      <button class="pp-reset" data-act="appReload">↻ Neu laden · ${((document.querySelector('script[src^="script.js"]') || {}).src || '').split('v=')[1] || ''}</button>
+      <button class="pp-reset pp-reload" data-act="appReload"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>Neu laden</button>
       </div>
     </div>`;
 }

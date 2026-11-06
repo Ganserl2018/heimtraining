@@ -3145,3 +3145,8 @@ body.is-dash .overview-lab .lab-goal-link{align-self:stretch; margin-top:0; min-
 .gn-res .gn-ex .gx-ed{flex:0 0 100%; order:9; flex-wrap:nowrap; justify-content:space-between; margin:0}
 .gn-res .gn-ex .gx-ct{flex:1 1 0; justify-content:space-between; max-width:calc(50% - .2rem)}
 .gn-res .gn-ex .gx-n{flex:1}
+/* V45g: Neu laden als Button im Stil der Aktionsknöpfe */
+.pp-foot .pp-reload{display:inline-flex; align-items:center; justify-content:center; gap:.5rem; width:100%; min-height:44px; padding:0 1rem; border:1px dashed var(--border); border-radius:14px; background:none; color:var(--text); font-size:.9rem; font-weight:700; text-decoration:none; opacity:1; cursor:pointer; transition:background-color .16s ease-out, border-color .16s ease-out, transform .12s ease-out}
+.pp-reload svg{width:18px; height:18px; fill:none; stroke:var(--accent); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; transition:transform .4s ease-out}
+.pp-reload:active{transform:scale(.97); border-color:var(--accent); background:rgba(255,255,255,.05)}
+.pp-reload:active svg{transform:rotate(180deg)}
