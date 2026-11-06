@@ -3140,3 +3140,8 @@ body.is-dash .overview-lab .lab-goal-link{align-self:stretch; margin-top:0; min-
 .gn-sw[data-del] .gn-sw-bg{background:#b3261e}
 .gn-sw[data-del][data-dir=l] .gn-sw-bg span:nth-child(2){opacity:0}
 .gn-sw[data-del][data-dir=l] .gn-sw-bg span.gn-del{opacity:1}
+/* V45f: Steuerung eine Zeile unter Bild+Name, volle Breite (links neben dem Bild-Rand) */
+.gn-res .gn-ex{flex-wrap:wrap; row-gap:.35rem}
+.gn-res .gn-ex .gx-ed{flex:0 0 100%; order:9; flex-wrap:nowrap; justify-content:space-between; margin:0}
+.gn-res .gn-ex .gx-ct{flex:1 1 0; justify-content:space-between; max-width:calc(50% - .2rem)}
+.gn-res .gn-ex .gx-n{flex:1}
