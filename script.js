@@ -166,7 +166,7 @@ let anleitungen = {};
 let namesDe = {}; // names_de.json: englischer Schlüsselname -> deutsche Anzeige
 const BADKEY = 'heimtraining.badimg';
 function loadBad() { try { return JSON.parse(LS.getItem(BADKEY)) || []; } catch (e) { return []; } }
-const dn = n => namesDe[n] || n;
+const dn = n => (loadProfile().lang === 'en' ? n : (namesDe[n] || n));
 let gearFix = {}; // gearfix.json: Name -> {s:'ok'|'no', g:[Geräte]} (Alex' Heim-Gym, fest)
 let metByName = {}; // V8-01/03: name -> MET-Wert
 Promise.all([
@@ -1908,7 +1908,7 @@ function renderProfile() {
         <div class="pp-seg">${LEVELS.map(([k, l], x) => `<button class="${(p.level == null ? 0 : p.level) === x ? 'on' : ''}" data-act="profLevel" data-v="${x}">${l}</button>`).join('')}</div>
         <div class="pp-duo">
         <div class="pp-seg pp-gen">${[['m', 'Mann'], ['w', 'Frau']].map(([k, l]) => `<button class="${(p.gender || 'm') === k ? 'on' : ''}" data-act="profGender" data-v="${k}">${l}</button>`).join('')}</div>
-        
+        <div class="pp-seg pp-lang">${[['de', 'DE'], ['en', 'EN']].map(([k, l]) => `<button class="${(p.lang || 'de') === k ? 'on' : ''}" data-act="profLang" data-v="${k}">${l}</button>`).join('')}</div>
         </div>
       </div>
       <div class="pp-foot pp-t" style="--i:8">
@@ -2365,6 +2365,7 @@ content.addEventListener('click', e => {
       if (next > ex.sets) ex.plan[next - 1] = { ...ex.plan[next - 2] }; else ex.plan.length = next;
       ex.sets = next; break;
     }
+    case 'profLang': { const p = loadProfile(); p.lang = btn.dataset.v; saveProfile(p); break; }
     case 'genRepsAdj': {
       const ex = genRes && genRes[Number(btn.dataset.i)]; if (!ex) return;
       const st = ex.unit === 'sek' ? 5 : 1, next = ex.plan[0].r + Number(btn.dataset.d) * st; if (next < 1 || next > 120) return;

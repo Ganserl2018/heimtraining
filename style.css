@@ -2831,7 +2831,7 @@ body.is-dash .overview-lab .lab-goal-link{align-self:stretch; margin-top:0; min-
 .gx-st{display:inline-flex; align-items:center; gap:.3rem; padding:.05rem .3rem;}
 .gx-st button{width:28px; height:28px; border-radius:50%; border:0; background:rgba(255,255,255,.14); color:var(--accent); font-size:1rem; font-weight:800; line-height:1; cursor:pointer; padding:0;}
 /* V45b: Einstellungen pro Übung (Ergebnisliste), Player-Sheet */
-.pp-duo{grid-template-columns:1fr}
+
 .gx-ed{display:flex; align-items:center; gap:.5rem; margin-top:.4rem; min-width:0}
 .gx-ct{flex:none; display:inline-flex; align-items:center; gap:.1rem; background:rgba(255,255,255,.06); border-radius:999px; padding:.12rem}
 .gx-n{display:flex; flex-direction:column; align-items:center; min-width:2.1rem; line-height:1}
@@ -3102,7 +3102,7 @@ body.is-dash .overview-lab .lab-goal-link{align-self:stretch; margin-top:0; min-
 .gx-st{display:inline-flex; align-items:center; gap:.3rem; padding:.05rem .3rem;}
 .gx-st button{width:28px; height:28px; border-radius:50%; border:0; background:rgba(255,255,255,.14); color:var(--accent); font-size:1rem; font-weight:800; line-height:1; cursor:pointer; padding:0;}
 /* V45b: Einstellungen pro Übung (Ergebnisliste), Player-Sheet */
-.pp-duo{grid-template-columns:1fr}
+
 .gx-ed{display:flex; align-items:center; gap:.5rem; margin-top:.4rem; min-width:0}
 .gx-ct{display:inline-flex; align-items:center; gap:.2rem; background:rgba(255,255,255,.06); border-radius:999px; padding:.15rem .25rem .15rem .6rem; min-width:0}
 .gx-ct em{font-style:normal; font-size:.68rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; opacity:.6; margin-right:.15rem}

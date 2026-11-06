@@ -779,3 +779,6 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 
 ## 6.11. 21:00 Speichern
 - Commits heute: a1568ac Balance, f3e0c50 Abschnitt, 5bb8f39 PC-Ansicht, 3752a0b Link-Logo, e878f54 Sätze ±, 59cf877 Prüfer-Funde, 489e285 Checker-Funde. Offen siehe START-HIER.md (Block 6.11.).
+
+## 6.11. 21:00 DE/EN
+- Alex: "Englisch wird interessant wenn die App in den Store geht" → DE/EN-Umschalter im Profil wieder drin (übersetzt bisher nur Übungsnamen). Warteliste: komplette UI-Übersetzung (i18n) vor Store-Release.
