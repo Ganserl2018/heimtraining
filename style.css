@@ -3150,3 +3150,8 @@ body.is-dash .overview-lab .lab-goal-link{align-self:stretch; margin-top:0; min-
 .pp-reload svg{width:18px; height:18px; fill:none; stroke:var(--accent); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; transition:transform .4s ease-out}
 .pp-reload:active{transform:scale(.97); border-color:var(--accent); background:rgba(255,255,255,.05)}
 .pp-reload:active svg{transform:rotate(180deg)}
+/* V46: Desktop – Trainingsliste hatte Höhe 0 (height:100% ohne feste Elternhöhe) */
+@media (min-width:900px){
+  .tr{height:auto; min-height:0}
+  .tr-list{flex:none; overflow:visible}
+}
