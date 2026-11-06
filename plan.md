@@ -783,3 +783,6 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 ## 6.11. 21:00 DE/EN
 - Alex: "Englisch wird interessant wenn die App in den Store geht" → DE/EN-Umschalter im Profil wieder drin (übersetzt bisher nur Übungsnamen). Warteliste: komplette UI-Übersetzung (i18n) vor Store-Release.
 - 6.11. 21:15: Ergebnisliste: Löschen per Wischen (kurz ← = zufällige Übung, lang ←← über 62 % = Entfernen, roter Hintergrund); ✕ entfernt. Hinweiszeile angepasst.
+
+## 7.11. Warteliste: Geräte-Sync (Alex 7.11. 00:38, "merk es dir")
+- Favoriten/Trainings/Wochenplan/Verlauf liegen nur im Browser-Speicher je Gerät (iPhone ≠ PC), kein Login. Echter Abgleich über Konto + Server (z. B. Cloudflare) = eigenes Vorhaben vor Store-Release. Zwischenschritt Export/Import wurde angeboten, Alex lehnt ab. Nicht bauen ohne Go.

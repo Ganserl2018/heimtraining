@@ -122,3 +122,6 @@ Reiter "Balance" in Übungen + 1-2 Balance-Übungen im Aufwärmblock beim Traini
 ## 6.11. abends – Prüfer-Funde (Versprechen = Funktion), Commit folgt
 - Ergebnisliste: Sätze ±, Wdh/Sek ± und ✕ pro Übung (gxEd). Player-Sheet: Sätze ± neben Satz-Chips, Notiz zur Übung + zum Training, "Training löschen". Übung-Detail: je Training ein Chip pro Tag. DE/EN-Umschalter entfernt (übersetzte nur Übungsnamen).
 - Offen (C): Verlauf-Einträge nicht korrigierbar, Wdh bei kg-Übungen im Player nicht erfassbar, Wisch-Hinweis in wtrain, Level pro Training, Wisch rechts auf Trainingskarten ohne Wirkung. Bericht: qa-versprechen-bericht-2026-11-06.md
+
+## 7.11. Warteliste: Geräte-Sync (Alex 7.11. 00:38, "merk es dir")
+- Favoriten/Trainings/Wochenplan/Verlauf liegen nur im Browser-Speicher je Gerät (iPhone ≠ PC), kein Login. Echter Abgleich über Konto + Server (z. B. Cloudflare) = eigenes Vorhaben vor Store-Release. Zwischenschritt Export/Import wurde angeboten, Alex lehnt ab. Nicht bauen ohne Go.
