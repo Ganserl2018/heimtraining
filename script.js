@@ -1120,6 +1120,7 @@ function builderHtml(full) {
   return h;
 }
 // ---- 3D-Körper für die Planung: Muskeln antippen statt Kacheln (Modell: vendor/, CC BY-SA 4.0, siehe vendor/CREDITS-muscle-model.txt) ----
+const FG_3D = { Brust: '#ff1f44', Bauch: '#00e07a', Rücken: '#0099ff' };
 const FG_COL = { Brust: '#ff5d73', Schultern: '#c58bff', Arme: '#ffd34d', Rücken: '#4dd2ff', Bauch: '#5dffb0', Beine: '#ff9f43' };
 // [Label, Auswahl-Eintrag, Gruppe, Eltern-Gruppe, Modell-Regionen]
 const FG_CHIPS = [
@@ -1232,7 +1233,7 @@ function fgInit() {
 function fgPaint() {
   if (!fg || !fg.ready) return;
   const T = fg.T, G = genCfg.groups, on = {};
-  FG_CHIPS.forEach(c => { if (G.includes(c[1]) || (c[3] && G.includes(c[3]))) fgNodes(c).forEach(n => { on[n] = FG_COL[c[2]]; }); });
+  FG_CHIPS.forEach(c => { if (G.includes(c[1]) || (c[3] && G.includes(c[3]))) fgNodes(c).forEach(n => { on[n] = FG_3D[c[2]] || FG_COL[c[2]]; }); });
   const any = Object.keys(on).length > 0;
   fg.mats.forEach(({ m, node }) => {
     const lin = (hex, k = 1) => new T.Color(hex).convertSRGBToLinear().multiplyScalar(k);
