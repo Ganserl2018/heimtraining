@@ -2827,3 +2827,6 @@ body.is-dash .overview-lab .lab-goal-link{align-self:stretch; margin-top:0; min-
   .xr-landing .wv-tile[data-g] .wv-name{font-size:1.05rem;}
   .em-st .qk-go{width:100%; max-width:420px;}
 }
+/* V45: Sätze direkt in der Ergebnisliste */
+.gx-st{display:inline-flex; align-items:center; gap:.3rem; padding:.05rem .3rem;}
+.gx-st button{width:28px; height:28px; border-radius:50%; border:0; background:rgba(255,255,255,.14); color:var(--accent); font-size:1rem; font-weight:800; line-height:1; cursor:pointer; padding:0;}

@@ -5,6 +5,7 @@ mit `NEWTAB=1 ZOOM=118 VH=874 ET=59 EB=34` (Port 8793). Jeden Punkt abhaken, Feh
 Neue Alex-Beschwerde, die schon mal da war → hier als Punkt ergänzen.
 
 ## Wizard (Start → Zeit → Figur → Geräte → Ergebnis)
+- [ ] **Versprechen = Funktion (Alex 6.11., nie wieder übersehen):** Jeder Hinweistext, jedes Label, jeder Tooltip, jede Anleitung und jeder Plan-Eintrag, der eine Funktion verspricht ("Jede Übung lässt sich einzeln einstellen", "Wischen: …", "⚙ Sätze ändern"), wird an der Stelle geprüft, auf die er sich bezieht: Gibt es das Bedienelement dort wirklich, ist es ohne Suchen erreichbar, und tut es, was der Text sagt? Dazu pro Bildschirm: Was kann Alex hier einstellen (Sätze, Wdh, kg, Einheit, Reihenfolge, Löschen, Tauschen)? Fehlt etwas, das auf dem Nachbarbildschirm geht, ist das ein Fund. (Vorfall: Ergebnisliste hatte keine Sätze pro Übung, Text versprach es.)
 - [ ] **Alles eingeklappt:** Beim Betreten von Schritt 1 (Figur) ist keine Gruppe aufgeklappt – nach Start-Tab, nach ‹ von Geräte-Seite, nach Speichern, nach Tab-Wechsel und zurück. (Regression 26.10. 21:50: Arme blieb offen)
 - [ ] Start-Tab/Start-Button setzt alles zurück (Gruppen, Geräte, Zeit bleibt, fgOpen=null, Figur vorne).
 - [ ] Offene Untergruppe: Liste scrollt hoch, Auswahl komplett sichtbar, nichts abgeschnitten.
