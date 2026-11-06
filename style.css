@@ -3121,3 +3121,9 @@ body.is-dash .overview-lab .lab-goal-link{align-self:stretch; margin-top:0; min-
 .pf-sets{flex:none} .pf-sets button{width:36px; height:36px} .pf-sets b{font-family:Anton,sans-serif; font-weight:400; font-size:1.15rem; min-width:1.6rem}
 .pf-sh-row.one{grid-template-columns:1fr} .pf-note{min-height:42px}
 .pf-sets button:active{transform:scale(.94)}
+/* V45c: Touch-Ziele 44px, Aktionsleiste sticky, Gruppenabstand */
+.gx-ct button,.gx-rm{position:relative}
+.gx-ct button::after,.gx-rm::after{content:''; position:absolute; inset:-8px}
+.gx-rm::after{inset:-9px}
+.gn-res > .gn-act:last-child{position:sticky; bottom:0; z-index:5; margin:.4rem -.2rem 0; padding:.9rem .2rem .5rem; background:linear-gradient(180deg,transparent 0,var(--bg,#0f1417) 38%)}
+.gn-wh{margin-top:1rem}

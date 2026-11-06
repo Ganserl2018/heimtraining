@@ -166,7 +166,7 @@ let anleitungen = {};
 let namesDe = {}; // names_de.json: englischer Schlüsselname -> deutsche Anzeige
 const BADKEY = 'heimtraining.badimg';
 function loadBad() { try { return JSON.parse(LS.getItem(BADKEY)) || []; } catch (e) { return []; } }
-const dn = n => (loadProfile().lang === 'en' ? n : (namesDe[n] || n));
+const dn = n => namesDe[n] || n;
 let gearFix = {}; // gearfix.json: Name -> {s:'ok'|'no', g:[Geräte]} (Alex' Heim-Gym, fest)
 let metByName = {}; // V8-01/03: name -> MET-Wert
 Promise.all([
@@ -1014,6 +1014,8 @@ function generate() {
   exs.unshift(...warmupsFor(exs).concat(balFor(exs)));
   try { LS.setItem(GENKEY, JSON.stringify(picked.map(e => e.name).concat(last).slice(0, 24))); } catch (e) {}
   genRes = exs; genJust = true; genSwapped = -1;
+  const got = new Set(exs.filter(e => !e.warm).map(e => MUSCLE_GROUPS[e.muscle])), gone = genCfg.groups.filter(g => !got.has(g));
+  if (gone.length) genNote = `Für ${gone.join(', ')} reicht die Zeit nicht. Mehr Minuten wählen oder unter Anpassen mehr Übungen.`;
 }
 // ---- Nächstes Training berechnen: Drücken / Ziehen / Beine rotieren, Pause je Muster + einfache Steigerung ----
 const isWarmName = n => { const e = pool.find(x => x.name === n); return !!(e && (e.category === 'warmup' || e.category === 'balance')); };
@@ -1069,7 +1071,7 @@ function genActMain() { return `<div class="gn-act"><div class="gn-act-main"><bu
 function genHero() {
   const ex = genRes || [], main = ex.filter(e => !e.warm), sets = ex.reduce((n, e) => n + (e.sets || 0), 0), gs = [...new Set(main.map(e => MUSCLE_GROUPS[e.muscle]).filter(Boolean))];
   const tile = (n, l) => `<div class="ts-s"><b>${n}</b><em>${l}</em></div>`;
-  return `<div class="gn-top"><button class="gn-back" data-act="genBackWiz" aria-label="Zurück zur Auswahl">‹</button>${gs.map(g => `<span class="gx-t g" data-g="${esc(g)}">${esc(g)}</span>`).join('')}</div><div class="ts-strip" style="grid-template-columns:repeat(4,1fr)">${tile(main.length, 'Übungen')}${tile(genCfg.gear.filter(k => k !== 'body').length, 'Geräte')}${tile(sets, 'Sätze')}${tile('~' + genCfg.dur, 'Minuten')}</div>`;
+  return `<div class="gn-top"><button class="gn-back" data-act="genBackWiz" aria-label="Zurück zur Auswahl">‹</button>${gs.map(g => `<span class="gx-t g" data-g="${esc(g)}">${esc(g)}</span>`).join('')}</div><div class="ts-strip" style="grid-template-columns:repeat(4,1fr)">${tile(main.length, 'Übungen')}${tile(new Set(main.flatMap(e => gearOf(e.name)).filter(k => k !== 'body')).size, 'Geräte')}${tile(sets, 'Sätze')}${tile('~' + Math.max(5, Math.round(sets * 2.5 / 5) * 5), 'Minuten')}</div>`;
 }
 function gxEd(e, i) {
   const sek = e.unit === 'sek', st = (act, d, l) => `<button data-act="${act}" data-i="${i}" data-d="${d}" aria-label="${l}">${d < 0 ? '–' : '+'}</button>`;
@@ -1787,7 +1789,7 @@ function wtHero(t, sets) {
   const min = Math.max(5, Math.round(sets * 2.5 / 5) * 5), tile = (n, l) => `<div class="ts-s"><b>${n}</b><em>${l}</em></div>`;
   const sh = muscleShare(t).filter(([k]) => k !== 'Aufwärmen').slice(0, 5);
   const bar = sh.length ? `<span class="ti-bar">${sh.map(([k, p]) => `<i data-g="${esc(k)}" style="flex:${p}"></i>`).join('')}</span><span class="ti-leg">${sh.map(([k, p]) => `<span data-g="${esc(k)}"><i></i>${esc(k)} ${p}%</span>`).join('')}</span>` : '';
-  return `<div class="ts-strip" style="grid-template-columns:repeat(4,1fr)">${tile(t.exercises.length, 'Übungen')}${tile(new Set(t.exercises.filter(e => !e.warm).flatMap(e => gearOf(e.name)).filter(k => k !== 'body')).size, 'Geräte')}${tile(sets, 'Sätze')}${tile('~' + min, 'Minuten')}</div>`;
+  return `<div class="ts-strip" style="grid-template-columns:repeat(4,1fr)">${tile(t.exercises.filter(e => !e.warm).length, 'Übungen')}${tile(new Set(t.exercises.filter(e => !e.warm).flatMap(e => gearOf(e.name)).filter(k => k !== 'body')).size, 'Geräte')}${tile(sets, 'Sätze')}${tile('~' + min, 'Minuten')}</div>`;
 }
 function renderWTrain() {
   const t = trainingById(wId);
@@ -2340,7 +2342,6 @@ content.addEventListener('click', e => {
       genRes = null; genCfg = newGenCfg(); break;
     }
     case 'wLevel': { const t = trainingById(btn.dataset.id); const miss = applyLevel(t, Number(btn.dataset.lv)); lvMsg = miss ? 'Ungefähre kg (ohne dein Gewicht, 75 kg angenommen). Trage es im Profil ein für genaue Werte.' : ''; break; }
-    case 'profLang': { const p = loadProfile(); p.lang = btn.dataset.v; saveProfile(p); break; }
     case 'profGender': { const p = loadProfile(); p.gender = btn.dataset.v; saveProfile(p); break; }
     case 'profLevel': { const p = loadProfile(); p.level = Number(btn.dataset.v); saveProfile(p); break; }
     case 'lvlUp': { const p = loadProfile(); p.level = Number(btn.dataset.lv); saveProfile(p); break; }
