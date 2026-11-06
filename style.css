@@ -2812,3 +2812,7 @@ body.is-dash .overview-lab .lab-goal-link{align-self:stretch; margin-top:0; min-
 .gz-digits.is3d .gz-dg{visibility:hidden;}
 .gz-digits.is3d::before{content:""; position:absolute; left:50%; bottom:6px; width:200px; height:90px; margin-left:-100px; background:radial-gradient(closest-side,color-mix(in srgb,var(--lab-acc) 30%,transparent),transparent); pointer-events:none;}
 .gz-off .gz-digits.is3d::before{opacity:.15;}
+
+/* V43: Übungen-Startseite, 4 Kacheln in der Split-Reihe (Warmup / Balance / Push / Pull) */
+.wv-grid.xr-split{grid-template-columns:repeat(4,minmax(0,1fr));}
+.xr-split .wv-name{font-size:.78rem;}

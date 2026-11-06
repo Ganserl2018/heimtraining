@@ -3533,5 +3533,61 @@
 ],
 "s": "ok",
 "r": "Seilzug oben"
+},
+"Tandem Stand": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Tandem Walk": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Single Leg Stand": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Single Leg Stand Leg Raise": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Single Leg Toe Stand": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Single Leg Star Reach": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Single Leg Stand Eyes Closed": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
+},
+"Single Leg Stand on Pillow": {
+"g": [
+"body"
+],
+"s": "ok",
+"r": ""
 }
 }

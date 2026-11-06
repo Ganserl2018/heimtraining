@@ -767,3 +767,8 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 - Straße V32-L…P ergänzt, V32-I done, republished mit url.
 
 - 3.11. Bestand-Hinweis: drehbarer 3D-Körper = Wizard Figur-Schritt (Three.js, vendor/). Streak-Zahl als drehende 3D-Ziffern in Arbeit (Go 3.11. 01:18).
+
+## 6.11.2026 – Gleichgewicht (Alex: "weiteren Reiter in die Übungen … Gleichgewicht … beim Training erstellen 1-2 Gleichgewichtsübungen")
+- 8 Übungen in pool.json (category `balance`): Tandem Stand/Walk, Single Leg Stand (+Leg Raise, Toe Stand, Star Reach, Eyes Closed, on Pillow). Level 0/1/2 steuert Auswahl (BAL in script.js).
+- Übungen-Startseite: Kachel "Balance" (filterSplit `bal`), Filter-Chip "Gleichgewicht". Training erstellen/Preset: `balFor()` hängt 1 (≤4 Hauptübungen) bzw. 2 Übungen nach dem Aufwärmen an, flag `warm+bal`, Tausch über warmAlt.
+- OFFEN: Bilder fehlen (8 Einträge in neue_uebungen.json, bild "offen"; Kacheln zeigen bis dahin kein Foto).

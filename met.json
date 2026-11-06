@@ -2593,5 +2593,45 @@
   "name": "Hyperextensions",
   "met": 5.5,
   "begründung_kurz": "strength, compound: Basis 5.0; +0.5 große Primärmuskeln"
+ },
+ {
+  "name": "Tandem Stand",
+  "met": 2.5,
+  "begründung_kurz": "Balance/Stabilität, geringe Last"
+ },
+ {
+  "name": "Tandem Walk",
+  "met": 2.5,
+  "begründung_kurz": "Balance/Stabilität, geringe Last"
+ },
+ {
+  "name": "Single Leg Stand",
+  "met": 2.5,
+  "begründung_kurz": "Balance/Stabilität, geringe Last"
+ },
+ {
+  "name": "Single Leg Stand Leg Raise",
+  "met": 2.5,
+  "begründung_kurz": "Balance/Stabilität, geringe Last"
+ },
+ {
+  "name": "Single Leg Toe Stand",
+  "met": 2.5,
+  "begründung_kurz": "Balance/Stabilität, geringe Last"
+ },
+ {
+  "name": "Single Leg Star Reach",
+  "met": 2.5,
+  "begründung_kurz": "Balance/Stabilität, geringe Last"
+ },
+ {
+  "name": "Single Leg Stand Eyes Closed",
+  "met": 2.5,
+  "begründung_kurz": "Balance/Stabilität, geringe Last"
+ },
+ {
+  "name": "Single Leg Stand on Pillow",
+  "met": 2.5,
+  "begründung_kurz": "Balance/Stabilität, geringe Last"
  }
 ]

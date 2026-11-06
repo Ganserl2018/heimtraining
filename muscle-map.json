@@ -8388,5 +8388,102 @@
   "why": "Hüftstrecken → Gesäß",
   "sec_why": "Hip Thrust",
   "mode": "kraft"
+ },
+ "Tandem Stand": {
+  "de": "Linienstand",
+  "muscle": "calves",
+  "primary": [
+   "soleus",
+   "gastrocnemius"
+  ],
+  "secondary": [],
+  "why": "Gleichgewicht (kaum Kraft)",
+  "sec_why": "Stabilität",
+  "mode": "mobility"
+ },
+ "Tandem Walk": {
+  "de": "Fuß-vor-Fuß-Gehen",
+  "muscle": "calves",
+  "primary": [
+   "soleus",
+   "gastrocnemius"
+  ],
+  "secondary": [],
+  "why": "Gleichgewicht (kaum Kraft)",
+  "sec_why": "Stabilität",
+  "mode": "mobility"
+ },
+ "Single Leg Stand": {
+  "de": "Einbeinstand",
+  "muscle": "quadriceps",
+  "primary": [
+   "vastus_group",
+   "glute_med"
+  ],
+  "secondary": [],
+  "why": "Gleichgewicht (kaum Kraft)",
+  "sec_why": "Stabilität",
+  "mode": "mobility"
+ },
+ "Single Leg Stand Leg Raise": {
+  "de": "Einbeinstand mit seitlichem Beinheben",
+  "muscle": "abductors",
+  "primary": [
+   "glute_med",
+   "adductors"
+  ],
+  "secondary": [],
+  "why": "Gleichgewicht (kaum Kraft)",
+  "sec_why": "Stabilität",
+  "mode": "mobility"
+ },
+ "Single Leg Toe Stand": {
+  "de": "Einbeiniger Zehenstand",
+  "muscle": "calves",
+  "primary": [
+   "gastrocnemius",
+   "soleus"
+  ],
+  "secondary": [],
+  "why": "Gleichgewicht (kaum Kraft)",
+  "sec_why": "Stabilität",
+  "mode": "mobility"
+ },
+ "Single Leg Star Reach": {
+  "de": "Einbein-Stern (Reichweite)",
+  "muscle": "glutes",
+  "primary": [
+   "glute_med",
+   "glute_max"
+  ],
+  "secondary": [],
+  "why": "Gleichgewicht (kaum Kraft)",
+  "sec_why": "Stabilität",
+  "mode": "mobility"
+ },
+ "Single Leg Stand Eyes Closed": {
+  "de": "Einbeinstand mit geschlossenen Augen",
+  "muscle": "quadriceps",
+  "primary": [
+   "vastus_group",
+   "glute_med"
+  ],
+  "secondary": [],
+  "why": "Gleichgewicht (kaum Kraft)",
+  "sec_why": "Stabilität",
+  "mode": "mobility"
+ },
+ "Single Leg Stand on Pillow": {
+  "de": "Einbeinstand auf Kissen",
+  "muscle": "quadriceps",
+  "primary": [
+   "vastus_group",
+   "glute_med",
+   "soleus"
+  ],
+  "secondary": [],
+  "why": "Gleichgewicht (kaum Kraft)",
+  "sec_why": "Stabilität",
+  "mode": "mobility"
  }
 }

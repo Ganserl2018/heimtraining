@@ -3274,8 +3274,7 @@
 "Kurz anspannen, kontrolliert zurück."
 ],
 "auto": true
-}
-,
+},
 "Arm Circles": {
 "de": "Armkreisen",
 "schritte": [
@@ -3338,6 +3337,70 @@
 "Rückenlage, Füße hüftbreit aufgestellt.",
 "Hüfte hoch, Gesäß oben kurz anspannen.",
 "Langsam absenken."
+]
+},
+"Tandem Stand": {
+"de": "Linienstand",
+"schritte": [
+"Einen Fuß direkt vor den anderen setzen, Ferse an Zehen.",
+"Aufrecht stehen, Blick geradeaus, Arme locker.",
+"Zeit halten, dann Fuß vorn wechseln."
+]
+},
+"Tandem Walk": {
+"de": "Fuß-vor-Fuß-Gehen",
+"schritte": [
+"Fuß direkt vor den anderen setzen, Ferse berührt Zehen.",
+"Langsam in gerader Linie gehen, Blick geradeaus.",
+"Am Ende umdrehen und zurückgehen."
+]
+},
+"Single Leg Stand": {
+"de": "Einbeinstand",
+"schritte": [
+"Auf einem Bein stehen, anderes Knie leicht anwinkeln.",
+"Hüfte gerade, Standbein nicht durchdrücken, Blick auf einen Punkt.",
+"Zeit halten, dann Bein wechseln (je Seite)."
+]
+},
+"Single Leg Stand Leg Raise": {
+"de": "Einbeinstand mit seitlichem Beinheben",
+"schritte": [
+"Auf einem Bein stehen.",
+"Anderes Bein gestreckt seitlich anheben, Oberkörper bleibt aufrecht.",
+"Langsam senken, ohne den Fuß abzusetzen, dann Seite wechseln (je Seite)."
+]
+},
+"Single Leg Toe Stand": {
+"de": "Einbeiniger Zehenstand",
+"schritte": [
+"Auf einem Bein stehen, Ferse anheben.",
+"Auf dem Fußballen halten, Hüfte gerade, Blick nach vorn.",
+"Zeit halten, dann Bein wechseln (je Seite)."
+]
+},
+"Single Leg Star Reach": {
+"de": "Einbein-Stern (Reichweite)",
+"schritte": [
+"Auf einem Bein stehen, Knie leicht gebeugt.",
+"Freies Bein tippt nacheinander nach vorn, seitlich und hinten auf den Boden, ohne Gewicht abzulegen.",
+"Zurück in den Stand, dann Seite wechseln (je Seite)."
+]
+},
+"Single Leg Stand Eyes Closed": {
+"de": "Einbeinstand mit geschlossenen Augen",
+"schritte": [
+"Neben eine Wand oder Stuhllehne stellen, zur Sicherheit in Reichweite.",
+"Auf einem Bein stehen, Augen schließen.",
+"Zeit halten, dann Bein wechseln (je Seite)."
+]
+},
+"Single Leg Stand on Pillow": {
+"de": "Einbeinstand auf Kissen",
+"schritte": [
+"Kissen oder zusammengerolltes Handtuch auf den Boden legen.",
+"Auf einem Bein darauf stehen, Hüfte gerade.",
+"Zeit halten, dann Bein wechseln (je Seite). Nahe an Wand oder Stuhl bleiben."
 ]
 }
 }

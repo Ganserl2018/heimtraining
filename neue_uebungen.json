@@ -82,5 +82,117 @@
   "logik": "Vorderes Knie über dem Fuß, Oberkörper aufrecht",
   "perspektive": "Seitenprofil",
   "bild": "offen"
+ },
+ {
+  "name": "Tandem Stand",
+  "de": "Linienstand",
+  "muscle": "calves",
+  "gear": "body",
+  "schritte": [
+   "Einen Fuß direkt vor den anderen setzen, Ferse an Zehen.",
+   "Aufrecht stehen, Blick geradeaus, Arme locker.",
+   "Zeit halten, dann Fuß vorn wechseln."
+  ],
+  "logik": "Hüfte gerade, Standbein stabil, Oberkörper aufrecht",
+  "perspektive": "Seitenprofil von vorn",
+  "bild": "offen"
+ },
+ {
+  "name": "Tandem Walk",
+  "de": "Fuß-vor-Fuß-Gehen",
+  "muscle": "calves",
+  "gear": "body",
+  "schritte": [
+   "Fuß direkt vor den anderen setzen, Ferse berührt Zehen.",
+   "Langsam in gerader Linie gehen, Blick geradeaus.",
+   "Am Ende umdrehen und zurückgehen."
+  ],
+  "logik": "Hüfte gerade, Standbein stabil, Oberkörper aufrecht",
+  "perspektive": "Seitenprofil",
+  "bild": "offen"
+ },
+ {
+  "name": "Single Leg Stand",
+  "de": "Einbeinstand",
+  "muscle": "quadriceps",
+  "gear": "body",
+  "schritte": [
+   "Auf einem Bein stehen, anderes Knie leicht anwinkeln.",
+   "Hüfte gerade, Standbein nicht durchdrücken, Blick auf einen Punkt.",
+   "Zeit halten, dann Bein wechseln (je Seite)."
+  ],
+  "logik": "Hüfte gerade, Standbein stabil, Oberkörper aufrecht",
+  "perspektive": "Frontal",
+  "bild": "offen"
+ },
+ {
+  "name": "Single Leg Stand Leg Raise",
+  "de": "Einbeinstand mit seitlichem Beinheben",
+  "muscle": "abductors",
+  "gear": "body",
+  "schritte": [
+   "Auf einem Bein stehen.",
+   "Anderes Bein gestreckt seitlich anheben, Oberkörper bleibt aufrecht.",
+   "Langsam senken, ohne den Fuß abzusetzen, dann Seite wechseln (je Seite)."
+  ],
+  "logik": "Hüfte gerade, Standbein stabil, Oberkörper aufrecht",
+  "perspektive": "Frontal",
+  "bild": "offen"
+ },
+ {
+  "name": "Single Leg Toe Stand",
+  "de": "Einbeiniger Zehenstand",
+  "muscle": "calves",
+  "gear": "body",
+  "schritte": [
+   "Auf einem Bein stehen, Ferse anheben.",
+   "Auf dem Fußballen halten, Hüfte gerade, Blick nach vorn.",
+   "Zeit halten, dann Bein wechseln (je Seite)."
+  ],
+  "logik": "Hüfte gerade, Standbein stabil, Oberkörper aufrecht",
+  "perspektive": "Seitenprofil",
+  "bild": "offen"
+ },
+ {
+  "name": "Single Leg Star Reach",
+  "de": "Einbein-Stern (Reichweite)",
+  "muscle": "glutes",
+  "gear": "body",
+  "schritte": [
+   "Auf einem Bein stehen, Knie leicht gebeugt.",
+   "Freies Bein tippt nacheinander nach vorn, seitlich und hinten auf den Boden, ohne Gewicht abzulegen.",
+   "Zurück in den Stand, dann Seite wechseln (je Seite)."
+  ],
+  "logik": "Hüfte gerade, Standbein stabil, Oberkörper aufrecht",
+  "perspektive": "Frontal",
+  "bild": "offen"
+ },
+ {
+  "name": "Single Leg Stand Eyes Closed",
+  "de": "Einbeinstand mit geschlossenen Augen",
+  "muscle": "quadriceps",
+  "gear": "body",
+  "schritte": [
+   "Neben eine Wand oder Stuhllehne stellen, zur Sicherheit in Reichweite.",
+   "Auf einem Bein stehen, Augen schließen.",
+   "Zeit halten, dann Bein wechseln (je Seite)."
+  ],
+  "logik": "Hüfte gerade, Standbein stabil, Oberkörper aufrecht",
+  "perspektive": "Frontal",
+  "bild": "offen"
+ },
+ {
+  "name": "Single Leg Stand on Pillow",
+  "de": "Einbeinstand auf Kissen",
+  "muscle": "quadriceps",
+  "gear": "body",
+  "schritte": [
+   "Kissen oder zusammengerolltes Handtuch auf den Boden legen.",
+   "Auf einem Bein darauf stehen, Hüfte gerade.",
+   "Zeit halten, dann Bein wechseln (je Seite). Nahe an Wand oder Stuhl bleiben."
+  ],
+  "logik": "Hüfte gerade, Standbein stabil, Oberkörper aufrecht",
+  "perspektive": "Frontal",
+  "bild": "offen"
  }
 ]

@@ -105,3 +105,6 @@ Wand dünn (0.024), Rahmenfarbe dunkles Metall (0x8d9692, roughness .27), Fülls
 
 ## 3.11. 02:10: Streak-Logik = Trainings in Folge nach Plan (v=20261103f)
 `computeStreak`: Ruhetage ohne Plan brechen nicht, verpasstes geplantes Training bricht, jedes beendete Training +1 (auch spontan, auch mehrere pro Tag); ohne Plan-Wochentage alte Tage-Logik. Labels: "Trainings in Folge", "Rekord N Trainings", Verlauf-Kachel "In Folge". Unit-Test /tmp/qa/sk.js (6 Fälle ok). Gespeicherter Rekord stammt noch aus der Tage-Logik.
+
+## Stand 6.11. – Gleichgewicht eingebaut (v=20261106a)
+Reiter "Balance" in Übungen + 1-2 Balance-Übungen im Aufwärmblock beim Training erstellen. Offen: 8 Bilder (neue_uebungen.json, bild "offen"), Alex prüft live am iPhone.
