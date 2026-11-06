@@ -776,3 +776,6 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 ## 6.11. abends – Prüfer-Funde (Versprechen = Funktion), Commit folgt
 - Ergebnisliste: Sätze ±, Wdh/Sek ± und ✕ pro Übung (gxEd). Player-Sheet: Sätze ± neben Satz-Chips, Notiz zur Übung + zum Training, "Training löschen". Übung-Detail: je Training ein Chip pro Tag. DE/EN-Umschalter entfernt (übersetzte nur Übungsnamen).
 - Offen (C): Verlauf-Einträge nicht korrigierbar, Wdh bei kg-Übungen im Player nicht erfassbar, Wisch-Hinweis in wtrain, Level pro Training, Wisch rechts auf Trainingskarten ohne Wirkung. Bericht: qa-versprechen-bericht-2026-11-06.md
+
+## 6.11. 21:00 Speichern
+- Commits heute: a1568ac Balance, f3e0c50 Abschnitt, 5bb8f39 PC-Ansicht, 3752a0b Link-Logo, e878f54 Sätze ±, 59cf877 Prüfer-Funde, 489e285 Checker-Funde. Offen siehe START-HIER.md (Block 6.11.).

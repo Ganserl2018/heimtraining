@@ -1,4 +1,14 @@
-# START-HIER – Übergabe für den nächsten Chat (Stand 31.10.2026 18:35)
+# START-HIER – Übergabe für den nächsten Chat (Stand 06.11.2026 21:00)
+
+**Neuester Stand (6.11., Vorrang vor allem unten):** HEAD 489e285, `?v=20261106i`, live auf main.
+- Neu heute: Balance-Tab + Auto-Gleichgewicht im Training (secOf/SEC_LBL/BAL), PC-Ansicht (V44, ≥900px), Link-Vorschau (og-image.png), Ergebnisliste mit Sätze ±/Wdh ±/✕ pro Übung (gxEd), Player-Sheet mit Sätze ± + Notizen (wExNote/wSessionNote) + "Training löschen", Übung→Training: Chip je Training pro Tag, DE/EN-Umschalter entfernt, Hero-Zahlen einheitlich (Minuten aus Sätzen), sticky Speichern/Starten-Leiste, Hinweis wenn Muskelgruppe wegen Zeit fehlt.
+- Berichte: qa-logik-bericht-2026-11-06.md (Logik, 13 Funde) und qa-versprechen-bericht-2026-11-06.md (Versprechen=Funktion, 13 Funde).
+- OFFEN aus Logikbericht (noch nichts gefixt): A1 resetPlan leert gear2 (script.js ~1254); B1 Rekord-Streak gzBest nicht persistiert; B2 Streak zählt Trainings vor Planstart; B3 zweites Training am Tag; B4 "Diese Woche" zählt Vorwoche; B5 Ergebnisseite vs gespeichert (Zahlen teils angeglichen); B6 manuell hinzugefügte Balance-Übung (Einheit/Sätze/Gruppe/Position); B7 Tablet 820–899px Startseite ohne Menü (V44-Breakpoint 900 vs 820); Auto-Update kann im Player neu laden.
+- OFFEN aus Versprechenbericht (C): Verlauf-Einträge nicht korrigierbar; Wdh bei kg-Übungen im Player nicht erfassbar; Wisch-Hinweis in wtrain fehlt; Level pro Training; Wisch rechts auf Trainingskarten ohne Wirkung; gespeichertes Training zeigt weiter "Speichern" (prüfen ob alt).
+- Offen: 8 Balance-Bilder fehlen (neue_uebungen.json, bild "offen"); designer/Anti-Slop-Check für PC-Ansicht + neue Ergebnisliste noch nicht gelaufen.
+- Alex-Regel 6.11.: Prüfer muss Versprechen gegen Funktion abgleichen (qa-checkliste.md, CLAUDE.md) – keine Ausrede, wenn ihm UI-Lücken entgehen.
+- Alex entscheidet noch: 184 Duplikat-Bilder, Stangengewicht, Token V10-03, Fundamentalanalyse (Mac 23.8. vs GitHub 29.9.).
+- Morphy: WhatsApp-Zugriff ungeprüft (Fenster auf anderem Space).
 
 Alex will NICHTS erklären müssen. Alles hier lesen, dann direkt weiterbauen. Antworten deutsch, sehr kurz (CLAUDE.md).
 
