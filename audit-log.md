@@ -64,3 +64,17 @@ Keine neuen Commits seit Prüfung 1.11. (nur der Audit-Commit 4b839f6 selbst, nu
 | 3.11. | f05d1ae, 828e041 | A | Streak = Trainings in Folge; Code-Kopie-Tool | wie verlangt | offen |
 
 Prüfung 6.11.: 18 Commits (inkl. nicht zuvor geprüfter 3.11.). A=14, B=3, C=2 (+1 leicht). Alle mit Auftrag-Zeile. Startbutton/Halten-Füllen vorhanden (7x `.home-btn.hold`-Treffer in style.css, kein Diff). Neon-Look nicht abgeschwächt. Weiter nicht abgenommen: e129f02, fbc897e.
+
+## Prüfung 8.11.2026 (Auditor, 93de2e0..8fef944, Session 01Sttn3sPKGRtJTq6qmUCuDx)
+| Datum | Hash | Stufe | Was | Wirkung für Alex | Status |
+|---|---|---|---|---|---|
+| 6.11. | 6370ea9 | B | DE/EN-Umschalter im Profil wieder eingebaut (Rückbau C-Fund 59cf877), Warteliste UI-Übersetzung. Zitat "Englisch wird interessant wenn die App in den Store geht" verlangt nicht ausdrücklich den Wiedereinbau | Sprachwahl wieder da; EN ändert nur Übungsnamen (Originalnamen) | C-Fund 59cf877 zurückgebaut; Abnahme offen |
+| 6.11. | dd7cc8b | B | Player: "Bearbeiten"-Button wieder da (Rückbau C-Fund 59cf877). Zitat "Wie meinst das genau" ist dünn, Rückbau war aber Auditor-Empfehlung | Editor-Zugang im Player wie vorher | C-Fund zurückgebaut; Abnahme offen |
+| 6.11. | f835613, 62c56dd | A | Ergebnisliste: Kreuz weg, Entfernen per langem Links-Wischen (Zitate: "das x ... kann weg", "wieder auf das bewährte wischsystem") | Kein Kreuz; Wischen links kurz = zufällig, lang = löschen | offen, abnehmen |
+| 6.11. | 196acb0 | A | Sätze/Wdh nebeneinander in eigener Zeile ("Beheben") | Kompaktere Zeilen | offen |
+| 6.11. | 2bc35d9 | A | Profil: "Neu laden" ohne Versionsnummer, als Button mit Icon | Versionsnummer im Profil nicht mehr sichtbar (verlangt) | offen |
+| 6.11. | b772209, c046719 | A | Figur: Muskelfarben kräftiger, Brust/Bauch/Rücken eigene 3D-Farben | 3D-Figur farbintensiver, Restfigur dunkler | offen, abnehmen |
+| 7.11. | 8220ece | A | Desktop: Trainingsliste sichtbar (Bugfix) | Liste am PC wieder da | offen |
+| 6./7.11. | 167590a, 8fef944 | B | Audit-Eintrag; Warteliste Geräte-Sync ("merk es dir") | keine UI | Standard |
+
+Prüfung 8.11.: 11 Commits, A=7, B=4, C=0. Alle mit Auftrag-Zeile (Zitate nicht gegen Chat-Archiv geprüft). Startbutton/Halten-Füllen vorhanden (7x `.home-btn.hold` in style.css, kein Diff), Neon-Look unberührt. Weiter nicht abgenommen: e129f02, fbc897e.
