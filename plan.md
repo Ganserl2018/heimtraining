@@ -786,3 +786,8 @@ Zustände: Geplant · Läuft · Erledigt · Unvollständig (zählt als Training)
 
 ## 7.11. Warteliste: Geräte-Sync (Alex 7.11. 00:38, "merk es dir")
 - Favoriten/Trainings/Wochenplan/Verlauf liegen nur im Browser-Speicher je Gerät (iPhone ≠ PC), kein Login. Echter Abgleich über Konto + Server (z. B. Cloudflare) = eigenes Vorhaben vor Store-Release. Zwischenschritt Export/Import wurde angeboten, Alex lehnt ab. Nicht bauen ohne Go.
+
+## 9.11. Playwright-Lauf Live (Alex "alles checken")
+- Wizard → Ergebnis (Stepper, Wisch-Löschen) → Speichern → Player: ok.
+- 16 Bilder fehlen (noch zu erstellen, Bild-Queue): arm_circles, arm_swings_chest_opener, cat_cow, glute_bridge_warm_up, leg_swings, open_book, scapular_push_up, shoulder_rolls, single_leg_stand(+eyes_closed, leg_raise, on_pillow), single_leg_star_reach, single_leg_toe_stand, tandem_stand, tandem_walk. Bis dahin Platzhalter "Bild folgt".
+- Übungen-Zahl auf Trainingskarten/Liste zählt jetzt ohne Aufwärmen (wie Hero).

@@ -449,7 +449,7 @@ function renderResults(query) {
     return;
   }
   const shown = hits.slice(0, browseLimit);
-  const favT = filterFav && view === 'allex' ? weekplan.filter(w => w.fav && !w.draft).map(w => `<button class="xr-ftr" data-act="wOpen2" data-id="${w.id}"><b>★ ${esc(w.name)}</b><em>Training · ${w.exercises.length} Übungen</em></button>`).join('') : '';
+  const favT = filterFav && view === 'allex' ? weekplan.filter(w => w.fav && !w.draft).map(w => `<button class="xr-ftr" data-act="wOpen2" data-id="${w.id}"><b>★ ${esc(w.name)}</b><em>Training · ${w.exercises.filter(e => !e.warm).length} Übungen</em></button>`).join('') : '';
   document.getElementById('results').innerHTML = favT + shown.map(i => xrTile(i, act)).join('') +
     (hits.length === 0 ? '<p class="placeholder xr-empty">Keine Treffer – Filter/Suche anpassen.</p>' : '');
   const info = document.getElementById('pager-info');
@@ -1503,7 +1503,7 @@ function renderPreview() {
   const sets = t.exercises.reduce((a, e) => a + (e.sets || 3), 0);
   content.innerHTML = `<div class="pv">
     <div class="pl-top"><button class="pl-x" data-act="prevBack" aria-label="Zurück">‹</button>
-      <div class="pl-title"><b class="nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></b><span>${t.exercises.length} Übungen · ${sets} Sätze</span></div>
+      <div class="pl-title"><b class="nm-edit" data-act="tName" data-id="${t.id}">${esc(t.name)}<i class="nm-pen" aria-hidden="true">✎</i></b><span>${t.exercises.filter(e => !e.warm).length} Übungen · ${sets} Sätze</span></div>
       ${p ? '' : `<button class="pl-x pl-del" data-act="prevDelete" aria-label="Training löschen">🗑</button>`}</div>
     <div class="pv-list">${t.exercises.map((e, i) => `<div class="pv-ex exinfo" data-act="exInfo" data-name="${esc(e.name)}"><span class="pv-n">${i + 1}</span>
       <img src="${esc(imgOf(e))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
@@ -1853,14 +1853,14 @@ function renderTrainings() {
     const gTop = (muscleShare(t)[0] || [''])[0];
     const st = trTab === 'arch' ? '' : trainingStatusForDate(t, t0);
     const sh = muscleShare(t).slice(0, 3).map(x => x[0]).join(' · ');
-    const meta = `${t.exercises.length} Übung${t.exercises.length === 1 ? '' : 'en'}${sh ? ' · ' + esc(sh) : ''}`;
+    const nMain = t.exercises.filter(e => !e.warm).length, meta = `${nMain} Übung${nMain === 1 ? '' : 'en'}${sh ? ' · ' + esc(sh) : ''}`;
     const go = trTab === 'arch' ? `<button class="tr-go ghost" data-act="wRestore" data-id="${t.id}">↩</button>` : `<button class="tr-go" data-act="quickStart" data-id="${t.id}" aria-label="Starten"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>`;
     const del = `<button class="tr-del" data-act="trDel" data-id="${t.id}" aria-label="Training löschen"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button>`;
     const strip = true ? '' : `<div class="tr-days">${WD_KEYS.map(k => `<button class="${(t.weekdays || []).includes(k) ? 'on' : ''}" data-act="wDayToggle" data-id="${t.id}" data-wd="${k}">${WD_LABELS[k]}</button>`).join('')}</div>`;
     const c = `<div class="tr-card pp-t" data-g="${esc(gTop)}" style="--i:${Math.max(0, list.indexOf(t))}" ${trTab === 'arch' ? '' : `data-act="wOpen2" data-id="${t.id}"`}><div class="tr-th">${th || ''}</div>${trTab === 'arch' ? '' : `<button class="tr-fav${t.fav ? ' on' : ''}" data-act="trFav" data-id="${t.id}" aria-label="Favorit">${t.fav ? '★' : '☆'}</button>`}<div class="tr-b"><b>${esc(t.name)}</b><span>${trTab === 'arch' ? meta : t.exercises.length + ' Übung' + (t.exercises.length === 1 ? '' : 'en')}</span>${st === 'offen' || st === 'läuft' ? `<i class="tr-st tr-${st}">${STATUS_LABEL[st]}</i>` : ''}</div>${del}${go}${trTab === 'arch' ? '' : trInfo(t, true)}${strip}</div>`;
     return trTab === 'arch' ? c : `<div class="wp-sw tr-sw" data-sw="${t.id}"><div class="wp-sw-bg"><span class="a"></span><span class="d">Löschen 🗑</span></div>${c}</div>`;
   };
-  const days = new Set(); act.forEach(w => (w.weekdays || []).forEach(d => days.add(d))); const exN = act.reduce((n, w) => n + w.exercises.length, 0);
+  const days = new Set(); act.forEach(w => (w.weekdays || []).forEach(d => days.add(d))); const exN = act.reduce((n, w) => n + w.exercises.filter(e => !e.warm).length, 0);
   const heroFav = trTab === 'fav' ? `<div class="ts-strip" style="grid-template-columns:repeat(2,1fr)"><div class="ts-s"><b>${favEx.length}</b><em>Lieblingsübungen</em></div><div class="ts-s"><b>${favs.length}</b><em>Lieblingstrainings</em></div></div>` : '';
   const st = (n, l, x) => `<div class="ts-s"><b>${n}</b><em>${l}</em>${x || ''}</div>`;
   const dots7 = `<span class="ts-d">${WD_KEYS.map(k => `<i${days.has(k) ? ' class="on"' : ''}></i>`).join('')}</span>`;
@@ -2867,3 +2867,6 @@ content.addEventListener('focusout', e => {
   if (t && name) { t.name = name; delete t.draft; saveWeekplan(); }
   renameId = null; setTimeout(render, 0);
 });
+
+// Fehlende Übungsbilder (noch nicht erstellt): neutraler Platzhalter statt leerer Fläche
+document.addEventListener('error', e => { const i = e.target; if (!i || i.tagName !== 'IMG' || i.dataset.ph || !/\/gifs\/|gifs\//.test(i.src)) return; i.dataset.ph = 1; i.src = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 16l30 17v34L50 84 20 67V33z" fill="none" stroke="#3a4a44" stroke-width="3"/><text x="50" y="56" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6b7d75">Bild folgt</text></svg>'); setTimeout(() => { i.style.visibility = 'visible'; }, 0); }, true);
