@@ -125,3 +125,8 @@ Reiter "Balance" in Übungen + 1-2 Balance-Übungen im Aufwärmblock beim Traini
 
 ## 7.11. Warteliste: Geräte-Sync (Alex 7.11. 00:38, "merk es dir")
 - Favoriten/Trainings/Wochenplan/Verlauf liegen nur im Browser-Speicher je Gerät (iPhone ≠ PC), kein Login. Echter Abgleich über Konto + Server (z. B. Cloudflare) = eigenes Vorhaben vor Store-Release. Zwischenschritt Export/Import wurde angeboten, Alex lehnt ab. Nicht bauen ohne Go.
+
+## 9.11. Stand
+- Live (ce461fa, ?v=20261109a): Platzhalter "Bild folgt" für fehlende Übungsbilder, Übungszahl ohne Aufwärmen auf Karten/Listen.
+- Playwright-Lauf Live (Wizard→Ergebnis→Speichern→Player) ok. 16 Bilder fehlen (Bild-Queue in plan.md).
+- Nächste Schritte (ohne Alex-Go nichts starten): Bilder erzeugen (16), Versprechen-C-Punkte (wtrain-Stepper pro Übung), Logikbericht A1/B1.
