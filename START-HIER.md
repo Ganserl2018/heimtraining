@@ -130,3 +130,8 @@ Reiter "Balance" in Übungen + 1-2 Balance-Übungen im Aufwärmblock beim Traini
 - Live (ce461fa, ?v=20261109a): Platzhalter "Bild folgt" für fehlende Übungsbilder, Übungszahl ohne Aufwärmen auf Karten/Listen.
 - Playwright-Lauf Live (Wizard→Ergebnis→Speichern→Player) ok. 16 Bilder fehlen (Bild-Queue in plan.md).
 - Nächste Schritte (ohne Alex-Go nichts starten): Bilder erzeugen (16), Versprechen-C-Punkte (wtrain-Stepper pro Übung), Logikbericht A1/B1.
+
+## 10.11. Stand (Mac-Session)
+- Live ?v=20261110a: A1 behoben (`savedGear()`: leere Geräteauswahl nach Start-Tipp = alle Geräte für Tauschen/Übungsanzahl/Neu mischen), Zeit-Meldung ohne interne Schlüssel (m:biceps) und nur für wirklich fehlende Muskeln, Minuten einheitlich über `estMin()` (Hauptsatz 2,5 Min, Aufwärm-/Balance-Satz 1 Min) auf Ergebnis, Trainingsseite, Trainingskarte.
+- Test: Playwright headless 402x874, 20/30/45/60 Min, Speichern, Start-Tipp, wSwapEx/wtSetCount; keine pageerror.
+- Offen/Alex entscheidet: 45 Min ergibt ~35, 60 Min ergibt ~45 (GCOUNT plant zu wenige Übungen für lange Dauer). Rest Logikbericht B1-B4, B6-B8 unverändert offen.

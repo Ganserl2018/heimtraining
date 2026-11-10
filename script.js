@@ -796,6 +796,10 @@ const GEAR_SVG = {
 };
 const GEARKEY = 'heimtraining.gear2';
 function loadGear() { try { const g = JSON.parse(LS.getItem(GEARKEY)); if (Array.isArray(g)) return g; } catch (e) {} return GEAR.map(x => x[0]); }
+// Für gespeicherte Trainings (Tauschen/Übungsanzahl/Neu mischen): leere Auswahl (Wizard gerade zurückgesetzt) = alle Geräte
+function savedGear() { const g = loadGear(); return g.length ? g : GEAR.map(x => x[0]); }
+// Geschätzte Dauer: Hauptsatz ~2,5 Min (mit Pause), Aufwärm-/Gleichgewichtssatz ~1 Min; auf 5 Min gerundet
+function estMin(exs) { const m = (exs || []).reduce((n, e) => n + (e.sets || 3) * (e.warm ? 1 : 2.5), 0); return Math.max(5, Math.round(m / 5) * 5); }
 function isBack(e) { return e.muscle === 'lats' || e.muscle === 'middle back' || (e.muscle === 'lower back' && gearOf(e.name).includes('ext')); }
 function gearOf(name) { // Liste der benötigten Geräte
   if (gearFix[name]) return gearFix[name].g;
@@ -926,7 +930,7 @@ function wFavEx(t, i) { const e = t && t.exercises[i]; if (!e) return; const f =
 function wSwapEx(t, i) {
   const old = t && t.exercises[i]; if (!old) return;
   if (old.warm) { const w = warmAlt(old, t.exercises); if (w) { t.exercises[i] = w; saveWeekplan(); } return; }
-  const keep = genCfg.gear; genCfg.gear = loadGear();
+  const keep = genCfg.gear; genCfg.gear = savedGear();
   const lv = genLevel(), grp = MUSCLE_GROUPS[old.muscle], inList = t.exercises.map(x => x.name);
   const ok = e => MUSCLE_GROUPS[e.muscle] === grp && !inList.includes(e.name);
   let c = genBase(lv).filter(e => ok(e) && e.muscle === old.muscle);
@@ -1014,7 +1018,8 @@ function generate() {
   exs.unshift(...warmupsFor(exs).concat(balFor(exs)));
   try { LS.setItem(GENKEY, JSON.stringify(picked.map(e => e.name).concat(last).slice(0, 24))); } catch (e) {}
   genRes = exs; genJust = true; genSwapped = -1;
-  const got = new Set(exs.filter(e => !e.warm).map(e => MUSCLE_GROUPS[e.muscle])), gone = genCfg.groups.filter(g => !got.has(g));
+  const mainEx = exs.filter(e => !e.warm), got = new Set(mainEx.map(e => MUSCLE_GROUPS[e.muscle])), gotM = new Set(mainEx.map(e => e.muscle));
+  const gone = genCfg.groups.filter(g => g.startsWith('m:') ? !gotM.has(g.slice(2)) : !got.has(g)).map(g => g.startsWith('m:') ? (MUSCLE_DE[g.slice(2)] || g.slice(2)) : g);
   if (gone.length) genNote = `Für ${gone.join(', ')} reicht die Zeit nicht. Mehr Minuten wählen oder unter Anpassen mehr Übungen.`;
 }
 // ---- Nächstes Training berechnen: Drücken / Ziehen / Beine rotieren, Pause je Muster + einfache Steigerung ----
@@ -1071,7 +1076,7 @@ function genActMain() { return `<div class="gn-act"><div class="gn-act-main"><bu
 function genHero() {
   const ex = genRes || [], main = ex.filter(e => !e.warm), sets = ex.reduce((n, e) => n + (e.sets || 0), 0), gs = [...new Set(main.map(e => MUSCLE_GROUPS[e.muscle]).filter(Boolean))];
   const tile = (n, l) => `<div class="ts-s"><b>${n}</b><em>${l}</em></div>`;
-  return `<div class="gn-top"><button class="gn-back" data-act="genBackWiz" aria-label="Zurück zur Auswahl">‹</button>${gs.map(g => `<span class="gx-t g" data-g="${esc(g)}">${esc(g)}</span>`).join('')}</div><div class="ts-strip" style="grid-template-columns:repeat(4,1fr)">${tile(main.length, 'Übungen')}${tile(new Set(main.flatMap(e => gearOf(e.name)).filter(k => k !== 'body')).size, 'Geräte')}${tile(sets, 'Sätze')}${tile('~' + Math.max(5, Math.round(sets * 2.5 / 5) * 5), 'Minuten')}</div>`;
+  return `<div class="gn-top"><button class="gn-back" data-act="genBackWiz" aria-label="Zurück zur Auswahl">‹</button>${gs.map(g => `<span class="gx-t g" data-g="${esc(g)}">${esc(g)}</span>`).join('')}</div><div class="ts-strip" style="grid-template-columns:repeat(4,1fr)">${tile(main.length, 'Übungen')}${tile(new Set(main.flatMap(e => gearOf(e.name)).filter(k => k !== 'body')).size, 'Geräte')}${tile(sets, 'Sätze')}${tile('~' + estMin(ex), 'Minuten')}</div>`;
 }
 function gxEd(e, i) {
   const sek = e.unit === 'sek', st = (act, d, l) => `<button data-act="${act}" data-i="${i}" data-d="${d}" aria-label="${l}">${d < 0 ? '–' : '+'}</button>`;
@@ -1607,7 +1612,7 @@ function shareHtml(t, max) {
 function trInfo(t, compact) {
   const ex = t.exercises || [], sets = ex.reduce((n, e) => n + (e.sets || 3), 0);
   if (!ex.length) return '';
-  const min = Math.max(5, Math.round(sets * 2.5 / 5) * 5);
+  const min = estMin(ex);
   const sh = muscleShare(t).filter(([k]) => k !== 'Aufwärmen').slice(0, 4);
   const bar = sh.length ? `<span class="ti-leg">${sh.map(([k, p]) => `<span data-g="${esc(k)}"><i></i>${esc(k)} ${p}%</span>`).join('')}</span><span class="ti-bar">${sh.map(([k, p]) => `<i data-g="${esc(k)}" style="flex:${p}"></i>`).join('')}</span>` : '';
   const gl = [...new Set(ex.flatMap(e => gearOf(e.name)))].map(k => (GEAR.find(g => g[0] === k) || [])[1]).filter(Boolean).map(l => l === 'Kurzhanteln' ? 'Hanteln' : l === 'Hantelbank' ? 'Bank' : l);
@@ -1764,7 +1769,7 @@ function wtSetCount(t, n) {
   const main = wtMain(t);
   while (wtMain(t).length > n) { let k = -1; t.exercises.forEach((e, i) => { if (!e.warm && !isWarmName(e.name)) k = i; }); t.exercises.splice(k, 1); }
   if (main.length < n) {
-    const keep = genCfg.gear; genCfg.gear = loadGear();
+    const keep = genCfg.gear; genCfg.gear = savedGear();
     const lv = genLevel(), base = genBase(lv); genCfg.gear = keep;
     const grps = [...new Set(main.map(e => MUSCLE_GROUPS[e.muscle]).filter(Boolean))];
     let gi = 0, guard = 0;
@@ -1788,7 +1793,7 @@ function wtChips(t) {
   return gs.length ? `<div class="gn-top">${gs.map(g => `<span class="gx-t g" data-g="${esc(g)}">${esc(g)}</span>`).join('')}</div>` : '';
 }
 function wtHero(t, sets) {
-  const min = Math.max(5, Math.round(sets * 2.5 / 5) * 5), tile = (n, l) => `<div class="ts-s"><b>${n}</b><em>${l}</em></div>`;
+  const min = estMin(t.exercises), tile = (n, l) => `<div class="ts-s"><b>${n}</b><em>${l}</em></div>`;
   const sh = muscleShare(t).filter(([k]) => k !== 'Aufwärmen').slice(0, 5);
   const bar = sh.length ? `<span class="ti-bar">${sh.map(([k, p]) => `<i data-g="${esc(k)}" style="flex:${p}"></i>`).join('')}</span><span class="ti-leg">${sh.map(([k, p]) => `<span data-g="${esc(k)}"><i></i>${esc(k)} ${p}%</span>`).join('')}</span>` : '';
   return `<div class="ts-strip" style="grid-template-columns:repeat(4,1fr)">${tile(t.exercises.filter(e => !e.warm).length, 'Übungen')}${tile(new Set(t.exercises.filter(e => !e.warm).flatMap(e => gearOf(e.name)).filter(k => k !== 'body')).size, 'Geräte')}${tile(sets, 'Sätze')}${tile('~' + min, 'Minuten')}</div>`;
@@ -2339,7 +2344,7 @@ content.addEventListener('click', e => {
       const t = trainingById(wId); if (!t) break;
       const main = t.exercises.filter(e => !e.warm && !isWarmName(e.name)), gr = [...new Set(main.map(e => MUSCLE_GROUPS[e.muscle]).filter(g => g && g !== 'Sonstiges'))];
       if (!gr.length || !confirm('Neue Übungen zu denselben Muskeln? Gewichte und Notizen dieses Trainings gehen verloren.')) break;
-      genCfg = newGenCfg(); genCfg.groups = gr; genCfg.count = main.length; genCfg.lv = t.level != null ? t.level : null; generate();
+      genCfg = newGenCfg(); genCfg.gear = savedGear(); genCfg.groups = gr; genCfg.count = main.length; genCfg.lv = t.level != null ? t.level : null; generate();
       if (genRes && genRes.length) { t.exercises = genRes; saveWeekplan(); }
       genRes = null; genCfg = newGenCfg(); break;
     }
