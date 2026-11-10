@@ -136,3 +136,4 @@ Reiter "Balance" in Übungen + 1-2 Balance-Übungen im Aufwärmblock beim Traini
 - Test: Playwright headless 402x874, 20/30/45/60 Min, Speichern, Start-Tipp, wSwapEx/wtSetCount; keine pageerror.
 - Offen/Alex entscheidet: 45 Min ergibt ~35, 60 Min ergibt ~45 (GCOUNT plant zu wenige Übungen für lange Dauer). Rest Logikbericht B1-B4, B6-B8 unverändert offen.
 - 10.11. ?v=20261110b: GCOUNT Anfänger 45 Min 4→5, 60 Min 5→7 Übungen (vorher ~35/~45 Min geschätzt, jetzt ~45/~60). Gemessen (estMin, 60 Läufe je Zelle). Offen/Alex entscheidet: Fortgeschritten/Profi planen bei kurzer Dauer zu viel (20 Min: ~30/~35, 30 Min: ~35/~45, 45 Min Profi ~55, 60 Min Profi ~70).
+- 10.11. ?v=20261110c (Alex-Go "Ja, kürzen"): GCOUNT für alle Level gleich: 20 Min 2, 30 Min 3, 45 Min 5, 60 Min 7 Übungen (geschätzt ~20/~30/~45/~60). Level steuert damit nicht mehr die Übungsanzahl, nur noch Auswahl/Gewichte. 90 Min (nicht in der Oberfläche) unverändert.
