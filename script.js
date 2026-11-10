@@ -817,7 +817,7 @@ function newGenCfg() { return { lv: null, goal: 'aufbau', dur: 30, count: null, 
 let genCfg = newGenCfg(), genRes = null;
 const GRANK = { Beine: 3, Rücken: 3, Brust: 3, Schultern: 2, Arme: 1, Bauch: 0 };
 const MORDER = ['quadriceps', 'hamstrings', 'glutes', 'chest', 'lats', 'middle back', 'lower back', 'shoulders', 'traps', 'biceps', 'triceps', 'forearms', 'calves', 'abdominals'];
-const GCOUNT = { 20: [2, 3, 4], 30: [3, 4, 5], 45: [4, 5, 6], 60: [5, 7, 8], 90: [7, 9, 11] }, GISO = { 20: 1, 30: 1, 45: 2, 60: 3, 90: 4 };
+const GCOUNT = { 20: [2, 3, 4], 30: [3, 4, 5], 45: [5, 5, 6], 60: [7, 7, 8], 90: [7, 9, 11] }, GISO = { 20: 1, 30: 1, 45: 2, 60: 3, 90: 4 };
 function genLevel() { return genCfg.lv != null ? genCfg.lv : (loadProfile().level != null ? loadProfile().level : 0); }
 function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 // ---- Aufwärmen: 2 passende Übungen vorne in jedem Training ----
